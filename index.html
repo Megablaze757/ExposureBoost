@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>EXPOSURE BOOST | Premium Metal Cards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #0F0F14;
+            --charcoal-light: #1A1A1F;
+            --purple: #6E4DFF;
+            --pink: #FF4FD8;
+            --silver: #E6E6EB;
+            --muted: #B5B5C3;
+            --white: #FFFFFF;
+            --gold: #FFD700;
+            --rose-gold: #B76E79;
+            --shadow: 0 20px 60px rgba(0, 0, 0, .35);
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--white);
+            overflow-x: hidden;
+            background: var(--charcoal);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            height: 100%;
+        }
+
+        /* Snap scroll container */
+        .snap {
+            height: 100vh;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        .snap::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        /* SIMPLIFIED HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(15, 15, 20, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .brand img {
+            height: 22px;
+            filter: brightness(0) invert(1);
+        }
+
+        .menu-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: white;
+            position: relative;
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .menu-toggle span::before,
+        .menu-toggle span::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .menu-toggle span::before {
+            transform: translateY(-5px);
+        }
+
+        .menu-toggle span::after {
+            transform: translateY(5px);
+        }
+
+        /* MOBILE MENU */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(15, 15, 20, 0.98);
+            backdrop-filter: blur(30px);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 999;
+            padding: 80px 20px 20px;
+            transition: right 0.4s var(--transition-smooth);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .menu-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .menu-item {
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s var(--transition-smooth);
+            border: 1px solid transparent;
+            text-align: center;
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* SIMPLIFIED SECTIONS - Bolder Backgrounds */
+        section {
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 70px 20px 80px;
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        /* ULTRA VIBRANT BACKGROUND COLORS */
+        #hero {
+            background: linear-gradient(135deg, #000000 0%, #6E4DFF 100%);
+        }
+
+        #gold {
+            background: linear-gradient(135deg, #8B6B00 0%, #FFD700 50%, #8B6B00 100%);
+        }
+
+        #silver {
+            background: linear-gradient(135deg, #003366 0%, #0066CC 50%, #003366 100%);
+        }
+
+        #rose-gold {
+            background: linear-gradient(135deg, #8B1E3F 0%, #FF4F93 50%, #8B1E3F 100%);
+        }
+
+        #black {
+            background: linear-gradient(135deg, #111111 0%, #444444 100%);
+        }
+
+        #white {
+            background: linear-gradient(135deg, #444444 0%, #777777 100%);
+        }
+
+        #red {
+            background: linear-gradient(135deg, #990000 0%, #FF0000 50%, #990000 100%);
+        }
+
+        #green {
+            background: linear-gradient(135deg, #006600 0%, #00CC00 50%, #006600 100%);
+        }
+
+        #purple {
+            background: linear-gradient(135deg, #4B0082 0%, #9400D3 50%, #4B0082 100%);
+        }
+
+        #custom {
+            background: linear-gradient(135deg, #008080 0%, #00CCCC 50%, #008080 100%);
+        }
+
+        /* Animated gradient effect */
+        .color-wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg,
+                    transparent 25%,
+                    rgba(255, 255, 255, 0.1) 25%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    transparent 50%,
+                    transparent 75%,
+                    rgba(255, 255, 255, 0.1) 75%);
+            background-size: 60px 60px;
+            animation: wave 20s linear infinite;
+            opacity: 0.5;
+            /* Increased for better visibility */
+            z-index: 0;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-30px, -30px);
+            }
+        }
+
+        /* Card Container */
+        .card-container {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* PREMIUM CARD */
+        .premium-card {
+            width: 100%;
+            height: 200px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto 30px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            transition: all 0.5s var(--transition-smooth);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .premium-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .card-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.5s var(--transition-smooth);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nfc-chip {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.5);
+            transition: all 0.3s var(--transition-smooth);
+        }
+
+        .nfc-chip:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.6);
+        }
+
+        .card-logo {
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            opacity: 0.9;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 5px 0;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 16px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ENHANCED ENGRAVING BUTTONS - More Prominent */
+        .engraving-selector {
+            display: flex;
+            gap: 12px;
+            margin: 25px auto 0;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 320px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .engraving-btn {
+            padding: 16px 24px;
+            border-radius: 50px;
+            border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s var(--transition-smooth);
+            backdrop-filter: blur(10px);
+            min-width: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .engraving-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .engraving-btn:hover::before {
+            left: 100%;
+        }
+
+        .engraving-btn.active {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gold engraving button */
+        .engraving-btn.gold {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(255, 215, 0, 0.3));
+            border-color: rgba(255, 215, 0, 0.5);
+            color: #FFD700;
+        }
+
+        .engraving-btn.gold.active {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(255, 215, 0, 0.5));
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Silver engraving button */
+        .engraving-btn.silver {
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.4), rgba(232, 232, 232, 0.3));
+            border-color: rgba(255, 255, 255, 0.5);
+            color: #FFFFFF;
+        }
+
+        .engraving-btn.silver.active {
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.6), rgba(232, 232, 232, 0.5));
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Gold icon for button */
+        .gold-icon::before {
+            content: '✦';
+            font-size: 1.1rem;
+            color: #FFD700;
+            font-weight: 800;
+        }
+
+        /* Silver icon for button */
+        .silver-icon::before {
+            content: '✦';
+            font-size: 1.1rem;
+            color: #FFFFFF;
+            font-weight: 800;
+        }
+
+        /* SECTION INDICATOR */
+        .section-indicator {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+            animation: bounce 2s infinite;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-3px);
+            }
+        }
+
+        /* PAGE INDICATOR DOTS */
+        .page-indicator {
+            position: fixed;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 90;
+            padding: 10px;
+            border-radius: 20px;
+            background: rgba(15, 15, 20, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .page-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s var(--transition-smooth);
+            border: 1px solid transparent;
+        }
+
+        .page-dot.active {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            transform: scale(1.3);
+        }
+
+        .page-dot:hover {
+            transform: scale(1.2);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* FIXED ACTION BUTTONS */
+        .action-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 20, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 18px;
+            border-radius: 14px;
+            border: none;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s var(--transition-smooth);
+            max-width: 200px;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, #FF6B35, #FF8C42);
+            color: white;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .action-btn.secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .action-btn:active {
+            transform: translateY(0);
+        }
+
+        .action-btn.primary:hover {
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--charcoal);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            transition: opacity 0.6s ease;
+        }
+
+        .loading-logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            width: 0%;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        /* CARD SPECIFIC STYLES */
+        .card-logo.gold-text {
+            color: #FFD700;
+        }
+
+        .card-logo.silver-text {
+            color: #FFFFFF;
+        }
+
+        .card-logo.rose-text {
+            color: #B76E79;
+        }
+
+        .card-title.gold-text {
+            color: #FFD700;
+        }
+
+        .card-title.silver-text {
+            color: #FFFFFF;
+        }
+
+        .card-title.rose-text {
+            color: #B76E79;
+        }
+
+        .card-title.white-text {
+            color: #FFFFFF;
+        }
+
+        .card-title.black-text {
+            color: #333333;
+        }
+
+        .card-subtitle.gold-text {
+            color: #FFD700;
+        }
+
+        .card-subtitle.silver-text {
+            color: #FFFFFF;
+        }
+
+        .card-subtitle.rose-text {
+            color: #B76E79;
+        }
+
+        .card-subtitle.white-text {
+            color: #FFFFFF;
+        }
+
+        .card-subtitle.black-text {
+            color: #333333;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (min-width: 768px) {
+            .card-container {
+                max-width: 380px;
+            }
+
+            .premium-card {
+                height: 240px;
+                margin-bottom: 40px;
+                border-radius: 24px;
+            }
+
+            .engraving-selector {
+                max-width: 400px;
+            }
+
+            .engraving-btn {
+                padding: 18px 28px;
+                font-size: 1.05rem;
+                min-width: 180px;
+            }
+
+            .action-buttons {
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .action-btn {
+                max-width: 250px;
+                font-size: 1.1rem;
+                padding: 20px;
+            }
+
+            .card-title {
+                font-size: 1.8rem;
+            }
+
+            .card-subtitle {
+                font-size: 1rem;
+            }
+
+            .nfc-chip {
+                width: 52px;
+                height: 52px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .premium-card {
+                height: 180px;
+                margin-bottom: 25px;
+            }
+
+            .card-title {
+                font-size: 1.4rem;
+            }
+
+            .card-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .engraving-selector {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .engraving-btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 14px 20px;
+            }
+
+            .page-indicator {
+                right: 8px;
+                padding: 8px;
+            }
+
+            .page-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .section-indicator {
+                font-size: 0.75rem;
+                bottom: 90px;
+            }
+
+            .action-btn {
+                padding: 16px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Safe area for notches */
+        @supports (padding: max(0px)) {
+            .action-buttons {
+                padding-bottom: max(15px, env(safe-area-inset-bottom));
+            }
+        }
+
+        /* Reduce motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">EXPOSURE BOOST</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="brand">
+            <img src="logo.png" alt="EXPOSURE BOOST">
+            <span>ExposureBoost</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="menu-nav">
+            <a href="#hero" class="menu-item active" data-section="hero">Home</a>
+            <a href="#gold" class="menu-item" data-section="gold">Gold</a>
+            <a href="#silver" class="menu-item" data-section="silver">Silver</a>
+            <a href="#rose-gold" class="menu-item" data-section="rose-gold">Rose Gold</a>
+            <a href="#black" class="menu-item" data-section="black">Black</a>
+            <a href="#white" class="menu-item" data-section="white">White</a>
+            <a href="#red" class="menu-item" data-section="red">Red</a>
+            <a href="#green" class="menu-item" data-section="green">Green</a>
+            <a href="#purple" class="menu-item" data-section="purple">Purple</a>
+            <a href="#custom" class="menu-item" data-section="custom">Custom</a>
+        </nav>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- PAGE INDICATOR -->
+    <div class="page-indicator" id="pageIndicator">
+        <div class="page-dot active" data-index="0"></div>
+        <div class="page-dot" data-index="1"></div>
+        <div class="page-dot" data-index="2"></div>
+        <div class="page-dot" data-index="3"></div>
+        <div class="page-dot" data-index="4"></div>
+        <div class="page-dot" data-index="5"></div>
+        <div class="page-dot" data-index="6"></div>
+        <div class="page-dot" data-index="7"></div>
+        <div class="page-dot" data-index="8"></div>
+        <div class="page-dot" data-index="9"></div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="snap" id="snap">
+        <!-- HERO SECTION -->
+        <section id="hero">
+            <div class="color-wave"></div>
+
+            <div class="card-container">
+                <div class="premium-card">
+                    <div class="card-background" style="background: linear-gradient(135deg, #6E4DFF 0%, #FF4FD8 100%);">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="nfc-chip">NFC</div>
+                            <div class="card-logo silver-text">EXPOSURE BOOST</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title silver-text">Premium Metal</div>
+                            <div class="card-subtitle silver-text">Tap to share contact info</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">£95</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engraving-selector">
+                    <button class="engraving-btn gold active" onclick="changeEngraving('hero', 'gold')">
+                        <span class="gold-icon"></span>
+                        Gold Engraving
+                    </button>
+                    <button class="engraving-btn silver" onclick="changeEngraving('hero', 'silver')">
+                        <span class="silver-icon"></span>
+                        Silver Engraving
+                    </button>
+                </div>
+            </div>
+
+            <div class="section-indicator">
+                <div>▼</div>
+                <div>Scroll to explore cards</div>
+            </div>
+        </section>
+
+        <!-- GOLD CARD - Dark brown background makes gold pop -->
+        <section id="gold">
+            <div class="color-wave"></div>
+
+            <div class="card-container">
+                <div class="premium-card">
+                    <div class="card-background"
+                        style="background-image: url('https://images.unsplash.com/photo-1604594849809-dfeddc9179bb?w=400&h=250&fit=crop&q=80&contrast=1.2&brightness=1.1');">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="nfc-chip" style="background: linear-gradient(135deg, #D4AF37, #FFD700);">NFC
+                            </div>
+                            <div class="card-logo gold-text">EXPOSURE BOOST</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title gold-text">Gold Metal</div>
+                            <div class="card-subtitle gold-text">24K gold plating</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">£95</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engraving-selector">
+                    <button class="engraving-btn gold active">
+                        <span class="gold-icon"></span>
+                        Gold Engraving
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SILVER CARD - Deep blue background makes silver pop -->
+        <section id="silver">
+            <div class="color-wave"></div>
+
+            <div class="card-container">
+                <div class="premium-card">
+                    <div class="card-background"
+                        style="background-image: url('https://images.unsplash.com/photo-1615572359972-5b5c6d7b9389?w=400&h=250&fit=crop&q=80&contrast=1.2&brightness=1.1');">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="nfc-chip">NFC</div>
+                            <div class="card-logo silver-text">EXPOSURE BOOST</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title silver-text">Silver Metal</div>
+                            <div class="card-subtitle silver-text">Mirror finish</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">£95</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engraving-selector">
+                    <button class="engraving-btn silver active">
+                        <span class="silver-icon"></span>
+                        Silver Engraving
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROSE GOLD CARD - Deep purple background makes rose gold pop -->
+        <section id="rose-gold">
+            <div class="color-wave"></div>
+
+            <div class="card-container">
+                <div class="premium-card">
+                    <div class="card-background"
+                        style="background-image: url('https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=250&fit=crop&q=80&contrast=1.2&brightness=1.1');">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="nfc-chip" style="background: linear-gradient(135deg, #B76E79, #E8B4B8);">NFC
+                            </div>
+                            <div class="card-logo rose-text">EXPOSURE BOOST</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title rose-text">Rose Gold</div>
+                            <div class="card-subtitle rose-text">Elegant finish</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">£95</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engraving-selector">
+                    <button class="engraving-btn gold active">
+                        <span class="gold-icon"></span>
+                        Gold Engraving
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLACK METAL CARD - Gray background makes black pop -->
+        <section id="black">
+            <div class="color-wave"></div>
+
+            <div class="card-container">
+                <div class="premium-card">
+                    <div class="card-background"
+                        style="background-image: url('https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=400&h=250&fit=crop&q=80&brightness=0.9&contrast=1.3');">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="nfc-chip">NFC</div>
+                            <div class="card-logo silver-text">EXPOSURE BOOST</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title silver-text">Black Metal</div>
+                            <div class="card-subtitle silver-text">Stealth finish</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">£95</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engraving-selector">
+                    <button class="engraving-btn silver active" onclick="changeEngraving('black', 'silver')">
+                        <span class="silver-icon"></span>
+                        Silver Engraving
+                    </button>
+                    <button class="engraving-btn gold" onclick="changeEngraving('black', 'gold')">
+                        <span class="gold-icon"></span>
+                        Gold Engraving
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHITE METAL CARD - Dark gray background makes white pop -->
+        <section id="white">
+            <div class="color-wave"></div>
+
+            <div class="card-container">
+                <div class="premium-card">
+                    <div class="card-background"
+                        style="background-image: url('https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?w=400&h=250&fit=crop&q=80&contrast=1.2&brightness=1.1');">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="nfc-chip">NFC</div>
+                            <div class="card-logo silver-text">EXPOSURE BOOST</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title silver-text">White Metal</div>
+                            <div class="card-subtitle silver-text">Gloss finish</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">£95</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engraving-selector">
+                    <button class="engraving-btn silver active" onclick="changeEngraving('white', 'silver')">
+                        <span class="silver-icon"></span>
+                        Silver Engraving
+                    </button>
+                    <button class="engraving-btn gold" onclick="changeEngraving('white', 'gold')">
+                        <span class="gold-icon"></span>
+                        Gold Engraving
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- RED METAL CARD - Deep red background makes red pop -->
+        <section id="red">
+            <div class="color-wave"></div>
+
+            <div class="card-container">
+                <div class="premium-card">
+                    <div class="card-background"
+                        style="background-image: url('https://images.unsplash.com/photo-1615572766548-df8c70cf3c64?w=400&h=250&fit=crop&q=80&hue=330&saturation=80&contrast=1.2&brightness=1.1');">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="nfc-chip">NFC</div>
+                            <div class="card-logo silver-text">EXPOSURE BOOST</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title silver-text">Red Metal</div>
+                            <div class="card-subtitle silver-text">Vibrant finish</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">£95</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engraving-selector">
+                    <button class="engraving-btn silver active">
+                        <span class="silver-icon"></span>
+                        Silver Engraving
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- GREEN METAL CARD - Deep green background makes green pop -->
+        <section id="green">
+            <div class="color-wave"></div>
+
+            <div class="card-container">
+                <div class="premium-card">
+                    <div class="card-background"
+                        style="background-image: url('https://images.unsplash.com/photo-1615572359972-5b5c6d7b9389?w=400&h=250&fit=crop&q=80&hue=120&saturation=60&contrast=1.2&brightness=1.1');">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="nfc-chip">NFC</div>
+                            <div class="card-logo silver-text">EXPOSURE BOOST</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title silver-text">Green Metal</div>
+                            <div class="card-subtitle silver-text">Eco finish</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">£95</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engraving-selector">
+                    <button class="engraving-btn silver active" onclick="changeEngraving('green', 'silver')">
+                        <span class="silver-icon"></span>
+                        Silver Engraving
+                    </button>
+                    <button class="engraving-btn gold" onclick="changeEngraving('green', 'gold')">
+                        <span class="gold-icon"></span>
+                        Gold Engraving
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PURPLE METAL CARD - Deep purple background makes purple pop -->
+        <section id="purple">
+            <div class="color-wave"></div>
+
+            <div class="card-container">
+                <div class="premium-card">
+                    <div class="card-background"
+                        style="background-image: url('https://images.unsplash.com/photo-1615572359972-5b5c6d7b9389?w=400&h=250&fit=crop&q=80&hue=270&saturation=80&contrast=1.2&brightness=1.1');">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="nfc-chip">NFC</div>
+                            <div class="card-logo silver-text">EXPOSURE BOOST</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title silver-text">Purple Metal</div>
+                            <div class="card-subtitle silver-text">Royal finish</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">£95</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engraving-selector">
+                    <button class="engraving-btn silver active" onclick="changeEngraving('purple', 'silver')">
+                        <span class="silver-icon"></span>
+                        Silver Engraving
+                    </button>
+                    <button class="engraving-btn gold" onclick="changeEngraving('purple', 'gold')">
+                        <span class="gold-icon"></span>
+                        Gold Engraving
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CUSTOM CARD - Teal background makes custom colors pop -->
+        <section id="custom">
+            <div class="color-wave"></div>
+
+            <div class="card-container">
+                <div class="premium-card">
+                    <div class="card-background"
+                        style="background: linear-gradient(135deg, #6E4DFF, #FF4FD8, #FFD700);"></div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="nfc-chip">NFC</div>
+                            <div class="card-logo silver-text">EXPOSURE BOOST</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title silver-text">Custom Color</div>
+                            <div class="card-subtitle silver-text">Your design</div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">£95</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="engraving-selector">
+                    <button class="engraving-btn silver active" onclick="changeEngraving('custom', 'silver')">
+                        <span class="silver-icon"></span>
+                        Silver Engraving
+                    </button>
+                    <button class="engraving-btn gold" onclick="changeEngraving('custom', 'gold')">
+                        <span class="gold-icon"></span>
+                        Gold Engraving
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="action-buttons">
+        <button class="action-btn primary" id="buyNowBtn">Add to Cart</button>
+        <button class="action-btn secondary" id="whatsappBtn">View Collection</button>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Loading screen
+        const loadingScreen = document.getElementById('loadingScreen');
+        const loadingProgress = document.getElementById('loadingProgress');
+
+        setTimeout(() => {
+            loadingProgress.style.width = '30%';
+            setTimeout(() => {
+                loadingProgress.style.width = '70%';
+                setTimeout(() => {
+                    loadingProgress.style.width = '100%';
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                        }, 600);
+                    }, 300);
+                }, 300);
+            }, 300);
+        }, 300);
+
+        // Snap scroll and indicators
+        const snap = document.getElementById('snap');
+        const pageDots = document.querySelectorAll('.page-dot');
+        const sections = document.querySelectorAll('section');
+
+        const updateActiveDot = () => {
+            const scrollPosition = snap.scrollTop + snap.clientHeight / 2;
+
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.clientHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    pageDots.forEach(dot => dot.classList.remove('active'));
+                    if (pageDots[index]) {
+                        pageDots[index].classList.add('active');
+                    }
+
+                    // Update active menu item
+                    menuItems.forEach(item => item.classList.remove('active'));
+                    const sectionId = section.id;
+                    const activeMenuItem = document.querySelector(`.menu-item[data-section="${sectionId}"]`);
+                    if (activeMenuItem) {
+                        activeMenuItem.classList.add('active');
+                    }
+                }
+            });
+        };
+
+        // Initial update
+        updateActiveDot();
+
+        // Update on scroll
+        snap.addEventListener('scroll', updateActiveDot);
+
+        // Click handler for dots
+        pageDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                if (sections[index]) {
+                    sections[index].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            });
+        });
+
+        // Click handler for menu items
+        menuItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = item.getAttribute('data-section');
+                const section = document.getElementById(targetSection);
+                if (section) {
+                    section.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            });
+        });
+
+        // Engraving selection function
+        function changeEngraving(sectionId, engravingType) {
+            const section = document.getElementById(sectionId);
+            if (!section) return;
+
+            // Get all engraving buttons in this section
+            const engravingBtns = section.querySelectorAll('.engraving-btn');
+
+            // Remove active class from all buttons
+            engravingBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Add active class to clicked button
+            const activeBtn = Array.from(engravingBtns).find(btn =>
+                btn.classList.contains(engravingType)
+            );
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+
+            // Update card appearance based on engraving type
+            const card = section.querySelector('.premium-card');
+            const nfcChip = card.querySelector('.nfc-chip');
+            const cardLogo = card.querySelector('.card-logo');
+            const cardTitle = card.querySelector('.card-title');
+            const cardSubtitle = card.querySelector('.card-subtitle');
+
+            if (engravingType === 'gold') {
+                // Apply gold styling
+                if (nfcChip) nfcChip.style.background = 'linear-gradient(135deg, #D4AF37, #FFD700)';
+                if (cardLogo) {
+                    cardLogo.classList.remove('silver-text');
+                    cardLogo.classList.add('gold-text');
+                }
+                if (cardTitle) {
+                    cardTitle.classList.remove('silver-text');
+                    cardTitle.classList.add('gold-text');
+                }
+                if (cardSubtitle) {
+                    cardSubtitle.classList.remove('silver-text');
+                    cardSubtitle.classList.add('gold-text');
+                }
+            } else if (engravingType === 'silver') {
+                // Apply silver styling
+                if (nfcChip) nfcChip.style.background = 'linear-gradient(135deg, var(--purple), var(--pink))';
+                if (cardLogo) {
+                    cardLogo.classList.remove('gold-text');
+                    cardLogo.classList.add('silver-text');
+                }
+                if (cardTitle) {
+                    cardTitle.classList.remove('gold-text');
+                    cardTitle.classList.add('silver-text');
+                }
+                if (cardSubtitle) {
+                    cardSubtitle.classList.remove('gold-text');
+                    cardSubtitle.classList.add('silver-text');
+                }
+            }
+
+            // Show feedback
+            showFeedback(`${engravingType.charAt(0).toUpperCase() + engravingType.slice(1)} Engraving Selected`);
+        }
+
+        // Feedback message function
+        function showFeedback(message) {
+            const feedback = document.createElement('div');
+            feedback.textContent = message;
+            feedback.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(0,0,0,0.85);
+                color: white;
+                padding: 12px 24px;
+                border-radius: 25px;
+                z-index: 1001;
+                font-size: 0.9rem;
+                font-weight: 600;
+                animation: fadeInOut 2s ease;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.2);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            `;
+
+            document.body.appendChild(feedback);
+
+            setTimeout(() => {
+                feedback.remove();
+            }, 2000);
+        }
+
+        // Button functionality
+        document.getElementById('buyNowBtn').addEventListener('click', () => {
+            // Find current section
+            const scrollPosition = snap.scrollTop + snap.clientHeight / 2;
+            let currentSection = 'Premium Metal Card';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.clientHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    currentSection = section.querySelector('.card-title')?.textContent || 'Premium Card';
+                }
+            });
+
+            // Get selected engraving type
+            const currentSectionElement = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2).closest('section');
+            let engravingType = 'Gold';
+            if (currentSectionElement) {
+                const activeBtn = currentSectionElement.querySelector('.engraving-btn.active');
+                if (activeBtn) {
+                    engravingType = activeBtn.classList.contains('gold') ? 'Gold' : 'Silver';
+                }
+            }
+
+            showFeedback(`Added ${currentSection} with ${engravingType} Engraving to cart!`);
+        });
+
+        document.getElementById('whatsappBtn').addEventListener('click', () => {
+            window.open('https://wa.me/447000000000', '_blank');
+        });
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                updateActiveDot();
+            }, 250);
+        });
+
+        // Swipe support for mobile
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        snap.addEventListener('touchstart', e => {
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        snap.addEventListener('touchend', e => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeDistance = touchEndY - touchStartY;
+            const swipeThreshold = 50;
+
+            if (Math.abs(swipeDistance) > swipeThreshold) {
+                const scrollPosition = snap.scrollTop + snap.clientHeight / 2;
+                let currentIndex = 0;
+
+                sections.forEach((section, index) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.clientHeight;
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        currentIndex = index;
+                    }
+                });
+
+                if (swipeDistance > 0 && currentIndex > 0) {
+                    // Swipe down - go to previous section
+                    sections[currentIndex - 1].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                } else if (swipeDistance < 0 && currentIndex < sections.length - 1) {
+                    // Swipe up - go to next section
+                    sections[currentIndex + 1].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            }
+        }
+
+        // Add CSS for fade animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+                15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
