@@ -2,25 +2,46 @@
 <html lang="en">
 
 <head>
+   <link rel="icon" type="image/png" href="logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>EXPOSURE BOOST | Premium Metal Cards</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>All Services | GreenGlo Cleaners</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <style>
+        /* ===== CSS Reset & Variables ===== */
         :root {
-            --charcoal: #0F0F14;
-            --charcoal-light: #1A1A1F;
-            --purple: #6E4DFF;
-            --pink: #FF4FD8;
-            --silver: #E6E6EB;
-            --muted: #B5B5C3;
+            --primary-green: #10B981;
+            --secondary-green: #34D399;
+            --dark-green: #065F46;
+            --light-green: #D1FAE5;
+            --accent-green: #059669;
+            --emerald: #10B981;
+            --teal: #0D9488;
+            --mint: #A7F3D0;
             --white: #FFFFFF;
-            --gold: #FFD700;
-            --rose-gold: #B76E79;
-            --shadow: 0 20px 60px rgba(0, 0, 0, .35);
-            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --off-white: #F9FAFB;
+            --light-gray: #F3F4F6;
+            --medium-gray: #9CA3AF;
+            --dark-gray: #4B5563;
+            --black: #111827;
+            --gold: #FBBF24;
+            --ruby: #DC2626;
+            --sapphire: #2563EB;
+            --amethyst: #7C3AED;
+            --shadow: 0 20px 40px rgba(16, 185, 129, 0.12);
+            --shadow-lg: 0 25px 50px rgba(16, 185, 129, 0.15);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --gradient-primary: linear-gradient(135deg, var(--primary-green), var(--teal));
+            --gradient-dark: linear-gradient(135deg, var(--dark-green), var(--teal));
+            --gradient-gold: linear-gradient(135deg, #FBBF24, #F59E0B);
+            --gradient-silver: linear-gradient(135deg, #9CA3AF, #6B7280);
+            --gradient-bronze: linear-gradient(135deg, #92400E, #B45309);
         }
 
         * {
@@ -30,2077 +51,2729 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html,
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--white);
-            overflow-x: hidden;
-            background: var(--charcoal);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            height: 100%;
-        }
-
-        /* Snap scroll container */
-        .snap {
-            height: 100vh;
-            overflow-y: auto;
-            scroll-snap-type: y mandatory;
+        html {
+            font-size: 16px;
             scroll-behavior: smooth;
-            position: relative;
-            scroll-snap-stop: always;
+            scroll-padding-top: 80px;
         }
 
-        .snap::-webkit-scrollbar {
-            width: 0px;
-            background: transparent;
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            background-color: var(--off-white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Enable momentum scrolling on iOS */
-        .snap {
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* SIMPLIFIED HEADER */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            background: rgba(15, 15, 20, 0.98);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-            height: 60px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
+            line-height: 1.2;
+            color: var(--dark-green);
+            letter-spacing: -0.5px;
         }
 
-        .brand img {
-            height: 22px;
-            filter: brightness(0) invert(1);
-        }
-
-        .menu-toggle {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s var(--transition-smooth);
-        }
-
-        .menu-toggle:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .menu-toggle span {
-            display: block;
-            width: 18px;
-            height: 2px;
-            background: white;
-            position: relative;
-            transition: all 0.3s var(--transition-smooth);
-        }
-
-        .menu-toggle span::before,
-        .menu-toggle span::after {
-            content: '';
-            position: absolute;
-            width: 18px;
-            height: 2px;
-            background: white;
-            transition: all 0.3s var(--transition-smooth);
-        }
-
-        .menu-toggle span::before {
-            transform: translateY(-5px);
-        }
-
-        .menu-toggle span::after {
-            transform: translateY(5px);
-        }
-
-        /* SECTIONS */
-        section {
-            height: 100vh;
-            scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px 20px 100px;
-            position: relative;
-            isolation: isolate;
-            overflow: hidden;
-            text-align: center;
-            transition: background-color 0.5s var(--transition-smooth);
-        }
-
-        /* HERO SECTION */
-        #hero {
-            background: linear-gradient(135deg, #0A0A0E 0%, #1A1A2E 50%, #2D2D44 100%);
-            position: relative;
-            overflow: hidden;
-            padding-top: 60px;
-            padding-bottom: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
-
-        #hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(110, 77, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(255, 79, 216, 0.1) 0%, transparent 50%);
-            animation: pulse 8s ease-in-out infinite;
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 800px;
-            padding: 20px;
-            text-align: center;
+        .container {
             width: 100%;
-            margin-top: -20px;
-        }
-
-        .hero-title {
-            font-size: 2rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 0.8rem;
-            background: linear-gradient(135deg, #FFFFFF 0%, #B5B5C3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 0.95rem;
-            font-weight: 500;
-            line-height: 1.4;
-            margin-bottom: 1.2rem;
-            color: rgba(255, 255, 255, 0.85);
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 10px;
-        }
-
-        .hero-highlight {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-            z-index: 3;
-            position: relative;
-        }
-
-        .hero-btn {
-            padding: 14px 20px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s var(--transition-smooth);
-            border: none;
-            min-width: 140px;
-            text-align: center;
-            letter-spacing: 0.02em;
-        }
-
-        .hero-btn.primary {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            color: white;
-            box-shadow: 0 10px 30px rgba(110, 77, 255, 0.4);
-        }
-
-        .hero-btn.secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .hero-btn.primary:hover {
-            box-shadow: 0 20px 40px rgba(110, 77, 255, 0.6);
-        }
-
-        .hero-features {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 3;
-        }
-
-        .feature {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            min-width: 100px;
-        }
-
-        .feature-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            color: white;
-            margin-bottom: 3px;
-            transition: all 0.3s var(--transition-smooth);
-        }
-
-        .feature:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-            background: rgba(110, 77, 255, 0.2);
-            border-color: rgba(110, 77, 255, 0.3);
-        }
-
-        .feature-text {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.02); }
-        }
-
-        /* INDIVIDUAL COLOR SECTIONS - GOLD, SILVER, ROSE GOLD */
-        #gold {
-            background: #FFD700; /* Pure Gold */
-        }
-
-        #silver {
-            background: #C0C0C0; /* Pure Silver */
-        }
-
-        #rose-gold {
-            background: #B76E79; /* Rose Gold */
-        }
-
-        /* CAROUSEL SECTION - Seamless Infinite */
-        #carousel {
-            background: #008080; /* Start with Custom Color (Teal) */
-            position: relative;
-            transition: background-color 0.7s var(--transition-smooth);
-        }
-
-        .carousel-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 2rem;
-            text-align: center;
-            background: linear-gradient(135deg, #FFFFFF, var(--pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            padding: 0 20px;
-            position: absolute;
-            top: 80px;
-            left: 0;
-            right: 0;
-            z-index: 10;
-        }
-
-        .carousel-container {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .cards-wrapper {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.7s var(--transition-smooth);
-            will-change: transform;
-            align-items: center;
-        }
-
-        .carousel-slide {
-            flex: 0 0 100%;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        /* CARD STYLES */
-        .card-container {
-            width: 100%;
-            max-width: 320px;
+            max-width: 1280px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
+            padding: 0 1.5rem;
         }
 
-        .premium-card {
-            width: 100%;
-            height: 180px;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            margin: 0 auto 20px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
-            transition: all 0.5s var(--transition-smooth);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .premium-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.8),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-
-        .card-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: all 0.5s var(--transition-smooth);
-        }
-
-        .card-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 15px;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nfc-chip {
-            width: 42px;
-            height: 42px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            display: flex;
+        .btn {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 0.8rem;
-            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.5);
-            transition: all 0.3s var(--transition-smooth);
-        }
-
-        .nfc-chip:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.6);
-        }
-
-        .card-logo {
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            opacity: 0.9;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin: 5px 0;
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .card-subtitle {
-            font-size: 0.8rem;
-            opacity: 0.9;
-            margin-bottom: 8px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .card-price {
-            font-size: 1.1rem;
-            font-weight: 800;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 6px 14px;
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        /* ENGRAVING SELECTOR */
-        .engraving-selector {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin: 15px auto 0;
-            justify-content: center;
-            flex-wrap: wrap;
-            max-width: 320px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-        }
-
-        .engraving-options {
-            display: none;
-            gap: 10px;
-            width: 100%;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .engraving-options.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .engraving-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border-radius: 14px;
-            border: 2px solid transparent;
-            background: rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 700;
-            font-size: 0.9rem;
+            padding: 1rem 2.5rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s var(--transition-smooth);
-            backdrop-filter: blur(10px);
-            text-align: center;
-            letter-spacing: 0.02em;
-            min-width: 0;
+            transition: var(--transition);
+            text-decoration: none;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            box-shadow: var(--shadow);
+            gap: 0.75rem;
+            min-height: 56px;
         }
 
-        .engraving-btn::before {
+        .btn::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-            transition: left 0.6s ease;
+            background: var(--gradient-dark);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
         }
 
-        .engraving-btn:hover::before {
-            left: 100%;
+        .btn:hover::before {
+            opacity: 1;
         }
 
-        .engraving-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .engraving-btn.add-to-card {
-            background: linear-gradient(135deg, #FF6B35, #FF8C42);
-            color: white;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        .btn:active {
+            transform: translateY(-2px);
         }
 
-        .engraving-btn.view-collection {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            color: white;
-            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.4);
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
         }
 
-        .engraving-btn.gold-option {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(255, 215, 0, 0.5));
-            border-color: rgba(255, 215, 0, 0.7);
-            color: #FFD700;
-            font-weight: 800;
+        .btn-outline:hover {
+            background: var(--primary-green);
+            color: var(--white);
         }
 
-        .engraving-btn.silver-option {
-            background: linear-gradient(135deg, rgba(192, 192, 192, 0.6), rgba(232, 232, 232, 0.5));
-            border-color: rgba(255, 255, 255, 0.7);
-            color: #FFFFFF;
-            font-weight: 800;
+        .btn-large {
+            padding: 1.25rem 3rem;
+            font-size: 1.125rem;
+            min-height: 64px;
         }
 
-        /* CAROUSEL NAVIGATION */
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            position: absolute;
-            bottom: 120px;
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .btn-whatsapp::before {
+            background: linear-gradient(135deg, #1da851, #0d7c5a);
+        }
+
+        .btn-stripe {
+            background: linear-gradient(135deg, #635bff, #8a84ff);
+        }
+
+        .btn-stripe::before {
+            background: linear-gradient(135deg, #544bfd, #7a73ff);
+        }
+
+        /* ===== Navigation Bar ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
             left: 0;
-            right: 0;
-            z-index: 10;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+            transition: var(--transition);
         }
 
-        .nav-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.1);
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s var(--transition-smooth);
-            font-size: 1.2rem;
-            color: white;
+            color: var(--white);
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
         }
 
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-
-        .carousel-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: all 0.3s var(--transition-smooth);
-        }
-
-        .dot.active {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            transform: scale(1.3);
-        }
-
-        .dot:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.2);
-        }
-
-        /* SECTION INDICATOR */
-        .section-indicator {
-            position: absolute;
-            bottom: 70px;
-            left: 50%;
-            transform: translateX(-50%);
+        .logo-text {
             display: flex;
             flex-direction: column;
+        }
+
+        .logo-text h1 {
+            font-size: 1.75rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            font-size: 0.75rem;
+            color: var(--medium-gray);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+
+        .nav-menu {
+            display: flex;
             align-items: center;
-            gap: 6px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.7rem;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark-gray);
             font-weight: 600;
-            z-index: 3;
-            animation: bounce 2s infinite;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            position: relative;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-5px); }
-            60% { transform: translateX(-50%) translateY(-3px); }
-        }
-
-        /* PAGE INDICATOR */
-        .page-indicator {
-            position: fixed;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            z-index: 90;
-            padding: 10px;
-            border-radius: 20px;
-            background: rgba(15, 15, 20, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .page-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            transition: all 0.3s var(--transition-smooth);
-            border: 1px solid transparent;
-        }
-
-        .page-dot.active {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            transform: scale(1.3);
-        }
-
-        .page-dot:hover {
-            transform: scale(1.2);
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* FIXED ACTION BUTTONS */
-        .action-buttons {
-            position: fixed;
+        .nav-link::after {
+            content: '';
+            position: absolute;
             bottom: 0;
             left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            margin-left: 1rem;
+        }
+
+        .nav-cta .btn {
+            padding: 0.75rem 1.75rem;
+            min-height: auto;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            width: 48px;
+            height: 48px;
+            background: var(--light-green);
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--mint);
+            transform: rotate(90deg);
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== Modern Section Styles ===== */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-light {
+            background: var(--white);
+        }
+
+        .section-gray {
+            background: var(--off-white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: var(--medium-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== Services Hero Section ===== */
+        .services-hero {
+            min-height: 60vh;
+            padding: 160px 0 80px;
+            background: linear-gradient(135deg, rgba(209, 250, 229, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
             right: 0;
-            background: rgba(15, 15, 20, 0.98);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 100;
-            padding: 12px 15px;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--light-green) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .services-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(to right, var(--dark-green), var(--teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .services-hero p {
+            font-size: clamp(1.125rem, 3vw, 1.375rem);
+            color: var(--dark-gray);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== Service Categories ===== */
+        .category-filters {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.4);
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
 
-        .action-btn {
-            flex: 1;
-            padding: 14px;
-            border-radius: 14px;
-            border: none;
-            font-weight: 800;
-            font-size: 0.9rem;
+        .category-btn {
+            padding: 0.875rem 1.75rem;
+            background: var(--white);
+            border: 2px solid var(--primary-green);
+            border-radius: 50px;
+            color: var(--primary-green);
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s var(--transition-smooth);
-            max-width: 180px;
-            text-align: center;
-            letter-spacing: 0.02em;
+            transition: var(--transition);
+            font-size: 1rem;
+            box-shadow: var(--shadow);
         }
 
-        .action-btn.primary {
-            background: linear-gradient(135deg, #FF6B35, #FF8C42);
-            color: white;
-            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
-        }
-
-        .action-btn.secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .action-btn:hover {
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--gradient-primary);
+            color: var(--white);
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: var(--shadow-lg);
         }
 
-        .action-btn.primary:hover {
-            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.6);
+        /* ===== Services Grid ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
         }
 
-        /* TEXT CONTRAST ADJUSTMENTS */
-        #gold .card-logo,
-        #gold .card-title,
-        #gold .card-subtitle,
-        #gold .card-price {
-            color: #000000;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        .service-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            position: relative;
         }
 
-        #silver .card-logo,
-        #silver .card-title,
-        #silver .card-subtitle {
-            color: #000000;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-green);
         }
 
-        #rose-gold .card-logo,
-        #rose-gold .card-title,
-        #rose-gold .card-subtitle {
-            color: #000000;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+        .service-card::after {
+            content: 'BEST VALUE';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--gradient-gold);
+            color: var(--black);
+            padding: 8px 40px;
+            font-size: 11px;
+            font-weight: 900;
+            transform: rotate(45deg);
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            letter-spacing: 1px;
         }
 
-        /* CAROUSEL BACKGROUND COLORS */
-        .carousel-bg-custom {
-            background: #008080 !important; /* Teal for Custom */
-        }
-        .carousel-bg-black {
-            background: #000000 !important;
-        }
-        .carousel-bg-white {
-            background: #FFFFFF !important;
-        }
-        .carousel-bg-red {
-            background: #FF0000 !important;
-        }
-        .carousel-bg-green {
-            background: #00FF00 !important;
-        }
-        .carousel-bg-purple {
-            background: #800080 !important;
+        .service-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-color: var(--light-green);
         }
 
-        /* Adjust text for light backgrounds in carousel */
-        .carousel-bg-white .card-logo,
-        .carousel-bg-white .card-title,
-        .carousel-bg-white .card-subtitle,
-        .carousel-bg-white .carousel-title {
-            color: #000000 !important;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5) !important;
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(6, 95, 70, 0.8) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
         }
 
-        .carousel-bg-white .carousel-title {
-            background: linear-gradient(135deg, #000000, #333333) !important;
-            -webkit-background-clip: text !important;
-            -webkit-text-fill-color: transparent !important;
-            background-clip: text !important;
+        .service-overlay h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0;
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (min-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-price-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-tag-main {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            line-height: 1;
+            padding: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .price-tag-main::before {
+            content: 'FROM';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--medium-gray);
+            letter-spacing: 2px;
+        }
+
+        .price-tier-container {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .price-tier {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: 12px;
+            background: var(--light-green);
+            min-width: 80px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .price-tier:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-green);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.1);
+        }
+
+        .tier-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .tier-badge.gold {
+            background: var(--gradient-gold);
+        }
+
+        .tier-badge.silver {
+            background: var(--gradient-silver);
+        }
+
+        .tier-badge.bronze {
+            background: var(--gradient-bronze);
+        }
+
+        .tier-bedrooms {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        .tier-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--dark-green);
+            margin-top: 0.25rem;
+        }
+
+        .service-duration-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--light-green);
+            color: var(--dark-green);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 0 auto;
+            border: 1px solid var(--secondary-green);
+        }
+
+        .service-description {
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+            display: flex;
+            align-items: center;
+            color: var(--dark-gray);
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li i {
+            color: var(--secondary-green);
+            margin-right: 0.75rem;
+            font-size: 0.875rem;
+            min-width: 20px;
+        }
+
+        .service-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--light-green);
+        }
+
+        .service-cta {
+            width: 100%;
+        }
+
+        .service-card .btn {
+            width: 100%;
+            justify-content: center;
+            font-size: 1.125rem;
+            padding: 1rem 2rem;
+        }
+
+        .payment-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .stripe-badge {
+            background: #635bff;
+            color: white;
+        }
+
+        .whatsapp-badge {
+            background: #25D366;
+            color: white;
+        }
+
+        /* ===== Booking Modal ===== */
+        .booking-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .booking-modal {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
             }
-            
-            .hero-subtitle {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .booking-modal-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 25px 30px;
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .booking-modal-header h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .booking-modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .booking-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .booking-modal-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            font-size: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--light-gray);
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .booking-summary {
+            background: linear-gradient(135deg, rgba(209, 250, 229, 0.3), rgba(209, 250, 229, 0.1));
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid var(--secondary-green);
+        }
+
+        .payment-note {
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .stripe-note {
+            background: linear-gradient(135deg, rgba(99, 91, 255, 0.1), rgba(138, 132, 255, 0.05));
+            border: 2px solid #635bff;
+        }
+
+        .whatsapp-note {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(18, 140, 126, 0.05));
+            border: 2px solid #25D366;
+        }
+
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .time-slot-option {
+            border: 2px solid var(--light-gray);
+            border-radius: 12px;
+            padding: 18px 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            background: white;
+        }
+
+        .time-slot-option:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        .time-slot-option.selected {
+            background: var(--light-green);
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .booking-steps {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        /* ===== Services CTA ===== */
+        .services-cta {
+            background: var(--gradient-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 0;
+            border-radius: var(--border-radius-lg);
+            margin: 4rem auto;
+            max-width: 1200px;
+        }
+
+        .services-cta h2 {
+            color: var(--white);
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .services-cta p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* ===== Premium Footer ===== */
+        .footer {
+            background: var(--dark-green);
+            color: var(--white);
+            padding: 6rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary-green);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom a {
+            color: var(--primary-green);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--secondary-green);
+            text-decoration: underline;
+        }
+
+        /* ===== WhatsApp Button ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+        }
+
+        .whatsapp-button {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                padding: 100px 2rem 2rem;
+                gap: 0;
+                transition: var(--transition);
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+                z-index: 1001;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                display: block;
+                padding: 1.25rem 1rem;
+                border-bottom: 1px solid rgba(16, 185, 129, 0.1);
                 font-size: 1.1rem;
-                max-width: 600px;
-            }
-            
-            .hero-btn {
-                padding: 16px 24px;
-                font-size: 1rem;
-                min-width: 160px;
-            }
-            
-            .hero-features {
-                gap: 25px;
-            }
-            
-            .feature {
-                min-width: 120px;
-            }
-            
-            .feature-icon {
-                width: 55px;
-                height: 55px;
-                font-size: 1.3rem;
-            }
-            
-            .card-container {
-                max-width: 350px;
             }
 
-            .premium-card {
-                height: 200px;
-                margin-bottom: 25px;
+            .nav-cta {
+                margin: 2rem 0 0;
+                width: 100%;
             }
 
-            .engraving-selector {
-                max-width: 350px;
+            .nav-cta .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem 2rem;
             }
 
-            .engraving-btn {
-                padding: 16px 20px;
-                font-size: 1rem;
+            .mobile-menu-btn {
+                display: flex;
+                z-index: 1002;
+                position: relative;
             }
 
-            .action-btn {
-                max-width: 200px;
-                padding: 16px;
-                font-size: 1rem;
+            .mobile-menu-btn.active {
+                background: var(--primary-green);
+                color: var(--white);
             }
 
-            .card-title {
-                font-size: 1.5rem;
+            .services-hero {
+                padding: 140px 0 4rem;
             }
 
-            .carousel-title {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .category-filters {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .category-btn {
+                flex-shrink: 0;
+            }
+
+            .price-tag-main {
                 font-size: 2rem;
-                top: 100px;
+            }
+
+            .price-tier-container {
+                flex-wrap: wrap;
+            }
+
+            .price-tier {
+                min-width: 70px;
+                padding: 0.5rem;
+            }
+
+            .tier-price {
+                font-size: 1.1rem;
+            }
+
+            .service-card::after {
+                font-size: 10px;
+                padding: 6px 30px;
+                right: -30px;
+                top: 15px;
+            }
+
+            .mobile-menu-close {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                width: 44px;
+                height: 44px;
+                background: var(--light-green);
+                border-radius: 12px;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--primary-green);
+                font-size: 1.25rem;
+                transition: var(--transition);
+                z-index: 1003;
+            }
+
+            .booking-modal {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .time-slots-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 480px) {
-            .hero-title {
-                font-size: 1.6rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 0.85rem;
-                padding: 0 5px;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            
-            .hero-btn {
-                width: 100%;
-                max-width: 250px;
-                padding: 12px;
-            }
-            
-            .hero-features {
-                gap: 12px;
-                margin-top: 1.5rem;
-            }
-            
-            .feature {
-                min-width: 80px;
-            }
-            
-            .feature-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            
-            .feature-text {
-                font-size: 0.75rem;
-            }
-            
-            .premium-card {
-                height: 160px;
-                margin-bottom: 15px;
+            .container {
+                padding: 0 1rem;
             }
 
-            .card-title {
-                font-size: 1.2rem;
+            .nav-menu {
+                width: 85%;
             }
 
-            .card-subtitle {
-                font-size: 0.75rem;
+            .service-card {
+                margin-bottom: 1.5rem;
             }
 
-            .engraving-selector {
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-            }
-            
-            .card-actions {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .engraving-options.active {
-                flex-direction: column;
-                gap: 8px;
+            .service-content {
+                padding: 1.5rem;
             }
 
-            .engraving-btn {
-                width: 100%;
-                max-width: 250px;
-                padding: 12px 16px;
-                font-size: 0.9rem;
+            .payment-badge {
+                font-size: 10px;
+                padding: 3px 8px;
+                margin-left: 5px;
             }
 
-            .page-indicator {
-                right: 8px;
-                padding: 8px;
-            }
-
-            .page-dot {
-                width: 6px;
-                height: 6px;
-            }
-
-            .section-indicator {
-                font-size: 0.65rem;
-                bottom: 60px;
-            }
-
-            .action-btn {
-                padding: 12px;
-                font-size: 0.85rem;
-                max-width: 160px;
-            }
-            
-            section {
-                padding: 15px 15px 80px;
-            }
-            
-            .carousel-title {
-                font-size: 1.2rem;
-                top: 80px;
-                margin-bottom: 1rem;
-            }
-            
-            .nav-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-        }
-
-        /* Safe area for notches */
-        @supports (padding: max(0px)) {
-            .action-buttons {
-                padding-bottom: max(12px, env(safe-area-inset-bottom));
-            }
-            
-            #hero {
-                padding-top: max(60px, calc(60px + env(safe-area-inset-top)));
-            }
-        }
-
-        /* Reduce motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+            .time-slots-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-logo">EXPOSURE BOOST</div>
-        <div class="loading-bar">
-            <div class="loading-progress" id="loadingProgress"></div>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Premium Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">
+                    <img src="logo.png" alt="GreenGlo Cleaners Logo"
+                        style="width: 100%; height: 100%; object-fit: contain; border-radius: 12px;">
+                </div>
+                <div class="logo-text">
+                    <h1>GreenGlo</h1>
+                    <span>Cleaners</span>
+                </div>
+            </a>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <button class="mobile-menu-close" id="mobileCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="gallery.html" class="nav-link">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item nav-cta">
+                    <a href="https://api.whatsapp.com/send?phone=447827784204&text=" class="btn">Get Quote</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="booking-modal-overlay">
+        <div class="booking-modal">
+            <div class="booking-modal-header">
+                <h3>Book Service: <span id="bookingServiceName">Service</span></h3>
+                <button class="booking-modal-close" id="closeBookingModal">&times;</button>
+            </div>
+            <div class="booking-modal-body">
+                <!-- Step 1: Date & Time Selection -->
+                <div id="bookingStep1">
+                    <div class="booking-summary">
+                        <h4 style="color: var(--dark-green); margin-bottom: 15px;">Booking Summary</h4>
+                        <div id="bookingSummaryDetails"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Select Date</label>
+                        <input type="date" id="bookingDate" class="form-control" min="" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Available Time Slots</label>
+                        <div id="timeSlotsContainer" class="time-slots-grid">
+                            <!-- Time slots will load here -->
+                        </div>
+                    </div>
+                    
+                    <div id="paymentNote" class="payment-note">
+                        <!-- Payment note will be inserted here based on service type -->
+                    </div>
+                    
+                    <div class="booking-steps">
+                        <button class="btn btn-outline" onclick="closeBookingModal()">Cancel</button>
+                        <button id="nextStepBtn" class="btn" onclick="nextBookingStep()">
+                            <i class="fas fa-arrow-right"></i>
+                            Next: Your Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Customer Details -->
+                <div id="bookingStep2" style="display: none;">
+                    <div class="form-group">
+                        <label>Your Full Name *</label>
+                        <input type="text" id="customerName" class="form-control" required placeholder="John Smith">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="customerPhone" class="form-control" required placeholder="07123 456789">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="customerEmail" class="form-control" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Address *</label>
+                        <textarea id="customerAddress" class="form-control" rows="3" required placeholder="Full address including postcode"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Special Instructions (Optional)</label>
+                        <textarea id="bookingNotes" class="form-control" rows="3" placeholder="Any special requirements or notes..."></textarea>
+                    </div>
+                    
+                    <div class="booking-summary" id="finalBookingSummary">
+                        <h4 style="color: var(--dark-green); margin-bottom: 15px;">Final Booking Summary</h4>
+                        <div id="finalSummaryDetails"></div>
+                    </div>
+                    
+                    <div class="booking-steps">
+                        <button class="btn btn-outline" onclick="prevBookingStep()">
+                            <i class="fas fa-arrow-left"></i>
+                            Back
+                        </button>
+                        <button id="confirmBookingBtn" class="btn" onclick="confirmBooking()" style="flex: 2;">
+                            <i class="fas fa-check-circle"></i>
+                            Complete Booking
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- HEADER -->
-    <header>
-        <div class="brand">
-            <img src="logo.png" alt="EXPOSURE BOOST">
-            <span>ExposureBoost</span>
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="services-hero-content">
+                <h1>Our Complete Cleaning Services</h1>
+                <p>Explore our comprehensive range of professional cleaning services, all using eco-friendly products
+                    and performed by our vetted, background-checked professionals.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="#servicesGrid" class="btn btn-large">
+                        <i class="fas fa-broom"></i>
+                        View Services
+                    </a>
+                    <a href="index.html" class="btn btn-outline btn-large">
+                        <i class="fas fa-home"></i>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="menu-toggle" id="menuToggle">
-            <span></span>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Browse by Category</h2>
+                <p>Find the perfect cleaning service for your needs</p>
+            </div>
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">All Services</button>
+                <button class="category-btn" data-category="domestic">Domestic Cleaning</button>
+                <button class="category-btn" data-category="office">Office Cleaning</button>
+                <button class="category-btn" data-category="deep">Deep Cleaning</button>
+                <button class="category-btn" data-category="special">Specialized Services</button>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <!-- PAGE INDICATOR -->
-    <div class="page-indicator" id="pageIndicator">
-        <div class="page-dot active" data-index="0"></div>
-        <div class="page-dot" data-index="1"></div>
-        <div class="page-dot" data-index="2"></div>
-        <div class="page-dot" data-index="3"></div>
-        <div class="page-dot" data-index="4"></div>
+    <!-- Services Grid -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="services-grid" id="servicesGrid">
+                <!-- Service cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services CTA -->
+    <section class="section">
+        <div class="container">
+            <div class="services-cta">
+                <h2>Need Help Choosing the Right Service?</h2>
+                <p>Our cleaning experts are ready to help you select the perfect service for your needs. Get a
+                    personalized quote or book a consultation today.</p>
+                <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://api.whatsapp.com/send?phone=447827784204&text=Hello%20GreenGlo%20Cleaners,%20I%20need%20help%20choosing%20a%20cleaning%20service." 
+                       class="btn btn-whatsapp btn-large">
+                        <i class="fab fa-whatsapp"></i>
+                        Chat on WhatsApp
+                    </a>
+                    <a href="tel:+447827784204" class="btn btn-outline btn-large" style="color: var(--white);">
+                        <i class="fas fa-phone"></i>
+                        Call: 07827 784204
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>GreenGlo Cleaners</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem;">
+                        Professional eco-friendly cleaning services for homes and offices across London.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/greenglocleaningco" class="social-link" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com/@greenglocleaningco" class="social-link" target="_blank" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://facebook.com/greenglocleaningco" class="social-link" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html">Domestic cleaning</a></li>
+                        <li><a href="services.html">One-off cleaning</a></li>
+                        <li><a href="services.html">End of tenancy cleaning</a></li>
+                        <li><a href="services.html">Carpet cleaning</a></li>
+                        <li><a href="services.html">Office cleaning</a></li>
+                        <li><a href="services.html">View all services</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="index.html#prices">Prices</a></li>
+                        <li><a href="index.html#club">GreenGlo Club</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem;">
+                        <i class="fas fa-phone" style="margin-right: 0.5rem;"></i> 07827 784204
+                    </p>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1.5rem;">
+                        <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> greenglocleaningco@gmail.com
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>GreenGlo Cleaners London © 2025. All rights reserved | <a href="#">Privacy Policy</a> | <a
+                        href="#">Terms of Service</a></p>
+                <p style="margin-top: 0.5rem;">Created by <a
+                        href="https://api.whatsapp.com/send?phone=447543737488&text=" target="_blank">Sacha
+                        Raif</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <div class="whatsapp-float">
+        <a href="https://api.whatsapp.com/send?phone=447827784204&text=Hello%20GreenGlo%20Cleaners,%20I%20would%20like%20more%20information%20about%20your%20services"
+           target="_blank" class="whatsapp-button">
+            <i class="fab fa-whatsapp" style="color: white; font-size: 32px;"></i>
+        </a>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div class="snap" id="snap">
-        <!-- HERO SECTION -->
-        <section id="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">Premium <span class="hero-highlight">Metal Cards</span></h1>
-                <p class="hero-subtitle">NFC-enabled metal business cards that make networking effortless. Share your contact details with a simple tap.</p>
-                
-                <div class="hero-buttons">
-                    <button class="hero-btn primary" onclick="document.getElementById('gold').scrollIntoView({behavior: 'smooth'})">View Collection</button>
-                    <button class="hero-btn secondary" onclick="document.getElementById('buyNowBtn').click()">Order Now £95</button>
-                </div>
-                
-                <div class="hero-features">
-                    <div class="feature">
-                        <div class="feature-icon">✨</div>
-                        <div class="feature-text">Metal Finish</div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">📱</div>
-                        <div class="feature-text">NFC Tap</div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">⚡</div>
-                        <div class="feature-text">Fast Setup</div>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon">🎨</div>
-                        <div class="feature-text">7+ Colors</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section-indicator">
-                <div>▼</div>
-                <div>Scroll to explore</div>
-            </div>
-        </section>
-
-        <!-- GOLD CARD -->
-        <section id="gold">
-            <div class="card-container">
-                <div class="premium-card">
-                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1604594849809-dfeddc9179bb?w=400&h=250&fit=crop&q=80&contrast=1.2&brightness=1.1');"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="nfc-chip" style="background: linear-gradient(135deg, #D4AF37, #FFD700);">NFC</div>
-                            <div class="card-logo">EXPOSURE BOOST</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title">Gold Metal</div>
-                            <div class="card-subtitle">24K gold plating</div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-price">£95</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="engraving-selector">
-                    <div class="card-actions">
-                        <button class="engraving-btn add-to-card" onclick="showEngravingOptions(this)">Add to Cart</button>
-                        <button class="engraving-btn view-collection" onclick="scrollToNextSection(this)">More Colors</button>
-                    </div>
-                    <div class="engraving-options">
-                        <button class="engraving-btn gold-option" onclick="addToCartWithEngraving('gold', 'gold')">
-                            Gold Engraving
-                        </button>
-                        <button class="engraving-btn silver-option" onclick="addToCartWithEngraving('gold', 'silver')">
-                            Silver Engraving
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SILVER CARD -->
-        <section id="silver">
-            <div class="card-container">
-                <div class="premium-card">
-                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1615572359972-5b5c6d7b9389?w=400&h=250&fit=crop&q=80&contrast=1.2&brightness=1.1');"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="nfc-chip">NFC</div>
-                            <div class="card-logo">EXPOSURE BOOST</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title">Silver Metal</div>
-                            <div class="card-subtitle">Mirror finish</div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-price">£95</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="engraving-selector">
-                    <div class="card-actions">
-                        <button class="engraving-btn add-to-card" onclick="showEngravingOptions(this)">Add to Cart</button>
-                        <button class="engraving-btn view-collection" onclick="scrollToNextSection(this)">More Colors</button>
-                    </div>
-                    <div class="engraving-options">
-                        <button class="engraving-btn gold-option" onclick="addToCartWithEngraving('silver', 'gold')">
-                            Gold Engraving
-                        </button>
-                        <button class="engraving-btn silver-option" onclick="addToCartWithEngraving('silver', 'silver')">
-                            Silver Engraving
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ROSE GOLD CARD -->
-        <section id="rose-gold">
-            <div class="card-container">
-                <div class="premium-card">
-                    <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&h=250&fit=crop&q=80&contrast=1.2&brightness=1.1');"></div>
-                    <div class="card-content">
-                        <div class="card-header">
-                            <div class="nfc-chip" style="background: linear-gradient(135deg, #B76E79, #E8B4B8);">NFC</div>
-                            <div class="card-logo">EXPOSURE BOOST</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title">Rose Gold</div>
-                            <div class="card-subtitle">Elegant finish</div>
-                        </div>
-                        <div class="card-footer">
-                            <div class="card-price">£95</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="engraving-selector">
-                    <div class="card-actions">
-                        <button class="engraving-btn add-to-card" onclick="showEngravingOptions(this)">Add to Cart</button>
-                        <button class="engraving-btn view-collection" onclick="scrollToNextSection(this)">More Colors</button>
-                    </div>
-                    <div class="engraving-options">
-                        <button class="engraving-btn gold-option" onclick="addToCartWithEngraving('rose-gold', 'gold')">
-                            Gold Engraving
-                        </button>
-                        <button class="engraving-btn silver-option" onclick="addToCartWithEngraving('rose-gold', 'silver')">
-                            Silver Engraving
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAROUSEL SECTION - Seamless Infinite Forward Motion -->
-        <section id="carousel">
-            <h2 class="carousel-title">More Color Options</h2>
-            
-            <div class="carousel-container">
-                <div class="cards-wrapper" id="cardsWrapper">
-                    <!-- CUSTOM COLOR CARD - FIRST -->
-                    <div class="carousel-slide" data-color="custom" data-bg-color="#008080">
-                        <div class="card-container">
-                            <div class="premium-card">
-                                <div class="card-background" style="background: linear-gradient(135deg, #6E4DFF, #FF4FD8, #FFD700);"></div>
-                                <div class="card-content">
-                                    <div class="card-header">
-                                        <div class="nfc-chip">NFC</div>
-                                        <div class="card-logo">EXPOSURE BOOST</div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="card-title">Custom Color</div>
-                                        <div class="card-subtitle">Your design</div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="card-price">£95</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="engraving-selector">
-                                <div class="card-actions">
-                                    <button class="engraving-btn add-to-card" onclick="showEngravingOptions(this)">Add to Cart</button>
-                                </div>
-                                <div class="engraving-options">
-                                    <button class="engraving-btn gold-option" onclick="addToCartWithEngraving('custom', 'gold')">
-                                        Gold Engraving
-                                    </button>
-                                    <button class="engraving-btn silver-option" onclick="addToCartWithEngraving('custom', 'silver')">
-                                        Silver Engraving
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- BLACK METAL CARD -->
-                    <div class="carousel-slide" data-color="black" data-bg-color="#000000">
-                        <div class="card-container">
-                            <div class="premium-card">
-                                <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=400&h=250&fit=crop&q=80&brightness=0.9&contrast=1.3');"></div>
-                                <div class="card-content">
-                                    <div class="card-header">
-                                        <div class="nfc-chip">NFC</div>
-                                        <div class="card-logo">EXPOSURE BOOST</div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="card-title">Black Metal</div>
-                                        <div class="card-subtitle">Stealth finish</div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="card-price">£95</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="engraving-selector">
-                                <div class="card-actions">
-                                    <button class="engraving-btn add-to-card" onclick="showEngravingOptions(this)">Add to Cart</button>
-                                </div>
-                                <div class="engraving-options">
-                                    <button class="engraving-btn gold-option" onclick="addToCartWithEngraving('black', 'gold')">
-                                        Gold Engraving
-                                    </button>
-                                    <button class="engraving-btn silver-option" onclick="addToCartWithEngraving('black', 'silver')">
-                                        Silver Engraving
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- WHITE METAL CARD -->
-                    <div class="carousel-slide" data-color="white" data-bg-color="#FFFFFF">
-                        <div class="card-container">
-                            <div class="premium-card">
-                                <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1589256469067-ea99122bbdc4?w=400&h=250&fit=crop&q=80&contrast=1.2&brightness=1.1');"></div>
-                                <div class="card-content">
-                                    <div class="card-header">
-                                        <div class="nfc-chip">NFC</div>
-                                        <div class="card-logo">EXPOSURE BOOST</div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="card-title">White Metal</div>
-                                        <div class="card-subtitle">Gloss finish</div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="card-price">£95</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="engraving-selector">
-                                <div class="card-actions">
-                                    <button class="engraving-btn add-to-card" onclick="showEngravingOptions(this)">Add to Cart</button>
-                                </div>
-                                <div class="engraving-options">
-                                    <button class="engraving-btn gold-option" onclick="addToCartWithEngraving('white', 'gold')">
-                                        Gold Engraving
-                                    </button>
-                                    <button class="engraving-btn silver-option" onclick="addToCartWithEngraving('white', 'silver')">
-                                        Silver Engraving
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RED METAL CARD -->
-                    <div class="carousel-slide" data-color="red" data-bg-color="#FF0000">
-                        <div class="card-container">
-                            <div class="premium-card">
-                                <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1615572766548-df8c70cf3c64?w=400&h=250&fit=crop&q=80&hue=330&saturation=80&contrast=1.2&brightness=1.1');"></div>
-                                <div class="card-content">
-                                    <div class="card-header">
-                                        <div class="nfc-chip">NFC</div>
-                                        <div class="card-logo">EXPOSURE BOOST</div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="card-title">Red Metal</div>
-                                        <div class="card-subtitle">Vibrant finish</div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="card-price">£95</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="engraving-selector">
-                                <div class="card-actions">
-                                    <button class="engraving-btn add-to-card" onclick="showEngravingOptions(this)">Add to Cart</button>
-                                </div>
-                                <div class="engraving-options">
-                                    <button class="engraving-btn gold-option" onclick="addToCartWithEngraving('red', 'gold')">
-                                        Gold Engraving
-                                    </button>
-                                    <button class="engraving-btn silver-option" onclick="addToCartWithEngraving('red', 'silver')">
-                                        Silver Engraving
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- GREEN METAL CARD -->
-                    <div class="carousel-slide" data-color="green" data-bg-color="#00FF00">
-                        <div class="card-container">
-                            <div class="premium-card">
-                                <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1615572359972-5b5c6d7b9389?w=400&h=250&fit=crop&q=80&hue=120&saturation=60&contrast=1.2&brightness=1.1');"></div>
-                                <div class="card-content">
-                                    <div class="card-header">
-                                        <div class="nfc-chip">NFC</div>
-                                        <div class="card-logo">EXPOSURE BOOST</div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="card-title">Green Metal</div>
-                                        <div class="card-subtitle">Eco finish</div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="card-price">£95</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="engraving-selector">
-                                <div class="card-actions">
-                                    <button class="engraving-btn add-to-card" onclick="showEngravingOptions(this)">Add to Cart</button>
-                                </div>
-                                <div class="engraving-options">
-                                    <button class="engraving-btn gold-option" onclick="addToCartWithEngraving('green', 'gold')">
-                                        Gold Engraving
-                                    </button>
-                                    <button class="engraving-btn silver-option" onclick="addToCartWithEngraving('green', 'silver')">
-                                        Silver Engraving
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PURPLE METAL CARD -->
-                    <div class="carousel-slide" data-color="purple" data-bg-color="#800080">
-                        <div class="card-container">
-                            <div class="premium-card">
-                                <div class="card-background" style="background-image: url('https://images.unsplash.com/photo-1615572359972-5b5c6d7b9389?w=400&h=250&fit=crop&q=80&hue=270&saturation=80&contrast=1.2&brightness=1.1');"></div>
-                                <div class="card-content">
-                                    <div class="card-header">
-                                        <div class="nfc-chip">NFC</div>
-                                        <div class="card-logo">EXPOSURE BOOST</div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="card-title">Purple Metal</div>
-                                        <div class="card-subtitle">Royal finish</div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="card-price">£95</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="engraving-selector">
-                                <div class="card-actions">
-                                    <button class="engraving-btn add-to-card" onclick="showEngravingOptions(this)">Add to Cart</button>
-                                </div>
-                                <div class="engraving-options">
-                                    <button class="engraving-btn gold-option" onclick="addToCartWithEngraving('purple', 'gold')">
-                                        Gold Engraving
-                                    </button>
-                                    <button class="engraving-btn silver-option" onclick="addToCartWithEngraving('purple', 'silver')">
-                                        Silver Engraving
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CAROUSEL NAVIGATION -->
-            <div class="carousel-nav">
-                <button class="nav-btn" id="prevBtn">❮</button>
-                <div class="carousel-dots">
-                    <div class="dot active" data-index="0"></div>
-                    <div class="dot" data-index="1"></div>
-                    <div class="dot" data-index="2"></div>
-                    <div class="dot" data-index="3"></div>
-                    <div class="dot" data-index="4"></div>
-                    <div class="dot" data-index="5"></div>
-                </div>
-                <button class="nav-btn" id="nextBtn">❯</button>
-            </div>
-        </section>
-    </div>
-
-    <!-- ACTION BUTTONS -->
-    <div class="action-buttons">
-        <button class="action-btn primary" id="buyNowBtn">Add to Cart</button>
-        <button class="action-btn secondary" id="whatsappBtn">Contact Us</button>
-    </div>
-
+    <!-- JavaScript -->
     <script>
-        // Loading screen
-        const loadingScreen = document.getElementById('loadingScreen');
-        const loadingProgress = document.getElementById('loadingProgress');
+        // ===== Mobile Navigation =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const navMenu = document.getElementById('navMenu');
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-        setTimeout(() => {
-            loadingProgress.style.width = '30%';
-            setTimeout(() => {
-                loadingProgress.style.width = '70%';
-                setTimeout(() => {
-                    loadingProgress.style.width = '100%';
-                    setTimeout(() => {
-                        loadingScreen.style.opacity = '0';
-                        setTimeout(() => {
-                            loadingScreen.style.display = 'none';
-                        }, 600);
-                    }, 300);
-                }, 300);
-            }, 300);
-        }, 300);
-
-        // Snap scroll and indicators
-        const snap = document.getElementById('snap');
-        const pageDots = document.querySelectorAll('.page-dot');
-        const sections = document.querySelectorAll('section');
-
-        const updateActiveDot = () => {
-            const scrollPosition = snap.scrollTop + snap.clientHeight / 2;
-
-            sections.forEach((section, index) => {
-                const sectionTop = section.offsetTop;
-                const sectionBottom = sectionTop + section.clientHeight;
-
-                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                    pageDots.forEach(dot => dot.classList.remove('active'));
-                    if (pageDots[index]) {
-                        pageDots[index].classList.add('active');
-                    }
-                }
-            });
+        const openMobileMenu = () => {
+            navMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            mobileMenuBtn.classList.add('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            document.body.style.overflow = 'hidden';
         };
 
-        // Initial update
-        updateActiveDot();
+        const closeMobileMenu = () => {
+            navMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            document.body.style.overflow = '';
+        };
 
-        // Update on scroll
-        snap.addEventListener('scroll', updateActiveDot);
+        mobileMenuBtn.addEventListener('click', () => {
+            if (navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
 
-        // Click handler for dots
-        pageDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                if (sections[index]) {
-                    sections[index].scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center'
+        mobileCloseBtn.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===== Stripe Payment Links Data =====
+        const stripeLinksCSV = `id,Url,Name
+plink_1SlHX02Kluec3BRLXQqWe6TQ,https://buy.stripe.com/28EbIU1eSeL12GSfV98AE0G,Spring Cleaning 5 bed
+plink_1SlHVM2Kluec3BRLm5tujG7p,https://buy.stripe.com/aFa6oA4r4eL1ftEdN18AE0F,Spring cleaning 4 bed
+plink_1SlHPO2Kluec3BRLO77GRTXj,https://buy.stripe.com/7sY9AM5v846n81ceR58AE0E,Spring Cleaning 3 bed
+plink_1SlHOw2Kluec3BRLbRK1rTZt,https://buy.stripe.com/dRmeV6g9M32jdlw8sH8AE0D,Spring Cleaning 2 bed
+plink_1SlHOX2Kluec3BRLRK6UEAvp,https://buy.stripe.com/6oU7sE3n01Yfdlw4cr8AE0C,Spring Cleaning 1 bed
+plink_1SlHNZ2Kluec3BRLooTxeMLh,https://buy.stripe.com/7sY6oA9Lo0Ub5T4gZd8AE0B,Patio and Decking
+plink_1SlHM32Kluec3BRLLrGgoigg,https://buy.stripe.com/cNi3co1eS32j0yK8sH8AE0A,Move In/ Move Out Cleaning 5 bed
+plink_1SlHKO2Kluec3BRLlA6FB8VH,https://buy.stripe.com/5kQeV6e1E1Yf81cfV98AE0z,Move In/ Move Out Cleaning 4 bed
+plink_1SlHIw2Kluec3BRLIfjXLJ0v,https://buy.stripe.com/cNifZa4r4cCT2GSdN18AE0y,Move In/ Move Out Cleaning 3 bed
+plink_1SlHIO2Kluec3BRLnovlmjWO,https://buy.stripe.com/9B6cMY7DgfP56X85gv8AE0x,Move In/ Move Out Cleaning 2 bed
+plink_1SlHHO2Kluec3BRLiSxKMHqS,https://buy.stripe.com/cNi28k3n01Yfdlw7oD8AE0w,Move In/ Move Out Cleaning 1 bed
+plink_1SlHGQ2Kluec3BRLNRNsBLtD,https://buy.stripe.com/8x200ccXA7iz2GSdN18AE0v,BBQ cleaning
+plink_1SlHFv2Kluec3BRLx8UZKbbO,https://buy.stripe.com/6oUbIUf5IcCTgxIdN18AE0u,Antiviral Sanitisation 5+ bed
+plink_1SlHFL2Kluec3BRLZLmOITYJ,https://buy.stripe.com/4gM6oA8HkgT9dlwaAP8AE0t,Antiviral Sanitation 4 bed
+plink_1SlHA92Kluec3BRLfprjU3Fp,https://buy.stripe.com/4gM8wI6zc1YfftE4cr8AE0s,Antiviral Sanitation 3 bed
+plink_1SlH8i2Kluec3BRLAFheHP2E,https://buy.stripe.com/14AcMYcXAauL2GS7oD8AE0r,Antiviral Sanitation 2 bed
+plink_1SlH6E2Kluec3BRLuFSJgOMJ,https://buy.stripe.com/cNi00c9Lo32j1CO24j8AE0q,Antiviral Sanitation 1 bed
+plink_1SlH3Y2Kluec3BRLA4pvwUXH,https://buy.stripe.com/eVqdR24r46evftE24j8AE0p,Gutter Cleaning
+plink_1SlGxa2Kluec3BRLRkvflK9P,https://buy.stripe.com/28E3co2iWfP5chscIX8AE0o,After builders 5+ Bed
+plink_1SlGvi2Kluec3BRLhJ55DK0N,https://buy.stripe.com/7sY7sE2iW46n4P08sH8AE0n,After Builders 4 Bed
+plink_1SlGt22Kluec3BRLG8ZaGMeI,https://buy.stripe.com/14A8wI3n06ev6X810f8AE0m,After Builders 3 Bed
+plink_1SlGrT2Kluec3BRLunUT1cR5,https://buy.stripe.com/5kQ4gs3n032jbdofV98AE0l,After Builders 2 Bed
+plink_1SlGnV2Kluec3BRLQ0J4QyAk,https://buy.stripe.com/fZu6oAaPs7izbdo38n8AE0k,After Builders Cleaning 1 bed
+plink_1SlG3Z2Kluec3BRLMXHWL0N3,https://buy.stripe.com/bJe6oA8HkcCT2GS38n8AE0j,Upholstery Cleaning
+plink_1SlG1E2Kluec3BRLsP61MYVf,https://buy.stripe.com/eVq28k3n0byPepAcIX8AE0i,Window Cleaning House
+plink_1SlFv12Kluec3BRLJtrCjnMq,https://buy.stripe.com/fZu8wIg9M6ev2GS4cr8AE0h,Window Cleaning Flat
+plink_1SlFoi2Kluec3BRLE8FkcaEs,https://buy.stripe.com/7sY14g9LogT94P06kz8AE0g,One-Off Deep Clean 5+ Bed
+plink_1SlFmj2Kluec3BRLcpOTWvWY,https://buy.stripe.com/8x2cMY9Lo32jgxI4cr8AE0f,One-Off Deep Clean 4 Bed
+plink_1SlFj02Kluec3BRLmkrcDxnp,https://buy.stripe.com/dRm3cog9MeL181c6kz8AE0e,One-Off deep Clean 3 bed
+plink_1SlFeg2Kluec3BRLBLyysuyo,https://buy.stripe.com/28EcMY1eSgT96X8aAP8AE0d,One-Off Deep Clean 2 bed
+plink_1SlFcw2Kluec3BRLV7zMB0Fl,https://buy.stripe.com/9B6fZa0aO46n5T410f8AE0c,One-Off Deep Clean 1 Bed
+plink_1SlFZl2Kluec3BRLL2jbmwRh,https://buy.stripe.com/4gMeV67DgeL1gxIaAP8AE0b,End of Tenancy 5 bed
+plink_1SlFYk2Kluec3BRLAyAXTFCV,https://buy.stripe.com/fZu14gaPsgT9ftE24j8AE0a,End Of Tenancy 4 Bed
+plink_1SlFY62Kluec3BRLnvDrn77V,https://buy.stripe.com/28EdR2f5IbyPbdo5gv8AE09,End of Tenancy 3 Bed
+plink_1SlFVx2Kluec3BRLxXn4Gb99,https://buy.stripe.com/28E5kw8HkeL13KW24j8AE08,End of Tenancy Cleaning
+plink_1SlFU12Kluec3BRL09qDH9QR,https://buy.stripe.com/7sY00c1eS9qH0yKfV98AE07,End of Tenancy 1 bed
+plink_1SlFT82Kluec3BRLMxkh0gaR,https://buy.stripe.com/fZufZag9MeL1bdo5gv8AE06,Bathroom Deep Clean
+plink_1SlFSa2Kluec3BRLkXd1f1su,https://buy.stripe.com/aFa5kw7DgeL1epAbET8AE05,Oven Deep Clean
+plink_1SlFRc2Kluec3BRLTo2n7RWY,https://buy.stripe.com/aFaaEQ1eS46nftEgZd8AE04,Kitchen Deep Cleaning
+plink_1SlFQn2Kluec3BRLDuvYA1eq,https://buy.stripe.com/7sY28k0aO5ar2GSdN18AE03,Living Room Deep Clean`;
+
+        // Parse CSV function
+        function parseCSV(csvText) {
+            const lines = csvText.split('\n');
+            const headers = lines[0].split(',');
+            const result = [];
+            
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+                
+                const obj = {};
+                const currentline = lines[i].split(',');
+                
+                for (let j = 0; j < headers.length; j++) {
+                    obj[headers[j].trim()] = currentline[j] ? currentline[j].trim() : '';
+                }
+                result.push(obj);
+            }
+            return result;
+        }
+
+        // Parse stripe links
+        const stripeLinks = parseCSV(stripeLinksCSV);
+
+        // Function to find stripe link for a service
+        function findStripeLink(serviceTitle) {
+            const serviceTitleLower = serviceTitle.toLowerCase();
+            
+            // First try exact match
+            for (const link of stripeLinks) {
+                if (link.Name.toLowerCase() === serviceTitleLower) {
+                    return link.Url;
+                }
+            }
+            
+            // Try partial match
+            for (const link of stripeLinks) {
+                const linkNameLower = link.Name.toLowerCase();
+                
+                // Check if service title contains link name or vice versa
+                if (serviceTitleLower.includes(linkNameLower) || 
+                    linkNameLower.includes(serviceTitleLower)) {
+                    return link.Url;
+                }
+                
+                // Remove common words and try again
+                const serviceWords = serviceTitleLower.split(' ').filter(word => 
+                    !['deep', 'clean', 'cleaning', 'service', 'bed', 'bedroom', '5', '4', '3', '2', '1'].includes(word)
+                );
+                const linkWords = linkNameLower.split(' ').filter(word => 
+                    !['deep', 'clean', 'cleaning', 'service', 'bed', 'bedroom', '5', '4', '3', '2', '1'].includes(word)
+                );
+                
+                // Check if there's significant word overlap
+                const matchingWords = serviceWords.filter(word => 
+                    linkWords.some(linkWord => linkWord.includes(word) || word.includes(linkWord))
+                );
+                
+                if (matchingWords.length >= 2) {
+                    return link.Url;
+                }
+            }
+            
+            // Specific manual mappings for services that might not match automatically
+            const manualMappings = {
+                'Living Room Deep Clean': 'https://buy.stripe.com/7sY28k0aO5ar2GSdN18AE03',
+                'Oven Deep Clean': 'https://buy.stripe.com/aFa5kw7DgeL1epAbET8AE05',
+                'Bathroom Deep Clean': 'https://buy.stripe.com/fZufZag9MeL1bdo5gv8AE06',
+                'Kitchen Deep Cleaning': 'https://buy.stripe.com/aFaaEQ1eS46nftEgZd8AE04'
+            };
+            
+            if (manualMappings[serviceTitle]) {
+                return manualMappings[serviceTitle];
+            }
+            
+            return null;
+        }
+
+        // ===== Services Data with Stripe Links =====
+        const servicesData = [
+            {
+                id: 1,
+                title: "Living Room Deep Clean",
+                category: "domestic",
+                description: "Complete living room cleaning and organization with eco-friendly products.",
+                features: ["Complete dust removal", "Furniture cleaning", "Floor sanitization", "Window sills"],
+                duration: "2-3 hours",
+                hasBedrooms: false,
+                basePrice: 75,
+                displayPrice: "£75",
+                image: "livingroom.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 2,
+                title: "Office Cleaning",
+                category: "office",
+                description: "Professional office cleaning for businesses and startups.",
+                features: ["Workstation sanitization", "Meeting room cleaning", "Kitchenette cleaning", "Floor care"],
+                duration: "2-6 hours",
+                hasBedrooms: false,
+                basePrice: 18,
+                displayPrice: "£18/hour",
+                image: "office.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 3,
+                title: "Kitchen Deep Cleaning",
+                category: "domestic",
+                description: "Complete kitchen deep clean including appliances and cabinets.",
+                features: ["Oven cleaning included", "Appliance sanitization", "Cabinet cleaning", "Surface degreasing"],
+                duration: "2-3 hours",
+                hasBedrooms: false,
+                basePrice: 85,
+                displayPrice: "£85",
+                image: "kitchen.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 4,
+                title: "Oven Deep Clean",
+                category: "deep",
+                description: "Professional oven cleaning for single and double ovens.",
+                features: ["Complete interior clean", "Door and glass", "Rack cleaning", "Exterior polish"],
+                duration: "1-2 hours",
+                hasBedrooms: false,
+                basePrice: 40,
+                displayPrice: "From £40",
+                image: "ovenafter.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 5,
+                title: "Bathroom Deep Clean",
+                category: "deep",
+                description: "Complete bathroom sanitization and deep cleaning.",
+                features: ["Tile and grout cleaning", "Sanitization", "Fixture polishing", "Mould treatment"],
+                duration: "1-2 hours",
+                hasBedrooms: false,
+                basePrice: 65,
+                displayPrice: "£65",
+                image: "bathroom.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 6,
+                title: "End of Tenancy Cleaning",
+                category: "deep",
+                description: "Professional cleaning to ensure full deposit return.",
+                features: ["Inventory check ready", "Complete property clean", "Carpet cleaning available", "Guaranteed satisfaction"],
+                duration: "4-8 hours",
+                hasBedrooms: true,
+                basePrice: 220,
+                perBedroomPrice: 30,
+                displayPrice: "From £220",
+                image: "tenancy.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 7,
+                title: "Carpet Cleaning",
+                category: "deep",
+                description: "Professional hot water extraction carpet cleaning.",
+                features: ["Hot water extraction", "Stain removal", "Quick drying", "Deodorizing"],
+                duration: "1-3 hours",
+                hasBedrooms: false,
+                basePrice: 15,
+                displayPrice: "From £15/room",
+                image: "carpet.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 8,
+                title: "Regular Domestic Cleaning",
+                category: "domestic",
+                description: "Weekly or fortnightly cleaning service.",
+                features: ["Dusting & vacuuming", "Kitchen & bathroom", "Surface cleaning", "Floor mopping"],
+                duration: "2-4 hours",
+                hasBedrooms: false,
+                basePrice: 18,
+                displayPrice: "£18/hour",
+                image: "domestic.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 9,
+                title: "One-Off Deep Clean",
+                category: "deep",
+                description: "Thorough one-time cleaning for your entire home.",
+                features: ["Complete home clean", "Inside cabinets", "Appliance cleaning", "Detailed attention"],
+                duration: "4-8 hours",
+                hasBedrooms: true,
+                basePrice: 150,
+                perBedroomPrice: 35,
+                displayPrice: "From £150",
+                image: "deep.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 10,
+                title: "Window Cleaning",
+                category: "special",
+                description: "Interior and exterior window cleaning service.",
+                features: ["Streak-free finish", "Inside & outside", "Frame cleaning", "Safety equipment"],
+                duration: "1-3 hours",
+                hasBedrooms: false,
+                basePrice: 30,
+                displayPrice: "Flat: £30 | House: £45",
+                image: "window.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 11,
+                title: "Upholstery Cleaning",
+                category: "deep",
+                description: "Sofa, armchair, and car seat deep cleaning.",
+                features: ["Stain removal", "Fabric protection", "Deodorizing", "Professional equipment"],
+                duration: "1-2 hours",
+                hasBedrooms: false,
+                basePrice: 55,
+                displayPrice: "Sofa 3-seater: £55",
+                image: "furniture.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 12,
+                title: "After Builders Cleaning",
+                category: "deep",
+                description: "Post-construction cleanup for renovation projects.",
+                features: ["Debris removal", "Dust elimination", "Surface cleaning", "Final touch-up"],
+                duration: "4-8 hours",
+                hasBedrooms: true,
+                basePrice: 200,
+                perBedroomPrice: 40,
+                displayPrice: "From £200",
+                image: "afterbuilders.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 13,
+                title: "Hard Floor Cleaning",
+                category: "deep",
+                description: "Professional hard floor scrubbing and polishing.",
+                features: ["Scrubbing & cleaning", "Polishing", "Sealing available", "Protective coating"],
+                duration: "2-4 hours",
+                hasBedrooms: false,
+                basePrice: 3.5,
+                displayPrice: "£3.50/m²",
+                image: "hardfloor.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 14,
+                title: "Gutter Cleaning",
+                category: "special",
+                description: "Gutter clearing and downpipe unblocking service.",
+                features: ["Debris removal", "Downpipe clearing", "Flow testing", "Safety first"],
+                duration: "1-3 hours",
+                hasBedrooms: false,
+                basePrice: 75,
+                displayPrice: "Terraced house: £75",
+                image: "gutter.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 15,
+                title: "Antiviral Sanitisation",
+                category: "special",
+                description: "Professional sanitisation against germs and viruses.",
+                features: ["99.99% germ kill", "COVID-19 effective", "Safe detergents", "Complete coverage"],
+                duration: "1-2 hours",
+                hasBedrooms: true,
+                basePrice: 120,
+                perBedroomPrice: 25,
+                displayPrice: "From £120",
+                image: "sanitisation.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 16,
+                title: "BBQ Cleaning",
+                category: "special",
+                description: "Deep cleaning of BBQs and outdoor cooking equipment.",
+                features: ["Grease removal", "Burner cleaning", "Grate scrubbing", "Exterior polish"],
+                duration: "1-2 hours",
+                hasBedrooms: false,
+                basePrice: 45,
+                displayPrice: "Small BBQ: £45",
+                image: "bbq.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 17,
+                title: "Commercial Cleaning",
+                category: "office",
+                description: "Regular commercial cleaning for businesses.",
+                features: ["Daily/weekly service", "Floor maintenance", "Restroom cleaning", "Waste removal"],
+                duration: "2-8 hours",
+                hasBedrooms: false,
+                basePrice: 25,
+                displayPrice: "£25/hour",
+                image: "commercial.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 18,
+                title: "Move In/Move Out Cleaning",
+                category: "deep",
+                description: "Complete cleaning for moving properties.",
+                features: ["Empty property clean", "Deep sanitization", "Ready for new tenants", "Quick turnaround"],
+                duration: "3-6 hours",
+                hasBedrooms: true,
+                basePrice: 180,
+                perBedroomPrice: 40,
+                displayPrice: "From £180",
+                image: "moveclean.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 19,
+                title: "Patio & Decking Cleaning",
+                category: "special",
+                description: "Pressure washing for patios and decking areas.",
+                features: ["Pressure washing", "Moss removal", "Stain treatment", "Restoration"],
+                duration: "2-4 hours",
+                hasBedrooms: false,
+                basePrice: 70,
+                displayPrice: "From £70",
+                image: "patio.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 20,
+                title: "Spring Cleaning",
+                category: "deep",
+                description: "Seasonal deep cleaning service.",
+                features: ["Complete home refresh", "Behind furniture", "Wardrobe organization", "Decluttering help"],
+                duration: "4-8 hours",
+                hasBedrooms: true,
+                basePrice: 175,
+                perBedroomPrice: 35,
+                displayPrice: "From £175",
+                image: "spring.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 21,
+                title: "Carpet Stain Removal",
+                category: "deep",
+                description: "Specialized treatment for stubborn carpet stains.",
+                features: ["Professional treatment", "Odor removal", "Color restoration", "Guaranteed results"],
+                duration: "1-2 hours",
+                hasBedrooms: false,
+                basePrice: 35,
+                displayPrice: "From £35/stain",
+                image: "stain.png",
+                fallbackColor: "#10B981"
+            },
+            {
+                id: 22,
+                title: "Emergency Cleaning",
+                category: "special",
+                description: "24/7 emergency cleaning services.",
+                features: ["24/7 availability", "Fast response", "Flood cleanup", "Accident cleanup"],
+                duration: "2-6 hours",
+                hasBedrooms: false,
+                basePrice: 35,
+                displayPrice: "£35/hour",
+                image: "emergency.png",
+                fallbackColor: "#10B981"
+            }
+        ];
+
+        // Add stripe links to services data
+        servicesData.forEach(service => {
+            service.stripeLink = findStripeLink(service.title);
+        });
+
+        // ===== Supabase Configuration =====
+        const SUPABASE_URL = 'https://faxjeniohetefqwcsefi.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZheGplbmlvaGV0ZWZxd2NzZWZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE3MzcwODQsImV4cCI6MjA0NzMxMzA4NH0.vwQIL2NY4X1CipjvqqPqZ2dRwwEBhS2TveBNkNHn-Vg';
+        
+        let supabaseClient = null;
+        let currentBooking = {
+            service: null,
+            stripeLink: null,
+            date: null,
+            timeSlot: null,
+            slotId: null,
+            bedrooms: 1,
+            customer: {}
+        };
+
+        // Initialize Supabase
+        if (typeof supabase !== 'undefined') {
+            supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        }
+
+        // Test Supabase connection
+        async function testSupabaseConnection() {
+            if (!supabaseClient) {
+                console.error('Supabase client not initialized');
+                return false;
+            }
+            
+            try {
+                // Test if we can access the bookings table
+                const { data, error, count } = await supabaseClient
+                    .from('bookings')
+                    .select('*', { count: 'exact', head: true });
+                
+                if (error) {
+                    console.error('Supabase connection error:', error);
+                    return false;
+                }
+                
+                console.log('✅ Supabase connection successful - bookings table accessible');
+                
+                // Test availability table
+                const { error: availError } = await supabaseClient
+                    .from('availability')
+                    .select('id')
+                    .limit(1);
+                
+                if (availError) {
+                    console.warn('Availability table test:', availError);
+                    console.log('⚠️ Availability table may not be accessible');
+                } else {
+                    console.log('✅ Availability table accessible');
+                }
+                
+                return true;
+            } catch (err) {
+                console.error('Supabase test error:', err);
+                return false;
+            }
+        }
+
+        // ===== Booking Modal Functions =====
+        function openBookingModal(serviceTitle, serviceId, serviceData) {
+            currentBooking.service = {
+                title: serviceTitle,
+                id: serviceId,
+                data: serviceData
+            };
+            
+            currentBooking.stripeLink = serviceData.stripeLink;
+            currentBooking.bedrooms = 1;
+            currentBooking.date = null;
+            currentBooking.timeSlot = null;
+            currentBooking.slotId = null;
+            
+            document.getElementById('bookingServiceName').textContent = serviceTitle;
+            
+            // Update booking summary
+            updateBookingSummary();
+            
+            // Set minimum date
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('bookingDate').min = today;
+            document.getElementById('bookingDate').value = today;
+            currentBooking.date = today;
+            
+            // Update payment note and button based on service type
+            const paymentNote = document.getElementById('paymentNote');
+            const nextStepBtn = document.getElementById('nextStepBtn');
+            
+            if (serviceData.stripeLink) {
+                paymentNote.className = 'payment-note stripe-note';
+                paymentNote.innerHTML = `
+                    <i class="fab fa-stripe" style="color: #635bff; font-size: 24px; margin-bottom: 10px;"></i>
+                    <p style="color: var(--dark-gray); margin: 0;">
+                        You will be redirected to Stripe to complete your payment securely. 
+                        Your booking will be confirmed upon successful payment.
+                    </p>
+                `;
+                nextStepBtn.className = 'btn btn-stripe';
+            } else {
+                paymentNote.className = 'payment-note whatsapp-note';
+                paymentNote.innerHTML = `
+                    <i class="fab fa-whatsapp" style="color: #25D366; font-size: 24px; margin-bottom: 10px;"></i>
+                    <p style="color: var(--dark-gray); margin: 0;">
+                        You will be redirected to WhatsApp to complete your booking and discuss payment options with our team.
+                    </p>
+                `;
+                nextStepBtn.className = 'btn btn-whatsapp';
+            }
+            
+            // Show modal with step 1
+            document.getElementById('bookingModal').style.display = 'flex';
+            document.getElementById('bookingStep1').style.display = 'block';
+            document.getElementById('bookingStep2').style.display = 'none';
+            
+            // Clear form
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('customerEmail').value = '';
+            document.getElementById('customerAddress').value = '';
+            document.getElementById('bookingNotes').value = '';
+            
+            // Load time slots for today
+            loadTimeSlots(today);
+        }
+
+        function updateBookingSummary() {
+            const summary = document.getElementById('bookingSummaryDetails');
+            const serviceData = currentBooking.service.data;
+            
+            let priceDisplay = serviceData.displayPrice;
+            if (serviceData.hasBedrooms) {
+                priceDisplay = `From £${serviceData.basePrice}`;
+            }
+            
+            let bedroomInfo = '';
+            if (serviceData.hasBedrooms) {
+                bedroomInfo = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: var(--dark-gray);">Bedrooms:</span>
+                        <span>${currentBooking.bedrooms} bedroom${currentBooking.bedrooms > 1 ? 's' : ''}</span>
+                    </div>
+                `;
+            }
+            
+            let dateTimeInfo = '';
+            if (currentBooking.date && currentBooking.timeSlot) {
+                const [start, end] = currentBooking.timeSlot.split('-');
+                dateTimeInfo = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: var(--dark-gray);">Date:</span>
+                        <span>${formatDate(currentBooking.date)}</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: var(--dark-gray);">Time:</span>
+                        <span>${formatTime(start)} - ${formatTime(end)}</span>
+                    </div>
+                `;
+            }
+            
+            let paymentMethod = serviceData.stripeLink ? 
+                '<span style="color: #635bff; font-weight: 600;">Stripe Payment</span>' : 
+                '<span style="color: #25D366; font-weight: 600;">WhatsApp Booking</span>';
+            
+            summary.innerHTML = `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--dark-gray);">Service:</span>
+                    <span style="font-weight: 600; color: var(--dark-green);">${currentBooking.service.title}</span>
+                </div>
+                ${bedroomInfo}
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--dark-gray);">Duration:</span>
+                    <span>${serviceData.duration}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--dark-gray);">Price:</span>
+                    <span style="font-weight: 600; color: var(--primary-green);">${priceDisplay}</span>
+                </div>
+                ${dateTimeInfo}
+                <div style="display: flex; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(16, 185, 129, 0.2);">
+                    <span style="color: var(--dark-gray); font-weight: 600;">Payment:</span>
+                    ${paymentMethod}
+                </div>
+            `;
+        }
+
+        function updateFinalSummary() {
+            const summary = document.getElementById('finalSummaryDetails');
+            const serviceData = currentBooking.service.data;
+            
+            let priceDisplay = serviceData.displayPrice;
+            if (serviceData.hasBedrooms) {
+                priceDisplay = `From £${serviceData.basePrice}`;
+            }
+            
+            let bedroomInfo = '';
+            if (serviceData.hasBedrooms) {
+                bedroomInfo = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: var(--dark-gray);">Bedrooms:</span>
+                        <span>${currentBooking.bedrooms} bedroom${currentBooking.bedrooms > 1 ? 's' : ''}</span>
+                    </div>
+                `;
+            }
+            
+            const [start, end] = currentBooking.timeSlot.split('-');
+            
+            summary.innerHTML = `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--dark-gray);">Service:</span>
+                    <span style="font-weight: 600; color: var(--dark-green);">${currentBooking.service.title}</span>
+                </div>
+                ${bedroomInfo}
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--dark-gray);">Date:</span>
+                    <span>${formatDate(currentBooking.date)}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--dark-gray);">Time:</span>
+                    <span style="font-weight: 600; color: var(--primary-green);">${formatTime(start)} - ${formatTime(end)}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--dark-gray);">Duration:</span>
+                    <span>${serviceData.duration}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                    <span style="color: var(--dark-gray);">Price:</span>
+                    <span style="font-weight: 700; color: var(--primary-green); font-size: 1.25rem;">${priceDisplay}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(16, 185, 129, 0.2);">
+                    <span style="color: var(--dark-gray); font-weight: 600;">Payment:</span>
+                    ${serviceData.stripeLink ? 
+                        '<span style="color: #635bff; font-weight: 600;">Stripe Secure Payment</span>' : 
+                        '<span style="color: #25D366; font-weight: 600;">WhatsApp Booking</span>'}
+                </div>
+            `;
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+            currentBooking = {
+                service: null,
+                stripeLink: null,
+                date: null,
+                timeSlot: null,
+                slotId: null,
+                bedrooms: 1,
+                customer: {}
+            };
+        }
+
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingModal();
+            }
+        });
+
+        document.getElementById('closeBookingModal').addEventListener('click', closeBookingModal);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('bookingModal').style.display === 'flex') {
+                closeBookingModal();
+            }
+        });
+
+        // Date change handler
+        document.getElementById('bookingDate').addEventListener('change', function() {
+            currentBooking.date = this.value;
+            loadTimeSlots(this.value);
+            updateBookingSummary();
+        });
+
+        // ===== Time Slots Functions =====
+        async function loadTimeSlots(date) {
+            const container = document.getElementById('timeSlotsContainer');
+            container.innerHTML = '<div style="grid-column: span 2; text-align: center; padding: 40px; color: var(--medium-gray);"><i class="fas fa-spinner fa-spin fa-2x"></i><div style="margin-top: 10px;">Loading available time slots...</div></div>';
+            
+            if (!supabaseClient) {
+                container.innerHTML = '<div style="grid-column: span 2; text-align: center; padding: 40px; color: var(--ruby);"><i class="fas fa-exclamation-triangle fa-2x"></i><div style="margin-top: 10px;">Error: Cannot connect to availability system</div></div>';
+                return;
+            }
+            
+            try {
+                // Use the correct table name from your schema
+                const { data: availability, error } = await supabaseClient
+                    .from('availability')
+                    .select('id, date, time_slot, is_available')
+                    .eq('date', date)
+                    .eq('is_available', true)
+                    .order('time_slot');
+                
+                if (error) {
+                    console.error('Availability fetch error:', error);
+                    throw error;
+                }
+                
+                container.innerHTML = '';
+                
+                if (!availability || availability.length === 0) {
+                    container.innerHTML = `
+                        <div style="grid-column: span 2; text-align: center; padding: 40px; color: var(--medium-gray);">
+                            <i class="fas fa-calendar-times fa-2x"></i>
+                            <div style="margin-top: 15px; font-size: 18px; margin-bottom: 10px;">No Available Slots</div>
+                            <div>No time slots available for ${formatDate(date)}</div>
+                            <div style="margin-top: 15px; font-size: 14px; color: var(--primary-green);">
+                                <i class="fas fa-phone"></i> Call us at 07827 784204 for alternative times
+                            </div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                currentBooking.timeSlot = null;
+                currentBooking.slotId = null;
+                
+                availability.forEach(slot => {
+                    const slotElement = document.createElement('div');
+                    slotElement.className = 'time-slot-option';
+                    slotElement.dataset.slotId = slot.id;
+                    slotElement.dataset.timeSlot = slot.time_slot;
+                    
+                    const [start, end] = slot.time_slot.split('-');
+                    
+                    slotElement.innerHTML = `
+                        <div style="font-weight: 700; color: var(--dark-green); margin-bottom: 5px; font-size: 18px;">
+                            ${formatTime(start)}
+                        </div>
+                        <div style="font-size: 13px; color: var(--medium-gray); margin-bottom: 5px;">
+                            to ${formatTime(end)}
+                        </div>
+                        <div style="font-size: 11px; color: var(--primary-green);">
+                            <i class="fas fa-check-circle"></i> Available
+                        </div>
+                    `;
+                    
+                    slotElement.addEventListener('click', function() {
+                        document.querySelectorAll('.time-slot-option').forEach(s => {
+                            s.classList.remove('selected');
+                        });
+                        
+                        this.classList.add('selected');
+                        
+                        currentBooking.timeSlot = slot.time_slot;
+                        currentBooking.slotId = String(slot.id);
+                        
+                        updateBookingSummary();
+                    });
+                    
+                    container.appendChild(slotElement);
+                });
+                
+            } catch (err) {
+                console.error('Error loading time slots:', err);
+                container.innerHTML = `
+                    <div style="grid-column: span 2; text-align: center; padding: 40px; color: var(--ruby);">
+                        <i class="fas fa-exclamation-triangle fa-2x"></i>
+                        <div style="margin-top: 15px; font-size: 18px; margin-bottom: 10px;">Connection Error</div>
+                        <div>Unable to load time slots. Please try again.</div>
+                        <button onclick="loadTimeSlots('${date}')" class="btn btn-outline" style="margin-top: 20px; padding: 10px 20px;">
+                            <i class="fas fa-redo"></i> Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        function formatTime(time) {
+            const [hour, minute] = time.split(':');
+            const hourNum = parseInt(hour);
+            const suffix = hourNum >= 12 ? 'PM' : 'AM';
+            const displayHour = hourNum > 12 ? hourNum - 12 : (hourNum === 0 ? 12 : hourNum);
+            return `${displayHour}:${minute} ${suffix}`;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-GB', {
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        // ===== Booking Steps =====
+        function nextBookingStep() {
+            // Validate step 1
+            if (!currentBooking.date) {
+                alert('⚠️ Please select a date');
+                return;
+            }
+            
+            if (!currentBooking.timeSlot || !currentBooking.slotId) {
+                alert('⚠️ Please select a time slot');
+                return;
+            }
+            
+            currentBooking.slotId = String(currentBooking.slotId);
+            
+            // Update final summary
+            updateFinalSummary();
+            
+            // Update confirm button based on service type
+            const confirmBtn = document.getElementById('confirmBookingBtn');
+            if (currentBooking.service.data.stripeLink) {
+                confirmBtn.className = 'btn btn-stripe';
+                confirmBtn.innerHTML = '<i class="fab fa-stripe"></i> Complete Booking & Pay';
+            } else {
+                confirmBtn.className = 'btn btn-whatsapp';
+                confirmBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Complete Booking on WhatsApp';
+            }
+            
+            // Show step 2
+            document.getElementById('bookingStep1').style.display = 'none';
+            document.getElementById('bookingStep2').style.display = 'block';
+        }
+
+        function prevBookingStep() {
+            document.getElementById('bookingStep2').style.display = 'none';
+            document.getElementById('bookingStep1').style.display = 'block';
+        }
+
+        // ===== Booking Confirmation =====
+        async function confirmBooking() {
+            const customerName = document.getElementById('customerName').value.trim();
+            const customerPhone = document.getElementById('customerPhone').value.trim();
+            const customerEmail = document.getElementById('customerEmail').value.trim();
+            const customerAddress = document.getElementById('customerAddress').value.trim();
+            const bookingNotes = document.getElementById('bookingNotes').value.trim();
+            
+            // Validate required fields
+            if (!customerName || !customerPhone || !customerEmail || !customerAddress) {
+                alert('❌ Please fill in all required fields:\n\n• Full Name\n• Phone Number\n• Email Address\n• Service Address');
+                return;
+            }
+            
+            const confirmBtn = document.getElementById('confirmBookingBtn');
+            const originalText = confirmBtn.innerHTML;
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            confirmBtn.disabled = true;
+            
+            try {
+                // Check if time slot is still available
+                if (!supabaseClient) {
+                    throw new Error('Cannot connect to booking system');
+                }
+                
+                const { data: slotCheck, error: checkError } = await supabaseClient
+                    .from('availability')
+                    .select('*')
+                    .eq('id', currentBooking.slotId)
+                    .eq('is_available', true)
+                    .single();
+                
+                if (checkError || !slotCheck) {
+                    alert('❌ This time slot is no longer available.\n\nPlease select another time slot.');
+                    loadTimeSlots(currentBooking.date);
+                    return;
+                }
+                
+                // Generate booking reference
+                const bookingRef = 'GG' + Date.now().toString().slice(-8);
+                const serviceData = currentBooking.service.data;
+                const [start, end] = currentBooking.timeSlot.split('-');
+                
+                // Prepare booking data for Supabase - MATCHING YOUR SCHEMA
+                const bookingData = {
+                    service_title: currentBooking.service.title,
+                    service_type: currentBooking.service.title, // Use same as service_title
+                    customer_name: customerName,
+                    customer_phone: customerPhone,
+                    customer_email: customerEmail,
+                    customer_address: customerAddress,
+                    service_address: customerAddress, // Same as customer_address
+                    booking_date: currentBooking.date,
+                    time_slot: currentBooking.timeSlot,
+                    status: 'pending',
+                    booking_reference: bookingRef,
+                    price: serviceData.displayPrice,
+                    duration: serviceData.duration,
+                    created_at: new Date().toISOString()
+                };
+                
+                // Add optional fields based on your schema
+                if (bookingNotes) {
+                    bookingData.special_instructions = bookingNotes;
+                    bookingData.notes = bookingNotes; // Both columns exist in your schema
+                }
+                
+                if (serviceData.hasBedrooms) {
+                    // Add bedrooms as notes since there's no bedrooms column
+                    bookingData.notes = (bookingData.notes || '') + `\nBedrooms: ${currentBooking.bedrooms}`;
+                    bookingData.special_instructions = (bookingData.special_instructions || '') + `\nBedrooms: ${currentBooking.bedrooms}`;
+                }
+                
+                // Debug: Log what we're trying to insert
+                console.log('Inserting booking data:', JSON.stringify(bookingData, null, 2));
+                
+                // Save to Supabase
+                let supabaseSuccess = false;
+                try {
+                    const { data: insertData, error } = await supabaseClient
+                        .from('bookings')
+                        .insert([bookingData])
+                        .select();
+                    
+                    if (error) {
+                        console.error('Supabase save error details:', {
+                            message: error.message,
+                            details: error.details,
+                            hint: error.hint,
+                            code: error.code
+                        });
+                        throw error;
+                    } else {
+                        supabaseSuccess = true;
+                        console.log('✅ Booking saved to Supabase successfully:', insertData);
+                        
+                        // Mark time slot as booked
+                        try {
+                            const { error: updateError } = await supabaseClient
+                                .from('availability')
+                                .update({ 
+                                    is_available: false
+                                })
+                                .eq('id', currentBooking.slotId);
+                            
+                            if (updateError) {
+                                console.warn('Failed to update availability:', updateError);
+                            } else {
+                                console.log('✅ Availability updated successfully');
+                            }
+                        } catch (updateErr) {
+                            console.warn('Error updating availability:', updateErr);
+                        }
+                    }
+                } catch (supabaseError) {
+                    console.error('Supabase error:', supabaseError);
+                    
+                    // Try with minimal required fields
+                    const minimalBookingData = {
+                        customer_name: customerName,
+                        customer_phone: customerPhone,
+                        booking_date: currentBooking.date,
+                        time_slot: currentBooking.timeSlot,
+                        status: 'pending',
+                        service_title: currentBooking.service.title
+                    };
+                    
+                    console.log('Trying minimal booking data:', minimalBookingData);
+                    
+                    const { data: minimalData, error: minimalError } = await supabaseClient
+                        .from('bookings')
+                        .insert([minimalBookingData])
+                        .select();
+                    
+                    if (minimalError) {
+                        throw new Error(`Supabase insertion failed: ${minimalError.message}`);
+                    }
+                    
+                    supabaseSuccess = true;
+                    console.log('✅ Booking saved with minimal data:', minimalData);
+                }
+                
+                // Prepare success message
+                let successMessage = '✅ Booking confirmed!\n\n';
+                successMessage += `Booking Reference: ${bookingRef}\n`;
+                successMessage += `Service: ${currentBooking.service.title}\n`;
+                successMessage += `Date: ${formatDate(currentBooking.date)}\n`;
+                successMessage += `Time: ${formatTime(start)} - ${formatTime(end)}\n`;
+                successMessage += `Customer: ${customerName}\n`;
+                successMessage += `Status: ${supabaseSuccess ? 'Saved to system' : 'Pending save'}\n\n`;
+                
+                // Process based on payment type
+                if (currentBooking.service.data.stripeLink) {
+                    successMessage += 'You will now be redirected to Stripe to complete your payment.\n';
+                    successMessage += 'Your booking will be confirmed upon successful payment.';
+                    
+                    alert(successMessage);
+                    
+                    // Close modal and redirect to Stripe
+                    closeBookingModal();
+                    setTimeout(() => {
+                        window.open(currentBooking.service.data.stripeLink, '_blank');
+                    }, 500);
+                    
+                } else {
+                    successMessage += 'You will now be redirected to WhatsApp.\n';
+                    successMessage += 'Our team will confirm your booking and discuss payment options.';
+                    
+                    // Prepare WhatsApp message
+                    let whatsappMessage = `📋 BOOKING CONFIRMED - ${currentBooking.service.title}\n\n`;
+                    whatsappMessage += `🔢 Booking Reference: ${bookingRef}\n`;
+                    whatsappMessage += `👤 Customer: ${customerName}\n`;
+                    whatsappMessage += `📞 Phone: ${customerPhone}\n`;
+                    whatsappMessage += `📧 Email: ${customerEmail}\n`;
+                    whatsappMessage += `🏠 Address: ${customerAddress}\n`;
+                    whatsappMessage += `📅 Date: ${formatDate(currentBooking.date)}\n`;
+                    whatsappMessage += `🕒 Time: ${formatTime(start)} - ${formatTime(end)}\n`;
+                    whatsappMessage += `⏱️ Duration: ${serviceData.duration}\n`;
+                    whatsappMessage += `💰 Price: ${serviceData.displayPrice}\n`;
+                    
+                    if (serviceData.hasBedrooms) {
+                        whatsappMessage += `🛏️ Bedrooms: ${currentBooking.bedrooms}\n`;
+                    }
+                    
+                    if (bookingNotes) {
+                        whatsappMessage += `📝 Notes: ${bookingNotes}\n`;
+                    }
+                    
+                    whatsappMessage += `\n✅ Booking saved to system\n`;
+                    whatsappMessage += `🔗 Please discuss payment options and confirm.`;
+                    
+                    // Encode for WhatsApp URL
+                    const encodedMessage = encodeURIComponent(whatsappMessage);
+                    const whatsappUrl = `https://api.whatsapp.com/send?phone=447827784204&text=${encodedMessage}`;
+                    
+                    alert(successMessage);
+                    
+                    // Close modal and redirect to WhatsApp
+                    closeBookingModal();
+                    setTimeout(() => {
+                        window.open(whatsappUrl, '_blank');
+                    }, 500);
+                }
+                
+            } catch (err) {
+                console.error('Booking error:', err);
+                
+                let errorMessage = `❌ An error occurred while saving your booking.\n\n`;
+                errorMessage += `Error: ${err.message}\n\n`;
+                errorMessage += `Please contact us directly to complete your booking.`;
+                
+                alert(errorMessage);
+                
+                // Fallback: Open WhatsApp with booking details
+                const fallbackWhatsApp = encodeURIComponent(
+                    `📋 BOOKING ERROR - ${currentBooking.service.title}\n\n` +
+                    `👤 Customer: ${customerName || 'Not provided'}\n` +
+                    `📞 Phone: ${customerPhone || 'Not provided'}\n` +
+                    `📧 Email: ${customerEmail || 'Not provided'}\n` +
+                    `🏠 Address: ${customerAddress || 'Not provided'}\n` +
+                    `📅 Date: ${currentBooking.date || 'Not specified'}\n` +
+                    `🕒 Time: ${currentBooking.timeSlot || 'Not specified'}\n` +
+                    `⏱️ Service: ${currentBooking.service.data.duration}\n` +
+                    `💰 Price: ${currentBooking.service.data.displayPrice}\n\n` +
+                    `⚠️ There was an error saving the booking.\n` +
+                    `Error: ${err.message}\n` +
+                    `Please help complete this booking manually.`
+                );
+                
+                setTimeout(() => {
+                    window.open(`https://api.whatsapp.com/send?phone=447827784204&text=${fallbackWhatsApp}`, '_blank');
+                }, 1000);
+                
+            } finally {
+                confirmBtn.innerHTML = originalText;
+                confirmBtn.disabled = false;
+            }
+        }
+
+        // ===== Render Services =====
+        const servicesGrid = document.getElementById('servicesGrid');
+
+        function renderServices(category = 'all') {
+            servicesGrid.innerHTML = '';
+
+            const filteredServices = category === 'all'
+                ? servicesData
+                : servicesData.filter(service => service.category === category);
+
+            filteredServices.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.setAttribute('data-category', service.category);
+
+                let priceContent = '';
+                if (service.hasBedrooms) {
+                    const tiers = [
+                        { bedrooms: 1, price: service.basePrice, badge: 'gold' },
+                        { bedrooms: 2, price: service.basePrice + service.perBedroomPrice, badge: 'silver' },
+                        { bedrooms: 3, price: service.basePrice + (service.perBedroomPrice * 2), badge: 'bronze' }
+                    ];
+                    
+                    priceContent = `
+                        <div class="service-price-container">
+                            <div class="price-tag-main">£${service.basePrice}</div>
+                            <div class="price-tier-container">
+                                ${tiers.map(tier => `
+                                    <div class="price-tier">
+                                        <div class="tier-badge ${tier.badge}">${tier.bedrooms} BED</div>
+                                        <div class="tier-bedrooms">${tier.bedrooms} Bedroom${tier.bedrooms > 1 ? 's' : ''}</div>
+                                        <div class="tier-price">£${tier.price}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    priceContent = `
+                        <div class="service-price-container" style="text-align: center;">
+                            <div class="price-tag-main">${service.displayPrice}</div>
+                        </div>
+                    `;
+                }
+
+                // Determine badge and button based on stripe link availability
+                let badgeHTML = '';
+                let buttonClass = '';
+                
+                if (service.stripeLink) {
+                    badgeHTML = '<span class="payment-badge stripe-badge"><i class="fab fa-stripe"></i> Instant Payment</span>';
+                    buttonClass = 'btn-stripe';
+                } else {
+                    badgeHTML = '<span class="payment-badge whatsapp-badge"><i class="fab fa-whatsapp"></i> Book Now</span>';
+                    buttonClass = 'btn-whatsapp';
+                }
+                
+                const buttonHTML = `
+                    <button class="btn book-service-btn ${buttonClass}" 
+                            data-service-id="${service.id}" 
+                            data-service-title="${service.title}"
+                            style="padding: 1rem 2rem; font-size: 1.125rem;">
+                        ${service.stripeLink ? '<i class="fab fa-stripe"></i> Book & Pay Now' : '<i class="fab fa-whatsapp"></i> Book Now'}
+                    </button>
+                `;
+
+                serviceCard.innerHTML = `
+                    <div class="service-image" style="${service.image ? `background-image: url('${service.image}');` : `background: linear-gradient(135deg, ${service.fallbackColor || 'var(--primary-green)'}, var(--teal));`} background-color: var(--light-green);">
+                        <div class="service-overlay">
+                            <h3>${service.title} ${badgeHTML}</h3>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        ${priceContent}
+                        
+                        <div style="text-align: center; margin: 1rem 0;">
+                            <span class="service-duration-badge">
+                                <i class="far fa-clock"></i> ${service.duration}
+                            </span>
+                        </div>
+                        
+                        <p class="service-description">${service.description}</p>
+                        <ul class="service-features">
+                            ${service.features.map(feature => `
+                                <li><i class="fas fa-check"></i>${feature}</li>
+                            `).join('')}
+                        </ul>
+                        <div class="service-meta">
+                            <div class="service-cta">
+                                ${buttonHTML}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                servicesGrid.appendChild(serviceCard);
+            });
+
+            // Add event listeners to buttons
+            document.querySelectorAll('.book-service-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceId = this.getAttribute('data-service-id');
+                    const serviceTitle = this.getAttribute('data-service-title');
+                    const serviceData = servicesData.find(s => s.id == serviceId);
+                    
+                    // Open booking modal
+                    openBookingModal(serviceTitle, serviceId, serviceData);
+                });
+            });
+
+            // Animation for service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 + (index * 100));
+            });
+        }
+
+        // ===== Category Filtering =====
+        const categoryButtons = document.querySelectorAll('.category-btn');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-category');
+                renderServices(category);
+            });
+        });
+
+        // ===== Smooth Scrolling =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#') return;
+
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // SEAMLESS INFINITE FORWARD CAROUSEL
-        const cardsWrapper = document.getElementById('cardsWrapper');
-        const carouselSlides = document.querySelectorAll('.carousel-slide');
-        const carouselDots = document.querySelectorAll('.carousel-dots .dot');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const carouselSection = document.getElementById('carousel');
-        
-        let currentIndex = 0;
-        const totalSlides = carouselSlides.length;
-        const slideWidth = 100; // 100% per slide
-        let isTransitioning = false;
-        let autoRotateInterval;
-        let currentTranslate = 0;
-
-        // Background colors for each slide - CUSTOM FIRST
-        const slideColors = [
-            '#008080', // Custom (Teal) - FIRST
-            '#000000', // Black
-            '#FFFFFF', // White
-            '#FF0000', // Red
-            '#00FF00', // Green
-            '#800080'  // Purple
-        ];
-
-        // Color classes for text adjustments
-        const colorClasses = [
-            'carousel-bg-custom',
-            'carousel-bg-black',
-            'carousel-bg-white',
-            'carousel-bg-red',
-            'carousel-bg-green',
-            'carousel-bg-purple'
-        ];
-
-        // Create seamless infinite effect by duplicating slides
-        function createSeamlessCarousel() {
-            // Clone first slide and append to end
-            const firstSlide = carouselSlides[0].cloneNode(true);
-            firstSlide.classList.add('clone');
-            cardsWrapper.appendChild(firstSlide);
+        // ===== Initialize Page =====
+        document.addEventListener('DOMContentLoaded', function() {
+            renderServices();
             
-            // Clone second slide and append to end (for smoother transition)
-            const secondSlide = carouselSlides[1].cloneNode(true);
-            secondSlide.classList.add('clone');
-            cardsWrapper.appendChild(secondSlide);
-            
-            // Update carousel slides array
-            const allSlides = document.querySelectorAll('.carousel-slide');
-            return allSlides;
-        }
-
-        // Update carousel with seamless forward motion
-        function updateCarousel(direction = 0) {
-            // For seamless effect, we need to handle the transition specially
-            if (direction === 1) {
-                // Moving forward - normal transition
-                cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
-                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-            } else if (direction === -1) {
-                // Moving backward - we'll use a different approach to make it feel like forward motion
-                // Instead of going back, we'll go forward through clones at the end
-                if (currentIndex === 0) {
-                    // If we're at the first slide and going "back", jump to the cloned slides at the end
-                    cardsWrapper.style.transition = 'none';
-                    cardsWrapper.style.transform = `translateX(-${totalSlides * slideWidth}%)`;
-                    
-                    // Force reflow
-                    cardsWrapper.offsetHeight;
-                    
-                    // Then animate to the "last" slide (which is actually a clone)
-                    cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
-                    cardsWrapper.style.transform = `translateX(-${(totalSlides - 1) * slideWidth}%)`;
-                    
-                    // Update visual index for dots/background
-                    updateVisualIndex(totalSlides - 1);
-                    return;
-                } else {
-                    // Normal backward motion for other slides
-                    cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
-                    cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-                }
-            } else {
-                // Initial or reset update
-                cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
-                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-            }
-            
-            // Update visual index for dots/background
-            updateVisualIndex(currentIndex);
-        }
-
-        // Update visual elements (dots, background) based on position
-        function updateVisualIndex(index) {
-            let visualIndex = index % totalSlides;
-            
-            // Update dots
-            carouselDots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === visualIndex);
-            });
-            
-            // Update background color
-            carouselSection.style.backgroundColor = slideColors[visualIndex];
-            
-            // Remove all color classes
-            colorClasses.forEach(cls => {
-                carouselSection.classList.remove(cls);
-            });
-            
-            // Add current color class for text adjustments
-            carouselSection.classList.add(colorClasses[visualIndex]);
-        }
-
-        function nextSlide() {
-            if (isTransitioning) return;
-            isTransitioning = true;
-            
-            currentIndex++;
-            
-            // Check if we need to reset to beginning for seamless effect
-            if (currentIndex >= totalSlides) {
-                // We've reached the clones at the end
-                setTimeout(() => {
-                    // Jump back to beginning without animation
-                    cardsWrapper.style.transition = 'none';
-                    currentIndex = 0;
-                    cardsWrapper.style.transform = `translateX(0)`;
-                    
-                    // Force reflow
-                    cardsWrapper.offsetHeight;
-                    
-                    // Update visual index
-                    updateVisualIndex(currentIndex);
-                    
-                    isTransitioning = false;
-                }, 700);
-            }
-            
-            updateCarousel(1);
-            
-            setTimeout(() => {
-                if (currentIndex < totalSlides) {
-                    isTransitioning = false;
-                }
-            }, 700);
-        }
-
-        function prevSlide() {
-            if (isTransitioning) return;
-            isTransitioning = true;
-            
-            currentIndex--;
-            
-            // Handle seamless forward motion when going "back"
-            if (currentIndex < 0) {
-                // Instead of going back to last, jump to clones at the end
-                cardsWrapper.style.transition = 'none';
-                currentIndex = totalSlides; // Jump to first clone
-                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-                
-                // Force reflow
-                cardsWrapper.offsetHeight;
-                
-                // Then animate to "previous" slide (which is actually a clone)
-                cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
-                currentIndex = totalSlides - 1;
-                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-                
-                // Update visual index
-                updateVisualIndex(currentIndex);
-                
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 700);
-                return;
-            }
-            
-            updateCarousel(-1);
-            
-            setTimeout(() => {
-                isTransitioning = false;
-            }, 700);
-        }
-
-        // Event listeners for carousel navigation
-        prevBtn.addEventListener('click', prevSlide);
-        nextBtn.addEventListener('click', nextSlide);
-
-        // Click handler for carousel dots
-        carouselDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                
-                // Calculate the shortest path to the target slide
-                const targetIndex = index;
-                const diff = targetIndex - (currentIndex % totalSlides);
-                
-                if (Math.abs(diff) <= totalSlides / 2) {
-                    // Go directly
-                    currentIndex = targetIndex;
-                } else if (diff > 0) {
-                    // Go forward through clones
-                    currentIndex = targetIndex + totalSlides;
-                } else {
-                    // Go backward through clones
-                    currentIndex = targetIndex - totalSlides;
-                }
-                
-                updateCarousel(diff > 0 ? 1 : -1);
-                
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 700);
-            });
-        });
-
-        // Touch/swipe with momentum and continuous forward feel
-        let touchStartX = 0;
-        let touchStartY = 0;
-        let touchEndX = 0;
-        let touchEndY = 0;
-        let touchStartTime = 0;
-        let isSwiping = false;
-        let velocity = 0;
-        let lastTouchX = 0;
-        let lastTouchTime = 0;
-
-        cardsWrapper.addEventListener('touchstart', e => {
-            if (isTransitioning) return;
-            
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-            touchStartTime = Date.now();
-            lastTouchX = touchStartX;
-            lastTouchTime = touchStartTime;
-            isSwiping = true;
-            velocity = 0;
-            
-            // Pause transition for manual control
-            cardsWrapper.style.transition = 'none';
-        }, { passive: true });
-
-        cardsWrapper.addEventListener('touchmove', e => {
-            if (!isSwiping) return;
-            
-            const currentX = e.touches[0].clientX;
-            const currentY = e.touches[0].clientY;
-            const currentTime = Date.now();
-            
-            // Calculate velocity for momentum
-            const deltaX = currentX - lastTouchX;
-            const deltaTime = currentTime - lastTouchTime;
-            
-            if (deltaTime > 0) {
-                velocity = deltaX / deltaTime;
-            }
-            
-            lastTouchX = currentX;
-            lastTouchTime = currentTime;
-            
-            // Calculate swipe distance
-            const swipeX = currentX - touchStartX;
-            const swipeY = currentY - touchStartY;
-            
-            // Only process horizontal swipes
-            if (Math.abs(swipeX) > Math.abs(swipeY)) {
-                e.preventDefault();
-                
-                // Apply drag with resistance
-                const resistance = 0.5;
-                currentTranslate = -currentIndex * slideWidth + (swipeX * resistance / window.innerWidth * 100);
-                
-                // Limit translation to prevent overscrolling
-                const maxTranslate = totalSlides * slideWidth;
-                currentTranslate = Math.max(-maxTranslate, Math.min(0, currentTranslate));
-                
-                cardsWrapper.style.transform = `translateX(${currentTranslate}%)`;
-            }
-        }, { passive: false });
-
-        cardsWrapper.addEventListener('touchend', e => {
-            if (!isSwiping) return;
-            isSwiping = false;
-            
-            touchEndX = e.changedTouches[0].clientX;
-            touchEndY = e.changedTouches[0].clientY;
-            const touchEndTime = Date.now();
-            
-            const swipeDistance = touchEndX - touchStartX;
-            const swipeTime = touchEndTime - touchStartTime;
-            
-            // Calculate momentum
-            const swipeSpeed = Math.abs(velocity);
-            const momentumThreshold = 0.3;
-            const distanceThreshold = 50;
-            
-            // Determine direction based on momentum and distance
-            let shouldSlide = false;
-            let direction = 0;
-            
-            if (Math.abs(swipeDistance) > distanceThreshold || swipeSpeed > momentumThreshold) {
-                shouldSlide = true;
-                direction = swipeDistance > 0 ? -1 : 1;
-            }
-            
-            // If no strong swipe, snap back to current position
-            if (!shouldSlide) {
-                cardsWrapper.style.transition = 'transform 0.3s var(--transition-smooth)';
-                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-                return;
-            }
-            
-            // Apply momentum
-            if (direction === 1) {
-                nextSlide();
-            } else {
-                prevSlide();
-            }
-        }, { passive: true });
-
-        // Mouse drag support
-        let isDragging = false;
-        let mouseStartX = 0;
-
-        cardsWrapper.addEventListener('mousedown', e => {
-            if (isTransitioning) return;
-            
-            mouseStartX = e.clientX;
-            isDragging = true;
-            cardsWrapper.style.transition = 'none';
-            cardsWrapper.style.cursor = 'grabbing';
-            
-            e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', e => {
-            if (!isDragging) return;
-            
-            const mouseX = e.clientX;
-            const dragDistance = mouseX - mouseStartX;
-            
-            // Apply drag with resistance
-            const resistance = 0.5;
-            currentTranslate = -currentIndex * slideWidth + (dragDistance * resistance / window.innerWidth * 100);
-            
-            // Limit translation
-            const maxTranslate = totalSlides * slideWidth;
-            currentTranslate = Math.max(-maxTranslate, Math.min(0, currentTranslate));
-            
-            cardsWrapper.style.transform = `translateX(${currentTranslate}%)`;
-        });
-
-        document.addEventListener('mouseup', e => {
-            if (!isDragging) return;
-            isDragging = false;
-            
-            const mouseEndX = e.clientX;
-            const dragDistance = mouseEndX - mouseStartX;
-            const dragThreshold = 50;
-            
-            cardsWrapper.style.cursor = 'grab';
-            cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
-            
-            if (Math.abs(dragDistance) > dragThreshold) {
-                if (dragDistance > 0) {
-                    prevSlide();
-                } else {
-                    nextSlide();
-                }
-            } else {
-                // Snap back to current position
-                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
-            }
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (carouselSection.getBoundingClientRect().top < window.innerHeight &&
-                carouselSection.getBoundingClientRect().bottom > 0) {
-                if (e.key === 'ArrowLeft') {
-                    prevSlide();
-                } else if (e.key === 'ArrowRight') {
-                    nextSlide();
-                }
-            }
-        });
-
-        // Auto-rotate with seamless forward motion
-        function startAutoRotate() {
-            autoRotateInterval = setInterval(() => {
-                if (!isTransitioning && !isSwiping && !isDragging) {
-                    nextSlide();
-                }
-            }, 4000); // Rotate every 4 seconds
-        }
-
-        function stopAutoRotate() {
-            clearInterval(autoRotateInterval);
-        }
-
-        // Start auto-rotate when carousel is visible
-        function checkCarouselVisibility() {
-            const rect = carouselSection.getBoundingClientRect();
-            const isVisible = (
-                rect.top < window.innerHeight &&
-                rect.bottom > 0
-            );
-            
-            if (isVisible) {
-                startAutoRotate();
-            } else {
-                stopAutoRotate();
-            }
-        }
-
-        // Pause auto-rotate on interaction
-        carouselSection.addEventListener('mouseenter', stopAutoRotate);
-        carouselSection.addEventListener('mouseleave', () => {
-            if (carouselSection.getBoundingClientRect().top < window.innerHeight &&
-                carouselSection.getBoundingClientRect().bottom > 0) {
-                startAutoRotate();
-            }
-        });
-
-        // Check visibility on scroll
-        snap.addEventListener('scroll', checkCarouselVisibility);
-
-        // Show engraving options
-        function showEngravingOptions(button) {
-            const engravingSelector = button.closest('.engraving-selector');
-            const cardActions = engravingSelector.querySelector('.card-actions');
-            const engravingOptions = engravingSelector.querySelector('.engraving-options');
-            
-            // Hide the main buttons
-            cardActions.style.display = 'none';
-            // Show the engraving options
-            engravingOptions.classList.add('active');
-        }
-
-        // Scroll to next section
-        function scrollToNextSection(button) {
-            const currentSection = button.closest('section');
-            const nextSection = currentSection.nextElementSibling;
-            
-            if (nextSection && nextSection.tagName === 'SECTION') {
-                nextSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
+            // Test Supabase connection
+            if (supabaseClient) {
+                testSupabaseConnection().then(success => {
+                    if (success) {
+                        console.log('✅ Supabase ready for bookings & availability');
+                    } else {
+                        console.warn('⚠️ Supabase connection failed - some features may not work');
+                    }
                 });
             }
-        }
-
-        // Add to cart with engraving
-        function addToCartWithEngraving(cardType, engravingType) {
-            // Get the card title
-            let cardTitle;
-            if (cardType === 'gold' || cardType === 'silver' || cardType === 'rose-gold') {
-                cardTitle = document.getElementById(cardType).querySelector('.card-title').textContent;
-            } else {
-                // For carousel items - use visual index
-                const visualIndex = currentIndex % totalSlides;
-                const currentSlide = carouselSlides[visualIndex];
-                cardTitle = currentSlide.querySelector('.card-title').textContent;
-            }
             
-            // Show feedback message
-            showFeedback(`${cardTitle} with ${engravingType.charAt(0).toUpperCase() + engravingType.slice(1)} Engraving added to cart!`);
+            // Log stripe links info
+            console.log('📊 Stripe Links Summary:');
+            console.log(`- Total services: ${servicesData.length}`);
+            console.log(`- Services with Stripe links: ${servicesData.filter(s => s.stripeLink).length}`);
+            console.log(`- Services without Stripe links: ${servicesData.filter(s => !s.stripeLink).length}`);
             
-            // Reset the buttons for this section
-            const engravingSelector = event.target.closest('.engraving-selector');
-            const cardActions = engravingSelector.querySelector('.card-actions');
-            const engravingOptions = engravingSelector.querySelector('.engraving-options');
-            
-            cardActions.style.display = 'flex';
-            engravingOptions.classList.remove('active');
-        }
-
-        // Feedback message function
-        function showFeedback(message) {
-            const feedback = document.createElement('div');
-            feedback.textContent = message;
-            feedback.style.cssText = `
-                position: fixed;
-                bottom: 100px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(0,0,0,0.85);
-                color: white;
-                padding: 12px 24px;
-                border-radius: 25px;
-                z-index: 1001;
-                font-size: 0.9rem;
-                font-weight: 600;
-                animation: fadeInOut 2s ease;
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(255,255,255,0.2);
-                box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            `;
-
-            document.body.appendChild(feedback);
-
-            setTimeout(() => {
-                feedback.remove();
-            }, 2000);
-        }
-
-        // Button functionality
-        document.getElementById('buyNowBtn').addEventListener('click', () => {
-            // Find current section
-            const scrollPosition = snap.scrollTop + snap.clientHeight / 2;
-            let currentSectionId = 'hero';
-
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                const sectionBottom = sectionTop + section.clientHeight;
-
-                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                    currentSectionId = section.id;
+            // Show which services have stripe links
+            servicesData.forEach(service => {
+                if (service.stripeLink) {
+                    console.log(`✓ ${service.title}: ${service.stripeLink}`);
+                } else {
+                    console.log(`✗ ${service.title}: No stripe link`);
                 }
             });
-
-            // If on hero section, go to gold section
-            if (currentSectionId === 'hero') {
-                document.getElementById('gold').scrollIntoView({ behavior: 'smooth' });
-            } else if (currentSectionId === 'carousel') {
-                // If on carousel, show engraving options for current slide
-                const visualIndex = currentIndex % totalSlides;
-                const currentSlide = carouselSlides[visualIndex];
-                const addToCartBtn = currentSlide.querySelector('.add-to-card');
-                if (addToCartBtn) {
-                    addToCartBtn.click();
-                }
-            } else {
-                // For gold, silver, rose-gold sections
-                const addToCartBtn = document.getElementById(currentSectionId).querySelector('.add-to-card');
-                if (addToCartBtn) {
-                    addToCartBtn.click();
-                }
-            }
         });
-
-        document.getElementById('whatsappBtn').addEventListener('click', () => {
-            showFeedback('Opening WhatsApp...');
-            // In a real app, this would open WhatsApp
-        });
-
-        // Enhanced scroll for snap sections
-        let isScrolling = false;
-        snap.addEventListener('scroll', () => {
-            if (!isScrolling) {
-                isScrolling = true;
-                setTimeout(() => {
-                    updateActiveDot();
-                    checkCarouselVisibility();
-                    isScrolling = false;
-                }, 100);
-            }
-        });
-
-        // Add CSS for fade animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInOut {
-                0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
-                15% { opacity: 1; transform: translateX(-50%) translateY(0); }
-                85% { opacity: 1; transform: translateX(-50%) translateY(0); }
-                100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Initialize carousel with seamless effect
-        setTimeout(() => {
-            // Create seamless carousel
-            const allSlides = createSeamlessCarousel();
-            
-            // Start auto-rotate if carousel is initially visible
-            if (carouselSection.getBoundingClientRect().top < window.innerHeight &&
-                carouselSection.getBoundingClientRect().bottom > 0) {
-                startAutoRotate();
-            }
-        }, 100);
     </script>
 </body>
 </html>
