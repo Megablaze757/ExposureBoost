@@ -330,7 +330,7 @@
             background: #B76E79; /* Rose Gold */
         }
 
-        /* CAROUSEL SECTION - Circular Single Card View */
+        /* CAROUSEL SECTION - Seamless Infinite */
         #carousel {
             background: #008080; /* Start with Custom Color (Teal) */
             position: relative;
@@ -795,7 +795,7 @@
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
-        /* CAROUSEL BACKGROUND COLORS - CUSTOM FIRST */
+        /* CAROUSEL BACKGROUND COLORS */
         .carousel-bg-custom {
             background: #008080 !important; /* Teal for Custom */
         }
@@ -1212,7 +1212,7 @@
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - Circular Single Card View -->
+        <!-- CAROUSEL SECTION - Seamless Infinite Forward Motion -->
         <section id="carousel">
             <h2 class="carousel-title">More Color Options</h2>
             
@@ -1518,7 +1518,7 @@
             });
         });
 
-        // CIRCULAR CAROUSEL FUNCTIONALITY
+        // SEAMLESS INFINITE FORWARD CAROUSEL
         const cardsWrapper = document.getElementById('cardsWrapper');
         const carouselSlides = document.querySelectorAll('.carousel-slide');
         const carouselDots = document.querySelectorAll('.carousel-dots .dot');
@@ -1531,6 +1531,7 @@
         const slideWidth = 100; // 100% per slide
         let isTransitioning = false;
         let autoRotateInterval;
+        let currentTranslate = 0;
 
         // Background colors for each slide - CUSTOM FIRST
         const slideColors = [
@@ -1552,17 +1553,74 @@
             'carousel-bg-purple'
         ];
 
+        // Create seamless infinite effect by duplicating slides
+        function createSeamlessCarousel() {
+            // Clone first slide and append to end
+            const firstSlide = carouselSlides[0].cloneNode(true);
+            firstSlide.classList.add('clone');
+            cardsWrapper.appendChild(firstSlide);
+            
+            // Clone second slide and append to end (for smoother transition)
+            const secondSlide = carouselSlides[1].cloneNode(true);
+            secondSlide.classList.add('clone');
+            cardsWrapper.appendChild(secondSlide);
+            
+            // Update carousel slides array
+            const allSlides = document.querySelectorAll('.carousel-slide');
+            return allSlides;
+        }
+
+        // Update carousel with seamless forward motion
         function updateCarousel(direction = 0) {
-            // Update wrapper position
-            cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            // For seamless effect, we need to handle the transition specially
+            if (direction === 1) {
+                // Moving forward - normal transition
+                cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
+                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            } else if (direction === -1) {
+                // Moving backward - we'll use a different approach to make it feel like forward motion
+                // Instead of going back, we'll go forward through clones at the end
+                if (currentIndex === 0) {
+                    // If we're at the first slide and going "back", jump to the cloned slides at the end
+                    cardsWrapper.style.transition = 'none';
+                    cardsWrapper.style.transform = `translateX(-${totalSlides * slideWidth}%)`;
+                    
+                    // Force reflow
+                    cardsWrapper.offsetHeight;
+                    
+                    // Then animate to the "last" slide (which is actually a clone)
+                    cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
+                    cardsWrapper.style.transform = `translateX(-${(totalSlides - 1) * slideWidth}%)`;
+                    
+                    // Update visual index for dots/background
+                    updateVisualIndex(totalSlides - 1);
+                    return;
+                } else {
+                    // Normal backward motion for other slides
+                    cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
+                    cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+                }
+            } else {
+                // Initial or reset update
+                cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
+                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+            }
+            
+            // Update visual index for dots/background
+            updateVisualIndex(currentIndex);
+        }
+
+        // Update visual elements (dots, background) based on position
+        function updateVisualIndex(index) {
+            let visualIndex = index % totalSlides;
             
             // Update dots
-            carouselDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
+            carouselDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === visualIndex);
             });
             
-            // Update background color with transition
-            carouselSection.style.backgroundColor = slideColors[currentIndex];
+            // Update background color
+            carouselSection.style.backgroundColor = slideColors[visualIndex];
             
             // Remove all color classes
             colorClasses.forEach(cls => {
@@ -1570,28 +1628,78 @@
             });
             
             // Add current color class for text adjustments
-            carouselSection.classList.add(colorClasses[currentIndex]);
-            
-            // Reset transition flag
-            setTimeout(() => {
-                isTransitioning = false;
-            }, 700);
+            carouselSection.classList.add(colorClasses[visualIndex]);
         }
 
         function nextSlide() {
             if (isTransitioning) return;
             isTransitioning = true;
             
-            currentIndex = (currentIndex + 1) % totalSlides;
+            currentIndex++;
+            
+            // Check if we need to reset to beginning for seamless effect
+            if (currentIndex >= totalSlides) {
+                // We've reached the clones at the end
+                setTimeout(() => {
+                    // Jump back to beginning without animation
+                    cardsWrapper.style.transition = 'none';
+                    currentIndex = 0;
+                    cardsWrapper.style.transform = `translateX(0)`;
+                    
+                    // Force reflow
+                    cardsWrapper.offsetHeight;
+                    
+                    // Update visual index
+                    updateVisualIndex(currentIndex);
+                    
+                    isTransitioning = false;
+                }, 700);
+            }
+            
             updateCarousel(1);
+            
+            setTimeout(() => {
+                if (currentIndex < totalSlides) {
+                    isTransitioning = false;
+                }
+            }, 700);
         }
 
         function prevSlide() {
             if (isTransitioning) return;
             isTransitioning = true;
             
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            currentIndex--;
+            
+            // Handle seamless forward motion when going "back"
+            if (currentIndex < 0) {
+                // Instead of going back to last, jump to clones at the end
+                cardsWrapper.style.transition = 'none';
+                currentIndex = totalSlides; // Jump to first clone
+                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+                
+                // Force reflow
+                cardsWrapper.offsetHeight;
+                
+                // Then animate to "previous" slide (which is actually a clone)
+                cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
+                currentIndex = totalSlides - 1;
+                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+                
+                // Update visual index
+                updateVisualIndex(currentIndex);
+                
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 700);
+                return;
+            }
+            
             updateCarousel(-1);
+            
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 700);
         }
 
         // Event listeners for carousel navigation
@@ -1603,118 +1711,190 @@
             dot.addEventListener('click', () => {
                 if (isTransitioning) return;
                 isTransitioning = true;
-                currentIndex = index;
-                updateCarousel();
+                
+                // Calculate the shortest path to the target slide
+                const targetIndex = index;
+                const diff = targetIndex - (currentIndex % totalSlides);
+                
+                if (Math.abs(diff) <= totalSlides / 2) {
+                    // Go directly
+                    currentIndex = targetIndex;
+                } else if (diff > 0) {
+                    // Go forward through clones
+                    currentIndex = targetIndex + totalSlides;
+                } else {
+                    // Go backward through clones
+                    currentIndex = targetIndex - totalSlides;
+                }
+                
+                updateCarousel(diff > 0 ? 1 : -1);
+                
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 700);
             });
         });
 
-        // Swipe functionality for circular carousel
+        // Touch/swipe with momentum and continuous forward feel
         let touchStartX = 0;
+        let touchStartY = 0;
         let touchEndX = 0;
+        let touchEndY = 0;
+        let touchStartTime = 0;
         let isSwiping = false;
+        let velocity = 0;
+        let lastTouchX = 0;
+        let lastTouchTime = 0;
 
         cardsWrapper.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
+            if (isTransitioning) return;
+            
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            touchStartTime = Date.now();
+            lastTouchX = touchStartX;
+            lastTouchTime = touchStartTime;
             isSwiping = true;
+            velocity = 0;
+            
+            // Pause transition for manual control
+            cardsWrapper.style.transition = 'none';
         }, { passive: true });
 
         cardsWrapper.addEventListener('touchmove', e => {
             if (!isSwiping) return;
-            touchEndX = e.changedTouches[0].screenX;
-        }, { passive: true });
+            
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            const currentTime = Date.now();
+            
+            // Calculate velocity for momentum
+            const deltaX = currentX - lastTouchX;
+            const deltaTime = currentTime - lastTouchTime;
+            
+            if (deltaTime > 0) {
+                velocity = deltaX / deltaTime;
+            }
+            
+            lastTouchX = currentX;
+            lastTouchTime = currentTime;
+            
+            // Calculate swipe distance
+            const swipeX = currentX - touchStartX;
+            const swipeY = currentY - touchStartY;
+            
+            // Only process horizontal swipes
+            if (Math.abs(swipeX) > Math.abs(swipeY)) {
+                e.preventDefault();
+                
+                // Apply drag with resistance
+                const resistance = 0.5;
+                currentTranslate = -currentIndex * slideWidth + (swipeX * resistance / window.innerWidth * 100);
+                
+                // Limit translation to prevent overscrolling
+                const maxTranslate = totalSlides * slideWidth;
+                currentTranslate = Math.max(-maxTranslate, Math.min(0, currentTranslate));
+                
+                cardsWrapper.style.transform = `translateX(${currentTranslate}%)`;
+            }
+        }, { passive: false });
 
         cardsWrapper.addEventListener('touchend', e => {
-            if (!isSwiping || isTransitioning) return;
+            if (!isSwiping) return;
             isSwiping = false;
             
-            const swipeDistance = touchEndX - touchStartX;
-            const swipeThreshold = 50;
+            touchEndX = e.changedTouches[0].clientX;
+            touchEndY = e.changedTouches[0].clientY;
+            const touchEndTime = Date.now();
             
-            if (Math.abs(swipeDistance) > swipeThreshold) {
-                if (swipeDistance > 0) {
-                    prevSlide(); // Swipe right - go to previous
-                } else {
-                    nextSlide(); // Swipe left - go to next
-                }
+            const swipeDistance = touchEndX - touchStartX;
+            const swipeTime = touchEndTime - touchStartTime;
+            
+            // Calculate momentum
+            const swipeSpeed = Math.abs(velocity);
+            const momentumThreshold = 0.3;
+            const distanceThreshold = 50;
+            
+            // Determine direction based on momentum and distance
+            let shouldSlide = false;
+            let direction = 0;
+            
+            if (Math.abs(swipeDistance) > distanceThreshold || swipeSpeed > momentumThreshold) {
+                shouldSlide = true;
+                direction = swipeDistance > 0 ? -1 : 1;
+            }
+            
+            // If no strong swipe, snap back to current position
+            if (!shouldSlide) {
+                cardsWrapper.style.transition = 'transform 0.3s var(--transition-smooth)';
+                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+                return;
+            }
+            
+            // Apply momentum
+            if (direction === 1) {
+                nextSlide();
+            } else {
+                prevSlide();
             }
         }, { passive: true });
 
-        // Mouse/touch drag support for circular carousel
+        // Mouse drag support
         let isDragging = false;
-        let startPos = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationID = 0;
+        let mouseStartX = 0;
 
-        cardsWrapper.addEventListener('mousedown', touchStart);
-        cardsWrapper.addEventListener('touchstart', touchStart, { passive: true });
-        cardsWrapper.addEventListener('mouseup', touchEnd);
-        cardsWrapper.addEventListener('touchend', touchEnd, { passive: true });
-        cardsWrapper.addEventListener('mousemove', touchMove);
-        cardsWrapper.addEventListener('touchmove', touchMove, { passive: true });
-
-        function touchStart(event) {
+        cardsWrapper.addEventListener('mousedown', e => {
             if (isTransitioning) return;
             
-            if (event.type === 'touchstart') {
-                startPos = event.touches[0].clientX;
-            } else {
-                startPos = event.clientX;
-                event.preventDefault();
-            }
-            
+            mouseStartX = e.clientX;
             isDragging = true;
-            animationID = requestAnimationFrame(animation);
-            cardsWrapper.style.cursor = 'grabbing';
             cardsWrapper.style.transition = 'none';
-        }
+            cardsWrapper.style.cursor = 'grabbing';
+            
+            e.preventDefault();
+        });
 
-        function touchEnd() {
+        document.addEventListener('mousemove', e => {
             if (!isDragging) return;
             
+            const mouseX = e.clientX;
+            const dragDistance = mouseX - mouseStartX;
+            
+            // Apply drag with resistance
+            const resistance = 0.5;
+            currentTranslate = -currentIndex * slideWidth + (dragDistance * resistance / window.innerWidth * 100);
+            
+            // Limit translation
+            const maxTranslate = totalSlides * slideWidth;
+            currentTranslate = Math.max(-maxTranslate, Math.min(0, currentTranslate));
+            
+            cardsWrapper.style.transform = `translateX(${currentTranslate}%)`;
+        });
+
+        document.addEventListener('mouseup', e => {
+            if (!isDragging) return;
             isDragging = false;
-            cancelAnimationFrame(animationID);
             
-            const movedBy = currentTranslate - prevTranslate;
-            
-            if (movedBy < -100) {
-                nextSlide(); // Drag left - go to next
-            } else if (movedBy > 100) {
-                prevSlide(); // Drag right - go to previous
-            } else {
-                // Return to original position
-                cardsWrapper.style.transition = 'transform 0.5s var(--transition-smooth)';
-                cardsWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
+            const mouseEndX = e.clientX;
+            const dragDistance = mouseEndX - mouseStartX;
+            const dragThreshold = 50;
             
             cardsWrapper.style.cursor = 'grab';
             cardsWrapper.style.transition = 'transform 0.7s var(--transition-smooth)';
-        }
-
-        function touchMove(event) {
-            if (!isDragging || isTransitioning) return;
             
-            let currentPosition = 0;
-            if (event.type === 'touchmove') {
-                currentPosition = event.touches[0].clientX;
+            if (Math.abs(dragDistance) > dragThreshold) {
+                if (dragDistance > 0) {
+                    prevSlide();
+                } else {
+                    nextSlide();
+                }
             } else {
-                currentPosition = event.clientX;
+                // Snap back to current position
+                cardsWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
             }
-            
-            currentTranslate = prevTranslate + currentPosition - startPos;
-        }
+        });
 
-        function animation() {
-            if (!isDragging) return;
-            setSliderPosition();
-            requestAnimationFrame(animation);
-        }
-
-        function setSliderPosition() {
-            cardsWrapper.style.transform = `translateX(calc(-${currentIndex * 100}% + ${currentTranslate}px))`;
-        }
-
-        // Keyboard navigation for carousel
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (carouselSection.getBoundingClientRect().top < window.innerHeight &&
                 carouselSection.getBoundingClientRect().bottom > 0) {
@@ -1726,13 +1906,13 @@
             }
         });
 
-        // Auto-rotate carousel (circular)
+        // Auto-rotate with seamless forward motion
         function startAutoRotate() {
             autoRotateInterval = setInterval(() => {
-                if (!isTransitioning && !isDragging && !isSwiping) {
+                if (!isTransitioning && !isSwiping && !isDragging) {
                     nextSlide();
                 }
-            }, 5000); // Rotate every 5 seconds
+            }, 4000); // Rotate every 4 seconds
         }
 
         function stopAutoRotate() {
@@ -1754,7 +1934,7 @@
             }
         }
 
-        // Pause auto-rotate on hover/touch
+        // Pause auto-rotate on interaction
         carouselSection.addEventListener('mouseenter', stopAutoRotate);
         carouselSection.addEventListener('mouseleave', () => {
             if (carouselSection.getBoundingClientRect().top < window.innerHeight &&
@@ -1798,8 +1978,9 @@
             if (cardType === 'gold' || cardType === 'silver' || cardType === 'rose-gold') {
                 cardTitle = document.getElementById(cardType).querySelector('.card-title').textContent;
             } else {
-                // For carousel items
-                const currentSlide = carouselSlides[currentIndex];
+                // For carousel items - use visual index
+                const visualIndex = currentIndex % totalSlides;
+                const currentSlide = carouselSlides[visualIndex];
                 cardTitle = currentSlide.querySelector('.card-title').textContent;
             }
             
@@ -1864,7 +2045,8 @@
                 document.getElementById('gold').scrollIntoView({ behavior: 'smooth' });
             } else if (currentSectionId === 'carousel') {
                 // If on carousel, show engraving options for current slide
-                const currentSlide = carouselSlides[currentIndex];
+                const visualIndex = currentIndex % totalSlides;
+                const currentSlide = carouselSlides[visualIndex];
                 const addToCartBtn = currentSlide.querySelector('.add-to-card');
                 if (addToCartBtn) {
                     addToCartBtn.click();
@@ -1908,16 +2090,17 @@
         `;
         document.head.appendChild(style);
 
-        // Initialize carousel
-        updateCarousel();
-        
-        // Start auto-rotate if carousel is initially visible
+        // Initialize carousel with seamless effect
         setTimeout(() => {
+            // Create seamless carousel
+            const allSlides = createSeamlessCarousel();
+            
+            // Start auto-rotate if carousel is initially visible
             if (carouselSection.getBoundingClientRect().top < window.innerHeight &&
                 carouselSection.getBoundingClientRect().bottom > 0) {
                 startAutoRotate();
             }
-        }, 1000);
+        }, 100);
     </script>
 </body>
 </html>
