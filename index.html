@@ -11,9 +11,9 @@
 
     <style>
         :root {
-            --bg-dark: #0b0b14;
-            --purple: #7c4dff;
-            --purple-soft: #b388ff;
+            --bg-purple: #420239;
+            --bg-blue: #16012c;
+
             --text-main: #ffffff;
             --text-muted: #b9b9c6;
             --card-bg: rgba(255, 255, 255, 0.06);
@@ -30,21 +30,13 @@
         body {
             min-height: 100vh;
             background:
-                /* Main smooth gradient from top to bottom */
-                linear-gradient(180deg,
-                    #2a1f52 0%,
-                    #2a1f52 15%,
-                    #231b45 30%,
-                    #1c1638 50%,
-                    #15122b 70%,
-                    #0f0e1a 85%,
-                    #0a0a12 100%),
-                /* Subtle radial accents for depth */
-                radial-gradient(circle at 20% 10%, rgba(124, 77, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 80% 15%, rgba(179, 136, 255, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 40% 80%, rgba(100, 40, 90, 0.1) 0%, transparent 45%);
+                radial-gradient(circle at bottom left,
+                    var(--bg-purple) 0%,
+                    var(--bg-purple) 40%,
+                    var(--bg-blue) 80%,
+                    var(--bg-blue) 50%);
+
             background-attachment: fixed;
-            background-blend-mode: normal, screen, screen, normal;
             color: var(--text-main);
             overflow-x: hidden;
             position: relative;
@@ -73,7 +65,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(124, 77, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             min-height: 70px;
         }
@@ -720,6 +712,7 @@
 
         /* =========================
    PREMIUM COLOUR CAROUSEL - MOBILE FIRST
+   REORDERED: White, Black, Red, Green, Purple, Blue
 ========================= */
 
         .colour-section {
@@ -731,26 +724,27 @@
             background: radial-gradient(circle at top, rgba(17, 17, 17, 0.9), rgba(0, 0, 0, 0.95));
         }
 
-        /* Backgrounds per colour */
-        .colour-section.black {
-            background: radial-gradient(circle at top, rgba(42, 42, 42, 0.9), rgba(0, 0, 0, 0.95));
-        }
-
+        /* Backgrounds per colour - NEW ORDER */
         .colour-section.white {
             background: radial-gradient(circle at top, rgba(230, 230, 230, 0.9), rgba(159, 159, 159, 0.95));
             color: #000;
+        }
+
+        .colour-section.black {
+            background: radial-gradient(circle at top, rgba(42, 42, 42, 0.9), rgba(0, 0, 0, 0.95));
+            color: #fff;
         }
 
         .colour-section.red {
             background: radial-gradient(circle at top, rgba(122, 28, 28, 0.9), rgba(26, 5, 5, 0.95));
         }
 
-        .colour-section.purple {
-            background: radial-gradient(circle at top, rgba(75, 31, 107, 0.9), rgba(20, 9, 31, 0.95));
-        }
-
         .colour-section.green {
             background: radial-gradient(circle at top, rgba(31, 107, 74, 0.9), rgba(7, 29, 20, 0.95));
+        }
+
+        .colour-section.purple {
+            background: radial-gradient(circle at top, rgba(75, 31, 107, 0.9), rgba(20, 9, 31, 0.95));
         }
 
         .colour-section.blue {
@@ -1166,6 +1160,159 @@
         }
 
         /* =========================
+   FOOTER SECTION
+========================= */
+
+        .footer-section {
+            background: rgba(15, 14, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(124, 77, 255, 0.2);
+            padding: 60px 20px 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--purple-soft);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--purple-soft);
+            transform: translateX(5px);
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .contact-item i {
+            color: var(--purple-soft);
+            font-size: 16px;
+        }
+
+        .footer-newsletter {
+            margin-top: 10px;
+        }
+
+        .newsletter-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .newsletter-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .newsletter-input button {
+            background: linear-gradient(135deg, #7c4dff, #b388ff);
+            color: white;
+            border: none;
+            border-radius: 999px;
+            padding: 12px 24px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .newsletter-input button:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--purple), var(--purple-soft));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--purple);
+            transform: translateY(-3px);
+        }
+
+        /* =========================
    CAROUSEL ARROWS - MOBILE FRIENDLY
 ========================= */
 
@@ -1563,6 +1710,23 @@
             .metal-section {
                 padding: 90px 60px;
             }
+
+            /* Footer Desktop */
+            .footer-section {
+                padding: 80px 40px 60px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 60px;
+            }
+
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+            }
         }
 
         @media (min-width: 1024px) {
@@ -1851,8 +2015,7 @@
                         </div>
 
                         <div class="buttons">
-                            <button class="btn-primary" id="heroAddToCart">Browse finishes</button>
-                            <button class="btn-secondary">Pick your Card</button>
+                            <button class="btn-primary" id="heroAddToCart">Pick your Card</button>
                         </div>
                     </div>
 
@@ -2017,7 +2180,7 @@
             </div>
         </section>
 
-        <!-- COLOR CAROUSEL - Keep its unique background -->
+        <!-- COLOR CAROUSEL - REORDERED: White, Black, Red, Green, Purple, Blue -->
         <section class="colour-section" id="colours">
             <h2>Pick Your Custom Colour</h2>
             <p class="subtitle">Swipe or tap to browse</p>
@@ -2025,17 +2188,18 @@
             <div class="premium-carousel">
                 <button class="carousel-arrow left" aria-label="Previous">‹</button>
 
-                <div class="premium-card active" data-colour="Black">
-                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Black Card">
-                    <div class="card-label">Black</div>
-                    <div class="card-price">£95</div>
-                </div>
-
-                <div class="premium-card" data-colour="White">
+                <!-- REORDERED CARDS: White first, then Black, Red, Green, Purple, Blue -->
+                <div class="premium-card active" data-colour="White">
                     <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                         alt="White Card">
                     <div class="card-label">White</div>
+                    <div class="card-price">£95</div>
+                </div>
+
+                <div class="premium-card" data-colour="Black">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Black Card">
+                    <div class="card-label">Black</div>
                     <div class="card-price">£95</div>
                 </div>
 
@@ -2046,17 +2210,17 @@
                     <div class="card-price">£95</div>
                 </div>
 
-                <div class="premium-card" data-colour="Purple">
-                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                        alt="Purple Card">
-                    <div class="card-label">Purple</div>
-                    <div class="card-price">£95</div>
-                </div>
-
                 <div class="premium-card" data-colour="Green">
                     <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                         alt="Green Card">
                     <div class="card-label">Green</div>
+                    <div class="card-price">£95</div>
+                </div>
+
+                <div class="premium-card" data-colour="Purple">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Purple Card">
+                    <div class="card-label">Purple</div>
                     <div class="card-price">£95</div>
                 </div>
 
@@ -2084,7 +2248,7 @@
             </div>
 
             <div class="actions">
-                <button class="btn-primary" id="addBtn">🛒 Add Black</button>
+                <button class="btn-primary" id="addBtn">🛒 Add White</button>
                 <button class="btn-secondary">↗ Example</button>
             </div>
         </section>
@@ -2295,6 +2459,70 @@
                 </div>
             </div>
         </section>
+
+        <!-- FOOTER SECTION -->
+        <footer class="footer-section" id="footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3>ExposureBoost</h3>
+                        <p style="color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-top: 10px;">
+                            Premium NFC cards that make unforgettable first impressions.
+                            Elevate your brand with luxury digital profiles.
+                        </p>
+                        <div class="footer-social">
+                            <a href="#" class="social-icon">📱</a>
+                            <a href="#" class="social-icon">📷</a>
+                            <a href="#" class="social-icon">💼</a>
+                            <a href="#" class="social-icon">✉️</a>
+                        </div>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <div class="footer-links">
+                            <a href="#hero">Home</a>
+                            <a href="#metals">Metal Cards</a>
+                            <a href="#colours">Colour Cards</a>
+                            <a href="#az">A-Z Catalogue</a>
+                            <a href="#faq">FAQ</a>
+                        </div>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3>Contact Us</h3>
+                        <div class="footer-contact">
+                            <div class="contact-item">
+                                <i>📧</i>
+                                <span>support@exposureboost.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i>📞</i>
+                                <span>+44 20 1234 5678</span>
+                            </div>
+                            <div class="contact-item">
+                                <i>📍</i>
+                                <span>London, UK</span>
+                            </div>
+                        </div>
+                        <div class="footer-newsletter">
+                            <h4 style="font-size: 15px; margin-bottom: 10px; color: var(--text-main);">Stay Updated</h4>
+                            <div class="newsletter-input">
+                                <input type="email" placeholder="Your email">
+                                <button>Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="footer-logo">ExposureBoost</div>
+                    <div class="footer-copyright">
+                        © 2024 ExposureBoost. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
@@ -2342,6 +2570,36 @@
                 nav.classList.remove('scrolled');
             }
         });
+
+        // Purple background when scrolling past footer
+        const footer = document.getElementById('footer');
+        const body = document.body;
+
+        function checkFooterVisibility() {
+            const footerRect = footer.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+
+            // If footer is visible in viewport
+            if (footerRect.top < windowHeight) {
+                // Calculate how much of the footer is visible (0 to 1)
+                const footerVisibleRatio = (windowHeight - footerRect.top) / footerRect.height;
+
+                // Add purple background class when footer is more than 30% visible
+                if (footerVisibleRatio > 0.3) {
+                    body.classList.add('purple-bg');
+                } else {
+                    body.classList.remove('purple-bg');
+                }
+            } else {
+                body.classList.remove('purple-bg');
+            }
+        }
+
+        window.addEventListener('scroll', checkFooterVisibility);
+        window.addEventListener('resize', checkFooterVisibility);
+
+        // Initial check
+        checkFooterVisibility();
 
         // Cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -2484,14 +2742,14 @@
             updateCart();
         });
 
-        // Color Carousel
+        // Color Carousel - REORDERED: White, Black, Red, Green, Purple, Blue
         const cards = document.querySelectorAll('.premium-card');
         const dots = document.querySelectorAll('.dot');
         const section = document.getElementById('colours');
         const prevBtn = document.querySelector('.colour-section .carousel-arrow.left');
         const nextBtn = document.querySelector('.colour-section .carousel-arrow.right');
 
-        const colours = ['black', 'white', 'red', 'purple', 'green', 'blue'];
+        const colours = ['white', 'black', 'red', 'green', 'purple', 'blue']; // NEW ORDER
         let index = 0;
 
         function updateCarousel(i) {
@@ -2594,7 +2852,7 @@
         showSlide(0);
 
         // SNAPPY SCROLLING - Fixed implementation with mobile optimization
-        document.querySelectorAll('.nav-center a, .mobile-menu a').forEach(anchor => {
+        document.querySelectorAll('.nav-center a, .mobile-menu a, .footer-links a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
@@ -2638,13 +2896,13 @@
             });
         });
 
-        // Add smooth scroll to hero button
+        // Add smooth scroll to hero button (now "Pick your Card")
         document.getElementById('heroAddToCart').addEventListener('click', function (e) {
             e.preventDefault();
-            const metalsSection = document.getElementById('metals');
-            if (metalsSection) {
+            const coloursSection = document.getElementById('colours'); // Scroll to colours section
+            if (coloursSection) {
                 const navHeight = nav.offsetHeight;
-                const targetPosition = metalsSection.offsetTop - navHeight;
+                const targetPosition = coloursSection.offsetTop - navHeight;
 
                 const startPosition = window.pageYOffset;
                 const distance = targetPosition - startPosition;
