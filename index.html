@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ExposureBoost – Premium NFC</title>
 
-    <!-- Google Font (closest public match) -->
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
@@ -20,6 +20,35 @@
             --border-soft: rgba(255, 255, 255, 0.12);
         }
 
+        /* REMOVE SMOOTH SCROLLING FROM HTML */
+        html {
+            scroll-behavior: auto;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                /* Main smooth gradient from top to bottom */
+                linear-gradient(180deg,
+                    #2a1f52 0%,
+                    #2a1f52 15%,
+                    #231b45 30%,
+                    #1c1638 50%,
+                    #15122b 70%,
+                    #0f0e1a 85%,
+                    #0a0a12 100%),
+                /* Subtle radial accents for depth */
+                radial-gradient(circle at 20% 10%, rgba(124, 77, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 15%, rgba(179, 136, 255, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(100, 40, 90, 0.1) 0%, transparent 45%);
+            background-attachment: fixed;
+            background-blend-mode: normal, screen, screen, normal;
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Enhanced scroll performance */
         * {
             margin: 0;
             padding: 0;
@@ -27,22 +56,26 @@
             font-family: 'Inter', sans-serif;
         }
 
-        body {
-            min-height: 100vh;
-            background:
-                radial-gradient(circle at left, #2a2470 0%, transparent 45%),
-                radial-gradient(circle at right, #5b214f 0%, transparent 45%),
-                var(--bg-dark);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
-
-        /* NAV */
+        /* STICKY NAV */
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 24px 64px;
+            background: rgba(15, 14, 26, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(124, 77, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav.scrolled {
+            padding: 16px 64px;
+            background: rgba(15, 14, 26, 0.98);
         }
 
         .logo {
@@ -66,6 +99,11 @@
             color: var(--text-muted);
             font-weight: 500;
             font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-center a:hover {
+            color: var(--purple-soft);
         }
 
         .nav-right {
@@ -84,6 +122,28 @@
             justify-content: center;
             font-size: 16px;
             cursor: pointer;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--purple);
+            color: white;
+            font-size: 11px;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
         }
 
         .whatsapp {
@@ -93,16 +153,60 @@
             border-radius: 999px;
             font-weight: 600;
             font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp:hover {
+            background: rgba(37, 211, 102, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* MAIN CONTAINER PADDING FOR STICKY NAV */
+        .main-container {
+            padding-top: 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* TRANSPARENT SECTIONS THAT REVEAL THE GRADIENT BACKGROUND */
+        .seamless-section {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        /* Enhanced section overlays for better blending */
+        .seamless-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(124, 77, 255, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 80% 20%, rgba(179, 136, 255, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: -1;
+            mix-blend-mode: soft-light;
+        }
+
+        /* Content containers */
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            position: relative;
+            z-index: 2;
         }
 
         /* HERO */
         .hero {
-            max-width: 1200px;
-            margin: 60px auto;
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 80px;
-            padding: 0 40px;
             align-items: center;
         }
 
@@ -176,6 +280,12 @@
             font-weight: 600;
             cursor: pointer;
             font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(124, 77, 255, 0.3);
         }
 
         .btn-secondary {
@@ -187,6 +297,13 @@
             font-weight: 600;
             cursor: pointer;
             font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--purple-soft);
+            transform: translateY(-2px);
         }
 
         /* IMAGE CARD */
@@ -196,6 +313,7 @@
             padding: 18px;
             position: relative;
             box-shadow: 0 0 0 1px var(--border-soft);
+            backdrop-filter: blur(10px);
         }
 
         .card img {
@@ -213,13 +331,7 @@
             padding: 0 4px;
         }
 
-        /* SECOND SECTION - Premium Impact Section */
-        .premium-section {
-            max-width: 1200px;
-            margin: 100px auto;
-            padding: 0 40px;
-        }
-
+        /* FIRST IMPRESSIONS SECTION */
         .section-header {
             max-width: 800px;
             margin-bottom: 60px;
@@ -250,10 +362,18 @@
         }
 
         .benefit-card {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             padding: 32px;
-            border: 1px solid var(--border-soft);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple-soft);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .benefit-icon {
@@ -291,6 +411,7 @@
             padding: 40px;
             border: 1px solid rgba(124, 77, 255, 0.3);
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         .cta-title {
@@ -316,282 +437,6 @@
         }
 
         /* =========================
-   GOLD METAL
-========================= */
-
-        .gold-section {
-            background:
-                radial-gradient(circle at top left, #f6d36a, transparent 45%),
-                radial-gradient(circle at bottom right, #a97c12, transparent 45%),
-                linear-gradient(180deg, #d4af37, #8f6f14);
-        }
-
-        /* =========================
-   SILVER METAL
-========================= */
-
-        .silver-section {
-            background:
-                radial-gradient(circle at top left, #f1f1f1, transparent 45%),
-                radial-gradient(circle at bottom right, #9a9a9a, transparent 45%),
-                linear-gradient(180deg, #d9d9d9, #7c7c7c);
-        }
-
-        /* =========================
-   ROSE GOLD METAL
-========================= */
-
-        .rose-gold-section {
-            background:
-                radial-gradient(circle at top left, #f5c1cf, transparent 45%),
-                radial-gradient(circle at bottom right, #b26b79, transparent 45%),
-                linear-gradient(180deg, #d8a1ad, #8b5662);
-        }
-
-        .metal-section::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(120deg,
-                    transparent 30%,
-                    rgba(255, 255, 255, 0.12),
-                    transparent 70%);
-            opacity: 0.25;
-            animation: shimmer 6s infinite linear;
-        }
-
-        @keyframes shimmer {
-            from {
-                transform: translateX(-100%);
-            }
-
-            to {
-                transform: translateX(100%);
-            }
-        }
-
-        /* IMAGE CARD */
-        .gold-card {
-            background: rgba(0, 0, 0, 0.18);
-            padding: 18px;
-            border-radius: 28px;
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
-        }
-
-        .gold-card img {
-            width: 100%;
-            border-radius: 20px;
-            display: block;
-        }
-
-        .gold-card-footer {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            opacity: 0.85;
-            margin-top: 12px;
-            padding: 0 4px;
-        }
-
-        /* =========================
-   PREMIUM COLOUR CAROUSEL
-========================= */
-
-        .colour-section {
-            min-height: 100vh;
-            text-align: center;
-            padding: 120px 40px;
-            color: #fff;
-            transition: background 0.6s ease;
-            background: radial-gradient(circle at top, #111, #000);
-        }
-
-        /* Backgrounds per colour */
-        .colour-section.black {
-            background: radial-gradient(circle at top, #2a2a2a, #000);
-        }
-
-        .colour-section.white {
-            background: radial-gradient(circle at top, #e6e6e6, #9f9f9f);
-            color: #000;
-        }
-
-        .colour-section.red {
-            background: radial-gradient(circle at top, #7a1c1c, #1a0505);
-        }
-
-        .colour-section.purple {
-            background: radial-gradient(circle at top, #4b1f6b, #14091f);
-        }
-
-        .colour-section.green {
-            background: radial-gradient(circle at top, #1f6b4a, #071d14);
-        }
-
-        .colour-section.blue {
-            background: radial-gradient(circle at top, #1f3f6b, #060f1f);
-        }
-
-        .premium-carousel {
-            position: relative;
-            height: 360px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .premium-card {
-            position: absolute;
-            width: 240px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 16px;
-            opacity: 0;
-            transform: scale(0.92);
-            transition: all 0.45s ease;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
-            pointer-events: none;
-        }
-
-        .premium-card img {
-            width: 100%;
-            border-radius: 16px;
-            margin-bottom: 14px;
-        }
-
-        .premium-card.active {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto;
-        }
-
-        .card-label {
-            font-weight: 700;
-        }
-
-        .card-price {
-            font-size: 13px;
-            opacity: 0.75;
-        }
-
-        /* Dots */
-        .dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 26px;
-        }
-
-        .dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.35);
-            cursor: pointer;
-        }
-
-        .dot.active {
-            background: #b388ff;
-        }
-
-        .price-main {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
-
-        .price-main span {
-            font-size: 14px;
-            font-weight: 400;
-            opacity: 0.7;
-        }
-
-        .actions {
-            display: flex;
-            gap: 14px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .examples-section {
-            min-height: 100vh;
-            background:
-                radial-gradient(circle at left, #2c1b47, transparent 45%),
-                radial-gradient(circle at right, #3a1a2f, transparent 45%),
-                #0b0b14;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 120px 40px;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .examples-inner {
-            max-width: 900px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .examples-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.08);
-            font-size: 13px;
-            margin-bottom: 28px;
-        }
-
-        .examples-inner h2 {
-            font-size: 44px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .examples-subtitle {
-            font-size: 15px;
-            opacity: 0.75;
-            margin-bottom: 36px;
-        }
-
-        .examples-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .example-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 22px;
-            border-radius: 18px;
-            text-decoration: none;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.25s ease;
-        }
-
-        .example-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.18);
-        }
-
-        .example-item span:first-child {
-            font-weight: 600;
-        }
-
-        .arrow {
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        /* =========================
    METAL SECTION BASE
 ========================= */
 
@@ -603,6 +448,22 @@
             color: #fff;
             position: relative;
             overflow: hidden;
+        }
+
+        /* RESTORE ORIGINAL METAL BACKGROUNDS */
+        .metal-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(120deg,
+                    transparent 30%,
+                    rgba(255, 255, 255, 0.12),
+                    transparent 70%);
+            opacity: 0.25;
+            animation: shimmer 6s infinite linear;
+            pointer-events: none;
+            z-index: 1;
         }
 
         .metal-container {
@@ -686,152 +547,161 @@
         }
 
         /* =========================
-   CAROUSEL ARROWS
+   ORIGINAL METAL BACKGROUNDS
 ========================= */
 
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(6px);
-            color: #fff;
-            font-size: 22px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.25s ease;
-            z-index: 5;
+        .gold-section {
+            background:
+                radial-gradient(circle at top left, #f6d36a, transparent 45%),
+                radial-gradient(circle at bottom right, #a97c12, transparent 45%),
+                linear-gradient(180deg, #d4af37, #8f6f14);
         }
 
-        .carousel-arrow:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-50%) scale(1.08);
+        .silver-section {
+            background:
+                radial-gradient(circle at top left, #f1f1f1, transparent 45%),
+                radial-gradient(circle at bottom right, #9a9a9a, transparent 45%),
+                linear-gradient(180deg, #d9d9d9, #7c7c7c);
         }
 
-        .carousel-arrow.left {
-            left: -70px;
+        .rose-gold-section {
+            background:
+                radial-gradient(circle at top left, #f5c1cf, transparent 45%),
+                radial-gradient(circle at bottom right, #b26b79, transparent 45%),
+                linear-gradient(180deg, #d8a1ad, #8b5662);
         }
 
-        .carousel-arrow.right {
-            right: -70px;
+        @keyframes shimmer {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(100%);
+            }
         }
 
         /* =========================
-   FAQ SECTION
+   PREMIUM COLOUR CAROUSEL
 ========================= */
 
-        .faq-section {
+        .colour-section {
             min-height: 100vh;
-            background:
-                radial-gradient(circle at left, #2a1b47, transparent 45%),
-                radial-gradient(circle at right, #3a1a2f, transparent 45%),
-                #0b0b14;
-            color: #fff;
+            text-align: center;
             padding: 120px 40px;
+            color: #fff;
+            transition: background 0.6s ease;
+            background: radial-gradient(circle at top, rgba(17, 17, 17, 0.9), rgba(0, 0, 0, 0.95));
+        }
+
+        /* Backgrounds per colour */
+        .colour-section.black {
+            background: radial-gradient(circle at top, rgba(42, 42, 42, 0.9), rgba(0, 0, 0, 0.95));
+        }
+
+        .colour-section.white {
+            background: radial-gradient(circle at top, rgba(230, 230, 230, 0.9), rgba(159, 159, 159, 0.95));
+            color: #000;
+        }
+
+        .colour-section.red {
+            background: radial-gradient(circle at top, rgba(122, 28, 28, 0.9), rgba(26, 5, 5, 0.95));
+        }
+
+        .colour-section.purple {
+            background: radial-gradient(circle at top, rgba(75, 31, 107, 0.9), rgba(20, 9, 31, 0.95));
+        }
+
+        .colour-section.green {
+            background: radial-gradient(circle at top, rgba(31, 107, 74, 0.9), rgba(7, 29, 20, 0.95));
+        }
+
+        .colour-section.blue {
+            background: radial-gradient(circle at top, rgba(31, 63, 107, 0.9), rgba(6, 15, 31, 0.95));
+        }
+
+        .premium-carousel {
+            position: relative;
+            height: 360px;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: 40px;
         }
 
-        .faq-inner {
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .faq-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 999px;
+        .premium-card {
+            position: absolute;
+            width: 240px;
             background: rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 16px;
+            opacity: 0;
+            transform: scale(0.92);
+            transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+            pointer-events: none;
+        }
+
+        .premium-card img {
+            width: 100%;
+            border-radius: 16px;
+            display: block;
+        }
+
+        .premium-card.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .card-label {
+            font-weight: 700;
+        }
+
+        .card-price {
             font-size: 13px;
+            opacity: 0.75;
+        }
+
+        /* Dots */
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 26px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .dot.active {
+            background: #b388ff;
+            transform: scale(1.2);
+        }
+
+        .price-main {
+            font-size: 28px;
+            font-weight: 700;
             margin-bottom: 24px;
         }
 
-        .faq-inner h2 {
-            font-size: 44px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .faq-subtitle {
-            font-size: 15px;
-            opacity: 0.75;
-            margin-bottom: 46px;
-            line-height: 1.6;
-        }
-
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        /* FAQ ITEM */
-        .faq-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.10);
-            border-radius: 18px;
-            overflow: hidden;
-            text-align: left;
-            transition: all 0.25s ease;
-        }
-
-        .faq-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.18);
-        }
-
-        /* QUESTION */
-        .faq-question {
-            width: 100%;
-            background: none;
-            border: none;
-            color: #fff;
-            padding: 20px 22px;
-            font-size: 15px;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            text-align: left;
-        }
-
-        /* ICON */
-        .faq-icon {
-            font-size: 18px;
-            opacity: 0.7;
-            transition: transform 0.25s ease;
-        }
-
-        /* ANSWER */
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 22px;
+        .price-main span {
             font-size: 14px;
-            opacity: 0.8;
-            line-height: 1.6;
-            transition: all 0.35s ease;
+            font-weight: 400;
+            opacity: 0.7;
         }
 
-        /* OPEN STATE */
-        .faq-item.active .faq-answer {
-            max-height: 300px;
-            padding: 0 22px 20px;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
+        .actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         /* =========================================================
@@ -840,10 +710,6 @@
 
         .az-carousel-section {
             min-height: 100vh;
-            background:
-                radial-gradient(circle at top left, #7c4dff, transparent 45%),
-                radial-gradient(circle at bottom right, #b388ff, transparent 45%),
-                #0b0b14;
             color: #fff;
             padding: 120px 40px;
             text-align: center;
@@ -858,8 +724,9 @@
         }
 
         .az-carousel-section .subtitle {
-            opacity: 0.75;
+            opacity: 0.85;
             margin-bottom: 40px;
+            font-size: 16px;
         }
 
         /* SEARCH */
@@ -874,12 +741,12 @@
             flex: 1;
             padding: 16px 22px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: #fff;
             font-size: 14px;
             outline: none;
-            transition: all 0.25s ease;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .az-search input::placeholder {
@@ -889,6 +756,7 @@
         .az-search input:focus {
             border-color: #b388ff;
             box-shadow: 0 0 0 1px rgba(179, 136, 255, 0.5);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         #azSearchBtn {
@@ -899,7 +767,7 @@
             font-weight: 600;
             cursor: pointer;
             color: #fff;
-            transition: all 0.25s ease;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         #azSearchBtn:hover {
@@ -922,7 +790,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            transition: opacity 0.6s ease;
+            transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             pointer-events: none;
         }
 
@@ -940,7 +808,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             opacity: 0.9;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             margin-bottom: 30px;
         }
 
@@ -956,11 +824,18 @@
         /* PHYSICAL CARD */
         .az-card {
             width: 240px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 14px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .az-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple-soft);
         }
 
         .az-card img {
@@ -973,7 +848,7 @@
             display: flex;
             justify-content: space-between;
             font-size: 12px;
-            opacity: 0.7;
+            opacity: 0.85;
             margin-top: 10px;
             padding: 0 4px;
         }
@@ -983,14 +858,15 @@
             width: 260px;
             height: 380px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 16px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             animation: floatPage 6s ease-in-out infinite;
+            backdrop-filter: blur(10px);
         }
 
         .az-page-header {
@@ -1010,7 +886,7 @@
         .az-page-line {
             height: 14px;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .az-page-line.short {
@@ -1026,34 +902,373 @@
         }
 
         @keyframes floatPage {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-8px);
             }
+        }
+
+        /* =========================
+   FAQ SECTION
+========================= */
+
+        .faq-section {
+            min-height: 100vh;
+            color: #fff;
+            padding: 120px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .faq-inner {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .faq-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 13px;
+            margin-bottom: 24px;
+        }
+
+        .faq-inner h2 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .faq-subtitle {
+            font-size: 15px;
+            opacity: 0.85;
+            margin-bottom: 46px;
+            line-height: 1.6;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* FAQ ITEM */
+        .faq-item {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 18px;
+            overflow: hidden;
+            text-align: left;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* QUESTION */
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #fff;
+            padding: 20px 22px;
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        /* ICON */
+        .faq-icon {
+            font-size: 18px;
+            opacity: 0.7;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* ANSWER */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 22px;
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.6;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* OPEN STATE */
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 22px 20px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* =========================
+   CAROUSEL ARROWS
+========================= */
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(6px);
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 5;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .carousel-arrow.left {
+            left: -70px;
+        }
+
+        .carousel-arrow.right {
+            right: -70px;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background: rgba(15, 14, 26, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 30px;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            border-left: 1px solid rgba(124, 77, 255, 0.3);
+            overflow-y: auto;
+        }
+
+        .cart-modal.active {
+            display: block;
+            animation: slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--purple), var(--purple-soft));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .cart-items {
+            margin-bottom: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .cart-item:hover {
+            transform: translateX(-3px);
+        }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--purple-soft);
+            font-size: 14px;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            padding: 5px;
+            font-size: 18px;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .remove-item:hover {
+            transform: scale(1.2);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #7c4dff, #b388ff);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+        }
+
+        .empty-cart p {
+            margin-bottom: 20px;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #7c4dff, #b388ff);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(124, 77, 255, 0.3);
+            z-index: 1001;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         /* =========================================================
    RESPONSIVE - MOBILE
 ========================================================= */
 
+        @media (max-width: 1200px) {
+            .hero {
+                gap: 40px;
+                padding: 0 24px;
+            }
+
+            .metal-container {
+                gap: 40px;
+            }
+
+            .content-container {
+                padding: 60px 24px;
+            }
+        }
+
         @media (max-width: 900px) {
             .hero {
                 grid-template-columns: 1fr;
                 gap: 50px;
+                text-align: center;
+                padding: 0 24px;
             }
 
             h1 {
                 font-size: 40px;
             }
 
-            .benefits-grid {
-                grid-template-columns: 1fr;
+            .subtext {
+                margin: 0 auto 28px;
             }
 
-            .premium-section {
-                margin: 60px auto;
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .section-title {
@@ -1064,9 +1279,18 @@
                 font-size: 18px;
             }
 
+            .benefit-card {
+                padding: 24px;
+            }
+
+            .benefit-title {
+                font-size: 22px;
+            }
+
             .metal-container {
                 grid-template-columns: 1fr;
                 gap: 50px;
+                text-align: center;
             }
 
             .metal-content h2 {
@@ -1076,11 +1300,49 @@
             .metal-section {
                 padding: 60px 24px;
             }
+
+            .metal-content p {
+                margin: 0 auto 22px;
+            }
+
+            .metal-actions {
+                justify-content: center;
+            }
+
+            .az-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .az-letter {
+                font-size: 60px;
+            }
+
+            .az-carousel {
+                min-height: 600px;
+            }
+
+            .faq-section,
+            .az-carousel-section {
+                padding: 80px 24px;
+            }
+
+            .nav {
+                padding: 20px 24px;
+            }
+
+            .nav.scrolled {
+                padding: 16px 24px;
+            }
+
+            .content-container {
+                padding: 40px 24px;
+            }
         }
 
         @media (max-width: 768px) {
             .nav {
-                padding: 20px 24px;
+                padding: 16px 20px;
                 flex-wrap: wrap;
                 gap: 16px;
             }
@@ -1096,16 +1358,12 @@
                 justify-content: center;
                 margin-top: 10px;
                 gap: 20px;
+                padding: 10px 20px;
             }
 
             .whatsapp {
                 font-size: 12px;
                 padding: 8px 14px;
-            }
-
-            .hero {
-                padding: 0 24px;
-                margin: 40px auto;
             }
 
             h1 {
@@ -1116,8 +1374,12 @@
                 font-size: 15px;
             }
 
-            .premium-section {
-                padding: 0 24px;
+            .features {
+                justify-content: center;
+            }
+
+            .buttons {
+                justify-content: center;
             }
 
             .section-title {
@@ -1128,62 +1390,59 @@
                 font-size: 16px;
             }
 
-            .benefit-card {
-                padding: 24px;
-            }
-
-            .benefit-title {
-                font-size: 20px;
-            }
-
             .cta-box {
                 padding: 30px 20px;
             }
 
-            .cta-title {
-                font-size: 24px;
-            }
-
-            .examples-section {
-                padding: 80px 24px;
-            }
-
-            .examples-inner h2 {
-                font-size: 32px;
-            }
-
-            .example-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-
             .colour-section {
-                padding: 80px 24px;
+                padding: 80px 20px;
             }
 
             .premium-carousel {
-                height: 320px;
+                height: 300px;
             }
 
             .premium-card {
                 width: 200px;
             }
 
+            .carousel-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
+
             .carousel-arrow.left {
-                left: 10px;
+                left: -40px;
             }
 
             .carousel-arrow.right {
-                right: 10px;
+                right: -40px;
             }
 
             .price-main {
                 font-size: 24px;
             }
 
+            .az-carousel-section {
+                padding: 80px 20px;
+            }
+
+            .az-carousel-section h2 {
+                font-size: 32px;
+            }
+
+            .az-search {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            #azSearchBtn {
+                padding: 16px;
+            }
+
             .faq-section {
-                padding: 80px 24px;
+                padding: 80px 20px;
             }
 
             .faq-inner h2 {
@@ -1191,556 +1450,797 @@
             }
 
             .faq-question {
+                padding: 16px 20px;
                 font-size: 14px;
-                padding: 16px 18px;
             }
 
-            .faq-answer {
-                font-size: 13px;
-            }
-
-            .az-carousel-section {
-                padding: 80px 24px;
-            }
-
-            .az-carousel-section h2 {
-                font-size: 32px;
-            }
-
-            .az-letter {
-                font-size: 56px;
-                margin-bottom: 30px;
-            }
-
-            .az-content {
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .az-card {
-                width: 200px;
-            }
-
-            .az-webpage {
+            .cart-modal {
                 width: 100%;
-                max-width: 280px;
+                max-width: none;
+                padding: 20px;
             }
 
-            .az-carousel {
-                min-height: 600px;
-            }
-
-            .az-search {
-                flex-direction: column;
-            }
-
-            #azSearchBtn {
-                padding: 14px 20px;
+            .content-container {
+                padding: 30px 20px;
             }
         }
 
         @media (max-width: 480px) {
+            .nav {
+                padding: 12px 16px;
+            }
+
+            .nav.scrolled {
+                padding: 10px 16px;
+            }
+
             h1 {
                 font-size: 28px;
             }
 
-            .section-title {
+            .price {
                 font-size: 24px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 12px 20px;
+                font-size: 13px;
             }
 
             .metal-content h2 {
                 font-size: 32px;
             }
 
-            .az-carousel-section h2 {
-                font-size: 28px;
+            .metal-price {
+                font-size: 24px;
+            }
+
+            .premium-card {
+                width: 180px;
+            }
+
+            .az-card,
+            .az-webpage {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .az-webpage {
+                height: 320px;
             }
 
             .az-letter {
-                font-size: 48px;
+                font-size: 50px;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .cart-item img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .content-container {
+                padding: 20px 16px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-center {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .nav-center a {
+                font-size: 12px;
+            }
+
+            .features {
+                gap: 8px;
+            }
+
+            .feature {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .premium-card {
+                width: 160px;
+                padding: 12px;
+            }
+
+            .price-main {
+                font-size: 22px;
+            }
+
+            .actions {
+                gap: 10px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 10px 16px;
+                font-size: 12px;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">£0</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
 
-    <!-- NAV -->
-    <nav class="nav">
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        Item added to cart!
+    </div>
+
+    <!-- STICKY NAV -->
+    <nav class="nav" id="mainNav">
         <div class="logo">ExposureBoost <span style="opacity:.6;">Tech-Premium NFC</span></div>
 
         <div class="nav-center">
-            <a href="#shop">Shop</a>
-            <a href="#examples">Examples</a>
+            <a href="#hero">Home</a>
+            <a href="#impressions">First Impressions</a>
+            <a href="#metals">Metal Cards</a>
+            <a href="#colours">Colours</a>
+            <a href="#az">A-Z</a>
             <a href="#faq">FAQ</a>
         </div>
 
         <div class="nav-right">
-            <div class="icon-btn">🛒</div>
+            <div class="icon-btn" id="cartIcon">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
             <div class="whatsapp">WhatsApp</div>
         </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div>
-            <div class="badge">● Premium NFC Cards</div>
+    <div class="main-container">
+        <!-- HERO SECTION - Reveals top part of gradient -->
+        <section class="seamless-section" id="hero">
+            <div class="content-container">
+                <div class="hero">
+                    <div>
+                        <div class="badge">● Premium NFC Cards</div>
 
-            <h1>The business card<br>people don't forget.</h1>
+                        <h1>The business card<br>people don't forget.</h1>
 
-            <p class="subtext">
-                Luxury NFC cards + a premium digital profile.
-                Tap once and you instantly look like a high-ticket brand.
-            </p>
+                        <p class="subtext">
+                            Luxury NFC cards + a premium digital profile.
+                            Tap once and you instantly look like a high-ticket brand.
+                        </p>
 
-            <div class="features">
-                <div class="feature">⚡ Works on all phones</div>
-                <div class="feature">📲 Tap → Save → WhatsApp</div>
+                        <div class="features">
+                            <div class="feature">⚡ Works on all phones</div>
+                            <div class="feature">📲 Tap → Save → WhatsApp</div>
+                        </div>
+
+                        <div class="price">
+                            £95 <span>one-time · card + profile</span>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="btn-primary" id="heroAddToCart">Browse finishes</button>
+                            <button class="btn-secondary">Pick your Card</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                            alt="NFC Cards">
+                        <div class="card-footer">
+                            <span>Tap → instant impression</span>
+                            <span>ExposureBoost</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FIRST IMPRESSIONS SECTION - Reveals next part of gradient -->
+        <section class="seamless-section" id="impressions">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2 class="section-title">First impressions happen in 3 seconds.</h2>
+                    <p class="section-subtitle">If your card feels cheap, people assume your service is cheap. A premium
+                        card
+                        upgrades how people treat you.</p>
+                </div>
+
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚖️</div>
+                        <h3 class="benefit-title">Status</h3>
+                        <p class="benefit-description">
+                            The weight and finish signal quality before you even speak.
+                            A <span class="benefit-highlight">premium card</span> establishes authority and commands
+                            respect
+                            from the first touch.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🧠</div>
+                        <h3 class="benefit-title">Memory</h3>
+                        <p class="benefit-description">
+                            People remember "the one with the premium card".
+                            Stand out in a sea of forgettable contacts with a <span class="benefit-highlight">tangible
+                                impression</span> that lasts.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🛡️</div>
+                        <h3 class="benefit-title">Trust</h3>
+                        <p class="benefit-description">
+                            Premium presentation makes you look like the safe choice.
+                            Quality materials signal <span class="benefit-highlight">professionalism and
+                                reliability</span>,
+                            building instant credibility.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cta-box">
+                    <h3 class="cta-title">Play your finish right</h3>
+                    <p class="cta-subtitle">Upgrade from disposable to memorable. Make every handshake count with a card
+                        that
+                        speaks volumes before you do.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary">Browse Premium Finishes</button>
+                        <button class="btn-secondary">Ask on WhatsApp</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- METAL SECTIONS - Original metal backgrounds restored -->
+        <section class="metal-section gold-section" id="metals">
+            <div class="metal-container">
+                <div class="metal-content">
+                    <div class="metal-badge">● Gold Metal Card</div>
+                    <h2>Gold Metal Card</h2>
+                    <p>
+                        Tap once → instant premium impression.
+                        Your profile opens with WhatsApp, website,
+                        socials & reviews.
+                    </p>
+                    <div class="metal-price">
+                        £95 <span>one-time · card + profile</span>
+                    </div>
+                    <div class="metal-actions">
+                        <button class="btn-primary add-to-cart" data-name="Gold Metal Card" data-price="95">🛒 Add to
+                            cart</button>
+                        <button class="btn-secondary">↗ Example</button>
+                    </div>
+                </div>
+                <div class="metal-card">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Gold Metal NFC Card">
+                    <div class="metal-card-footer">
+                        <span>Tap to connect</span>
+                        <span>ExposureBoost</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="metal-section silver-section">
+            <div class="metal-container">
+                <div class="metal-content">
+                    <div class="metal-badge">● Silver Metal Card</div>
+                    <h2>Silver Metal Card</h2>
+                    <p>
+                        Clean. Professional. Timeless.
+                        A brushed-metal finish that signals
+                        trust, clarity and authority.
+                    </p>
+                    <div class="metal-price">
+                        £95 <span>one-time · card + profile</span>
+                    </div>
+                    <div class="metal-actions">
+                        <button class="btn-primary add-to-cart" data-name="Silver Metal Card" data-price="95">🛒 Add to
+                            cart</button>
+                        <button class="btn-secondary">↗ Example</button>
+                    </div>
+                </div>
+                <div class="metal-card">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Silver Metal NFC Card">
+                    <div class="metal-card-footer">
+                        <span>Tap to connect</span>
+                        <span>ExposureBoost</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="metal-section rose-gold-section">
+            <div class="metal-container">
+                <div class="metal-content">
+                    <div class="metal-badge">● Rose-Gold Metal Card</div>
+                    <h2>Rose-Gold Metal Card</h2>
+                    <p>
+                        Warm, elegant, unforgettable.
+                        Perfect for luxury, beauty, fashion
+                        and premium personal brands.
+                    </p>
+                    <div class="metal-price">
+                        £95 <span>one-time · card + profile</span>
+                    </div>
+                    <div class="metal-actions">
+                        <button class="btn-primary add-to-cart" data-name="Rose-Gold Metal Card" data-price="95">🛒 Add
+                            to
+                            cart</button>
+                        <button class="btn-secondary">↗ Example</button>
+                    </div>
+                </div>
+                <div class="metal-card">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Rose-Gold Metal NFC Card">
+                    <div class="metal-card-footer">
+                        <span>Tap to connect</span>
+                        <span>ExposureBoost</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLOR CAROUSEL - Keep its unique background -->
+        <section class="colour-section" id="colours">
+            <h2>Pick Your Custom Colour</h2>
+            <p class="subtitle">Swipe or tap to browse</p>
+
+            <div class="premium-carousel">
+                <button class="carousel-arrow left" aria-label="Previous">‹</button>
+
+                <div class="premium-card active" data-colour="Black">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Black Card">
+                    <div class="card-label">Black</div>
+                    <div class="card-price">£95</div>
+                </div>
+
+                <div class="premium-card" data-colour="White">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="White Card">
+                    <div class="card-label">White</div>
+                    <div class="card-price">£95</div>
+                </div>
+
+                <div class="premium-card" data-colour="Red">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Red Card">
+                    <div class="card-label">Red</div>
+                    <div class="card-price">£95</div>
+                </div>
+
+                <div class="premium-card" data-colour="Purple">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Purple Card">
+                    <div class="card-label">Purple</div>
+                    <div class="card-price">£95</div>
+                </div>
+
+                <div class="premium-card" data-colour="Green">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Green Card">
+                    <div class="card-label">Green</div>
+                    <div class="card-price">£95</div>
+                </div>
+
+                <div class="premium-card" data-colour="Blue">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Blue Card">
+                    <div class="card-label">Blue</div>
+                    <div class="card-price">£95</div>
+                </div>
+
+                <button class="carousel-arrow right" aria-label="Next">›</button>
             </div>
 
-            <div class="price">
+            <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+            <div class="price-main">
                 £95 <span>one-time · card + profile</span>
             </div>
 
-            <div class="buttons">
-                <button class="btn-primary">Browse finishes</button>
-                <button class="btn-secondary">Pick your Card</button>
+            <div class="actions">
+                <button class="btn-primary" id="addBtn">🛒 Add Black</button>
+                <button class="btn-secondary">↗ Example</button>
             </div>
-        </div>
+        </section>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                alt="NFC Cards">
-            <div class="card-footer">
-                <span>Tap → instant impression</span>
-                <span>ExposureBoost</span>
-            </div>
-        </div>
-    </section>
+        <!-- A-Z SECTION - Reveals next part of gradient -->
+        <section class="seamless-section" id="az">
+            <div class="az-carousel-section">
+                <div class="content-container">
+                    <h2>A–Z Catalogue</h2>
+                    <p class="subtitle">Browse cards alphabetically</p>
 
-    <!-- SECOND SECTION - Premium Impact Section -->
-    <section class="premium-section">
-        <div class="section-header">
-            <h2 class="section-title">First impressions happen in 3 seconds.</h2>
-            <p class="section-subtitle">If your card feels cheap, people assume your service is cheap. A premium card
-                upgrades how people treat you.</p>
-        </div>
-
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">⚖️</div>
-                <h3 class="benefit-title">Status</h3>
-                <p class="benefit-description">
-                    The weight and finish signal quality before you even speak.
-                    A <span class="benefit-highlight">premium card</span> establishes authority and commands respect
-                    from the first touch.
-                </p>
-            </div>
-
-            <div class="benefit-card">
-                <div class="benefit-icon">🧠</div>
-                <h3 class="benefit-title">Memory</h3>
-                <p class="benefit-description">
-                    People remember "the one with the premium card".
-                    Stand out in a sea of forgettable contacts with a <span class="benefit-highlight">tangible
-                        impression</span> that lasts.
-                </p>
-            </div>
-
-            <div class="benefit-card">
-                <div class="benefit-icon">🛡️</div>
-                <h3 class="benefit-title">Trust</h3>
-                <p class="benefit-description">
-                    Premium presentation makes you look like the safe choice.
-                    Quality materials signal <span class="benefit-highlight">professionalism and reliability</span>,
-                    building instant credibility.
-                </p>
-            </div>
-        </div>
-
-        <div class="cta-box">
-            <h3 class="cta-title">Play your finish right</h3>
-            <p class="cta-subtitle">Upgrade from disposable to memorable. Make every handshake count with a card that
-                speaks volumes before you do.</p>
-            <div class="cta-buttons">
-                <button class="btn-primary">Browse Premium Finishes</button>
-                <button class="btn-secondary">Ask on WhatsApp</button>
-            </div>
-        </div>
-    </section>
-
-    <section class="metal-section gold-section">
-        <div class="metal-container">
-            <div class="metal-content">
-                <div class="metal-badge">● Gold Metal Card</div>
-                <h2>Gold Metal Card</h2>
-                <p>
-                    Tap once → instant premium impression.
-                    Your profile opens with WhatsApp, website,
-                    socials & reviews.
-                </p>
-                <div class="metal-price">
-                    £95 <span>one-time · card + profile</span>
-                </div>
-                <div class="metal-actions">
-                    <button class="btn-primary">🛒 Add to cart</button>
-                    <button class="btn-secondary">↗ Example</button>
-                </div>
-            </div>
-            <div class="metal-card">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Gold Metal NFC Card">
-                <div class="metal-card-footer">
-                    <span>Tap to connect</span>
-                    <span>ExposureBoost</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="metal-section silver-section">
-        <div class="metal-container">
-            <div class="metal-content">
-                <div class="metal-badge">● Silver Metal Card</div>
-                <h2>Silver Metal Card</h2>
-                <p>
-                    Clean. Professional. Timeless.
-                    A brushed-metal finish that signals
-                    trust, clarity and authority.
-                </p>
-                <div class="metal-price">
-                    £95 <span>one-time · card + profile</span>
-                </div>
-                <div class="metal-actions">
-                    <button class="btn-primary">🛒 Add to cart</button>
-                    <button class="btn-secondary">↗ Example</button>
-                </div>
-            </div>
-            <div class="metal-card">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Silver Metal NFC Card">
-                <div class="metal-card-footer">
-                    <span>Tap to connect</span>
-                    <span>ExposureBoost</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="metal-section rose-gold-section">
-        <div class="metal-container">
-            <div class="metal-content">
-                <div class="metal-badge">● Rose-Gold Metal Card</div>
-                <h2>Rose-Gold Metal Card</h2>
-                <p>
-                    Warm, elegant, unforgettable.
-                    Perfect for luxury, beauty, fashion
-                    and premium personal brands.
-                </p>
-                <div class="metal-price">
-                    £95 <span>one-time · card + profile</span>
-                </div>
-                <div class="metal-actions">
-                    <button class="btn-primary">🛒 Add to cart</button>
-                    <button class="btn-secondary">↗ Example</button>
-                </div>
-            </div>
-            <div class="metal-card">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Rose-Gold Metal NFC Card">
-                <div class="metal-card-footer">
-                    <span>Tap to connect</span>
-                    <span>ExposureBoost</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="colour-section" id="colourSection">
-        <h2>Pick Your Custom Colour</h2>
-        <p class="subtitle">Swipe or tap to browse</p>
-
-        <div class="premium-carousel">
-            <button class="carousel-arrow left" aria-label="Previous">‹</button>
-
-            <div class="premium-card active" data-colour="Black">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Black Card">
-                <div class="card-label">Black</div>
-                <div class="card-price">£95</div>
-            </div>
-
-            <div class="premium-card" data-colour="White">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="White Card">
-                <div class="card-label">White</div>
-                <div class="card-price">£95</div>
-            </div>
-
-            <div class="premium-card" data-colour="Red">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Red Card">
-                <div class="card-label">Red</div>
-                <div class="card-price">£95</div>
-            </div>
-
-            <div class="premium-card" data-colour="Purple">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Purple Card">
-                <div class="card-label">Purple</div>
-                <div class="card-price">£95</div>
-            </div>
-
-            <div class="premium-card" data-colour="Green">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Green Card">
-                <div class="card-label">Green</div>
-                <div class="card-price">£95</div>
-            </div>
-
-            <div class="premium-card" data-colour="Blue">
-                <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Blue Card">
-                <div class="card-label">Blue</div>
-                <div class="card-price">£95</div>
-            </div>
-
-            <button class="carousel-arrow right" aria-label="Next">›</button>
-        </div>
-
-        <div class="dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-
-        <div class="price-main">
-            £95 <span>one-time · card + profile</span>
-        </div>
-
-        <div class="actions">
-            <button class="btn-primary" id="addBtn">🛒 Add Black</button>
-            <button class="btn-secondary">↗ Example</button>
-        </div>
-    </section>
-
-    <section class="examples-section" id="examples">
-        <div class="examples-inner">
-            <div class="examples-badge">● Real examples</div>
-            <h2>See what yours can look like.</h2>
-            <p class="examples-subtitle">View real card examples:</p>
-
-            <div class="examples-list">
-                <a href="#" class="example-item">
-                    <span>Advance Security Alarms</span>
-                    <span class="arrow">View example →</span>
-                </a>
-
-                <a href="#" class="example-item">
-                    <span>57 Jewellers</span>
-                    <span class="arrow">View example →</span>
-                </a>
-
-                <a href="#" class="example-item">
-                    <span>Your business next</span>
-                    <span class="arrow">Message me →</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-section" id="faq">
-        <div class="faq-inner">
-            <div class="faq-badge">● FAQs</div>
-            <h2>Everything you need to know.</h2>
-            <p class="faq-subtitle">
-                Clear answers. No confusion. Premium experience from start to finish.
-            </p>
-
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Does this work on all phones?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        Yes. Our NFC cards work on all modern iPhones and Android devices —
-                        no app required. Just tap and connect instantly.
+                    <div class="az-search">
+                        <input type="text" id="azSearchInput" placeholder="Search A–Z (e.g., 'Architect')">
+                        <button id="azSearchBtn">Search</button>
                     </div>
-                </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What happens after someone taps my card?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        Your premium digital profile opens instantly with WhatsApp,
-                        contact saving, socials, website, and reviews — all in one tap.
-                    </div>
-                </div>
+                    <div class="az-carousel">
+                        <div class="az-slide active" data-letter="A" data-keywords="architect, accountant, artist">
+                            <div class="az-letter">A</div>
+                            <div class="az-content">
+                                <div class="az-card">
+                                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                                        alt="NFC Card">
+                                    <div class="az-card-footer">
+                                        <span>Architect</span>
+                                        <span>NFC</span>
+                                    </div>
+                                </div>
+                                <div class="az-webpage">
+                                    <div class="az-page-header"></div>
+                                    <div class="az-page-avatar"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-line short"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-button"></div>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Is there a monthly fee?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        No subscriptions. One-time payment only.
-                        Your card and profile are yours forever.
-                    </div>
-                </div>
+                        <div class="az-slide" data-letter="B" data-keywords="builder, barber, baker">
+                            <div class="az-letter">B</div>
+                            <div class="az-content">
+                                <div class="az-card">
+                                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                                        alt="NFC Card">
+                                    <div class="az-card-footer">
+                                        <span>Builder</span>
+                                        <span>NFC</span>
+                                    </div>
+                                </div>
+                                <div class="az-webpage">
+                                    <div class="az-page-header"></div>
+                                    <div class="az-page-avatar"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-line short"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-button"></div>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Can I update my details later?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        Yes. You can update your profile anytime without reprinting
-                        your card — perfect for evolving brands.
-                    </div>
-                </div>
+                        <div class="az-slide" data-letter="C" data-keywords="chef, consultant, carpenter">
+                            <div class="az-letter">C</div>
+                            <div class="az-content">
+                                <div class="az-card">
+                                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                                        alt="NFC Card">
+                                    <div class="az-card-footer">
+                                        <span>Chef</span>
+                                        <span>NFC</span>
+                                    </div>
+                                </div>
+                                <div class="az-webpage">
+                                    <div class="az-page-header"></div>
+                                    <div class="az-page-avatar"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-line short"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-button"></div>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>How long does delivery take?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        Production takes 3–5 working days.
-                        Delivery times depend on location but are typically fast and tracked.
+                        <div class="az-slide" data-letter="D" data-keywords="dentist, designer, developer">
+                            <div class="az-letter">D</div>
+                            <div class="az-content">
+                                <div class="az-card">
+                                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                                        alt="NFC Card">
+                                    <div class="az-card-footer">
+                                        <span>Designer</span>
+                                        <span>NFC</span>
+                                    </div>
+                                </div>
+                                <div class="az-webpage">
+                                    <div class="az-page-header"></div>
+                                    <div class="az-page-avatar"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-line short"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-button"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="az-slide" data-letter="E" data-keywords="engineer, electrician, entrepreneur">
+                            <div class="az-letter">E</div>
+                            <div class="az-content">
+                                <div class="az-card">
+                                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                                        alt="NFC Card">
+                                    <div class="az-card-footer">
+                                        <span>Engineer</span>
+                                        <span>NFC</span>
+                                    </div>
+                                </div>
+                                <div class="az-webpage">
+                                    <div class="az-page-header"></div>
+                                    <div class="az-page-avatar"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-line short"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-line"></div>
+                                    <div class="az-page-button"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="carousel-arrow left">‹</button>
+                        <button class="carousel-arrow right">›</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="az-carousel-section">
-        <h2>A–Z Catalogue</h2>
-        <p class="subtitle">Browse cards alphabetically</p>
-        
-        <div class="az-search">
-            <input type="text" id="azSearchInput" placeholder="Search A–Z (e.g., 'Architect')">
-            <button id="azSearchBtn">Search</button>
-        </div>
+        <!-- FAQ SECTION - Reveals bottom part of gradient -->
+        <section class="seamless-section" id="faq">
+            <div class="faq-section">
+                <div class="content-container">
+                    <div class="faq-inner">
+                        <div class="faq-badge">● FAQs</div>
+                        <h2>Everything you need to know.</h2>
+                        <p class="faq-subtitle">
+                            Clear answers. No confusion. Premium experience from start to finish.
+                        </p>
 
-        <div class="az-carousel">
-            <div class="az-slide active" data-letter="A" data-keywords="architect, accountant, artist">
-                <div class="az-letter">A</div>
-                <div class="az-content">
-                    <div class="az-card">
-                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="NFC Card">
-                        <div class="az-card-footer">
-                            <span>Architect</span>
-                            <span>NFC</span>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>Does this work on all phones?</span>
+                                    <span class="faq-icon">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    Yes. Our NFC cards work on all modern iPhones and Android devices —
+                                    no app required. Just tap and connect instantly.
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>What happens after someone taps my card?</span>
+                                    <span class="faq-icon">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    Your premium digital profile opens instantly with WhatsApp,
+                                    contact saving, socials, website, and reviews — all in one tap.
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>Is there a monthly fee?</span>
+                                    <span class="faq-icon">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    No subscriptions. One-time payment only.
+                                    Your card and profile are yours forever.
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>Can I update my details later?</span>
+                                    <span class="faq-icon">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    Yes. You can update your profile anytime without reprinting
+                                    your card — perfect for evolving brands.
+                                </div>
+                            </div>
+
+                            <div class="faq-item">
+                                <button class="faq-question">
+                                    <span>How long does delivery take?</span>
+                                    <span class="faq-icon">+</span>
+                                </button>
+                                <div class="faq-answer">
+                                    Production takes 3–5 working days.
+                                    Delivery times depend on location but are typically fast and tracked.
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="az-webpage">
-                        <div class="az-page-header"></div>
-                        <div class="az-page-avatar"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-line short"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-button"></div>
-                    </div>
                 </div>
             </div>
-
-            <div class="az-slide" data-letter="B" data-keywords="builder, barber, baker">
-                <div class="az-letter">B</div>
-                <div class="az-content">
-                    <div class="az-card">
-                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="NFC Card">
-                        <div class="az-card-footer">
-                            <span>Builder</span>
-                            <span>NFC</span>
-                        </div>
-                    </div>
-                    <div class="az-webpage">
-                        <div class="az-page-header"></div>
-                        <div class="az-page-avatar"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-line short"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-button"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="az-slide" data-letter="C" data-keywords="chef, consultant, carpenter">
-                <div class="az-letter">C</div>
-                <div class="az-content">
-                    <div class="az-card">
-                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="NFC Card">
-                        <div class="az-card-footer">
-                            <span>Chef</span>
-                            <span>NFC</span>
-                        </div>
-                    </div>
-                    <div class="az-webpage">
-                        <div class="az-page-header"></div>
-                        <div class="az-page-avatar"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-line short"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-button"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="az-slide" data-letter="D" data-keywords="dentist, designer, developer">
-                <div class="az-letter">D</div>
-                <div class="az-content">
-                    <div class="az-card">
-                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="NFC Card">
-                        <div class="az-card-footer">
-                            <span>Designer</span>
-                            <span>NFC</span>
-                        </div>
-                    </div>
-                    <div class="az-webpage">
-                        <div class="az-page-header"></div>
-                        <div class="az-page-avatar"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-line short"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-button"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="az-slide" data-letter="E" data-keywords="engineer, electrician, entrepreneur">
-                <div class="az-letter">E</div>
-                <div class="az-content">
-                    <div class="az-card">
-                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="NFC Card">
-                        <div class="az-card-footer">
-                            <span>Engineer</span>
-                            <span>NFC</span>
-                        </div>
-                    </div>
-                    <div class="az-webpage">
-                        <div class="az-page-header"></div>
-                        <div class="az-page-avatar"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-line short"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-line"></div>
-                        <div class="az-page-button"></div>
-                    </div>
-                </div>
-            </div>
-
-            <button class="carousel-arrow left">‹</button>
-            <button class="carousel-arrow right">›</button>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <script>
+        // Sticky Navigation
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.getElementById('cartCount');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const notification = document.getElementById('notification');
+
+        // Update cart display
+        function updateCart() {
+            // Update count
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update cart modal
+            renderCartItems();
+        }
+
+        // Render cart items in modal
+        function renderCartItems() {
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
+                cartTotal.textContent = '£0';
+                return;
+            }
+
+            let itemsHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                itemsHTML += `
+                    <div class="cart-item">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+                    </div>
+                `;
+            });
+
+            cartItems.innerHTML = itemsHTML;
+            cartTotal.textContent = `£${total}`;
+        }
+
+        // Add to cart function
+        function addToCart(name, price) {
+            // Check if item already in cart
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+
+            updateCart();
+            showNotification(`${name} added to cart!`);
+        }
+
+        // Remove from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Show notification
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Open cart modal
+        function openCartModal() {
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close cart modal
+        function closeCartModal() {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Checkout functionality
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!');
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            alert(`Proceeding to checkout. Total: £${total}\n\nThis is a demo. In a real application, this would redirect to a payment processor.`);
+        }
+
+        // Event listeners
+        cartIcon.addEventListener('click', openCartModal);
+        closeCart.addEventListener('click', closeCartModal);
+        checkoutBtn.addEventListener('click', checkout);
+
+        // Close modal when clicking outside
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                closeCartModal();
+            }
+        });
+
+        // Add to cart buttons
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const name = e.target.dataset.name;
+                    const price = parseInt(e.target.dataset.price);
+                    addToCart(name, price);
+                });
+            });
+
+            const addBtn = document.getElementById('addBtn');
+            addBtn.addEventListener('click', () => {
+                const colour = document.querySelector('.premium-card.active').dataset.colour;
+                addToCart(`${colour} NFC Card`, 95);
+            });
+
+            updateCart();
+        });
+
         // Color Carousel
         const cards = document.querySelectorAll('.premium-card');
         const dots = document.querySelectorAll('.dot');
-        const section = document.getElementById('colourSection');
-        const addBtn = document.getElementById('addBtn');
+        const section = document.getElementById('colours');
         const prevBtn = document.querySelector('.colour-section .carousel-arrow.left');
         const nextBtn = document.querySelector('.colour-section .carousel-arrow.right');
 
@@ -1786,9 +2286,9 @@
             btn.addEventListener('click', () => {
                 const item = btn.parentElement;
                 const wasActive = item.classList.contains('active');
-                
+
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                
+
                 if (!wasActive) {
                     item.classList.add('active');
                 }
@@ -1846,14 +2346,78 @@
 
         showSlide(0);
 
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // SNAPPY SCROLLING - Fixed implementation
+        document.querySelectorAll('.nav-center a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Account for sticky nav height
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+
+                    // Use a more aggressive easing for snappy feel
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 500; // Shorter duration for snappier feel
+                    let startTime = null;
+
+                    // Snappy easing function (easeOutCubic)
+                    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+                    function animation(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const progress = Math.min(timeElapsed / duration, 1);
+
+                        // Apply easing
+                        const easedProgress = easeOutCubic(progress);
+
+                        window.scrollTo(0, startPosition + distance * easedProgress);
+
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        }
+                    }
+
+                    requestAnimationFrame(animation);
                 }
             });
         });
+
+        // Add smooth scroll to hero button
+        document.getElementById('heroAddToCart').addEventListener('click', function (e) {
+            e.preventDefault();
+            const metalsSection = document.getElementById('metals');
+            if (metalsSection) {
+                const navHeight = nav.offsetHeight;
+                const targetPosition = metalsSection.offsetTop - navHeight;
+
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = 500;
+                let startTime = null;
+
+                const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+
+                    const easedProgress = easeOutCubic(progress);
+                    window.scrollTo(0, startPosition + distance * easedProgress);
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            }
+        });
     </script>
+</body>
+
+</html>
