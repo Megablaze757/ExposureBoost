@@ -910,9 +910,9 @@
         /* CAROUSEL WRAPPER */
         .az-carousel {
             position: relative;
-            max-width: 760px;
+            max-width: 900px;
             margin: 0 auto;
-            min-height: 450px;
+            min-height: 500px;
         }
 
         /* SLIDES */
@@ -941,30 +941,97 @@
             -webkit-text-fill-color: transparent;
             opacity: 0.9;
             transition: transform 0.4s ease;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         /* CONTENT LAYOUT */
         .az-content {
             display: flex;
-            flex-direction: column;
-            gap: 30px;
+            flex-direction: row;
+            gap: 40px;
             align-items: center;
             justify-content: center;
         }
 
-        /* CARD/PLACEHOLDER */
+        /* PHYSICAL CARD */
         .az-card {
-            width: 280px;
-            height: 180px;
-            border-radius: 18px;
+            width: 240px;
             background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 14px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .az-card img {
+            width: 100%;
+            border-radius: 14px;
+            display: block;
+        }
+
+        .az-card-footer {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.6);
+            justify-content: space-between;
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 10px;
+            padding: 0 4px;
+        }
+
+        /* WEBPAGE MOCKUP */
+        .az-webpage {
+            width: 260px;
+            height: 380px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: floatPage 6s ease-in-out infinite;
+        }
+
+        .az-page-header {
+            height: 28px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .az-page-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            margin: 0 auto 12px;
+        }
+
+        .az-page-line {
+            height: 14px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .az-page-line.short {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .az-page-button {
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(124, 77, 255, 0.4), rgba(179, 136, 255, 0.4));
+            margin-top: auto;
+        }
+
+        @keyframes floatPage {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         /* =========================================================
@@ -1142,15 +1209,25 @@
 
             .az-letter {
                 font-size: 56px;
+                margin-bottom: 30px;
+            }
+
+            .az-content {
+                flex-direction: column;
+                gap: 30px;
             }
 
             .az-card {
+                width: 200px;
+            }
+
+            .az-webpage {
                 width: 100%;
                 max-width: 280px;
             }
 
             .az-carousel {
-                min-height: 380px;
+                min-height: 600px;
             }
 
             .az-search {
@@ -1544,37 +1621,112 @@
 
         <div class="az-carousel">
             <div class="az-slide active" data-letter="A" data-keywords="architect, accountant, artist">
+                <div class="az-letter">A</div>
                 <div class="az-content">
-                    <div class="az-letter">A</div>
-                    <div class="az-card">Architect • Accountant • Artist</div>
+                    <div class="az-card">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="NFC Card">
+                        <div class="az-card-footer">
+                            <span>Architect</span>
+                            <span>NFC</span>
+                        </div>
+                    </div>
+                    <div class="az-webpage">
+                        <div class="az-page-header"></div>
+                        <div class="az-page-avatar"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-line short"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-button"></div>
+                    </div>
                 </div>
             </div>
 
             <div class="az-slide" data-letter="B" data-keywords="builder, barber, baker">
+                <div class="az-letter">B</div>
                 <div class="az-content">
-                    <div class="az-letter">B</div>
-                    <div class="az-card">Builder • Barber • Baker</div>
+                    <div class="az-card">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="NFC Card">
+                        <div class="az-card-footer">
+                            <span>Builder</span>
+                            <span>NFC</span>
+                        </div>
+                    </div>
+                    <div class="az-webpage">
+                        <div class="az-page-header"></div>
+                        <div class="az-page-avatar"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-line short"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-button"></div>
+                    </div>
                 </div>
             </div>
 
             <div class="az-slide" data-letter="C" data-keywords="chef, consultant, carpenter">
+                <div class="az-letter">C</div>
                 <div class="az-content">
-                    <div class="az-letter">C</div>
-                    <div class="az-card">Chef • Consultant • Carpenter</div>
+                    <div class="az-card">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="NFC Card">
+                        <div class="az-card-footer">
+                            <span>Chef</span>
+                            <span>NFC</span>
+                        </div>
+                    </div>
+                    <div class="az-webpage">
+                        <div class="az-page-header"></div>
+                        <div class="az-page-avatar"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-line short"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-button"></div>
+                    </div>
                 </div>
             </div>
 
             <div class="az-slide" data-letter="D" data-keywords="dentist, designer, developer">
+                <div class="az-letter">D</div>
                 <div class="az-content">
-                    <div class="az-letter">D</div>
-                    <div class="az-card">Dentist • Designer • Developer</div>
+                    <div class="az-card">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="NFC Card">
+                        <div class="az-card-footer">
+                            <span>Designer</span>
+                            <span>NFC</span>
+                        </div>
+                    </div>
+                    <div class="az-webpage">
+                        <div class="az-page-header"></div>
+                        <div class="az-page-avatar"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-line short"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-button"></div>
+                    </div>
                 </div>
             </div>
 
             <div class="az-slide" data-letter="E" data-keywords="engineer, electrician, entrepreneur">
+                <div class="az-letter">E</div>
                 <div class="az-content">
-                    <div class="az-letter">E</div>
-                    <div class="az-card">Engineer • Electrician • Entrepreneur</div>
+                    <div class="az-card">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="NFC Card">
+                        <div class="az-card-footer">
+                            <span>Engineer</span>
+                            <span>NFC</span>
+                        </div>
+                    </div>
+                    <div class="az-webpage">
+                        <div class="az-page-header"></div>
+                        <div class="az-page-avatar"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-line short"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-line"></div>
+                        <div class="az-page-button"></div>
+                    </div>
                 </div>
             </div>
 
@@ -1705,7 +1857,3 @@
             });
         });
     </script>
-
-</body>
-
-</html>
