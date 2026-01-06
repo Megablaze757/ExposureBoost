@@ -313,7 +313,6 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -419,42 +418,41 @@
 
         /* Show hamburger and hide desktop nav on mobile */
         @media (max-width: 1024px) {
-
             .nav-center,
             .nav-right .whatsapp {
                 display: none;
             }
-
+            
             .hamburger {
                 display: flex;
             }
-
+            
             .nav-right {
                 gap: 8px;
             }
-
+            
             .nav {
                 padding: 14px 16px;
                 min-height: 64px;
             }
-
+            
             .nav.scrolled {
                 padding: 10px 16px;
             }
-
+            
             .whatsapp-icon {
                 display: flex;
             }
-
+            
             .logo-text {
                 display: block;
                 font-size: 1.1rem;
             }
-
+            
             .main-container {
                 padding-top: 64px;
             }
-
+            
             section[id] {
                 scroll-margin-top: 75px;
             }
@@ -467,23 +465,23 @@
                 min-height: 64px;
                 font-size: 17px;
             }
-
+            
             .mobile-menu {
                 top: 64px;
                 padding: 25px 16px 100px;
             }
-
+            
             .hamburger {
                 width: 32px;
                 height: 24px;
             }
-
+            
             .icon-btn {
                 width: 44px;
                 height: 44px;
                 font-size: 18px;
             }
-
+            
             .cart-count {
                 top: -3px;
                 right: -3px;
@@ -509,33 +507,13 @@
             transform: translateY(10px);
         }
 
-        .mobile-menu a:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .mobile-menu a:nth-child(2) {
-            animation-delay: 0.15s;
-        }
-
-        .mobile-menu a:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .mobile-menu a:nth-child(4) {
-            animation-delay: 0.25s;
-        }
-
-        .mobile-menu a:nth-child(5) {
-            animation-delay: 0.3s;
-        }
-
-        .mobile-menu a:nth-child(6) {
-            animation-delay: 0.35s;
-        }
-
-        .mobile-menu .whatsapp {
-            animation-delay: 0.4s;
-        }
+        .mobile-menu a:nth-child(1) { animation-delay: 0.1s; }
+        .mobile-menu a:nth-child(2) { animation-delay: 0.15s; }
+        .mobile-menu a:nth-child(3) { animation-delay: 0.2s; }
+        .mobile-menu a:nth-child(4) { animation-delay: 0.25s; }
+        .mobile-menu a:nth-child(5) { animation-delay: 0.3s; }
+        .mobile-menu a:nth-child(6) { animation-delay: 0.35s; }
+        .mobile-menu .whatsapp { animation-delay: 0.4s; }
 
         @keyframes fadeInUp {
             to {
@@ -686,7 +664,7 @@
             margin-bottom: 40px;
         }
 
-        /* MODERN BUTTONS - FIXED STYLING */
+        /* MODERN BUTTONS - ALL ADD TO CART BUTTONS WITH PURPLE GRADIENT */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -730,21 +708,20 @@
             border-color: white;
         }
 
-        /* UPDATED: Add to Cart buttons - Charcoal background */
+        /* UPDATED: All Add to Cart buttons - Purple gradient background */
         .add-to-cart,
         #addBtn {
-            background: var(--charcoal) !important;
+            background: linear-gradient(135deg, var(--purple), var(--pink)) !important;
             color: white !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+            border: none !important;
+            box-shadow: 0 4px 15px rgba(110, 77, 255, 0.3) !important;
         }
 
         .add-to-cart:hover,
         #addBtn:hover {
-            background: var(--charcoal2) !important;
+            background: linear-gradient(135deg, #5a3de0, #ff39d0) !important;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
-            border-color: rgba(255, 255, 255, 0.3) !important;
+            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.4) !important;
         }
 
         .btn.small {
@@ -815,15 +792,21 @@
             border-radius: 14px;
             font-weight: 900;
             border: none;
-            background: var(--charcoal);
+            background: linear-gradient(135deg, var(--purple), var(--pink));
             color: white;
             cursor: pointer;
             font-size: 15px;
             min-width: 140px;
             height: 48px;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: none;
+            box-shadow: 0 4px 15px rgba(110, 77, 255, 0.3);
+        }
+
+        #addBtn:hover {
+            background: linear-gradient(135deg, #5a3de0, #ff39d0);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.4);
         }
 
         /* Fix A-Z search button */
@@ -974,19 +957,13 @@
         }
 
         @keyframes flipCard {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: rotateY(0deg);
             }
-
-            10%,
-            40% {
+            10%, 40% {
                 transform: rotateY(0deg);
             }
-
-            50%,
-            90% {
+            50%, 90% {
                 transform: rotateY(180deg);
             }
         }
@@ -1271,7 +1248,6 @@
             from {
                 transform: translateX(-100%);
             }
-
             to {
                 transform: translateX(100%);
             }
@@ -1284,10 +1260,24 @@
                 linear-gradient(180deg, #C9A227 0%, #8A6A12 100%);
         }
 
+        /* IMPROVED SILVER SECTION - Better text readability */
         .silver-section {
-            background: radial-gradient(1200px 700px at 20% 30%, rgba(245, 246, 248, .35), transparent 60%),
-                radial-gradient(900px 500px at 80% 20%, rgba(191, 196, 204, .28), transparent 60%),
-                linear-gradient(180deg, #F5F6F8 0%, #BFC4CC 100%);
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(30, 30, 40, .8), transparent 60%),
+                radial-gradient(900px 500px at 80% 20%, rgba(60, 60, 80, .6), transparent 60%),
+                linear-gradient(180deg, #1E1E28 0%, #2A2A38 100%);
+            color: #ffffff !important;
+        }
+
+        .silver-section .metal-content h2,
+        .silver-section .metal-content p,
+        .silver-section .metal-price,
+        .silver-section .metal-badge {
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .silver-section .metal-content p {
+            color: rgba(255, 255, 255, 0.9) !important;
         }
 
         .rose-gold-section {
@@ -1347,7 +1337,7 @@
             color: #fff;
         }
 
-        /* AUTO-SPINNING CAROUSEL */
+        /* AUTO-SPINNING CAROUSEL - REMOVED AUTO-SPIN */
         .premium-carousel {
             position: relative;
             height: 320px;
@@ -1456,18 +1446,9 @@
             transform: scale(1.2);
         }
 
+        /* REMOVED AUTO-SPIN INDICATOR */
         .auto-spin-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
+            display: none;
         }
 
         .spin-icon {
@@ -1478,7 +1459,6 @@
             from {
                 transform: rotate(0deg);
             }
-
             to {
                 transform: rotate(360deg);
             }
@@ -1562,7 +1542,6 @@
             from {
                 opacity: 0;
             }
-
             to {
                 opacity: 1;
             }
@@ -1817,11 +1796,11 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg,
-                    transparent,
-                    var(--purple),
-                    var(--pink),
-                    transparent);
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--purple), 
+                var(--pink), 
+                transparent);
             opacity: 0.5;
         }
 
@@ -1833,7 +1812,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image:
+            background-image: 
                 radial-gradient(circle at 20% 80%, rgba(110, 77, 255, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(255, 79, 216, 0.03) 0%, transparent 50%);
             pointer-events: none;
@@ -2069,35 +2048,35 @@
             .footer-section {
                 padding: 40px 20px 20px;
             }
-
+            
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
                 gap: 15px;
             }
-
+            
             .footer-legal {
                 justify-content: center;
                 flex-wrap: wrap;
                 gap: 15px;
             }
-
+            
             .newsletter-input {
                 flex-direction: column;
             }
-
+            
             .newsletter-input button {
                 width: 100%;
             }
-
+            
             .footer-tagline {
                 max-width: 100%;
             }
-
+            
             .contact-item {
                 justify-content: center;
             }
-
+            
             .footer-social {
                 justify-content: center;
             }
@@ -2143,7 +2122,6 @@
                 opacity: 0;
                 transform: scale(0.9) translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: scale(1) translateY(0);
@@ -2477,60 +2455,60 @@
             h1 {
                 font-size: 2.5rem;
             }
-
+            
             h2 {
                 font-size: 2rem;
             }
-
+            
             .section-title {
                 font-size: 2rem;
             }
-
+            
             .metal-content h2 {
                 font-size: 2.5rem;
             }
-
+            
             .metal-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
                 text-align: center;
             }
-
+            
             .metal-content {
                 text-align: center;
             }
-
+            
             .az-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-
+            
             .az-letter {
                 font-size: 6rem;
             }
-
+            
             .engraving-content {
                 padding: 30px 20px;
             }
-
+            
             .engraving-options {
                 grid-template-columns: 1fr;
             }
-
+            
             .engraving-actions {
                 flex-direction: column;
             }
-
+            
             .btn-cancel,
             .btn-confirm {
                 min-width: 100%;
             }
-
+            
             .cart-modal {
                 width: 100%;
                 right: -100%;
             }
-
+            
             .testimonials-grid {
                 grid-template-columns: 1fr;
             }
@@ -2540,46 +2518,46 @@
             .nav {
                 padding: 12px 16px;
             }
-
+            
             .main-container {
                 padding-top: 64px;
             }
-
+            
             h1 {
                 font-size: 2rem;
             }
-
+            
             h2 {
                 font-size: 1.8rem;
             }
-
+            
             .section-title {
                 font-size: 1.8rem;
             }
-
+            
             .premium-carousel {
                 height: 250px;
             }
-
+            
             .premium-card {
                 width: 180px;
                 padding: 12px;
             }
-
+            
             .carousel-arrow {
                 width: 32px;
                 height: 32px;
                 font-size: 18px;
             }
-
+            
             .az-search {
                 flex-direction: column;
             }
-
+            
             #azSearchBtn {
                 width: 100%;
             }
-
+            
             .buttons,
             .actions,
             .cta-buttons,
@@ -2587,7 +2565,7 @@
                 flex-direction: column;
                 align-items: stretch;
             }
-
+            
             .buttons button,
             .actions button,
             .cta-buttons button,
@@ -2735,13 +2713,13 @@
         <a href="#az" class="mobile-menu-item">
             <span>🔤</span> A-Z
         </a>
-
+        
         <div class="menu-divider"></div>
-
+        
         <a href="https://wa.me/447123456789" class="whatsapp mobile-menu-item" target="_blank">
             <span>💬</span> WhatsApp Support
         </a>
-
+        
         <div class="menu-footer">
             Premium NFC Cards & Digital Profiles
         </div>
@@ -2951,12 +2929,7 @@
             <h2>Pick Your Custom Colour</h2>
             <p class="subtitle">Swipe or tap to browse</p>
 
-            <!-- Auto-spin indicator -->
-            <div class="auto-spin-indicator">
-                <span class="spin-icon">🔄</span>
-                <span>Auto-spinning</span>
-            </div>
-
+            <!-- Removed auto-spin indicator -->
             <div class="premium-carousel">
                 <button class="carousel-arrow left" aria-label="Previous">‹</button>
 
@@ -3328,7 +3301,7 @@
                                 <span>London, UK</span>
                             </div>
                         </div>
-
+                        
                         <div class="footer-newsletter">
                             <h3>Stay Updated</h3>
                             <div class="newsletter-input">
@@ -3370,7 +3343,7 @@
         // Toggle mobile menu
         function toggleMobileMenu() {
             const isOpening = !hamburgerBtn.classList.contains('active');
-
+            
             hamburgerBtn.classList.toggle('active');
             mobileMenuOverlay.classList.toggle('active');
             mobileMenu.classList.toggle('active');
@@ -3415,14 +3388,14 @@
                 }
                 e.preventDefault();
                 closeMobileMenu();
-
+                
                 // Smooth scroll to section
                 const targetId = link.getAttribute('href');
                 const target = document.querySelector(targetId);
                 if (target) {
                     const navHeight = nav.offsetHeight;
                     const targetPosition = target.offsetTop - navHeight;
-
+                    
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -3447,8 +3420,8 @@
 
         // Close menu when clicking outside on mobile
         document.addEventListener('touchstart', (e) => {
-            if (mobileMenu.classList.contains('active') &&
-                !mobileMenu.contains(e.target) &&
+            if (mobileMenu.classList.contains('active') && 
+                !mobileMenu.contains(e.target) && 
                 !hamburgerBtn.contains(e.target) &&
                 e.target !== mobileCloseBtn) {
                 closeMobileMenu();
@@ -3599,7 +3572,7 @@
             updateCart();
         });
 
-        // Color Carousel with Auto-Spin - CUSTOM COLOUR FIRST
+        // Color Carousel - REMOVED AUTO-SPIN
         const cards = document.querySelectorAll('.premium-card');
         const dots = document.querySelectorAll('.dot');
         const section = document.getElementById('colours');
@@ -3609,42 +3582,23 @@
 
         const colours = ['custom', 'white', 'black', 'red', 'green', 'purple', 'blue']; // CUSTOM FIRST
         let index = 0;
-        let autoSpinInterval;
 
-        // Function to start auto-spin
-        function startAutoSpin() {
-            clearInterval(autoSpinInterval);
-            autoSpinInterval = setInterval(() => {
-                updateCarousel(index + 1);
-            }, 3000); // Change card every 3 seconds
-        }
-
-        // Function to update carousel with smooth spin animation
+        // Function to update carousel - NO AUTO-SPIN
         function updateCarousel(i) {
-            // Remove active class from current card with exit animation
-            const currentCard = cards[index];
-            currentCard.classList.remove('active');
-            currentCard.classList.add('exiting');
-
+            // Remove active class from current card
+            cards[index].classList.remove('active');
+            
             // Remove active class from current dot
             dots[index].classList.remove('active');
 
             // Update index
             index = (i + cards.length) % cards.length;
 
-            // Add entering animation to new card
-            const nextCard = cards[index];
-            nextCard.classList.add('entering');
+            // Add active class to new card
+            cards[index].classList.add('active');
 
             // Update section background
             section.className = `colour-section ${colours[index]}`;
-
-            // Remove exit/enter classes after animation
-            setTimeout(() => {
-                currentCard.classList.remove('exiting');
-                nextCard.classList.remove('entering');
-                nextCard.classList.add('active');
-            }, 300);
 
             // Update dot
             dots[index].classList.add('active');
@@ -3658,35 +3612,19 @@
         // Initialize carousel
         updateCarousel(0);
 
-        // Start auto-spin
-        startAutoSpin();
-
-        // Pause auto-spin on hover
-        section.addEventListener('mouseenter', () => {
-            clearInterval(autoSpinInterval);
-        });
-
-        // Resume auto-spin when mouse leaves
-        section.addEventListener('mouseleave', () => {
-            startAutoSpin();
-        });
-
-        // Manual navigation
+        // Manual navigation only
         prevBtn.addEventListener('click', () => {
             updateCarousel(index - 1);
-            startAutoSpin(); // Restart auto-spin after manual interaction
         });
 
         nextBtn.addEventListener('click', () => {
             updateCarousel(index + 1);
-            startAutoSpin(); // Restart auto-spin after manual interaction
         });
 
         // Dot navigation
         dots.forEach((dot, i) => {
             dot.addEventListener('click', () => {
                 updateCarousel(i);
-                startAutoSpin(); // Restart auto-spin after manual interaction
             });
         });
 
@@ -3694,14 +3632,12 @@
         let startX = 0;
         section.addEventListener('touchstart', e => {
             startX = e.touches[0].clientX;
-            clearInterval(autoSpinInterval); // Pause auto-spin during touch
         });
 
         section.addEventListener('touchend', e => {
             const endX = e.changedTouches[0].clientX;
             if (startX - endX > 50) updateCarousel(index + 1);
             if (endX - startX > 50) updateCarousel(index - 1);
-            startAutoSpin(); // Resume auto-spin after touch
         });
 
         // Engraving Selection Modal Functionality
@@ -3728,9 +3664,6 @@
             // Prevent background scrolling
             document.body.style.position = 'fixed';
             document.body.style.width = '100%';
-
-            // Pause auto-spin while modal is open
-            clearInterval(autoSpinInterval);
         });
 
         // Handle engraving option selection
@@ -3765,9 +3698,6 @@
 
             // Close modal
             closeEngravingModal();
-
-            // Resume auto-spin
-            startAutoSpin();
         });
 
         // Close engraving modal and restore scrolling
@@ -3776,9 +3706,6 @@
             document.body.style.overflow = 'auto';
             document.body.style.position = '';
             document.body.style.width = '';
-
-            // Resume auto-spin
-            startAutoSpin();
         }
 
         // Event listeners for closing engraving modal
@@ -3952,14 +3879,8 @@
         if ('matchMedia' in window) {
             const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
             if (reduceMotion.matches) {
-                // Disable auto-spin for users who prefer reduced motion
-                clearInterval(autoSpinInterval);
-
                 // Disable or reduce animations for users who prefer reduced motion
                 document.documentElement.style.setProperty('--animation-duration', '0.01s');
-
-                // Hide auto-spin indicator
-                document.querySelector('.auto-spin-indicator').style.display = 'none';
             }
         }
     </script>
