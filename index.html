@@ -373,7 +373,7 @@
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
         }
 
-        /* Close button for mobile menu - FIXED */
+        /* Close button for mobile menu */
         .mobile-close-btn {
             position: fixed;
             top: 20px;
@@ -391,10 +391,6 @@
             cursor: pointer;
             z-index: 1002;
             transition: all 0.3s ease;
-        }
-
-        .mobile-close-btn.show {
-            display: flex;
         }
 
         .mobile-close-btn:hover {
@@ -499,6 +495,9 @@
         /* Prevent body scroll when menu is open */
         body.menu-open {
             overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
         }
 
         /* Add subtle animation to menu items */
@@ -3465,35 +3464,36 @@
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
 
-        // MOBILE NAVIGATION - FIXED VERSION
+        // IMPROVED MOBILE NAVIGATION - FIXED TOGGLE ISSUE
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileCloseBtn = document.getElementById('mobileCloseBtn');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const mobileMenu = document.getElementById('mobileMenu');
         const nav = document.getElementById('mainNav');
+
+        // Track menu state
         let isMenuOpen = false;
 
         // Toggle mobile menu - SIMPLIFIED AND FIXED
         function toggleMobileMenu() {
-            isMenuOpen = !isMenuOpen;
-            
             if (isMenuOpen) {
-                // Open menu
-                hamburgerBtn.classList.add('active');
-                mobileMenuOverlay.classList.add('active');
-                mobileMenu.classList.add('active');
-                mobileCloseBtn.classList.add('show');
-                document.body.classList.add('menu-open');
-                document.body.style.overflow = 'hidden';
+                closeMobileMenu();
             } else {
-                // Close menu
-                hamburgerBtn.classList.remove('active');
-                mobileMenuOverlay.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                mobileCloseBtn.classList.remove('show');
-                document.body.classList.remove('menu-open');
-                document.body.style.overflow = 'auto';
+                openMobileMenu();
             }
+        }
+
+        // Open mobile menu
+        function openMobileMenu() {
+            isMenuOpen = true;
+            hamburgerBtn.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            mobileMenu.classList.add('active');
+            mobileCloseBtn.style.display = 'flex';
+            document.body.classList.add('menu-open');
+            
+            // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         // Close mobile menu
@@ -3502,7 +3502,7 @@
             hamburgerBtn.classList.remove('active');
             mobileMenuOverlay.classList.remove('active');
             mobileMenu.classList.remove('active');
-            mobileCloseBtn.classList.remove('show');
+            mobileCloseBtn.style.display = 'none';
             document.body.classList.remove('menu-open');
             document.body.style.overflow = 'auto';
         }
@@ -3999,14 +3999,6 @@
                 document.documentElement.style.setProperty('--animation-duration', '0.01s');
             }
         }
-
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Mobile menu initialized');
-            console.log('Hamburger button:', hamburgerBtn);
-            console.log('Mobile menu:', mobileMenu);
-            console.log('Mobile close button:', mobileCloseBtn);
-        });
     </script>
 </body>
 
