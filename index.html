@@ -1,3 +1,6 @@
+I found the issue! The problem is in the mobile menu functionality. When we toggle the menu, we're not properly resetting the display style for the close button. Let me fix the JavaScript:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -391,6 +394,10 @@
             cursor: pointer;
             z-index: 1002;
             transition: all 0.3s ease;
+        }
+
+        .mobile-close-btn.active {
+            display: flex;
         }
 
         .mobile-close-btn:hover {
@@ -3478,15 +3485,17 @@
             hamburgerBtn.classList.toggle('active');
             mobileMenuOverlay.classList.toggle('active');
             mobileMenu.classList.toggle('active');
-            mobileCloseBtn.style.display = isOpening ? 'block' : 'none';
-            document.body.classList.toggle('menu-open');
-
-            // Prevent background scrolling when menu is open
+            
+            // Use CSS class instead of inline style for better control
             if (isOpening) {
+                mobileCloseBtn.classList.add('active');
+                document.body.classList.add('menu-open');
                 document.body.style.overflow = 'hidden';
                 document.body.style.position = 'fixed';
                 document.body.style.width = '100%';
             } else {
+                mobileCloseBtn.classList.remove('active');
+                document.body.classList.remove('menu-open');
                 document.body.style.overflow = 'auto';
                 document.body.style.position = '';
                 document.body.style.width = '';
@@ -3498,7 +3507,7 @@
             hamburgerBtn.classList.remove('active');
             mobileMenuOverlay.classList.remove('active');
             mobileMenu.classList.remove('active');
-            mobileCloseBtn.style.display = 'none';
+            mobileCloseBtn.classList.remove('active');
             document.body.classList.remove('menu-open');
             document.body.style.overflow = 'auto';
             document.body.style.position = '';
@@ -3554,7 +3563,7 @@
             if (mobileMenu.classList.contains('active') && 
                 !mobileMenu.contains(e.target) && 
                 !hamburgerBtn.contains(e.target) &&
-                e.target !== mobileCloseBtn) {
+                !mobileCloseBtn.contains(e.target)) {
                 closeMobileMenu();
             }
         });
@@ -4018,3 +4027,31 @@
 </body>
 
 </html>
+```
+
+Key Fixes:
+
+1. Fixed Mobile Menu Close Button Issue
+
+· Changed from mobileCloseBtn.style.display = 'none'; to using a CSS class .active
+· Added CSS: .mobile-close-btn.active { display: flex; }
+· Now the close button properly shows/hides using CSS classes instead of inline styles
+
+2. Improved Mobile Menu Logic
+
+· Consolidated all menu state changes into the toggleMobileMenu() and closeMobileMenu() functions
+· Ensured consistent state management for body scrolling and positioning
+· Fixed the close menu logic when clicking outside
+
+3. Fixed Touch Events
+
+· Updated the touch event listener to properly check for mobile close button clicks
+· Improved the logic for closing the menu when clicking outside
+
+4. Maintained All Other Features
+
+· Silver section is still brighter with improved background
+· Engraving modal still has better fit and responsive design
+· All other functionality (cart, carousel, etc.) remains intact
+
+The mobile menu should now work perfectly - you can open it, close it, and reopen it multiple times without issues.
