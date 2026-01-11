@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ExposureBoost – Premium NFC</title>
+    <title>ExposureBoost – Premium NFC Stands & Keyrings</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,11 +22,12 @@
             --shadow: 0 30px 90px rgba(0, 0, 0, .55);
             --wa: #25D366;
 
-            /* New colors for materials */
-            --wood: #8B4513;
-            --wood-light: #A0522D;
-            --plastic: #3A86FF;
-            --plastic-light: #4D9AFF;
+            /* Stand colors */
+            --stand-dark: #2A5C8B;
+            --stand-medium: #3D7BB6;
+            --stand-light: #5A9BD9;
+            --stand-accent: #1E4D7A;
+            --stand-highlight: #6AB0F4;
         }
 
         * {
@@ -244,7 +245,6 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
         }
 
-        /* WhatsApp icon for mobile */
         .whatsapp-icon {
             display: none;
             width: 38px;
@@ -265,7 +265,7 @@
             box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
         }
 
-        /* IMPROVED MOBILE MENU OVERLAY */
+        /* MOBILE MENU OVERLAY */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -286,7 +286,7 @@
             opacity: 1;
         }
 
-        /* IMPROVED MOBILE MENU */
+        /* MOBILE MENU */
         .mobile-menu {
             position: fixed;
             top: 64px;
@@ -356,7 +356,6 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
-        /* WhatsApp button in mobile menu */
         .mobile-menu .whatsapp {
             margin-top: 20px;
             margin-bottom: 30px;
@@ -380,7 +379,6 @@
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
         }
 
-        /* Close button for mobile menu */
         .mobile-close-btn {
             position: fixed;
             top: 20px;
@@ -400,12 +398,15 @@
             transition: all 0.3s ease;
         }
 
+        .mobile-close-btn.show {
+            display: flex;
+        }
+
         .mobile-close-btn:hover {
             background: rgba(255, 255, 255, 0.25);
             transform: rotate(90deg);
         }
 
-        /* Menu divider */
         .menu-divider {
             height: 1px;
             background: rgba(255, 255, 255, 0.15);
@@ -413,7 +414,6 @@
             width: 100%;
         }
 
-        /* Menu footer text */
         .menu-footer {
             margin-top: auto;
             padding-top: 20px;
@@ -466,7 +466,6 @@
             }
         }
 
-        /* Improve touch targets for small phones */
         @media (max-width: 767px) {
             .mobile-menu a {
                 padding: 20px 24px;
@@ -500,15 +499,10 @@
             }
         }
 
-        /* Prevent body scroll when menu is open */
         body.menu-open {
             overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
         }
 
-        /* Add subtle animation to menu items */
         .mobile-menu a {
             animation: fadeInUp 0.5s ease forwards;
             opacity: 0;
@@ -550,14 +544,12 @@
             }
         }
 
-        /* MAIN CONTAINER PADDING FOR STICKY NAV */
         .main-container {
             padding-top: 70px;
             position: relative;
             z-index: 1;
         }
 
-        /* FIX: Add scroll margin to all anchor targets */
         section[id] {
             scroll-margin-top: 90px;
         }
@@ -568,8 +560,8 @@
             }
         }
 
-        /* Modern Section Container - UNIFIED GRADIENT FOR ALL PAGES EXCEPT CARDS */
-        .seamless-section {
+        /* HERO SECTION */
+        .hero-section {
             min-height: 100vh;
             position: relative;
             isolation: isolate;
@@ -582,7 +574,6 @@
                 linear-gradient(180deg, #0F0F14 0%, #141422 100%);
         }
 
-        /* These blobs create the soft haze */
         .blob {
             position: absolute;
             inset: auto auto 10% -18%;
@@ -608,7 +599,6 @@
             background: linear-gradient(135deg, rgba(255, 79, 216, .75), rgba(230, 230, 235, .55));
         }
 
-        /* Content containers */
         .content-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -617,7 +607,6 @@
             z-index: 2;
         }
 
-        /* Content Wrapper */
         .wrap {
             width: min(1100px, 100%);
             display: grid;
@@ -627,7 +616,6 @@
             z-index: 1;
         }
 
-        /* Kicker/Badge */
         .kicker {
             display: inline-flex;
             align-items: center;
@@ -649,7 +637,6 @@
             box-shadow: 0 0 0 3px rgba(255, 255, 255, .08);
         }
 
-        /* Modern Typography */
         h1 {
             font-size: 3.25rem;
             line-height: 1.03;
@@ -692,7 +679,7 @@
             margin-bottom: 40px;
         }
 
-        /* MODERN BUTTONS - ALL ADD TO CART BUTTONS WITH PURPLE GRADIENT */
+        /* BUTTONS */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -723,13 +710,6 @@
             background: linear-gradient(135deg, #5a3de0, #ff39d0);
         }
 
-        /* BUTTON GLOW ON MOBILE TAP */
-        .btn-primary:active {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.5);
-            background: linear-gradient(135deg, #5a3de0, #ff39d0);
-        }
-
         .btn-secondary {
             background: rgba(255, 255, 255, 0.15);
             color: white;
@@ -743,12 +723,6 @@
             border-color: white;
         }
 
-        .btn-secondary:active {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
-        }
-
-        /* UPDATED: All Add to Cart buttons - Purple gradient background */
         .add-to-cart,
         #addBtn {
             background: linear-gradient(135deg, var(--purple), var(--pink)) !important;
@@ -764,14 +738,6 @@
             box-shadow: 0 6px 20px rgba(110, 77, 255, 0.4) !important;
         }
 
-        /* Add glow on mobile tap */
-        .add-to-cart:active,
-        #addBtn:active {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.5) !important;
-            background: linear-gradient(135deg, #5a3de0, #ff39d0) !important;
-        }
-
         .btn.small {
             padding: 10px 12px;
             border-radius: 12px;
@@ -780,10 +746,8 @@
             height: auto;
         }
 
-        /* Fix specific buttons in sections */
         .actions button,
         .cta-buttons button,
-        .material-actions button,
         .buttons button {
             display: inline-flex;
             align-items: center;
@@ -808,13 +772,11 @@
             justify-content: center;
         }
 
-        /* Fix hero buttons */
         .buttons button {
             width: auto;
             min-width: 140px;
         }
 
-        /* Fix CTA box buttons */
         .cta-buttons {
             display: flex;
             gap: 12px;
@@ -825,12 +787,6 @@
             min-width: 140px;
         }
 
-        /* Fix material section buttons */
-        .material-actions {
-            gap: 12px;
-        }
-
-        /* Fix colour section buttons */
         #addBtn {
             display: inline-flex;
             align-items: center;
@@ -857,32 +813,6 @@
             box-shadow: 0 6px 20px rgba(110, 77, 255, 0.4);
         }
 
-        /* Fix A-Z search button */
-        #azSearchBtn {
-            padding: 14px 24px;
-            border-radius: 999px;
-            font-weight: 900;
-            border: none;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            color: white;
-            cursor: pointer;
-            font-size: 15px;
-            min-width: 100px;
-            height: 48px;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        #azSearchBtn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.4);
-        }
-
-        #azSearchBtn:active {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.5);
-        }
-
-        /* Price Styling */
         .priceRow {
             display: flex;
             align-items: baseline;
@@ -902,7 +832,6 @@
             font-size: .95rem;
         }
 
-        /* Proof Chips */
         .proof {
             margin-top: 22px;
             display: flex;
@@ -922,7 +851,7 @@
             font-size: .9rem;
         }
 
-        /* Hero Section */
+        /* HERO CONTENT */
         .hero {
             display: flex;
             flex-direction: column;
@@ -932,8 +861,7 @@
             padding: 0 0 20px;
         }
 
-        /* HERO FLIPPING IMAGE - BEFORE TEXT */
-        .hero-card-container {
+        .hero-product-container {
             position: relative;
             width: 100%;
             max-width: 400px;
@@ -946,17 +874,17 @@
             order: 1;
         }
 
-        .flipping-card {
+        .flipping-product {
             position: relative;
             width: 100%;
             height: 100%;
             transform-style: preserve-3d;
-            animation: flipCard 8s ease-in-out infinite;
+            animation: flipProduct 8s ease-in-out infinite;
             transform-origin: center;
         }
 
-        .flipping-card-front,
-        .flipping-card-back {
+        .flipping-product-front,
+        .flipping-product-back {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -966,50 +894,46 @@
             box-shadow: 0 0 0 1px rgba(110, 77, 255, 0.3),
                 0 25px 50px rgba(110, 77, 255, 0.3),
                 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .flipping-card-front {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
+        }
+
+        .flipping-product-front {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
             border: 2px solid rgba(110, 77, 255, 0.4);
         }
 
-        .flipping-card-back {
+        .flipping-product-back {
             background: linear-gradient(135deg, var(--pink), var(--charcoal2));
             transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
             border: 2px solid rgba(255, 79, 216, 0.4);
         }
 
-        .card-icon {
+        .product-icon {
             font-size: 50px;
             margin-bottom: 20px;
             color: white;
         }
 
-        .card-text {
+        .product-text {
             font-size: 18px;
             font-weight: 600;
             color: white;
             text-align: center;
+            line-height: 1.4;
         }
 
-        .card-nfc {
+        .product-nfc {
             position: absolute;
             bottom: 15px;
             font-size: 12px;
             color: rgba(255, 255, 255, 0.7);
         }
 
-        @keyframes flipCard {
+        @keyframes flipProduct {
 
             0%,
             100% {
@@ -1027,8 +951,7 @@
             }
         }
 
-        /* Text content comes after flipping card */
-        .hero>div:not(.hero-card-container) {
+        .hero>div:not(.hero-product-container) {
             order: 2;
         }
 
@@ -1097,7 +1020,188 @@
             margin: 0 auto;
         }
 
-        /* FIRST IMPRESSIONS SECTION */
+        /* STANDS SECTION */
+        .stands-section {
+            min-height: 100vh;
+            text-align: center;
+            padding: 120px 20px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .35), transparent 60%),
+                radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .28), transparent 60%),
+                linear-gradient(180deg, #0F0F14 0%, #141422 100%);
+        }
+
+        .stands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+
+        .stand-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+        }
+
+        .stand-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--purple);
+            box-shadow: 0 20px 40px rgba(110, 77, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .stand-card img {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            border-radius: 16px;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .stand-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .stand-price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin: 15px 0;
+            color: white;
+        }
+
+        .stand-price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.7;
+            margin-left: 5px;
+        }
+
+        .stand-sizes {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .stand-size {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            min-width: 140px;
+            flex: 1;
+        }
+
+        .stand-size-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 8px;
+        }
+
+        .stand-size-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stand-size-price span {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .stand-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* KEYRINGS SECTION */
+        .keyrings-section {
+            min-height: 100vh;
+            text-align: center;
+            padding: 120px 20px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .35), transparent 60%),
+                radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .28), transparent 60%),
+                linear-gradient(180deg, #0F0F14 0%, #141422 100%);
+        }
+
+        .keyrings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+
+        .keyring-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+        }
+
+        .keyring-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--purple);
+            box-shadow: 0 20px 40px rgba(110, 77, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .keyring-card img {
+            width: 100%;
+            max-width: 200px;
+            height: 200px;
+            border-radius: 16px;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .keyring-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .keyring-price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin: 15px 0;
+            color: white;
+        }
+
+        .keyring-price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.7;
+            margin-left: 5px;
+        }
+
+        /* BENEFITS SECTION */
         .benefits-grid {
             display: flex;
             flex-direction: column;
@@ -1185,880 +1289,7 @@
             flex-wrap: wrap;
         }
 
-        /* =========================
-   MATERIAL SECTIONS (Metal, Wood, Plastic)
-========================= */
-
-        .material-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 20px;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .material-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, .12), transparent 70%);
-            opacity: 0.25;
-            animation: shimmer 6s infinite linear;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .material-container {
-            width: min(1100px, 100%);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            gap: 56px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .material-badge {
-            display: inline-flex;
-            gap: 8px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            font-size: .88rem;
-            margin-bottom: 16px;
-            background: rgba(255, 255, 255, .22);
-            backdrop-filter: blur(6px);
-            color: white;
-        }
-
-        .material-content {
-            text-align: left;
-        }
-
-        .material-content h2 {
-            font-size: 3.25rem;
-            line-height: 1.03;
-            margin: 0 0 14px;
-            letter-spacing: -.04em;
-            font-weight: 900;
-        }
-
-        .material-content p {
-            font-size: 1.08rem;
-            line-height: 1.65;
-            max-width: 100%;
-            opacity: 0.92;
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, .78);
-        }
-
-        .material-price {
-            font-size: 2.1rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .material-price span {
-            font-size: .95rem;
-            font-weight: 400;
-            opacity: 0.8;
-            margin-left: 4px;
-            color: rgba(255, 255, 255, 0.68);
-        }
-
-        .material-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 22px;
-        }
-
-        /* CARD */
-        .material-card {
-            background: rgba(0, 0, 0, .25);
-            padding: 18px;
-            border-radius: 24px;
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, .22), 0 20px 60px rgba(0, 0, 0, .35);
-            backdrop-filter: blur(6px);
-            width: 100%;
-        }
-
-        .material-card img {
-            width: 100%;
-            border-radius: 20px;
-            display: block;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-        }
-
-        .material-card-footer {
-            display: flex;
-            justify-content: space-between;
-            font-size: .92rem;
-            opacity: 0.85;
-            margin-top: 12px;
-            color: rgba(255, 255, 255, 0.68);
-        }
-
-        @keyframes shimmer {
-            from {
-                transform: translateX(-100%);
-            }
-
-            to {
-                transform: translateX(100%);
-            }
-        }
-
-        /* MATERIAL BACKGROUNDS */
-        .metal-section {
-            background: radial-gradient(1200px 700px at 20% 30%, rgba(100, 100, 120, .35), transparent 60%),
-                radial-gradient(900px 500px at 80% 20%, rgba(140, 140, 160, .28), transparent 60%),
-                linear-gradient(180deg, #505060 0%, #303040 100%);
-        }
-
-        .wood-section {
-            background: radial-gradient(1200px 700px at 20% 30%, rgba(139, 69, 19, .35), transparent 60%),
-                radial-gradient(900px 500px at 80% 20%, rgba(160, 82, 45, .28), transparent 60%),
-                linear-gradient(180deg, #8B4513 0%, #5D2905 100%);
-        }
-
-        .plastic-section {
-            background: radial-gradient(1200px 700px at 20% 30%, rgba(58, 134, 255, .35), transparent 60%),
-                radial-gradient(900px 500px at 80% 20%, rgba(77, 154, 255, .28), transparent 60%),
-                linear-gradient(180deg, #3A86FF 0%, #1A66DD 100%);
-        }
-
-        /* =========================
-   KEYRINGS & STANDS SECTIONS
-========================= */
-        .keyrings-section,
-        .stands-section {
-            min-height: 100vh;
-            text-align: center;
-            padding: 120px 20px;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .keyrings-section {
-            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .35), transparent 60%),
-                radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .28), transparent 60%),
-                linear-gradient(180deg, #0F0F14 0%, #141422 100%);
-        }
-
-        .stands-section {
-            background: radial-gradient(1200px 700px at 20% 30%, rgba(7, 193, 255, .35), transparent 60%),
-                radial-gradient(900px 500px at 80% 20%, rgba(0, 152, 255, .28), transparent 60%),
-                linear-gradient(180deg, #0F0F14 0%, #141422 100%);
-        }
-
-        .keyrings-grid,
-        .stands-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 50px auto;
-            max-width: 800px;
-        }
-
-        .keyring-card,
-        .stand-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-align: center;
-        }
-
-        .keyring-card:hover,
-        .stand-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--purple);
-            box-shadow: 0 20px 40px rgba(110, 77, 255, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .keyring-card img,
-        .stand-card img {
-            width: 100%;
-            max-width: 200px;
-            height: 200px;
-            border-radius: 16px;
-            object-fit: cover;
-            margin: 0 auto 20px;
-            display: block;
-        }
-
-        .keyring-title,
-        .stand-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .keyring-price,
-        .stand-price {
-            font-size: 1.8rem;
-            font-weight: 900;
-            margin: 15px 0;
-            color: white;
-        }
-
-        .keyring-price span,
-        .stand-price span {
-            font-size: 0.9rem;
-            font-weight: 400;
-            opacity: 0.7;
-            margin-left: 5px;
-        }
-
-        .stand-sizes {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .stand-size {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 15px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            min-width: 140px;
-            flex: 1;
-        }
-
-        .stand-size-label {
-            font-size: 1rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 8px;
-        }
-
-        .stand-size-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .stand-size-price span {
-            font-size: 0.85rem;
-            opacity: 0.7;
-        }
-
-        .stand-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        /* =========================
-   A-Z SECTION - IMPROVED
-========================= */
-        .az-section {
-            min-height: 100vh;
-            padding: 120px 20px;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .35), transparent 60%),
-                radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .28), transparent 60%),
-                linear-gradient(180deg, #0F0F14 0%, #141422 100%);
-        }
-
-        .az-menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-            gap: 12px;
-            margin: 40px auto;
-            max-width: 800px;
-        }
-
-        .az-letter-btn {
-            padding: 15px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-align: center;
-        }
-
-        .az-letter-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
-            border-color: var(--purple);
-            color: white;
-        }
-
-        .az-letter-btn.active {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 4px 15px rgba(110, 77, 255, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .az-content-container {
-            max-width: 900px;
-            margin: 40px auto 0;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            display: none;
-        }
-
-        .az-content-container.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .az-large-letter {
-            font-size: 6rem;
-            font-weight: 900;
-            color: var(--purple);
-            text-align: center;
-            margin-bottom: 30px;
-            opacity: 0.7;
-        }
-
-        .az-profession-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .az-profession-card {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
-        }
-
-        .az-profession-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--purple);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .az-profession-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .az-profession-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: white;
-            text-align: center;
-        }
-
-        .az-profession-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            text-align: center;
-        }
-
-        /* Testimonials Section */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--purple);
-            box-shadow: 0 15px 30px rgba(110, 77, 255, 0.15);
-        }
-
-        .testimonial-text {
-            font-size: 16px;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            font-size: 18px;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        .testimonial-role {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-inner {
-            text-align: center;
-        }
-
-        .faq-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 999px;
-            background: rgba(110, 77, 255, 0.2);
-            color: white;
-            font-size: 14px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(110, 77, 255, 0.3);
-        }
-
-        .faq-subtitle {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.78);
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .faq-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item.active {
-            background: rgba(110, 77, 255, 0.1);
-            border-color: rgba(110, 77, 255, 0.3);
-        }
-
-        .faq-question {
-            width: 100%;
-            padding: 24px 30px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            font-weight: 600;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .faq-icon {
-            font-size: 24px;
-            font-weight: 300;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            padding: 0 30px;
-            max-height: 0;
-            overflow: hidden;
-            color: rgba(255, 255, 255, 0.78);
-            line-height: 1.6;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 0 30px 24px;
-            max-height: 500px;
-        }
-
-        /* ===========================================
-   PREMIUM FOOTER - SHORTER & MORE LUXURIOUS
-=========================================== */
-
-        .footer-section {
-            background: linear-gradient(135deg, rgba(15, 15, 20, 0.98), rgba(20, 20, 34, 0.98));
-            color: white;
-            padding: 60px 20px 30px;
-            position: relative;
-            overflow: hidden;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Animated gradient border */
-        .footer-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg,
-                    transparent,
-                    var(--purple),
-                    var(--pink),
-                    transparent);
-            opacity: 0.5;
-        }
-
-        /* Subtle background pattern */
-        .footer-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                radial-gradient(circle at 20% 80%, rgba(110, 77, 255, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 79, 216, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Compact footer grid */
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                text-align: center;
-            }
-        }
-
-        /* Footer logo section - more compact */
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .footer-logo-img {
-            height: 32px;
-            width: auto;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-        }
-
-        .footer-tagline {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            max-width: 280px;
-        }
-
-        /* Social icons - more premium */
-        .footer-social {
-            display: flex;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .social-icon:hover {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            color: white;
-            transform: translateY(-3px);
-            border-color: transparent;
-            box-shadow: 0 8px 20px rgba(110, 77, 255, 0.3);
-        }
-
-        /* Footer column headers */
-        .footer-column h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            opacity: 0.9;
-        }
-
-        /* Compact links list */
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            padding: 4px 0;
-        }
-
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-            opacity: 1;
-        }
-
-        /* Contact info - more compact */
-        .footer-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 14px;
-        }
-
-        .contact-item i {
-            font-size: 16px;
-            opacity: 0.8;
-            width: 20px;
-        }
-
-        /* Newsletter - minimal */
-        .footer-newsletter {
-            margin-top: 20px;
-        }
-
-        .newsletter-input {
-            display: flex;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .newsletter-input input {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            font-size: 14px;
-            font-family: 'Inter', sans-serif;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-input input:focus {
-            outline: none;
-            border-color: var(--purple);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 0 2px rgba(110, 77, 255, 0.2);
-        }
-
-        .newsletter-input input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .newsletter-input button {
-            padding: 12px 20px;
-            border-radius: 10px;
-            border: none;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            color: white;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            min-width: 100px;
-        }
-
-        .newsletter-input button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.3);
-        }
-
-        .newsletter-input button:active {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.4);
-        }
-
-        /* Bottom section - ultra compact */
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-copyright {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 13px;
-        }
-
-        .footer-legal {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-legal a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-legal a:hover {
-            color: white;
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .footer-section {
-                padding: 40px 20px 20px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-
-            .footer-legal {
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 15px;
-            }
-
-            .newsletter-input {
-                flex-direction: column;
-            }
-
-            .newsletter-input button {
-                width: 100%;
-            }
-
-            .footer-tagline {
-                max-width: 100%;
-            }
-
-            .contact-item {
-                justify-content: center;
-            }
-
-            .footer-social {
-                justify-content: center;
-            }
-
-            .az-menu {
-                grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-                gap: 8px;
-            }
-
-            .az-letter-btn {
-                padding: 12px;
-                font-size: 1rem;
-            }
-
-            .az-large-letter {
-                font-size: 4rem;
-            }
-        }
-
-        /* =========================
-   IMPROVED CART MODAL WITH KEYRING OPTIONS
-========================= */
+        /* Cart Modal */
         .cart-modal {
             position: fixed;
             top: 0;
@@ -2213,259 +1444,6 @@
             box-shadow: 0 10px 25px rgba(110, 77, 255, 0.4);
         }
 
-        .checkout-btn:active {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.5);
-        }
-
-        /* =========================
-   KEYRING SELECTION MODAL
-========================= */
-        .keyring-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(15, 15, 20, 0.98);
-            backdrop-filter: blur(25px);
-            z-index: 2001;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .keyring-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .keyring-content {
-            background: linear-gradient(135deg, rgba(30, 30, 40, 0.95), rgba(40, 40, 55, 0.95));
-            border-radius: 28px;
-            padding: 40px;
-            max-width: 800px;
-            width: 95%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
-            position: relative;
-            animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .close-keyring {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .close-keyring:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg);
-        }
-
-        .keyring-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 0 20px;
-        }
-
-        .keyring-header h3 {
-            font-size: 2.2rem;
-            font-weight: 900;
-            margin-bottom: 16px;
-            color: white;
-            line-height: 1.2;
-        }
-
-        .keyring-header p {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .keyring-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .keyring-option {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 25px;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .keyring-option:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .keyring-option.selected {
-            border-color: var(--purple);
-            background: linear-gradient(135deg,
-                    rgba(110, 77, 255, 0.15),
-                    rgba(255, 79, 216, 0.15));
-            box-shadow: 0 20px 40px rgba(110, 77, 255, 0.25);
-        }
-
-        .keyring-image {
-            width: 100%;
-            height: 150px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .keyring-image i {
-            font-size: 60px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .keyring-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: white;
-        }
-
-        .keyring-price {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--purple);
-            background: rgba(110, 77, 255, 0.1);
-            padding: 6px 14px;
-            border-radius: 10px;
-            display: inline-block;
-            width: fit-content;
-        }
-
-        .keyring-description {
-            color: rgba(255, 255, 255, 0.78);
-            line-height: 1.5;
-            font-size: 0.95rem;
-        }
-
-        .keyring-quantity {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .keyring-quantity label {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-        }
-
-        .keyring-quantity select {
-            padding: 8px 12px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 0.95rem;
-            cursor: pointer;
-        }
-
-        .keyring-actions {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 20px;
-        }
-
-        .btn-keyring-cancel,
-        .btn-keyring-add {
-            padding: 16px 32px;
-            border-radius: 14px;
-            font-weight: 800;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            min-width: 160px;
-            border: none;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-keyring-cancel {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-keyring-cancel:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-keyring-cancel:active {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-keyring-add {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            color: white;
-            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.3);
-        }
-
-        .btn-keyring-add:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(110, 77, 255, 0.4);
-            background: linear-gradient(135deg, #5a3de0, #ff39d0);
-        }
-
-        .btn-keyring-add:active:not(:disabled) {
-            transform: translateY(-1px);
-            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.5);
-        }
-
-        .btn-keyring-add:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
-        }
-
         /* Notification */
         .notification {
             position: fixed;
@@ -2488,6 +1466,328 @@
             opacity: 1;
         }
 
+        /* FAQ SECTION */
+        .faq-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-inner {
+            text-align: center;
+        }
+
+        .faq-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(110, 77, 255, 0.2);
+            color: white;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(110, 77, 255, 0.3);
+        }
+
+        .faq-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active {
+            background: rgba(110, 77, 255, 0.1);
+            border-color: rgba(110, 77, 255, 0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 24px 30px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-icon {
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 24px;
+            max-height: 500px;
+        }
+
+        /* FOOTER */
+        .footer-section {
+            background: linear-gradient(135deg, rgba(15, 15, 20, 0.98), rgba(20, 20, 34, 0.98));
+            color: white;
+            padding: 60px 20px 30px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo-img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            max-width: 280px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            transform: translateY(-3px);
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(110, 77, 255, 0.3);
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            padding: 4px 0;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+            opacity: 1;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .contact-item i {
+            font-size: 16px;
+            opacity: 0.8;
+            width: 20px;
+        }
+
+        .footer-newsletter {
+            margin-top: 20px;
+        }
+
+        .newsletter-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .newsletter-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input input:focus {
+            outline: none;
+            border-color: var(--purple);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 2px rgba(110, 77, 255, 0.2);
+        }
+
+        .newsletter-input input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .newsletter-input button {
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 100px;
+        }
+
+        .newsletter-input button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.3);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: white;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
@@ -2502,54 +1802,14 @@
                 font-size: 2rem;
             }
 
-            .material-content h2 {
-                font-size: 2.5rem;
-            }
-
-            .material-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .material-content {
-                text-align: center;
-            }
-
             .cart-modal {
                 width: 100%;
                 right: -100%;
             }
 
-            .testimonials-grid {
+            .stands-grid,
+            .keyrings-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .keyrings-grid,
-            .stands-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .keyring-content {
-                padding: 30px 20px;
-            }
-
-            .keyring-header h3 {
-                font-size: 1.8rem;
-            }
-
-            .keyring-options {
-                grid-template-columns: 1fr;
-            }
-
-            .keyring-actions {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .btn-keyring-cancel,
-            .btn-keyring-add {
-                width: 100%;
             }
 
             .stand-sizes {
@@ -2586,16 +1846,14 @@
 
             .buttons,
             .actions,
-            .cta-buttons,
-            .material-actions {
+            .cta-buttons {
                 flex-direction: column;
                 align-items: stretch;
             }
 
             .buttons button,
             .actions button,
-            .cta-buttons button,
-            .material-actions button {
+            .cta-buttons button {
                 width: 100%;
             }
         }
@@ -2603,48 +1861,6 @@
 </head>
 
 <body>
-    <!-- Keyring Selection Modal -->
-    <div class="keyring-modal" id="keyringModal">
-        <div class="keyring-content">
-            <button class="close-keyring" id="closeKeyring">×</button>
-            <div class="keyring-header">
-                <h3>Add Matching Keyring</h3>
-                <p>Enhance your order with a premium NFC keyring that matches your card design</p>
-            </div>
-
-            <div class="keyring-options">
-                <div class="keyring-option selected" data-keyring="metal" data-price="25">
-                    <div class="keyring-image">
-                        <i>🔑</i>
-                    </div>
-                    <div class="keyring-label">
-                        <span>⚙️</span> Metal Keyring
-                    </div>
-                    <div class="keyring-price">£25</div>
-                    <div class="keyring-description">
-                        Durable metal keyring with the same NFC chip as your card. Perfect for attaching to keys, bags,
-                        or lanyards.
-                    </div>
-                    <div class="keyring-quantity">
-                        <label>Quantity:</label>
-                        <select class="keyring-qty">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="keyring-actions">
-                <button class="btn-keyring-cancel" id="cancelKeyring">Skip Keyring</button>
-                <button class="btn-keyring-add" id="addKeyring">Add Keyring to Cart</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-header">
@@ -3338,229 +2554,109 @@
     </script>
     <!-- END OF NAVIGATION BAR -->
     <div class="main-container">
-        <!-- HERO SECTION - Flipping card BEFORE text -->
-        <section class="seamless-section" id="hero">
+        <!-- HERO SECTION -->
+        <section class="hero-section" id="hero">
             <div class="content-container">
                 <div class="hero">
-                    <!-- Flipping Card FIRST -->
-                    <div class="hero-card-container">
-                        <div class="flipping-card">
-                            <div class="flipping-card-front">
-                                <div class="card-icon">💎</div>
-                                <div class="card-text">ExposureBoost</div>
-                                <div class="card-text">Premium NFC Card</div>
-                                <div class="card-nfc">Tap to Connect</div>
+                    <!-- Flipping Product -->
+                    <div class="hero-product-container">
+                        <div class="flipping-product">
+                            <div class="flipping-product-front">
+                                <div class="product-icon">📱</div>
+                                <div class="product-text">ExposureBoost</div>
+                                <div class="product-text">Stands & Keyrings</div>
+                                <div class="product-nfc">Professional Display</div>
                             </div>
-                            <div class="flipping-card-back">
-                                <div class="card-icon">📱</div>
-                                <div class="card-text">Your Digital Profile</div>
-                                <div class="card-text">Contact · Socials · Portfolio</div>
-                                <div class="card-nfc">NFC Enabled</div>
+                            <div class="flipping-product-back">
+                                <div class="product-icon">🔑</div>
+                                <div class="product-text">NFC Keyrings</div>
+                                <div class="product-text">Portable · Durable · Smart</div>
+                                <div class="product-nfc">Tap to Connect</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Text content AFTER card -->
+                    <!-- Text content -->
                     <div>
-                        <div class="badge">● Premium NFC Cards</div>
+                        <div class="badge">● Premium NFC Stands & Keyrings</div>
 
-                        <h1>The business card<br>people don't forget.</h1>
+                        <h1>Display & Carry.<br>Amplify your reach.</h1>
 
                         <p class="subtext">
-                            Luxury NFC cards + a premium digital profile.
-                            Tap once and you instantly look like a high-ticket brand.
+                            Premium acrylic stands for professional displays and durable keyrings for portable access.
+                            Perfect for every business environment.
                         </p>
 
                         <div class="features">
-                            <div class="feature">⚡ Works on all phones</div>
-                            <div class="feature">📲 Tap → Save → WhatsApp</div>
+                            <div class="feature">📐 Adjustable stands</div>
+                            <div class="feature">🔑 Pocket keyrings</div>
+                            <div class="feature">📲 Tap from any position</div>
                         </div>
 
                         <div class="price">
-                            £95 <span>one-time · card + profile</span>
+                            From £25 <span>per item</span>
                         </div>
 
                         <div class="buttons">
-                            <button class="btn-primary" id="heroAddToCart">Pick your Card</button>
+                            <button class="btn-primary" id="heroAddToCart">Browse Products</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FIRST IMPRESSIONS SECTION - Updated text to "Play your cards right" -->
-        <section class="seamless-section" id="impressions">
+        <!-- BENEFITS SECTION -->
+        <section class="hero-section" id="benefits">
             <div class="content-container">
                 <div class="section-header">
-                    <h2 class="section-title">First impressions happen in 3 seconds.</h2>
-                    <p class="section-subtitle">If your card feels cheap, people assume your service is cheap. A premium
-                        card upgrades how people treat you.</p>
+                    <h2 class="section-title">Why Stands & Keyrings Multiply Engagement</h2>
+                    <p class="section-subtitle">Transform how people interact with your NFC cards. From professional
+                        displays to portable access points.</p>
                 </div>
 
                 <div class="benefits-grid">
                     <div class="benefit-card">
-                        <div class="benefit-icon">⚖️</div>
-                        <h3 class="benefit-title">Status</h3>
+                        <div class="benefit-icon">👁️</div>
+                        <h3 class="benefit-title">Professional Presence</h3>
                         <p class="benefit-description">
-                            The weight and finish signal quality before you even speak.
-                            A <span class="benefit-highlight">premium card</span> establishes authority and commands
-                            respect from the first touch.
+                            Acrylic stands elevate your card to eye level, creating a <span
+                                class="benefit-highlight">professional touchpoint</span> in offices, receptions, and
+                            retail spaces.
                         </p>
                     </div>
 
                     <div class="benefit-card">
-                        <div class="benefit-icon">🧠</div>
-                        <h3 class="benefit-title">Memory</h3>
+                        <div class="benefit-icon">🎒</div>
+                        <h3 class="benefit-title">Portable Access</h3>
                         <p class="benefit-description">
-                            People remember "the one with the premium card".
-                            Stand out in a sea of forgettable contacts with a <span class="benefit-highlight">tangible
-                                impression</span> that lasts.
+                            Keyrings keep your NFC profile accessible everywhere. Attach to keys, bags, or lanyards for
+                            <span class="benefit-highlight">instant connections on the go</span>.
                         </p>
                     </div>
 
                     <div class="benefit-card">
-                        <div class="benefit-icon">🛡️</div>
-                        <h3 class="benefit-title">Trust</h3>
+                        <div class="benefit-icon">⚡</div>
+                        <h3 class="benefit-title">Instant Interaction</h3>
                         <p class="benefit-description">
-                            Premium presentation makes you look like the safe choice.
-                            Quality materials signal <span class="benefit-highlight">professionalism and
-                                reliability</span>,
-                            building instant credibility.
+                            Both stands and keyrings make tapping effortless. People can <span
+                                class="benefit-highlight">connect instantly</span> without fumbling—just tap and go.
                         </p>
                     </div>
                 </div>
 
                 <div class="cta-box">
-                    <h3 class="cta-title">Play your cards right</h3>
-                    <p class="cta-subtitle">Upgrade from disposable to memorable. Make every connection count with cards
-                        that speak volumes about your brand before you even exchange words.</p>
+                    <h3 class="cta-title">Complete Your NFC Ecosystem</h3>
+                    <p class="cta-subtitle">Combine stands for professional displays with keyrings for portable access.
+                        Create touchpoints everywhere you do business.</p>
                     <div class="cta-buttons">
-                        <button class="btn-primary" onclick="scrollToSection('materials')">Browse Material
-                            Cards</button>
-                        <button class="btn-secondary">Ask on WhatsApp</button>
+                        <button class="btn-primary" onclick="scrollToSection('stands')">Browse Stands</button>
+                        <button class="btn-secondary" onclick="scrollToSection('keyrings')">Browse Keyrings</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MATERIAL SECTIONS (Metal, Wood, Plastic) -->
-        <section class="material-section metal-section" id="materials">
-            <div class="material-container">
-                <div class="material-content">
-                    <div class="material-badge">● Metal Card</div>
-                    <h2>Metal Card</h2>
-                    <p>
-                        Tap once → instant premium impression.
-                        Your profile opens with WhatsApp, website,
-                        socials & reviews.
-                    </p>
-                    <div class="material-price">
-                        £95 <span>one-time · card + profile</span>
-                    </div>
-                    <div class="material-actions">
-                        <button class="btn add-to-cart" data-name="Metal Card" data-price="95" data-material="metal">🛒
-                            Add to
-                            cart</button>
-                        <button class="btn-secondary">↗ Example</button>
-                    </div>
-                </div>
-                <div class="material-card">
-                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Metal NFC Card">
-                    <div class="material-card-footer">
-                        <span>Tap to connect</span>
-                        <span>ExposureBoost</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="material-section wood-section">
-            <div class="material-container">
-                <div class="material-content">
-                    <div class="material-badge">● Wood Card</div>
-                    <h2>Wood Card</h2>
-                    <p>
-                        Natural. Elegant. Sustainable.
-                        A wood finish that signals
-                        authenticity, craftsmanship and eco-consciousness.
-                    </p>
-                    <div class="material-price">
-                        £85 <span>one-time · card + profile</span>
-                    </div>
-                    <div class="material-actions">
-                        <button class="btn add-to-cart" data-name="Wood Card" data-price="85" data-material="wood">🛒
-                            Add to
-                            cart</button>
-                        <button class="btn-secondary">↗ Example</button>
-                    </div>
-                </div>
-                <div class="material-card">
-                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Wood NFC Card">
-                    <div class="material-card-footer">
-                        <span>Tap to connect</span>
-                        <span>ExposureBoost</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="material-section plastic-section">
-            <div class="material-container">
-                <div class="material-content">
-                    <div class="material-badge">● Plastic Card</div>
-                    <h2>Plastic Card</h2>
-                    <p>
-                        Modern, durable, colorful.
-                        Perfect for creative brands, startups
-                        and tech companies wanting a fresh look.
-                    </p>
-                    <div class="material-price">
-                        £75 <span>one-time · card + profile</span>
-                    </div>
-                    <div class="material-actions">
-                        <button class="btn add-to-cart" data-name="Plastic Card" data-price="75"
-                            data-material="plastic">🛒 Add
-                            to
-                            cart</button>
-                        <button class="btn-secondary">↗ Example</button>
-                    </div>
-                </div>
-                <div class="material-card">
-                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                        alt="Plastic NFC Card">
-                    <div class="material-card-footer">
-                        <span>Tap to connect</span>
-                        <span>ExposureBoost</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- KEYRINGS SECTION -->
-        <section class="keyrings-section" id="keyrings">
-            <div class="content-container">
-                <h2 class="section-title">Premium NFC Keyrings</h2>
-                <p class="section-subtitle">Carry your digital profile everywhere. These keyrings work exactly like our
-                    cards.</p>
-
-                <div class="keyrings-grid">
-                    <div class="keyring-card">
-                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
-                            alt="Metal Keyring">
-                        <div class="keyring-title">Metal Keyring</div>
-                        <p>Durable metal construction with premium finish. Water-resistant and built to last. Includes
-                            same NFC functionality as our cards.</p>
-                        <div class="keyring-price">£25 <span>each</span></div>
-                        <button class="btn add-to-cart" data-name="Metal Keyring" data-price="25">🛒 Add to
-                            Cart</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- STANDS SECTION - Updated with only Acrylic stand in Small and Large sizes -->
+        <!-- STANDS SECTION -->
         <section class="stands-section" id="stands">
             <div class="content-container">
                 <h2 class="section-title">Acrylic Display Stands</h2>
@@ -3595,172 +2691,80 @@
             </div>
         </section>
 
-        <!-- A-Z SECTION - IMPROVED MENU -->
-        <section class="az-section" id="az">
+        <!-- KEYRINGS SECTION -->
+        <section class="keyrings-section" id="keyrings">
             <div class="content-container">
-                <h2>A–Z Catalogue</h2>
-                <p class="section-subtitle">Browse professions alphabetically. Click any letter to see matching NFC card
-                    options.</p>
+                <h2 class="section-title">Premium NFC Keyrings</h2>
+                <p class="section-subtitle">Carry your digital profile everywhere. These keyrings work exactly like our
+                    cards.</p>
 
-                <div class="az-menu" id="azMenu">
-                    <!-- Letters A-Z will be generated by JavaScript -->
-                </div>
-
-                <div class="az-content-container" id="azContentA">
-                    <div class="az-large-letter">A</div>
-                    <h3>Professions Starting with A</h3>
-                    <div class="az-profession-grid">
-                        <div class="az-profession-card">
-                            <div class="az-profession-icon">🏗️</div>
-                            <div class="az-profession-name">Architect</div>
-                            <div class="az-profession-description">Premium NFC card for architects to showcase
-                                portfolios and contact details.</div>
-                        </div>
-                        <div class="az-profession-card">
-                            <div class="az-profession-icon">📊</div>
-                            <div class="az-profession-name">Accountant</div>
-                            <div class="az-profession-description">Professional NFC card for accountants with direct
-                                contact and service links.</div>
-                        </div>
-                        <div class="az-profession-card">
-                            <div class="az-profession-icon">🎨</div>
-                            <div class="az-profession-name">Artist</div>
-                            <div class="az-profession-description">Creative NFC card for artists to share portfolios and
-                                exhibition details.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="az-content-container" id="azContentB">
-                    <div class="az-large-letter">B</div>
-                    <h3>Professions Starting with B</h3>
-                    <div class="az-profession-grid">
-                        <div class="az-profession-card">
-                            <div class="az-profession-icon">🔨</div>
-                            <div class="az-profession-name">Builder</div>
-                            <div class="az-profession-description">Durable NFC card for builders to share project
-                                portfolios and contact info.</div>
-                        </div>
-                        <div class="az-profession-card">
-                            <div class="az-profession-icon">✂️</div>
-                            <div class="az-profession-name">Barber</div>
-                            <div class="az-profession-description">Stylish NFC card for barbers with booking links and
-                                style galleries.</div>
-                        </div>
-                        <div class="az-profession-card">
-                            <div class="az-profession-icon">🍰</div>
-                            <div class="az-profession-name">Baker</div>
-                            <div class="az-profession-description">Sweet NFC card for bakers to showcase creations and
-                                take orders.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="az-content-container" id="azContentC">
-                    <div class="az-large-letter">C</div>
-                    <h3>Professions Starting with C</h3>
-                    <div class="az-profession-grid">
-                        <div class="az-profession-card">
-                            <div class="az-profession-icon">👨‍🍳</div>
-                            <div class="az-profession-name">Chef</div>
-                            <div class="az-profession-description">Premium NFC card for chefs with menu links and
-                                booking options.</div>
-                        </div>
-                        <div class="az-profession-card">
-                            <div class="az-profession-icon">💼</div>
-                            <div class="az-profession-name">Consultant</div>
-                            <div class="az-profession-description">Professional NFC card for consultants with service
-                                details and testimonials.</div>
-                        </div>
-                        <div class="az-profession-card">
-                            <div class="az-profession-icon">🔧</div>
-                            <div class="az-profession-name">Carpenter</div>
-                            <div class="az-profession-description">Wooden NFC card for carpenters showcasing
-                                craftsmanship and projects.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- More letters content would follow the same pattern -->
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS SECTION - Added after A-Z -->
-        <section class="seamless-section testimonials-section" id="testimonials">
-            <div class="content-container">
-                <h2 class="section-title">What Our Customers Say</h2>
-                <p class="section-subtitle">Don't just take our word for it. Here's what our customers have to say about
-                    their ExposureBoost experience.</p>
-
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">"These cards are absolutely stunning! My clients are always
-                            impressed when I hand them my ExposureBoost card. It's become a real conversation starter."
-                        </div>
-                        <div class="testimonial-author">Sarah Johnson</div>
-                        <div class="testimonial-role">Creative Director, London</div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">"Best investment I've made for my business. The quality is
-                            unmatched and the digital profile is so professional. My conversion rate has increased by
-                            30%!"</div>
-                        <div class="testimonial-author">Michael Chen</div>
-                        <div class="testimonial-role">Business Consultant, Manchester</div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <div class="testimonial-text">"I was skeptical at first, but these cards have transformed how
-                            people perceive my brand. The wood finish is particularly beautiful and gets
-                            compliments everywhere."</div>
-                        <div class="testimonial-author">Emma Roberts</div>
-                        <div class="testimonial-role">Fashion Entrepreneur, Bristol</div>
+                <div class="keyrings-grid">
+                    <div class="keyring-card">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                            alt="Metal Keyring">
+                        <div class="keyring-title">Metal Keyring</div>
+                        <p>Durable metal construction with premium finish. Water-resistant and built to last. Includes
+                            same NFC functionality as our cards.</p>
+                        <div class="keyring-price">£25 <span>each</span></div>
+                        <button class="btn add-to-cart" data-name="Metal Keyring" data-price="25">🛒 Add to
+                            Cart</button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- FAQ SECTION -->
-        <section class="seamless-section" id="faq">
+        <section class="hero-section" id="faq">
             <div class="content-container">
                 <div class="faq-inner">
                     <div class="faq-badge">● FAQs</div>
                     <h2>Everything you need to know.</h2>
                     <p class="faq-subtitle">
-                        Clear answers. No confusion. Premium experience from start to finish.
+                        Clear answers about our stands and keyrings.
                     </p>
 
                     <div class="faq-list">
                         <div class="faq-item">
                             <button class="faq-question">
-                                <span>Does this work on all phones?</span>
+                                <span>Do stands work with all NFC cards?</span>
                                 <span class="faq-icon">+</span>
                             </button>
                             <div class="faq-answer">
-                                Yes. Our NFC cards work on all modern iPhones and Android devices —
-                                no app required. Just tap and connect instantly.
+                                Yes! Our acrylic stands are designed to work with any standard NFC card size (85.6 × 54
+                                mm). They accommodate both our premium cards and most other NFC business cards.
                             </div>
                         </div>
 
                         <div class="faq-item">
                             <button class="faq-question">
-                                <span>What happens after someone taps my card?</span>
+                                <span>Are keyrings as durable as the cards?</span>
                                 <span class="faq-icon">+</span>
                             </button>
                             <div class="faq-answer">
-                                Your premium digital profile opens instantly with WhatsApp,
-                                contact saving, socials, website, and reviews — all in one tap.
+                                Absolutely. Our metal keyrings are built to withstand daily use. They're
+                                water-resistant, scratch-resistant, and feature the same premium NFC chip as our cards.
                             </div>
                         </div>
 
                         <div class="faq-item">
                             <button class="faq-question">
-                                <span>Is there a monthly fee?</span>
+                                <span>What's the difference between small and large stands?</span>
                                 <span class="faq-icon">+</span>
                             </button>
                             <div class="faq-answer">
-                                No subscriptions. One-time payment only.
-                                Your card and profile are yours forever.
+                                Small stands (12cm height) are perfect for desks and personal spaces. Large stands (20cm
+                                height) are ideal for reception areas, retail counters, and high-visibility locations.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question">
+                                <span>Can I get stands and keyrings bundled?</span>
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                Yes! Contact us via WhatsApp for custom bundle pricing. We offer discounts when
+                                purchasing stands and keyrings together.
                             </div>
                         </div>
                     </div>
@@ -3768,7 +2772,22 @@
             </div>
         </section>
 
-        <!-- PREMIUM SHORT FOOTER -->
+        <!-- FINAL CTA SECTION -->
+        <section class="hero-section">
+            <div class="content-container">
+                <div class="cta-box">
+                    <h2 class="cta-title">Ready to Complete Your Setup?</h2>
+                    <p class="cta-subtitle">Get both stands for professional displays and keyrings for portable access.
+                        Create a complete NFC ecosystem for your business.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary" onclick="scrollToSection('stands')">Browse Stands</button>
+                        <button class="btn-secondary" onclick="scrollToSection('keyrings')">Browse Keyrings</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
         <footer class="footer-section" id="footer">
             <div class="footer-container">
                 <div class="footer-grid">
@@ -3780,8 +2799,8 @@
                             <span class="footer-logo-text">ExposureBoost</span>
                         </a>
                         <p class="footer-tagline">
-                            Premium NFC cards that make unforgettable first impressions.
-                            Elevate your brand with luxury digital profiles.
+                            Premium NFC stands and keyrings that amplify your business reach.
+                            Professional displays meet portable access.
                         </p>
                         <div class="footer-social">
                             <a href="#" class="social-icon" aria-label="Instagram">📷</a>
@@ -3795,11 +2814,9 @@
                     <div class="footer-column">
                         <h3>Quick Links</h3>
                         <div class="footer-links">
-                            <a href="#materials">Material Cards</a>
-                            <a href="#keyrings">Keyrings</a>
-                            <a href="#stands">Stands</a>
-                            <a href="#az">A-Z Catalogue</a>
-                            <a href="#testimonials">Testimonials</a>
+                            <a href="#stands">Acrylic Stands</a>
+                            <a href="#keyrings">NFC Keyrings</a>
+                            <a href="#benefits">Benefits</a>
                             <a href="#faq">FAQs</a>
                         </div>
                     </div>
@@ -3848,38 +2865,33 @@
     </div>
 
     <script>
-        // Variables for keyring selection
-        let selectedProduct = null;
-        let keyringModal = document.getElementById('keyringModal');
-
-        // IMPROVED MOBILE NAVIGATION
+        // MOBILE NAVIGATION
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileCloseBtn = document.getElementById('mobileCloseBtn');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const mobileMenu = document.getElementById('mobileMenu');
         const nav = document.getElementById('mainNav');
-
-        // Track menu state
         let isMenuOpen = false;
 
         // Toggle mobile menu
         function toggleMobileMenu() {
-            if (isMenuOpen) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
-            }
-        }
+            isMenuOpen = !isMenuOpen;
 
-        // Open mobile menu
-        function openMobileMenu() {
-            isMenuOpen = true;
-            hamburgerBtn.classList.add('active');
-            mobileMenuOverlay.classList.add('active');
-            mobileMenu.classList.add('active');
-            mobileCloseBtn.style.display = 'flex';
-            document.body.classList.add('menu-open');
-            document.body.style.overflow = 'hidden';
+            if (isMenuOpen) {
+                hamburgerBtn.classList.add('active');
+                mobileMenuOverlay.classList.add('active');
+                mobileMenu.classList.add('active');
+                mobileCloseBtn.classList.add('show');
+                document.body.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                hamburgerBtn.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileCloseBtn.classList.remove('show');
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = 'auto';
+            }
         }
 
         // Close mobile menu
@@ -3888,7 +2900,7 @@
             hamburgerBtn.classList.remove('active');
             mobileMenuOverlay.classList.remove('active');
             mobileMenu.classList.remove('active');
-            mobileCloseBtn.style.display = 'none';
+            mobileCloseBtn.classList.remove('show');
             document.body.classList.remove('menu-open');
             document.body.style.overflow = 'auto';
         }
@@ -4061,89 +3073,9 @@
             }
         });
 
-        // Keyring Modal Functionality
-        const keyringOptions = document.querySelectorAll('.keyring-option');
-        const addKeyringBtn = document.getElementById('addKeyring');
-        const cancelKeyringBtn = document.getElementById('cancelKeyring');
-        const closeKeyringBtn = document.getElementById('closeKeyring');
-
-        // Open keyring modal when "Add to cart" is clicked for cards
-        function openKeyringModal(productName, productPrice, material) {
-            selectedProduct = {
-                name: productName,
-                price: productPrice,
-                material: material
-            };
-
-            // Show modal
-            keyringModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
-        }
-
-        // Add keyring to cart
-        addKeyringBtn.addEventListener('click', () => {
-            const selectedOption = document.querySelector('.keyring-option.selected');
-            if (!selectedOption || !selectedProduct) return;
-
-            const keyringType = selectedOption.dataset.keyring;
-            const keyringPrice = parseInt(selectedOption.dataset.price);
-            const quantity = parseInt(selectedOption.querySelector('.keyring-qty').value);
-
-            // Add the original card to cart
-            addToCart(selectedProduct.name, selectedProduct.price);
-
-            // Add the keyring to cart
-            const keyringName = `${keyringType.charAt(0).toUpperCase() + keyringType.slice(1)} Keyring (Matching)`;
-            addToCart(keyringName, keyringPrice, quantity);
-
-            // Close modal
-            closeKeyringModal();
-        });
-
-        // Close keyring modal and restore scrolling
-        function closeKeyringModal() {
-            keyringModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            document.body.style.position = '';
-            document.body.style.width = '';
-            selectedProduct = null;
-        }
-
-        // Event listeners for closing keyring modal
-        closeKeyringBtn.addEventListener('click', closeKeyringModal);
-        cancelKeyringBtn.addEventListener('click', closeKeyringModal);
-
-        // Close modal when clicking outside
-        keyringModal.addEventListener('click', (e) => {
-            if (e.target === keyringModal) {
-                closeKeyringModal();
-            }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && keyringModal.classList.contains('active')) {
-                closeKeyringModal();
-            }
-        });
-
-        // Add to cart buttons for material cards (with keyring option)
+        // Add to cart buttons
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.add-to-cart[data-material]').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseInt(e.target.dataset.price);
-                    const material = e.target.dataset.material;
-
-                    // Open keyring modal for material cards
-                    openKeyringModal(name, price, material);
-                });
-            });
-
-            // Add to cart buttons for standalone products (keyrings, stands)
-            document.querySelectorAll('.add-to-cart:not([data-material])').forEach(button => {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const name = e.target.dataset.name;
                     const price = parseInt(e.target.dataset.price);
@@ -4152,129 +3084,6 @@
             });
 
             updateCart();
-        });
-
-        // IMPROVED A-Z MENU
-        document.addEventListener('DOMContentLoaded', function () {
-            const azMenu = document.getElementById('azMenu');
-            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-            // Generate letter buttons
-            for (let i = 0; i < letters.length; i++) {
-                const letter = letters[i];
-                const button = document.createElement('button');
-                button.className = 'az-letter-btn';
-                button.textContent = letter;
-                button.setAttribute('data-letter', letter);
-
-                // Create content container for this letter if it doesn't exist
-                if (!document.getElementById(`azContent${letter}`)) {
-                    const contentContainer = document.createElement('div');
-                    contentContainer.id = `azContent${letter}`;
-                    contentContainer.className = 'az-content-container';
-
-                    const largeLetter = document.createElement('div');
-                    largeLetter.className = 'az-large-letter';
-                    largeLetter.textContent = letter;
-
-                    const title = document.createElement('h3');
-                    title.textContent = `Professions Starting with ${letter}`;
-
-                    const professionGrid = document.createElement('div');
-                    professionGrid.className = 'az-profession-grid';
-
-                    // Add some sample professions
-                    const professions = getProfessionsForLetter(letter);
-                    professions.forEach(profession => {
-                        const professionCard = document.createElement('div');
-                        professionCard.className = 'az-profession-card';
-
-                        professionCard.innerHTML = `
-                            <div class="az-profession-icon">${profession.icon}</div>
-                            <div class="az-profession-name">${profession.name}</div>
-                            <div class="az-profession-description">${profession.description}</div>
-                        `;
-
-                        professionGrid.appendChild(professionCard);
-                    });
-
-                    contentContainer.appendChild(largeLetter);
-                    contentContainer.appendChild(title);
-                    contentContainer.appendChild(professionGrid);
-
-                    // Insert after the azMenu
-                    azMenu.parentNode.insertBefore(contentContainer, azMenu.nextSibling);
-                }
-
-                button.addEventListener('click', function () {
-                    // Remove active class from all buttons
-                    document.querySelectorAll('.az-letter-btn').forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-
-                    // Hide all content containers
-                    document.querySelectorAll('.az-content-container').forEach(container => {
-                        container.classList.remove('active');
-                    });
-
-                    // Add active class to clicked button
-                    this.classList.add('active');
-
-                    // Show corresponding content
-                    const letter = this.getAttribute('data-letter');
-                    const contentContainer = document.getElementById(`azContent${letter}`);
-                    if (contentContainer) {
-                        contentContainer.classList.add('active');
-
-                        // Scroll to content
-                        contentContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-
-                azMenu.appendChild(button);
-            }
-
-            // Activate first letter by default
-            if (document.querySelector('.az-letter-btn')) {
-                document.querySelector('.az-letter-btn').classList.add('active');
-                document.getElementById('azContentA').classList.add('active');
-            }
-
-            function getProfessionsForLetter(letter) {
-                const professionsData = {
-                    'A': [
-                        { icon: '🏗️', name: 'Architect', description: 'Premium NFC card for architects to showcase portfolios and contact details.' },
-                        { icon: '📊', name: 'Accountant', description: 'Professional NFC card for accountants with direct contact and service links.' },
-                        { icon: '🎨', name: 'Artist', description: 'Creative NFC card for artists to share portfolios and exhibition details.' }
-                    ],
-                    'B': [
-                        { icon: '🔨', name: 'Builder', description: 'Durable NFC card for builders to share project portfolios and contact info.' },
-                        { icon: '✂️', name: 'Barber', description: 'Stylish NFC card for barbers with booking links and style galleries.' },
-                        { icon: '🍰', name: 'Baker', description: 'Sweet NFC card for bakers to showcase creations and take orders.' }
-                    ],
-                    'C': [
-                        { icon: '👨‍🍳', name: 'Chef', description: 'Premium NFC card for chefs with menu links and booking options.' },
-                        { icon: '💼', name: 'Consultant', description: 'Professional NFC card for consultants with service details and testimonials.' },
-                        { icon: '🔧', name: 'Carpenter', description: 'Wooden NFC card for carpenters showcasing craftsmanship and projects.' }
-                    ],
-                    'D': [
-                        { icon: '🦷', name: 'Dentist', description: 'Professional NFC card for dentists with appointment booking and services.' },
-                        { icon: '🎨', name: 'Designer', description: 'Creative NFC card for designers to showcase portfolios and style.' },
-                        { icon: '💻', name: 'Developer', description: 'Tech NFC card for developers with project links and contact info.' }
-                    ],
-                    'E': [
-                        { icon: '⚡', name: 'Electrician', description: 'Professional NFC card for electricians with services and emergency contact.' },
-                        { icon: '🏗️', name: 'Engineer', description: 'Technical NFC card for engineers with project portfolios and credentials.' },
-                        { icon: '💼', name: 'Entrepreneur', description: 'Business NFC card for entrepreneurs with company info and contact.' }
-                    ]
-                };
-
-                return professionsData[letter] || [
-                    { icon: '💼', name: 'Professional', description: `Premium NFC card for ${letter} professionals with contact details and services.` },
-                    { icon: '👔', name: 'Business Owner', description: `Business NFC card for ${letter} business owners with company info.` },
-                    { icon: '🌟', name: 'Specialist', description: `Specialist NFC card for ${letter} specialists showcasing expertise.` }
-                ];
-            }
         });
 
         // FAQ Accordion
@@ -4287,46 +3096,6 @@
 
                 if (!wasActive) {
                     item.classList.add('active');
-                }
-            });
-        });
-
-        // SNAPPY SCROLLING
-        document.querySelectorAll('.nav-center a, .mobile-menu a, .footer-links a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-                if (target) {
-                    const navHeight = nav.offsetHeight;
-                    const targetPosition = target.offsetTop - navHeight;
-
-                    const startPosition = window.pageYOffset;
-                    const distance = targetPosition - startPosition;
-                    const duration = Math.min(500, Math.abs(distance) * 0.5);
-                    let startTime = null;
-
-                    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
-
-                    function animation(currentTime) {
-                        if (startTime === null) startTime = currentTime;
-                        const timeElapsed = currentTime - startTime;
-                        const progress = Math.min(timeElapsed / duration, 1);
-
-                        const easedProgress = easeOutCubic(progress);
-
-                        window.scrollTo(0, startPosition + distance * easedProgress);
-
-                        if (timeElapsed < duration) {
-                            requestAnimationFrame(animation);
-                        } else {
-                            if (window.innerWidth <= 767) {
-                                closeMobileMenu();
-                            }
-                        }
-                    }
-
-                    requestAnimationFrame(animation);
                 }
             });
         });
@@ -4345,13 +3114,13 @@
             }
         }
 
-        // Add smooth scroll to hero button (now "Pick your Card")
+        // Add smooth scroll to hero button
         document.getElementById('heroAddToCart').addEventListener('click', function (e) {
             e.preventDefault();
-            scrollToSection('materials');
+            scrollToSection('stands');
         });
 
-        // Improve mobile performance by reducing animations when not needed
+        // Improve mobile performance
         if ('matchMedia' in window) {
             const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
             if (reduceMotion.matches) {
@@ -4359,24 +3128,10 @@
             }
         }
 
-        // Add button glow effect on mobile tap
+        // Initialize everything
         document.addEventListener('DOMContentLoaded', function () {
-            // Add touch event listeners to all buttons
-            document.querySelectorAll('button').forEach(button => {
-                button.addEventListener('touchstart', function () {
-                    this.style.transform = 'translateY(-1px)';
-                    if (this.classList.contains('btn-primary') || this.classList.contains('add-to-cart')) {
-                        this.style.boxShadow = '0 8px 25px rgba(110, 77, 255, 0.5)';
-                    }
-                });
-
-                button.addEventListener('touchend', function () {
-                    setTimeout(() => {
-                        this.style.transform = '';
-                        this.style.boxShadow = '';
-                    }, 150);
-                });
-            });
+            console.log('Stands & Keyrings page loaded');
+            updateCart();
         });
     </script>
 </body>

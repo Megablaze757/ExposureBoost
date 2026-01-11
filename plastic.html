@@ -1,0 +1,3979 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExposureBoost – Premium Plastic NFC Cards</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --charcoal: #0F0F14;
+            --charcoal2: #141422;
+            --purple: #6E4DFF;
+            --pink: #FF4FD8;
+            --plastic-light: #8A7BFF;
+            --plastic-dark: #5A4DE0;
+            --plastic-accent: #FF6BE6;
+            --silver: #E6E6EB;
+            --muted: #B5B5C3;
+            --border: rgba(255, 255, 255, .14);
+            --glass: rgba(15, 15, 20, .38);
+            --shadow: 0 30px 90px rgba(0, 0, 0, .55);
+            --wa: #25D366;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: var(--charcoal);
+            color: #fff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            touch-action: manipulation;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* STICKY NAV - PURPLE/PINK THEME */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.95), rgba(255, 79, 216, 0.95));
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            min-height: 70px;
+            box-shadow: 0 4px 20px rgba(110, 77, 255, 0.2);
+        }
+
+        .nav.scrolled {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.9), rgba(255, 79, 216, 0.9));
+            box-shadow: 0 4px 30px rgba(110, 77, 255, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .logo-text {
+            display: none;
+            color: white;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: left center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: white;
+            font-weight: 900;
+            font-size: .9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-center a:hover {
+            color: var(--plastic-accent);
+            transform: translateY(-2px);
+        }
+
+        .nav-center a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--plastic-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-center a:hover::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(110, 77, 255, 0.2);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--pink);
+            color: white;
+            font-size: 10px;
+            min-width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp:hover {
+            background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-icon {
+            display: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+        }
+
+        /* MOBILE MENU OVERLAY */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(110, 77, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* MOBILE MENU */
+        .mobile-menu {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.98), rgba(255, 79, 216, 0.98));
+            backdrop-filter: blur(30px);
+            padding: 30px 20px 100px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            transform: translateY(-20px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px rgba(110, 77, 255, 0.3);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            transform: translateY(0);
+            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 18px 24px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.12);
+            text-align: left;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 4px;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu a:active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0.98);
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .mobile-menu .whatsapp {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 17px;
+            padding: 20px 24px;
+            min-height: 64px;
+            justify-content: center;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mobile-menu .whatsapp:hover {
+            background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+        }
+
+        .mobile-close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 1002;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-close-btn.show {
+            display: flex;
+        }
+
+        .mobile-close-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .menu-footer {
+            margin-top: auto;
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Show hamburger and hide desktop nav on mobile */
+        @media (max-width: 1024px) {
+
+            .nav-center,
+            .nav-right .whatsapp {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-right {
+                gap: 8px;
+            }
+
+            .nav {
+                padding: 14px 16px;
+                min-height: 64px;
+            }
+
+            .nav.scrolled {
+                padding: 10px 16px;
+            }
+
+            .whatsapp-icon {
+                display: flex;
+            }
+
+            .logo-text {
+                display: block;
+                font-size: 1.1rem;
+            }
+
+            .main-container {
+                padding-top: 64px;
+            }
+
+            section[id] {
+                scroll-margin-top: 75px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .mobile-menu a {
+                padding: 20px 24px;
+                min-height: 64px;
+                font-size: 17px;
+            }
+
+            .mobile-menu {
+                top: 64px;
+                padding: 25px 16px 100px;
+            }
+
+            .hamburger {
+                width: 32px;
+                height: 24px;
+            }
+
+            .icon-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+
+            .cart-count {
+                top: -3px;
+                right: -3px;
+                min-width: 20px;
+                height: 20px;
+                font-size: 11px;
+                font-weight: 700;
+            }
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        .mobile-menu a {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .mobile-menu a:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .mobile-menu a:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .mobile-menu a:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .mobile-menu a:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+
+        .mobile-menu a:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+
+        .mobile-menu a:nth-child(6) {
+            animation-delay: 0.35s;
+        }
+
+        .mobile-menu .whatsapp {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-container {
+            padding-top: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        section[id] {
+            scroll-margin-top: 90px;
+        }
+
+        @media (max-width: 768px) {
+            section[id] {
+                scroll-margin-top: 80px;
+            }
+        }
+
+        /* PLASTIC SECTION STYLING */
+        .plastic-section {
+            min-height: 100vh;
+            position: relative;
+            isolation: isolate;
+            display: grid;
+            place-items: center;
+            padding: 96px 22px 66px;
+            overflow: hidden;
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .35), transparent 60%),
+                radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .28), transparent 60%),
+                linear-gradient(180deg, #0F0F14 0%, #141422 100%);
+        }
+
+        .blob {
+            position: absolute;
+            inset: auto auto 10% -18%;
+            width: 560px;
+            height: 560px;
+            border-radius: 999px;
+            filter: blur(90px);
+            opacity: .45;
+            z-index: 0;
+            transform: translateZ(0);
+            background: linear-gradient(135deg, rgba(110, 77, 255, .85), rgba(255, 79, 216, .78));
+        }
+
+        .blob.b2 {
+            inset: -18% -22% auto auto;
+            width: 520px;
+            height: 520px;
+            border-radius: 999px;
+            filter: blur(90px);
+            opacity: .30;
+            z-index: 0;
+            transform: translateZ(0);
+            background: linear-gradient(135deg, rgba(255, 79, 216, .75), rgba(230, 230, 235, .55));
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .wrap {
+            width: min(1100px, 100%);
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 56px;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .10);
+            border: 1px solid rgba(255, 255, 255, .16);
+            font-size: .88rem;
+            color: rgba(255, 255, 255, .92);
+            margin-bottom: 16px;
+        }
+
+        .kdot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, .08);
+        }
+
+        h1 {
+            font-size: 3.25rem;
+            line-height: 1.03;
+            margin: 0 0 14px;
+            letter-spacing: -.04em;
+            font-weight: 900;
+            color: white;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            letter-spacing: -.03em;
+            color: white;
+        }
+
+        .lead {
+            margin: 0 0 18px;
+            color: rgba(255, 255, 255, .78);
+            font-size: 1.08rem;
+            line-height: 1.65;
+            max-width: 560px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: white;
+        }
+
+        .section-subtitle {
+            font-size: 1.08rem;
+            color: rgba(255, 255, 255, .78);
+            line-height: 1.65;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+
+        /* PLASTIC THEME BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-weight: 900;
+            text-decoration: none;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            font-size: 15px;
+            white-space: nowrap;
+            min-width: 140px;
+            height: 48px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            box-shadow: 0 4px 15px rgba(110, 77, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.4);
+            background: linear-gradient(135deg, #5a3de0, #ff39d0);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            border-color: white;
+        }
+
+        .add-to-cart,
+        #addBtn {
+            background: linear-gradient(135deg, var(--purple), var(--pink)) !important;
+            color: white !important;
+            border: none !important;
+            box-shadow: 0 4px 15px rgba(110, 77, 255, 0.3) !important;
+        }
+
+        .add-to-cart:hover,
+        #addBtn:hover {
+            background: linear-gradient(135deg, #5a3de0, #ff39d0) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.4) !important;
+        }
+
+        .btn.small {
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-size: .9rem;
+            min-width: auto;
+            height: auto;
+        }
+
+        .actions button,
+        .cta-buttons button,
+        .plastic-actions button,
+        .buttons button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-weight: 900;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            font-size: 15px;
+            min-width: 140px;
+            height: 48px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+            justify-content: center;
+        }
+
+        .buttons button {
+            width: auto;
+            min-width: 140px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .cta-buttons button {
+            min-width: 140px;
+        }
+
+        .plastic-actions {
+            gap: 12px;
+        }
+
+        #addBtn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-weight: 900;
+            border: none;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            min-width: 140px;
+            height: 48px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: none;
+            box-shadow: 0 4px 15px rgba(110, 77, 255, 0.3);
+        }
+
+        #addBtn:hover {
+            background: linear-gradient(135deg, #5a3de0, #ff39d0);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.4);
+        }
+
+        #plasticSearchBtn {
+            padding: 14px 24px;
+            border-radius: 999px;
+            font-weight: 900;
+            border: none;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            min-width: 100px;
+            height: 48px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        #plasticSearchBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.4);
+        }
+
+        .priceRow {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-top: 14px;
+            justify-content: center;
+        }
+
+        .amount {
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: white;
+        }
+
+        .note {
+            color: rgba(255, 255, 255, .68);
+            font-size: .95rem;
+        }
+
+        .proof {
+            margin-top: 22px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .proofChip {
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .14);
+            color: rgba(255, 255, 255, .86);
+            font-weight: 800;
+            font-size: .9rem;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+            text-align: center;
+            padding: 0 0 20px;
+        }
+
+        .hero-card-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            margin: 0 auto 40px;
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            order: 1;
+        }
+
+        .flipping-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: flipCard 8s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        .flipping-card-front,
+        .flipping-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            backface-visibility: hidden;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px rgba(110, 77, 255, 0.3),
+                0 25px 50px rgba(110, 77, 255, 0.3),
+                0 10px 30px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .flipping-card-front {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            border: 2px solid rgba(110, 77, 255, 0.4);
+        }
+
+        .flipping-card-back {
+            background: linear-gradient(135deg, var(--pink), var(--charcoal2));
+            transform: rotateY(180deg);
+            border: 2px solid rgba(255, 79, 216, 0.4);
+        }
+
+        .card-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .card-text {
+            font-size: 22px;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .card-nfc {
+            position: absolute;
+            bottom: 20px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        @keyframes flipCard {
+
+            0%,
+            100% {
+                transform: rotateY(0deg);
+            }
+
+            10%,
+            40% {
+                transform: rotateY(0deg);
+            }
+
+            50%,
+            90% {
+                transform: rotateY(180deg);
+            }
+        }
+
+        .hero>div:not(.hero-card-container) {
+            order: 2;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(110, 77, 255, 0.2);
+            color: white;
+            font-size: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(110, 77, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .subtext {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.78);
+            max-width: 100%;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            padding: 0 10px;
+        }
+
+        .features {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .feature {
+            background: rgba(110, 77, 255, 0.15);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: white;
+            border: 1px solid rgba(110, 77, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .price span {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.68);
+            font-weight: 400;
+            margin-left: 4px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* PLASTIC TYPES SECTIONS */
+        .plastic-type-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 20px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plastic-type-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, .12), transparent 70%);
+            opacity: 0.25;
+            animation: shimmer 6s infinite linear;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .plastic-container {
+            width: min(1100px, 100%);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 56px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .plastic-badge {
+            display: inline-flex;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: .88rem;
+            margin-bottom: 16px;
+            background: rgba(255, 255, 255, .22);
+            backdrop-filter: blur(6px);
+            color: white;
+        }
+
+        .plastic-content {
+            text-align: left;
+        }
+
+        .plastic-content h2 {
+            font-size: 3.25rem;
+            line-height: 1.03;
+            margin: 0 0 14px;
+            letter-spacing: -.04em;
+            font-weight: 900;
+        }
+
+        .plastic-content p {
+            font-size: 1.08rem;
+            line-height: 1.65;
+            max-width: 100%;
+            opacity: 0.92;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, .78);
+        }
+
+        .plastic-price {
+            font-size: 2.1rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .plastic-price span {
+            font-size: .95rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-left: 4px;
+            color: rgba(255, 255, 255, 0.68);
+        }
+
+        .plastic-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .plastic-card {
+            background: rgba(0, 0, 0, .25);
+            padding: 25px;
+            border-radius: 24px;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, .22), 0 20px 60px rgba(0, 0, 0, .35);
+            backdrop-filter: blur(6px);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 350px;
+        }
+
+        .plastic-card img {
+            width: 100%;
+            border-radius: 20px;
+            display: block;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .plastic-card-footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: .92rem;
+            opacity: 0.85;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.68);
+            width: 100%;
+        }
+
+        @keyframes shimmer {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        /* DIFFERENT PLASTIC FINISH BACKGROUNDS */
+        .transparent-section {
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(150, 130, 255, .35), transparent 60%),
+                radial-gradient(900px 500px at 80% 20%, rgba(255, 180, 240, .28), transparent 60%),
+                linear-gradient(180deg, #4A4A5A 0%, #5A5A6A 100%);
+        }
+
+        /* PLASTIC COLOR CAROUSEL SECTION */
+        .color-carousel-section {
+            min-height: 100vh;
+            text-align: center;
+            padding: 120px 20px;
+            color: #fff;
+            transition: background 0.6s ease;
+            background: var(--charcoal2);
+            position: relative;
+        }
+
+        /* Color backgrounds for carousel */
+        .color-carousel-section.black {
+            background: radial-gradient(circle at top, rgba(0, 0, 0, 0.9), rgba(50, 50, 50, 0.95));
+            color: #fff;
+        }
+
+        .color-carousel-section.white {
+            background: radial-gradient(circle at top, rgba(255, 255, 255, 0.9), rgba(220, 220, 220, 0.95));
+            color: #000;
+        }
+
+        .color-carousel-section.silver {
+            background: radial-gradient(circle at top, rgba(192, 192, 192, 0.9), rgba(150, 150, 150, 0.95));
+            color: #000;
+        }
+
+        .color-carousel-section.gold {
+            background: radial-gradient(circle at top, rgba(255, 215, 0, 0.9), rgba(218, 165, 32, 0.95));
+            color: #000;
+        }
+
+        .color-carousel-section.blue {
+            background: radial-gradient(circle at top, rgba(0, 0, 255, 0.9), rgba(0, 0, 180, 0.95));
+            color: #fff;
+        }
+
+        .color-carousel-section.green {
+            background: radial-gradient(circle at top, rgba(0, 128, 0, 0.9), rgba(0, 100, 0, 0.95));
+            color: #fff;
+        }
+
+        .color-carousel-section.orange {
+            background: radial-gradient(circle at top, rgba(255, 165, 0, 0.9), rgba(218, 120, 0, 0.95));
+            color: #000;
+        }
+
+        .color-carousel-section.yellow {
+            background: radial-gradient(circle at top, rgba(255, 255, 0, 0.9), rgba(218, 218, 0, 0.95));
+            color: #000;
+        }
+
+        .color-carousel-section.pink {
+            background: radial-gradient(circle at top, rgba(255, 192, 203, 0.9), rgba(255, 150, 170, 0.95));
+            color: #000;
+        }
+
+        .color-carousel-section.red {
+            background: radial-gradient(circle at top, rgba(255, 0, 0, 0.9), rgba(180, 0, 0, 0.95));
+            color: #fff;
+        }
+
+        .color-carousel-section.purple {
+            background: radial-gradient(circle at top, rgba(128, 0, 128, 0.9), rgba(100, 0, 100, 0.95));
+            color: #fff;
+        }
+
+        /* Carousel */
+        .plastic-carousel {
+            position: relative;
+            height: 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px auto 30px;
+            perspective: 1200px;
+            max-width: 1100px;
+        }
+
+        .plastic-finish-card {
+            position: absolute;
+            width: 220px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 20px;
+            opacity: 0;
+            transform: scale(0.85) rotateY(0deg);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            transform-style: preserve-3d;
+            will-change: transform, opacity;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+        }
+
+        .plastic-finish-card.active {
+            opacity: 1;
+            transform: scale(1) rotateY(0deg);
+            z-index: 3;
+            pointer-events: auto;
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .plastic-finish-card img {
+            width: 100%;
+            border-radius: 16px;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-label {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: inherit;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .card-price {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: inherit;
+            text-align: center;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-arrow.left {
+            left: 10px;
+        }
+
+        .carousel-arrow.right {
+            right: 10px;
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0 30px;
+            flex-wrap: wrap;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        .price-main {
+            font-size: 2.1rem;
+            font-weight: 900;
+            margin: 20px 0;
+            color: inherit;
+        }
+
+        .price-main span {
+            font-size: 0.95rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-left: 4px;
+            color: inherit;
+            opacity: 0.7;
+        }
+
+        /* PRINTING MODAL */
+        .printing-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 15, 20, 0.98);
+            backdrop-filter: blur(25px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .printing-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .printing-content {
+            background: linear-gradient(135deg, rgba(30, 30, 40, 0.95), rgba(40, 40, 55, 0.95));
+            border-radius: 28px;
+            padding: 40px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(110, 77, 255, 0.3);
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.6);
+            position: relative;
+            animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .close-printing {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-printing:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .printing-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .printing-header h3 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .printing-header p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .printing-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .printing-option {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 30px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(110, 77, 255, 0.2);
+        }
+
+        .printing-option:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .printing-option.selected {
+            border-color: var(--purple);
+            background: linear-gradient(135deg,
+                    rgba(110, 77, 255, 0.15),
+                    rgba(255, 79, 216, 0.15));
+            box-shadow: 0 25px 50px rgba(110, 77, 255, 0.25);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 25px 50px rgba(110, 77, 255, 0.25);
+            }
+
+            50% {
+                box-shadow: 0 25px 50px rgba(110, 77, 255, 0.4);
+            }
+        }
+
+        .printing-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .printing-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .printing-option:hover .printing-image img {
+            transform: scale(1.05);
+        }
+
+        .printing-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .printing-price {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--purple);
+            background: rgba(110, 77, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 12px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .printing-description {
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.6;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .printing-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+
+        .btn-cancel,
+        .btn-confirm {
+            padding: 18px 36px;
+            border-radius: 16px;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            min-width: 180px;
+            border: none;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-cancel {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-cancel:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-confirm {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.3);
+        }
+
+        .btn-confirm:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(110, 77, 255, 0.4);
+            background: linear-gradient(135deg, #5a3de0, #ff39d0);
+        }
+
+        .btn-confirm:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: var(--charcoal2);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 2000;
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-header h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            margin: 0;
+        }
+
+        .close-cart {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-cart:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .empty-cart p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .remove-item {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            background: rgba(255, 79, 216, 0.2);
+            border-color: var(--pink);
+            color: var(--pink);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: white;
+        }
+
+        .checkout-btn {
+            margin: 0 30px 30px;
+            padding: 20px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(110, 77, 255, 0.4);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            padding: 20px 30px;
+            border-radius: 14px;
+            font-weight: 600;
+            box-shadow: 0 15px 40px rgba(110, 77, 255, 0.3);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 3000;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* PLASTIC BENEFITS SECTION */
+        .plastic-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .plastic-benefit-card {
+            background: rgba(110, 77, 255, 0.1);
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid rgba(110, 77, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .plastic-benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple);
+            box-shadow: 0 15px 30px rgba(110, 77, 255, 0.2);
+            background: rgba(110, 77, 255, 0.15);
+        }
+
+        .plastic-benefit-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(110, 77, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .plastic-benefit-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .plastic-benefit-description {
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .plastic-benefit-highlight {
+            color: var(--purple);
+            font-weight: 600;
+        }
+
+        .plastic-cta-box {
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.15), rgba(255, 79, 216, 0.15));
+            border-radius: 20px;
+            padding: 30px 20px;
+            border: 1px solid rgba(110, 77, 255, 0.4);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .plastic-cta-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .plastic-cta-subtitle {
+            color: rgba(255, 255, 255, 0.78);
+            margin-bottom: 24px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        /* USE CASES GRID */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .use-case-card {
+            background: rgba(110, 77, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(110, 77, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple);
+            box-shadow: 0 15px 30px rgba(110, 77, 255, 0.2);
+            background: rgba(110, 77, 255, 0.15);
+        }
+
+        .use-case-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: rgba(110, 77, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 20px;
+            color: white;
+        }
+
+        .use-case-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .use-case-description {
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .plastic-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .plastic-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .plastic-content {
+                text-align: center;
+            }
+
+            .plastic-carousel {
+                height: 280px;
+            }
+
+            .plastic-finish-card {
+                width: 180px;
+                padding: 16px;
+            }
+
+            .carousel-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                padding: 12px 16px;
+            }
+
+            .main-container {
+                padding-top: 64px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .buttons,
+            .actions,
+            .plastic-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .buttons button,
+            .actions button,
+            .plastic-actions button {
+                width: 100%;
+            }
+
+            .plastic-finish-card {
+                width: 160px;
+                padding: 14px;
+            }
+
+            .card-label {
+                font-size: 1.1rem;
+            }
+
+            .card-price {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* PLASTIC FEATURES SECTION */
+        .plastic-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .plastic-feature {
+            background: rgba(110, 77, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(110, 77, 255, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .plastic-feature:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple);
+            background: rgba(110, 77, 255, 0.15);
+        }
+
+        .plastic-feature-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--plastic-accent);
+        }
+
+        .plastic-feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .plastic-feature-description {
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* COMPARISON TABLE */
+        .comparison-table {
+            width: 100%;
+            overflow-x: auto;
+            margin: 40px 0;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(110, 77, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(110, 77, 255, 0.3);
+        }
+
+        .comparison-table th {
+            background: rgba(110, 77, 255, 0.2);
+            padding: 20px;
+            text-align: left;
+            font-weight: 700;
+            color: white;
+            border-bottom: 1px solid rgba(110, 77, 255, 0.3);
+        }
+
+        .comparison-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(110, 77, 255, 0.2);
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .highlight {
+            color: var(--plastic-accent);
+            font-weight: 600;
+        }
+
+        /* ECO-FRIENDLY BADGE */
+        .eco-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Printing Selection Modal -->
+    <div class="printing-modal" id="printingModal">
+        <div class="printing-content">
+            <button class="close-printing" id="closePrinting">×</button>
+            <div class="printing-header">
+                <h3>Select Printing Quality</h3>
+                <p>Choose between different printing options for your <span id="selectedFinishText">Black</span> plastic
+                    NFC card</p>
+            </div>
+
+            <div class="printing-options">
+                <div class="printing-option" data-printing="standard">
+                    <div class="printing-image">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Standard Printing">
+                    </div>
+                    <div class="printing-label">
+                        <span>🎨</span> Standard Printing
+                    </div>
+                    <div class="printing-price">No extra cost</div>
+                    <div class="printing-description">
+                        High-quality digital printing with vibrant colors. Perfect for most business needs with
+                        excellent color reproduction and detail.
+                    </div>
+                </div>
+
+                <div class="printing-option" data-printing="premium">
+                    <div class="printing-image">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Premium Printing">
+                    </div>
+                    <div class="printing-label">
+                        <span>⭐</span> Premium Printing
+                    </div>
+                    <div class="printing-price">+£10</div>
+                    <div class="printing-description">
+                        UV-coated printing with enhanced durability and scratch resistance. Colors appear more vibrant
+                        with a subtle sheen.
+                    </div>
+                </div>
+
+                <div class="printing-option" data-printing="spot">
+                    <div class="printing-image">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Spot UV Printing">
+                    </div>
+                    <div class="printing-label">
+                        <span>✨</span> Spot UV Printing
+                    </div>
+                    <div class="printing-price">+£15</div>
+                    <div class="printing-description">
+                        Selective glossy coating on specific design elements. Creates beautiful contrast between matte
+                        and glossy areas for premium effect.
+                    </div>
+                </div>
+            </div>
+
+            <div class="printing-actions">
+                <button class="btn-cancel" id="cancelPrinting">Cancel</button>
+                <button class="btn-confirm" id="confirmPrinting" disabled>Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">£0</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        Item added to cart!
+    </div>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- MOBILE CLOSE BUTTON -->
+    <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
+
+    <!-- STICKY NAV -->
+    <!-- NAVIGATION BAR - Copy and paste this entire code into each HTML file -->
+    <nav class="nav" id="mainNav">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="ExposureBoost Logo" class="logo-img"
+                onerror="this.style.display='none'; this.parentElement.querySelector('.logo-text').style.display='block';">
+            <span class="logo-text">ExposureBoost</span>
+        </a>
+
+        <button class="hamburger" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="wood.html">Wood Cards</a>
+            <a href="plastic.html">Plastic Cards</a>
+            <a href="custom.html">Custom Cards</a>
+            <a href="stands.html">Stands</a>
+        </div>
+
+        <div class="nav-right">
+            <a href="https://wa.me/447123456789" class="whatsapp-icon" target="_blank" aria-label="WhatsApp">
+                💬
+            </a>
+            <div class="icon-btn" id="cartIcon">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+            <a href="https://wa.me/447123456789" class="whatsapp" target="_blank">
+                <span>💬</span> WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-menu-item">
+            <span>🏠</span> Home
+        </a>
+        <a href="gallery.html" class="mobile-menu-item">
+            <span>🎨</span> Gallery
+        </a>
+        <a href="wood.html" class="mobile-menu-item">
+            <span>🌳</span> Wood Cards
+        </a>
+        <a href="plastic.html" class="mobile-menu-item">
+            <span>🔵</span> Plastic Cards
+        </a>
+        <a href="custom.html" class="mobile-menu-item">
+            <span>✨</span> Custom Cards
+        </a>
+        <a href="stands.html" class="mobile-menu-item">
+            <span>📱</span> Stands
+        </a>
+
+        <div class="menu-divider"></div>
+
+        <a href="https://wa.me/447123456789" class="whatsapp mobile-menu-item" target="_blank">
+            <span>💬</span> WhatsApp Support
+        </a>
+
+        <div class="menu-footer">
+            Premium NFC Cards & Digital Profiles
+        </div>
+    </div>
+
+    <style>
+        /* NAVIGATION STYLES */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.95), rgba(255, 79, 216, 0.95));
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            min-height: 70px;
+            box-shadow: 0 4px 20px rgba(110, 77, 255, 0.2);
+        }
+
+        .nav.scrolled {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.9), rgba(255, 79, 216, 0.9));
+            box-shadow: 0 4px 30px rgba(110, 77, 255, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .logo-text {
+            color: white;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: left center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: .9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-center a:hover {
+            color: var(--pink);
+            transform: translateY(-2px);
+        }
+
+        .nav-center a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pink);
+            transition: width 0.3s ease;
+        }
+
+        .nav-center a:hover::after {
+            width: 100%;
+        }
+
+        .nav-center a.active {
+            color: var(--pink);
+            font-weight: 900;
+        }
+
+        .nav-center a.active::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(110, 77, 255, 0.2);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--pink);
+            color: white;
+            font-size: 10px;
+            min-width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp:hover {
+            background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-icon {
+            display: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(110, 77, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.98), rgba(255, 79, 216, 0.98));
+            backdrop-filter: blur(30px);
+            padding: 30px 20px 100px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            transform: translateY(-20px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px rgba(110, 77, 255, 0.3);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            transform: translateY(0);
+            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 18px 24px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.12);
+            text-align: left;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 4px;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu a:active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0.98);
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .mobile-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--pink);
+            color: var(--pink);
+        }
+
+        .mobile-menu .whatsapp {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 17px;
+            padding: 20px 24px;
+            min-height: 64px;
+            justify-content: center;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mobile-menu .whatsapp:hover {
+            background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+        }
+
+        .mobile-close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 1002;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-close-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .menu-footer {
+            margin-top: auto;
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 1024px) {
+
+            .nav-center,
+            .nav-right .whatsapp {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-right {
+                gap: 8px;
+            }
+
+            .nav {
+                padding: 14px 16px;
+                min-height: 64px;
+            }
+
+            .nav.scrolled {
+                padding: 10px 16px;
+            }
+
+            .whatsapp-icon {
+                display: flex;
+            }
+
+            .logo-text {
+                font-size: 1.1rem;
+            }
+
+            .main-container {
+                padding-top: 64px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .mobile-menu a {
+                padding: 20px 24px;
+                min-height: 64px;
+                font-size: 17px;
+            }
+
+            .mobile-menu {
+                top: 64px;
+                padding: 25px 16px 100px;
+            }
+
+            .hamburger {
+                width: 32px;
+                height: 24px;
+            }
+
+            .icon-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+
+            .cart-count {
+                top: -3px;
+                right: -3px;
+                min-width: 20px;
+                height: 20px;
+                font-size: 11px;
+                font-weight: 700;
+            }
+        }
+
+        body.menu-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
+        .mobile-menu a {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .mobile-menu a:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .mobile-menu a:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .mobile-menu a:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .mobile-menu a:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+
+        .mobile-menu a:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+
+        .mobile-menu a:nth-child(6) {
+            animation-delay: 0.35s;
+        }
+
+        .mobile-menu .whatsapp {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-container {
+            padding-top: 70px;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+
+    <script>
+        // NAVIGATION FUNCTIONALITY
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const nav = document.getElementById('mainNav');
+            const cartIcon = document.getElementById('cartIcon');
+            const cartCount = document.getElementById('cartCount');
+
+            let isMenuOpen = false;
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Update cart count
+            function updateCart() {
+                const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+                cartCount.textContent = count;
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            // Mobile menu functions
+            function toggleMobileMenu() {
+                if (isMenuOpen) closeMobileMenu();
+                else openMobileMenu();
+            }
+
+            function openMobileMenu() {
+                isMenuOpen = true;
+                hamburgerBtn.classList.add('active');
+                mobileMenuOverlay.classList.add('active');
+                mobileMenu.classList.add('active');
+                mobileCloseBtn.style.display = 'flex';
+                document.body.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMobileMenu() {
+                isMenuOpen = false;
+                hamburgerBtn.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileCloseBtn.style.display = 'none';
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Event listeners
+            hamburgerBtn.addEventListener('click', toggleMobileMenu);
+            mobileCloseBtn.addEventListener('click', closeMobileMenu);
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.getAttribute('target') === '_blank') return;
+                    closeMobileMenu();
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) closeMobileMenu();
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024 && isMenuOpen) closeMobileMenu();
+            });
+
+            // Sticky navigation
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            });
+
+            // Highlight active page
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-center a, .mobile-menu a').forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Initialize cart
+            updateCart();
+
+            // Cart click handler (add your cart modal logic here)
+            cartIcon.addEventListener('click', function () {
+                alert('Cart functionality will be implemented on each page.');
+                // Uncomment and implement your cart modal:
+                // document.getElementById('cartModal').classList.add('active');
+            });
+        });
+    </script>
+    <!-- END OF NAVIGATION BAR -->
+
+    <div class="main-container">
+        <!-- HERO SECTION -->
+        <section class="plastic-section" id="hero">
+            <div class="content-container">
+                <div class="hero">
+                    <!-- Flipping Card -->
+                    <div class="hero-card-container">
+                        <div class="flipping-card">
+                            <div class="flipping-card-front">
+                                <div class="card-icon">🪪</div>
+                                <div class="card-text">ExposureBoost Plastic</div>
+                                <div class="card-text">Premium Plastic NFC</div>
+                                <div class="card-nfc">Tap to Connect</div>
+                            </div>
+                            <div class="flipping-card-back">
+                                <div class="card-icon">🌈</div>
+                                <div class="card-text">Vibrant & Durable</div>
+                                <div class="card-text">Full Color Printing</div>
+                                <div class="card-nfc">NFC Enabled</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text content -->
+                    <div>
+                        <div class="badge">● Premium Plastic NFC Cards</div>
+
+                        <h1>Affordable elegance.<br>Maximum impact.</h1>
+
+                        <p class="subtext">
+                            High-quality plastic NFC cards with vibrant full-color printing.
+                            Perfect for businesses, events, and brands that need both style and functionality.
+                        </p>
+
+                        <div class="features">
+                            <div class="feature">🎨 Full color printing</div>
+                            <div class="feature">💪 Durable & scratch-resistant</div>
+                            <div class="feature">📲 Tap → Save → Connect</div>
+                        </div>
+
+                        <div class="price">
+                            From £45 <span>one-time · card + profile</span>
+                        </div>
+
+                        <div class="buttons">
+                            <button class="btn-primary" id="heroAddToCart">Choose Your Plastic</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ECO-FRIENDLY BANNER -->
+        <section class="plastic-section" style="min-height: auto; padding: 60px 20px;">
+            <div class="content-container">
+                <div class="plastic-cta-box"
+                    style="background: linear-gradient(135deg, rgba(46, 204, 113, 0.15), rgba(39, 174, 96, 0.15)); border-color: rgba(46, 204, 113, 0.4);">
+                    <div class="eco-badge">
+                        <span>🌱</span> Eco-Friendly Option Available
+                    </div>
+                    <h3 class="plastic-cta-title">100% Recycled Plastic Cards</h3>
+                    <p class="plastic-cta-subtitle">Choose our eco-friendly option made from 100% recycled plastic. Same
+                        premium quality, better for the planet. Add £5 per card.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">Learn
+                            About Eco Cards</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLASTIC BENEFITS SECTION -->
+        <section class="plastic-section" id="benefits">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Plastic Cards Are Still Powerful</h2>
+                    <p class="section-subtitle">Modern plastic technology combined with NFC creates cards that are
+                        affordable, durable, and perfect for mass distribution.</p>
+                </div>
+
+                <div class="plastic-benefits">
+                    <div class="plastic-benefit-card">
+                        <div class="plastic-benefit-icon">💰</div>
+                        <h3 class="plastic-benefit-title">Cost-Effective</h3>
+                        <p class="plastic-benefit-description">
+                            Perfect for <span class="plastic-benefit-highlight">events, promotions, and employee
+                                distributions</span> where you need multiple cards without breaking the budget.
+                        </p>
+                    </div>
+
+                    <div class="plastic-benefit-card">
+                        <div class="plastic-benefit-icon">🎨</div>
+                        <h3 class="plastic-benefit-title">Vibrant Printing</h3>
+                        <p class="plastic-benefit-description">
+                            Full-color printing capabilities mean your <span class="plastic-benefit-highlight">logo,
+                                photos, and designs</span> look crisp, clear, and professionally printed.
+                        </p>
+                    </div>
+
+                    <div class="plastic-benefit-card">
+                        <div class="plastic-benefit-icon">💪</div>
+                        <h3 class="plastic-benefit-title">Durability</h3>
+                        <p class="plastic-benefit-description">
+                            Modern plastic cards are <span class="plastic-benefit-highlight">scratch-resistant,
+                                waterproof, and built to last</span>. Perfect for daily use in wallets and pockets.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="plastic-cta-box">
+                    <h3 class="plastic-cta-title">Smart Business Choice</h3>
+                    <p class="plastic-cta-subtitle">Get premium NFC functionality at an accessible price point. Perfect
+                        for scaling your brand or running successful promotions.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary"
+                            onclick="document.getElementById('colored-plastic').scrollIntoView({behavior: 'smooth'})">Browse
+                            Plastic Options</button>
+                        <button class="btn-secondary"
+                            onclick="document.getElementById('clear-plastic').scrollIntoView({behavior: 'smooth'})">View
+                            Clear Plastic</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLORED PLASTIC CAROUSEL SECTION -->
+        <section class="color-carousel-section black" id="colored-plastic">
+            <h2>Choose Your Plastic Color</h2>
+            <p class="subtitle">Swipe or tap to browse different colored plastic options</p>
+
+            <div class="plastic-carousel">
+                <button class="carousel-arrow left" aria-label="Previous">‹</button>
+
+                <!-- Colored plastic cards - BLACK FIRST -->
+                <div class="plastic-finish-card active" data-color="Black" data-price="45">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Black Plastic">
+                    <div class="card-label">Black</div>
+                    <div class="card-price">£45</div>
+                </div>
+
+                <div class="plastic-finish-card" data-color="White" data-price="45">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="White Plastic">
+                    <div class="card-label">White</div>
+                    <div class="card-price">£45</div>
+                </div>
+
+                <div class="plastic-finish-card" data-color="Silver" data-price="50">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Silver Plastic">
+                    <div class="card-label">Silver</div>
+                    <div class="card-price">£50</div>
+                </div>
+
+                <div class="plastic-finish-card" data-color="Gold" data-price="55">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Gold Plastic">
+                    <div class="card-label">Gold</div>
+                    <div class="card-price">£55</div>
+                </div>
+
+                <div class="plastic-finish-card" data-color="Blue" data-price="45">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Blue Plastic">
+                    <div class="card-label">Blue</div>
+                    <div class="card-price">£45</div>
+                </div>
+
+                <div class="plastic-finish-card" data-color="Green" data-price="45">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Green Plastic">
+                    <div class="card-label">Green</div>
+                    <div class="card-price">£45</div>
+                </div>
+
+                <div class="plastic-finish-card" data-color="Orange" data-price="45">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Orange Plastic">
+                    <div class="card-label">Orange</div>
+                    <div class="card-price">£45</div>
+                </div>
+
+                <div class="plastic-finish-card" data-color="Yellow" data-price="45">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Yellow Plastic">
+                    <div class="card-label">Yellow</div>
+                    <div class="card-price">£45</div>
+                </div>
+
+                <div class="plastic-finish-card" data-color="Pink" data-price="45">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Pink Plastic">
+                    <div class="card-label">Pink</div>
+                    <div class="card-price">£45</div>
+                </div>
+
+                <div class="plastic-finish-card" data-color="Red" data-price="45">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Red Plastic">
+                    <div class="card-label">Red</div>
+                    <div class="card-price">£45</div>
+                </div>
+
+                <div class="plastic-finish-card" data-color="Purple" data-price="45">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                        alt="Purple Plastic">
+                    <div class="card-label">Purple</div>
+                    <div class="card-price">£45</div>
+                </div>
+
+                <button class="carousel-arrow right" aria-label="Next">›</button>
+            </div>
+
+            <div class="dots">
+                <!-- 11 dots for colored plastics -->
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+            <div class="price-main">
+                From £45 <span>per card · includes profile</span>
+            </div>
+
+            <div class="actions">
+                <button class="btn" id="addColoredPlasticBtn">🛒 Add Black Plastic</button>
+                <button class="btn-secondary">↗ Color Guide</button>
+            </div>
+        </section>
+
+        <!-- CLEAR PLASTIC SECTION -->
+        <section class="plastic-type-section transparent-section" id="clear-plastic">
+            <div class="plastic-container">
+                <div class="plastic-content">
+                    <div class="plastic-badge">● Clear Plastic Card</div>
+                    <h2>Clear Plastic</h2>
+                    <p>
+                        Transparent plastic cards that reveal the NFC chip inside. Modern, tech-forward
+                        appearance perfect for innovative brands and creative industries. Show off the technology while
+                        maintaining a sleek, professional look.
+                    </p>
+                    <div class="plastic-features">
+                        <div class="plastic-feature">
+                            <div class="plastic-feature-icon">🔍</div>
+                            <div class="plastic-feature-title">See-Through Design</div>
+                            <div class="plastic-feature-description">Reveals NFC technology</div>
+                        </div>
+                        <div class="plastic-feature">
+                            <div class="plastic-feature-icon">🚀</div>
+                            <div class="plastic-feature-title">Tech-Forward</div>
+                            <div class="plastic-feature-description">Innovative & modern</div>
+                        </div>
+                        <div class="plastic-feature">
+                            <div class="plastic-feature-icon">💎</div>
+                            <div class="plastic-feature-title">Premium Look</div>
+                            <div class="plastic-feature-description">Unique & eye-catching</div>
+                        </div>
+                    </div>
+                    <div class="plastic-price">
+                        £60 <span>per card · includes profile</span>
+                    </div>
+                    <div class="plastic-actions">
+                        <button class="btn add-to-cart" data-name="Clear Plastic Card" data-price="60">🛒 Add to
+                            Cart</button>
+                        <button class="btn-secondary">↗ See Examples</button>
+                    </div>
+                </div>
+                <div class="plastic-card">
+                    <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                        alt="Clear Plastic Card">
+                    <div class="plastic-card-footer">
+                        <span>Transparent & modern</span>
+                        <span>ExposureBoost</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- USE CASES SECTION -->
+        <section class="plastic-section" id="use-cases">
+            <div class="content-container">
+                <h2 class="section-title">Perfect For Every Business Need</h2>
+                <p class="section-subtitle">Plastic NFC cards offer the perfect balance of affordability and
+                    functionality for various business applications.</p>
+
+                <div class="use-cases-grid">
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🎟️</div>
+                        <h3 class="use-case-title">Events & Conferences</h3>
+                        <p class="use-case-description">
+                            Distribute to hundreds of attendees without breaking budget. Perfect for trade shows,
+                            conferences, and networking events.
+                        </p>
+                    </div>
+
+                    <div class="use-case-card">
+                        <div class="use-case-icon">👔</div>
+                        <h3 class="use-case-title">Employee Badges</h3>
+                        <p class="use-case-description">
+                            Company IDs that double as digital business cards. Employees can share contact info with
+                            clients and partners instantly.
+                        </p>
+                    </div>
+
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🏢</div>
+                        <h3 class="use-case-title">Real Estate Agents</h3>
+                        <p class="use-case-description">
+                            Share property listings, virtual tours, and contact information with potential buyers
+                            through a simple tap.
+                        </p>
+                    </div>
+
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🎓</div>
+                        <h3 class="use-case-title">Education & Training</h3>
+                        <p class="use-case-description">
+                            Provide students with cards linking to course materials, schedules, and instructor contact
+                            information.
+                        </p>
+                    </div>
+
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🛍️</div>
+                        <h3 class="use-case-title">Retail & Loyalty</h3>
+                        <p class="use-case-description">
+                            Create loyalty cards that customers can tap to access special offers, points, and exclusive
+                            content.
+                        </p>
+                    </div>
+
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🏨</div>
+                        <h3 class="use-case-title">Hospitality</h3>
+                        <p class="use-case-description">
+                            Hotel keycards that also provide guest information, local guides, and contact details for
+                            hotel services.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLASTIC FEATURES SECTION -->
+        <section class="plastic-section" id="features">
+            <div class="content-container">
+                <h2 class="section-title">Engineered for Everyday Use</h2>
+                <p class="section-subtitle">Our plastic cards are designed to withstand daily wear while delivering
+                    reliable NFC performance.</p>
+
+                <div class="plastic-features">
+                    <div class="plastic-feature">
+                        <div class="plastic-feature-icon">💧</div>
+                        <div class="plastic-feature-title">Water Resistant</div>
+                        <div class="plastic-feature-description">Spills and rain won't damage the card or affect NFC
+                            functionality.</div>
+                    </div>
+
+                    <div class="plastic-feature">
+                        <div class="plastic-feature-icon">🔋</div>
+                        <div class="plastic-feature-title">No Battery Required</div>
+                        <div class="plastic-feature-description">NFC technology works passively - no charging ever
+                            needed.</div>
+                    </div>
+
+                    <div class="plastic-feature">
+                        <div class="plastic-feature-icon">📱</div>
+                        <div class="plastic-feature-title">Universal Compatibility</div>
+                        <div class="plastic-feature-description">Works with all modern smartphones - iPhone and Android.
+                        </div>
+                    </div>
+
+                    <div class="plastic-feature">
+                        <div class="plastic-feature-icon">🔄</div>
+                        <div class="plastic-feature-title">Updateable Content</div>
+                        <div class="plastic-feature-description">Change your digital profile anytime without reprinting
+                            cards.</div>
+                    </div>
+                </div>
+
+                <!-- Comparison Table -->
+                <div class="comparison-table">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Plastic vs Metal Comparison</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Plastic Cards</th>
+                                <th>Metal Cards</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Starting Price</td>
+                                <td class="highlight">£45 per card</td>
+                                <td>£95 per card</td>
+                            </tr>
+                            <tr>
+                                <td>Weight</td>
+                                <td>Light (5g)</td>
+                                <td class="highlight">Heavy (25g)</td>
+                            </tr>
+                            <tr>
+                                <td>Printing Quality</td>
+                                <td class="highlight">Full-color, vibrant</td>
+                                <td>Limited color options</td>
+                            </tr>
+                            <tr>
+                                <td>Durability</td>
+                                <td>High (scratch-resistant)</td>
+                                <td class="highlight">Very High (indestructible)</td>
+                            </tr>
+                            <tr>
+                                <td>Best For</td>
+                                <td class="highlight">Events, employees, promotions</td>
+                                <td class="highlight">Executive, luxury, gifts</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION -->
+        <section class="plastic-section testimonials-section" id="testimonials">
+            <div class="content-container">
+                <h2 class="section-title">What Our Plastic Card Clients Say</h2>
+                <p class="section-subtitle">Businesses across industries love the perfect balance of quality and
+                    affordability.</p>
+
+                <div class="use-cases-grid">
+                    <div class="plastic-benefit-card">
+                        <div class="plastic-benefit-description">"We ordered 500 black plastic cards for our annual
+                            conference and they were perfect! The quality exceeded expectations and the price allowed us
+                            to stay within budget while impressing our attendees."</div>
+                        <div class="plastic-benefit-title">Jessica Miller</div>
+                        <div class="plastic-benefit-description" style="color: rgba(255,255,255,0.6); font-size: 13px;">
+                            Event Coordinator, Tech Conference</div>
+                    </div>
+
+                    <div class="plastic-benefit-card">
+                        <div class="plastic-benefit-description">"As a real estate agency with 50+ agents, we needed an
+                            affordable yet professional solution. The blue plastic cards look premium and our clients
+                            love tapping to see property listings."</div>
+                        <div class="plastic-benefit-title">David Wilson</div>
+                        <div class="plastic-benefit-description" style="color: rgba(255,255,255,0.6); font-size: 13px;">
+                            Real Estate Broker, London</div>
+                    </div>
+
+                    <div class="plastic-benefit-card">
+                        <div class="plastic-benefit-description">"The clear plastic cards for our tech startup have been
+                            a hit! They show off the NFC chip inside and feel premium in hand. Perfect for our
+                            innovative brand image."</div>
+                        <div class="plastic-benefit-title">Sarah Johnson</div>
+                        <div class="plastic-benefit-description" style="color: rgba(255,255,255,0.6); font-size: 13px;">
+                            Marketing Director, Tech Startup</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="plastic-section" id="faq">
+            <div class="content-container">
+                <div class="section-header">
+                    <div class="badge">● FAQs</div>
+                    <h2>Plastic Card Questions Answered</h2>
+                    <p class="section-subtitle">
+                        Everything you need to know about our premium plastic NFC cards.
+                    </p>
+
+                    <div class="plastic-benefits" style="margin-top: 40px;">
+                        <div class="plastic-benefit-card" onclick="this.classList.toggle('active')"
+                            style="cursor: pointer;">
+                            <h3 class="plastic-benefit-title">Are plastic cards durable enough for daily use?</h3>
+                            <div class="plastic-benefit-description" style="display: none; margin-top: 15px;">
+                                Absolutely! Our plastic cards use high-quality PVC or recycled plastic that's
+                                scratch-resistant, waterproof, and designed to withstand daily use. They're as durable
+                                as credit cards and will last for years.
+                            </div>
+                        </div>
+
+                        <div class="plastic-benefit-card" onclick="this.classList.toggle('active')"
+                            style="cursor: pointer;">
+                            <h3 class="plastic-benefit-title">Can I print full-color designs on plastic cards?</h3>
+                            <div class="plastic-benefit-description" style="display: none; margin-top: 15px;">
+                                Yes! Plastic cards offer the best printing capabilities. We use high-resolution digital
+                                printing that supports full-color designs, photos, gradients, and intricate details with
+                                excellent color reproduction.
+                            </div>
+                        </div>
+
+                        <div class="plastic-benefit-card" onclick="this.classList.toggle('active')"
+                            style="cursor: pointer;">
+                            <h3 class="plastic-benefit-title">What's the minimum order quantity?</h3>
+                            <div class="plastic-benefit-description" style="display: none; margin-top: 15px;">
+                                We accept orders from a single card up to thousands. Single cards are perfect for
+                                testing or personal use, while bulk orders (50+) receive significant discounts. Contact
+                                us for custom bulk pricing.
+                            </div>
+                        </div>
+
+                        <div class="plastic-benefit-card" onclick="this.classList.toggle('active')"
+                            style="cursor: pointer;">
+                            <h3 class="plastic-benefit-title">How long does printing and delivery take?</h3>
+                            <div class="plastic-benefit-description" style="display: none; margin-top: 15px;">
+                                Standard production time is 3-5 working days after design approval. Delivery times
+                                depend on location but are typically 2-3 days within the UK. Rush production (24-48
+                                hours) is available for urgent orders.
+                            </div>
+                        </div>
+
+                        <div class="plastic-benefit-card" onclick="this.classList.toggle('active')"
+                            style="cursor: pointer;">
+                            <h3 class="plastic-benefit-title">Can I get samples before placing a large order?</h3>
+                            <div class="plastic-benefit-description" style="display: none; margin-top: 15px;">
+                                Yes! We offer sample packs with different colors for £15 (refundable against your
+                                first order). This lets you feel the quality and see the printing before committing to a
+                                large order.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="plastic-section">
+            <div class="content-container">
+                <div class="plastic-cta-box">
+                    <h2 class="plastic-cta-title">Ready for Affordable Impact?</h2>
+                    <p class="plastic-cta-subtitle">Get premium NFC functionality at an accessible price. Perfect for
+                        businesses, events, and teams that need both quality and quantity.</p>
+                    <div class="cta-buttons">
+                        <button class="btn-primary" id="finalBrowseBtn">Browse All Plastic Options</button>
+                        <a href="https://wa.me/447123456789" class="btn-secondary" target="_blank">
+                            <span>💬</span> Chat About Bulk Orders
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Variables for printing selection
+        let selectedFinish = 'Black';
+        let selectedFinishPrice = 45;
+        let selectedPrinting = null;
+        let printingModal = document.getElementById('printingModal');
+
+        // MOBILE NAVIGATION
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const nav = document.getElementById('mainNav');
+        let isMenuOpen = false;
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            isMenuOpen = !isMenuOpen;
+
+            if (isMenuOpen) {
+                hamburgerBtn.classList.add('active');
+                mobileMenuOverlay.classList.add('active');
+                mobileMenu.classList.add('active');
+                mobileCloseBtn.classList.add('show');
+                document.body.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                hamburgerBtn.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileCloseBtn.classList.remove('show');
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close mobile menu
+        function closeMobileMenu() {
+            isMenuOpen = false;
+            hamburgerBtn.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileCloseBtn.classList.remove('show');
+            document.body.classList.remove('menu-open');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event listeners for mobile menu
+        hamburgerBtn.addEventListener('click', toggleMobileMenu);
+        mobileCloseBtn.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking menu links
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.getAttribute('target') === '_blank') {
+                    return;
+                }
+                e.preventDefault();
+                closeMobileMenu();
+
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && isMenuOpen) {
+                closeMobileMenu();
+            }
+        });
+
+        // Sticky Navigation
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.getElementById('cartCount');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const notification = document.getElementById('notification');
+
+        // Update cart display
+        function updateCart() {
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCartItems();
+        }
+
+        // Render cart items in modal
+        function renderCartItems() {
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
+                cartTotal.textContent = '£0';
+                return;
+            }
+
+            let itemsHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                itemsHTML += `
+                    <div class="cart-item">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+                    </div>
+                `;
+            });
+
+            cartItems.innerHTML = itemsHTML;
+            cartTotal.textContent = `£${total}`;
+        }
+
+        // Add to cart function
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+
+            updateCart();
+            showNotification(`${name} added to cart!`);
+        }
+
+        // Remove from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Show notification
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Open cart modal
+        function openCartModal() {
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            closeMobileMenu();
+        }
+
+        // Close cart modal
+        function closeCartModal() {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Checkout functionality
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!');
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            alert(`Proceeding to checkout. Total: £${total}\n\nThis is a real application, this would redirect to a payment processor.`);
+        }
+
+        // Event listeners for cart
+        cartIcon.addEventListener('click', openCartModal);
+        closeCart.addEventListener('click', closeCartModal);
+        checkoutBtn.addEventListener('click', checkout);
+
+        // Close modal when clicking outside
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                closeCartModal();
+            }
+        });
+
+        // Add to cart buttons for plastic types (direct add)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const name = e.target.dataset.name;
+                    const price = parseInt(e.target.dataset.price);
+                    addToCart(name, price);
+                });
+            });
+
+            updateCart();
+        });
+
+        // Colored Plastic Carousel
+        const plasticCards = document.querySelectorAll('.plastic-finish-card');
+        const plasticDots = document.querySelectorAll('.dots .dot');
+        const plasticSection = document.querySelector('.color-carousel-section');
+        const plasticPrevBtn = document.querySelector('.carousel-arrow.left');
+        const plasticNextBtn = document.querySelector('.carousel-arrow.right');
+        const addColoredPlasticBtn = document.getElementById('addColoredPlasticBtn');
+
+        // All color finishes with their background classes
+        const plasticColors = [
+            'black', 'white', 'silver', 'gold', 'blue', 'green',
+            'orange', 'yellow', 'pink', 'red', 'purple'
+        ];
+        let plasticIndex = 0;
+
+        // Function to update colored carousel
+        function updateColoredCarousel(i) {
+            plasticCards[plasticIndex].classList.remove('active');
+            plasticDots[plasticIndex].classList.remove('active');
+
+            plasticIndex = (i + plasticCards.length) % plasticCards.length;
+
+            plasticCards[plasticIndex].classList.add('active');
+            plasticSection.className = `color-carousel-section ${plasticColors[plasticIndex]}`;
+            plasticDots[plasticIndex].classList.add('active');
+
+            const activeCard = plasticCards[plasticIndex];
+            const colorName = activeCard.dataset.color;
+            const price = activeCard.dataset.price;
+            selectedFinish = colorName;
+            selectedFinishPrice = parseInt(price);
+
+            addColoredPlasticBtn.textContent = `🛒 Add ${colorName} Plastic`;
+
+            // Update price display
+            document.querySelector('.price-main').innerHTML = `From £${price} <span>per card · includes profile</span>`;
+        }
+
+        // Initialize colored carousel with BLACK as default
+        updateColoredCarousel(0);
+
+        // Manual navigation
+        plasticPrevBtn.addEventListener('click', () => {
+            updateColoredCarousel(plasticIndex - 1);
+        });
+
+        plasticNextBtn.addEventListener('click', () => {
+            updateColoredCarousel(plasticIndex + 1);
+        });
+
+        // Dot navigation
+        plasticDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                updateColoredCarousel(i);
+            });
+        });
+
+        // Touch/swipe support
+        let plasticStartX = 0;
+        plasticSection.addEventListener('touchstart', e => {
+            plasticStartX = e.touches[0].clientX;
+        });
+
+        plasticSection.addEventListener('touchend', e => {
+            const endX = e.changedTouches[0].clientX;
+            if (plasticStartX - endX > 50) updateColoredCarousel(plasticIndex + 1);
+            if (endX - plasticStartX > 50) updateColoredCarousel(plasticIndex - 1);
+        });
+
+        // Printing Selection Modal Functionality
+        const printingOptions = document.querySelectorAll('.printing-option');
+        const confirmPrintingBtn = document.getElementById('confirmPrinting');
+        const cancelPrintingBtn = document.getElementById('cancelPrinting');
+        const closePrintingBtn = document.getElementById('closePrinting');
+        const selectedFinishText = document.getElementById('selectedFinishText');
+
+        // Open printing modal when "Add [Color] Plastic" button is clicked
+        addColoredPlasticBtn.addEventListener('click', () => {
+            selectedFinishText.textContent = selectedFinish;
+            selectedPrinting = null;
+
+            // Reset selection state
+            printingOptions.forEach(option => option.classList.remove('selected'));
+            confirmPrintingBtn.disabled = true;
+            confirmPrintingBtn.textContent = 'Add to Cart';
+
+            // Show modal
+            printingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        });
+
+        // Handle printing option selection
+        printingOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                printingOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedPrinting = option.dataset.printing;
+                confirmPrintingBtn.disabled = false;
+                const printingType = option.querySelector('.printing-label').textContent.trim();
+                confirmPrintingBtn.textContent = `Add ${printingType}`;
+            });
+        });
+
+        // Confirm printing selection and add to cart
+        confirmPrintingBtn.addEventListener('click', () => {
+            if (!selectedPrinting) return;
+
+            const extraPrice = selectedPrinting === 'standard' ? 0 :
+                selectedPrinting === 'premium' ? 10 : 15;
+
+            const totalPrice = selectedFinishPrice + extraPrice;
+            const printingType = selectedPrinting === 'standard' ? 'Standard Printing' :
+                selectedPrinting === 'premium' ? 'Premium Printing' : 'Spot UV Printing';
+
+            const itemName = `${selectedFinish} Plastic Card (${printingType})`;
+
+            addToCart(itemName, totalPrice);
+            closePrintingModal();
+        });
+
+        // Close printing modal and restore scrolling
+        function closePrintingModal() {
+            printingModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.body.style.position = '';
+            document.body.style.width = '';
+        }
+
+        // Event listeners for closing printing modal
+        closePrintingBtn.addEventListener('click', closePrintingModal);
+        cancelPrintingBtn.addEventListener('click', closePrintingModal);
+
+        // Close modal when clicking outside
+        printingModal.addEventListener('click', (e) => {
+            if (e.target === printingModal) {
+                closePrintingModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && printingModal.classList.contains('active')) {
+                closePrintingModal();
+            }
+        });
+
+        // FAQ Accordion functionality
+        document.querySelectorAll('.plastic-benefit-card').forEach(card => {
+            if (card.getAttribute('onclick')) {
+                card.addEventListener('click', function () {
+                    const description = this.querySelector('.plastic-benefit-description');
+                    if (description.style.display === 'none' || description.style.display === '') {
+                        description.style.display = 'block';
+                        this.style.borderColor = 'var(--purple)';
+                    } else {
+                        description.style.display = 'none';
+                        this.style.borderColor = 'rgba(110, 77, 255, 0.3)';
+                    }
+                });
+            }
+        });
+
+        // SNAPPY SCROLLING
+        document.querySelectorAll('.nav-center a, .mobile-menu a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = Math.min(500, Math.abs(distance) * 0.5);
+                    let startTime = null;
+
+                    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+                    function animation(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const progress = Math.min(timeElapsed / duration, 1);
+
+                        const easedProgress = easeOutCubic(progress);
+                        window.scrollTo(0, startPosition + distance * easedProgress);
+
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        } else {
+                            if (window.innerWidth <= 767) {
+                                closeMobileMenu();
+                            }
+                        }
+                    }
+
+                    requestAnimationFrame(animation);
+                }
+            });
+        });
+
+        // Add smooth scroll to hero button
+        document.getElementById('heroAddToCart').addEventListener('click', function (e) {
+            e.preventDefault();
+            const coloredPlasticSection = document.getElementById('colored-plastic');
+            if (coloredPlasticSection) {
+                const navHeight = nav.offsetHeight;
+                const targetPosition = coloredPlasticSection.offsetTop - navHeight;
+
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = Math.min(500, Math.abs(distance) * 0.5);
+                let startTime = null;
+
+                const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+
+                    const easedProgress = easeOutCubic(progress);
+                    window.scrollTo(0, startPosition + distance * easedProgress);
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            }
+        });
+
+        // Add smooth scroll to final browse button
+        const finalBrowseBtn = document.getElementById('finalBrowseBtn');
+        if (finalBrowseBtn) {
+            finalBrowseBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const coloredPlasticSection = document.getElementById('colored-plastic');
+                if (coloredPlasticSection) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = coloredPlasticSection.offsetTop - navHeight;
+
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = Math.min(500, Math.abs(distance) * 0.5);
+                    let startTime = null;
+
+                    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+                    function animation(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        const timeElapsed = currentTime - startTime;
+                        const progress = Math.min(timeElapsed / duration, 1);
+
+                        const easedProgress = easeOutCubic(progress);
+                        window.scrollTo(0, startPosition + distance * easedProgress);
+
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        }
+                    }
+
+                    requestAnimationFrame(animation);
+                }
+            });
+        }
+
+        // Update navigation in benefits section CTA buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            // Update benefits section CTA buttons to point to colored plastic first
+            const benefitsCTA = document.querySelector('.plastic-benefits + .plastic-cta-box .btn-primary');
+            if (benefitsCTA) {
+                benefitsCTA.onclick = function () {
+                    document.getElementById('colored-plastic').scrollIntoView({ behavior: 'smooth' });
+                };
+            }
+
+            const benefitsSecondaryCTA = document.querySelector('.plastic-benefits + .plastic-cta-box .btn-secondary');
+            if (benefitsSecondaryCTA) {
+                benefitsSecondaryCTA.onclick = function () {
+                    document.getElementById('clear-plastic').scrollIntoView({ behavior: 'smooth' });
+                };
+            }
+        });
+
+        // Improve mobile performance
+        if ('matchMedia' in window) {
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (reduceMotion.matches) {
+                document.documentElement.style.setProperty('--animation-duration', '0.01s');
+            }
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Plastic NFC cards page loaded with colored options above clear plastic');
+            updateCart();
+        });
+    </script>
+</body>
+
+</html>
