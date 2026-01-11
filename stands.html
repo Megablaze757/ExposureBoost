@@ -146,7 +146,7 @@
         .nav-center a {
             text-decoration: none;
             color: white;
-            font-weight: 900;
+            font-weight: 700;
             font-size: .9rem;
             transition: all 0.3s ease;
             white-space: nowrap;
@@ -171,6 +171,15 @@
         }
 
         .nav-center a:hover::after {
+            width: 100%;
+        }
+
+        .nav-center a.active {
+            color: var(--pink);
+            font-weight: 900;
+        }
+
+        .nav-center a.active::after {
             width: 100%;
         }
 
@@ -356,6 +365,12 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
+        .mobile-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--pink);
+            color: var(--pink);
+        }
+
         .mobile-menu .whatsapp {
             margin-top: 20px;
             margin-bottom: 30px;
@@ -501,6 +516,9 @@
 
         body.menu-open {
             overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
         }
 
         .mobile-menu a {
@@ -859,100 +877,6 @@
             align-items: center;
             text-align: center;
             padding: 0 0 20px;
-        }
-
-        .hero-product-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            height: 250px;
-            margin: 0 auto 40px;
-            perspective: 1000px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            order: 1;
-        }
-
-        .flipping-product {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transform-style: preserve-3d;
-            animation: flipProduct 8s ease-in-out infinite;
-            transform-origin: center;
-        }
-
-        .flipping-product-front,
-        .flipping-product-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            backface-visibility: hidden;
-            overflow: hidden;
-            box-shadow: 0 0 0 1px rgba(110, 77, 255, 0.3),
-                0 25px 50px rgba(110, 77, 255, 0.3),
-                0 10px 30px rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .flipping-product-front {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            border: 2px solid rgba(110, 77, 255, 0.4);
-        }
-
-        .flipping-product-back {
-            background: linear-gradient(135deg, var(--pink), var(--charcoal2));
-            transform: rotateY(180deg);
-            border: 2px solid rgba(255, 79, 216, 0.4);
-        }
-
-        .product-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .product-text {
-            font-size: 18px;
-            font-weight: 600;
-            color: white;
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .product-nfc {
-            position: absolute;
-            bottom: 15px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        @keyframes flipProduct {
-
-            0%,
-            100% {
-                transform: rotateY(0deg);
-            }
-
-            10%,
-            40% {
-                transform: rotateY(0deg);
-            }
-
-            50%,
-            90% {
-                transform: rotateY(180deg);
-            }
-        }
-
-        .hero>div:not(.hero-product-container) {
-            order: 2;
         }
 
         .badge {
@@ -1882,13 +1806,7 @@
         Item added to cart!
     </div>
 
-    <!-- MOBILE MENU OVERLAY -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-
-    <!-- MOBILE CLOSE BUTTON -->
-    <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
-
-    <!-- NAVIGATION BAR - Copy and paste this entire code into each HTML file -->
+    <!-- NAVIGATION BAR -->
     <nav class="nav" id="mainNav">
         <a href="index.html" class="logo">
             <img src="logo.png" alt="ExposureBoost Logo" class="logo-img"
@@ -1908,7 +1826,7 @@
             <a href="wood.html">Wood Cards</a>
             <a href="plastic.html">Plastic Cards</a>
             <a href="custom.html">Custom Cards</a>
-            <a href="stands.html">Stands</a>
+            <a href="stands.html" class="active">Stands</a>
         </div>
 
         <div class="nav-right">
@@ -1925,9 +1843,13 @@
         </div>
     </nav>
 
+    <!-- MOBILE MENU OVERLAY -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- MOBILE CLOSE BUTTON -->
     <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
 
+    <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="index.html" class="mobile-menu-item">
             <span>🏠</span> Home
@@ -1944,7 +1866,7 @@
         <a href="custom.html" class="mobile-menu-item">
             <span>✨</span> Custom Cards
         </a>
-        <a href="stands.html" class="mobile-menu-item">
+        <a href="stands.html" class="mobile-menu-item active">
             <span>📱</span> Stands
         </a>
 
@@ -1959,622 +1881,12 @@
         </div>
     </div>
 
-    <style>
-        /* NAVIGATION STYLES */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            background: linear-gradient(135deg, rgba(110, 77, 255, 0.95), rgba(255, 79, 216, 0.95));
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            min-height: 70px;
-            box-shadow: 0 4px 20px rgba(110, 77, 255, 0.2);
-        }
-
-        .nav.scrolled {
-            padding: 12px 20px;
-            background: linear-gradient(135deg, rgba(110, 77, 255, 0.9), rgba(255, 79, 216, 0.9));
-            box-shadow: 0 4px 30px rgba(110, 77, 255, 0.3);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-        }
-
-        .logo-text {
-            color: white;
-            font-weight: 900;
-            font-size: 1.2rem;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 28px;
-            height: 20px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 100%;
-            height: 2px;
-            background: white;
-            border-radius: 2px;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform-origin: left center;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-10px);
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg);
-        }
-
-        .nav-center {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-center a {
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: .9rem;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            padding: 5px 0;
-            position: relative;
-        }
-
-        .nav-center a:hover {
-            color: var(--pink);
-            transform: translateY(-2px);
-        }
-
-        .nav-center a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--pink);
-            transition: width 0.3s ease;
-        }
-
-        .nav-center a:hover::after {
-            width: 100%;
-        }
-
-        .nav-center a.active {
-            color: var(--pink);
-            font-weight: 900;
-        }
-
-        .nav-center a.active::after {
-            width: 100%;
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .icon-btn {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .icon-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(110, 77, 255, 0.2);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--pink);
-            color: white;
-            font-size: 10px;
-            min-width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .whatsapp {
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            padding: 8px 14px;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-        }
-
-        .whatsapp:hover {
-            background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-        }
-
-        .whatsapp-icon {
-            display: none;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-icon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
-        }
-
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(110, 77, 255, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 999;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 64px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(110, 77, 255, 0.98), rgba(255, 79, 216, 0.98));
-            backdrop-filter: blur(30px);
-            padding: 30px 20px 100px;
-            display: none;
-            flex-direction: column;
-            gap: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            transform: translateY(-20px);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 40px rgba(110, 77, 255, 0.3);
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            z-index: 1000;
-        }
-
-        .mobile-menu.active {
-            display: flex;
-            transform: translateY(0);
-            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .mobile-menu a {
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 18px;
-            padding: 18px 24px;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.12);
-            text-align: left;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            margin-bottom: 4px;
-            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu a:active {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(0.98);
-        }
-
-        .mobile-menu a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(10px);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .mobile-menu a.active {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: var(--pink);
-            color: var(--pink);
-        }
-
-        .mobile-menu .whatsapp {
-            margin-top: 20px;
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 17px;
-            padding: 20px 24px;
-            min-height: 64px;
-            justify-content: center;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .mobile-menu .whatsapp:hover {
-            background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
-        }
-
-        .mobile-close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-            z-index: 1002;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-close-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: rotate(90deg);
-        }
-
-        .menu-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.15);
-            margin: 20px 0;
-            width: 100%;
-        }
-
-        .menu-footer {
-            margin-top: auto;
-            padding-top: 20px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @media (max-width: 1024px) {
-
-            .nav-center,
-            .nav-right .whatsapp {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-right {
-                gap: 8px;
-            }
-
-            .nav {
-                padding: 14px 16px;
-                min-height: 64px;
-            }
-
-            .nav.scrolled {
-                padding: 10px 16px;
-            }
-
-            .whatsapp-icon {
-                display: flex;
-            }
-
-            .logo-text {
-                font-size: 1.1rem;
-            }
-
-            .main-container {
-                padding-top: 64px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .mobile-menu a {
-                padding: 20px 24px;
-                min-height: 64px;
-                font-size: 17px;
-            }
-
-            .mobile-menu {
-                top: 64px;
-                padding: 25px 16px 100px;
-            }
-
-            .hamburger {
-                width: 32px;
-                height: 24px;
-            }
-
-            .icon-btn {
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
-            }
-
-            .cart-count {
-                top: -3px;
-                right: -3px;
-                min-width: 20px;
-                height: 20px;
-                font-size: 11px;
-                font-weight: 700;
-            }
-        }
-
-        body.menu-open {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-        }
-
-        .mobile-menu a {
-            animation: fadeInUp 0.5s ease forwards;
-            opacity: 0;
-            transform: translateY(10px);
-        }
-
-        .mobile-menu a:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .mobile-menu a:nth-child(2) {
-            animation-delay: 0.15s;
-        }
-
-        .mobile-menu a:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .mobile-menu a:nth-child(4) {
-            animation-delay: 0.25s;
-        }
-
-        .mobile-menu a:nth-child(5) {
-            animation-delay: 0.3s;
-        }
-
-        .mobile-menu a:nth-child(6) {
-            animation-delay: 0.35s;
-        }
-
-        .mobile-menu .whatsapp {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .main-container {
-            padding-top: 70px;
-            position: relative;
-            z-index: 1;
-        }
-    </style>
-
-    <script>
-        // NAVIGATION FUNCTIONALITY
-        document.addEventListener('DOMContentLoaded', function () {
-            const hamburgerBtn = document.getElementById('hamburgerBtn');
-            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const nav = document.getElementById('mainNav');
-            const cartIcon = document.getElementById('cartIcon');
-            const cartCount = document.getElementById('cartCount');
-
-            let isMenuOpen = false;
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            // Update cart count
-            function updateCart() {
-                const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-                cartCount.textContent = count;
-                localStorage.setItem('cart', JSON.stringify(cart));
-            }
-
-            // Mobile menu functions
-            function toggleMobileMenu() {
-                if (isMenuOpen) closeMobileMenu();
-                else openMobileMenu();
-            }
-
-            function openMobileMenu() {
-                isMenuOpen = true;
-                hamburgerBtn.classList.add('active');
-                mobileMenuOverlay.classList.add('active');
-                mobileMenu.classList.add('active');
-                mobileCloseBtn.style.display = 'flex';
-                document.body.classList.add('menu-open');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeMobileMenu() {
-                isMenuOpen = false;
-                hamburgerBtn.classList.remove('active');
-                mobileMenuOverlay.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                mobileCloseBtn.style.display = 'none';
-                document.body.classList.remove('menu-open');
-                document.body.style.overflow = 'auto';
-            }
-
-            // Event listeners
-            hamburgerBtn.addEventListener('click', toggleMobileMenu);
-            mobileCloseBtn.addEventListener('click', closeMobileMenu);
-            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    if (link.getAttribute('target') === '_blank') return;
-                    closeMobileMenu();
-                });
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && isMenuOpen) closeMobileMenu();
-            });
-
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 1024 && isMenuOpen) closeMobileMenu();
-            });
-
-            // Sticky navigation
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) nav.classList.add('scrolled');
-                else nav.classList.remove('scrolled');
-            });
-
-            // Highlight active page
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            document.querySelectorAll('.nav-center a, .mobile-menu a').forEach(link => {
-                const linkPage = link.getAttribute('href');
-                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Initialize cart
-            updateCart();
-
-            // Cart click handler (add your cart modal logic here)
-            cartIcon.addEventListener('click', function () {
-                alert('Cart functionality will be implemented on each page.');
-                // Uncomment and implement your cart modal:
-                // document.getElementById('cartModal').classList.add('active');
-            });
-        });
-    </script>
-    <!-- END OF NAVIGATION BAR -->
     <div class="main-container">
         <!-- HERO SECTION -->
         <section class="hero-section" id="hero">
             <div class="content-container">
                 <div class="hero">
-                    <!-- Flipping Product -->
-                    <div class="hero-product-container">
-                        <div class="flipping-product">
-                            <div class="flipping-product-front">
-                                <div class="product-icon">📱</div>
-                                <div class="product-text">ExposureBoost</div>
-                                <div class="product-text">Stands & Keyrings</div>
-                                <div class="product-nfc">Professional Display</div>
-                            </div>
-                            <div class="flipping-product-back">
-                                <div class="product-icon">🔑</div>
-                                <div class="product-text">NFC Keyrings</div>
-                                <div class="product-text">Portable · Durable · Smart</div>
-                                <div class="product-nfc">Tap to Connect</div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Removed the spinning card container -->
 
                     <!-- Text content -->
                     <div>
@@ -2865,273 +2177,273 @@
     </div>
 
     <script>
-        // MOBILE NAVIGATION
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const nav = document.getElementById('mainNav');
-        let isMenuOpen = false;
+        // SINGLE NAVIGATION SCRIPT - No duplicates
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu elements
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const nav = document.getElementById('mainNav');
+            const cartIcon = document.getElementById('cartIcon');
+            const cartCount = document.getElementById('cartCount');
 
-        // Toggle mobile menu
-        function toggleMobileMenu() {
-            isMenuOpen = !isMenuOpen;
+            let isMenuOpen = false;
 
-            if (isMenuOpen) {
+            // Cart functionality
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Update cart display
+            function updateCart() {
+                const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+                cartCount.textContent = count;
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            // Mobile menu functions
+            function toggleMobileMenu() {
+                if (isMenuOpen) closeMobileMenu();
+                else openMobileMenu();
+            }
+
+            function openMobileMenu() {
+                isMenuOpen = true;
                 hamburgerBtn.classList.add('active');
                 mobileMenuOverlay.classList.add('active');
                 mobileMenu.classList.add('active');
-                mobileCloseBtn.classList.add('show');
+                mobileCloseBtn.style.display = 'flex';
                 document.body.classList.add('menu-open');
                 document.body.style.overflow = 'hidden';
-            } else {
+            }
+
+            function closeMobileMenu() {
+                isMenuOpen = false;
                 hamburgerBtn.classList.remove('active');
                 mobileMenuOverlay.classList.remove('active');
                 mobileMenu.classList.remove('active');
-                mobileCloseBtn.classList.remove('show');
+                mobileCloseBtn.style.display = 'none';
                 document.body.classList.remove('menu-open');
                 document.body.style.overflow = 'auto';
             }
-        }
 
-        // Close mobile menu
-        function closeMobileMenu() {
-            isMenuOpen = false;
-            hamburgerBtn.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            mobileCloseBtn.classList.remove('show');
-            document.body.classList.remove('menu-open');
-            document.body.style.overflow = 'auto';
-        }
+            // Event listeners for mobile menu
+            hamburgerBtn.addEventListener('click', toggleMobileMenu);
+            mobileCloseBtn.addEventListener('click', closeMobileMenu);
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 
-        // Event listeners for mobile menu
-        hamburgerBtn.addEventListener('click', toggleMobileMenu);
-        mobileCloseBtn.addEventListener('click', closeMobileMenu);
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            // Close mobile menu when clicking menu links (except external links)
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.getAttribute('target') === '_blank') return;
+                    closeMobileMenu();
 
-        // Close menu when clicking menu links
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                if (link.getAttribute('target') === '_blank') {
+                    // Handle smooth scrolling for internal links
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        scrollToSection(targetId);
+                    }
+                });
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && isMenuOpen) closeMobileMenu();
+            });
+
+            // Close menu on window resize (desktop)
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024 && isMenuOpen) closeMobileMenu();
+            });
+
+            // Sticky navigation
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) nav.classList.add('scrolled');
+                else nav.classList.remove('scrolled');
+            });
+
+            // Highlight active page
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-center a, .mobile-menu a').forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Initialize cart
+            updateCart();
+
+            // Cart modal elements
+            const cartModal = document.getElementById('cartModal');
+            const closeCart = document.getElementById('closeCart');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const notification = document.getElementById('notification');
+
+            // Cart modal functions
+            function openCartModal() {
+                cartModal.classList.add('active');
+                renderCartItems();
+                document.body.style.overflow = 'hidden';
+                closeMobileMenu(); // Close mobile menu if open
+            }
+
+            function closeCartModal() {
+                cartModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            function renderCartItems() {
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
+                    cartTotal.textContent = '£0';
                     return;
                 }
-                e.preventDefault();
-                closeMobileMenu();
 
-                const targetId = link.getAttribute('href');
-                const target = document.querySelector(targetId);
-                if (target) {
+                let itemsHTML = '';
+                let total = 0;
+
+                cart.forEach((item, index) => {
+                    total += item.price * item.quantity;
+                    itemsHTML += `
+                        <div class="cart-item">
+                            <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
+                            <div class="cart-item-details">
+                                <div class="cart-item-name">${item.name}</div>
+                                <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
+                            </div>
+                            <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+                        </div>
+                    `;
+                });
+
+                cartItems.innerHTML = itemsHTML;
+                cartTotal.textContent = `£${total}`;
+            }
+
+            // Global functions for cart operations
+            window.addToCart = function (name, price, quantity = 1) {
+                const existingItem = cart.find(item => item.name === name);
+
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    cart.push({
+                        name: name,
+                        price: price,
+                        quantity: quantity
+                    });
+                }
+
+                updateCart();
+                showNotification(`${name} added to cart!`);
+            };
+
+            window.removeFromCart = function (index) {
+                cart.splice(index, 1);
+                updateCart();
+                renderCartItems();
+            };
+
+            function showNotification(message) {
+                notification.textContent = message;
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+
+            function checkout() {
+                if (cart.length === 0) {
+                    showNotification('Your cart is empty!');
+                    return;
+                }
+
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                alert(`Proceeding to checkout. Total: £${total}\n\nThis is a demo. In a real application, this would redirect to a payment processor.`);
+            }
+
+            // Event listeners for cart
+            cartIcon.addEventListener('click', openCartModal);
+            closeCart.addEventListener('click', closeCartModal);
+            checkoutBtn.addEventListener('click', checkout);
+
+            // Close cart modal when clicking outside
+            cartModal.addEventListener('click', (e) => {
+                if (e.target === cartModal) {
+                    closeCartModal();
+                }
+            });
+
+            // Add to cart buttons functionality
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const name = e.target.dataset.name;
+                    const price = parseInt(e.target.dataset.price);
+                    window.addToCart(name, price);
+                });
+            });
+
+            // FAQ Accordion
+            document.querySelectorAll('.faq-question').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const item = btn.parentElement;
+                    const wasActive = item.classList.contains('active');
+
+                    // Close all other FAQ items
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+                    // Open clicked item if it wasn't active
+                    if (!wasActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Helper function to scroll to section
+            window.scrollToSection = function (sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
                     const navHeight = nav.offsetHeight;
-                    const targetPosition = target.offsetTop - navHeight;
+                    const targetPosition = section.offsetTop - navHeight;
 
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
                     });
                 }
-            });
-        });
+            };
 
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && isMenuOpen) {
-                closeMobileMenu();
+            // Add smooth scroll to hero button
+            const heroAddToCartBtn = document.getElementById('heroAddToCart');
+            if (heroAddToCartBtn) {
+                heroAddToCartBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    window.scrollToSection('stands');
+                });
             }
-        });
 
-        // Close menu on window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 1024 && isMenuOpen) {
-                closeMobileMenu();
-            }
-        });
-
-        // Sticky Navigation
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartIcon = document.getElementById('cartIcon');
-        const cartCount = document.getElementById('cartCount');
-        const cartModal = document.getElementById('cartModal');
-        const closeCart = document.getElementById('closeCart');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const notification = document.getElementById('notification');
-
-        // Update cart display
-        function updateCart() {
-            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-            localStorage.setItem('cart', JSON.stringify(cart));
+            // Initialize
+            updateCart();
             renderCartItems();
-        }
 
-        // Render cart items in modal
-        function renderCartItems() {
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
-                cartTotal.textContent = '£0';
-                return;
-            }
+            // Make sure mobile close button is hidden initially
+            mobileCloseBtn.style.display = 'none';
 
-            let itemsHTML = '';
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                total += item.price * item.quantity;
-                itemsHTML += `
-                    <div class="cart-item">
-                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
-                        <div class="cart-item-details">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
-                        </div>
-                        <button class="remove-item" onclick="removeFromCart(${index})">×</button>
-                    </div>
-                `;
-            });
-
-            cartItems.innerHTML = itemsHTML;
-            cartTotal.textContent = `£${total}`;
-        }
-
-        // Add to cart function
-        function addToCart(name, price, quantity = 1) {
-            // Check if item already in cart
-            const existingItem = cart.find(item => item.name === name);
-
-            if (existingItem) {
-                existingItem.quantity += quantity;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: quantity
-                });
-            }
-
-            updateCart();
-            showNotification(`${name} added to cart!`);
-        }
-
-        // Remove from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-
-        // Show notification
-        function showNotification(message) {
-            notification.textContent = message;
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        // Open cart modal
-        function openCartModal() {
-            cartModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            closeMobileMenu();
-        }
-
-        // Close cart modal
-        function closeCartModal() {
-            cartModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Checkout functionality
-        function checkout() {
-            if (cart.length === 0) {
-                showNotification('Your cart is empty!');
-                return;
-            }
-
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`Proceeding to checkout. Total: £${total}\n\nThis is a demo. In a real application, this would redirect to a payment processor.`);
-        }
-
-        // Event listeners for cart
-        cartIcon.addEventListener('click', openCartModal);
-        closeCart.addEventListener('click', closeCartModal);
-        checkoutBtn.addEventListener('click', checkout);
-
-        // Close modal when clicking outside
-        cartModal.addEventListener('click', (e) => {
-            if (e.target === cartModal) {
-                closeCartModal();
-            }
-        });
-
-        // Add to cart buttons
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseInt(e.target.dataset.price);
-                    addToCart(name, price);
+            // Handle footer navigation links
+            document.querySelectorAll('.footer-links a, .nav-center a').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        window.scrollToSection(targetId);
+                    }
                 });
             });
-
-            updateCart();
-        });
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.parentElement;
-                const wasActive = item.classList.contains('active');
-
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-
-                if (!wasActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Helper function to scroll to section
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                const navHeight = nav.offsetHeight;
-                const targetPosition = section.offsetTop - navHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // Add smooth scroll to hero button
-        document.getElementById('heroAddToCart').addEventListener('click', function (e) {
-            e.preventDefault();
-            scrollToSection('stands');
-        });
-
-        // Improve mobile performance
-        if ('matchMedia' in window) {
-            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-            if (reduceMotion.matches) {
-                document.documentElement.style.setProperty('--animation-duration', '0.01s');
-            }
-        }
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('Stands & Keyrings page loaded');
-            updateCart();
         });
     </script>
 </body>

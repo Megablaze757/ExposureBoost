@@ -899,8 +899,8 @@
             width: 100%;
             height: 100%;
             transform-style: preserve-3d;
-            animation: flipCard 8s ease-in-out infinite;
             transform-origin: center;
+            /* Animation removed */
         }
 
         .flipping-card-front,
@@ -955,24 +955,6 @@
             bottom: 15px;
             font-size: 12px;
             color: rgba(255, 255, 255, 0.7);
-        }
-
-        @keyframes flipCard {
-
-            0%,
-            100% {
-                transform: rotateY(0deg);
-            }
-
-            10%,
-            40% {
-                transform: rotateY(0deg);
-            }
-
-            50%,
-            90% {
-                transform: rotateY(180deg);
-            }
         }
 
         .hero>div:not(.hero-card-container) {
@@ -1217,7 +1199,7 @@
                 linear-gradient(180deg, #8C4614 0%, #64320F 100%);
         }
 
-        /* WOOD FINISH CAROUSEL */
+        /* WOOD FINISH CAROUSEL - FIXED ARROW POSITIONING */
         .finish-section {
             min-height: 100vh;
             text-align: center;
@@ -1236,12 +1218,12 @@
 
         .finish-section.oak {
             background: radial-gradient(circle at top, rgba(168, 124, 79, 0.9), rgba(90, 66, 42, 0.95));
-            color: #000;
+            color: #fff;
         }
 
         .finish-section.maple {
             background: radial-gradient(circle at top, rgba(222, 184, 135, 0.9), rgba(139, 115, 85, 0.95));
-            color: #000;
+            color: #1a1209;
         }
 
         .finish-section.wood-base {
@@ -1269,7 +1251,7 @@
             color: #fff;
         }
 
-        /* Carousel */
+        /* Carousel - FIXED ARROW POSITIONING */
         .wood-carousel {
             position: relative;
             height: 320px;
@@ -1279,6 +1261,7 @@
             margin: 40px auto 30px;
             perspective: 1200px;
             max-width: 1100px;
+            width: 100%;
         }
 
         .wood-finish-card {
@@ -1295,6 +1278,7 @@
             transform-style: preserve-3d;
             will-change: transform, opacity;
             border: 1px solid rgba(139, 69, 19, 0.3);
+            z-index: 1;
         }
 
         .wood-finish-card.active {
@@ -1333,7 +1317,7 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(0, 0, 0, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
             font-size: 24px;
@@ -1347,16 +1331,67 @@
         }
 
         .carousel-arrow:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(0, 0, 0, 0.8);
             transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .carousel-arrow.left {
-            left: 10px;
+            left: 20px;
         }
 
         .carousel-arrow.right {
-            right: 10px;
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+
+            .carousel-arrow.left {
+                left: 10px;
+            }
+
+            .carousel-arrow.right {
+                right: 10px;
+            }
+
+            .wood-carousel {
+                height: 280px;
+            }
+
+            .wood-finish-card {
+                width: 200px;
+                padding: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-arrow {
+                width: 32px;
+                height: 32px;
+                font-size: 18px;
+            }
+
+            .carousel-arrow.left {
+                left: 5px;
+            }
+
+            .carousel-arrow.right {
+                right: 5px;
+            }
+
+            .wood-carousel {
+                height: 250px;
+            }
+
+            .wood-finish-card {
+                width: 180px;
+                padding: 12px;
+            }
         }
 
         .dots {
@@ -2061,7 +2096,6 @@
     <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
 
     <!-- STICKY NAV -->
-    <!-- NAVIGATION BAR - Copy and paste this entire code into each HTML file -->
     <nav class="nav" id="mainNav">
         <a href="index.html" class="logo">
             <img src="logo.png" alt="ExposureBoost Logo" class="logo-img"
@@ -2098,9 +2132,6 @@
         </div>
     </nav>
 
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-    <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
-
     <div class="mobile-menu" id="mobileMenu">
         <a href="index.html" class="mobile-menu-item">
             <span>🏠</span> Home
@@ -2131,601 +2162,6 @@
             Premium NFC Cards & Digital Profiles
         </div>
     </div>
-
-    <style>
-        /* NAVIGATION STYLES */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            background: linear-gradient(135deg, rgba(110, 77, 255, 0.95), rgba(255, 79, 216, 0.95));
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            min-height: 70px;
-            box-shadow: 0 4px 20px rgba(110, 77, 255, 0.2);
-        }
-
-        .nav.scrolled {
-            padding: 12px 20px;
-            background: linear-gradient(135deg, rgba(110, 77, 255, 0.9), rgba(255, 79, 216, 0.9));
-            box-shadow: 0 4px 30px rgba(110, 77, 255, 0.3);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-        }
-
-        .logo-text {
-            color: white;
-            font-weight: 900;
-            font-size: 1.2rem;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 28px;
-            height: 20px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 100%;
-            height: 2px;
-            background: white;
-            border-radius: 2px;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform-origin: left center;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-10px);
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg);
-        }
-
-        .nav-center {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-center a {
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: .9rem;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            padding: 5px 0;
-            position: relative;
-        }
-
-        .nav-center a:hover {
-            color: var(--pink);
-            transform: translateY(-2px);
-        }
-
-        .nav-center a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--pink);
-            transition: width 0.3s ease;
-        }
-
-        .nav-center a:hover::after {
-            width: 100%;
-        }
-
-        .nav-center a.active {
-            color: var(--pink);
-            font-weight: 900;
-        }
-
-        .nav-center a.active::after {
-            width: 100%;
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .icon-btn {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .icon-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(110, 77, 255, 0.2);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--pink);
-            color: white;
-            font-size: 10px;
-            min-width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .whatsapp {
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            padding: 8px 14px;
-            border-radius: 999px;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-        }
-
-        .whatsapp:hover {
-            background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-        }
-
-        .whatsapp-icon {
-            display: none;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-icon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
-        }
-
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(110, 77, 255, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 999;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 64px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(110, 77, 255, 0.98), rgba(255, 79, 216, 0.98));
-            backdrop-filter: blur(30px);
-            padding: 30px 20px 100px;
-            display: none;
-            flex-direction: column;
-            gap: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            transform: translateY(-20px);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 40px rgba(110, 77, 255, 0.3);
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            z-index: 1000;
-        }
-
-        .mobile-menu.active {
-            display: flex;
-            transform: translateY(0);
-            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .mobile-menu a {
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 18px;
-            padding: 18px 24px;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.12);
-            text-align: left;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            margin-bottom: 4px;
-            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu a:active {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(0.98);
-        }
-
-        .mobile-menu a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(10px);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .mobile-menu a.active {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: var(--pink);
-            color: var(--pink);
-        }
-
-        .mobile-menu .whatsapp {
-            margin-top: 20px;
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 17px;
-            padding: 20px 24px;
-            min-height: 64px;
-            justify-content: center;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .mobile-menu .whatsapp:hover {
-            background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
-        }
-
-        .mobile-close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-            z-index: 1002;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-close-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: rotate(90deg);
-        }
-
-        .menu-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.15);
-            margin: 20px 0;
-            width: 100%;
-        }
-
-        .menu-footer {
-            margin-top: auto;
-            padding-top: 20px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @media (max-width: 1024px) {
-
-            .nav-center,
-            .nav-right .whatsapp {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-right {
-                gap: 8px;
-            }
-
-            .nav {
-                padding: 14px 16px;
-                min-height: 64px;
-            }
-
-            .nav.scrolled {
-                padding: 10px 16px;
-            }
-
-            .whatsapp-icon {
-                display: flex;
-            }
-
-            .logo-text {
-                font-size: 1.1rem;
-            }
-
-            .main-container {
-                padding-top: 64px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .mobile-menu a {
-                padding: 20px 24px;
-                min-height: 64px;
-                font-size: 17px;
-            }
-
-            .mobile-menu {
-                top: 64px;
-                padding: 25px 16px 100px;
-            }
-
-            .hamburger {
-                width: 32px;
-                height: 24px;
-            }
-
-            .icon-btn {
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
-            }
-
-            .cart-count {
-                top: -3px;
-                right: -3px;
-                min-width: 20px;
-                height: 20px;
-                font-size: 11px;
-                font-weight: 700;
-            }
-        }
-
-        body.menu-open {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-        }
-
-        .mobile-menu a {
-            animation: fadeInUp 0.5s ease forwards;
-            opacity: 0;
-            transform: translateY(10px);
-        }
-
-        .mobile-menu a:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .mobile-menu a:nth-child(2) {
-            animation-delay: 0.15s;
-        }
-
-        .mobile-menu a:nth-child(3) {
-            animation-delay: 0.2s;
-        }
-
-        .mobile-menu a:nth-child(4) {
-            animation-delay: 0.25s;
-        }
-
-        .mobile-menu a:nth-child(5) {
-            animation-delay: 0.3s;
-        }
-
-        .mobile-menu a:nth-child(6) {
-            animation-delay: 0.35s;
-        }
-
-        .mobile-menu .whatsapp {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .main-container {
-            padding-top: 70px;
-            position: relative;
-            z-index: 1;
-        }
-    </style>
-
-    <script>
-        // NAVIGATION FUNCTIONALITY
-        document.addEventListener('DOMContentLoaded', function () {
-            const hamburgerBtn = document.getElementById('hamburgerBtn');
-            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const nav = document.getElementById('mainNav');
-            const cartIcon = document.getElementById('cartIcon');
-            const cartCount = document.getElementById('cartCount');
-
-            let isMenuOpen = false;
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            // Update cart count
-            function updateCart() {
-                const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-                cartCount.textContent = count;
-                localStorage.setItem('cart', JSON.stringify(cart));
-            }
-
-            // Mobile menu functions
-            function toggleMobileMenu() {
-                if (isMenuOpen) closeMobileMenu();
-                else openMobileMenu();
-            }
-
-            function openMobileMenu() {
-                isMenuOpen = true;
-                hamburgerBtn.classList.add('active');
-                mobileMenuOverlay.classList.add('active');
-                mobileMenu.classList.add('active');
-                mobileCloseBtn.style.display = 'flex';
-                document.body.classList.add('menu-open');
-                document.body.style.overflow = 'hidden';
-            }
-
-            function closeMobileMenu() {
-                isMenuOpen = false;
-                hamburgerBtn.classList.remove('active');
-                mobileMenuOverlay.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                mobileCloseBtn.style.display = 'none';
-                document.body.classList.remove('menu-open');
-                document.body.style.overflow = 'auto';
-            }
-
-            // Event listeners
-            hamburgerBtn.addEventListener('click', toggleMobileMenu);
-            mobileCloseBtn.addEventListener('click', closeMobileMenu);
-            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    if (link.getAttribute('target') === '_blank') return;
-                    closeMobileMenu();
-                });
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && isMenuOpen) closeMobileMenu();
-            });
-
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 1024 && isMenuOpen) closeMobileMenu();
-            });
-
-            // Sticky navigation
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) nav.classList.add('scrolled');
-                else nav.classList.remove('scrolled');
-            });
-
-            // Highlight active page
-            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-            document.querySelectorAll('.nav-center a, .mobile-menu a').forEach(link => {
-                const linkPage = link.getAttribute('href');
-                if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Initialize cart
-            updateCart();
-
-            // Cart click handler (add your cart modal logic here)
-            cartIcon.addEventListener('click', function () {
-                alert('Cart functionality will be implemented on each page.');
-                // Uncomment and implement your cart modal:
-                // document.getElementById('cartModal').classList.add('active');
-            });
-        });
-    </script>
-    <!-- END OF NAVIGATION BAR -->
 
     <div class="main-container">
         <!-- HERO SECTION -->
@@ -2827,7 +2263,9 @@
                         card that feels as good as it looks.</p>
                     <div class="cta-buttons">
                         <button class="btn-primary">Browse Wood Types</button>
-                        <button class="btn-secondary">Ask on WhatsApp</button>
+                        <a href="https://wa.me/447123456789" class="btn-secondary" target="_blank">
+                            <span>💬</span> Ask on WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>
@@ -3066,7 +2504,7 @@
             </div>
         </section>
 
-        <!-- WOOD FINISH CAROUSEL -->
+        <!-- WOOD FINISH CAROUSEL - WITH FIXED ARROWS -->
         <section class="finish-section bamboo" id="finishes">
             <h2>Choose Your Wood Finish</h2>
             <p class="subtitle">Swipe or tap to browse our premium wood finishes</p>
@@ -3511,7 +2949,7 @@
             updateCart();
         });
 
-        // Wood Finish Carousel
+        // Wood Finish Carousel - FIXED ARROW FUNCTIONALITY
         const woodCards = document.querySelectorAll('.wood-finish-card');
         const woodDots = document.querySelectorAll('.finish-section .dot');
         const woodSection = document.getElementById('finishes');
@@ -3541,12 +2979,14 @@
         // Initialize wood carousel
         updateWoodCarousel(0);
 
-        // Manual navigation
-        woodPrevBtn.addEventListener('click', () => {
+        // Manual navigation - FIXED ARROW CLICK HANDLERS
+        woodPrevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             updateWoodCarousel(woodIndex - 1);
         });
 
-        woodNextBtn.addEventListener('click', () => {
+        woodNextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             updateWoodCarousel(woodIndex + 1);
         });
 
