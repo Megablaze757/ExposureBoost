@@ -1286,13 +1286,12 @@
             font-size: 0.9rem;
         }
 
-        /* CUSTOMIZE LOGO SECTION - COMPLETELY REDESIGNED */
+        /* CUSTOMIZE YOUR CARD SECTION - REDESIGNED FOR SIDE-BY-SIDE VIEW */
         .customize-logo-section {
             padding: 100px 20px;
             background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
             position: relative;
             overflow: hidden;
-            min-height: 100vh;
         }
 
         .customize-logo-section::before {
@@ -1310,21 +1309,30 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
         }
 
-        /* Sticky Preview Card */
-        .sticky-preview-container {
+        @media (max-width: 1024px) {
+            .customize-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* Left Column: Preview Card */
+        .preview-column {
             position: sticky;
             top: 100px;
             z-index: 10;
-            margin-bottom: 50px;
-            transition: all 0.3s ease;
         }
 
         .card-preview-large {
             width: 100%;
-            max-width: 400px;
-            height: 250px;
+            max-width: 500px;
+            height: 320px;
             margin: 0 auto;
             border-radius: 24px;
             overflow: hidden;
@@ -1332,12 +1340,13 @@
             position: relative;
             transform-style: preserve-3d;
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 2px solid rgba(224, 191, 184, 0.3);
+            border: 3px solid rgba(224, 191, 184, 0.3);
         }
 
         .card-preview-large:hover {
             transform: translateY(-5px) rotateX(5deg);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            border-color: rgba(224, 191, 184, 0.5);
         }
 
         .card-background {
@@ -1359,7 +1368,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px;
+            padding: 40px;
             z-index: 2;
         }
 
@@ -1374,17 +1383,29 @@
         .card-placeholder {
             text-align: center;
             color: rgba(255, 255, 255, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
         }
 
         .placeholder-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 15px;
             opacity: 0.5;
         }
 
         .placeholder-text {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .placeholder-subtext {
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
 
         .card-engraving-overlay {
@@ -1402,20 +1423,58 @@
 
         .preview-label {
             text-align: center;
-            margin-top: 20px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            margin-top: 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
             color: rgba(255, 245, 243, 0.9);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        /* Steps Container */
-        .steps-container {
+        .preview-instructions {
+            text-align: center;
+            margin-top: 15px;
+            color: rgba(255, 245, 243, 0.7);
+            font-size: 0.95rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Right Column: Customization Steps */
+        .customization-column {
             background: rgba(224, 191, 184, 0.1);
             border-radius: 24px;
             padding: 40px;
             border: 1px solid rgba(224, 191, 184, 0.2);
             backdrop-filter: blur(10px);
             box-shadow: 0 20px 60px rgba(183, 110, 121, 0.1);
+        }
+
+        .customization-header {
+            margin-bottom: 40px;
+        }
+
+        .customization-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
+        }
+
+        .customization-subtitle {
+            color: rgba(255, 245, 243, 0.85);
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        /* Steps Container */
+        .steps-container {
+            background: rgba(224, 191, 184, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(224, 191, 184, 0.15);
         }
 
         .step-indicator {
@@ -1510,11 +1569,11 @@
         .upload-area {
             border: 3px dashed rgba(224, 191, 184, 0.4);
             border-radius: 20px;
-            padding: 60px 40px;
+            padding: 50px 30px;
             background: rgba(224, 191, 184, 0.05);
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             position: relative;
             overflow: hidden;
         }
@@ -1532,13 +1591,13 @@
         }
 
         .upload-icon {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: rgba(224, 191, 184, 0.7);
             margin-bottom: 20px;
         }
 
         .upload-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--white);
             margin-bottom: 10px;
@@ -1550,12 +1609,13 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            font-size: 0.95rem;
         }
 
         .upload-btn {
             background: var(--rose-gold-gradient);
             color: var(--white);
-            padding: 18px 36px;
+            padding: 16px 32px;
             border-radius: 14px;
             font-weight: 800;
             font-size: 16px;
@@ -1566,6 +1626,8 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 15px;
+            min-width: 200px;
+            justify-content: center;
         }
 
         .upload-btn:hover {
@@ -1589,15 +1651,15 @@
 
         .color-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
         }
 
         .color-option {
             background: rgba(224, 191, 184, 0.1);
             border-radius: 16px;
-            padding: 20px;
+            padding: 20px 15px;
             border: 2px solid transparent;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -1619,15 +1681,15 @@
 
         .color-swatch-small {
             width: 100%;
-            height: 80px;
+            height: 70px;
             border-radius: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
 
         .color-label {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: var(--white);
         }
@@ -1644,15 +1706,21 @@
 
         .engraving-options {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin: 30px 0;
+            margin: 25px 0;
+        }
+
+        @media (max-width: 768px) {
+            .engraving-options {
+                grid-template-columns: 1fr;
+            }
         }
 
         .engraving-option {
             background: rgba(224, 191, 184, 0.1);
             border-radius: 16px;
-            padding: 30px 20px;
+            padding: 25px 20px;
             border: 2px solid transparent;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -1673,7 +1741,7 @@
         }
 
         .engraving-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 15px;
             color: var(--white);
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
@@ -1755,6 +1823,8 @@
             min-width: 200px;
             margin: 40px auto 0;
             box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            width: 100%;
+            justify-content: center;
         }
 
         .btn-complete:hover {
@@ -1764,23 +1834,17 @@
 
         /* RESPONSIVE DESIGN */
         @media (max-width: 1024px) {
-            .customize-container {
-                display: flex;
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .sticky-preview-container {
+            .preview-column {
                 position: relative;
                 top: 0;
             }
 
             .card-preview-large {
-                max-width: 350px;
-                height: 220px;
+                max-width: 450px;
+                height: 280px;
             }
 
-            .steps-container {
+            .customization-column {
                 padding: 30px;
             }
         }
@@ -1849,6 +1913,11 @@
 
             .color-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .color-swatch-small {
+                height: 60px;
             }
 
             .engraving-options {
@@ -1864,6 +1933,31 @@
             .btn-next {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .card-preview-large {
+                height: 250px;
+                max-width: 400px;
+            }
+
+            .customization-column {
+                padding: 25px;
+            }
+
+            .upload-area {
+                padding: 40px 20px;
+            }
+
+            .upload-icon {
+                font-size: 2.5rem;
+            }
+
+            .upload-title {
+                font-size: 1.3rem;
+            }
+
+            .upload-subtitle {
+                font-size: 0.9rem;
             }
         }
 
@@ -1908,8 +2002,25 @@
             }
 
             .card-preview-large {
-                height: 200px;
-                max-width: 300px;
+                height: 220px;
+                max-width: 350px;
+            }
+
+            .color-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .color-option {
+                padding: 15px 10px;
+            }
+
+            .color-swatch-small {
+                height: 50px;
+            }
+
+            .customization-column {
+                padding: 20px;
             }
 
             .steps-container {
@@ -1917,19 +2028,19 @@
             }
 
             .upload-area {
-                padding: 40px 20px;
+                padding: 30px 15px;
             }
 
             .upload-icon {
-                font-size: 3rem;
+                font-size: 2rem;
             }
 
             .upload-title {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
 
             .upload-subtitle {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
         }
 
@@ -2617,142 +2728,151 @@
             </div>
         </section>
 
-        <!-- CUSTOMIZE YOUR CARD SECTION - COMPLETELY REDESIGNED -->
+        <!-- CUSTOMIZE YOUR CARD SECTION - SIDE BY SIDE LAYOUT -->
         <section class="customize-logo-section" id="customize-logo">
             <div class="customize-container">
-                <div class="section-header">
-                    <h2 class="section-title">Customize Your Card</h2>
-                    <p class="section-subtitle">Upload your logo, choose card color and engraving, and see your custom card in real-time</p>
-                </div>
-
-                <!-- Sticky Preview Card -->
-                <div class="sticky-preview-container">
+                <!-- Left Column: Card Preview -->
+                <div class="preview-column">
                     <div class="card-preview-large" id="cardPreviewLarge">
                         <div class="card-background" id="cardBackground" style="background: var(--black-bg);"></div>
                         <div class="card-engraving-overlay" id="cardEngravingOverlay"></div>
                         <div class="card-logo-container">
                             <div class="card-placeholder" id="cardPlaceholder">
                                 <div class="placeholder-icon">🏢</div>
-                                <div class="placeholder-text">Your Logo</div>
+                                <div class="placeholder-text">Your Logo Here</div>
+                                <div class="placeholder-subtext">Live preview updates instantly</div>
                             </div>
                             <img id="cardLogo" class="card-logo" style="display: none;" alt="Your Logo">
                         </div>
                     </div>
-                    <div class="preview-label">Live Preview - Your Custom Card</div>
+                    <div class="preview-label">Live Card Preview</div>
+                    <div class="preview-instructions">
+                        See your custom card update in real-time as you make changes
+                    </div>
                 </div>
 
-                <!-- Steps Container -->
-                <div class="steps-container">
-                    <!-- Step Indicator -->
-                    <div class="step-indicator">
-                        <div class="step active" data-step="1">
-                            <div class="step-circle">1</div>
-                            <div class="step-label">Upload Logo</div>
-                        </div>
-                        <div class="step" data-step="2">
-                            <div class="step-circle">2</div>
-                            <div class="step-label">Choose Color</div>
-                        </div>
-                        <div class="step" data-step="3">
-                            <div class="step-circle">3</div>
-                            <div class="step-label">Choose Engraving</div>
-                        </div>
+                <!-- Right Column: Customization Steps -->
+                <div class="customization-column">
+                    <div class="customization-header">
+                        <h2 class="customization-title">Design Your Perfect Card</h2>
+                        <p class="customization-subtitle">
+                            Upload your logo, choose colors, and select engraving. See changes instantly in the preview.
+                        </p>
                     </div>
 
-                    <!-- Step 1: Upload Logo -->
-                    <div class="step-content active" id="step1">
-                        <div class="upload-step">
-                            <div class="upload-area" id="uploadArea">
-                                <div class="upload-icon">📁</div>
-                                <div class="upload-title">Upload Your Logo</div>
-                                <div class="upload-subtitle">
-                                    Upload your logo file from your computer or mobile device. We support PNG, JPG, and SVG formats.
-                                </div>
-                                <button class="upload-btn" id="uploadLogoBtn">
-                                    <span>📁</span> Choose File
-                                </button>
-                                <div class="upload-requirements">
-                                    Recommended: Transparent PNG, minimum 500×500px, max 10MB
-                                </div>
+                    <!-- Steps Container -->
+                    <div class="steps-container">
+                        <!-- Step Indicator -->
+                        <div class="step-indicator">
+                            <div class="step active" data-step="1">
+                                <div class="step-circle">1</div>
+                                <div class="step-label">Upload Logo</div>
                             </div>
-                            <input type="file" id="logoUploadInput" accept="image/*" capture="environment">
-                        </div>
-                    </div>
-
-                    <!-- Step 2: Choose Color -->
-                    <div class="step-content" id="step2">
-                        <div class="color-step">
-                            <h3 style="margin-bottom: 20px; color: var(--white);">Select Card Color</h3>
-                            <p style="color: rgba(255, 245, 243, 0.8); margin-bottom: 30px;">
-                                Choose from our premium metal finishes. The preview above will update instantly.
-                            </p>
-                            <div class="color-grid">
-                                <!-- Regular Metal Colors -->
-                                <div class="color-option" data-color="black">
-                                    <div class="color-swatch-small" style="background: var(--black-bg);"></div>
-                                    <div class="color-label">Black</div>
-                                </div>
-                                <div class="color-option" data-color="blue">
-                                    <div class="color-swatch-small" style="background: var(--blue-bg);"></div>
-                                    <div class="color-label">Blue</div>
-                                </div>
-                                <div class="color-option" data-color="green">
-                                    <div class="color-swatch-small" style="background: var(--green-bg);"></div>
-                                    <div class="color-label">Green</div>
-                                </div>
-                                <div class="color-option" data-color="purple">
-                                    <div class="color-swatch-small" style="background: var(--purple-bg);"></div>
-                                    <div class="color-label">Purple</div>
-                                </div>
-                                <div class="color-option" data-color="copper">
-                                    <div class="color-swatch-small" style="background: var(--copper-bg);"></div>
-                                    <div class="color-label">Copper</div>
-                                </div>
-                                <div class="color-option" data-color="bronze">
-                                    <div class="color-swatch-small" style="background: var(--bronze-bg);"></div>
-                                    <div class="color-label">Bronze</div>
-                                </div>
-                                <div class="color-option" data-color="gunmetal">
-                                    <div class="color-swatch-small" style="background: var(--gunmetal-bg);"></div>
-                                    <div class="color-label">Gunmetal</div>
-                                </div>
-                                <!-- Bestseller Colors -->
-                                <div class="color-option" data-color="silver">
-                                    <div class="color-swatch-small" style="background: var(--silver-bg);"></div>
-                                    <div class="color-label">Silver</div>
-                                </div>
-                                <div class="color-option" data-color="rose-gold">
-                                    <div class="color-swatch-small" style="background: var(--rose-gold-card);"></div>
-                                    <div class="color-label">Rose Gold</div>
-                                </div>
-                                <div class="color-option" data-color="gold">
-                                    <div class="color-swatch-small" style="background: var(--gold-bg);"></div>
-                                    <div class="color-label">Gold</div>
-                                </div>
+                            <div class="step" data-step="2">
+                                <div class="step-circle">2</div>
+                                <div class="step-label">Choose Color</div>
+                            </div>
+                            <div class="step" data-step="3">
+                                <div class="step-circle">3</div>
+                                <div class="step-label">Choose Engraving</div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Step 3: Choose Engraving -->
-                    <div class="step-content" id="step3">
-                        <div class="engraving-step">
-                            <h3 style="margin-bottom: 20px; color: var(--white);">Select Engraving Color</h3>
-                            <p style="color: rgba(255, 245, 243, 0.8); margin-bottom: 30px;">
-                                Choose between silver or gold engraving. This will be applied to your text and design elements.
-                            </p>
-                            <div class="engraving-options">
-                                <div class="engraving-option" data-engraving="silver">
-                                    <div class="engraving-icon">⚪</div>
-                                    <div class="engraving-label">Silver Engraving</div>
-                                    <div class="engraving-description">
-                                        Premium silver-toned engraving that creates elegant contrast. Perfect for a sophisticated look.
+                        <!-- Step 1: Upload Logo -->
+                        <div class="step-content active" id="step1">
+                            <div class="upload-step">
+                                <div class="upload-area" id="uploadArea">
+                                    <div class="upload-icon">📁</div>
+                                    <div class="upload-title">Upload Your Logo</div>
+                                    <div class="upload-subtitle">
+                                        Drag & drop your logo file or click to browse. We support PNG, JPG, and SVG formats.
+                                    </div>
+                                    <button class="upload-btn" id="uploadLogoBtn">
+                                        <span>📁</span> Choose File
+                                    </button>
+                                    <div class="upload-requirements">
+                                        Recommended: Transparent PNG, minimum 500×500px, max 10MB
                                     </div>
                                 </div>
-                                <div class="engraving-option" data-engraving="gold">
-                                    <div class="engraving-icon">⭐</div>
-                                    <div class="engraving-label">Gold Engraving</div>
-                                    <div class="engraving-description">
-                                        Luxurious gold-toned engraving that adds warmth and prestige. Ideal for luxury presentation.
+                                <input type="file" id="logoUploadInput" accept="image/*" capture="environment">
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Choose Color -->
+                        <div class="step-content" id="step2">
+                            <div class="color-step">
+                                <h3 style="margin-bottom: 15px; color: var(--white);">Select Card Color</h3>
+                                <p style="color: rgba(255, 245, 243, 0.8); margin-bottom: 25px;">
+                                    Choose from our premium metal finishes. The preview will update instantly.
+                                </p>
+                                <div class="color-grid">
+                                    <!-- Regular Metal Colors -->
+                                    <div class="color-option selected" data-color="black">
+                                        <div class="color-swatch-small" style="background: var(--black-bg);"></div>
+                                        <div class="color-label">Black</div>
+                                    </div>
+                                    <div class="color-option" data-color="blue">
+                                        <div class="color-swatch-small" style="background: var(--blue-bg);"></div>
+                                        <div class="color-label">Blue</div>
+                                    </div>
+                                    <div class="color-option" data-color="green">
+                                        <div class="color-swatch-small" style="background: var(--green-bg);"></div>
+                                        <div class="color-label">Green</div>
+                                    </div>
+                                    <div class="color-option" data-color="purple">
+                                        <div class="color-swatch-small" style="background: var(--purple-bg);"></div>
+                                        <div class="color-label">Purple</div>
+                                    </div>
+                                    <div class="color-option" data-color="copper">
+                                        <div class="color-swatch-small" style="background: var(--copper-bg);"></div>
+                                        <div class="color-label">Copper</div>
+                                    </div>
+                                    <div class="color-option" data-color="bronze">
+                                        <div class="color-swatch-small" style="background: var(--bronze-bg);"></div>
+                                        <div class="color-label">Bronze</div>
+                                    </div>
+                                    <div class="color-option" data-color="gunmetal">
+                                        <div class="color-swatch-small" style="background: var(--gunmetal-bg);"></div>
+                                        <div class="color-label">Gunmetal</div>
+                                    </div>
+                                    <!-- Bestseller Colors -->
+                                    <div class="color-option" data-color="silver">
+                                        <div class="color-swatch-small" style="background: var(--silver-bg);"></div>
+                                        <div class="color-label">Silver</div>
+                                    </div>
+                                    <div class="color-option" data-color="rose-gold">
+                                        <div class="color-swatch-small" style="background: var(--rose-gold-card);"></div>
+                                        <div class="color-label">Rose Gold</div>
+                                    </div>
+                                    <div class="color-option" data-color="gold">
+                                        <div class="color-swatch-small" style="background: var(--gold-bg);"></div>
+                                        <div class="color-label">Gold</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Choose Engraving -->
+                        <div class="step-content" id="step3">
+                            <div class="engraving-step">
+                                <h3 style="margin-bottom: 15px; color: var(--white);">Select Engraving Color</h3>
+                                <p style="color: rgba(255, 245, 243, 0.8); margin-bottom: 25px;">
+                                    Choose between silver or gold engraving for your text and design elements.
+                                </p>
+                                <div class="engraving-options">
+                                    <div class="engraving-option" data-engraving="silver">
+                                        <div class="engraving-icon">⚪</div>
+                                        <div class="engraving-label">Silver Engraving</div>
+                                        <div class="engraving-description">
+                                            Premium silver-toned engraving that creates elegant contrast. Perfect for a sophisticated look.
+                                        </div>
+                                    </div>
+                                    <div class="engraving-option" data-engraving="gold">
+                                        <div class="engraving-icon">⭐</div>
+                                        <div class="engraving-label">Gold Engraving</div>
+                                        <div class="engraving-description">
+                                            Luxurious gold-toned engraving that adds warmth and prestige. Ideal for luxury presentation.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2771,7 +2891,7 @@
 
                     <!-- Complete Button (hidden until all steps are complete) -->
                     <button class="btn-complete" id="completeCustomization" style="display: none;">
-                        <span>✅</span> Add Custom Card to Cart
+                        <span>✅</span> Add Custom Card to Cart (£225)
                     </button>
                 </div>
             </div>
@@ -2785,6 +2905,7 @@
         let selectedColor = 'black';
         let selectedEngraving = null;
         const engravingModal = document.getElementById('engravingModal');
+        let selectedMetal = 'Black'; // For carousel section
 
         // Background color mapping
         const colorBackgrounds = {
@@ -3336,7 +3457,6 @@
             if (currentStep < 3) {
                 currentStep++;
                 updateStepIndicator();
-                scrollToStep();
             }
         }
 
@@ -3344,19 +3464,7 @@
             if (currentStep > 1) {
                 currentStep--;
                 updateStepIndicator();
-                scrollToStep();
             }
-        }
-
-        function scrollToStep() {
-            const customizeSection = document.getElementById('customize-logo');
-            const navHeight = nav.offsetHeight;
-            const sectionPosition = customizeSection.offsetTop - navHeight - 20;
-            
-            window.scrollTo({
-                top: sectionPosition,
-                behavior: 'smooth'
-            });
         }
 
         function resetCustomization() {
@@ -3385,7 +3493,6 @@
         }
 
         // Initialize card preview
-        colorOptions[0].classList.add('selected');
         updateCardPreview();
 
         // Step click navigation
@@ -3395,7 +3502,6 @@
                 if (stepNumber <= currentStep) {
                     currentStep = stepNumber;
                     updateStepIndicator();
-                    scrollToStep();
                 }
             });
         });
@@ -3519,17 +3625,14 @@
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Page loaded with COMPLETE Customization System:');
-            console.log('1. Step-by-step customization ✓');
-            console.log('2. Sticky preview card ✓');
-            console.log('3. Upload logo from camera roll/files ✓');
-            console.log('4. Choose from ALL colors (10 options) ✓');
-            console.log('5. Choose engraving ✓');
-            console.log('6. Live preview updates instantly ✓');
-            console.log('7. Mobile optimized ✓');
+            console.log('Page loaded with SIDE-BY-SIDE Customization System:');
+            console.log('1. Card preview and customization options visible together ✓');
+            console.log('2. Works on both desktop (2-column) and mobile (stacked) ✓');
+            console.log('3. Live preview updates instantly ✓');
+            console.log('4. All 10 color options visible at once ✓');
+            console.log('5. Mobile optimized with responsive grid ✓');
             updateCart();
         });
     </script>
 </body>
-
 </html>
