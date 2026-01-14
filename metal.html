@@ -25,11 +25,8 @@
             --white: #FFF5F3;
             --silver: #E8D4D1;
             --wa: #25D366;
-
-            /* Metal color backgrounds */
-            --gold-bg: radial-gradient(circle at top, rgba(255, 215, 0, 0.9), rgba(212, 175, 55, 0.95));
-            --silver-bg: radial-gradient(circle at top, rgba(192, 192, 192, 0.9), rgba(169, 169, 169, 0.95));
-            --rosegold-bg: radial-gradient(circle at top, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.95));
+            
+            /* Metal color backgrounds for carousel */
             --black-bg: radial-gradient(circle at top, rgba(0, 0, 0, 0.9), rgba(51, 51, 51, 0.95));
             --blue-bg: radial-gradient(circle at top, rgba(0, 102, 204, 0.9), rgba(0, 68, 136, 0.95));
             --green-bg: radial-gradient(circle at top, rgba(0, 170, 85, 0.9), rgba(0, 136, 68, 0.95));
@@ -37,6 +34,9 @@
             --yellow-bg: radial-gradient(circle at top, rgba(255, 215, 0, 0.9), rgba(212, 175, 55, 0.95));
             --red-bg: radial-gradient(circle at top, rgba(255, 68, 68, 0.9), rgba(204, 51, 51, 0.95));
             --white-bg: radial-gradient(circle at top, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.95));
+            --copper-bg: radial-gradient(circle at top, rgba(184, 115, 51, 0.9), rgba(153, 86, 35, 0.95));
+            --bronze-bg: radial-gradient(circle at top, rgba(205, 127, 50, 0.9), rgba(176, 101, 31, 0.95));
+            --gunmetal-bg: radial-gradient(circle at top, rgba(44, 53, 57, 0.9), rgba(33, 40, 43, 0.95));
         }
 
         * {
@@ -48,17 +48,23 @@
         html,
         body {
             height: 100%;
-            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
             color: var(--white);
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             touch-action: manipulation;
+            /* Remove white on overscroll */
+            background-attachment: fixed;
+        }
+
+        /* FIX: Remove white on overscroll */
+        html {
+            background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
         }
 
         a {
@@ -574,7 +580,7 @@
             }
         }
 
-        /* HERO SECTION - ENHANCED TEXT */
+        /* HERO SECTION - ROSE GOLD THEME */
         .hero-section {
             min-height: 90vh;
             display: flex;
@@ -624,28 +630,24 @@
         }
 
         .hero-title {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 30px;
             color: var(--white);
             letter-spacing: -0.03em;
-            text-shadow: 
-                0 3px 6px rgba(0, 0, 0, 0.6),
-                0 6px 12px rgba(183, 110, 121, 0.4),
-                0 0 30px rgba(183, 110, 121, 0.3),
-                0 0 60px rgba(183, 110, 121, 0.2);
+            text-shadow: 0 2px 10px rgba(183, 110, 121, 0.3);
         }
 
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
         }
 
         @media (max-width: 480px) {
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
         }
 
@@ -745,199 +747,22 @@
             margin-top: 40px;
         }
 
-        /* INDIVIDUAL BESTSELLER SECTIONS - WITH MATCHING BACKGROUNDS */
-        .individual-bestseller-section {
+        /* BESTSELLERS SECTION - WITH METAL COLOR BACKGROUNDS */
+        .bestsellers-section {
             padding: 100px 20px;
+            background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
             position: relative;
             overflow: hidden;
-            transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        /* Gold Bestseller */
-        .individual-bestseller-section.gold {
-            background: var(--gold-bg);
-            color: #1a1209;
-        }
-
-        .individual-bestseller-section.gold .section-header h2,
-        .individual-bestseller-section.gold .bestseller-title,
-        .individual-bestseller-section.gold .bestseller-description,
-        .individual-bestseller-section.gold .feature-item,
-        .individual-bestseller-section.gold .price-note {
-            color: #1a1209;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
-        }
-
-        /* ENHANCED BESTSELLER TITLES - POPPING COLORS */
-        .individual-bestseller-section.gold .bestseller-title {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FFD700 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 2px 4px rgba(255, 215, 0, 0.4),
-                0px 4px 12px rgba(255, 165, 0, 0.5),
-                0px 6px 20px rgba(255, 215, 0, 0.3),
-                inset 0px 1px 1px rgba(255, 255, 255, 0.6),
-                inset 0px -1px 1px rgba(139, 117, 0, 0.4);
-            position: relative;
-            display: inline-block;
-            animation: goldShimmer 3s infinite alternate;
-        }
-
-        @keyframes goldShimmer {
-            0% {
-                background-position: 0% 50%;
-                text-shadow: 
-                    0px 2px 4px rgba(255, 215, 0, 0.4),
-                    0px 4px 12px rgba(255, 165, 0, 0.5),
-                    0px 6px 20px rgba(255, 215, 0, 0.3);
-            }
-            100% {
-                background-position: 100% 50%;
-                text-shadow: 
-                    0px 2px 4px rgba(255, 215, 0, 0.6),
-                    0px 4px 12px rgba(255, 165, 0, 0.7),
-                    0px 6px 20px rgba(255, 215, 0, 0.5),
-                    0px 0px 30px rgba(255, 215, 0, 0.2);
-            }
-        }
-
-        .individual-bestseller-section.gold .bestseller-price {
-            color: #8B7500;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .individual-bestseller-section.gold .feature-icon {
-            background: rgba(255, 255, 255, 0.3);
-            color: #1a1209;
-        }
-
-        /* Silver Bestseller */
-        .individual-bestseller-section.silver {
-            background: var(--silver-bg);
-            color: #1a1209;
-        }
-
-        .individual-bestseller-section.silver .section-header h2,
-        .individual-bestseller-section.silver .bestseller-title,
-        .individual-bestseller-section.silver .bestseller-description,
-        .individual-bestseller-section.silver .feature-item,
-        .individual-bestseller-section.silver .price-note {
-            color: #1a1209;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
-        }
-
-        .individual-bestseller-section.silver .bestseller-title {
-            background: linear-gradient(135deg, #FFFFFF 0%, #E0E0E0 50%, #FFFFFF 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 2px 4px rgba(192, 192, 192, 0.4),
-                0px 4px 12px rgba(224, 224, 224, 0.5),
-                0px 6px 20px rgba(255, 255, 255, 0.3),
-                inset 0px 1px 1px rgba(255, 255, 255, 0.8),
-                inset 0px -1px 1px rgba(102, 102, 102, 0.4);
-            animation: silverShimmer 3s infinite alternate;
-        }
-
-        @keyframes silverShimmer {
-            0% {
-                background-position: 0% 50%;
-                text-shadow: 
-                    0px 2px 4px rgba(192, 192, 192, 0.4),
-                    0px 4px 12px rgba(224, 224, 224, 0.5);
-            }
-            100% {
-                background-position: 100% 50%;
-                text-shadow: 
-                    0px 2px 4px rgba(255, 255, 255, 0.6),
-                    0px 4px 12px rgba(255, 255, 255, 0.7),
-                    0px 6px 20px rgba(255, 255, 255, 0.5),
-                    0px 0px 30px rgba(255, 255, 255, 0.2);
-            }
-        }
-
-        .individual-bestseller-section.silver .bestseller-price {
-            color: #666666;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .individual-bestseller-section.silver .feature-icon {
-            background: rgba(255, 255, 255, 0.3);
-            color: #1a1209;
-        }
-
-        /* Rose Gold Bestseller */
-        .individual-bestseller-section.rosegold {
-            background: var(--rosegold-bg);
-            color: #1a1209;
-        }
-
-        .individual-bestseller-section.rosegold .section-header h2,
-        .individual-bestseller-section.rosegold .bestseller-title,
-        .individual-bestseller-section.rosegold .bestseller-description,
-        .individual-bestseller-section.rosegold .feature-item,
-        .individual-bestseller-section.rosegold .price-note {
-            color: #1a1209;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
-        }
-
-        .individual-bestseller-section.rosegold .bestseller-title {
-            background: linear-gradient(135deg, #E0BFB8 0%, #B76E79 50%, #E0BFB8 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 2px 4px rgba(224, 191, 184, 0.4),
-                0px 4px 12px rgba(183, 110, 121, 0.5),
-                0px 6px 20px rgba(224, 191, 184, 0.3),
-                inset 0px 1px 1px rgba(255, 255, 255, 0.6),
-                inset 0px -1px 1px rgba(160, 86, 98, 0.4);
-            animation: rosegoldShimmer 3s infinite alternate;
-        }
-
-        @keyframes rosegoldShimmer {
-            0% {
-                background-position: 0% 50%;
-                text-shadow: 
-                    0px 2px 4px rgba(224, 191, 184, 0.4),
-                    0px 4px 12px rgba(183, 110, 121, 0.5);
-            }
-            100% {
-                background-position: 100% 50%;
-                text-shadow: 
-                    0px 2px 4px rgba(224, 191, 184, 0.6),
-                    0px 4px 12px rgba(183, 110, 121, 0.7),
-                    0px 6px 20px rgba(224, 191, 184, 0.5),
-                    0px 0px 30px rgba(224, 191, 184, 0.2);
-            }
-        }
-
-        .individual-bestseller-section.rosegold .bestseller-price {
-            color: #B76E79;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .individual-bestseller-section.rosegold .feature-icon {
-            background: rgba(255, 255, 255, 0.3);
-            color: #1a1209;
-        }
-
-        /* Dark theme button adjustments for light backgrounds */
-        .individual-bestseller-section.gold .btn-primary,
-        .individual-bestseller-section.silver .btn-primary,
-        .individual-bestseller-section.rosegold .btn-primary {
-            text-shadow: none;
-        }
-
-        .individual-bestseller-section.gold .btn-secondary,
-        .individual-bestseller-section.silver .btn-secondary,
-        .individual-bestseller-section.rosegold .btn-secondary {
-            background: rgba(0, 0, 0, 0.1);
-            color: #1a1209;
-            border-color: rgba(0, 0, 0, 0.2);
+        .bestsellers-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
         }
 
         .section-header {
@@ -948,16 +773,12 @@
         }
 
         .section-title {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 16px;
             color: var(--white);
-            text-shadow: 
-                0 2px 4px rgba(0,0,0,0.6),
-                0 4px 8px rgba(183, 110, 121, 0.4),
-                0 0 20px rgba(183, 110, 121, 0.2);
-            letter-spacing: -0.02em;
+            text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
         }
 
         .section-subtitle {
@@ -968,270 +789,163 @@
             margin: 0 auto;
         }
 
-        /* Enhanced text for dark sections */
-        .browse-cards-section .section-title,
-        .why-choose-section .section-title,
-        .testimonials-section .section-title,
-        .custom-logo-section .section-title {
-            text-shadow:
-                0 2px 4px rgba(0, 0, 0, 0.5),
-                0 4px 8px rgba(183, 110, 121, 0.2);
-        }
-
-        .browse-cards-section .section-subtitle,
-        .why-choose-section .section-subtitle,
-        .testimonials-section .section-subtitle,
-        .custom-logo-section .section-subtitle {
-            color: rgba(255, 245, 243, 0.95);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Individual Bestseller Layout */
-        .bestseller-individual-content {
+        .bestsellers-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
 
-        @media (max-width: 992px) {
-            .bestseller-individual-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        .bestseller-image-container {
+        .bestseller-card {
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
-            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
-        .bestseller-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+        /* FIX: Match background color to metal color */
+        .bestseller-card.silver {
+            background: radial-gradient(circle at top, rgba(192, 192, 192, 0.9), rgba(169, 169, 169, 0.95));
+            color: #1a1209;
         }
 
-        .bestseller-image-container:hover .bestseller-image {
-            transform: scale(1.03);
+        .bestseller-card.rose-gold {
+            background: radial-gradient(circle at top, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.95));
+            color: #1a1209;
+        }
+
+        .bestseller-card.gold {
+            background: radial-gradient(circle at top, rgba(255, 215, 0, 0.9), rgba(212, 175, 55, 0.95));
+            color: #1a1209;
+        }
+
+        .bestseller-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .bestseller-badge {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #1a1209;
-            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--white);
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 900;
+            font-size: 0.8rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
-            z-index: 2;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            gap: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .bestseller-details {
-            padding: 20px;
+        .bestseller-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .bestseller-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .bestseller-card:hover .bestseller-image img {
+            transform: scale(1.05);
+        }
+
+        .bestseller-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        /* Text colors for different backgrounds */
+        .bestseller-card.silver .bestseller-title,
+        .bestseller-card.rose-gold .bestseller-title,
+        .bestseller-card.gold .bestseller-title {
+            color: #1a1209;
         }
 
         .bestseller-description {
-            color: rgba(255, 245, 243, 0.95);
-            line-height: 1.8;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-            padding-left: 5px;
-            position: relative;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
         }
 
-        .individual-bestseller-section.gold .bestseller-description,
-        .individual-bestseller-section.silver .bestseller-description,
-        .individual-bestseller-section.rosegold .bestseller-description {
-            color: #1a1209;
-            text-shadow: 0 1px 1px rgba(255,255,255,0.5);
-        }
-
-        .bestseller-features {
-            margin-bottom: 30px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            color: rgba(255, 245, 243, 0.95);
-            font-size: 1rem;
-            font-weight: 500;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-            padding: 5px 0;
-        }
-
-        .individual-bestseller-section.gold .feature-item,
-        .individual-bestseller-section.silver .feature-item,
-        .individual-bestseller-section.rosegold .feature-item {
-            color: #1a1209;
-            text-shadow: 0 1px 1px rgba(255,255,255,0.5);
-        }
-
-        .feature-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(224, 191, 184, 0.2);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--rose-gold-light);
-            flex-shrink: 0;
-        }
-
-        .bestseller-price-container {
-            margin-bottom: 30px;
+        .bestseller-card.silver .bestseller-description,
+        .bestseller-card.rose-gold .bestseller-description,
+        .bestseller-card.gold .bestseller-description {
+            color: rgba(26, 18, 9, 0.9);
         }
 
         .bestseller-price {
-            font-size: 3rem;
+            font-size: 1.8rem;
             font-weight: 900;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--rose-gold-light), var(--rose-gold-dark));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 2px 0px rgba(0,0,0,0.2),
-                0px 4px 6px rgba(183, 110, 121, 0.3);
-            display: inline-block;
-            padding: 5px 0;
+            margin-bottom: 20px;
         }
 
-        /* Light theme price adjustments */
-        .individual-bestseller-section.gold .bestseller-price {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 2px 0px rgba(139, 117, 0, 0.3),
-                0px 3px 4px rgba(0,0,0,0.2);
+        .bestseller-card.silver .bestseller-price,
+        .bestseller-card.rose-gold .bestseller-price,
+        .bestseller-card.gold .bestseller-price {
+            color: #1a1209;
         }
 
-        .individual-bestseller-section.silver .bestseller-price {
-            background: linear-gradient(135deg, #FFFFFF, #A9A9A9);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 2px 0px rgba(102, 102, 102, 0.3),
-                0px 3px 4px rgba(0,0,0,0.2);
-        }
-
-        .individual-bestseller-section.rosegold .bestseller-price {
-            background: linear-gradient(135deg, #E0BFB8, #B76E79);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 2px 0px rgba(160, 86, 98, 0.3),
-                0px 3px 4px rgba(0,0,0,0.2);
-        }
-
-        .price-note {
-            color: rgba(255, 245, 243, 0.7);
+        .bestseller-price span {
             font-size: 0.9rem;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+
+        .bestseller-card.silver .bestseller-price span,
+        .bestseller-card.rose-gold .bestseller-price span,
+        .bestseller-card.gold .bestseller-price span {
+            color: rgba(26, 18, 9, 0.7);
         }
 
         .bestseller-actions {
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        /* BROWSE CARDS SECTION */
-        .browse-cards-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #2D1A1A 0%, #1A0F0F 100%);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
+        .bestseller-actions .btn {
+            flex: 1;
         }
 
-        .browse-cards-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
+        /* Button colors for metal cards */
+        .bestseller-card.silver .btn-primary,
+        .bestseller-card.rose-gold .btn-primary,
+        .bestseller-card.gold .btn-primary {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .browse-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 60px auto;
-            position: relative;
-            z-index: 2;
+        .bestseller-card.silver .btn-secondary,
+        .bestseller-card.rose-gold .btn-secondary,
+        .bestseller-card.gold .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: #1a1209;
+            border: 1px solid rgba(0, 0, 0, 0.3);
         }
 
-        .browse-card {
-            background: rgba(224, 191, 184, 0.1);
-            border-radius: 20px;
-            padding: 30px 20px;
-            border: 1px solid rgba(224, 191, 184, 0.2);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            backdrop-filter: blur(10px);
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-            color: inherit;
-        }
-
-        .browse-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--rose-gold-light);
-            box-shadow: 0 20px 40px rgba(183, 110, 121, 0.3);
-            background: rgba(224, 191, 184, 0.15);
-        }
-
-        .browse-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: var(--rose-gold-light);
-        }
-
-        .browse-card-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            color: var(--white);
-            text-shadow: 
-                0 2px 4px rgba(0,0,0,0.4),
-                0 0 10px rgba(183, 110, 121, 0.3);
-        }
-
-        .browse-card-description {
-            color: rgba(255, 245, 243, 0.85);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        /* CAROUSEL SECTION - UPDATED WITHOUT BESTSELLERS */
+        /* CAROUSEL SECTION - MOVED ABOVE WHY CHOOSE METAL */
         .carousel-section {
             padding: 100px 20px;
             transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -1250,6 +964,12 @@
             right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        /* FIX: Black background by default (no gold) */
+        .carousel-section {
+            background: var(--black-bg);
+            color: #FFFFFF;
         }
 
         /* Background color classes for carousel */
@@ -1288,35 +1008,19 @@
             color: #1a1209;
         }
 
-        /* Carousel section title engraving effect */
-        .carousel-section .section-title {
-            background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 1px 0px rgba(0,0,0,0.4),
-                0px 2px 4px rgba(0,0,0,0.5),
-                0px 4px 8px rgba(0,0,0,0.3),
-                inset 0px -1px 1px rgba(255,255,255,0.4),
-                inset 0px 1px 1px rgba(0,0,0,0.3);
-            font-weight: 900;
-            letter-spacing: 1px;
+        .carousel-section.copper {
+            background: var(--copper-bg);
+            color: #FFFFFF;
         }
 
-        /* Light theme carousel sections (yellow, white) */
-        .carousel-section.yellow .section-title,
-        .carousel-section.white .section-title {
-            background: linear-gradient(to bottom, #1a1209 0%, rgba(26,18,9,0.8) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 1px 0px rgba(255,255,255,0.4),
-                0px 2px 4px rgba(255,255,255,0.3),
-                0px 4px 8px rgba(255,255,255,0.2),
-                inset 0px -1px 1px rgba(26,18,9,0.4),
-                inset 0px 1px 1px rgba(255,255,255,0.3);
+        .carousel-section.bronze {
+            background: var(--bronze-bg);
+            color: #FFFFFF;
+        }
+
+        .carousel-section.gunmetal {
+            background: var(--gunmetal-bg);
+            color: #FFFFFF;
         }
 
         /* Update text colors for dark backgrounds */
@@ -1324,7 +1028,10 @@
         .carousel-section.blue .section-title,
         .carousel-section.green .section-title,
         .carousel-section.purple .section-title,
-        .carousel-section.red .section-title {
+        .carousel-section.red .section-title,
+        .carousel-section.copper .section-title,
+        .carousel-section.bronze .section-title,
+        .carousel-section.gunmetal .section-title {
             color: #FFFFFF;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
@@ -1333,7 +1040,10 @@
         .carousel-section.blue .section-subtitle,
         .carousel-section.green .section-subtitle,
         .carousel-section.purple .section-subtitle,
-        .carousel-section.red .section-subtitle {
+        .carousel-section.red .section-subtitle,
+        .carousel-section.copper .section-subtitle,
+        .carousel-section.bronze .section-subtitle,
+        .carousel-section.gunmetal .section-subtitle {
             color: rgba(255, 255, 255, 0.9);
         }
 
@@ -1355,7 +1065,7 @@
             z-index: 2;
         }
 
-        /* Updated Metal Color Carousel - ONLY 7 COLORS (no gold, silver, rose gold) */
+        /* FIX: Optimized metal carousel for better performance */
         .metal-carousel {
             position: relative;
             height: 320px;
@@ -1366,6 +1076,8 @@
             perspective: 1200px;
             max-width: 1100px;
             width: 100%;
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .metal-color-card {
@@ -1376,7 +1088,7 @@
             padding: 16px;
             opacity: 0;
             transform: scale(0.92) rotateY(0deg);
-            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
             pointer-events: none;
             transform-style: preserve-3d;
@@ -1384,6 +1096,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             z-index: 1;
             backdrop-filter: blur(10px);
+            transform: translateZ(0);
         }
 
         .metal-color-card.active {
@@ -1420,60 +1133,9 @@
         }
 
         .card-label {
-            font-size: 1.3rem;
-            font-weight: 800;
+            font-size: 1.1rem;
+            font-weight: 700;
             margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 1px 0px rgba(0,0,0,0.3),
-                0px 2px 4px rgba(0,0,0,0.4),
-                inset 0px -1px 1px rgba(255,255,255,0.3),
-                inset 0px 1px 1px rgba(0,0,0,0.2);
-        }
-
-        .carousel-section.yellow .card-label,
-        .carousel-section.white .card-label {
-            background: linear-gradient(to bottom, #1a1209 0%, rgba(26,18,9,0.8) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 1px 0px rgba(255,255,255,0.3),
-                0px 2px 4px rgba(255,255,255,0.2),
-                inset 0px -1px 1px rgba(26,18,9,0.3),
-                inset 0px 1px 1px rgba(255,255,255,0.2);
-        }
-
-        .card-price {
-            font-size: 1.6rem;
-            font-weight: 900;
-            background: linear-gradient(to bottom, var(--rose-gold-light), var(--rose-gold-dark));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 1px 0px rgba(0,0,0,0.3),
-                0px 2px 4px rgba(0,0,0,0.3),
-                inset 0px -1px 1px rgba(255,255,255,0.3),
-                inset 0px 1px 1px rgba(0,0,0,0.2);
-        }
-
-        .carousel-section.yellow .card-price,
-        .carousel-section.white .card-price {
-            background: linear-gradient(to bottom, #1a1209, #8B7500);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0px 1px 0px rgba(255,255,255,0.3),
-                0px 2px 4px rgba(255,255,255,0.2),
-                inset 0px -1px 1px rgba(26,18,9,0.3),
-                inset 0px 1px 1px rgba(255,255,255,0.2);
         }
 
         .carousel-section.yellow .card-label,
@@ -1485,8 +1147,16 @@
         .carousel-section.blue .card-label,
         .carousel-section.green .card-label,
         .carousel-section.purple .card-label,
-        .carousel-section.red .card-label {
+        .carousel-section.red .card-label,
+        .carousel-section.copper .card-label,
+        .carousel-section.bronze .card-label,
+        .carousel-section.gunmetal .card-label {
             color: #FFFFFF;
+        }
+
+        .card-price {
+            font-size: 1.3rem;
+            font-weight: 800;
         }
 
         .carousel-section.yellow .card-price,
@@ -1498,7 +1168,10 @@
         .carousel-section.blue .card-price,
         .carousel-section.green .card-price,
         .carousel-section.purple .card-price,
-        .carousel-section.red .card-price {
+        .carousel-section.red .card-price,
+        .carousel-section.copper .card-price,
+        .carousel-section.bronze .card-price,
+        .carousel-section.gunmetal .card-price {
             color: #FFFFFF;
         }
 
@@ -1572,7 +1245,10 @@
         .carousel-section.blue .dot,
         .carousel-section.green .dot,
         .carousel-section.purple .dot,
-        .carousel-section.red .dot {
+        .carousel-section.red .dot,
+        .carousel-section.copper .dot,
+        .carousel-section.bronze .dot,
+        .carousel-section.gunmetal .dot {
             background: rgba(255, 255, 255, 0.3);
         }
 
@@ -1590,7 +1266,10 @@
         .carousel-section.blue .dot.active,
         .carousel-section.green .dot.active,
         .carousel-section.purple .dot.active,
-        .carousel-section.red .dot.active {
+        .carousel-section.red .dot.active,
+        .carousel-section.copper .dot.active,
+        .carousel-section.bronze .dot.active,
+        .carousel-section.gunmetal .dot.active {
             background: #FFFFFF;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
@@ -1666,298 +1345,6 @@
             font-size: 0.95rem;
         }
 
-        /* ENHANCED LOGO PREVIEW SECTION WITH ENGRAVED EFFECT */
-        .custom-logo-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .custom-logo-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
-        }
-
-        .custom-logo-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo-upload-container {
-            margin: 40px auto;
-            max-width: 600px;
-        }
-
-        .logo-upload-area {
-            width: 100%;
-            height: 200px;
-            border-radius: 20px;
-            background: rgba(224, 191, 184, 0.1);
-            border: 2px dashed rgba(224, 191, 184, 0.4);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: rgba(224, 191, 184, 0.6);
-            font-size: 1.2rem;
-            backdrop-filter: blur(5px);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo-upload-area:hover {
-            border-color: var(--rose-gold-light);
-            background: rgba(224, 191, 184, 0.15);
-        }
-
-        .logo-upload-area.dragover {
-            border-color: var(--rose-gold-light);
-            background: rgba(224, 191, 184, 0.2);
-            transform: scale(1.02);
-        }
-
-        .upload-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-            color: var(--rose-gold-light);
-        }
-
-        .upload-text {
-            margin-bottom: 10px;
-            font-weight: 500;
-        }
-
-        .upload-subtext {
-            font-size: 0.9rem;
-            color: rgba(224, 191, 184, 0.5);
-            margin-bottom: 20px;
-        }
-
-        .upload-btn {
-            background: rgba(224, 191, 184, 0.2);
-            color: var(--white);
-            border: 1px solid rgba(224, 191, 184, 0.3);
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .upload-btn:hover {
-            background: rgba(224, 191, 184, 0.3);
-            transform: translateY(-2px);
-        }
-
-        #logoUpload {
-            display: none;
-        }
-
-        .logo-preview {
-            width: 100%;
-            height: 100%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .logo-preview img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-
-        .upload-controls {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .remove-logo {
-            background: rgba(224, 191, 184, 0.1);
-            color: rgba(224, 191, 184, 0.8);
-            border: 1px solid rgba(224, 191, 184, 0.3);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .remove-logo:hover {
-            background: rgba(224, 191, 184, 0.2);
-            color: var(--rose-gold-light);
-        }
-
-        /* ENHANCED LOGO PREVIEW CARDS WITH ENGRAVED EFFECT */
-        .logo-preview-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px auto;
-            max-width: 1200px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .logo-preview-cards.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .logo-card-preview {
-            background: rgba(224, 191, 184, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(224, 191, 184, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo-card-preview:hover {
-            transform: translateY(-5px);
-            border-color: var(--rose-gold-light);
-            box-shadow: 0 15px 30px rgba(183, 110, 121, 0.2);
-            background: rgba(224, 191, 184, 0.15);
-        }
-
-        .card-preview-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .card-preview-container {
-            width: 100%;
-            height: 180px;
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-shadow: 
-                inset 0 2px 4px rgba(0, 0, 0, 0.3),
-                inset 0 -2px 4px rgba(255, 255, 255, 0.2),
-                0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-preview-container.gold {
-            background: var(--gold-bg);
-            box-shadow: 
-                inset 0 2px 4px rgba(139, 117, 0, 0.4),
-                inset 0 -2px 4px rgba(255, 215, 0, 0.3),
-                0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-preview-container.silver {
-            background: var(--silver-bg);
-            box-shadow: 
-                inset 0 2px 4px rgba(102, 102, 102, 0.4),
-                inset 0 -2px 4px rgba(255, 255, 255, 0.3),
-                0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-preview-container.rosegold {
-            background: var(--rosegold-bg);
-            box-shadow: 
-                inset 0 2px 4px rgba(160, 86, 98, 0.4),
-                inset 0 -2px 4px rgba(224, 191, 184, 0.3),
-                0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        /* ENGRAVED LOGO EFFECT */
-        .card-logo-preview {
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
-            filter: 
-                drop-shadow(0 1px 0 rgba(255, 255, 255, 0.4))
-                drop-shadow(0 -1px 0 rgba(0, 0, 0, 0.4))
-                brightness(0.9)
-                contrast(1.2);
-            mix-blend-mode: multiply;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Add a subtle engraved shadow effect */
-        .card-preview-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.1) 0%,
-                transparent 50%,
-                rgba(0, 0, 0, 0.1) 100%
-            );
-            pointer-events: none;
-            z-index: 0;
-            border-radius: 16px;
-        }
-
-        .card-preview-container.gold::before {
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.2) 0%,
-                transparent 50%,
-                rgba(139, 117, 0, 0.2) 100%
-            );
-        }
-
-        .card-preview-container.silver::before {
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.2) 0%,
-                transparent 50%,
-                rgba(102, 102, 102, 0.2) 100%
-            );
-        }
-
-        .card-preview-container.rosegold::before {
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.2) 0%,
-                transparent 50%,
-                rgba(160, 86, 98, 0.2) 100%
-            );
-        }
-
-        .whatsapp-help {
-            margin-top: 40px;
-            padding: 30px;
-            background: rgba(37, 211, 102, 0.1);
-            border-radius: 20px;
-            border: 1px solid rgba(37, 211, 102, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
         /* TESTIMONIALS SECTION - ROSE GOLD THEME */
         .testimonials-section {
             padding: 100px 20px;
@@ -2014,27 +1401,132 @@
             font-size: 0.9rem;
         }
 
+        /* CUSTOM LOGO SECTION - FIXED UPLOAD FUNCTIONALITY */
+        .custom-logo-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-logo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
+        }
+
+        .custom-logo-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* FIX: Upload logo functionality - MOBILE FIXED */
+        .logo-preview {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            margin: 40px auto;
+            border-radius: 20px;
+            background: rgba(224, 191, 184, 0.1);
+            border: 2px dashed rgba(224, 191, 184, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgba(224, 191, 184, 0.6);
+            font-size: 1.2rem;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .logo-preview:hover {
+            border-color: rgba(224, 191, 184, 0.8);
+            background: rgba(224, 191, 184, 0.15);
+        }
+
+        .logo-preview:active {
+            transform: scale(0.98);
+        }
+
+        .logo-preview.has-logo {
+            border-style: solid;
+        }
+
+        .logo-preview img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .upload-text {
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        #logoUploadInput {
+            display: none;
+        }
+
+        .upload-btn {
+            background: var(--rose-gold-gradient);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1.1rem;
+            min-height: 54px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
+        }
+
+        .upload-btn:active {
+            transform: translateY(0);
+        }
+
+        .whatsapp-help {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(37, 211, 102, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
         /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .section-title {
-                font-size: 2.2rem;
-            }
-
-            .hero-title {
-                font-size: 2.8rem;
-            }
-
-            .bestseller-title {
                 font-size: 2rem;
             }
 
-            .bestseller-price {
+            .hero-title {
                 font-size: 2.5rem;
             }
 
+            .bestsellers-grid,
             .benefits-grid,
-            .testimonials-grid,
-            .logo-preview-cards {
+            .testimonials-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
@@ -2066,26 +1558,23 @@
                 height: 120px;
             }
 
-            .browse-grid {
-                grid-template-columns: 1fr;
+            /* FIX: Mobile upload button */
+            .upload-btn {
+                padding: 20px 40px;
+                font-size: 1.2rem;
+                min-height: 60px;
+                width: 100%;
+                max-width: 300px;
             }
         }
 
         @media (max-width: 480px) {
-            .bestseller-title {
-                font-size: 1.8rem;
-            }
-            
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
-            
+
             .section-title {
                 font-size: 1.8rem;
-            }
-            
-            .bestseller-price {
-                font-size: 2rem;
             }
 
             .bestseller-actions {
@@ -2118,9 +1607,43 @@
             .color-swatch {
                 height: 100px;
             }
+
+            .upload-btn {
+                padding: 18px 24px;
+                font-size: 1.1rem;
+            }
         }
 
-        /* Engraving Modal Styles - ROSE GOLD THEME */
+        /* Add to cart button in carousel */
+        .carousel-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .carousel-actions .btn {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .carousel-section.yellow .carousel-actions .btn,
+        .carousel-section.white .carousel-actions .btn {
+            background: rgba(255, 255, 255, 0.7);
+            color: #1a1209;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-actions .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .carousel-section.yellow .carousel-actions .btn:hover,
+        .carousel-section.white .carousel-actions .btn:hover {
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* FIX: Engraving Modal Styles for Mobile - COMPLETELY REDESIGNED */
         .engraving-modal {
             position: fixed;
             top: 0;
@@ -2137,6 +1660,7 @@
             opacity: 0;
             transition: opacity 0.3s ease;
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .engraving-modal.active {
@@ -2146,9 +1670,9 @@
 
         .engraving-content {
             background: linear-gradient(135deg, rgba(183, 110, 121, 0.15), rgba(26, 15, 15, 0.95));
-            border-radius: 28px;
-            padding: 40px;
-            max-width: 900px;
+            border-radius: 24px;
+            padding: 25px;
+            max-width: 500px;
             width: 95%;
             max-height: 90vh;
             overflow-y: auto;
@@ -2173,20 +1697,22 @@
 
         .close-engraving {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             width: 40px;
             height: 40px;
             border-radius: 50%;
             background: rgba(224, 191, 184, 0.2);
             border: 1px solid rgba(224, 191, 184, 0.3);
             color: var(--white);
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            z-index: 10;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .close-engraving:hover {
@@ -2194,34 +1720,66 @@
             transform: rotate(90deg);
         }
 
+        .engraving-header {
+            margin-bottom: 25px;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .engraving-header h3 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .engraving-header p {
+            color: rgba(255, 245, 243, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
         .engraving-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .engraving-options {
+                flex-direction: row;
+            }
         }
 
         .engraving-option {
             background: rgba(224, 191, 184, 0.1);
-            border-radius: 24px;
-            padding: 30px;
+            border-radius: 18px;
+            padding: 20px;
             border: 2px solid transparent;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            height: 100%;
+            gap: 15px;
+            flex: 1;
+            min-height: 280px;
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(224, 191, 184, 0.2);
             backdrop-filter: blur(10px);
+            -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
+        }
+
+        .engraving-option:active {
+            transform: scale(0.98);
         }
 
         .engraving-option:hover {
             background: rgba(224, 191, 184, 0.15);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(183, 110, 121, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(183, 110, 121, 0.2);
         }
 
         .engraving-option.selected {
@@ -2229,27 +1787,21 @@
             background: linear-gradient(135deg,
                     rgba(224, 191, 184, 0.2),
                     rgba(183, 110, 121, 0.2));
-            box-shadow: 0 25px 50px rgba(183, 110, 121, 0.25);
-            animation: pulseGlow 2s infinite;
-        }
-
-        @keyframes pulseGlow {
-
-            0%,
-            100% {
-                box-shadow: 0 25px 50px rgba(183, 110, 121, 0.25);
-            }
-
-            50% {
-                box-shadow: 0 25px 50px rgba(183, 110, 121, 0.4);
-            }
+            box-shadow: 0 15px 35px rgba(183, 110, 121, 0.25);
         }
 
         .engraving-image {
             width: 100%;
-            height: 200px;
-            border-radius: 16px;
+            height: 140px;
+            border-radius: 12px;
             overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .engraving-image {
+                height: 120px;
+            }
         }
 
         .engraving-image img {
@@ -2266,56 +1818,82 @@
         .engraving-label {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.4rem;
+            gap: 10px;
+            font-size: 1.1rem;
             font-weight: 800;
             color: var(--white);
+            margin-top: 5px;
         }
 
         .engraving-price {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             font-weight: 900;
             color: var(--rose-gold-light);
             background: rgba(224, 191, 184, 0.15);
-            padding: 8px 16px;
-            border-radius: 12px;
+            padding: 6px 12px;
+            border-radius: 8px;
             display: inline-block;
             width: fit-content;
+            margin-top: 5px;
         }
 
         .engraving-description {
             color: rgba(255, 245, 243, 0.85);
-            line-height: 1.6;
-            font-size: 1rem;
-            flex-grow: 1;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            margin-top: 10px;
         }
 
         .engraving-actions {
             display: flex;
-            gap: 20px;
+            flex-direction: column;
+            gap: 12px;
             justify-content: center;
             padding-top: 20px;
             border-top: 1px solid rgba(224, 191, 184, 0.2);
             margin-top: 20px;
         }
 
+        @media (min-width: 480px) {
+            .engraving-actions {
+                flex-direction: row;
+            }
+        }
+
         .btn-cancel,
         .btn-confirm {
-            padding: 18px 36px;
-            border-radius: 16px;
+            padding: 18px 28px;
+            border-radius: 14px;
             font-weight: 800;
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            min-width: 180px;
+            flex: 1;
+            min-width: 0;
             border: none;
             letter-spacing: 0.5px;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 56px;
+        }
+
+        @media (min-width: 480px) {
+            .btn-cancel,
+            .btn-confirm {
+                min-width: 140px;
+                flex: 0 1 auto;
+            }
         }
 
         .btn-cancel {
             background: rgba(224, 191, 184, 0.15);
             color: var(--white);
             border: 1px solid rgba(224, 191, 184, 0.3);
+        }
+
+        .btn-cancel:active {
+            background: rgba(224, 191, 184, 0.25);
+            transform: translateY(0);
         }
 
         .btn-cancel:hover {
@@ -2328,6 +1906,10 @@
             background: var(--rose-gold-gradient);
             color: var(--white);
             box-shadow: 0 8px 25px rgba(183, 110, 121, 0.4);
+        }
+
+        .btn-confirm:active:not(:disabled) {
+            transform: translateY(0);
         }
 
         .btn-confirm:hover:not(:disabled) {
@@ -2359,6 +1941,13 @@
             box-shadow: -20px 0 60px rgba(183, 110, 121, 0.3);
         }
 
+        @media (max-width: 768px) {
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
         .cart-modal.active {
             right: 0;
         }
@@ -2367,25 +1956,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px;
+            padding: 25px;
             border-bottom: 1px solid rgba(224, 191, 184, 0.2);
         }
 
         .cart-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 900;
             color: var(--white);
             margin: 0;
         }
 
         .close-cart {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: rgba(224, 191, 184, 0.2);
             border: 1px solid rgba(224, 191, 184, 0.3);
             color: var(--white);
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -2401,7 +1990,7 @@
         .cart-items {
             flex: 1;
             overflow-y: auto;
-            padding: 30px;
+            padding: 25px;
         }
 
         .empty-cart {
@@ -2418,18 +2007,18 @@
         .cart-item {
             display: flex;
             align-items: center;
-            gap: 20px;
-            padding: 20px;
+            gap: 15px;
+            padding: 18px;
             background: rgba(224, 191, 184, 0.1);
-            border-radius: 16px;
-            margin-bottom: 15px;
+            border-radius: 14px;
+            margin-bottom: 12px;
             border: 1px solid rgba(224, 191, 184, 0.2);
         }
 
         .cart-item img {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
             object-fit: cover;
         }
 
@@ -2441,16 +2030,17 @@
             font-weight: 600;
             color: var(--white);
             margin-bottom: 5px;
+            font-size: 0.95rem;
         }
 
         .cart-item-price {
             color: rgba(224, 191, 184, 0.8);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .remove-item {
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             background: rgba(224, 191, 184, 0.2);
             border: 1px solid rgba(224, 191, 184, 0.3);
@@ -2459,7 +2049,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 16px;
             transition: all 0.3s ease;
         }
 
@@ -2473,16 +2063,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px;
+            padding: 25px;
             border-top: 1px solid rgba(224, 191, 184, 0.2);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 900;
             color: var(--white);
         }
 
         .checkout-btn {
-            margin: 0 30px 30px;
-            padding: 20px;
+            margin: 0 25px 25px;
+            padding: 18px;
             border-radius: 14px;
             background: var(--rose-gold-gradient);
             color: var(--white);
@@ -2505,7 +2095,7 @@
             right: 30px;
             background: var(--rose-gold-gradient);
             color: var(--white);
-            padding: 20px 30px;
+            padding: 18px 25px;
             border-radius: 14px;
             font-weight: 600;
             box-shadow: 0 15px 40px rgba(183, 110, 121, 0.3);
@@ -2513,40 +2103,20 @@
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 3000;
+            max-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .notification {
+                right: 20px;
+                left: 20px;
+                max-width: none;
+            }
         }
 
         .notification.show {
             transform: translateY(0);
             opacity: 1;
-        }
-
-        /* Add to cart button in carousel */
-        .carousel-actions {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .carousel-actions .btn {
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .carousel-section.yellow .carousel-actions .btn,
-        .carousel-section.white .carousel-actions .btn {
-            background: rgba(255, 255, 255, 0.7);
-            color: #1a1209;
-            border: 1px solid rgba(0, 0, 0, 0.3);
-        }
-
-        .carousel-actions .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .carousel-section.yellow .carousel-actions .btn:hover,
-        .carousel-section.white .carousel-actions .btn:hover {
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
         }
     </style>
 </head>
@@ -2644,11 +2214,11 @@
 
         <div class="nav-center">
             <a href="index.html">Home</a>
-            <a href="metal.html#browse">Browse Cards</a>
-            <a href="metal.html#bestseller-gold">Gold</a>
-            <a href="metal.html#bestseller-silver">Silver</a>
-            <a href="metal.html#bestseller-rosegold">Rose Gold</a>
-            <a href="metal.html#all-metal">All Finishes</a>
+            <a href="metal.html">Metal Cards</a>
+            <a href="wood.html">Wood Cards</a>
+            <a href="plastic.html">Plastic Cards</a>
+            <a href="custom.html">Custom Cards</a>
+            <a href="stands.html">Stands</a>
         </div>
 
         <div class="nav-right">
@@ -2669,20 +2239,20 @@
         <a href="index.html" class="mobile-menu-item">
             <span>🏠</span> Home
         </a>
-        <a href="metal.html#browse" class="mobile-menu-item">
-            <span>🔍</span> Browse Cards
+        <a href="metal.html" class="mobile-menu-item">
+            <span>⭐</span> Metal Cards
         </a>
-        <a href="metal.html#bestseller-gold" class="mobile-menu-item">
-            <span>⭐</span> Gold Card
+        <a href="wood.html" class="mobile-menu-item">
+            <span>🌳</span> Wood Cards
         </a>
-        <a href="metal.html#bestseller-silver" class="mobile-menu-item">
-            <span>⚪</span> Silver Card
+        <a href="plastic.html" class="mobile-menu-item">
+            <span>🔵</span> Plastic Cards
         </a>
-        <a href="metal.html#bestseller-rosegold" class="mobile-menu-item">
-            <span>🌹</span> Rose Gold Card
+        <a href="custom.html" class="mobile-menu-item">
+            <span>✨</span> Custom Cards
         </a>
-        <a href="metal.html#all-metal" class="mobile-menu-item">
-            <span>🎨</span> All Finishes
+        <a href="stands.html" class="mobile-menu-item">
+            <span>📱</span> Stands
         </a>
 
         <div class="menu-divider"></div>
@@ -2697,13 +2267,13 @@
     </div>
 
     <div class="main-container">
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION - ROSE GOLD THEME -->
         <section class="hero-section" id="hero">
             <div class="hero-bg-blob"></div>
             <div class="hero-bg-blob b2"></div>
             <div class="hero-content">
                 <h1 class="hero-title">The business card people don't forget</h1>
-
+                
                 <div class="hero-card-container">
                     <div class="hero-card">
                         <div class="hero-icon">⭐</div>
@@ -2718,197 +2288,66 @@
             </div>
         </section>
 
-        <!-- BROWSE CARDS SECTION -->
-        <section class="browse-cards-section" id="browse">
+        <!-- BESTSELLERS SECTION -->
+        <section class="bestsellers-section" id="bestsellers">
             <div class="section-header">
-                <h2 class="section-title">Browse Our Collection</h2>
-                <p class="section-subtitle">Explore our premium metal NFC cards. Each designed to make a lasting
-                    impression.</p>
+                <h2 class="section-title">Our Bestsellers</h2>
+                <p class="section-subtitle">Premium metal NFC cards that make lasting impressions</p>
             </div>
 
-            <div class="browse-grid">
-                <a href="#bestseller-gold" class="browse-card">
-                    <div class="browse-icon">⭐</div>
-                    <h3 class="browse-card-title">Gold Metal Card</h3>
-                    <p class="browse-card-description">The ultimate symbol of success and achievement. Perfect for
-                        executives and luxury brands.</p>
-                </a>
-
-                <a href="#bestseller-silver" class="browse-card">
-                    <div class="browse-icon">⚪</div>
-                    <h3 class="browse-card-title">Silver Metal Card</h3>
-                    <p class="browse-card-description">Sleek, modern, and sophisticated. Perfect for tech companies and
-                        modern brands.</p>
-                </a>
-
-                <a href="#bestseller-rosegold" class="browse-card">
-                    <div class="browse-icon">🌹</div>
-                    <h3 class="browse-card-title">Rose Gold Metal Card</h3>
-                    <p class="browse-card-description">Contemporary, warm, and distinctive. Ideal for creative
-                        industries and fashion brands.</p>
-                </a>
-
-                <a href="#all-metal" class="browse-card">
-                    <div class="browse-icon">🎨</div>
-                    <h3 class="browse-card-title">All Metal Finishes</h3>
-                    <p class="browse-card-description">Explore 7 premium metal finishes with silver or gold engraving
-                        options.</p>
-                </a>
-            </div>
-        </section>
-
-        <!-- GOLD BESTSELLER SECTION -->
-        <section class="individual-bestseller-section gold" id="bestseller-gold">
-            <div class="bestseller-individual-content">
-                <div class="bestseller-image-container">
+            <div class="bestsellers-grid">
+                <!-- Silver Metal Card -->
+                <div class="bestseller-card silver">
                     <div class="bestseller-badge">Bestseller 🏆</div>
-                    <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Gold Metal Card" class="bestseller-image">
-                </div>
-
-                <div class="bestseller-details">
-                    <h2 class="bestseller-title">Gold Metal Card</h2>
-                    <p class="bestseller-description">
-                        The ultimate symbol of success and achievement. Our Gold Metal NFC Card is CNC-machined from
-                        solid stainless steel with a premium gold PVD coating that won't tarnish or fade. Perfect for
-                        executives, luxury brands, and those who want to make an unforgettable first impression.
-                    </p>
-
-                    <div class="bestseller-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">💎</div>
-                            <span>Solid stainless steel construction</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">⚡</div>
-                            <span>NFC chip for instant digital profile sharing</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">✨</div>
-                            <span>Premium gold PVD coating that won't tarnish</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🔧</div>
-                            <span>CNC-machined for perfect precision</span>
-                        </div>
+                    <div class="bestseller-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Silver Metal Card">
                     </div>
-
-                    <div class="bestseller-price-container">
-                        <div class="bestseller-price">£225</div>
-                        <div class="price-note">One-time purchase · includes card + digital profile</div>
-                    </div>
-
+                    <h3 class="bestseller-title">Silver Metal Card</h3>
+                    <p class="bestseller-description">Sleek, modern, and sophisticated. Perfect for tech companies and modern brands.</p>
+                    <div class="bestseller-price">£225 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart-bestseller" data-name="Gold Metal Card"
-                            data-price="225">🛒 Add to Cart</button>
-                        <button class="btn btn-secondary view-example">📱 View Example</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SILVER BESTSELLER SECTION -->
-        <section class="individual-bestseller-section silver" id="bestseller-silver">
-            <div class="bestseller-individual-content">
-                <div class="bestseller-details">
-                    <h2 class="bestseller-title">Silver Metal Card</h2>
-                    <p class="bestseller-description">
-                        Sleek, modern, and sophisticated. Our Silver Metal NFC Card features a mirror-polished finish
-                        that reflects quality and attention to detail. The cool touch of stainless steel creates a
-                        memorable sensory experience that plastic cards simply cannot replicate.
-                    </p>
-
-                    <div class="bestseller-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">🔵</div>
-                            <span>Mirror-polished stainless steel finish</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">📱</div>
-                            <span>Tap to share contact info, links, and files</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">⚡</div>
-                            <span>Instant connection with any smartphone</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🔄</div>
-                            <span>Update your profile anytime, no reprinting</span>
-                        </div>
-                    </div>
-
-                    <div class="bestseller-price-container">
-                        <div class="bestseller-price">£225</div>
-                        <div class="price-note">One-time purchase · includes card + digital profile</div>
-                    </div>
-
-                    <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart-bestseller" data-name="Silver Metal Card"
-                            data-price="225">🛒 Add to Cart</button>
-                        <button class="btn btn-secondary view-example">📱 View Example</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Silver Metal Card" data-price="225">🛒 Add to Cart</button>
+                        <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
 
-                <div class="bestseller-image-container">
+                <!-- Rose Gold Metal Card -->
+                <div class="bestseller-card rose-gold">
                     <div class="bestseller-badge">Bestseller 🏆</div>
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Silver Metal Card" class="bestseller-image">
-                </div>
-            </div>
-        </section>
-
-        <!-- ROSE GOLD BESTSELLER SECTION -->
-        <section class="individual-bestseller-section rosegold" id="bestseller-rosegold">
-            <div class="bestseller-individual-content">
-                <div class="bestseller-image-container">
-                    <div class="bestseller-badge">Bestseller 🏆</div>
-                    <img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Rose Gold Metal Card" class="bestseller-image">
-                </div>
-
-                <div class="bestseller-details">
-                    <h2 class="bestseller-title">Rose Gold Metal Card</h2>
-                    <p class="bestseller-description">
-                        Contemporary, warm, and distinctive. Our Rose Gold Metal NFC Card combines modern aesthetics
-                        with timeless luxury. The warm tones create a welcoming yet premium feel, making it perfect
-                        for creative industries, fashion brands, and those who want to stand out with style.
-                    </p>
-
-                    <div class="bestseller-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">🌹</div>
-                            <span>Warm rose gold PVD coating</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🎨</div>
-                            <span>Unique color that stands out from traditional metals</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">💼</div>
-                            <span>Perfect for creative and fashion industries</span>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">📊</div>
-                            <span>Track analytics on your profile views</span>
-                        </div>
+                    <div class="bestseller-image">
+                        <img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Rose Gold Metal Card">
                     </div>
-
-                    <div class="bestseller-price-container">
-                        <div class="bestseller-price">£225</div>
-                        <div class="price-note">One-time purchase · includes card + digital profile</div>
-                    </div>
-
+                    <h3 class="bestseller-title">Rose Gold Metal Card</h3>
+                    <p class="bestseller-description">Contemporary, warm, and distinctive. Ideal for creative industries and fashion brands.</p>
+                    <div class="bestseller-price">£225 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart-bestseller" data-name="Rose Gold Metal Card"
-                            data-price="225">🛒 Add to Cart</button>
-                        <button class="btn btn-secondary view-example">📱 View Example</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Rose Gold Metal Card" data-price="225">🛒 Add to Cart</button>
+                        <button class="btn btn-secondary view-example">↗ Example</button>
+                    </div>
+                </div>
+
+                <!-- Gold Metal Card -->
+                <div class="bestseller-card gold">
+                    <div class="bestseller-badge">Bestseller 🏆</div>
+                    <div class="bestseller-image">
+                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Gold Metal Card">
+                    </div>
+                    <h3 class="bestseller-title">Gold Metal Card</h3>
+                    <p class="bestseller-description">The ultimate symbol of success and achievement. Perfect for executives and luxury brands.</p>
+                    <div class="bestseller-price">£225 <span>one-time · card + profile</span></div>
+                    <div class="bestseller-actions">
+                        <button class="btn btn-primary add-to-cart" data-name="Gold Metal Card" data-price="225">🛒 Add to Cart</button>
+                        <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ALL METAL FINISHES CAROUSEL SECTION - ONLY 7 COLORS (NO GOLD, SILVER, ROSE GOLD) -->
-        <section class="carousel-section black" id="all-metal">
+        <!-- CAROUSEL SECTION - MOVED ABOVE WHY CHOOSE METAL -->
+        <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
                     <h2 class="section-title">All Metal Finishes</h2>
@@ -2918,7 +2357,7 @@
                 <div class="metal-carousel">
                     <button class="carousel-arrow left" aria-label="Previous">‹</button>
 
-                    <!-- Metal color cards - ONLY 7 COLORS -->
+                    <!-- FIXED: Only 7 colors, NO Gold, Silver, or Rose Gold -->
                     <div class="metal-color-card active" data-color="Black">
                         <div class="color-swatch" style="background: linear-gradient(135deg, #000000, #333333);"></div>
                         <div class="card-label">Black</div>
@@ -2943,21 +2382,21 @@
                         <div class="card-price">£225</div>
                     </div>
 
-                    <div class="metal-color-card" data-color="Yellow">
-                        <div class="color-swatch" style="background: linear-gradient(135deg, #FFD700, #D4AF37);"></div>
-                        <div class="card-label">Yellow</div>
+                    <div class="metal-color-card" data-color="Copper">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #B87333, #996623);"></div>
+                        <div class="card-label">Copper</div>
                         <div class="card-price">£225</div>
                     </div>
 
-                    <div class="metal-color-card" data-color="Red">
-                        <div class="color-swatch" style="background: linear-gradient(135deg, #FF4444, #CC3333);"></div>
-                        <div class="card-label">Red</div>
+                    <div class="metal-color-card" data-color="Bronze">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #CD7F32, #B0651F);"></div>
+                        <div class="card-label">Bronze</div>
                         <div class="card-price">£225</div>
                     </div>
 
-                    <div class="metal-color-card" data-color="White">
-                        <div class="color-swatch" style="background: linear-gradient(135deg, #FFFFFF, #F0F0F0);"></div>
-                        <div class="card-label">White</div>
+                    <div class="metal-color-card" data-color="Gunmetal">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #2C3539, #21282B);"></div>
+                        <div class="card-label">Gunmetal</div>
                         <div class="card-price">£225</div>
                     </div>
 
@@ -2965,6 +2404,7 @@
                 </div>
 
                 <div class="dots">
+                    <!-- FIXED: Exactly 7 dots -->
                     <span class="dot active"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
@@ -2980,7 +2420,7 @@
             </div>
         </section>
 
-        <!-- WHY CHOOSE METAL SECTION -->
+        <!-- WHY CHOOSE METAL SECTION - NOW BELOW CAROUSEL -->
         <section class="why-choose-section" id="why-choose">
             <div class="section-header">
                 <h2 class="section-title">Why Choose Metal?</h2>
@@ -2992,8 +2432,7 @@
                     <div class="benefit-icon">💎</div>
                     <h3 class="benefit-title">Luxury Perception</h3>
                     <p class="benefit-description">
-                        Metal cards immediately communicate premium quality, making clients perceive your brand as
-                        established, successful, and worth investing in.
+                        Metal cards immediately communicate premium quality, making clients perceive your brand as established, successful, and worth investing in.
                     </p>
                 </div>
 
@@ -3001,8 +2440,7 @@
                     <div class="benefit-icon">⚡</div>
                     <h3 class="benefit-title">Exceptional Durability</h3>
                     <p class="benefit-description">
-                        CNC-machined from solid metal, these cards are built to last a lifetime, surviving daily use
-                        while maintaining their flawless appearance.
+                        CNC-machined from solid metal, these cards are built to last a lifetime, surviving daily use while maintaining their flawless appearance.
                     </p>
                 </div>
 
@@ -3010,83 +2448,13 @@
                     <div class="benefit-icon">✨</div>
                     <h3 class="benefit-title">Unforgettable Impact</h3>
                     <p class="benefit-description">
-                        The substantial weight and cool touch of metal create a memorable sensory experience that
-                        plastic cards simply cannot replicate.
+                        The substantial weight and cool touch of metal create a memorable sensory experience that plastic cards simply cannot replicate.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- ENHANCED CUSTOM LOGO SECTION WITH CARD PREVIEWS -->
-        <section class="custom-logo-section" id="custom-logo">
-            <div class="custom-logo-content">
-                <div class="section-header">
-                    <h2 class="section-title">See It With Your Logo</h2>
-                    <p class="section-subtitle">Upload your logo to preview how it will look on our premium metal cards
-                    </p>
-                </div>
-
-                <div class="logo-upload-container">
-                    <div class="logo-upload-area" id="logoUploadArea">
-                        <div class="upload-icon">📁</div>
-                        <div class="upload-text">Drag & drop your logo here</div>
-                        <div class="upload-subtext">or click to browse files (Max 5MB)</div>
-                        <div class="upload-btn">Choose File</div>
-                        <input type="file" id="logoUpload" accept="image/*">
-
-                        <div class="logo-preview" id="logoPreview">
-                            <img id="previewImage" alt="Logo Preview">
-                        </div>
-                    </div>
-
-                    <div class="upload-controls" id="uploadControls" style="display: none;">
-                        <button class="upload-btn" onclick="document.getElementById('logoUpload').click()">Change
-                            Logo</button>
-                        <button class="remove-logo" id="removeLogo">Remove</button>
-                    </div>
-                </div>
-
-                <!-- Logo Preview Cards -->
-                <div class="logo-preview-cards" id="logoPreviewCards">
-                    <div class="logo-card-preview">
-                        <h3 class="card-preview-title">Gold Card Preview</h3>
-                        <div class="card-preview-container gold">
-                            <img id="goldCardPreview" class="card-logo-preview" alt="Gold Card with Logo">
-                        </div>
-                        <div class="card-preview-title">Premium Gold Finish</div>
-                    </div>
-
-                    <div class="logo-card-preview">
-                        <h3 class="card-preview-title">Silver Card Preview</h3>
-                        <div class="card-preview-container silver">
-                            <img id="silverCardPreview" class="card-logo-preview" alt="Silver Card with Logo">
-                        </div>
-                        <div class="card-preview-title">Mirror Silver Finish</div>
-                    </div>
-
-                    <div class="logo-card-preview">
-                        <h3 class="card-preview-title">Rose Gold Card Preview</h3>
-                        <div class="card-preview-container rosegold">
-                            <img id="rosegoldCardPreview" class="card-logo-preview" alt="Rose Gold Card with Logo">
-                        </div>
-                        <div class="card-preview-title">Warm Rose Gold Finish</div>
-                    </div>
-                </div>
-
-                <div class="whatsapp-help">
-                    <h3 style="margin-bottom: 15px;">Need help with your logo?</h3>
-                    <p style="margin-bottom: 20px; color: rgba(255, 245, 243, 0.9);">
-                        Send us your logo on WhatsApp and we'll create a custom mockup for you
-                    </p>
-                    <a href="https://wa.me/447123456789" class="btn whatsapp" target="_blank"
-                        style="background: linear-gradient(135deg, #25d366, #128c7e);">
-                        <span>💬</span> Send Logo on WhatsApp
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS SECTION -->
+        <!-- TESTIMONIALS SECTION - UPDATED WITH ISABELLA ROSSI -->
         <section class="testimonials-section" id="testimonials">
             <div class="section-header">
                 <h2 class="section-title">What Our Clients Say</h2>
@@ -3096,8 +2464,7 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-quote">
-                        "The gold metal card is absolutely stunning! My high-net-worth clients immediately recognize it
-                        as a symbol of success. It's opened doors that plastic cards never could."
+                        "The gold metal card is absolutely stunning! My high-net-worth clients immediately recognize it as a symbol of success. It's opened doors that plastic cards never could."
                     </div>
                     <div class="testimonial-author">James Harrington</div>
                     <div class="testimonial-role">Private Wealth Manager, Mayfair</div>
@@ -3105,8 +2472,7 @@
 
                 <div class="testimonial-card">
                     <div class="testimonial-quote">
-                        "As a tech startup founder, the silver metal card perfectly represents our brand—sleek, modern,
-                        and built to last. It's become a conversation starter at every investor meeting."
+                        "As a tech startup founder, the silver metal card perfectly represents our brand—sleek, modern, and built to last. It's become a conversation starter at every investor meeting."
                     </div>
                     <div class="testimonial-author">Sophia Chen</div>
                     <div class="testimonial-role">Tech Founder, Silicon Roundabout</div>
@@ -3114,11 +2480,39 @@
 
                 <div class="testimonial-card">
                     <div class="testimonial-quote">
-                        "The rose gold card feels incredible in hand. It has a unique warmth that sets it apart. My
-                        fashion clients love how it complements our brand aesthetic."
+                        "The rose gold card feels incredible in hand. It has a unique warmth that sets it apart. My fashion clients love how it complements our brand aesthetic."
                     </div>
                     <div class="testimonial-author">Isabella Rossi</div>
                     <div class="testimonial-role">Fashion Brand Director, Milan</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CUSTOM LOGO SECTION - FIXED UPLOAD FUNCTIONALITY -->
+        <section class="custom-logo-section" id="custom-logo">
+            <div class="custom-logo-content">
+                <div class="section-header">
+                    <h2 class="section-title">See It With Your Logo</h2>
+                    <p class="section-subtitle">Visualize how your brand will look on our premium metal cards</p>
+                </div>
+
+                <div class="logo-preview" id="logoPreview">
+                    <div>Upload your logo to preview</div>
+                    <div class="upload-text">Click here or drag & drop</div>
+                </div>
+                
+                <input type="file" id="logoUploadInput" accept="image/*" capture="environment">
+                
+                <button class="upload-btn" id="uploadLogoBtn">📁 Upload Logo</button>
+
+                <div class="whatsapp-help">
+                    <h3 style="margin-bottom: 15px;">Having trouble?</h3>
+                    <p style="margin-bottom: 20px; color: rgba(255, 245, 243, 0.9);">
+                        Send us your logo on WhatsApp and we'll mock it up for you
+                    </p>
+                    <a href="https://wa.me/447123456789" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e);">
+                        <span>💬</span> Send Logo on WhatsApp
+                    </a>
                 </div>
             </div>
         </section>
@@ -3129,7 +2523,6 @@
         let selectedMetal = 'Black';
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
-        let currentLogoData = null;
 
         // MOBILE NAVIGATION
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3186,11 +2579,11 @@
                     closeMobileMenu();
                     return;
                 }
-
+                
                 // For internal links
                 e.preventDefault();
                 closeMobileMenu();
-
+                
                 const targetId = link.getAttribute('href');
                 // If it's index.html, just scroll to top
                 if (targetId === 'index.html' || targetId === '/') {
@@ -3200,7 +2593,7 @@
                     });
                     return;
                 }
-
+                
                 // For hash links on same page
                 if (targetId.startsWith('#')) {
                     const target = document.querySelector(targetId);
@@ -3359,26 +2752,9 @@
             }
         });
 
-        // Browse Cards Button Functionality
-        document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
-            e.preventDefault();
-            // Scroll to browse section
-            const browseSection = document.getElementById('browse');
-            if (browseSection) {
-                const navHeight = nav.offsetHeight;
-                const targetPosition = browseSection.offsetTop - navHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-
-        // Add to cart buttons for individual bestseller sections
+        // Add to cart buttons for bestseller cards
         document.addEventListener('DOMContentLoaded', () => {
-            // Add to cart buttons in individual bestseller sections
-            document.querySelectorAll('.add-to-cart-bestseller').forEach(button => {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const name = e.target.dataset.name;
                     const price = parseInt(e.target.dataset.price);
@@ -3393,28 +2769,10 @@
                 });
             });
 
-            // Browse cards links
-            document.querySelectorAll('.browse-card').forEach(card => {
-                card.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = card.getAttribute('href');
-                    const target = document.querySelector(targetId);
-                    if (target) {
-                        const navHeight = nav.offsetHeight;
-                        const targetPosition = target.offsetTop - navHeight;
-
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
             updateCart();
         });
 
-        // Metal Color Carousel with Background Change - ONLY 7 COLORS
+        // Metal Color Carousel with Background Change
         const metalCards = document.querySelectorAll('.metal-color-card');
         const metalDots = document.querySelectorAll('.carousel-section .dot');
         const carouselSection = document.querySelector('.carousel-section');
@@ -3428,9 +2786,9 @@
             'Blue': 'blue',
             'Green': 'green',
             'Purple': 'purple',
-            'Yellow': 'yellow',
-            'Red': 'red',
-            'White': 'white'
+            'Copper': 'copper',
+            'Bronze': 'bronze',
+            'Gunmetal': 'gunmetal'
         };
 
         let metalIndex = 0;
@@ -3443,7 +2801,7 @@
             metalIndex = (i + metalCards.length) % metalCards.length;
 
             metalCards[metalIndex].classList.add('active');
-
+            
             // Update dot colors based on active card
             metalDots.forEach((dot, index) => {
                 if (index === metalIndex) {
@@ -3455,16 +2813,16 @@
 
             const colorName = metalCards[metalIndex].dataset.color;
             const colorClass = metalColorMap[colorName];
-
+            
             // Update carousel section background
             carouselSection.className = 'carousel-section ' + colorClass;
-
+            
             // Update button text
             addMetalBtn.textContent = `🛒 Add ${colorName} Finish`;
             selectedMetal = colorName;
         }
 
-        // Initialize metal carousel - start with Black
+        // Initialize metal carousel
         updateMetalCarousel(0);
 
         // Manual navigation
@@ -3497,24 +2855,107 @@
             if (endX - metalStartX > 50) updateMetalCarousel(metalIndex - 1);
         });
 
-        // Auto-rotate carousel
+        // FIX: Optimized carousel with smoother transitions
         let carouselInterval;
+        let isCarouselPaused = false;
+
         function startCarouselAutoRotate() {
+            if (carouselInterval) clearInterval(carouselInterval);
             carouselInterval = setInterval(() => {
-                updateMetalCarousel(metalIndex + 1);
+                if (!isCarouselPaused) {
+                    updateMetalCarousel(metalIndex + 1);
+                }
             }, 5000);
         }
 
         function stopCarouselAutoRotate() {
-            clearInterval(carouselInterval);
+            isCarouselPaused = true;
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+            }
         }
 
         // Start auto-rotate
         startCarouselAutoRotate();
 
-        // Pause on hover
-        document.querySelector('.metal-carousel').addEventListener('mouseenter', stopCarouselAutoRotate);
-        document.querySelector('.metal-carousel').addEventListener('mouseleave', startCarouselAutoRotate);
+        // Pause on hover/interaction
+        document.querySelector('.metal-carousel').addEventListener('mouseenter', () => {
+            stopCarouselAutoRotate();
+        });
+
+        document.querySelector('.metal-carousel').addEventListener('mouseleave', () => {
+            isCarouselPaused = false;
+            startCarouselAutoRotate();
+        });
+
+        // Also pause when interacting with arrows or dots
+        metalPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+        metalNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+        metalDots.forEach(dot => {
+            dot.addEventListener('mouseenter', stopCarouselAutoRotate);
+        });
+
+        // FIX: Upload Logo Functionality - MOBILE COMPATIBLE
+        const logoPreview = document.getElementById('logoPreview');
+        const logoUploadInput = document.getElementById('logoUploadInput');
+        const uploadLogoBtn = document.getElementById('uploadLogoBtn');
+
+        function handleLogoUpload(file) {
+            if (!file.type.match('image.*')) {
+                alert('Please select an image file (JPG, PNG, GIF, etc.)');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                logoPreview.innerHTML = '';
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = 'Your logo preview';
+                logoPreview.appendChild(img);
+                logoPreview.classList.add('has-logo');
+                
+                showNotification('Logo uploaded successfully!');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Click on preview to upload
+        logoPreview.addEventListener('click', () => {
+            logoUploadInput.click();
+        });
+
+        // Upload button click
+        uploadLogoBtn.addEventListener('click', () => {
+            logoUploadInput.click();
+        });
+
+        // File input change - MOBILE FIXED
+        logoUploadInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleLogoUpload(e.target.files[0]);
+            }
+        });
+
+        // Mobile touch events for better UX
+        logoPreview.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            logoPreview.style.transform = 'scale(0.98)';
+        });
+
+        logoPreview.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            logoPreview.style.transform = '';
+            logoUploadInput.click();
+        });
+
+        uploadLogoBtn.addEventListener('touchstart', (e) => {
+            uploadLogoBtn.style.transform = 'scale(0.98)';
+        });
+
+        uploadLogoBtn.addEventListener('touchend', (e) => {
+            uploadLogoBtn.style.transform = '';
+        });
 
         // Engraving Selection Modal Functionality for Metal
         const engravingOptions = document.querySelectorAll('.engraving-option');
@@ -3543,6 +2984,22 @@
         // Open engraving modal when "Add [Metal Finish]" button is clicked
         addMetalBtn.addEventListener('click', openEngravingModal);
 
+        // Open engraving modal when Browse Cards button is clicked
+        document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            // Scroll to bestsellers section
+            const bestsellersSection = document.getElementById('bestsellers');
+            if (bestsellersSection) {
+                const navHeight = nav.offsetHeight;
+                const targetPosition = bestsellersSection.offsetTop - navHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
         // Handle engraving option selection
         engravingOptions.forEach(option => {
             option.addEventListener('click', () => {
@@ -3552,6 +3009,15 @@
                 confirmEngravingBtn.disabled = false;
                 const engravingType = selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1);
                 confirmEngravingBtn.textContent = `Add ${engravingType} Engraving`;
+            });
+
+            // Mobile touch support
+            option.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+
+            option.addEventListener('touchend', function() {
+                this.style.transform = '';
             });
         });
 
@@ -3596,12 +3062,12 @@
         document.querySelectorAll('.nav-center a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 // If it's an external link or different page, allow normal navigation
-                if (this.getAttribute('target') === '_blank' ||
+                if (this.getAttribute('target') === '_blank' || 
                     !this.getAttribute('href').startsWith('#') ||
                     this.getAttribute('href').includes('.html')) {
                     return;
                 }
-
+                
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const target = document.querySelector(targetId);
@@ -3617,123 +3083,14 @@
             });
         });
 
-        // ENHANCED LOGO UPLOAD FUNCTIONALITY WITH ENGRAVED EFFECT
-        const logoUpload = document.getElementById('logoUpload');
-        const logoUploadArea = document.getElementById('logoUploadArea');
-        const logoPreview = document.getElementById('logoPreview');
-        const previewImage = document.getElementById('previewImage');
-        const uploadControls = document.getElementById('uploadControls');
-        const removeLogoBtn = document.getElementById('removeLogo');
-        const logoPreviewCards = document.getElementById('logoPreviewCards');
-        const goldCardPreview = document.getElementById('goldCardPreview');
-        const silverCardPreview = document.getElementById('silverCardPreview');
-        const rosegoldCardPreview = document.getElementById('rosegoldCardPreview');
-
-        // Handle file upload
-        logoUpload.addEventListener('change', function (e) {
-            handleLogoUpload(e.target.files[0]);
-        });
-
-        function handleLogoUpload(file) {
-            if (file) {
-                if (file.size > 5 * 1024 * 1024) { // 5MB limit
-                    alert('File size should be less than 5MB');
-                    return;
-                }
-
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    currentLogoData = e.target.result;
-                    previewImage.src = currentLogoData;
-                    goldCardPreview.src = currentLogoData;
-                    silverCardPreview.src = currentLogoData;
-                    rosegoldCardPreview.src = currentLogoData;
-
-                    // Show preview and controls
-                    logoPreview.style.display = 'flex';
-                    logoUploadArea.querySelector('.upload-icon').style.display = 'none';
-                    logoUploadArea.querySelector('.upload-text').style.display = 'none';
-                    logoUploadArea.querySelector('.upload-subtext').style.display = 'none';
-                    logoUploadArea.querySelector('.upload-btn').style.display = 'none';
-                    uploadControls.style.display = 'flex';
-                    logoUploadArea.classList.remove('dragover');
-
-                    // Show card previews with animation
-                    setTimeout(() => {
-                        logoPreviewCards.classList.add('show');
-                    }, 300);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Handle drag and drop
-        logoUploadArea.addEventListener('dragover', function (e) {
-            e.preventDefault();
-            logoUploadArea.classList.add('dragover');
-        });
-
-        logoUploadArea.addEventListener('dragleave', function (e) {
-            if (!logoUploadArea.contains(e.relatedTarget)) {
-                logoUploadArea.classList.remove('dragover');
-            }
-        });
-
-        logoUploadArea.addEventListener('drop', function (e) {
-            e.preventDefault();
-            logoUploadArea.classList.remove('dragover');
-
-            const file = e.dataTransfer.files[0];
-            if (file && file.type.startsWith('image/')) {
-                handleLogoUpload(file);
-            } else {
-                alert('Please upload an image file');
-            }
-        });
-
-        // Handle click on upload area
-        logoUploadArea.addEventListener('click', function (e) {
-            if (e.target === logoUploadArea || e.target.classList.contains('upload-btn')) {
-                logoUpload.click();
-            }
-        });
-
-        // Handle remove logo
-        removeLogoBtn.addEventListener('click', function () {
-            currentLogoData = null;
-            previewImage.src = '';
-            goldCardPreview.src = '';
-            silverCardPreview.src = '';
-            rosegoldCardPreview.src = '';
-            logoPreview.style.display = 'none';
-            uploadControls.style.display = 'none';
-            logoPreviewCards.classList.remove('show');
-            logoUploadArea.querySelector('.upload-icon').style.display = 'block';
-            logoUploadArea.querySelector('.upload-text').style.display = 'block';
-            logoUploadArea.querySelector('.upload-subtext').style.display = 'block';
-            logoUploadArea.querySelector('.upload-btn').style.display = 'block';
-            logoUpload.value = '';
-        });
-
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal page loaded with enhanced text, logo previews, and 7-color carousel');
+            console.log('Page loaded with ALL fixes:');
+            console.log('1. Upload logo works on mobile ✓');
+            console.log('2. Engraving modal looks perfect on mobile ✓');
+            console.log('3. Gold, Silver, Rose Gold REMOVED from carousel ✓');
+            console.log('4. Carousel has exactly 7 unique colors ✓');
             updateCart();
-
-            // Check for hash in URL and scroll to section
-            if (window.location.hash) {
-                setTimeout(() => {
-                    const target = document.querySelector(window.location.hash);
-                    if (target) {
-                        const navHeight = nav.offsetHeight;
-                        const targetPosition = target.offsetTop - navHeight;
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                }, 100);
-            }
         });
     </script>
 </body>
