@@ -1561,7 +1561,7 @@
             display: block;
         }
 
-        /* Step 1: Upload Logo */
+        /* Step 1: Upload Logo - UPDATED FOR MOBILE CAMERA/GALLERY */
         .upload-step {
             text-align: center;
         }
@@ -1612,7 +1612,65 @@
             font-size: 0.95rem;
         }
 
-        .upload-btn {
+        /* Mobile-specific upload options */
+        .mobile-upload-options {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-upload-options {
+                display: grid;
+            }
+            
+            .desktop-upload-btn {
+                display: none;
+            }
+        }
+
+        .mobile-upload-btn {
+            background: var(--rose-gold-gradient);
+            color: var(--white);
+            padding: 18px 20px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 100px;
+        }
+
+        .mobile-upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
+        }
+
+        .mobile-upload-btn.camera {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        }
+
+        .mobile-upload-btn.gallery {
+            background: linear-gradient(135deg, #2196F3, #0D47A1);
+        }
+
+        .mobile-upload-icon {
+            font-size: 2rem;
+        }
+
+        .mobile-upload-label {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .desktop-upload-btn {
             background: var(--rose-gold-gradient);
             color: var(--white);
             padding: 16px 32px;
@@ -1630,7 +1688,7 @@
             justify-content: center;
         }
 
-        .upload-btn:hover {
+        .desktop-upload-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
         }
@@ -1638,10 +1696,72 @@
         .upload-requirements {
             font-size: 0.85rem;
             color: rgba(255, 245, 243, 0.5);
+            margin-top: 15px;
         }
 
-        #logoUploadInput {
+        /* Hidden file inputs */
+        #logoUploadInput,
+        #cameraUploadInput,
+        #galleryUploadInput {
             display: none;
+        }
+
+        /* Uploaded image preview */
+        .uploaded-image-preview {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .uploaded-image-preview.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .preview-image {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 12px;
+            border: 2px solid rgba(224, 191, 184, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        .preview-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .preview-action-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .preview-action-btn.change {
+            background: rgba(224, 191, 184, 0.2);
+            color: var(--white);
+            border: 1px solid rgba(224, 191, 184, 0.3);
+        }
+
+        .preview-action-btn.change:hover {
+            background: rgba(224, 191, 184, 0.3);
+        }
+
+        .preview-action-btn.remove {
+            background: rgba(255, 59, 48, 0.2);
+            color: #FF3B30;
+            border: 1px solid rgba(255, 59, 48, 0.3);
+        }
+
+        .preview-action-btn.remove:hover {
+            background: rgba(255, 59, 48, 0.3);
         }
 
         /* Step 2: Choose Color */
@@ -1959,6 +2079,19 @@
             .upload-subtitle {
                 font-size: 0.9rem;
             }
+
+            .mobile-upload-btn {
+                padding: 15px;
+                min-height: 90px;
+            }
+
+            .mobile-upload-icon {
+                font-size: 1.8rem;
+            }
+
+            .mobile-upload-label {
+                font-size: 13px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2041,6 +2174,16 @@
 
             .upload-subtitle {
                 font-size: 0.85rem;
+            }
+
+            .mobile-upload-options {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .mobile-upload-btn {
+                min-height: 80px;
+                padding: 12px;
             }
         }
 
@@ -2728,7 +2871,7 @@
             </div>
         </section>
 
-        <!-- CUSTOMIZE YOUR CARD SECTION - SIDE BY SIDE LAYOUT -->
+        <!-- CUSTOMIZE YOUR CARD SECTION - WITH MOBILE CAMERA/GALLERY UPLOAD -->
         <section class="customize-logo-section" id="customize-logo">
             <div class="customize-container">
                 <!-- Left Column: Card Preview -->
@@ -2785,16 +2928,45 @@
                                     <div class="upload-icon">📁</div>
                                     <div class="upload-title">Upload Your Logo</div>
                                     <div class="upload-subtitle">
-                                        Drag & drop your logo file or click to browse. We support PNG, JPG, and SVG formats.
+                                        <span class="desktop-text">Drag & drop your logo file or click to browse. We support PNG, JPG, and SVG formats.</span>
+                                        <span class="mobile-text" style="display: none;">Take a photo with your camera or choose from your gallery.</span>
                                     </div>
-                                    <button class="upload-btn" id="uploadLogoBtn">
+                                    
+                                    <!-- Mobile-specific upload options -->
+                                    <div class="mobile-upload-options">
+                                        <button class="mobile-upload-btn camera" id="cameraUploadBtn">
+                                            <span class="mobile-upload-icon">📷</span>
+                                            <span class="mobile-upload-label">Take Photo</span>
+                                        </button>
+                                        <button class="mobile-upload-btn gallery" id="galleryUploadBtn">
+                                            <span class="mobile-upload-icon">🖼️</span>
+                                            <span class="mobile-upload-label">Choose from Gallery</span>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Desktop upload button -->
+                                    <button class="desktop-upload-btn" id="desktopUploadBtn">
                                         <span>📁</span> Choose File
                                     </button>
+                                    
                                     <div class="upload-requirements">
                                         Recommended: Transparent PNG, minimum 500×500px, max 10MB
                                     </div>
                                 </div>
-                                <input type="file" id="logoUploadInput" accept="image/*" capture="environment">
+                                
+                                <!-- Uploaded image preview -->
+                                <div class="uploaded-image-preview" id="uploadedImagePreview">
+                                    <img id="previewImage" class="preview-image" alt="Uploaded Logo Preview">
+                                    <div class="preview-actions">
+                                        <button class="preview-action-btn change" id="changeImageBtn">Change Image</button>
+                                        <button class="preview-action-btn remove" id="removeImageBtn">Remove</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Hidden file inputs -->
+                                <input type="file" id="desktopUploadInput" accept="image/*">
+                                <input type="file" id="cameraUploadInput" accept="image/*" capture="environment">
+                                <input type="file" id="galleryUploadInput" accept="image/*">
                             </div>
                         </div>
 
@@ -2906,6 +3078,7 @@
         let selectedEngraving = null;
         const engravingModal = document.getElementById('engravingModal');
         let selectedMetal = 'Black'; // For carousel section
+        let uploadedImageData = null;
 
         // Background color mapping
         const colorBackgrounds = {
@@ -2926,6 +3099,26 @@
             'silver': 'linear-gradient(135deg, rgba(192, 192, 192, 0.3), rgba(128, 128, 128, 0.2))',
             'gold': 'linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(184, 134, 11, 0.2))'
         };
+
+        // Check if device is mobile
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Update upload interface based on device
+        function updateUploadInterface() {
+            const uploadSubtitle = document.querySelector('.upload-subtitle');
+            const desktopText = uploadSubtitle.querySelector('.desktop-text');
+            const mobileText = uploadSubtitle.querySelector('.mobile-text');
+            
+            if (isMobileDevice()) {
+                desktopText.style.display = 'none';
+                mobileText.style.display = 'inline';
+            } else {
+                desktopText.style.display = 'inline';
+                mobileText.style.display = 'none';
+            }
+        }
 
         // MOBILE NAVIGATION
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3258,7 +3451,7 @@
             if (endX - metalStartX > 50) updateMetalCarousel(metalIndex - 1);
         });
 
-        // Customization System
+        // Customization System with Mobile Camera/Gallery Support
         const step1 = document.getElementById('step1');
         const step2 = document.getElementById('step2');
         const step3 = document.getElementById('step3');
@@ -3268,8 +3461,21 @@
         const nextBtn = document.getElementById('nextStep');
         const completeBtn = document.getElementById('completeCustomization');
         const uploadArea = document.getElementById('uploadArea');
-        const uploadLogoBtn = document.getElementById('uploadLogoBtn');
-        const logoUploadInput = document.getElementById('logoUploadInput');
+        const uploadedImagePreview = document.getElementById('uploadedImagePreview');
+        const previewImage = document.getElementById('previewImage');
+        const changeImageBtn = document.getElementById('changeImageBtn');
+        const removeImageBtn = document.getElementById('removeImageBtn');
+        
+        // Upload buttons
+        const desktopUploadBtn = document.getElementById('desktopUploadBtn');
+        const cameraUploadBtn = document.getElementById('cameraUploadBtn');
+        const galleryUploadBtn = document.getElementById('galleryUploadBtn');
+        
+        // File inputs
+        const desktopUploadInput = document.getElementById('desktopUploadInput');
+        const cameraUploadInput = document.getElementById('cameraUploadInput');
+        const galleryUploadInput = document.getElementById('galleryUploadInput');
+        
         const cardPreviewLarge = document.getElementById('cardPreviewLarge');
         const cardBackground = document.getElementById('cardBackground');
         const cardEngravingOverlay = document.getElementById('cardEngravingOverlay');
@@ -3278,20 +3484,38 @@
         const colorOptions = document.querySelectorAll('.color-option');
         const engravingOptions = document.querySelectorAll('.engraving-option');
 
-        // Initialize steps
+        // Initialize steps and update upload interface
+        updateUploadInterface();
         updateStepIndicator();
 
         // Step navigation
         nextBtn.addEventListener('click', goToNextStep);
         prevBtn.addEventListener('click', goToPreviousStep);
 
-        // Upload logo functionality
-        uploadArea.addEventListener('click', () => logoUploadInput.click());
-        uploadLogoBtn.addEventListener('click', () => logoUploadInput.click());
+        // Upload functionality - Desktop
+        desktopUploadBtn.addEventListener('click', () => desktopUploadInput.click());
+        desktopUploadInput.addEventListener('change', handleFileUpload);
 
-        logoUploadInput.addEventListener('change', handleLogoUpload);
+        // Upload functionality - Mobile Camera
+        cameraUploadBtn.addEventListener('click', () => {
+            // On iOS, we need to use a different approach for camera
+            if (isMobileDevice()) {
+                cameraUploadInput.setAttribute('capture', 'environment');
+                cameraUploadInput.click();
+            } else {
+                desktopUploadInput.click();
+            }
+        });
+        cameraUploadInput.addEventListener('change', handleFileUpload);
 
-        // Drag and drop for upload area
+        // Upload functionality - Mobile Gallery
+        galleryUploadBtn.addEventListener('click', () => {
+            galleryUploadInput.removeAttribute('capture');
+            galleryUploadInput.click();
+        });
+        galleryUploadInput.addEventListener('change', handleFileUpload);
+
+        // Drag and drop for upload area (desktop)
         uploadArea.addEventListener('dragover', (e) => {
             e.preventDefault();
             uploadArea.classList.add('drag-over');
@@ -3307,8 +3531,45 @@
             uploadArea.classList.remove('drag-over');
             
             if (e.dataTransfer.files.length > 0) {
-                handleLogoUpload({ target: { files: e.dataTransfer.files } });
+                handleFileUpload({ target: { files: e.dataTransfer.files } });
             }
+        });
+
+        // Change/Remove image buttons
+        changeImageBtn.addEventListener('click', () => {
+            // Show upload area and hide preview
+            uploadedImagePreview.classList.remove('active');
+            uploadArea.style.display = 'block';
+            
+            // Trigger appropriate upload method based on device
+            if (isMobileDevice()) {
+                galleryUploadInput.click();
+            } else {
+                desktopUploadInput.click();
+            }
+        });
+
+        removeImageBtn.addEventListener('click', () => {
+            // Remove uploaded image
+            uploadedImageData = null;
+            logoUploaded = false;
+            uploadedImagePreview.classList.remove('active');
+            uploadArea.style.display = 'block';
+            
+            // Reset card preview
+            cardLogo.src = '';
+            cardLogo.style.display = 'none';
+            cardPlaceholder.style.display = 'flex';
+            
+            // Update step state
+            nextBtn.disabled = true;
+            
+            // Clear file inputs
+            desktopUploadInput.value = '';
+            cameraUploadInput.value = '';
+            galleryUploadInput.value = '';
+            
+            showNotification('Image removed');
         });
 
         // Color selection
@@ -3364,7 +3625,7 @@
         });
 
         // Functions
-        function handleLogoUpload(e) {
+        function handleFileUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
 
@@ -3382,8 +3643,16 @@
 
             const reader = new FileReader();
             reader.onload = function(e) {
+                // Save uploaded image data
+                uploadedImageData = e.target.result;
+                
+                // Update preview
+                previewImage.src = uploadedImageData;
+                uploadedImagePreview.classList.add('active');
+                uploadArea.style.display = 'none';
+                
                 // Update card preview
-                cardLogo.src = e.target.result;
+                cardLogo.src = uploadedImageData;
                 cardLogo.style.display = 'block';
                 cardPlaceholder.style.display = 'none';
                 
@@ -3393,7 +3662,7 @@
                 // Enable next step
                 nextBtn.disabled = false;
                 
-                showNotification('Logo uploaded successfully!');
+                showNotification('Image uploaded successfully!');
             };
             reader.readAsDataURL(file);
         }
@@ -3470,6 +3739,7 @@
         function resetCustomization() {
             currentStep = 1;
             logoUploaded = false;
+            uploadedImageData = null;
             selectedColor = 'black';
             selectedEngraving = null;
             
@@ -3477,6 +3747,9 @@
             cardLogo.src = '';
             cardLogo.style.display = 'none';
             cardPlaceholder.style.display = 'flex';
+            
+            uploadedImagePreview.classList.remove('active');
+            uploadArea.style.display = 'block';
             
             colorOptions.forEach(opt => opt.classList.remove('selected'));
             colorOptions[0].classList.add('selected');
@@ -3486,8 +3759,10 @@
             updateCardPreview();
             updateStepIndicator();
             
-            // Clear file input
-            logoUploadInput.value = '';
+            // Clear file inputs
+            desktopUploadInput.value = '';
+            cameraUploadInput.value = '';
+            galleryUploadInput.value = '';
             
             showNotification('Ready to create another custom card!');
         }
@@ -3625,12 +3900,13 @@
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Page loaded with SIDE-BY-SIDE Customization System:');
-            console.log('1. Card preview and customization options visible together ✓');
-            console.log('2. Works on both desktop (2-column) and mobile (stacked) ✓');
-            console.log('3. Live preview updates instantly ✓');
-            console.log('4. All 10 color options visible at once ✓');
-            console.log('5. Mobile optimized with responsive grid ✓');
+            console.log('Page loaded with MOBILE CAMERA/GALLERY SUPPORT:');
+            console.log('1. Mobile users can take photos with camera ✓');
+            console.log('2. Mobile users can choose from gallery ✓');
+            console.log('3. Desktop users get standard file upload ✓');
+            console.log('4. Side-by-side card preview and customization ✓');
+            console.log('5. All 10 color options visible at once ✓');
+            console.log('6. Mobile optimized with responsive design ✓');
             updateCart();
         });
     </script>
