@@ -1427,86 +1427,215 @@
             z-index: 2;
         }
 
-        /* FIX: Upload logo functionality - MOBILE FIXED */
-        .logo-preview {
+        /* FIXED: New upload logo styling with card preview */
+        .logo-preview-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        @media (min-width: 768px) {
+            .logo-preview-area {
+                flex-direction: row;
+                justify-content: center;
+                align-items: flex-start;
+            }
+        }
+
+        .card-preview-container {
+            flex: 1;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-preview {
             width: 100%;
-            max-width: 400px;
             height: 200px;
-            margin: 40px auto;
+            background: linear-gradient(135deg, #000000, #333333);
             border-radius: 20px;
-            background: rgba(224, 191, 184, 0.1);
-            border: 2px dashed rgba(224, 191, 184, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(224, 191, 184, 0.3);
+            box-shadow: 0 15px 40px rgba(183, 110, 121, 0.2);
+        }
+
+        .logo-placeholder {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .placeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+
+        .placeholder-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .card-preview #previewLogo {
+            max-width: 70%;
+            max-height: 70%;
+            object-fit: contain;
+            display: none;
+        }
+
+        .card-preview-label {
+            font-size: 0.9rem;
+            color: rgba(255, 245, 243, 0.7);
+            font-weight: 600;
+        }
+
+        .upload-area {
+            flex: 1;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .upload-box {
+            width: 100%;
+            height: 200px;
+            border: 2px dashed rgba(224, 191, 184, 0.5);
+            border-radius: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: rgba(224, 191, 184, 0.6);
-            font-size: 1.2rem;
-            backdrop-filter: blur(5px);
-            position: relative;
-            overflow: hidden;
+            gap: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
+            background: rgba(224, 191, 184, 0.05);
+            padding: 30px;
+            text-align: center;
             -webkit-tap-highlight-color: transparent;
         }
 
-        .logo-preview:hover {
-            border-color: rgba(224, 191, 184, 0.8);
+        .upload-box:hover {
+            border-color: var(--rose-gold-light);
+            background: rgba(224, 191, 184, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .upload-box:active {
+            transform: translateY(0);
+        }
+
+        .upload-box.drag-over {
+            border-color: var(--rose-gold-light);
             background: rgba(224, 191, 184, 0.15);
-        }
-
-        .logo-preview:active {
-            transform: scale(0.98);
-        }
-
-        .logo-preview.has-logo {
             border-style: solid;
         }
 
-        .logo-preview img {
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
+        .upload-icon {
+            font-size: 3rem;
+            color: rgba(224, 191, 184, 0.7);
         }
 
         .upload-text {
-            margin-top: 10px;
-            font-size: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .upload-subtext {
+            font-size: 0.9rem;
+            color: rgba(255, 245, 243, 0.6);
+            max-width: 250px;
+        }
+
+        .upload-requirements {
+            font-size: 0.8rem;
+            color: rgba(255, 245, 243, 0.5);
+            margin-top: 5px;
         }
 
         #logoUploadInput {
             display: none;
         }
 
+        .upload-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        @media (min-width: 480px) {
+            .upload-actions {
+                flex-direction: row;
+            }
+        }
+
         .upload-btn {
             background: var(--rose-gold-gradient);
             color: var(--white);
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-weight: 600;
+            padding: 18px 28px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 16px;
             cursor: pointer;
-            margin-top: 20px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: none;
-            font-size: 1.1rem;
-            min-height: 54px;
-            display: inline-flex;
+            flex: 1;
+            min-height: 56px;
+            display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .upload-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
+            background: linear-gradient(135deg, #E8D4D1, #C98A96);
         }
 
         .upload-btn:active {
             transform: translateY(0);
         }
 
+        .clear-btn {
+            background: rgba(224, 191, 184, 0.15);
+            color: var(--white);
+            padding: 18px 28px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(224, 191, 184, 0.3);
+            flex: 1;
+            min-height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .clear-btn:hover {
+            background: rgba(224, 191, 184, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(183, 110, 121, 0.2);
+        }
+
         .whatsapp-help {
-            margin-top: 40px;
+            margin-top: 60px;
             padding: 30px;
             background: rgba(37, 211, 102, 0.1);
             border-radius: 20px;
@@ -1558,13 +1687,16 @@
                 height: 120px;
             }
 
-            /* FIX: Mobile upload button */
-            .upload-btn {
-                padding: 20px 40px;
-                font-size: 1.2rem;
-                min-height: 60px;
-                width: 100%;
-                max-width: 300px;
+            .upload-area {
+                max-width: 100%;
+            }
+
+            .card-preview {
+                height: 180px;
+            }
+
+            .upload-box {
+                height: 180px;
             }
         }
 
@@ -1608,9 +1740,21 @@
                 height: 100px;
             }
 
-            .upload-btn {
-                padding: 18px 24px;
+            .card-preview {
+                height: 160px;
+            }
+
+            .upload-box {
+                height: 160px;
+                padding: 20px;
+            }
+
+            .upload-text {
                 font-size: 1.1rem;
+            }
+
+            .upload-subtext {
+                font-size: 0.85rem;
             }
         }
 
@@ -2493,22 +2637,48 @@
             <div class="custom-logo-content">
                 <div class="section-header">
                     <h2 class="section-title">See It With Your Logo</h2>
-                    <p class="section-subtitle">Visualize how your brand will look on our premium metal cards</p>
+                    <p class="section-subtitle">Upload your logo to preview it on our premium metal cards</p>
                 </div>
 
-                <div class="logo-preview" id="logoPreview">
-                    <div>Upload your logo to preview</div>
-                    <div class="upload-text">Click here or drag & drop</div>
+                <div class="logo-preview-area">
+                    <!-- Card Preview -->
+                    <div class="card-preview-container">
+                        <div class="card-preview" id="cardPreview">
+                            <div class="logo-placeholder">
+                                <div class="placeholder-icon">🏢</div>
+                                <div class="placeholder-text">Your Logo Here</div>
+                            </div>
+                            <img id="previewLogo" alt="Your Logo">
+                        </div>
+                        <div class="card-preview-label">Live Preview</div>
+                    </div>
+
+                    <!-- Upload Area -->
+                    <div class="upload-area">
+                        <div class="upload-box" id="uploadBox">
+                            <div class="upload-icon">📁</div>
+                            <div class="upload-text">Click to upload or drag & drop</div>
+                            <div class="upload-subtext">PNG, JPG, SVG up to 10MB</div>
+                            <div class="upload-requirements">Recommended: Transparent PNG, 500×500px</div>
+                        </div>
+                        
+                        <input type="file" id="logoUploadInput" accept="image/*" capture="environment">
+                        
+                        <div class="upload-actions">
+                            <button class="upload-btn" id="uploadLogoBtn">
+                                <span>📁</span> Upload Logo
+                            </button>
+                            <button class="clear-btn" id="clearLogoBtn">
+                                <span>🗑️</span> Clear
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                
-                <input type="file" id="logoUploadInput" accept="image/*" capture="environment">
-                
-                <button class="upload-btn" id="uploadLogoBtn">📁 Upload Logo</button>
 
                 <div class="whatsapp-help">
-                    <h3 style="margin-bottom: 15px;">Having trouble?</h3>
+                    <h3 style="margin-bottom: 15px;">Need help with your logo?</h3>
                     <p style="margin-bottom: 20px; color: rgba(255, 245, 243, 0.9);">
-                        Send us your logo on WhatsApp and we'll mock it up for you
+                        Send us your logo on WhatsApp and we'll create a custom mockup for you
                     </p>
                     <a href="https://wa.me/447123456789" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e);">
                         <span>💬</span> Send Logo on WhatsApp
@@ -2895,67 +3065,127 @@
             dot.addEventListener('mouseenter', stopCarouselAutoRotate);
         });
 
-        // FIX: Upload Logo Functionality - MOBILE COMPATIBLE
-        const logoPreview = document.getElementById('logoPreview');
+        // FIXED: UPLOAD LOGO FUNCTIONALITY - WORKS ON MOBILE & DESKTOP
+        const uploadBox = document.getElementById('uploadBox');
         const logoUploadInput = document.getElementById('logoUploadInput');
         const uploadLogoBtn = document.getElementById('uploadLogoBtn');
+        const clearLogoBtn = document.getElementById('clearLogoBtn');
+        const previewLogo = document.getElementById('previewLogo');
+        const cardPreview = document.getElementById('cardPreview');
+        const logoPlaceholder = cardPreview.querySelector('.logo-placeholder');
 
+        // Function to handle logo upload
         function handleLogoUpload(file) {
+            // Validate file type
             if (!file.type.match('image.*')) {
-                alert('Please select an image file (JPG, PNG, GIF, etc.)');
+                showNotification('Please select an image file (JPG, PNG, GIF, etc.)');
+                return;
+            }
+
+            // Validate file size (max 10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                showNotification('File is too large. Maximum size is 10MB.');
                 return;
             }
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                logoPreview.innerHTML = '';
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.alt = 'Your logo preview';
-                logoPreview.appendChild(img);
-                logoPreview.classList.add('has-logo');
+                // Update preview
+                previewLogo.src = e.target.result;
+                previewLogo.style.display = 'block';
+                logoPlaceholder.style.display = 'none';
+                
+                // Add logo loaded class to preview
+                cardPreview.classList.add('has-logo');
                 
                 showNotification('Logo uploaded successfully!');
+                
+                // Enable clear button
+                clearLogoBtn.disabled = false;
+            };
+            reader.onerror = function() {
+                showNotification('Error reading file. Please try again.');
             };
             reader.readAsDataURL(file);
         }
 
-        // Click on preview to upload
-        logoPreview.addEventListener('click', () => {
+        // Click on upload box
+        uploadBox.addEventListener('click', () => {
             logoUploadInput.click();
         });
 
-        // Upload button click
+        // Click on upload button
         uploadLogoBtn.addEventListener('click', () => {
             logoUploadInput.click();
         });
 
-        // File input change - MOBILE FIXED
+        // File input change
         logoUploadInput.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
                 handleLogoUpload(e.target.files[0]);
             }
         });
 
-        // Mobile touch events for better UX
-        logoPreview.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            logoPreview.style.transform = 'scale(0.98)';
+        // Clear logo button
+        clearLogoBtn.addEventListener('click', () => {
+            previewLogo.src = '';
+            previewLogo.style.display = 'none';
+            logoPlaceholder.style.display = 'flex';
+            cardPreview.classList.remove('has-logo');
+            logoUploadInput.value = '';
+            clearLogoBtn.disabled = true;
+            showNotification('Logo cleared');
         });
 
-        logoPreview.addEventListener('touchend', (e) => {
+        // Drag and drop functionality
+        uploadBox.addEventListener('dragover', (e) => {
             e.preventDefault();
-            logoPreview.style.transform = '';
-            logoUploadInput.click();
+            uploadBox.classList.add('drag-over');
         });
 
-        uploadLogoBtn.addEventListener('touchstart', (e) => {
+        uploadBox.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            uploadBox.classList.remove('drag-over');
+        });
+
+        uploadBox.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadBox.classList.remove('drag-over');
+            
+            if (e.dataTransfer.files.length > 0) {
+                handleLogoUpload(e.dataTransfer.files[0]);
+            }
+        });
+
+        // Mobile touch events
+        uploadBox.addEventListener('touchstart', () => {
+            uploadBox.style.transform = 'scale(0.98)';
+        });
+
+        uploadBox.addEventListener('touchend', () => {
+            uploadBox.style.transform = '';
+        });
+
+        uploadLogoBtn.addEventListener('touchstart', () => {
             uploadLogoBtn.style.transform = 'scale(0.98)';
         });
 
-        uploadLogoBtn.addEventListener('touchend', (e) => {
+        uploadLogoBtn.addEventListener('touchend', () => {
             uploadLogoBtn.style.transform = '';
         });
+
+        clearLogoBtn.addEventListener('touchstart', () => {
+            if (!clearLogoBtn.disabled) {
+                clearLogoBtn.style.transform = 'scale(0.98)';
+            }
+        });
+
+        clearLogoBtn.addEventListener('touchend', () => {
+            clearLogoBtn.style.transform = '';
+        });
+
+        // Disable clear button initially
+        clearLogoBtn.disabled = true;
 
         // Engraving Selection Modal Functionality for Metal
         const engravingOptions = document.querySelectorAll('.engraving-option');
@@ -3085,11 +3315,12 @@
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Page loaded with ALL fixes:');
+            console.log('Page loaded with COMPLETE "See It With Your Logo" fix:');
             console.log('1. Upload logo works on mobile ✓');
-            console.log('2. Engraving modal looks perfect on mobile ✓');
-            console.log('3. Gold, Silver, Rose Gold REMOVED from carousel ✓');
-            console.log('4. Carousel has exactly 7 unique colors ✓');
+            console.log('2. Drag & drop support ✓');
+            console.log('3. Live preview on card ✓');
+            console.log('4. Clear functionality ✓');
+            console.log('5. Mobile touch optimized ✓');
             updateCart();
         });
     </script>
