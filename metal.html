@@ -2944,14 +2944,13 @@ section[id] {
             </div>
         </section>
     </div>
-
 <script>
     // Variables for engraving selection
     let selectedMetal = 'Black';
     let selectedEngraving = null;
     let engravingModal = document.getElementById('engravingModal');
 
-    // MOBILE MENU - FIXED VERSION
+    // SIMPLE MOBILE MENU - FIXED
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const mobileCloseBtn = document.getElementById('mobileCloseBtn');
     const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -2959,22 +2958,20 @@ section[id] {
     const nav = document.getElementById('mainNav');
     let isMenuOpen = false;
 
-    // Toggle mobile menu - FIXED
+    // Toggle mobile menu - SIMPLE VERSION
     function toggleMobileMenu() {
         isMenuOpen = !isMenuOpen;
 
         if (isMenuOpen) {
-            // Open menu - in correct order
+            // Open menu
             hamburgerBtn.classList.add('active');
             mobileMenu.classList.add('active');
-            setTimeout(() => {
-                mobileMenuOverlay.classList.add('active');
-            }, 10);
+            mobileMenuOverlay.classList.add('active');
             mobileCloseBtn.classList.add('show');
             document.body.classList.add('menu-open');
             document.body.style.overflow = 'hidden';
         } else {
-            // Close menu - in reverse order
+            // Close menu
             hamburgerBtn.classList.remove('active');
             mobileMenuOverlay.classList.remove('active');
             mobileMenu.classList.remove('active');
@@ -2984,30 +2981,29 @@ section[id] {
         }
     }
 
-    // Close mobile menu - FIXED
+    // Close mobile menu
     function closeMobileMenu() {
         if (!isMenuOpen) return;
         
-        isMenuOpen = false;
         hamburgerBtn.classList.remove('active');
         mobileMenuOverlay.classList.remove('active');
         mobileMenu.classList.remove('active');
         mobileCloseBtn.classList.remove('show');
         document.body.classList.remove('menu-open');
         document.body.style.overflow = '';
+        isMenuOpen = false;
     }
 
-    // Event listeners for mobile menu - FIXED
+    // Event listeners
     hamburgerBtn.addEventListener('click', toggleMobileMenu);
     mobileCloseBtn.addEventListener('click', closeMobileMenu);
     mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 
-    // Close menu when clicking menu links - FIXED
+    // Close menu when clicking menu links
     mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
             // If it's an external link (like WhatsApp), don't prevent default
             if (link.getAttribute('target') === '_blank' || link.getAttribute('href').includes('wa.me')) {
-                // Allow WhatsApp to open in new tab
                 return;
             }
             
@@ -3030,7 +3026,6 @@ section[id] {
                     }
                 }, 300);
             }
-            // For other internal pages, allow normal navigation
         });
     });
 
@@ -3707,5 +3702,6 @@ section[id] {
 </script>
     
 </html>
+
 
 
