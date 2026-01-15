@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,16 +35,10 @@
             --pink-color: linear-gradient(45deg, #FF69B4, #FFB6C1);
             --red-color: linear-gradient(45deg, #DC143C, #FF4500);
             --purple-color: linear-gradient(45deg, #6E4DFF, #9370DB);
-            --clear-color: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
 
             /* Additional variables for consistency */
             --white: #ffffff;
             --black: #1A0F0F;
-            --rose-gold-light: #E0BFB8;
-            --rose-gold-dark: #B76E79;
-            --rose-gold-gradient: linear-gradient(135deg, #E0BFB8, #B76E79);
-            --rose-gold-dark-gradient: linear-gradient(135deg, #B76E79, #A05662);
-            --rose-gold-glass: rgba(183, 110, 121, .15);
         }
 
         * {
@@ -838,8 +831,8 @@
             color: white;
         }
 
-        .bestseller-card.clear {
-            background: radial-gradient(circle at top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+        .bestseller-card.black {
+            background: radial-gradient(circle at top, rgba(26, 26, 26, 0.9), rgba(51, 51, 51, 0.95));
             color: white;
         }
 
@@ -897,7 +890,7 @@
         /* Text colors for different backgrounds */
         .bestseller-card.custom .bestseller-title,
         .bestseller-card.blue .bestseller-title,
-        .bestseller-card.clear .bestseller-title {
+        .bestseller-card.black .bestseller-title {
             color: white;
         }
 
@@ -909,7 +902,7 @@
 
         .bestseller-card.custom .bestseller-description,
         .bestseller-card.blue .bestseller-description,
-        .bestseller-card.clear .bestseller-description {
+        .bestseller-card.black .bestseller-description {
             color: rgba(255, 255, 255, 0.9);
         }
 
@@ -921,7 +914,7 @@
 
         .bestseller-card.custom .bestseller-price,
         .bestseller-card.blue .bestseller-price,
-        .bestseller-card.clear .bestseller-price {
+        .bestseller-card.black .bestseller-price {
             color: white;
         }
 
@@ -933,7 +926,7 @@
 
         .bestseller-card.custom .bestseller-price span,
         .bestseller-card.blue .bestseller-price span,
-        .bestseller-card.clear .bestseller-price span {
+        .bestseller-card.black .bestseller-price span {
             color: rgba(255, 255, 255, 0.7);
         }
 
@@ -949,7 +942,7 @@
         /* Button colors for plastic cards */
         .bestseller-card.custom .btn-primary,
         .bestseller-card.blue .btn-primary,
-        .bestseller-card.clear .btn-primary {
+        .bestseller-card.black .btn-primary {
             background: rgba(0, 0, 0, 0.7);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -957,7 +950,7 @@
 
         .bestseller-card.custom .btn-secondary,
         .bestseller-card.blue .btn-secondary,
-        .bestseller-card.clear .btn-secondary {
+        .bestseller-card.black .btn-secondary {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -1043,11 +1036,6 @@
 
         .carousel-section.purple {
             background: radial-gradient(circle at top, rgba(110, 77, 255, 0.9), rgba(147, 112, 219, 0.95));
-            color: white;
-        }
-
-        .carousel-section.clear {
-            background: radial-gradient(circle at top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
             color: white;
         }
 
@@ -2503,13 +2491,12 @@
             <div class="engraving-options">
                 <div class="engraving-option" data-engraving="silver">
                     <div class="engraving-image">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            alt="Custom Design">
+                        <img src="plastic1.svg" alt="Custom Design">
                     </div>
                     <div class="engraving-label">
                         <span>🎨</span> Custom Design
                     </div>
-                    <div class="engraving-price">£95</div>
+                    <div class="engraving-price">£65</div>
                     <div class="engraving-description">
                         Fully custom designed plastic card with your branding. Perfect for businesses wanting a unique look.
                     </div>
@@ -2517,13 +2504,12 @@
 
                 <div class="engraving-option" data-engraving="gold">
                     <div class="engraving-image">
-                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            alt="Blue Plastic">
+                        <img src="plastic2.svg" alt="Blue Plastic">
                     </div>
                     <div class="engraving-label">
                         <span>🔵</span> Blue Plastic
                     </div>
-                    <div class="engraving-price">£75</div>
+                    <div class="engraving-price">£65</div>
                     <div class="engraving-description">
                         Professional blue plastic card. Trustworthy and modern, perfect for corporate and tech businesses.
                     </div>
@@ -2588,14 +2574,14 @@
         </div>
 
         <div class="nav-right">
-            <a href="https://wa.me/447123456789" class="whatsapp-icon" target="_blank" aria-label="WhatsApp">
+            <a href="https://wa.me/+447754888841" class="whatsapp-icon" target="_blank" aria-label="WhatsApp">
                 💬
             </a>
             <div class="icon-btn" id="cartIcon">
                 🛒
                 <span class="cart-count" id="cartCount">0</span>
             </div>
-            <a href="https://wa.me/447123456789" class="whatsapp" target="_blank">
+            <a href="https://wa.me/+447754888841" class="whatsapp" target="_blank">
                 <span>💬</span> WhatsApp
             </a>
         </div>
@@ -2623,7 +2609,7 @@
 
         <div class="menu-divider"></div>
 
-        <a href="https://wa.me/447123456789" class="whatsapp mobile-menu-item" target="_blank">
+        <a href="https://wa.me/+447754888841" class="whatsapp mobile-menu-item" target="_blank">
             <span>💬</span> WhatsApp Support
         </a>
 
@@ -2666,14 +2652,14 @@
                 <div class="bestseller-card custom">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                        <img src="plastic1.svg" 
                              alt="Custom Design Plastic">
                     </div>
                     <h3 class="bestseller-title">Custom Design Plastic</h3>
                     <p class="bestseller-description">Fully custom designed plastic card with your branding. Perfect for businesses wanting a unique look.</p>
-                    <div class="bestseller-price">£95 <span>one-time · card + profile</span></div>
+                    <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Custom Design Plastic Card" data-price="95">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Custom Design Plastic Card" data-price="65">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
@@ -2682,30 +2668,30 @@
                 <div class="bestseller-card blue">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                        <img src="plastic2.svg" 
                              alt="Blue Plastic Card">
                     </div>
                     <h3 class="bestseller-title">Blue Plastic Card</h3>
                     <p class="bestseller-description">Professional blue plastic card. Trustworthy and modern, perfect for corporate and tech businesses.</p>
-                    <div class="bestseller-price">£75 <span>one-time · card + profile</span></div>
+                    <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Blue Plastic Card" data-price="75">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Blue Plastic Card" data-price="65">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
 
-                <!-- Clear Plastic Card -->
-                <div class="bestseller-card clear">
+                <!-- Black Plastic Card -->
+                <div class="bestseller-card black">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                             alt="Clear Plastic Card">
+                        <img src="plastic4.svg" 
+                             alt="Black Plastic Card">
                     </div>
-                    <h3 class="bestseller-title">Clear Plastic Card</h3>
-                    <p class="bestseller-description">Transparent clear plastic card. Modern and sophisticated, ideal for creative and tech industries.</p>
-                    <div class="bestseller-price">£85 <span>one-time · card + profile</span></div>
+                    <h3 class="bestseller-title">Black Plastic Card</h3>
+                    <p class="bestseller-description">Classic black plastic card. Professional and sophisticated, ideal for all business types.</p>
+                    <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Clear Plastic Card" data-price="85">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Black Plastic Card" data-price="65">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
@@ -2717,92 +2703,85 @@
             <div class="carousel-container">
                 <div class="section-header">
                     <h2 class="section-title">All Plastic Colors</h2>
-                    <p class="section-subtitle">Choose from 12 vibrant plastic colors including clear plastic</p>
+                    <p class="section-subtitle">Choose from 10 vibrant plastic colors</p>
                 </div>
 
                 <div class="plastic-carousel">
                     <button class="carousel-arrow left" aria-label="Previous">‹</button>
 
-                    <!-- FIXED: 12 plastic colors -->
+                    <!-- FIXED: 10 plastic colors -->
                     <div class="plastic-color-card active" data-color="Custom">
                         <div class="color-swatch" style="background: var(--custom); display: flex; align-items: center; justify-content: center; font-size: 40px;">🎨</div>
                         <div class="card-label">Custom Design</div>
-                        <div class="card-price">£95</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Silver">
                         <div class="color-swatch" style="background: var(--silver-color);"></div>
                         <div class="card-label">Silver</div>
-                        <div class="card-price">£75</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Gold">
                         <div class="color-swatch" style="background: var(--gold-color);"></div>
                         <div class="card-label">Gold</div>
-                        <div class="card-price">£75</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Black">
                         <div class="color-swatch" style="background: var(--black-color);"></div>
                         <div class="card-label">Black</div>
-                        <div class="card-price">£75</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Blue">
                         <div class="color-swatch" style="background: var(--blue-color);"></div>
                         <div class="card-label">Blue</div>
-                        <div class="card-price">£75</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Green">
                         <div class="color-swatch" style="background: var(--green-color);"></div>
                         <div class="card-label">Green</div>
-                        <div class="card-price">£75</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Orange">
                         <div class="color-swatch" style="background: var(--orange-color);"></div>
                         <div class="card-label">Orange</div>
-                        <div class="card-price">£75</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Yellow">
                         <div class="color-swatch" style="background: var(--yellow-color);"></div>
                         <div class="card-label">Yellow</div>
-                        <div class="card-price">£75</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Pink">
                         <div class="color-swatch" style="background: var(--pink-color);"></div>
                         <div class="card-label">Pink</div>
-                        <div class="card-price">£75</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Red">
                         <div class="color-swatch" style="background: var(--red-color);"></div>
                         <div class="card-label">Red</div>
-                        <div class="card-price">£75</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Purple">
                         <div class="color-swatch" style="background: var(--purple-color);"></div>
                         <div class="card-label">Purple</div>
-                        <div class="card-price">£75</div>
-                    </div>
-
-                    <div class="plastic-color-card" data-color="Clear">
-                        <div class="color-swatch" style="background: var(--clear-color); display: flex; align-items: center; justify-content: center; font-size: 40px;">🔍</div>
-                        <div class="card-label">Clear Plastic</div>
-                        <div class="card-price">£85</div>
+                        <div class="card-price">£65</div>
                     </div>
 
                     <button class="carousel-arrow right" aria-label="Next">›</button>
                 </div>
 
                 <div class="dots">
-                    <!-- FIXED: Exactly 12 dots -->
+                    <!-- FIXED: Exactly 11 dots -->
                     <span class="dot active"></span>
-                    <span class="dot"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
@@ -2833,7 +2812,7 @@
                     <div class="benefit-icon">🎨</div>
                     <h3 class="benefit-title">Vibrant Colors</h3>
                     <p class="benefit-description">
-                        Choose from 12 vibrant colors including clear plastic. Perfect for brands that want to make a colorful statement and stand out from the crowd.
+                        Choose from 10 vibrant colors. Perfect for brands that want to make a colorful statement and stand out from the crowd.
                     </p>
                 </div>
 
@@ -2865,7 +2844,7 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-quote">
-                        "The custom design option was perfect for our startup! We got exactly the colors and branding we wanted. The clear plastic cards for our tech team were a huge hit at our launch event."
+                        "The custom design option was perfect for our startup! We got exactly the colors and branding we wanted. The plastic cards for our tech team were a huge hit at our launch event."
                     </div>
                     <div class="testimonial-author">Marcus Chen</div>
                     <div class="testimonial-role">Startup Founder, Tech District</div>
@@ -2902,7 +2881,7 @@
                     <div class="preview-section-mobile">
                         <div class="preview-header-mobile">
                             <div class="preview-title-mobile">Live Preview</div>
-                            <div class="card-counter-mobile" id="cardCounterMobile">1/12</div>
+                            <div class="card-counter-mobile" id="cardCounterMobile">1/11</div>
                         </div>
                         
                         <div class="preview-card-mobile">
@@ -2918,9 +2897,9 @@
                         <div class="preview-details-mobile">
                             <div class="selected-card-info-mobile">
                                 <div class="card-name-mobile" id="selectedCardNameMobile">Custom Design Plastic</div>
-                                <div class="engraving-type-mobile" id="selectedEngravingTypeMobile">£95</div>
+                                <div class="engraving-type-mobile" id="selectedEngravingTypeMobile">£65</div>
                             </div>
-                            <div class="preview-price-mobile">£95</div>
+                            <div class="preview-price-mobile">£65</div>
                         </div>
                         
                         <div class="card-navigation-mobile">
@@ -2979,9 +2958,6 @@
                                 <div class="color-option-mobile" data-color="purple" style="background: var(--purple-color);">
                                     <div class="color-label-mobile">Purple</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="clear" style="background: var(--clear-color);">
-                                    <div class="color-label-mobile">Clear</div>
-                                </div>
                             </div>
                         </div>
 
@@ -3022,7 +2998,7 @@
                     <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
                         Send us your logo on WhatsApp and we'll create a custom mockup for you
                     </p>
-                    <a href="https://wa.me/447123456789" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
+                    <a href="https://wa.me/+447754888841" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
                         <span>💬</span> Send Logo on WhatsApp
                     </a>
                 </div>
@@ -3191,7 +3167,7 @@
             total += item.price * item.quantity;
             itemsHTML += `
                 <div class="cart-item">
-                    <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
+                    <img src="logo.png" alt="${item.name}">
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
                         <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
@@ -3251,7 +3227,7 @@
         document.body.style.overflow = '';
     }
 
-    // Checkout functionality
+    // Checkout functionality - NOW GOES TO WHATSAPP
     function checkout() {
         if (cart.length === 0) {
             showNotification('Your cart is empty!');
@@ -3259,7 +3235,23 @@
         }
 
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        alert(`Proceeding to checkout. Total: £${total}\n\nThis is a demo. In a real application, this would redirect to a payment processor.`);
+        
+        // Create WhatsApp message with order details
+        let message = "Hello! I'd like to order:\n\n";
+        cart.forEach((item, index) => {
+            message += `${index + 1}. ${item.name} - £${item.price} x ${item.quantity} = £${item.price * item.quantity}\n`;
+        });
+        message += `\nTotal: £${total}\n\nPlease proceed with my order.`;
+        
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Open WhatsApp with pre-filled message
+        window.open(`https://wa.me/+447754888841?text=${encodedMessage}`, '_blank');
+        
+        // Clear cart after checkout
+        cart = [];
+        updateCart();
     }
 
     // Event listeners for cart
@@ -3302,7 +3294,7 @@
     const plasticNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
     const addPlasticBtn = document.getElementById('addPlasticBtn');
 
-    // Map color names to CSS class names - 12 COLORS
+    // Map color names to CSS class names - 11 COLORS
     const plasticColorMap = {
         'Custom': 'custom',
         'Silver': 'silver',
@@ -3314,24 +3306,22 @@
         'Yellow': 'yellow',
         'Pink': 'pink',
         'Red': 'red',
-        'Purple': 'purple',
-        'Clear': 'clear'
+        'Purple': 'purple'
     };
 
-    // Map color names to prices
+    // Map color names to prices - ALL £65
     const plasticPriceMap = {
-        'Custom': 95,
-        'Silver': 75,
-        'Gold': 75,
-        'Black': 75,
-        'Blue': 75,
-        'Green': 75,
-        'Orange': 75,
-        'Yellow': 75,
-        'Pink': 75,
-        'Red': 75,
-        'Purple': 75,
-        'Clear': 85
+        'Custom': 65,
+        'Silver': 65,
+        'Gold': 65,
+        'Black': 65,
+        'Blue': 65,
+        'Green': 65,
+        'Orange': 65,
+        'Yellow': 65,
+        'Pink': 65,
+        'Red': 65,
+        'Purple': 65
     };
 
     let plasticIndex = 0;
@@ -3364,8 +3354,6 @@
         // Update button text and price
         if (colorName === 'Custom') {
             addPlasticBtn.textContent = `🛒 Add ${colorName} Design`;
-        } else if (colorName === 'Clear') {
-            addPlasticBtn.textContent = `🛒 Add ${colorName} Plastic`;
         } else {
             addPlasticBtn.textContent = `🛒 Add ${colorName} Plastic`;
         }
@@ -3463,20 +3451,19 @@
     const selectedEngravingTypeMobile = document.getElementById('selectedEngravingTypeMobile');
     const addToCartMobile = document.getElementById('addToCartMobile');
 
-    // All available cards - 12 plastic colors
+    // All available cards - 11 plastic colors
     const cardsMobile = [
-        { id: 1, name: 'Custom Design Plastic', color: 'custom', price: 95 },
-        { id: 2, name: 'Silver Plastic Card', color: 'silver', price: 75 },
-        { id: 3, name: 'Gold Plastic Card', color: 'gold', price: 75 },
-        { id: 4, name: 'Black Plastic Card', color: 'black', price: 75 },
-        { id: 5, name: 'Blue Plastic Card', color: 'blue', price: 75 },
-        { id: 6, name: 'Green Plastic Card', color: 'green', price: 75 },
-        { id: 7, name: 'Orange Plastic Card', color: 'orange', price: 75 },
-        { id: 8, name: 'Yellow Plastic Card', color: 'yellow', price: 75 },
-        { id: 9, name: 'Pink Plastic Card', color: 'pink', price: 75 },
-        { id: 10, name: 'Red Plastic Card', color: 'red', price: 75 },
-        { id: 11, name: 'Purple Plastic Card', color: 'purple', price: 75 },
-        { id: 12, name: 'Clear Plastic Card', color: 'clear', price: 85 }
+        { id: 1, name: 'Custom Design Plastic', color: 'custom', price: 65 },
+        { id: 2, name: 'Silver Plastic Card', color: 'silver', price: 65 },
+        { id: 3, name: 'Gold Plastic Card', color: 'gold', price: 65 },
+        { id: 4, name: 'Black Plastic Card', color: 'black', price: 65 },
+        { id: 5, name: 'Blue Plastic Card', color: 'blue', price: 65 },
+        { id: 6, name: 'Green Plastic Card', color: 'green', price: 65 },
+        { id: 7, name: 'Orange Plastic Card', color: 'orange', price: 65 },
+        { id: 8, name: 'Yellow Plastic Card', color: 'yellow', price: 65 },
+        { id: 9, name: 'Pink Plastic Card', color: 'pink', price: 65 },
+        { id: 10, name: 'Red Plastic Card', color: 'red', price: 65 },
+        { id: 11, name: 'Purple Plastic Card', color: 'purple', price: 65 }
     ];
 
     let currentCardIndexMobile = 0;
@@ -3495,24 +3482,22 @@
         'yellow': 'Yellow Plastic Card',
         'pink': 'Pink Plastic Card',
         'red': 'Red Plastic Card',
-        'purple': 'Purple Plastic Card',
-        'clear': 'Clear Plastic Card'
+        'purple': 'Purple Plastic Card'
     };
 
-    // Price mapping
+    // Price mapping - ALL £65
     const priceMapMobile = {
-        'custom': 95,
-        'silver': 75,
-        'gold': 75,
-        'black': 75,
-        'blue': 75,
-        'green': 75,
-        'orange': 75,
-        'yellow': 75,
-        'pink': 75,
-        'red': 75,
-        'purple': 75,
-        'clear': 85
+        'custom': 65,
+        'silver': 65,
+        'gold': 65,
+        'black': 65,
+        'blue': 65,
+        'green': 65,
+        'orange': 65,
+        'yellow': 65,
+        'pink': 65,
+        'red': 65,
+        'purple': 65
     };
 
     // Initialize mobile logo builder
@@ -3578,7 +3563,6 @@
             case 'pink': return 'var(--pink-color)';
             case 'red': return 'var(--red-color)';
             case 'purple': return 'var(--purple-color)';
-            case 'clear': return 'var(--clear-color)';
             default: return 'var(--custom)';
         }
     }
@@ -3884,8 +3868,9 @@
     document.addEventListener('DOMContentLoaded', function () {
         console.log('Plastic page loaded with FIXED MOBILE MENU:');
         console.log('1. Mobile menu works every time ✓');
-        console.log('2. No conflicting event listeners ✓');
-        console.log('3. Proper state management ✓');
+        console.log('2. All prices set to £65 ✓');
+        console.log('3. WhatsApp number updated to +447754888841 ✓');
+        console.log('4. Checkout redirects to WhatsApp ✓');
         updateCart();
         
         // Make sure mobile menu is properly initialized
@@ -3899,6 +3884,3 @@
 </script>
 </body>
 </html>
-
-
-
