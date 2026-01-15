@@ -2969,46 +2969,36 @@
         </section>
     </div>
 
-    <script>
-        // Variables for engraving selection
-        let selectedMetal = 'Black';
-        let selectedEngraving = null;
-        let engravingModal = document.getElementById('engravingModal');
+<script>
+    // Variables for engraving selection
+    let selectedMetal = 'Black';
+    let selectedEngraving = null;
+    let engravingModal = document.getElementById('engravingModal');
 
-        // NAVIGATION - COMPLETELY FIXED
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const nav = document.getElementById('mainNav');
-        let isMenuOpen = false;
+    // MOBILE MENU - FIXED VERSION
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const nav = document.getElementById('mainNav');
+    let isMenuOpen = false;
 
-        // Toggle mobile menu - FIXED
-        function toggleMobileMenu() {
-            isMenuOpen = !isMenuOpen;
+    // Toggle mobile menu - FIXED
+    function toggleMobileMenu() {
+        isMenuOpen = !isMenuOpen;
 
-            if (isMenuOpen) {
-                // Open menu
-                hamburgerBtn.classList.add('active');
+        if (isMenuOpen) {
+            // Open menu - in correct order
+            hamburgerBtn.classList.add('active');
+            mobileMenu.classList.add('active');
+            setTimeout(() => {
                 mobileMenuOverlay.classList.add('active');
-                mobileMenu.classList.add('active');
-                mobileCloseBtn.classList.add('show');
-                document.body.classList.add('menu-open');
-                document.body.style.overflow = 'hidden';
-            } else {
-                // Close menu
-                hamburgerBtn.classList.remove('active');
-                mobileMenuOverlay.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                mobileCloseBtn.classList.remove('show');
-                document.body.classList.remove('menu-open');
-                document.body.style.overflow = '';
-            }
-        }
-
-        // Close mobile menu - FIXED
-        function closeMobileMenu() {
-            isMenuOpen = false;
+            }, 10);
+            mobileCloseBtn.classList.add('show');
+            document.body.classList.add('menu-open');
+            document.body.style.overflow = 'hidden';
+        } else {
+            // Close menu - in reverse order
             hamburgerBtn.classList.remove('active');
             mobileMenuOverlay.classList.remove('active');
             mobileMenu.classList.remove('active');
@@ -3016,622 +3006,709 @@
             document.body.classList.remove('menu-open');
             document.body.style.overflow = '';
         }
+    }
 
-        // Event listeners for mobile menu - FIXED
-        hamburgerBtn.addEventListener('click', toggleMobileMenu);
-        mobileCloseBtn.addEventListener('click', closeMobileMenu);
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    // Close mobile menu - FIXED
+    function closeMobileMenu() {
+        if (!isMenuOpen) return;
+        
+        isMenuOpen = false;
+        hamburgerBtn.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileCloseBtn.classList.remove('show');
+        document.body.classList.remove('menu-open');
+        document.body.style.overflow = '';
+    }
 
-        // Close menu when clicking menu links - SIMPLIFIED AND FIXED
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                // If it's an external link (like WhatsApp), don't prevent default
-                if (link.getAttribute('target') === '_blank' || link.getAttribute('href').includes('wa.me')) {
-                    // Allow WhatsApp to open in new tab
-                    return;
-                }
-                
-                // For all other links, close the menu
-                closeMobileMenu();
-                
-                // Check if it's a hash link on same page
-                if (link.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    setTimeout(() => {
-                        const target = document.querySelector(targetId);
-                        if (target) {
-                            const navHeight = nav.offsetHeight;
-                            const targetPosition = target.offsetTop - navHeight;
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }, 300);
-                }
-                // For other internal pages, allow normal navigation
-            });
-        });
+    // Event listeners for mobile menu - FIXED
+    hamburgerBtn.addEventListener('click', toggleMobileMenu);
+    mobileCloseBtn.addEventListener('click', closeMobileMenu);
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && isMenuOpen) {
-                closeMobileMenu();
-            }
-        });
-
-        // Close menu on window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 1024 && isMenuOpen) {
-                closeMobileMenu();
-            }
-        });
-
-        // Sticky Navigation
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartIcon = document.getElementById('cartIcon');
-        const cartCount = document.getElementById('cartCount');
-        const cartModal = document.getElementById('cartModal');
-        const closeCart = document.getElementById('closeCart');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const notification = document.getElementById('notification');
-
-        // Update cart display
-        function updateCart() {
-            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCartItems();
-        }
-
-        // Render cart items in modal
-        function renderCartItems() {
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
-                cartTotal.textContent = '£0';
+    // Close menu when clicking menu links - FIXED
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            // If it's an external link (like WhatsApp), don't prevent default
+            if (link.getAttribute('target') === '_blank' || link.getAttribute('href').includes('wa.me')) {
+                // Allow WhatsApp to open in new tab
                 return;
             }
-
-            let itemsHTML = '';
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                total += item.price * item.quantity;
-                itemsHTML += `
-                    <div class="cart-item">
-                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
-                        <div class="cart-item-details">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
-                        </div>
-                        <button class="remove-item" onclick="removeFromCart(${index})">×</button>
-                    </div>
-                `;
-            });
-
-            cartItems.innerHTML = itemsHTML;
-            cartTotal.textContent = `£${total}`;
-        }
-
-        // Add to cart function
-        function addToCart(name, price) {
-            const existingItem = cart.find(item => item.name === name);
-
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
+            
+            // For all other links, close the menu
+            closeMobileMenu();
+            
+            // Check if it's a hash link on same page
+            if (link.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                setTimeout(() => {
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const navHeight = nav.offsetHeight;
+                        const targetPosition = target.offsetTop - navHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 300);
             }
+            // For other internal pages, allow normal navigation
+        });
+    });
 
-            updateCart();
-            showNotification(`${name} added to cart!`);
-        }
-
-        // Remove from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-
-        // Show notification
-        function showNotification(message) {
-            notification.textContent = message;
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-
-        // Open cart modal
-        function openCartModal() {
-            cartModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isMenuOpen) {
             closeMobileMenu();
         }
+    });
 
-        // Close cart modal
-        function closeCartModal() {
-            cartModal.classList.remove('active');
-            document.body.style.overflow = '';
+    // Close menu on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024 && isMenuOpen) {
+            closeMobileMenu();
+        }
+    });
+
+    // Sticky Navigation
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // Cart functionality
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartIcon = document.getElementById('cartIcon');
+    const cartCount = document.getElementById('cartCount');
+    const cartModal = document.getElementById('cartModal');
+    const closeCart = document.getElementById('closeCart');
+    const cartItems = document.getElementById('cartItems');
+    const cartTotal = document.getElementById('cartTotal');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const notification = document.getElementById('notification');
+
+    // Update cart display
+    function updateCart() {
+        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCartItems();
+    }
+
+    // Render cart items in modal
+    function renderCartItems() {
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
+            cartTotal.textContent = '£0';
+            return;
         }
 
-        // Checkout functionality
-        function checkout() {
-            if (cart.length === 0) {
-                showNotification('Your cart is empty!');
-                return;
-            }
+        let itemsHTML = '';
+        let total = 0;
 
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`Proceeding to checkout. Total: £${total}\n\nThis is a demo. In a real application, this would redirect to a payment processor.`);
-        }
-
-        // Event listeners for cart
-        cartIcon.addEventListener('click', openCartModal);
-        closeCart.addEventListener('click', closeCartModal);
-        checkoutBtn.addEventListener('click', checkout);
-
-        // Close modal when clicking outside
-        cartModal.addEventListener('click', (e) => {
-            if (e.target === cartModal) {
-                closeCartModal();
-            }
+        cart.forEach((item, index) => {
+            total += item.price * item.quantity;
+            itemsHTML += `
+                <div class="cart-item">
+                    <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+                </div>
+            `;
         });
 
-        // Add to cart buttons for bestseller cards
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseInt(e.target.dataset.price);
-                    addToCart(name, price);
-                });
+        cartItems.innerHTML = itemsHTML;
+        cartTotal.textContent = `£${total}`;
+    }
+
+    // Add to cart function
+    function addToCart(name, price) {
+        const existingItem = cart.find(item => item.name === name);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({
+                name: name,
+                price: price,
+                quantity: 1
             });
-
-            // View example buttons
-            document.querySelectorAll('.view-example').forEach(button => {
-                button.addEventListener('click', () => {
-                    alert('Example functionality - in a real site this would show an example of the product.');
-                });
-            });
-
-            updateCart();
-        });
-
-        // Metal Color Carousel with Background Change
-        const metalCards = document.querySelectorAll('.metal-color-card');
-        const metalDots = document.querySelectorAll('.carousel-section .dot');
-        const carouselSection = document.querySelector('.carousel-section');
-        const metalPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
-        const metalNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
-        const addMetalBtn = document.getElementById('addMetalBtn');
-
-        // Map color names to CSS class names - ONLY 7 COLORS
-        const metalColorMap = {
-            'Black': 'black',
-            'Blue': 'blue',
-            'Green': 'green',
-            'Purple': 'purple',
-            'Copper': 'copper',
-            'Bronze': 'bronze',
-            'Gunmetal': 'gunmetal'
-        };
-
-        let metalIndex = 0;
-
-        // Function to update metal carousel
-        function updateMetalCarousel(i) {
-            metalCards[metalIndex].classList.remove('active');
-            metalDots[metalIndex].classList.remove('active');
-
-            metalIndex = (i + metalCards.length) % metalCards.length;
-
-            metalCards[metalIndex].classList.add('active');
-            
-            // Update dot colors based on active card
-            metalDots.forEach((dot, index) => {
-                if (index === metalIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-
-            const colorName = metalCards[metalIndex].dataset.color;
-            const colorClass = metalColorMap[colorName];
-            
-            // Update carousel section background
-            carouselSection.className = 'carousel-section ' + colorClass;
-            
-            // Update button text
-            addMetalBtn.textContent = `🛒 Add ${colorName} Finish`;
-            selectedMetal = colorName;
         }
 
-        // Initialize metal carousel
-        updateMetalCarousel(0);
+        updateCart();
+        showNotification(`${name} added to cart!`);
+    }
 
-        // Manual navigation
-        metalPrevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            updateMetalCarousel(metalIndex - 1);
-        });
+    // Remove from cart
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
 
-        metalNextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            updateMetalCarousel(metalIndex + 1);
-        });
+    // Show notification
+    function showNotification(message) {
+        notification.textContent = message;
+        notification.classList.add('show');
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
 
-        // Dot navigation
-        metalDots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                updateMetalCarousel(i);
+    // Open cart modal
+    function openCartModal() {
+        cartModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        closeMobileMenu();
+    }
+
+    // Close cart modal
+    function closeCartModal() {
+        cartModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Checkout functionality
+    function checkout() {
+        if (cart.length === 0) {
+            showNotification('Your cart is empty!');
+            return;
+        }
+
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        alert(`Proceeding to checkout. Total: £${total}\n\nThis is a demo. In a real application, this would redirect to a payment processor.`);
+    }
+
+    // Event listeners for cart
+    cartIcon.addEventListener('click', openCartModal);
+    closeCart.addEventListener('click', closeCartModal);
+    checkoutBtn.addEventListener('click', checkout);
+
+    // Close modal when clicking outside
+    cartModal.addEventListener('click', (e) => {
+        if (e.target === cartModal) {
+            closeCartModal();
+        }
+    });
+
+    // Add to cart buttons for bestseller cards
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const name = e.target.dataset.name;
+                const price = parseInt(e.target.dataset.price);
+                addToCart(name, price);
             });
         });
 
-        // Touch/swipe support
-        let metalStartX = 0;
-        document.querySelector('.metal-carousel').addEventListener('touchstart', e => {
-            metalStartX = e.touches[0].clientX;
-        });
-
-        document.querySelector('.metal-carousel').addEventListener('touchend', e => {
-            const endX = e.changedTouches[0].clientX;
-            if (metalStartX - endX > 50) updateMetalCarousel(metalIndex + 1);
-            if (endX - metalStartX > 50) updateMetalCarousel(metalIndex - 1);
-        });
-
-        // FIX: Optimized carousel with smoother transitions
-        let carouselInterval;
-        let isCarouselPaused = false;
-
-        function startCarouselAutoRotate() {
-            if (carouselInterval) clearInterval(carouselInterval);
-            carouselInterval = setInterval(() => {
-                if (!isCarouselPaused) {
-                    updateMetalCarousel(metalIndex + 1);
-                }
-            }, 5000);
-        }
-
-        function stopCarouselAutoRotate() {
-            isCarouselPaused = true;
-            if (carouselInterval) {
-                clearInterval(carouselInterval);
-            }
-        }
-
-        // Start auto-rotate
-        startCarouselAutoRotate();
-
-        // Pause on hover/interaction
-        document.querySelector('.metal-carousel').addEventListener('mouseenter', () => {
-            stopCarouselAutoRotate();
-        });
-
-        document.querySelector('.metal-carousel').addEventListener('mouseleave', () => {
-            isCarouselPaused = false;
-            startCarouselAutoRotate();
-        });
-
-        // Also pause when interacting with arrows or dots
-        metalPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
-        metalNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
-        metalDots.forEach(dot => {
-            dot.addEventListener('mouseenter', stopCarouselAutoRotate);
-        });
-
-        // FIXED: SEE IT WITH YOUR LOGO SECTION
-        const colorOptionsMobile = document.querySelectorAll('.color-option-mobile');
-        const engravingOptionsMobile = document.querySelectorAll('.engraving-option-mobile');
-        const uploadAreaMobile = document.getElementById('uploadAreaMobile');
-        const logoFileInputMobile = document.getElementById('logoFileInputMobile');
-        const uploadLogoBtnMobile = document.getElementById('uploadLogoBtnMobile');
-        const clearLogoBtnMobile = document.getElementById('clearLogoBtnMobile');
-        const previewLogoMobile = document.getElementById('previewLogoMobile');
-        const previewPlaceholderMobile = document.getElementById('previewPlaceholderMobile');
-        const previewCardMobile = document.getElementById('previewCardMobile');
-        const prevCardBtnMobile = document.getElementById('prevCardBtnMobile');
-        const nextCardBtnMobile = document.getElementById('nextCardBtnMobile');
-        const cardCounterMobile = document.getElementById('cardCounterMobile');
-        const selectedCardNameMobile = document.getElementById('selectedCardNameMobile');
-        const selectedEngravingTypeMobile = document.getElementById('selectedEngravingTypeMobile');
-        const addToCartMobile = document.getElementById('addToCartMobile');
-
-        // All available cards
-        const cardsMobile = [
-            { id: 1, name: 'Black Metal Card', color: 'black', engraving: 'silver', price: 225 },
-            { id: 2, name: 'Blue Metal Card', color: 'blue', engraving: 'silver', price: 225 },
-            { id: 3, name: 'Green Metal Card', color: 'green', engraving: 'silver', price: 225 },
-            { id: 4, name: 'Purple Metal Card', color: 'purple', engraving: 'silver', price: 225 },
-            { id: 5, name: 'Copper Metal Card', color: 'copper', engraving: 'silver', price: 225 },
-            { id: 6, name: 'Bronze Metal Card', color: 'bronze', engraving: 'silver', price: 225 },
-            { id: 7, name: 'Gunmetal Metal Card', color: 'gunmetal', engraving: 'silver', price: 225 },
-            { id: 8, name: 'Silver Metal Card', color: 'silver', engraving: 'silver', price: 225 },
-            { id: 9, name: 'Rose Gold Metal Card', color: 'rosegold', engraving: 'silver', price: 225 },
-            { id: 10, name: 'Gold Metal Card', color: 'gold', engraving: 'silver', price: 225 }
-        ];
-
-        let currentCardIndexMobile = 0;
-        let selectedColorMobile = 'black';
-        let selectedEngravingMobile = 'silver';
-        let uploadedLogoMobile = null;
-
-        // Color name mapping
-        const colorNameMapMobile = {
-            'black': 'Black',
-            'blue': 'Blue',
-            'green': 'Green',
-            'purple': 'Purple',
-            'copper': 'Copper',
-            'bronze': 'Bronze',
-            'gunmetal': 'Gunmetal',
-            'silver': 'Silver',
-            'rosegold': 'Rose Gold',
-            'gold': 'Gold'
-        };
-
-        // Engraving name mapping
-        const engravingNameMapMobile = {
-            'silver': 'Silver Engraving',
-            'gold': 'Gold Engraving'
-        };
-
-        // Initialize mobile logo builder
-        function initMobileLogoBuilder() {
-            updateMobilePreview();
-            updateMobileCardList();
-        }
-
-        // Update card list based on selections
-        function updateMobileCardList() {
-            // Update all cards with selected color and engraving
-            cardsMobile.forEach((card, index) => {
-                cardsMobile[index].color = selectedColorMobile;
-                cardsMobile[index].engraving = selectedEngravingMobile;
+        // View example buttons
+        document.querySelectorAll('.view-example').forEach(button => {
+            button.addEventListener('click', () => {
+                alert('Example functionality - in a real site this would show an example of the product.');
             });
-            
-            // Reset to first card
-            currentCardIndexMobile = 0;
-            updateMobilePreview();
-        }
+        });
 
-        // Update mobile preview
-        function updateMobilePreview() {
-            const card = cardsMobile[currentCardIndexMobile];
-            
-            // Update card background
-            previewCardMobile.style.background = getCardBackgroundMobile(card.color);
-            
-            // Update text
-            selectedCardNameMobile.textContent = `${colorNameMapMobile[card.color]} Metal Card`;
-            selectedEngravingTypeMobile.textContent = engravingNameMapMobile[card.engraving];
-            
-            // Update counter
-            cardCounterMobile.textContent = `${currentCardIndexMobile + 1}/${cardsMobile.length}`;
-            
-            // Show/hide logo
-            if (uploadedLogoMobile) {
-                previewLogoMobile.classList.add('visible');
-                previewPlaceholderMobile.style.display = 'none';
+        updateCart();
+    });
+
+    // Metal Color Carousel with Background Change
+    const metalCards = document.querySelectorAll('.metal-color-card');
+    const metalDots = document.querySelectorAll('.carousel-section .dot');
+    const carouselSection = document.querySelector('.carousel-section');
+    const metalPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
+    const metalNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
+    const addMetalBtn = document.getElementById('addMetalBtn');
+
+    // Map color names to CSS class names - ONLY 7 COLORS
+    const metalColorMap = {
+        'Black': 'black',
+        'Blue': 'blue',
+        'Green': 'green',
+        'Purple': 'purple',
+        'Copper': 'copper',
+        'Bronze': 'bronze',
+        'Gunmetal': 'gunmetal'
+    };
+
+    let metalIndex = 0;
+
+    // Function to update metal carousel
+    function updateMetalCarousel(i) {
+        metalCards[metalIndex].classList.remove('active');
+        metalDots[metalIndex].classList.remove('active');
+
+        metalIndex = (i + metalCards.length) % metalCards.length;
+
+        metalCards[metalIndex].classList.add('active');
+        
+        // Update dot colors based on active card
+        metalDots.forEach((dot, index) => {
+            if (index === metalIndex) {
+                dot.classList.add('active');
             } else {
-                previewLogoMobile.classList.remove('visible');
-                previewPlaceholderMobile.style.display = 'block';
+                dot.classList.remove('active');
             }
-            
-            // Update navigation buttons
-            updateMobileNavigation();
+        });
+
+        const colorName = metalCards[metalIndex].dataset.color;
+        const colorClass = metalColorMap[colorName];
+        
+        // Update carousel section background
+        carouselSection.className = 'carousel-section ' + colorClass;
+        
+        // Update button text
+        addMetalBtn.textContent = `🛒 Add ${colorName} Finish`;
+        selectedMetal = colorName;
+    }
+
+    // Initialize metal carousel
+    updateMetalCarousel(0);
+
+    // Manual navigation
+    metalPrevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateMetalCarousel(metalIndex - 1);
+    });
+
+    metalNextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateMetalCarousel(metalIndex + 1);
+    });
+
+    // Dot navigation
+    metalDots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            updateMetalCarousel(i);
+        });
+    });
+
+    // Touch/swipe support
+    let metalStartX = 0;
+    document.querySelector('.metal-carousel').addEventListener('touchstart', e => {
+        metalStartX = e.touches[0].clientX;
+    });
+
+    document.querySelector('.metal-carousel').addEventListener('touchend', e => {
+        const endX = e.changedTouches[0].clientX;
+        if (metalStartX - endX > 50) updateMetalCarousel(metalIndex + 1);
+        if (endX - metalStartX > 50) updateMetalCarousel(metalIndex - 1);
+    });
+
+    // FIX: Optimized carousel with smoother transitions
+    let carouselInterval;
+    let isCarouselPaused = false;
+
+    function startCarouselAutoRotate() {
+        if (carouselInterval) clearInterval(carouselInterval);
+        carouselInterval = setInterval(() => {
+            if (!isCarouselPaused) {
+                updateMetalCarousel(metalIndex + 1);
+            }
+        }, 5000);
+    }
+
+    function stopCarouselAutoRotate() {
+        isCarouselPaused = true;
+        if (carouselInterval) {
+            clearInterval(carouselInterval);
         }
+    }
 
-        // Get CSS variable for card background
-        function getCardBackgroundMobile(color) {
-            switch(color) {
-                case 'black': return 'var(--black-bg)';
-                case 'blue': return 'var(--blue-bg)';
-                case 'green': return 'var(--green-bg)';
-                case 'purple': return 'var(--purple-bg)';
-                case 'copper': return 'var(--copper-bg)';
-                case 'bronze': return 'var(--bronze-bg)';
-                case 'gunmetal': return 'var(--gunmetal-bg)';
-                case 'silver': return 'var(--silver-bg)';
-                case 'rosegold': return 'var(--rosegold-bg)';
-                case 'gold': return 'var(--gold-bg)';
-                default: return 'var(--black-bg)';
-            }
-        }
+    // Start auto-rotate
+    startCarouselAutoRotate();
 
-        // Update mobile navigation buttons
-        function updateMobileNavigation() {
-            prevCardBtnMobile.disabled = currentCardIndexMobile === 0;
-            nextCardBtnMobile.disabled = currentCardIndexMobile === cardsMobile.length - 1;
-        }
+    // Pause on hover/interaction
+    document.querySelector('.metal-carousel').addEventListener('mouseenter', () => {
+        stopCarouselAutoRotate();
+    });
 
-        // Handle color selection on mobile
-        colorOptionsMobile.forEach(option => {
-            option.addEventListener('click', () => {
-                // Remove selected class from all options
-                colorOptionsMobile.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
-                option.classList.add('selected');
-                
-                // Update selected color
-                selectedColorMobile = option.dataset.color;
-                
-                // Update card list
-                updateMobileCardList();
-                
-                // Show visual feedback on mobile
-                option.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    option.style.transform = '';
-                }, 200);
-            });
+    document.querySelector('.metal-carousel').addEventListener('mouseleave', () => {
+        isCarouselPaused = false;
+        startCarouselAutoRotate();
+    });
+
+    // Also pause when interacting with arrows or dots
+    metalPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+    metalNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+    metalDots.forEach(dot => {
+        dot.addEventListener('mouseenter', stopCarouselAutoRotate);
+    });
+
+    // FIXED: SEE IT WITH YOUR LOGO SECTION
+    const colorOptionsMobile = document.querySelectorAll('.color-option-mobile');
+    const engravingOptionsMobile = document.querySelectorAll('.engraving-option-mobile');
+    const uploadAreaMobile = document.getElementById('uploadAreaMobile');
+    const logoFileInputMobile = document.getElementById('logoFileInputMobile');
+    const uploadLogoBtnMobile = document.getElementById('uploadLogoBtnMobile');
+    const clearLogoBtnMobile = document.getElementById('clearLogoBtnMobile');
+    const previewLogoMobile = document.getElementById('previewLogoMobile');
+    const previewPlaceholderMobile = document.getElementById('previewPlaceholderMobile');
+    const previewCardMobile = document.getElementById('previewCardMobile');
+    const prevCardBtnMobile = document.getElementById('prevCardBtnMobile');
+    const nextCardBtnMobile = document.getElementById('nextCardBtnMobile');
+    const cardCounterMobile = document.getElementById('cardCounterMobile');
+    const selectedCardNameMobile = document.getElementById('selectedCardNameMobile');
+    const selectedEngravingTypeMobile = document.getElementById('selectedEngravingTypeMobile');
+    const addToCartMobile = document.getElementById('addToCartMobile');
+
+    // All available cards
+    const cardsMobile = [
+        { id: 1, name: 'Black Metal Card', color: 'black', engraving: 'silver', price: 225 },
+        { id: 2, name: 'Blue Metal Card', color: 'blue', engraving: 'silver', price: 225 },
+        { id: 3, name: 'Green Metal Card', color: 'green', engraving: 'silver', price: 225 },
+        { id: 4, name: 'Purple Metal Card', color: 'purple', engraving: 'silver', price: 225 },
+        { id: 5, name: 'Copper Metal Card', color: 'copper', engraving: 'silver', price: 225 },
+        { id: 6, name: 'Bronze Metal Card', color: 'bronze', engraving: 'silver', price: 225 },
+        { id: 7, name: 'Gunmetal Metal Card', color: 'gunmetal', engraving: 'silver', price: 225 },
+        { id: 8, name: 'Silver Metal Card', color: 'silver', engraving: 'silver', price: 225 },
+        { id: 9, name: 'Rose Gold Metal Card', color: 'rosegold', engraving: 'silver', price: 225 },
+        { id: 10, name: 'Gold Metal Card', color: 'gold', engraving: 'silver', price: 225 }
+    ];
+
+    let currentCardIndexMobile = 0;
+    let selectedColorMobile = 'black';
+    let selectedEngravingMobile = 'silver';
+    let uploadedLogoMobile = null;
+
+    // Color name mapping
+    const colorNameMapMobile = {
+        'black': 'Black',
+        'blue': 'Blue',
+        'green': 'Green',
+        'purple': 'Purple',
+        'copper': 'Copper',
+        'bronze': 'Bronze',
+        'gunmetal': 'Gunmetal',
+        'silver': 'Silver',
+        'rosegold': 'Rose Gold',
+        'gold': 'Gold'
+    };
+
+    // Engraving name mapping
+    const engravingNameMapMobile = {
+        'silver': 'Silver Engraving',
+        'gold': 'Gold Engraving'
+    };
+
+    // Initialize mobile logo builder
+    function initMobileLogoBuilder() {
+        updateMobilePreview();
+        updateMobileCardList();
+    }
+
+    // Update card list based on selections
+    function updateMobileCardList() {
+        // Update all cards with selected color and engraving
+        cardsMobile.forEach((card, index) => {
+            cardsMobile[index].color = selectedColorMobile;
+            cardsMobile[index].engraving = selectedEngravingMobile;
         });
+        
+        // Reset to first card
+        currentCardIndexMobile = 0;
+        updateMobilePreview();
+    }
 
-        // Handle engraving selection on mobile
-        engravingOptionsMobile.forEach(option => {
-            option.addEventListener('click', () => {
-                // Remove selected class from all options
-                engravingOptionsMobile.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
-                option.classList.add('selected');
-                
-                // Update selected engraving
-                selectedEngravingMobile = option.dataset.engraving;
-                
-                // Update card list
-                updateMobileCardList();
-                
-                // Show visual feedback on mobile
-                option.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    option.style.transform = '';
-                }, 200);
-            });
-        });
-
-        // Handle logo upload on mobile
-        function handleLogoUploadMobile(file) {
-            // Validate file type
-            if (!file.type.match('image.*')) {
-                showNotification('Please select an image file (JPG, PNG, GIF, etc.)');
-                return;
-            }
-
-            // Validate file size (max 10MB)
-            if (file.size > 10 * 1024 * 1024) {
-                showNotification('File is too large. Maximum size is 10MB.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                // Update preview
-                previewLogoMobile.src = e.target.result;
-                uploadedLogoMobile = e.target.result;
-                
-                // Update preview display
-                previewLogoMobile.classList.add('visible');
-                previewPlaceholderMobile.style.display = 'none';
-                
-                // Enable clear button
-                clearLogoBtnMobile.disabled = false;
-                
-                showNotification('Logo uploaded successfully!');
-            };
-            reader.onerror = function() {
-                showNotification('Error reading file. Please try again.');
-            };
-            reader.readAsDataURL(file);
-        }
-
-        // Click on upload area (mobile friendly)
-        uploadAreaMobile.addEventListener('click', () => {
-            logoFileInputMobile.click();
-        });
-
-        // Click on upload button
-        uploadLogoBtnMobile.addEventListener('click', () => {
-            logoFileInputMobile.click();
-        });
-
-        // File input change
-        logoFileInputMobile.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handleLogoUploadMobile(e.target.files[0]);
-            }
-        });
-
-        // Clear logo button
-        clearLogoBtnMobile.addEventListener('click', () => {
-            previewLogoMobile.src = '';
-            uploadedLogoMobile = null;
+    // Update mobile preview
+    function updateMobilePreview() {
+        const card = cardsMobile[currentCardIndexMobile];
+        
+        // Update card background
+        previewCardMobile.style.background = getCardBackgroundMobile(card.color);
+        
+        // Update text
+        selectedCardNameMobile.textContent = `${colorNameMapMobile[card.color]} Metal Card`;
+        selectedEngravingTypeMobile.textContent = engravingNameMapMobile[card.engraving];
+        
+        // Update counter
+        cardCounterMobile.textContent = `${currentCardIndexMobile + 1}/${cardsMobile.length}`;
+        
+        // Show/hide logo
+        if (uploadedLogoMobile) {
+            previewLogoMobile.classList.add('visible');
+            previewPlaceholderMobile.style.display = 'none';
+        } else {
             previewLogoMobile.classList.remove('visible');
             previewPlaceholderMobile.style.display = 'block';
-            logoFileInputMobile.value = '';
-            clearLogoBtnMobile.disabled = true;
-            showNotification('Logo cleared');
-        });
+        }
+        
+        // Update navigation buttons
+        updateMobileNavigation();
+    }
 
-        // Card navigation on mobile
-        prevCardBtnMobile.addEventListener('click', () => {
-            if (currentCardIndexMobile > 0) {
-                currentCardIndexMobile--;
-                updateMobilePreview();
-            }
-        });
+    // Get CSS variable for card background
+    function getCardBackgroundMobile(color) {
+        switch(color) {
+            case 'black': return 'var(--black-bg)';
+            case 'blue': return 'var(--blue-bg)';
+            case 'green': return 'var(--green-bg)';
+            case 'purple': return 'var(--purple-bg)';
+            case 'copper': return 'var(--copper-bg)';
+            case 'bronze': return 'var(--bronze-bg)';
+            case 'gunmetal': return 'var(--gunmetal-bg)';
+            case 'silver': return 'var(--silver-bg)';
+            case 'rosegold': return 'var(--rosegold-bg)';
+            case 'gold': return 'var(--gold-bg)';
+            default: return 'var(--black-bg)';
+        }
+    }
 
-        nextCardBtnMobile.addEventListener('click', () => {
-            if (currentCardIndexMobile < cardsMobile.length - 1) {
-                currentCardIndexMobile++;
-                updateMobilePreview();
-            }
-        });
+    // Update mobile navigation buttons
+    function updateMobileNavigation() {
+        prevCardBtnMobile.disabled = currentCardIndexMobile === 0;
+        nextCardBtnMobile.disabled = currentCardIndexMobile === cardsMobile.length - 1;
+    }
 
-        // Add to cart from mobile preview
-        addToCartMobile.addEventListener('click', () => {
-            const currentCard = cardsMobile[currentCardIndexMobile];
-            const engravingType = engravingNameMapMobile[currentCard.engraving];
-            const cardName = `${colorNameMapMobile[currentCard.color]} Metal Card (${engravingType})`;
+    // Handle color selection on mobile
+    colorOptionsMobile.forEach(option => {
+        option.addEventListener('click', () => {
+            // Remove selected class from all options
+            colorOptionsMobile.forEach(opt => opt.classList.remove('selected'));
             
-            addToCart(cardName, currentCard.price);
+            // Add selected class to clicked option
+            option.classList.add('selected');
+            
+            // Update selected color
+            selectedColorMobile = option.dataset.color;
+            
+            // Update card list
+            updateMobileCardList();
+            
+            // Show visual feedback on mobile
+            option.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                option.style.transform = '';
+            }, 200);
         });
+    });
 
-        // Initialize mobile logo builder
-        initMobileLogoBuilder();
+    // Handle engraving selection on mobile
+    engravingOptionsMobile.forEach(option => {
+        option.addEventListener('click', () => {
+            // Remove selected class from all options
+            engravingOptionsMobile.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            option.classList.add('selected');
+            
+            // Update selected engraving
+            selectedEngravingMobile = option.dataset.engraving;
+            
+            // Update card list
+            updateMobileCardList();
+            
+            // Show visual feedback on mobile
+            option.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                option.style.transform = '';
+            }, 200);
+        });
+    });
 
-        // Engraving Selection Modal Functionality for Metal
-        const engravingOptionsModal = document.querySelectorAll('.engraving-option');
-        const confirmEngravingBtn = document.getElementById('confirmEngraving');
-        const cancelEngravingBtn = document.getElementById('cancelEngraving');
-        const closeEngravingBtn = document.getElementById('closeEngraving');
-        const selectedMetalText = document.getElementById('selectedMetalText');
-
-        // Function to open engraving modal for metal selection
-        function openEngravingModal() {
-            selectedMetalText.textContent = selectedMetal;
-            selectedEngraving = null;
-
-            // Reset selection state
-            engravingOptionsModal.forEach(option => option.classList.remove('selected'));
-            confirmEngravingBtn.disabled = true;
-            confirmEngravingBtn.textContent = 'Add to Cart';
-
-            // Show modal
-            engravingModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
+    // Handle logo upload on mobile
+    function handleLogoUploadMobile(file) {
+        // Validate file type
+        if (!file.type.match('image.*')) {
+            showNotification('Please select an image file (JPG, PNG, GIF, etc.)');
+            return;
         }
 
-        // Open engraving modal when "Add [Metal Finish]" button is clicked
-        addMetalBtn.addEventListener('click', openEngravingModal);
+        // Validate file size (max 10MB)
+        if (file.size > 10 * 1024 * 1024) {
+            showNotification('File is too large. Maximum size is 10MB.');
+            return;
+        }
 
-        // Open engraving modal when Browse Cards button is clicked
-        document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            // Update preview
+            previewLogoMobile.src = e.target.result;
+            uploadedLogoMobile = e.target.result;
+            
+            // Update preview display
+            previewLogoMobile.classList.add('visible');
+            previewPlaceholderMobile.style.display = 'none';
+            
+            // Enable clear button
+            clearLogoBtnMobile.disabled = false;
+            
+            showNotification('Logo uploaded successfully!');
+        };
+        reader.onerror = function() {
+            showNotification('Error reading file. Please try again.');
+        };
+        reader.readAsDataURL(file);
+    }
+
+    // Click on upload area (mobile friendly)
+    uploadAreaMobile.addEventListener('click', () => {
+        logoFileInputMobile.click();
+    });
+
+    // Click on upload button
+    uploadLogoBtnMobile.addEventListener('click', () => {
+        logoFileInputMobile.click();
+    });
+
+    // File input change
+    logoFileInputMobile.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+            handleLogoUploadMobile(e.target.files[0]);
+        }
+    });
+
+    // Clear logo button
+    clearLogoBtnMobile.addEventListener('click', () => {
+        previewLogoMobile.src = '';
+        uploadedLogoMobile = null;
+        previewLogoMobile.classList.remove('visible');
+        previewPlaceholderMobile.style.display = 'block';
+        logoFileInputMobile.value = '';
+        clearLogoBtnMobile.disabled = true;
+        showNotification('Logo cleared');
+    });
+
+    // Card navigation on mobile
+    prevCardBtnMobile.addEventListener('click', () => {
+        if (currentCardIndexMobile > 0) {
+            currentCardIndexMobile--;
+            updateMobilePreview();
+        }
+    });
+
+    nextCardBtnMobile.addEventListener('click', () => {
+        if (currentCardIndexMobile < cardsMobile.length - 1) {
+            currentCardIndexMobile++;
+            updateMobilePreview();
+        }
+    });
+
+    // Add to cart from mobile preview
+    addToCartMobile.addEventListener('click', () => {
+        const currentCard = cardsMobile[currentCardIndexMobile];
+        const engravingType = engravingNameMapMobile[currentCard.engraving];
+        const cardName = `${colorNameMapMobile[currentCard.color]} Metal Card (${engravingType})`;
+        
+        addToCart(cardName, currentCard.price);
+    });
+
+    // Initialize mobile logo builder
+    initMobileLogoBuilder();
+
+    // Engraving Selection Modal Functionality for Metal
+    const engravingOptionsModal = document.querySelectorAll('.engraving-option');
+    const confirmEngravingBtn = document.getElementById('confirmEngraving');
+    const cancelEngravingBtn = document.getElementById('cancelEngraving');
+    const closeEngravingBtn = document.getElementById('closeEngraving');
+    const selectedMetalText = document.getElementById('selectedMetalText');
+
+    // Function to open engraving modal for metal selection
+    function openEngravingModal() {
+        selectedMetalText.textContent = selectedMetal;
+        selectedEngraving = null;
+
+        // Reset selection state
+        engravingOptionsModal.forEach(option => option.classList.remove('selected'));
+        confirmEngravingBtn.disabled = true;
+        confirmEngravingBtn.textContent = 'Add to Cart';
+
+        // Show modal
+        engravingModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+    }
+
+    // Open engraving modal when "Add [Metal Finish]" button is clicked
+    addMetalBtn.addEventListener('click', openEngravingModal);
+
+    // Open engraving modal when Browse Cards button is clicked
+    document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        // Scroll to bestsellers section
+        const bestsellersSection = document.getElementById('bestsellers');
+        if (bestsellersSection) {
+            const navHeight = nav.offsetHeight;
+            const targetPosition = bestsellersSection.offsetTop - navHeight;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+
+    // Handle engraving option selection
+    engravingOptionsModal.forEach(option => {
+        option.addEventListener('click', () => {
+            engravingOptionsModal.forEach(opt => opt.classList.remove('selected'));
+            option.classList.add('selected');
+            selectedEngraving = option.dataset.engraving;
+            confirmEngravingBtn.disabled = false;
+            const engravingType = selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1);
+            confirmEngravingBtn.textContent = `Add ${engravingType} Engraving`;
+        });
+    });
+
+    // Confirm engraving selection and add to cart
+    confirmEngravingBtn.addEventListener('click', () => {
+        if (!selectedEngraving) return;
+
+        const engravingType = selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1);
+        const itemName = `${selectedMetal} Metal Card (${engravingType} Engraving)`;
+
+        addToCart(itemName, 225);
+        closeEngravingModal();
+    });
+
+    // Close engraving modal and restore scrolling
+    function closeEngravingModal() {
+        engravingModal.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+    }
+
+    // Event listeners for closing engraving modal
+    closeEngravingBtn.addEventListener('click', closeEngravingModal);
+    cancelEngravingBtn.addEventListener('click', closeEngravingModal);
+
+    // Close modal when clicking outside
+    engravingModal.addEventListener('click', (e) => {
+        if (e.target === engravingModal) {
+            closeEngravingModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && engravingModal.classList.contains('active')) {
+            closeEngravingModal();
+        }
+    });
+
+    // Smooth scrolling for desktop nav
+    document.querySelectorAll('.nav-center a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            // If it's an external link or different page, allow normal navigation
+            if (this.getAttribute('target') === '_blank' || 
+                !this.getAttribute('href').startsWith('#') ||
+                this.getAttribute('href').includes('.html')) {
+                return;
+            }
+            
             e.preventDefault();
-            // Scroll to bestsellers section
-            const bestsellersSection = document.getElementById('bestsellers');
-            if (bestsellersSection) {
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            if (target) {
                 const navHeight = nav.offsetHeight;
-                const targetPosition = bestsellersSection.offsetTop - navHeight;
+                const targetPosition = target.offsetTop - navHeight;
 
                 window.scrollTo({
                     top: targetPosition,
@@ -3639,91 +3716,19 @@
                 });
             }
         });
+    });
 
-        // Handle engraving option selection
-        engravingOptionsModal.forEach(option => {
-            option.addEventListener('click', () => {
-                engravingOptionsModal.forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-                selectedEngraving = option.dataset.engraving;
-                confirmEngravingBtn.disabled = false;
-                const engravingType = selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1);
-                confirmEngravingBtn.textContent = `Add ${engravingType} Engraving`;
-            });
-        });
-
-        // Confirm engraving selection and add to cart
-        confirmEngravingBtn.addEventListener('click', () => {
-            if (!selectedEngraving) return;
-
-            const engravingType = selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1);
-            const itemName = `${selectedMetal} Metal Card (${engravingType} Engraving)`;
-
-            addToCart(itemName, 225);
-            closeEngravingModal();
-        });
-
-        // Close engraving modal and restore scrolling
-        function closeEngravingModal() {
-            engravingModal.classList.remove('active');
-            document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.width = '';
-        }
-
-        // Event listeners for closing engraving modal
-        closeEngravingBtn.addEventListener('click', closeEngravingModal);
-        cancelEngravingBtn.addEventListener('click', closeEngravingModal);
-
-        // Close modal when clicking outside
-        engravingModal.addEventListener('click', (e) => {
-            if (e.target === engravingModal) {
-                closeEngravingModal();
-            }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && engravingModal.classList.contains('active')) {
-                closeEngravingModal();
-            }
-        });
-
-        // Smooth scrolling for desktop nav
-        document.querySelectorAll('.nav-center a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                // If it's an external link or different page, allow normal navigation
-                if (this.getAttribute('target') === '_blank' || 
-                    !this.getAttribute('href').startsWith('#') ||
-                    this.getAttribute('href').includes('.html')) {
-                    return;
-                }
-                
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-                if (target) {
-                    const navHeight = nav.offsetHeight;
-                    const targetPosition = target.offsetTop - navHeight;
-
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal Page loaded with FIXED navigation:');
-            console.log('1. Navigation menu completely fixed ✓');
-            console.log('2. Mobile hamburger works perfectly ✓');
-            console.log('3. Desktop navigation works ✓');
-            console.log('4. All links work properly ✓');
-            console.log('5. Metal-themed color scheme applied ✓');
-            updateCart();
-        });
-    </script>
-</body>
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('Metal Page loaded with FIXED navigation:');
+        console.log('1. Navigation menu completely fixed ✓');
+        console.log('2. Mobile hamburger works perfectly ✓');
+        console.log('3. Desktop navigation works ✓');
+        console.log('4. All links work properly ✓');
+        console.log('5. Metal-themed color scheme applied ✓');
+        updateCart();
+    });
+</script>
+    
 </html>
+
