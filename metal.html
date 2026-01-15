@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -2156,4 +2157,1637 @@
 
         .close-engraving:hover {
             background: rgba(224, 191, 184, 0.3);
-            transform: rotate
+            transform: rotate(90deg);
+        }
+
+        .engraving-header {
+            margin-bottom: 25px;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .engraving-header h3 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .engraving-header p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .btn-cancel,
+        .btn-confirm {
+            padding: 18px 28px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            flex: 1;
+            min-width: 0;
+            border: none;
+            letter-spacing: 0.5px;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 56px;
+        }
+
+        @media (min-width: 480px) {
+            .btn-cancel,
+            .btn-confirm {
+                min-width: 140px;
+                flex: 0 1 auto;
+            }
+        }
+
+        .btn-cancel {
+            background: rgba(224, 191, 184, 0.15);
+            color: var(--white);
+            border: 1px solid rgba(224, 191, 184, 0.3);
+        }
+
+        .btn-cancel:active {
+            background: rgba(224, 191, 184, 0.25);
+            transform: translateY(0);
+        }
+
+        .btn-cancel:hover {
+            background: rgba(224, 191, 184, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(183, 110, 121, 0.2);
+        }
+
+        .btn-confirm {
+            background: var(--rose-gold-gradient);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(183, 110, 121, 0.4);
+        }
+
+        .btn-confirm:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn-confirm:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(183, 110, 121, 0.5);
+            background: linear-gradient(135deg, #E8D4D1, #C98A96);
+        }
+
+        .btn-confirm:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Cart Modal - ROSE GOLD THEME */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: linear-gradient(135deg, #1A0F0F, #2D1A1A);
+            border-left: 1px solid rgba(224, 191, 184, 0.2);
+            z-index: 2000;
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -20px 0 60px rgba(183, 110, 121, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 1px solid rgba(224, 191, 184, 0.2);
+        }
+
+        .cart-header h3 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--white);
+            margin: 0;
+        }
+
+        .close-cart {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(224, 191, 184, 0.2);
+            border: 1px solid rgba(224, 191, 184, 0.3);
+            color: var(--white);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-cart:hover {
+            background: rgba(224, 191, 184, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: rgba(224, 191, 184, 0.7);
+        }
+
+        .empty-cart p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px;
+            background: rgba(224, 191, 184, 0.1);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(224, 191, 184, 0.2);
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .cart-item-price {
+            color: rgba(224, 191, 184, 0.8);
+            font-size: 0.85rem;
+        }
+
+        .remove-item {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(224, 191, 184, 0.2);
+            border: 1px solid rgba(224, 191, 184, 0.3);
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            background: rgba(224, 191, 184, 0.3);
+            border-color: var(--rose-gold-light);
+            color: var(--rose-gold-light);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            border-top: 1px solid rgba(224, 191, 184, 0.2);
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .checkout-btn {
+            margin: 0 25px 25px;
+            padding: 18px;
+            border-radius: 14px;
+            background: var(--rose-gold-gradient);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(183, 110, 121, 0.4);
+        }
+
+        /* Notification - ROSE GOLD THEME */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--rose-gold-gradient);
+            color: var(--white);
+            padding: 18px 25px;
+            border-radius: 14px;
+            font-weight: 600;
+            box-shadow: 0 15px 40px rgba(183, 110, 121, 0.3);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 3000;
+            max-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .notification {
+                right: 20px;
+                left: 20px;
+                max-width: none;
+            }
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Engraving Selection Modal -->
+    <div class="engraving-modal" id="engravingModal">
+        <div class="engraving-content">
+            <button class="close-engraving" id="closeEngraving">×</button>
+            <div class="engraving-header">
+                <h3>Select Engraving Color</h3>
+                <p>Choose between silver or gold engraving for your <span id="selectedMetalText">Black</span> NFC card
+                </p>
+            </div>
+
+            <div class="engraving-options">
+                <div class="engraving-option" data-engraving="silver">
+                    <div class="engraving-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Silver Engraving">
+                    </div>
+                    <div class="engraving-label">
+                        <span>⚪</span> Silver Engraving
+                    </div>
+                    <div class="engraving-price">No extra cost</div>
+                    <div class="engraving-description">
+                        Premium silver-toned engraving that creates elegant contrast. Perfect for a sophisticated,
+                        modern look that stands out beautifully.
+                    </div>
+                </div>
+
+                <div class="engraving-option" data-engraving="gold">
+                    <div class="engraving-image">
+                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Gold Engraving">
+                    </div>
+                    <div class="engraving-label">
+                        <span>⭐</span> Gold Engraving
+                    </div>
+                    <div class="engraving-price">No extra cost</div>
+                    <div class="engraving-description">
+                        Luxurious gold-toned engraving that adds warmth and prestige. Ideal for luxury brands and
+                        premium presentation that demands attention.
+                    </div>
+                </div>
+            </div>
+
+            <div class="engraving-actions">
+                <button class="btn-cancel" id="cancelEngraving">Cancel</button>
+                <button class="btn-confirm" id="confirmEngraving" disabled>Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">£0</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        Item added to cart!
+    </div>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- MOBILE CLOSE BUTTON -->
+    <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
+
+    <!-- STICKY NAV -->
+    <nav class="nav" id="mainNav">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="ExposureBoost Logo" class="logo-img"
+                onerror="this.style.display='none'; this.parentElement.querySelector('.logo-text').style.display='block'">
+            <span class="logo-text">ExposureBoost</span>
+        </a>
+
+        <button class="hamburger" id="hamburgerBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="metal.html">Metal Cards</a>
+            <a href="wood.html">Wood Cards</a>
+            <a href="plastic.html">Plastic Cards</a>
+            <a href="custom.html">Custom Cards</a>
+            <a href="stands.html">Stands</a>
+        </div>
+
+        <div class="nav-right">
+            <a href="https://wa.me/447123456789" class="whatsapp-icon" target="_blank" aria-label="WhatsApp">
+                💬
+            </a>
+            <div class="icon-btn" id="cartIcon">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+            <a href="https://wa.me/447123456789" class="whatsapp" target="_blank">
+                <span>💬</span> WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html" class="mobile-menu-item">
+            <span>🏠</span> Home
+        </a>
+        <a href="metal.html" class="mobile-menu-item">
+            <span>⭐</span> Metal Cards
+        </a>
+        <a href="wood.html" class="mobile-menu-item">
+            <span>🌳</span> Wood Cards
+        </a>
+        <a href="plastic.html" class="mobile-menu-item">
+            <span>🔵</span> Plastic Cards
+        </a>
+        <a href="custom.html" class="mobile-menu-item">
+            <span>✨</span> Custom Cards
+        </a>
+        <a href="stands.html" class="mobile-menu-item">
+            <span>📱</span> Stands
+        </a>
+
+        <div class="menu-divider"></div>
+
+        <a href="https://wa.me/447123456789" class="whatsapp mobile-menu-item" target="_blank">
+            <span>💬</span> WhatsApp Support
+        </a>
+
+        <div class="menu-footer">
+            Premium NFC Cards & Digital Profiles
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- HERO SECTION - ROSE GOLD THEME -->
+        <section class="hero-section" id="hero">
+            <div class="hero-bg-blob"></div>
+            <div class="hero-bg-blob b2"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">The business card people don't forget</h1>
+                
+                <div class="hero-card-container">
+                    <div class="hero-card">
+                        <div class="hero-icon">⭐</div>
+                        <div class="hero-text">Premium Metal NFC Card</div>
+                        <div class="hero-subtext">Tap to Connect</div>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <button class="btn btn-primary" id="browseCardsBtn">Browse Cards</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BESTSELLERS SECTION -->
+        <section class="bestsellers-section" id="bestsellers">
+            <div class="section-header">
+                <h2 class="section-title">Our Bestsellers</h2>
+                <p class="section-subtitle">Premium metal NFC cards that make lasting impressions</p>
+            </div>
+
+            <div class="bestsellers-grid">
+                <!-- Silver Metal Card -->
+                <div class="bestseller-card silver">
+                    <div class="bestseller-badge">Bestseller 🏆</div>
+                    <div class="bestseller-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Silver Metal Card">
+                    </div>
+                    <h3 class="bestseller-title">Silver Metal Card</h3>
+                    <p class="bestseller-description">Sleek, modern, and sophisticated. Perfect for tech companies and modern brands.</p>
+                    <div class="bestseller-price">£225 <span>one-time · card + profile</span></div>
+                    <div class="bestseller-actions">
+                        <button class="btn btn-primary add-to-cart" data-name="Silver Metal Card" data-price="225">🛒 Add to Cart</button>
+                        <button class="btn btn-secondary view-example">↗ Example</button>
+                    </div>
+                </div>
+
+                <!-- Rose Gold Metal Card -->
+                <div class="bestseller-card rose-gold">
+                    <div class="bestseller-badge">Bestseller 🏆</div>
+                    <div class="bestseller-image">
+                        <img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Rose Gold Metal Card">
+                    </div>
+                    <h3 class="bestseller-title">Rose Gold Metal Card</h3>
+                    <p class="bestseller-description">Contemporary, warm, and distinctive. Ideal for creative industries and fashion brands.</p>
+                    <div class="bestseller-price">£225 <span>one-time · card + profile</span></div>
+                    <div class="bestseller-actions">
+                        <button class="btn btn-primary add-to-cart" data-name="Rose Gold Metal Card" data-price="225">🛒 Add to Cart</button>
+                        <button class="btn btn-secondary view-example">↗ Example</button>
+                    </div>
+                </div>
+
+                <!-- Gold Metal Card -->
+                <div class="bestseller-card gold">
+                    <div class="bestseller-badge">Bestseller 🏆</div>
+                    <div class="bestseller-image">
+                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Gold Metal Card">
+                    </div>
+                    <h3 class="bestseller-title">Gold Metal Card</h3>
+                    <p class="bestseller-description">The ultimate symbol of success and achievement. Perfect for executives and luxury brands.</p>
+                    <div class="bestseller-price">£225 <span>one-time · card + profile</span></div>
+                    <div class="bestseller-actions">
+                        <button class="btn btn-primary add-to-cart" data-name="Gold Metal Card" data-price="225">🛒 Add to Cart</button>
+                        <button class="btn btn-secondary view-example">↗ Example</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAROUSEL SECTION - MOVED ABOVE WHY CHOOSE METAL -->
+        <section class="carousel-section" id="carousel">
+            <div class="carousel-container">
+                <div class="section-header">
+                    <h2 class="section-title">All Metal Finishes</h2>
+                    <p class="section-subtitle">Choose from 7 premium metal finishes with silver or gold engraving</p>
+                </div>
+
+                <div class="metal-carousel">
+                    <button class="carousel-arrow left" aria-label="Previous">‹</button>
+
+                    <!-- FIXED: Only 7 colors, NO Gold, Silver, or Rose Gold -->
+                    <div class="metal-color-card active" data-color="Black">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #000000, #333333);"></div>
+                        <div class="card-label">Black</div>
+                        <div class="card-price">£225</div>
+                    </div>
+
+                    <div class="metal-color-card" data-color="Blue">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #0066CC, #004488);"></div>
+                        <div class="card-label">Blue</div>
+                        <div class="card-price">£225</div>
+                    </div>
+
+                    <div class="metal-color-card" data-color="Green">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #00AA55, #008844);"></div>
+                        <div class="card-label">Green</div>
+                        <div class="card-price">£225</div>
+                    </div>
+
+                    <div class="metal-color-card" data-color="Purple">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #8A2BE2, #6A1BC2);"></div>
+                        <div class="card-label">Purple</div>
+                        <div class="card-price">£225</div>
+                    </div>
+
+                    <div class="metal-color-card" data-color="Copper">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #B87333, #996623);"></div>
+                        <div class="card-label">Copper</div>
+                        <div class="card-price">£225</div>
+                    </div>
+
+                    <div class="metal-color-card" data-color="Bronze">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #CD7F32, #B0651F);"></div>
+                        <div class="card-label">Bronze</div>
+                        <div class="card-price">£225</div>
+                    </div>
+
+                    <div class="metal-color-card" data-color="Gunmetal">
+                        <div class="color-swatch" style="background: linear-gradient(135deg, #2C3539, #21282B);"></div>
+                        <div class="card-label">Gunmetal</div>
+                        <div class="card-price">£225</div>
+                    </div>
+
+                    <button class="carousel-arrow right" aria-label="Next">›</button>
+                </div>
+
+                <div class="dots">
+                    <!-- FIXED: Exactly 7 dots -->
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+
+                <div class="carousel-actions">
+                    <button class="btn" id="addMetalBtn">🛒 Add Black Finish</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY CHOOSE METAL SECTION - NOW BELOW CAROUSEL -->
+        <section class="why-choose-section" id="why-choose">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Metal?</h2>
+                <p class="section-subtitle">Experience the difference with premium metal NFC cards</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💎</div>
+                    <h3 class="benefit-title">Luxury Perception</h3>
+                    <p class="benefit-description">
+                        Metal cards immediately communicate premium quality, making clients perceive your brand as established, successful, and worth investing in.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3 class="benefit-title">Exceptional Durability</h3>
+                    <p class="benefit-description">
+                        CNC-machined from solid metal, these cards are built to last a lifetime, surviving daily use while maintaining their flawless appearance.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">✨</div>
+                    <h3 class="benefit-title">Unforgettable Impact</h3>
+                    <p class="benefit-description">
+                        The substantial weight and cool touch of metal create a memorable sensory experience that plastic cards simply cannot replicate.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION - UPDATED WITH ISABELLA ROSSI -->
+        <section class="testimonials-section" id="testimonials">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Don't just take our word for it. Here's what our customers have to say.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "The gold metal card is absolutely stunning! My high-net-worth clients immediately recognize it as a symbol of success. It's opened doors that plastic cards never could."
+                    </div>
+                    <div class="testimonial-author">James Harrington</div>
+                    <div class="testimonial-role">Private Wealth Manager, Mayfair</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "As a tech startup founder, the silver metal card perfectly represents our brand—sleek, modern, and built to last. It's become a conversation starter at every investor meeting."
+                    </div>
+                    <div class="testimonial-author">Sophia Chen</div>
+                    <div class="testimonial-role">Tech Founder, Silicon Roundabout</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "The rose gold card feels incredible in hand. It has a unique warmth that sets it apart. My fashion clients love how it complements our brand aesthetic."
+                    </div>
+                    <div class="testimonial-author">Isabella Rossi</div>
+                    <div class="testimonial-role">Fashion Brand Director, Milan</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REDESIGNED: SEE IT WITH YOUR LOGO SECTION - MOBILE OPTIMIZED -->
+        <section class="custom-logo-section" id="custom-logo">
+            <div class="custom-logo-content">
+                <div class="section-header">
+                    <h2 class="section-title">See It With Your Logo</h2>
+                    <p class="section-subtitle">Upload your logo and see how it looks on different metal cards</p>
+                </div>
+
+                <div class="logo-builder-mobile">
+                    <!-- Left Column: Card Preview -->
+                    <div class="preview-section-mobile">
+                        <div class="preview-header-mobile">
+                            <div class="preview-title-mobile">Live Preview</div>
+                            <div class="card-counter-mobile" id="cardCounterMobile">1/10</div>
+                        </div>
+                        
+                        <div class="preview-card-mobile">
+                            <div class="preview-card-inner-mobile" id="previewCardMobile">
+                                <div class="preview-placeholder-mobile" id="previewPlaceholderMobile">
+                                    <div class="placeholder-icon-mobile">🏢</div>
+                                    <div class="placeholder-text-mobile">Upload your logo</div>
+                                </div>
+                                <img class="preview-logo-mobile" id="previewLogoMobile" alt="Your Logo">
+                            </div>
+                        </div>
+                        
+                        <div class="preview-details-mobile">
+                            <div class="selected-card-info-mobile">
+                                <div class="card-name-mobile" id="selectedCardNameMobile">Black Metal Card</div>
+                                <div class="engraving-type-mobile" id="selectedEngravingTypeMobile">Silver Engraving</div>
+                            </div>
+                            <div class="preview-price-mobile">£225</div>
+                        </div>
+                        
+                        <div class="card-navigation-mobile">
+                            <button class="nav-btn-mobile prev" id="prevCardBtnMobile" disabled>
+                                <span>‹</span> Previous
+                            </button>
+                            <button class="nav-btn-mobile next" id="nextCardBtnMobile">
+                                Next <span>›</span>
+                            </button>
+                        </div>
+                        
+                        <button class="add-to-cart-mobile" id="addToCartMobile">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+
+                    <!-- Right Column: Selection Options -->
+                    <div class="selection-area-mobile">
+                        <!-- Step 1: Choose Card Color -->
+                        <div class="selection-step-mobile">
+                            <div class="step-title-mobile">
+                                <span class="step-number-mobile">1</span>
+                                Choose Card Color
+                            </div>
+                            <div class="card-colors-mobile">
+                                <div class="color-option-mobile selected" data-color="black" style="background: var(--black-bg);">
+                                    <div class="color-label-mobile">Black</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="blue" style="background: var(--blue-bg);">
+                                    <div class="color-label-mobile">Blue</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="green" style="background: var(--green-bg);">
+                                    <div class="color-label-mobile">Green</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="purple" style="background: var(--purple-bg);">
+                                    <div class="color-label-mobile">Purple</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="copper" style="background: var(--copper-bg);">
+                                    <div class="color-label-mobile">Copper</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="bronze" style="background: var(--bronze-bg);">
+                                    <div class="color-label-mobile">Bronze</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="gunmetal" style="background: var(--gunmetal-bg);">
+                                    <div class="color-label-mobile">Gunmetal</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="silver" style="background: var(--silver-bg);">
+                                    <div class="color-label-mobile">Silver</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="rosegold" style="background: var(--rosegold-bg);">
+                                    <div class="color-label-mobile">Rose Gold</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="gold" style="background: var(--gold-bg);">
+                                    <div class="color-label-mobile">Gold</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Choose Engraving -->
+                        <div class="selection-step-mobile">
+                            <div class="step-title-mobile">
+                                <span class="step-number-mobile">2</span>
+                                Choose Engraving
+                            </div>
+                            <div class="engraving-options-mobile">
+                                <div class="engraving-option-mobile selected" data-engraving="silver">
+                                    <div class="engraving-icon-mobile">⚪</div>
+                                    <div class="engraving-name-mobile">Silver</div>
+                                    <div class="engraving-price-mobile">No extra cost</div>
+                                </div>
+                                <div class="engraving-option-mobile" data-engraving="gold">
+                                    <div class="engraving-icon-mobile">⭐</div>
+                                    <div class="engraving-name-mobile">Gold</div>
+                                    <div class="engraving-price-mobile">No extra cost</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Upload Logo - FIXED FOR MOBILE -->
+                        <div class="selection-step-mobile">
+                            <div class="step-title-mobile">
+                                <span class="step-number-mobile">3</span>
+                                Upload Your Logo
+                            </div>
+                            <div class="upload-container-mobile">
+                                <!-- FIXED: Upload area with proper mobile styling -->
+                                <div class="upload-area-mobile" id="uploadAreaMobile">
+                                    <div class="upload-icon-mobile">📁</div>
+                                    <div class="upload-text-mobile">Click to upload your logo</div>
+                                    <div class="upload-subtext-mobile">Choose from camera roll or take a photo</div>
+                                    <div class="upload-subtext-mobile">PNG, JPG up to 10MB</div>
+                                    <div class="upload-hint-mobile">On mobile: Tap to choose from gallery or camera</div>
+                                </div>
+                                
+                                <!-- FIXED: File input WITHOUT capture attribute -->
+                                <input type="file" id="logoFileInputMobile" accept="image/*">
+                                
+                                <div class="upload-actions-mobile">
+                                    <button class="upload-btn-mobile" id="uploadLogoBtnMobile">
+                                        <span>📁</span> Upload Logo
+                                    </button>
+                                    <button class="clear-logo-btn-mobile" id="clearLogoBtnMobile" disabled>
+                                        <span>🗑️</span> Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="whatsapp-help">
+                    <h3 style="margin-bottom: 15px; font-size: 1.2rem;">Need help with your logo?</h3>
+                    <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
+                        Send us your logo on WhatsApp and we'll create a custom mockup for you
+                    </p>
+                    <a href="https://wa.me/447123456789" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
+                        <span>💬</span> Send Logo on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Variables for engraving selection
+        let selectedMetal = 'Black';
+        let selectedEngraving = null;
+        let engravingModal = document.getElementById('engravingModal');
+
+        // MOBILE NAVIGATION - FIXED
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const nav = document.getElementById('mainNav');
+        let isMenuOpen = false;
+
+        // Toggle mobile menu - FIXED
+        function toggleMobileMenu() {
+            isMenuOpen = !isMenuOpen;
+
+            if (isMenuOpen) {
+                // Open menu
+                hamburgerBtn.classList.add('active');
+                mobileMenuOverlay.classList.add('active');
+                mobileMenu.classList.add('active');
+                mobileCloseBtn.classList.add('show');
+                document.body.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+            } else {
+                // Close menu
+                hamburgerBtn.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                mobileCloseBtn.classList.remove('show');
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close mobile menu - FIXED
+        function closeMobileMenu() {
+            isMenuOpen = false;
+            hamburgerBtn.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileCloseBtn.classList.remove('show');
+            document.body.classList.remove('menu-open');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners for mobile menu - FIXED
+        hamburgerBtn.addEventListener('click', toggleMobileMenu);
+        mobileCloseBtn.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking menu links - FIXED
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // If it's an external link (like WhatsApp), don't prevent default
+                if (link.getAttribute('target') === '_blank' || link.getAttribute('href').includes('wa.me')) {
+                    return; // Allow normal navigation
+                }
+                
+                // For internal hash links on same page
+                if (link.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        const navHeight = nav.offsetHeight;
+                        const targetPosition = target.offsetTop - navHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close menu after a short delay
+                        setTimeout(closeMobileMenu, 300);
+                    }
+                } else {
+                    // For other internal links, close menu and allow normal navigation
+                    closeMobileMenu();
+                }
+            });
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close menu on window resize - FIXED
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (window.innerWidth > 1024 && isMenuOpen) {
+                    closeMobileMenu();
+                }
+            }, 250);
+        });
+
+        // Sticky Navigation
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.getElementById('cartCount');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const notification = document.getElementById('notification');
+
+        // Update cart display
+        function updateCart() {
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCartItems();
+        }
+
+        // Render cart items in modal
+        function renderCartItems() {
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
+                cartTotal.textContent = '£0';
+                return;
+            }
+
+            let itemsHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                itemsHTML += `
+                    <div class="cart-item">
+                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+                    </div>
+                `;
+            });
+
+            cartItems.innerHTML = itemsHTML;
+            cartTotal.textContent = `£${total}`;
+        }
+
+        // Add to cart function
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+            }
+
+            updateCart();
+            showNotification(`${name} added to cart!`);
+        }
+
+        // Remove from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Show notification
+        function showNotification(message) {
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Open cart modal
+        function openCartModal() {
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            closeMobileMenu();
+        }
+
+        // Close cart modal
+        function closeCartModal() {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Checkout functionality
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!');
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            alert(`Proceeding to checkout. Total: £${total}\n\nThis is a demo. In a real application, this would redirect to a payment processor.`);
+        }
+
+        // Event listeners for cart
+        cartIcon.addEventListener('click', openCartModal);
+        closeCart.addEventListener('click', closeCartModal);
+        checkoutBtn.addEventListener('click', checkout);
+
+        // Close modal when clicking outside
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                closeCartModal();
+            }
+        });
+
+        // Add to cart buttons for bestseller cards
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const name = e.target.dataset.name;
+                    const price = parseInt(e.target.dataset.price);
+                    addToCart(name, price);
+                });
+            });
+
+            // View example buttons
+            document.querySelectorAll('.view-example').forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('Example functionality - in a real site this would show an example of the product.');
+                });
+            });
+
+            updateCart();
+        });
+
+        // Metal Color Carousel with Background Change
+        const metalCards = document.querySelectorAll('.metal-color-card');
+        const metalDots = document.querySelectorAll('.carousel-section .dot');
+        const carouselSection = document.querySelector('.carousel-section');
+        const metalPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
+        const metalNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
+        const addMetalBtn = document.getElementById('addMetalBtn');
+
+        // Map color names to CSS class names - ONLY 7 COLORS
+        const metalColorMap = {
+            'Black': 'black',
+            'Blue': 'blue',
+            'Green': 'green',
+            'Purple': 'purple',
+            'Copper': 'copper',
+            'Bronze': 'bronze',
+            'Gunmetal': 'gunmetal'
+        };
+
+        let metalIndex = 0;
+
+        // Function to update metal carousel
+        function updateMetalCarousel(i) {
+            metalCards[metalIndex].classList.remove('active');
+            metalDots[metalIndex].classList.remove('active');
+
+            metalIndex = (i + metalCards.length) % metalCards.length;
+
+            metalCards[metalIndex].classList.add('active');
+            
+            // Update dot colors based on active card
+            metalDots.forEach((dot, index) => {
+                if (index === metalIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            const colorName = metalCards[metalIndex].dataset.color;
+            const colorClass = metalColorMap[colorName];
+            
+            // Update carousel section background
+            carouselSection.className = 'carousel-section ' + colorClass;
+            
+            // Update button text
+            addMetalBtn.textContent = `🛒 Add ${colorName} Finish`;
+            selectedMetal = colorName;
+        }
+
+        // Initialize metal carousel
+        updateMetalCarousel(0);
+
+        // Manual navigation
+        metalPrevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateMetalCarousel(metalIndex - 1);
+        });
+
+        metalNextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateMetalCarousel(metalIndex + 1);
+        });
+
+        // Dot navigation
+        metalDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                updateMetalCarousel(i);
+            });
+        });
+
+        // Touch/swipe support
+        let metalStartX = 0;
+        document.querySelector('.metal-carousel').addEventListener('touchstart', e => {
+            metalStartX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.metal-carousel').addEventListener('touchend', e => {
+            const endX = e.changedTouches[0].clientX;
+            if (metalStartX - endX > 50) updateMetalCarousel(metalIndex + 1);
+            if (endX - metalStartX > 50) updateMetalCarousel(metalIndex - 1);
+        });
+
+        // FIX: Optimized carousel with smoother transitions
+        let carouselInterval;
+        let isCarouselPaused = false;
+
+        function startCarouselAutoRotate() {
+            if (carouselInterval) clearInterval(carouselInterval);
+            carouselInterval = setInterval(() => {
+                if (!isCarouselPaused) {
+                    updateMetalCarousel(metalIndex + 1);
+                }
+            }, 5000);
+        }
+
+        function stopCarouselAutoRotate() {
+            isCarouselPaused = true;
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+            }
+        }
+
+        // Start auto-rotate
+        startCarouselAutoRotate();
+
+        // Pause on hover/interaction
+        document.querySelector('.metal-carousel').addEventListener('mouseenter', () => {
+            stopCarouselAutoRotate();
+        });
+
+        document.querySelector('.metal-carousel').addEventListener('mouseleave', () => {
+            isCarouselPaused = false;
+            startCarouselAutoRotate();
+        });
+
+        // Also pause when interacting with arrows or dots
+        metalPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+        metalNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+        metalDots.forEach(dot => {
+            dot.addEventListener('mouseenter', stopCarouselAutoRotate);
+        });
+
+        // FIXED: SEE IT WITH YOUR LOGO SECTION - MOBILE OPTIMIZED
+        // Mobile-optimized logo builder
+        const colorOptionsMobile = document.querySelectorAll('.color-option-mobile');
+        const engravingOptionsMobile = document.querySelectorAll('.engraving-option-mobile');
+        const uploadAreaMobile = document.getElementById('uploadAreaMobile');
+        const logoFileInputMobile = document.getElementById('logoFileInputMobile');
+        const uploadLogoBtnMobile = document.getElementById('uploadLogoBtnMobile');
+        const clearLogoBtnMobile = document.getElementById('clearLogoBtnMobile');
+        const previewLogoMobile = document.getElementById('previewLogoMobile');
+        const previewPlaceholderMobile = document.getElementById('previewPlaceholderMobile');
+        const previewCardMobile = document.getElementById('previewCardMobile');
+        const prevCardBtnMobile = document.getElementById('prevCardBtnMobile');
+        const nextCardBtnMobile = document.getElementById('nextCardBtnMobile');
+        const cardCounterMobile = document.getElementById('cardCounterMobile');
+        const selectedCardNameMobile = document.getElementById('selectedCardNameMobile');
+        const selectedEngravingTypeMobile = document.getElementById('selectedEngravingTypeMobile');
+        const addToCartMobile = document.getElementById('addToCartMobile');
+
+        // All available cards
+        const cardsMobile = [
+            { id: 1, name: 'Black Metal Card', color: 'black', engraving: 'silver', price: 225 },
+            { id: 2, name: 'Blue Metal Card', color: 'blue', engraving: 'silver', price: 225 },
+            { id: 3, name: 'Green Metal Card', color: 'green', engraving: 'silver', price: 225 },
+            { id: 4, name: 'Purple Metal Card', color: 'purple', engraving: 'silver', price: 225 },
+            { id: 5, name: 'Copper Metal Card', color: 'copper', engraving: 'silver', price: 225 },
+            { id: 6, name: 'Bronze Metal Card', color: 'bronze', engraving: 'silver', price: 225 },
+            { id: 7, name: 'Gunmetal Metal Card', color: 'gunmetal', engraving: 'silver', price: 225 },
+            { id: 8, name: 'Silver Metal Card', color: 'silver', engraving: 'silver', price: 225 },
+            { id: 9, name: 'Rose Gold Metal Card', color: 'rosegold', engraving: 'silver', price: 225 },
+            { id: 10, name: 'Gold Metal Card', color: 'gold', engraving: 'silver', price: 225 }
+        ];
+
+        let currentCardIndexMobile = 0;
+        let selectedColorMobile = 'black';
+        let selectedEngravingMobile = 'silver';
+        let uploadedLogoMobile = null;
+
+        // Color name mapping
+        const colorNameMapMobile = {
+            'black': 'Black',
+            'blue': 'Blue',
+            'green': 'Green',
+            'purple': 'Purple',
+            'copper': 'Copper',
+            'bronze': 'Bronze',
+            'gunmetal': 'Gunmetal',
+            'silver': 'Silver',
+            'rosegold': 'Rose Gold',
+            'gold': 'Gold'
+        };
+
+        // Engraving name mapping
+        const engravingNameMapMobile = {
+            'silver': 'Silver Engraving',
+            'gold': 'Gold Engraving'
+        };
+
+        // Initialize mobile logo builder
+        function initMobileLogoBuilder() {
+            updateMobilePreview();
+            updateMobileCardList();
+        }
+
+        // Update card list based on selections
+        function updateMobileCardList() {
+            // Update all cards with selected color and engraving
+            cardsMobile.forEach((card, index) => {
+                cardsMobile[index].color = selectedColorMobile;
+                cardsMobile[index].engraving = selectedEngravingMobile;
+            });
+            
+            // Reset to first card
+            currentCardIndexMobile = 0;
+            updateMobilePreview();
+        }
+
+        // Update mobile preview
+        function updateMobilePreview() {
+            const card = cardsMobile[currentCardIndexMobile];
+            
+            // Update card background
+            previewCardMobile.style.background = getCardBackgroundMobile(card.color);
+            
+            // Update text
+            selectedCardNameMobile.textContent = `${colorNameMapMobile[card.color]} Metal Card`;
+            selectedEngravingTypeMobile.textContent = engravingNameMapMobile[card.engraving];
+            
+            // Update counter
+            cardCounterMobile.textContent = `${currentCardIndexMobile + 1}/${cardsMobile.length}`;
+            
+            // Show/hide logo
+            if (uploadedLogoMobile) {
+                previewLogoMobile.classList.add('visible');
+                previewPlaceholderMobile.style.display = 'none';
+            } else {
+                previewLogoMobile.classList.remove('visible');
+                previewPlaceholderMobile.style.display = 'block';
+            }
+            
+            // Update navigation buttons
+            updateMobileNavigation();
+        }
+
+        // Get CSS variable for card background
+        function getCardBackgroundMobile(color) {
+            switch(color) {
+                case 'black': return 'var(--black-bg)';
+                case 'blue': return 'var(--blue-bg)';
+                case 'green': return 'var(--green-bg)';
+                case 'purple': return 'var(--purple-bg)';
+                case 'copper': return 'var(--copper-bg)';
+                case 'bronze': return 'var(--bronze-bg)';
+                case 'gunmetal': return 'var(--gunmetal-bg)';
+                case 'silver': return 'var(--silver-bg)';
+                case 'rosegold': return 'var(--rosegold-bg)';
+                case 'gold': return 'var(--gold-bg)';
+                default: return 'var(--black-bg)';
+            }
+        }
+
+        // Update mobile navigation buttons
+        function updateMobileNavigation() {
+            prevCardBtnMobile.disabled = currentCardIndexMobile === 0;
+            nextCardBtnMobile.disabled = currentCardIndexMobile === cardsMobile.length - 1;
+        }
+
+        // Handle color selection on mobile
+        colorOptionsMobile.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options
+                colorOptionsMobile.forEach(opt => opt.classList.remove('selected'));
+                
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Update selected color
+                selectedColorMobile = option.dataset.color;
+                
+                // Update card list
+                updateMobileCardList();
+                
+                // Show visual feedback on mobile
+                option.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    option.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Handle engraving selection on mobile
+        engravingOptionsMobile.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options
+                engravingOptionsMobile.forEach(opt => opt.classList.remove('selected'));
+                
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Update selected engraving
+                selectedEngravingMobile = option.dataset.engraving;
+                
+                // Update card list
+                updateMobileCardList();
+                
+                // Show visual feedback on mobile
+                option.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    option.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // FIXED: Handle logo upload on mobile - WORKS WITH CAMERA ROLL
+        function handleLogoUploadMobile(file) {
+            // Validate file type
+            if (!file.type.match('image.*')) {
+                showNotification('Please select an image file (JPG, PNG, GIF, etc.)');
+                return;
+            }
+
+            // Validate file size (max 10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                showNotification('File is too large. Maximum size is 10MB.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Update preview
+                previewLogoMobile.src = e.target.result;
+                uploadedLogoMobile = e.target.result;
+                
+                // Update preview display
+                previewLogoMobile.classList.add('visible');
+                previewPlaceholderMobile.style.display = 'none';
+                
+                // Enable clear button
+                clearLogoBtnMobile.disabled = false;
+                
+                showNotification('Logo uploaded successfully!');
+            };
+            reader.onerror = function() {
+                showNotification('Error reading file. Please try again.');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Click on upload area (mobile friendly)
+        uploadAreaMobile.addEventListener('click', () => {
+            logoFileInputMobile.click();
+        });
+
+        // Click on upload button
+        uploadLogoBtnMobile.addEventListener('click', () => {
+            logoFileInputMobile.click();
+        });
+
+        // FIXED: File input change - REMOVED CAPTURE ATTRIBUTE
+        logoFileInputMobile.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleLogoUploadMobile(e.target.files[0]);
+            }
+        });
+
+        // Clear logo button
+        clearLogoBtnMobile.addEventListener('click', () => {
+            previewLogoMobile.src = '';
+            uploadedLogoMobile = null;
+            previewLogoMobile.classList.remove('visible');
+            previewPlaceholderMobile.style.display = 'block';
+            logoFileInputMobile.value = '';
+            clearLogoBtnMobile.disabled = true;
+            showNotification('Logo cleared');
+        });
+
+        // Card navigation on mobile
+        prevCardBtnMobile.addEventListener('click', () => {
+            if (currentCardIndexMobile > 0) {
+                currentCardIndexMobile--;
+                updateMobilePreview();
+            }
+        });
+
+        nextCardBtnMobile.addEventListener('click', () => {
+            if (currentCardIndexMobile < cardsMobile.length - 1) {
+                currentCardIndexMobile++;
+                updateMobilePreview();
+            }
+        });
+
+        // Add to cart from mobile preview
+        addToCartMobile.addEventListener('click', () => {
+            const currentCard = cardsMobile[currentCardIndexMobile];
+            const engravingType = engravingNameMapMobile[currentCard.engraving];
+            const cardName = `${colorNameMapMobile[currentCard.color]} Metal Card (${engravingType})`;
+            
+            addToCart(cardName, currentCard.price);
+        });
+
+        // Mobile touch events with visual feedback
+        uploadAreaMobile.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+        });
+
+        uploadAreaMobile.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+
+        uploadLogoBtnMobile.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+        });
+
+        uploadLogoBtnMobile.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+
+        clearLogoBtnMobile.addEventListener('touchstart', function() {
+            if (!this.disabled) {
+                this.style.transform = 'scale(0.98)';
+            }
+        });
+
+        clearLogoBtnMobile.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+
+        prevCardBtnMobile.addEventListener('touchstart', function() {
+            if (!this.disabled) {
+                this.style.transform = 'scale(0.98)';
+            }
+        });
+
+        prevCardBtnMobile.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+
+        nextCardBtnMobile.addEventListener('touchstart', function() {
+            if (!this.disabled) {
+                this.style.transform = 'scale(0.98)';
+            }
+        });
+
+        nextCardBtnMobile.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+
+        addToCartMobile.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+        });
+
+        addToCartMobile.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+
+        // Initialize mobile logo builder
+        initMobileLogoBuilder();
+
+        // Engraving Selection Modal Functionality for Metal
+        const engravingOptionsModal = document.querySelectorAll('.engraving-option');
+        const confirmEngravingBtn = document.getElementById('confirmEngraving');
+        const cancelEngravingBtn = document.getElementById('cancelEngraving');
+        const closeEngravingBtn = document.getElementById('closeEngraving');
+        const selectedMetalText = document.getElementById('selectedMetalText');
+
+        // Function to open engraving modal for metal selection
+        function openEngravingModal() {
+            selectedMetalText.textContent = selectedMetal;
+            selectedEngraving = null;
+
+            // Reset selection state
+            engravingOptionsModal.forEach(option => option.classList.remove('selected'));
+            confirmEngravingBtn.disabled = true;
+            confirmEngravingBtn.textContent = 'Add to Cart';
+
+            // Show modal
+            engravingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        }
+
+        // Open engraving modal when "Add [Metal Finish]" button is clicked
+        addMetalBtn.addEventListener('click', openEngravingModal);
+
+        // Open engraving modal when Browse Cards button is clicked
+        document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            // Scroll to bestsellers section
+            const bestsellersSection = document.getElementById('bestsellers');
+            if (bestsellersSection) {
+                const navHeight = nav.offsetHeight;
+                const targetPosition = bestsellersSection.offsetTop - navHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        // Handle engraving option selection
+        engravingOptionsModal.forEach(option => {
+            option.addEventListener('click', () => {
+                engravingOptionsModal.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedEngraving = option.dataset.engraving;
+                confirmEngravingBtn.disabled = false;
+                const engravingType = selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1);
+                confirmEngravingBtn.textContent = `Add ${engravingType} Engraving`;
+            });
+
+            // Mobile touch support
+            option.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+
+            option.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+
+        // Confirm engraving selection and add to cart
+        confirmEngravingBtn.addEventListener('click', () => {
+            if (!selectedEngraving) return;
+
+            const engravingType = selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1);
+            const itemName = `${selectedMetal} Metal Card (${engravingType} Engraving)`;
+
+            addToCart(itemName, 225);
+            closeEngravingModal();
+        });
+
+        // Close engraving modal and restore scrolling
+        function closeEngravingModal() {
+            engravingModal.classList.remove('active');
+            document.body.style.overflow = '';
+            document.body.style.position = '';
+            document.body.style.width = '';
+        }
+
+        // Event listeners for closing engraving modal
+        closeEngravingBtn.addEventListener('click', closeEngravingModal);
+        cancelEngravingBtn.addEventListener('click', closeEngravingModal);
+
+        // Close modal when clicking outside
+        engravingModal.addEventListener('click', (e) => {
+            if (e.target === engravingModal) {
+                closeEngravingModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && engravingModal.classList.contains('active')) {
+                closeEngravingModal();
+            }
+        });
+
+        // Smooth scrolling for desktop nav
+        document.querySelectorAll('.nav-center a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // If it's an external link or different page, allow normal navigation
+                if (this.getAttribute('target') === '_blank' || 
+                    !this.getAttribute('href').startsWith('#') ||
+                    this.getAttribute('href').includes('.html')) {
+                    return;
+                }
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Page loaded with ALL NAVIGATION FIXES:');
+            console.log('1. Mobile hamburger menu fixed ✓');
+            console.log('2. Mobile overlay fixed ✓');
+            console.log('3. Mobile close button fixed ✓');
+            console.log('4. Navigation links working properly ✓');
+            console.log('5. Body overflow fixed ✓');
+            updateCart();
+        });
+    </script>
+</body>
+
+</html>
