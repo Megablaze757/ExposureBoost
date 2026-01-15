@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ExposureBoost – Metal Cards</title>
+    <title>Metal Cards – Premium NFC Cards</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -42,12 +42,9 @@
     --yellow-bg: linear-gradient(135deg, #FFD700, #D4AF37);
     --red-bg: linear-gradient(135deg, #FF4444, #CC3333);
     --white-bg: linear-gradient(135deg, #FFFFFF, #F0F0F0);
-    --copper-bg: linear-gradient(135deg, #B87333, #996623);
-    --bronze-bg: linear-gradient(135deg, #CD7F32, #B0651F);
-    --gunmetal-bg: linear-gradient(135deg, #2C3539, #21282B);
+    --gold-bg: linear-gradient(135deg, #FFD700, #D4AF37);
     --rosegold-bg: linear-gradient(135deg, #B76E79, #E0BFB8);
     --silver-bg: linear-gradient(135deg, #C0C0C0, #A9A9A9);
-    --gold-bg: linear-gradient(135deg, #FFD700, #D4AF37);
 }
 
 * {
@@ -117,15 +114,10 @@ a {
     height: 40px;
     width: auto;
     object-fit: contain;
-    filter: brightness(0) invert(1);
 }
 
 .logo-text {
-    display: block;
-    color: var(--white);
-    font-weight: 900;
-    font-size: 1.2rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: none;
 }
 
 /* HAMBURGER MENU */
@@ -455,10 +447,6 @@ a {
 
     .whatsapp-icon {
         display: flex;
-    }
-
-    .logo-text {
-        font-size: 1.1rem;
     }
 
     .main-container {
@@ -991,19 +979,19 @@ section[id] {
     color: #1a1209;
 }
 
-.carousel-section.copper {
-    background: var(--copper-bg);
+.carousel-section.gold {
+    background: var(--gold-bg);
+    color: #1a1209;
+}
+
+.carousel-section.rosegold {
+    background: var(--rosegold-bg);
     color: #FFFFFF;
 }
 
-.carousel-section.bronze {
-    background: var(--bronze-bg);
-    color: #FFFFFF;
-}
-
-.carousel-section.gunmetal {
-    background: var(--gunmetal-bg);
-    color: #FFFFFF;
+.carousel-section.silver {
+    background: var(--silver-bg);
+    color: #1a1209;
 }
 
 /* Update text colors for dark backgrounds */
@@ -1012,9 +1000,7 @@ section[id] {
 .carousel-section.green .section-title,
 .carousel-section.purple .section-title,
 .carousel-section.red .section-title,
-.carousel-section.copper .section-title,
-.carousel-section.bronze .section-title,
-.carousel-section.gunmetal .section-title {
+.carousel-section.rosegold .section-title {
     color: #FFFFFF;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -1024,20 +1010,22 @@ section[id] {
 .carousel-section.green .section-subtitle,
 .carousel-section.purple .section-subtitle,
 .carousel-section.red .section-subtitle,
-.carousel-section.copper .section-subtitle,
-.carousel-section.bronze .section-subtitle,
-.carousel-section.gunmetal .section-subtitle {
+.carousel-section.rosegold .section-subtitle {
     color: rgba(255, 255, 255, 0.9);
 }
 
 .carousel-section.yellow .section-title,
-.carousel-section.white .section-title {
+.carousel-section.white .section-title,
+.carousel-section.gold .section-title,
+.carousel-section.silver .section-title {
     color: #1a1209;
     text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 .carousel-section.yellow .section-subtitle,
-.carousel-section.white .section-subtitle {
+.carousel-section.white .section-subtitle,
+.carousel-section.gold .section-subtitle,
+.carousel-section.silver .section-subtitle {
     color: rgba(26, 18, 9, 0.9);
 }
 
@@ -1109,10 +1097,23 @@ section[id] {
 }
 
 .carousel-section.yellow .metal-color-card,
-.carousel-section.white .metal-color-card {
+.carousel-section.white .metal-color-card,
+.carousel-section.gold .metal-color-card,
+.carousel-section.silver .metal-color-card {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(0, 0, 0, 0.3);
     color: #1a1209;
+}
+
+.carousel-section.black .metal-color-card,
+.carousel-section.blue .metal-color-card,
+.carousel-section.green .metal-color-card,
+.carousel-section.purple .metal-color-card,
+.carousel-section.red .metal-color-card,
+.carousel-section.rosegold .metal-color-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
 }
 
 .card-label {
@@ -1122,7 +1123,9 @@ section[id] {
 }
 
 .carousel-section.yellow .card-label,
-.carousel-section.white .card-label {
+.carousel-section.white .card-label,
+.carousel-section.gold .card-label,
+.carousel-section.silver .card-label {
     color: #1a1209;
 }
 
@@ -1131,9 +1134,7 @@ section[id] {
 .carousel-section.green .card-label,
 .carousel-section.purple .card-label,
 .carousel-section.red .card-label,
-.carousel-section.copper .card-label,
-.carousel-section.bronze .card-label,
-.carousel-section.gunmetal .card-label {
+.carousel-section.rosegold .card-label {
     color: #FFFFFF;
 }
 
@@ -1143,7 +1144,9 @@ section[id] {
 }
 
 .carousel-section.yellow .card-price,
-.carousel-section.white .card-price {
+.carousel-section.white .card-price,
+.carousel-section.gold .card-price,
+.carousel-section.silver .card-price {
     color: #1a1209;
 }
 
@@ -1152,9 +1155,7 @@ section[id] {
 .carousel-section.green .card-price,
 .carousel-section.purple .card-price,
 .carousel-section.red .card-price,
-.carousel-section.copper .card-price,
-.carousel-section.bronze .card-price,
-.carousel-section.gunmetal .card-price {
+.carousel-section.rosegold .card-price {
     color: #FFFFFF;
 }
 
@@ -1193,14 +1194,18 @@ section[id] {
 }
 
 .carousel-section.yellow .carousel-arrow,
-.carousel-section.white .carousel-arrow {
+.carousel-section.white .carousel-arrow,
+.carousel-section.gold .carousel-arrow,
+.carousel-section.silver .carousel-arrow {
     background: rgba(255, 255, 255, 0.6);
     border: 1px solid rgba(0, 0, 0, 0.3);
     color: #1a1209;
 }
 
 .carousel-section.yellow .carousel-arrow:hover,
-.carousel-section.white .carousel-arrow:hover {
+.carousel-section.white .carousel-arrow:hover,
+.carousel-section.gold .carousel-arrow:hover,
+.carousel-section.silver .carousel-arrow:hover {
     background: rgba(255, 255, 255, 0.8);
 }
 
@@ -1220,7 +1225,9 @@ section[id] {
 }
 
 .carousel-section.yellow .dot,
-.carousel-section.white .dot {
+.carousel-section.white .dot,
+.carousel-section.gold .dot,
+.carousel-section.silver .dot {
     background: rgba(26, 18, 9, 0.3);
 }
 
@@ -1229,9 +1236,7 @@ section[id] {
 .carousel-section.green .dot,
 .carousel-section.purple .dot,
 .carousel-section.red .dot,
-.carousel-section.copper .dot,
-.carousel-section.bronze .dot,
-.carousel-section.gunmetal .dot {
+.carousel-section.rosegold .dot {
     background: rgba(255, 255, 255, 0.3);
 }
 
@@ -1240,7 +1245,9 @@ section[id] {
 }
 
 .carousel-section.yellow .dot.active,
-.carousel-section.white .dot.active {
+.carousel-section.white .dot.active,
+.carousel-section.gold .dot.active,
+.carousel-section.silver .dot.active {
     background: #1a1209;
     box-shadow: 0 0 10px rgba(26, 18, 9, 0.5);
 }
@@ -1250,9 +1257,7 @@ section[id] {
 .carousel-section.green .dot.active,
 .carousel-section.purple .dot.active,
 .carousel-section.red .dot.active,
-.carousel-section.copper .dot.active,
-.carousel-section.bronze .dot.active,
-.carousel-section.gunmetal .dot.active {
+.carousel-section.rosegold .dot.active {
     background: #FFFFFF;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
@@ -2051,7 +2056,9 @@ section[id] {
 }
 
 .carousel-section.yellow .carousel-actions .btn,
-.carousel-section.white .carousel-actions .btn {
+.carousel-section.white .carousel-actions .btn,
+.carousel-section.gold .carousel-actions .btn,
+.carousel-section.silver .carousel-actions .btn {
     background: rgba(255, 255, 255, 0.7);
     color: #1a1209;
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -2063,7 +2070,9 @@ section[id] {
 }
 
 .carousel-section.yellow .carousel-actions .btn:hover,
-.carousel-section.white .carousel-actions .btn:hover {
+.carousel-section.white .carousel-actions .btn:hover,
+.carousel-section.gold .carousel-actions .btn:hover,
+.carousel-section.silver .carousel-actions .btn:hover {
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
 }
 
@@ -2504,9 +2513,7 @@ section[id] {
     <!-- STICKY NAV - METAL THEME -->
     <nav class="nav" id="mainNav">
         <a href="index.html" class="logo">
-            <img src="logo.png" alt="ExposureBoost Logo" class="logo-img"
-                onerror="this.style.display='none'; this.parentElement.querySelector('.logo-text').style.display='block'">
-            <span class="logo-text">ExposureBoost</span>
+            <img src="https://api.iconify.design/fluent-emoji-flat/credit-card.svg?color=white" alt="Metal Cards Logo" class="logo-img">
         </a>
 
         <button class="hamburger" id="hamburgerBtn">
@@ -2525,14 +2532,14 @@ section[id] {
         </div>
 
         <div class="nav-right">
-            <a href="https://wa.me/447123456789" class="whatsapp-icon" target="_blank" aria-label="WhatsApp">
+            <a href="https://wa.me/447754888841" class="whatsapp-icon" target="_blank" aria-label="WhatsApp">
                 💬
             </a>
             <div class="icon-btn" id="cartIcon">
                 🛒
                 <span class="cart-count" id="cartCount">0</span>
             </div>
-            <a href="https://wa.me/447123456789" class="whatsapp" target="_blank">
+            <a href="https://wa.me/447754888841" class="whatsapp" target="_blank">
                 <span>💬</span> WhatsApp
             </a>
         </div>
@@ -2561,7 +2568,7 @@ section[id] {
 
         <div class="menu-divider"></div>
 
-        <a href="https://wa.me/447123456789" class="whatsapp mobile-menu-item" target="_blank">
+        <a href="https://wa.me/447754888841" class="whatsapp mobile-menu-item" target="_blank">
             <span>💬</span> WhatsApp Support
         </a>
 
@@ -2604,14 +2611,14 @@ section[id] {
                 <div class="bestseller-card silver">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                        <img src="https://api.iconify.design/fluent-emoji-flat/silver.svg?color=ffffff&width=300&height=200" 
                              alt="Silver Metal Card">
                     </div>
                     <h3 class="bestseller-title">Silver Metal Card</h3>
                     <p class="bestseller-description">Sleek, modern, and sophisticated. Perfect for tech companies and modern brands.</p>
-                    <div class="bestseller-price">£225 <span>one-time · card + profile</span></div>
+                    <div class="bestseller-price">£95 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Silver Metal Card" data-price="225">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Silver Metal Card" data-price="95">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
@@ -2620,14 +2627,14 @@ section[id] {
                 <div class="bestseller-card rose-gold">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <img src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                        <img src="https://api.iconify.design/fluent-emoji-flat/rose.svg?color=ffffff&width=300&height=200" 
                              alt="Rose Gold Metal Card">
                     </div>
                     <h3 class="bestseller-title">Rose Gold Metal Card</h3>
                     <p class="bestseller-description">Contemporary, warm, and distinctive. Ideal for creative industries and fashion brands.</p>
-                    <div class="bestseller-price">£225 <span>one-time · card + profile</span></div>
+                    <div class="bestseller-price">£95 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Rose Gold Metal Card" data-price="225">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Rose Gold Metal Card" data-price="95">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
@@ -2636,14 +2643,14 @@ section[id] {
                 <div class="bestseller-card gold">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                        <img src="https://api.iconify.design/fluent-emoji-flat/gold.svg?color=ffffff&width=300&height=200" 
                              alt="Gold Metal Card">
                     </div>
                     <h3 class="bestseller-title">Gold Metal Card</h3>
                     <p class="bestseller-description">The ultimate symbol of success and achievement. Perfect for executives and luxury brands.</p>
-                    <div class="bestseller-price">£225 <span>one-time · card + profile</span></div>
+                    <div class="bestseller-price">£95 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Gold Metal Card" data-price="225">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Gold Metal Card" data-price="95">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
@@ -2661,54 +2668,54 @@ section[id] {
                 <div class="metal-carousel">
                     <button class="carousel-arrow left" aria-label="Previous">‹</button>
 
-                    <!-- FIXED: Only 7 colors, NO Gold, Silver, or Rose Gold -->
+                    <!-- 7 colors including Gold, Silver, Rose Gold -->
                     <div class="metal-color-card active" data-color="Black">
-                        <div class="color-swatch" style="background: linear-gradient(135deg, #000000, #333333);"></div>
+                        <div class="color-swatch" style="background: var(--black-bg);"></div>
                         <div class="card-label">Black</div>
-                        <div class="card-price">£225</div>
+                        <div class="card-price">£95</div>
                     </div>
 
                     <div class="metal-color-card" data-color="Blue">
-                        <div class="color-swatch" style="background: linear-gradient(135deg, #0066CC, #004488);"></div>
+                        <div class="color-swatch" style="background: var(--blue-bg);"></div>
                         <div class="card-label">Blue</div>
-                        <div class="card-price">£225</div>
+                        <div class="card-price">£95</div>
                     </div>
 
                     <div class="metal-color-card" data-color="Green">
-                        <div class="color-swatch" style="background: linear-gradient(135deg, #00AA55, #008844);"></div>
+                        <div class="color-swatch" style="background: var(--green-bg);"></div>
                         <div class="card-label">Green</div>
-                        <div class="card-price">£225</div>
+                        <div class="card-price">£95</div>
                     </div>
 
                     <div class="metal-color-card" data-color="Purple">
-                        <div class="color-swatch" style="background: linear-gradient(135deg, #8A2BE2, #6A1BC2);"></div>
+                        <div class="color-swatch" style="background: var(--purple-bg);"></div>
                         <div class="card-label">Purple</div>
-                        <div class="card-price">£225</div>
+                        <div class="card-price">£95</div>
                     </div>
 
-                    <div class="metal-color-card" data-color="Copper">
-                        <div class="color-swatch" style="background: linear-gradient(135deg, #B87333, #996623);"></div>
-                        <div class="card-label">Copper</div>
-                        <div class="card-price">£225</div>
+                    <div class="metal-color-card" data-color="Gold">
+                        <div class="color-swatch" style="background: var(--gold-bg);"></div>
+                        <div class="card-label">Gold</div>
+                        <div class="card-price">£95</div>
                     </div>
 
-                    <div class="metal-color-card" data-color="Bronze">
-                        <div class="color-swatch" style="background: linear-gradient(135deg, #CD7F32, #B0651F);"></div>
-                        <div class="card-label">Bronze</div>
-                        <div class="card-price">£225</div>
+                    <div class="metal-color-card" data-color="Silver">
+                        <div class="color-swatch" style="background: var(--silver-bg);"></div>
+                        <div class="card-label">Silver</div>
+                        <div class="card-price">£95</div>
                     </div>
 
-                    <div class="metal-color-card" data-color="Gunmetal">
-                        <div class="color-swatch" style="background: linear-gradient(135deg, #2C3539, #21282B);"></div>
-                        <div class="card-label">Gunmetal</div>
-                        <div class="card-price">£225</div>
+                    <div class="metal-color-card" data-color="Rosegold">
+                        <div class="color-swatch" style="background: var(--rosegold-bg);"></div>
+                        <div class="card-label">Rose Gold</div>
+                        <div class="card-price">£95</div>
                     </div>
 
                     <button class="carousel-arrow right" aria-label="Next">›</button>
                 </div>
 
                 <div class="dots">
-                    <!-- FIXED: Exactly 7 dots -->
+                    <!-- Exactly 7 dots -->
                     <span class="dot active"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
@@ -2805,7 +2812,7 @@ section[id] {
                     <div class="preview-section-mobile">
                         <div class="preview-header-mobile">
                             <div class="preview-title-mobile">Live Preview</div>
-                            <div class="card-counter-mobile" id="cardCounterMobile">1/10</div>
+                            <div class="card-counter-mobile" id="cardCounterMobile">1/7</div>
                         </div>
                         
                         <div class="preview-card-mobile">
@@ -2823,7 +2830,7 @@ section[id] {
                                 <div class="card-name-mobile" id="selectedCardNameMobile">Black Metal Card</div>
                                 <div class="engraving-type-mobile" id="selectedEngravingTypeMobile">Silver Engraving</div>
                             </div>
-                            <div class="preview-price-mobile">£225</div>
+                            <div class="preview-price-mobile">£95</div>
                         </div>
                         
                         <div class="card-navigation-mobile">
@@ -2861,23 +2868,14 @@ section[id] {
                                 <div class="color-option-mobile" data-color="purple" style="background: var(--purple-bg);">
                                     <div class="color-label-mobile">Purple</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="copper" style="background: var(--copper-bg);">
-                                    <div class="color-label-mobile">Copper</div>
-                                </div>
-                                <div class="color-option-mobile" data-color="bronze" style="background: var(--bronze-bg);">
-                                    <div class="color-label-mobile">Bronze</div>
-                                </div>
-                                <div class="color-option-mobile" data-color="gunmetal" style="background: var(--gunmetal-bg);">
-                                    <div class="color-label-mobile">Gunmetal</div>
+                                <div class="color-option-mobile" data-color="gold" style="background: var(--gold-bg);">
+                                    <div class="color-label-mobile">Gold</div>
                                 </div>
                                 <div class="color-option-mobile" data-color="silver" style="background: var(--silver-bg);">
                                     <div class="color-label-mobile">Silver</div>
                                 </div>
                                 <div class="color-option-mobile" data-color="rosegold" style="background: var(--rosegold-bg);">
                                     <div class="color-label-mobile">Rose Gold</div>
-                                </div>
-                                <div class="color-option-mobile" data-color="gold" style="background: var(--gold-bg);">
-                                    <div class="color-label-mobile">Gold</div>
                                 </div>
                             </div>
                         </div>
@@ -2937,7 +2935,7 @@ section[id] {
                     <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
                         Send us your logo on WhatsApp and we'll create a custom mockup for you
                     </p>
-                    <a href="https://wa.me/447123456789" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
+                    <a href="https://wa.me/447754888841" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
                         <span>💬</span> Send Logo on WhatsApp
                     </a>
                 </div>
@@ -3145,7 +3143,7 @@ section[id] {
         document.body.style.overflow = '';
     }
 
-    // Checkout functionality
+    // Checkout functionality - WhatsApp integration
     function checkout() {
         if (cart.length === 0) {
             showNotification('Your cart is empty!');
@@ -3153,7 +3151,30 @@ section[id] {
         }
 
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        alert(`Proceeding to checkout. Total: £${total}\n\nThis is a demo. In a real application, this would redirect to a payment processor.`);
+        
+        // Format WhatsApp message
+        let message = "Hello! I'd like to place an order for the following items:\n\n";
+        
+        cart.forEach(item => {
+            message += `• ${item.name} × ${item.quantity} - £${item.price * item.quantity}\n`;
+        });
+        
+        message += `\nTotal: £${total}\n\n`;
+        message += "Please let me know the next steps to complete my order.";
+        
+        // Encode message for URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Create WhatsApp URL with your number
+        const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
+        
+        // Open WhatsApp
+        window.open(whatsappUrl, '_blank');
+        
+        // Clear cart after sending to WhatsApp
+        cart = [];
+        updateCart();
+        closeCartModal();
     }
 
     // Event listeners for cart
@@ -3196,15 +3217,15 @@ section[id] {
     const metalNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
     const addMetalBtn = document.getElementById('addMetalBtn');
 
-    // Map color names to CSS class names - ONLY 7 COLORS
+    // Map color names to CSS class names - 7 COLORS including Gold, Silver, Rose Gold
     const metalColorMap = {
         'Black': 'black',
         'Blue': 'blue',
         'Green': 'green',
         'Purple': 'purple',
-        'Copper': 'copper',
-        'Bronze': 'bronze',
-        'Gunmetal': 'gunmetal'
+        'Gold': 'gold',
+        'Silver': 'silver',
+        'Rosegold': 'rosegold'
     };
 
     let metalIndex = 0;
@@ -3328,18 +3349,15 @@ section[id] {
     const selectedEngravingTypeMobile = document.getElementById('selectedEngravingTypeMobile');
     const addToCartMobile = document.getElementById('addToCartMobile');
 
-    // All available cards
+    // All available cards - 7 colors including Gold, Silver, Rose Gold
     const cardsMobile = [
-        { id: 1, name: 'Black Metal Card', color: 'black', engraving: 'silver', price: 225 },
-        { id: 2, name: 'Blue Metal Card', color: 'blue', engraving: 'silver', price: 225 },
-        { id: 3, name: 'Green Metal Card', color: 'green', engraving: 'silver', price: 225 },
-        { id: 4, name: 'Purple Metal Card', color: 'purple', engraving: 'silver', price: 225 },
-        { id: 5, name: 'Copper Metal Card', color: 'copper', engraving: 'silver', price: 225 },
-        { id: 6, name: 'Bronze Metal Card', color: 'bronze', engraving: 'silver', price: 225 },
-        { id: 7, name: 'Gunmetal Metal Card', color: 'gunmetal', engraving: 'silver', price: 225 },
-        { id: 8, name: 'Silver Metal Card', color: 'silver', engraving: 'silver', price: 225 },
-        { id: 9, name: 'Rose Gold Metal Card', color: 'rosegold', engraving: 'silver', price: 225 },
-        { id: 10, name: 'Gold Metal Card', color: 'gold', engraving: 'silver', price: 225 }
+        { id: 1, name: 'Black Metal Card', color: 'black', engraving: 'silver', price: 95 },
+        { id: 2, name: 'Blue Metal Card', color: 'blue', engraving: 'silver', price: 95 },
+        { id: 3, name: 'Green Metal Card', color: 'green', engraving: 'silver', price: 95 },
+        { id: 4, name: 'Purple Metal Card', color: 'purple', engraving: 'silver', price: 95 },
+        { id: 5, name: 'Gold Metal Card', color: 'gold', engraving: 'silver', price: 95 },
+        { id: 6, name: 'Silver Metal Card', color: 'silver', engraving: 'silver', price: 95 },
+        { id: 7, name: 'Rose Gold Metal Card', color: 'rosegold', engraving: 'silver', price: 95 }
     ];
 
     let currentCardIndexMobile = 0;
@@ -3353,12 +3371,9 @@ section[id] {
         'blue': 'Blue',
         'green': 'Green',
         'purple': 'Purple',
-        'copper': 'Copper',
-        'bronze': 'Bronze',
-        'gunmetal': 'Gunmetal',
+        'gold': 'Gold',
         'silver': 'Silver',
-        'rosegold': 'Rose Gold',
-        'gold': 'Gold'
+        'rosegold': 'Rose Gold'
     };
 
     // Engraving name mapping
@@ -3420,12 +3435,9 @@ section[id] {
             case 'blue': return 'var(--blue-bg)';
             case 'green': return 'var(--green-bg)';
             case 'purple': return 'var(--purple-bg)';
-            case 'copper': return 'var(--copper-bg)';
-            case 'bronze': return 'var(--bronze-bg)';
-            case 'gunmetal': return 'var(--gunmetal-bg)';
+            case 'gold': return 'var(--gold-bg)';
             case 'silver': return 'var(--silver-bg)';
             case 'rosegold': return 'var(--rosegold-bg)';
-            case 'gold': return 'var(--gold-bg)';
             default: return 'var(--black-bg)';
         }
     }
@@ -3634,7 +3646,7 @@ section[id] {
         const engravingType = selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1);
         const itemName = `${selectedMetal} Metal Card (${engravingType} Engraving)`;
 
-        addToCart(itemName, 225);
+        addToCart(itemName, 95);
         closeEngravingModal();
     });
 
@@ -3691,17 +3703,16 @@ section[id] {
 
     // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', function () {
-        console.log('Metal Page loaded with FIXED navigation:');
-        console.log('1. Navigation menu completely fixed ✓');
-        console.log('2. Mobile hamburger works perfectly ✓');
-        console.log('3. Desktop navigation works ✓');
-        console.log('4. All links work properly ✓');
-        console.log('5. Metal-themed color scheme applied ✓');
+        console.log('Metal Page loaded with all requested changes:');
+        console.log('1. Removed Gunmetal, Bronze, Copper ✓');
+        console.log('2. Added Gold, Silver, Rose Gold to carousel ✓');
+        console.log('3. All prices set to £95 ✓');
+        console.log('4. WhatsApp links updated to +447754888841 ✓');
+        console.log('5. Checkout linked to WhatsApp with formatted message ✓');
+        console.log('6. Removed ExposureBoost text from nav ✓');
+        console.log('7. Added card icon as logo ✓');
         updateCart();
     });
 </script>
     
 </html>
-
-
-
