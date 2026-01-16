@@ -499,6 +499,21 @@ a {
         font-size: 11px;
         font-weight: 700;
     }
+
+
+    /* Force HERO to use the exact same card sizing rules as the other sections on mobile */
+    #hero .card-image {
+        width: min(92vw, 420px) !important;
+        height: auto !important;
+        aspect-ratio: 5 / 3;
+    }
+
+    #hero .card-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover;
+        object-position: center;
+    }
 }
 
 /* MAIN CONTENT */
@@ -632,6 +647,8 @@ a {
 .card-image:hover img {
     transform: scale(1.05);
 }
+
+
 
 /* Buttons */
 .section-button {
@@ -975,6 +992,21 @@ a {
         transform: none;
     }
 }
+
+
+/* FORCE HERO CARD IMAGE TO MATCH ALL OTHER CARDS (desktop) */
+#hero .card-image {
+    width: 500px !important;
+    height: 300px !important;
+}
+
+#hero .card-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+}
+
 </style>
 </head>
 
@@ -1102,7 +1134,7 @@ a {
             <div class="content-container">
                
 
-                <h2 class="section-title">Metal Card</h2>
+                <h2 class="section-title">Metal Cards</h2>
 
                 <p class="section-subtitle">Luxury</p>
 
@@ -1124,7 +1156,7 @@ a {
             <div class="content-container">
               
 
-                <h2 class="section-title">Wood Card</h2>
+                <h2 class="section-title">Wood Cards</h2>
 
                 <p class="section-subtitle">Sustainable</p>
 
@@ -1146,7 +1178,7 @@ a {
             <div class="content-container">
               
 
-                <h2 class="section-title">Plastic Card</h2>
+                <h2 class="section-title">Plastic Cards</h2>
 
                 <p class="section-subtitle">Endless possibilities</p>
 
