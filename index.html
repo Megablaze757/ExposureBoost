@@ -1007,6 +1007,17 @@ a {
     object-position: center;
 }
 
+
+/* DESKTOP: If hero image appears smaller due to extra padding inside the file, gently scale it up without affecting mobile */
+@media (min-width: 768px) {
+    #hero .card-image img {
+        transform: scale(1.08);
+    }
+    #hero .card-image:hover img {
+        transform: scale(1.12);
+    }
+}
+
 </style>
 </head>
 
