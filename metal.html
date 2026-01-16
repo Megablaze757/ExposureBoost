@@ -827,6 +827,7 @@ section[id] {
     height: 200px; /* Fixed height */
     border-radius: 12px;
     margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -1083,6 +1084,1590 @@ section[id] {
     transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
     pointer-events: none;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    transform: translateZ(0);
+}
+
+.metal-color-card.active {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+    z-index: 3;
+    pointer-events: auto;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+.metal-color-card img {
+    width: 100%;
+    border-radius: 16px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.color-swatch {
+    width: 100%;
+    height: 140px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-section.yellow .metal-color-card,
+.carousel-section.white .metal-color-card,
+.carousel-section.gold .metal-color-card,
+.carousel-section.silver .metal-color-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: #1a1209;
+}
+
+.carousel-section.black .metal-color-card,
+.carousel-section.blue .metal-color-card,
+.carousel-section.green .metal-color-card,
+.carousel-section.purple .metal-color-card,
+.carousel-section.red .metal-color-card,
+.carousel-section.rosegold .metal-color-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+}
+
+.card-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.carousel-section.yellow .card-label,
+.carousel-section.white .card-label,
+.carousel-section.gold .card-label,
+.carousel-section.silver .card-label {
+    color: #1a1209;
+}
+
+.carousel-section.black .card-label,
+.carousel-section.blue .card-label,
+.carousel-section.green .card-label,
+.carousel-section.purple .card-label,
+.carousel-section.red .card-label,
+.carousel-section.rosegold .card-label {
+    color: #FFFFFF;
+}
+
+.card-price {
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.carousel-section.yellow .card-price,
+.carousel-section.white .card-price,
+.carousel-section.gold .card-price,
+.carousel-section.silver .card-price {
+    color: #1a1209;
+}
+
+.carousel-section.black .card-price,
+.carousel-section.blue .card-price,
+.carousel-section.green .card-price,
+.carousel-section.purple .card-price,
+.carousel-section.red .card-price,
+.carousel-section.rosegold .card-price {
+    color: #FFFFFF;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-arrow.left {
+    left: 20px;
+}
+
+.carousel-arrow.right {
+    right: 20px;
+}
+
+.carousel-section.yellow .carousel-arrow,
+.carousel-section.white .carousel-arrow,
+.carousel-section.gold .carousel-arrow,
+.carousel-section.silver .carousel-arrow {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: #1a1209;
+}
+
+.carousel-section.yellow .carousel-arrow:hover,
+.carousel-section.white .carousel-arrow:hover,
+.carousel-section.gold .carousel-arrow:hover,
+.carousel-section.silver .carousel-arrow:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0 30px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-section.yellow .dot,
+.carousel-section.white .dot,
+.carousel-section.gold .dot,
+.carousel-section.silver .dot {
+    background: rgba(26, 18, 9, 0.3);
+}
+
+.carousel-section.black .dot,
+.carousel-section.blue .dot,
+.carousel-section.green .dot,
+.carousel-section.purple .dot,
+.carousel-section.red .dot,
+.carousel-section.rosegold .dot {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.dot.active {
+    transform: scale(1.2);
+}
+
+.carousel-section.yellow .dot.active,
+.carousel-section.white .dot.active,
+.carousel-section.gold .dot.active,
+.carousel-section.silver .dot.active {
+    background: #1a1209;
+    box-shadow: 0 0 10px rgba(26, 18, 9, 0.5);
+}
+
+.carousel-section.black .dot.active,
+.carousel-section.blue .dot.active,
+.carousel-section.green .dot.active,
+.carousel-section.purple .dot.active,
+.carousel-section.red .dot.active,
+.carousel-section.rosegold .dot.active {
+    background: #FFFFFF;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* WHY CHOOSE SECTION - METAL THEME */
+.why-choose-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.why-choose-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.benefit-card {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(10px);
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--rose-gold-light);
+    box-shadow: 0 15px 30px rgba(183, 110, 121, 0.2);
+    background: rgba(224, 191, 184, 0.15);
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: rgba(224, 191, 184, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--white);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+}
+
+.benefit-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--white);
+}
+
+.benefit-description {
+    color: rgba(255, 245, 243, 0.85);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* TESTIMONIALS SECTION - METAL THEME */
+.testimonials-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #2D1A1A 0%, #1A0F0F 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rose-gold-medium), transparent);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.testimonial-card {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.testimonial-quote {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 245, 243, 0.95);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 5px;
+}
+
+.testimonial-role {
+    color: rgba(255, 245, 243, 0.7);
+    font-size: 0.9rem;
+}
+
+/* CUSTOM LOGO SECTION - COMPLETELY REDESIGNED FOR MOBILE */
+.custom-logo-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-logo-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
+}
+
+.custom-logo-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Mobile-friendly logo builder */
+.logo-builder-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+@media (min-width: 992px) {
+    .logo-builder-mobile {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: start;
+    }
+}
+
+/* Preview Section - Mobile Optimized */
+.preview-section-mobile {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 24px;
+    padding: 25px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+    margin-bottom: 20px;
+}
+
+.preview-header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(224, 191, 184, 0.3);
+}
+
+.preview-title-mobile {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.card-counter-mobile {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--rose-gold-light);
+    background: rgba(224, 191, 184, 0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.preview-card-mobile {
+    width: 100%;
+    max-width: 320px;
+    height: 200px;
+    margin: 0 auto 25px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+@media (min-width: 768px) {
+    .preview-card-mobile {
+        height: 220px;
+        max-width: 350px;
+    }
+}
+
+.preview-card-inner-mobile {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-logo-mobile {
+    max-width: 70%;
+    max-height: 70%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    display: none;
+}
+
+.preview-logo-mobile.visible {
+    display: block;
+}
+
+.preview-placeholder-mobile {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+}
+
+.placeholder-icon-mobile {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    opacity: 0.6;
+}
+
+.placeholder-text-mobile {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.preview-details-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.selected-card-info-mobile {
+    text-align: left;
+}
+
+.card-name-mobile {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 5px;
+}
+
+.engraving-type-mobile {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.preview-price-mobile {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--rose-gold-light);
+}
+
+/* Card Navigation - Mobile Friendly */
+.card-navigation-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    gap: 15px;
+}
+
+.nav-btn-mobile {
+    flex: 1;
+    background: rgba(224, 191, 184, 0.2);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    color: var(--white);
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 50px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-btn-mobile:hover {
+    background: rgba(224, 191, 184, 0.3);
+    transform: translateY(-2px);
+}
+
+.nav-btn-mobile:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.nav-btn-mobile.prev {
+    text-align: left;
+}
+
+.nav-btn-mobile.next {
+    text-align: right;
+}
+
+/* Selection Area - Mobile Optimized */
+.selection-area-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.selection-step-mobile {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.step-title-mobile {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-number-mobile {
+    width: 28px;
+    height: 28px;
+    background: var(--rose-gold-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.85rem;
+}
+
+/* Card Color Selection - Mobile Optimized */
+.card-colors-mobile {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 480px) {
+    .card-colors-mobile {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 360px) {
+    .card-colors-mobile {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.color-option-mobile {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.color-option-mobile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.color-option-mobile.selected {
+    border-color: var(--white);
+    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.color-label-mobile {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 2px 4px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+/* Engraving Selection - Mobile Optimized */
+.engraving-options-mobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.engraving-option-mobile {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.engraving-option-mobile:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.engraving-option-mobile.selected {
+    background: rgba(224, 191, 184, 0.2);
+    border-color: var(--rose-gold-light);
+}
+
+.engraving-icon-mobile {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.engraving-name-mobile {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.engraving-price-mobile {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* UPLOAD AREA - COMPLETELY FIXED FOR MOBILE */
+.upload-container-mobile {
+    width: 100%;
+}
+
+.upload-area-mobile {
+    border: 2px dashed rgba(224, 191, 184, 0.5);
+    border-radius: 16px;
+    padding: 30px 20px;
+    background: rgba(224, 191, 184, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-bottom: 20px;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .upload-area-mobile {
+        min-height: 200px;
+        padding: 40px 20px;
+    }
+}
+
+.upload-area-mobile:hover {
+    border-color: var(--rose-gold-light);
+    background: rgba(224, 191, 184, 0.1);
+    transform: translateY(-2px);
+}
+
+.upload-area-mobile:active {
+    transform: translateY(0);
+}
+
+.upload-area-mobile.drag-over {
+    border-color: var(--rose-gold-light);
+    background: rgba(224, 191, 184, 0.15);
+    border-style: solid;
+}
+
+.upload-icon-mobile {
+    font-size: 2.5rem;
+    color: rgba(224, 191, 184, 0.7);
+    margin-bottom: 15px;
+}
+
+.upload-text-mobile {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.upload-subtext-mobile {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.upload-hint-mobile {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* FIXED: File input for mobile - NO CAPTURE ATTRIBUTE */
+#logoFileInputMobile {
+    display: none;
+}
+
+/* Upload Actions - Mobile Optimized */
+.upload-actions-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+@media (min-width: 480px) {
+    .upload-actions-mobile {
+        flex-direction: row;
+    }
+}
+
+.upload-btn-mobile, .clear-logo-btn-mobile {
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    min-height: 52px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.upload-btn-mobile {
+    background: var(--rose-gold-gradient);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
+}
+
+.upload-btn-mobile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
+}
+
+.upload-btn-mobile:active {
+    transform: translateY(0);
+}
+
+.clear-logo-btn-mobile {
+    background: rgba(224, 191, 184, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+}
+
+.clear-logo-btn-mobile:hover {
+    background: rgba(224, 191, 184, 0.25);
+    transform: translateY(-2px);
+}
+
+.clear-logo-btn-mobile:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Add to Cart Button - Mobile Optimized */
+.add-to-cart-mobile {
+    width: 100%;
+    padding: 18px;
+    background: var(--rose-gold-gradient);
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.add-to-cart-mobile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
+}
+
+/* Mobile Touch Feedback */
+.color-option-mobile:active,
+.engraving-option-mobile:active,
+.upload-btn-mobile:active,
+.clear-logo-btn-mobile:active,
+.nav-btn-mobile:active,
+.add-to-cart-mobile:active {
+    transform: scale(0.98);
+}
+
+.whatsapp-help {
+    margin-top: 40px;
+    padding: 25px;
+    background: rgba(37, 211, 102, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .bestsellers-grid,
+    .benefits-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+    }
+
+    .carousel-arrow.left {
+        left: 10px;
+    }
+
+    .carousel-arrow.right {
+        right: 10px;
+    }
+
+    .metal-carousel {
+        height: 280px;
+    }
+
+    .metal-color-card {
+        width: 200px;
+        padding: 14px;
+    }
+
+    .color-swatch {
+        height: 120px;
+    }
+
+    .custom-logo-section {
+        padding: 60px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .bestseller-actions {
+        flex-direction: column;
+    }
+
+    .carousel-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+    }
+
+    .carousel-arrow.left {
+        left: 5px;
+    }
+
+    .carousel-arrow.right {
+        right: 5px;
+    }
+
+    .metal-carousel {
+        height: 260px;
+    }
+
+    .metal-color-card {
+        width: 180px;
+        padding: 12px;
+    }
+
+    .color-swatch {
+        height: 100px;
+    }
+
+    .preview-card-mobile {
+        height: 180px;
+    }
+
+    .selection-step-mobile {
+        padding: 18px;
+    }
+
+    .step-title-mobile {
+        font-size: 1.1rem;
+    }
+
+    .upload-area-mobile {
+        padding: 25px 15px;
+        min-height: 160px;
+    }
+
+    .upload-text-mobile {
+        font-size: 1rem;
+    }
+
+    .upload-subtext-mobile {
+        font-size: 0.8rem;
+    }
+}
+
+/* Add to cart button in carousel */
+.carousel-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.carousel-actions .btn {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.carousel-section.yellow .carousel-actions .btn,
+.carousel-section.white .carousel-actions .btn,
+.carousel-section.gold .carousel-actions .btn,
+.carousel-section.silver .carousel-actions .btn {
+    background: rgba(255, 255, 255, 0.7);
+    color: #1a1209;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.carousel-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-section.yellow .carousel-actions .btn:hover,
+.carousel-section.white .carousel-actions .btn:hover,
+.carousel-section.gold .carousel-actions .btn:hover,
+.carousel-section.silver .carousel-actions .btn:hover {
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================================================
+   IMPROVED ENGRAVING MODAL - METAL THEME
+   ============================================================================ */
+.engraving-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 15, 15, 0.98);
+    backdrop-filter: blur(20px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.engraving-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.engraving-content {
+    background: linear-gradient(135deg, rgba(26, 15, 15, 0.95), rgba(45, 26, 26, 0.98));
+    border-radius: 24px;
+    padding: 30px;
+    max-width: 500px;
+    width: 95%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    box-shadow: 0 40px 80px rgba(183, 110, 121, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    animation: modalAppear 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(10px);
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.close-engraving {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(224, 191, 184, 0.15);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    color: var(--white);
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.close-engraving:hover {
+    background: rgba(224, 191, 184, 0.3);
+    transform: rotate(90deg);
+}
+
+.engraving-header {
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.engraving-header h3 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: var(--white);
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
+}
+
+.engraving-header p {
+    color: rgba(255, 245, 243, 0.85);
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.engraving-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+    .engraving-options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.engraving-option {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 18px;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-align: center;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.engraving-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--rose-gold-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.engraving-option:hover {
+    background: rgba(224, 191, 184, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(183, 110, 121, 0.2);
+}
+
+.engraving-option.selected {
+    background: rgba(224, 191, 184, 0.2);
+    border-color: var(--rose-gold-light);
+    box-shadow: 0 20px 40px rgba(183, 110, 121, 0.3);
+}
+
+.engraving-option.selected::before {
+    opacity: 1;
+}
+
+.engraving-image {
+    width: 100%;
+    height: 120px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.engraving-option[data-engraving="silver"] .engraving-image {
+    background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+}
+
+.engraving-option[data-engraving="gold"] .engraving-image {
+    background: linear-gradient(135deg, #FFD700, #D4AF37);
+}
+
+.engraving-image span {
+    font-size: 3rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.engraving-option[data-engraving="silver"] .engraving-image span {
+    color: #FFFFFF;
+}
+
+.engraving-option[data-engraving="gold"] .engraving-image span {
+    color: #1a1209;
+}
+
+.engraving-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.engraving-price {
+    font-size: 0.95rem;
+    color: var(--rose-gold-light);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.engraving-description {
+    font-size: 0.9rem;
+    color: rgba(255, 245, 243, 0.8);
+    line-height: 1.5;
+    text-align: left;
+}
+
+.engraving-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(224, 191, 184, 0.2);
+}
+
+@media (min-width: 480px) {
+    .engraving-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.btn-cancel,
+.btn-confirm {
+    padding: 18px 28px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    flex: 1;
+    min-width: 0;
+    border: none;
+    letter-spacing: 0.5px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 56px;
+}
+
+@media (min-width: 480px) {
+    .btn-cancel,
+    .btn-confirm {
+        min-width: 140px;
+        flex: 0 1 auto;
+    }
+}
+
+.btn-cancel {
+    background: rgba(224, 191, 184, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+}
+
+.btn-cancel:active {
+    background: rgba(224, 191, 184, 0.25);
+    transform: translateY(0);
+}
+
+.btn-cancel:hover {
+    background: rgba(224, 191, 184, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(183, 110, 121, 0.2);
+}
+
+.btn-confirm {
+    background: var(--rose-gold-gradient);
+    color: var(--white);
+    box-shadow: 0 8px 25px rgba(183, 110, 121, 0.4);
+}
+
+.btn-confirm:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-confirm:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(183, 110, 121, 0.5);
+    background: linear-gradient(135deg, #E8D4D1, #C98A96);
+}
+
+.btn-confirm:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* MOBILE SPECIFIC STYLES FOR ENGRAVING MODAL */
+@media (max-width: 767px) {
+    .engraving-content {
+        padding: 25px 20px;
+        max-height: 90vh;
+    }
+
+    .engraving-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .engraving-header p {
+        font-size: 0.95rem;
+    }
+
+    .engraving-option {
+        padding: 20px;
+    }
+
+    .engraving-image {
+        height: 100px;
+    }
+
+    .engraving-label {
+        font-size: 1rem;
+    }
+
+    .engraving-description {
+        font-size: 0.85rem;
+    }
+
+    .btn-cancel,
+    .btn-confirm {
+        padding: 16px 24px;
+        font-size: 15px;
+        min-height: 52px;
+    }
+
+    .close-engraving {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .engraving-content {
+        padding: 20px 16px;
+    }
+
+    .engraving-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .engraving-header p {
+        font-size: 0.9rem;
+    }
+
+    .engraving-option {
+        padding: 18px;
+    }
+
+    .engraving-image {
+        height: 90px;
+        margin-bottom: 15px;
+    }
+
+    .engraving-image span {
+        font-size: 2.5rem;
+    }
+
+    .engraving-label {
+        font-size: 0.95rem;
+    }
+
+    .engraving-description {
+        font-size: 0.8rem;
+    }
+}
+
+/* Cart Modal - METAL THEME */
+.cart-modal {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100%;
+    background: linear-gradient(135deg, #1A0F0F, #2D1A1A);
+    border-left: 1px solid rgba(224, 191, 184, 0.2);
+    z-index: 2000;
+    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -20px 0 60px rgba(183, 110, 121, 0.3);
+}
+
+@media (max-width: 768px) {
+    .cart-modal {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+.cart-modal.active {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border-bottom: 1px solid rgba(224, 191, 184, 0.2);
+}
+
+.cart-header h3 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--white);
+    margin: 0;
+}
+
+.close-cart {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(224, 191, 184, 0.2);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    color: var(--white);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-cart:hover {
+    background: rgba(224, 191, 184, 0.3);
+    transform: rotate(90deg);
+}
+
+.cart-items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 25px;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 60px 20px;
+    color: rgba(224, 191, 184, 0.7);
+}
+
+.empty-cart p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.cart-item-price {
+    color: rgba(224, 191, 184, 0.8);
+    font-size: 0.85rem;
+}
+
+.remove-item {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(224, 191, 184, 0.2);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.remove-item:hover {
+    background: rgba(224, 191, 184, 0.3);
+    border-color: var(--rose-gold-light);
+    color: var(--rose-gold-light);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border-top: 1px solid rgba(224, 191, 184, 0.2);
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--white);
+}
+
+.checkout-btn {
+    margin: 0 25px 25px;
+    padding: 18px;
+    border-radius: 14px;
+    background: var(--rose-gold-gradient);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(183, 110, 121, 0.4);
+}
+
+/* Notification - METAL THEME */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--rose-gold-gradient);
+    color: var(--white);
+    padding: 18px 25px;
+    border-radius: 14px;
+    font-weight: 600;
+    box-shadow: 0 15px 40px rgba(183, 110, 121, 0.3);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 3000;
+    max-width: 300px;
+}
+
+@media (max-width: 768px) {
+    .notification {
+        right: 20px;
+        left: 20px;
+        max-width: none;
+    }
+}
+
+.notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
     </style>
 </head>
 
@@ -2450,5 +4035,3 @@ section[id] {
 </script>
     
 </html>
-
-
