@@ -512,11 +512,12 @@ a {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover;
-    background: transparent;
+        background: transparent;
         object-position: center;
     filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4)); /* shadow without a box */
     }
-    box-shadow: none; /* removed faint container box */
+    /* removed faint container box */
+    #hero .card-image { box-shadow: none !important; }
 }
 
 /* MAIN CONTENT */
@@ -628,12 +629,18 @@ a {
     width: 500px;
     height: 300px;
     border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    /*
+      The faint "rectangle" you were seeing was the box-shadow being drawn on this
+      container (even with a transparent background).
+      Remove the container shadow + let the *image* carry the shadow instead.
+    */
+    overflow: visible;
+    box-shadow: none;
     display: flex;
     align-items: center;
     justify-content: center;
     background: transparent;
+    border: none;
     position: relative;
 }
 
@@ -643,7 +650,10 @@ a {
     object-fit: cover;
     object-position: center;
     display: block;
+    border-radius: 20px;
     transition: transform 0.3s ease;
+    /* shadow that follows the image (no visible container box) */
+    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
 }
 
 
@@ -1009,13 +1019,6 @@ a {
     object-fit: cover;
     object-position: center;
 }
-
-
-
-
-}
-
-
 
 </style>
 </head>
