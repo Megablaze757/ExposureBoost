@@ -821,7 +821,7 @@ section[id] {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* FIXED: SVG IMAGE CONTAINER - IMPROVED FOR SVG SCALING */
+/* FIXED: WEBP IMAGE CONTAINER - IMPROVED FOR WEBP SCALING */
 .bestseller-image {
     width: 100%;
     height: 200px; /* Fixed height */
@@ -834,39 +834,33 @@ section[id] {
     justify-content: center;
     background: rgba(0, 0, 0, 0.2);
     position: relative;
+    padding: 0; /* Remove padding to avoid cropping */
 }
 
-/* FIXED: SVG container styling */
-.svg-container {
+/* FIXED: WebP container styling - NO OUTLINE/CONTAINER */
+.bestseller-image .webp-container {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    position: relative;
 }
 
-/* FIXED: SVG specific styling */
-.bestseller-image svg,
-.bestseller-image img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    transition: transform 0.5s ease;
-}
-
-.bestseller-card:hover .bestseller-image svg,
-.bestseller-card:hover .bestseller-image img {
-    transform: scale(1.05);
-}
-
-/* Fallback for object tag */
-.bestseller-image object {
+/* FIXED: WebP specific styling - NO BORDERS OR OUTLINES */
+.bestseller-image img.webp-image {
     width: 100%;
     height: 100%;
-    pointer-events: none;
+    object-fit: contain; /* Changed from cover to contain */
+    transition: transform 0.5s ease;
+    border: none; /* Remove any borders */
+    outline: none; /* Remove any outlines */
+    box-shadow: none; /* Remove any shadows */
+    background: transparent; /* Make background transparent */
+}
+
+.bestseller-card:hover .bestseller-image img.webp-image {
+    transform: scale(1.05);
 }
 
 .bestseller-title {
@@ -2850,22 +2844,9 @@ section[id] {
                 <div class="bestseller-card silver">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <!-- FIXED: Improved SVG container -->
-                        <div class="svg-container">
-                            <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                                <defs>
-                                    <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#C0C0C0" />
-                                        <stop offset="100%" stop-color="#A9A9A9" />
-                                    </linearGradient>
-                                </defs>
-                                <rect x="10" y="10" width="80" height="80" rx="10" ry="10" fill="url(#silverGradient)" />
-                                <rect x="12" y="12" width="76" height="76" rx="8" ry="8" fill="rgba(255,255,255,0.1)" />
-                                <text x="50" y="35" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="10" font-weight="bold">METAL CARD</text>
-                                <text x="50" y="50" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="8">SILVER</text>
-                                <text x="50" y="65" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="6">NFC ENABLED</text>
-                                <circle cx="50" cy="80" r="5" fill="#333" />
-                            </svg>
+                        <!-- CHANGED: SVG to WebP with no outline/container -->
+                        <div class="webp-container">
+                            <img src="silver-metal-card.webp" alt="Silver Metal Card" class="webp-image">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Silver Metal Card</h3>
@@ -2881,22 +2862,9 @@ section[id] {
                 <div class="bestseller-card rose-gold">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <!-- FIXED: Improved SVG container -->
-                        <div class="svg-container">
-                            <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                                <defs>
-                                    <linearGradient id="rosegoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#B76E79" />
-                                        <stop offset="100%" stop-color="#E0BFB8" />
-                                    </linearGradient>
-                                </defs>
-                                <rect x="10" y="10" width="80" height="80" rx="10" ry="10" fill="url(#rosegoldGradient)" />
-                                <rect x="12" y="12" width="76" height="76" rx="8" ry="8" fill="rgba(255,255,255,0.1)" />
-                                <text x="50" y="35" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="10" font-weight="bold">METAL CARD</text>
-                                <text x="50" y="50" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="8">ROSE GOLD</text>
-                                <text x="50" y="65" text-anchor="middle" fill="white" font-family="Inter, sans-serif" font-size="6">NFC ENABLED</text>
-                                <circle cx="50" cy="80" r="5" fill="#333" />
-                            </svg>
+                        <!-- CHANGED: SVG to WebP with no outline/container -->
+                        <div class="webp-container">
+                            <img src="rose-gold-metal-card.webp" alt="Rose Gold Metal Card" class="webp-image">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Rose Gold Metal Card</h3>
@@ -2912,22 +2880,9 @@ section[id] {
                 <div class="bestseller-card gold">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <!-- FIXED: Improved SVG container -->
-                        <div class="svg-container">
-                            <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                                <defs>
-                                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#FFD700" />
-                                        <stop offset="100%" stop-color="#D4AF37" />
-                                    </linearGradient>
-                                </defs>
-                                <rect x="10" y="10" width="80" height="80" rx="10" ry="10" fill="url(#goldGradient)" />
-                                <rect x="12" y="12" width="76" height="76" rx="8" ry="8" fill="rgba(0,0,0,0.1)" />
-                                <text x="50" y="35" text-anchor="middle" fill="#1a1209" font-family="Inter, sans-serif" font-size="10" font-weight="bold">METAL CARD</text>
-                                <text x="50" y="50" text-anchor="middle" fill="#1a1209" font-family="Inter, sans-serif" font-size="8">GOLD</text>
-                                <text x="50" y="65" text-anchor="middle" fill="#1a1209" font-family="Inter, sans-serif" font-size="6">NFC ENABLED</text>
-                                <circle cx="50" cy="80" r="5" fill="#333" />
-                            </svg>
+                        <!-- CHANGED: SVG to WebP with no outline/container -->
+                        <div class="webp-container">
+                            <img src="gold-metal-card.webp" alt="Gold Metal Card" class="webp-image">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Gold Metal Card</h3>
@@ -2989,7 +2944,7 @@ section[id] {
                         <div class="card-price">£95</div>
                     </div>
 
-                    <div class="metal-color-card" href='rosegold.svg' data-color="Rosegold">
+                    <div class="metal-color-card" data-color="Rosegold">
                         <div class="color-swatch" style="background: var(--rosegold-bg);"></div>
                         <div class="card-label">Rose Gold</div>
                         <div class="card-price">£95</div>
@@ -3014,6 +2969,7 @@ section[id] {
                 </div>
             </div>
         </section>
+
 <!-- CUSTOM LOGO SECTION -->
         <section class="custom-logo-section" id="custom-logo">
             <div class="custom-logo-content">
@@ -4024,16 +3980,15 @@ section[id] {
 
     // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', function () {
-        console.log('Metal Page loaded with improved engraving modal:');
-        console.log('1. Engraving modal completely redesigned to match metal theme ✓');
-        console.log('2. Better mobile responsiveness with touch-friendly buttons ✓');
-        console.log('3. Improved visual feedback and animations ✓');
+        console.log('Metal Page loaded with WebP images and fixed cropping:');
+        console.log('1. SVG images converted to WebP format ✓');
+        console.log('2. Removed outline/container around WebP images ✓');
+        console.log('3. Fixed cropping issues by using object-fit: contain ✓');
         console.log('4. All prices set to £95 ✓');
         console.log('5. WhatsApp links updated to +447754888841 ✓');
         console.log('6. Checkout linked to WhatsApp with formatted message ✓');
         console.log('7. Added card icon as logo ✓');
-        console.log('8. FIXED: SVG scaling issues in bestsellers section ✓');
-        console.log('9. Embedded inline SVGs for better control and display ✓');
+        console.log('8. WebP images will be cleaner and load faster than SVG ✓');
         updateCart();
         
         // Add highlight style for selected metal text
@@ -4045,8 +4000,8 @@ section[id] {
                 text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
             }
             
-            /* Ensure SVG objects display properly */
-            .svg-container {
+            /* Ensure WebP images display properly */
+            .webp-container {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -4054,11 +4009,24 @@ section[id] {
                 height: 100%;
             }
             
-            .svg-container svg {
+            .webp-container img.webp-image {
                 width: 80%;
                 height: 80%;
                 max-width: 100%;
                 max-height: 100%;
+                object-fit: contain;
+                border: none;
+                outline: none;
+                box-shadow: none;
+                background: transparent;
+            }
+            
+            /* Fallback styling for when WebP images are not loaded */
+            .bestseller-image .webp-container::after {
+                content: 'Metal Card Preview';
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 0.8rem;
+                display: none;
             }
         `;
         document.head.appendChild(style);
