@@ -1008,13 +1008,13 @@ a {
 }
 
 
-/* DESKTOP: If hero image appears smaller due to extra padding inside the file, gently scale it up without affecting mobile */
+
+
+/* DESKTOP: Scale the HERO card container (not the img) so JS transforms on the img won't override it */
 @media (min-width: 768px) {
-    #hero .card-image img {
+    #hero .card-image {
         transform: scale(1.08);
-    }
-    #hero .card-image:hover img {
-        transform: scale(1.12);
+        transform-origin: center;
     }
 }
 
