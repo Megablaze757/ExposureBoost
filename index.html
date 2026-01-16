@@ -51,7 +51,7 @@
             text-decoration: none;
         }
 
-        /* STICKY NAV - Improved logo styling */
+        /* STICKY NAV - Fixed for visibility */
         .nav {
             display: flex;
             justify-content: space-between;
@@ -76,13 +76,14 @@
             box-shadow: 0 4px 30px rgba(110, 77, 255, 0.3);
         }
 
-        /* Logo styling with better fallback */
+        /* Logo styling - FIXED */
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
             text-decoration: none;
             height: 40px;
+            min-width: 200px;
         }
 
         .logo-img {
@@ -91,22 +92,68 @@
             max-width: 180px;
             object-fit: contain;
             display: block;
+            border: 2px solid white;
+            border-radius: 8px;
+            padding: 4px;
+            background: white;
         }
 
-        /* Text logo fallback in case image doesn't load */
+        /* Text logo fallback */
         .logo-text {
             color: white;
             font-weight: 900;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             white-space: nowrap;
             letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff, #e6e6eb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
-        /* HAMBURGER MENU */
+        /* FIX: Make menu visible */
+        .nav-center {
+            display: flex;
+            gap: 20px;
+            flex: 1;
+            justify-content: center;
+            margin: 0 20px;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            padding: 8px 16px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-center a:hover {
+            color: var(--pink);
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(110, 77, 255, 0.3);
+        }
+
+        .nav-center a.active {
+            color: var(--pink);
+            font-weight: 900;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--pink);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            min-width: 180px;
+            justify-content: flex-end;
+        }
+
+        /* HAMBURGER MENU - Fixed visibility */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -122,9 +169,9 @@
 
         .hamburger span {
             width: 100%;
-            height: 2px;
+            height: 3px;
             background: white;
-            border-radius: 2px;
+            border-radius: 3px;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform-origin: left center;
         }
@@ -142,67 +189,16 @@
             transform: rotate(-45deg);
         }
 
-        .nav-center {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-center a {
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: .9rem;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            padding: 5px 0;
-            position: relative;
-        }
-
-        .nav-center a:hover {
-            color: var(--pink);
-            transform: translateY(-2px);
-        }
-
-        .nav-center a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--pink);
-            transition: width 0.3s ease;
-        }
-
-        .nav-center a:hover::after {
-            width: 100%;
-        }
-
-        .nav-center a.active {
-            color: var(--pink);
-            font-weight: 900;
-        }
-
-        .nav-center a.active::after {
-            width: 100%;
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
         .icon-btn {
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 15px;
+            font-size: 16px;
             cursor: pointer;
             position: relative;
             transition: all 0.3s ease;
@@ -224,8 +220,8 @@
             background: var(--pink);
             color: white;
             font-size: 10px;
-            min-width: 16px;
-            height: 16px;
+            min-width: 18px;
+            height: 18px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -237,10 +233,10 @@
         .whatsapp {
             background: linear-gradient(135deg, #25d366, #128c7e);
             color: white;
-            padding: 8px 14px;
+            padding: 10px 16px;
             border-radius: 999px;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 14px;
             transition: all 0.3s ease;
             white-space: nowrap;
             border: none;
@@ -260,8 +256,8 @@
 
         .whatsapp-icon {
             display: none;
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: linear-gradient(135deg, #25d366, #128c7e);
             color: white;
@@ -278,7 +274,7 @@
             box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
         }
 
-        /* MOBILE MENU */
+        /* MOBILE MENU - Fixed */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -301,7 +297,7 @@
 
         .mobile-menu {
             position: fixed;
-            top: 64px;
+            top: 70px;
             left: 0;
             right: 0;
             bottom: 0;
@@ -310,7 +306,7 @@
             padding: 30px 20px 100px;
             display: none;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
             border-top: 1px solid rgba(255, 255, 255, 0.3);
             transform: translateY(-20px);
             transition: transform 0.4s cubic-bezier(0.1, 0.885, 0.32, 1.275);
@@ -342,7 +338,7 @@
             color: white;
             font-weight: 700;
             font-size: 18px;
-            padding: 18px 24px;
+            padding: 20px 24px;
             border-radius: 16px;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.12);
@@ -433,6 +429,7 @@
 
             .nav-right {
                 gap: 8px;
+                min-width: auto;
             }
 
             .nav {
@@ -448,8 +445,12 @@
                 display: flex;
             }
 
+            .logo {
+                min-width: auto;
+            }
+
             .logo-text {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
             .main-container {
@@ -472,6 +473,10 @@
             .hamburger {
                 width: 32px;
                 height: 24px;
+            }
+
+            .hamburger span {
+                height: 2.5px;
             }
 
             .icon-btn {
@@ -546,12 +551,6 @@
                         linear-gradient(180deg, #0F0F14 0%, #141422 100%);
         }
 
-        .az-bg {
-            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .35), transparent 60%),
-                        radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .28), transparent 60%),
-                        linear-gradient(180deg, #0F0F14 0%, #141422 100%);
-        }
-
         .faq-bg {
             background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .20), transparent 60%),
                         radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .15), transparent 60%),
@@ -592,7 +591,7 @@
             margin-right: auto;
         }
 
-        /* CARD CONTAINER - FIXED IMAGE STYLING */
+        /* CARD CONTAINER */
         .card-container {
             width: 100%;
             max-width: 400px;
@@ -613,49 +612,11 @@
             position: relative;
         }
 
-        /* FIXED: Images will now fill the container */
         .card-image img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            display: block;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        /* SVG SPECIFIC STYLES - FILL CONTAINER */
-        .card-image svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        /* Ensure all images fill container */
-        .card-image img[src$=".svg"] {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
-            padding: 0;
-        }
-
-        .card-image img[src$=".png"],
-        .card-image img[src$=".jpg"],
-        .card-image img[src$=".jpeg"] {
-            object-fit: cover;
-            padding: 0;
-        }
-
-        .card-price {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: white;
-            margin: 20px 0 10px;
-        }
-
-        .card-price-note {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 30px;
+            display: block;
         }
 
         /* Buttons */
@@ -680,113 +641,6 @@
         }
 
         .section-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(110, 77, 255, 0.4);
-            background: linear-gradient(135deg, #5a3de0, #ff39d0);
-        }
-
-        /* MATERIAL CARDS */
-        .materials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 60px auto;
-            max-width: 1200px;
-        }
-
-        .material-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-align: center;
-        }
-
-        .material-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--purple);
-            box-shadow: 0 20px 40px rgba(110, 77, 255, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .material-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .metal-badge {
-            background: rgba(183, 110, 121, 0.4);
-            color: white;
-        }
-
-        .wood-badge {
-            background: rgba(139, 69, 19, 0.3);
-            color: white;
-        }
-
-        .plastic-badge {
-            background: rgba(58, 134, 255, 0.3);
-            color: white;
-        }
-
-        .material-card h3 {
-            font-size: 1.8rem;
-            font-weight: 900;
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .material-card p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.5;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-
-        .material-price {
-            font-size: 2rem;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 25px;
-        }
-
-        .material-price span {
-            font-size: 0.9rem;
-            font-weight: 400;
-            opacity: 0.7;
-            margin-left: 5px;
-        }
-
-        .material-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            border: none;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            font-size: 16px;
-            white-space: nowrap;
-            width: 100%;
-            max-width: 300px;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            color: white;
-            box-shadow: 0 4px 20px rgba(110, 77, 255, 0.3);
-        }
-
-        .material-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 25px rgba(110, 77, 255, 0.4);
             background: linear-gradient(135deg, #5a3de0, #ff39d0);
@@ -835,121 +689,6 @@
         .testimonial-role {
             font-size: 14px;
             color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* A-Z SECTION */
-        .az-menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-            gap: 10px;
-            margin: 40px auto;
-            max-width: 800px;
-        }
-
-        .az-letter-btn {
-            padding: 12px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-align: center;
-        }
-
-        .az-letter-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-3px);
-            border-color: var(--purple);
-            color: white;
-        }
-
-        .az-letter-btn.active {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 4px 15px rgba(110, 77, 255, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .az-content-container {
-            max-width: 900px;
-            margin: 40px auto 0;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            display: none;
-        }
-
-        .az-content-container.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .az-large-letter {
-            font-size: 6rem;
-            font-weight: 900;
-            color: var(--purple);
-            text-align: center;
-            margin-bottom: 30px;
-            opacity: 0.7;
-        }
-
-        .az-profession-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .az-profession-card {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
-        }
-
-        .az-profession-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--purple);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .az-profession-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .az-profession-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: white;
-            text-align: center;
-        }
-
-        .az-profession-description {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            text-align: center;
         }
 
         /* FAQ SECTION */
@@ -1186,27 +925,12 @@
         }
 
         /* DEMO FALLBACK IMAGES */
-        .fallback-image {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            color: white;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            text-align: center;
-            line-height: 1.2;
-        }
-
         .fallback-logo {
             width: 40px;
             height: 40px;
             background: linear-gradient(135deg, #ffffff, #e6e6eb);
             border-radius: 8px;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             font-weight: 900;
@@ -1214,10 +938,7 @@
             font-size: 18px;
         }
 
-        /* REMOVE ANY STRAY SEMICOLONS IN CSS */
-        /* FIXED: Removed stray characters that might cause issues */
-
-        /* MOBILE OPTIMIZATION */
+        /* Mobile optimization */
         @media (max-width: 768px) {
             .content-section {
                 min-height: auto;
@@ -1240,48 +961,16 @@
                 height: 200px;
             }
 
-            .card-image img {
-                padding: 15px;
-            }
-
-            .card-image img[src$=".svg"] {
-                padding: 0;
-            }
-
             .section-button {
                 min-width: 250px;
                 width: 100%;
                 max-width: 300px;
             }
 
-            .materials-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                margin: 40px auto;
-            }
-
             .testimonials-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
                 margin: 40px auto;
-            }
-
-            .az-menu {
-                grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-                gap: 8px;
-            }
-
-            .az-letter-btn {
-                padding: 10px;
-                font-size: 1rem;
-            }
-
-            .az-large-letter {
-                font-size: 4rem;
-            }
-
-            .az-content-container {
-                padding: 20px;
             }
 
             .faq-list {
@@ -1315,35 +1004,20 @@
             .card-image {
                 height: 180px;
             }
-
-            .card-image img {
-                padding: 10px;
-            }
-
-            .az-menu {
-                grid-template-columns: repeat(6, 1fr);
-            }
         }
     </style>
 </head>
 
 <body>
-    <!-- NAVIGATION -->
+    <!-- NAVIGATION - FIXED -->
     <nav class="nav" id="mainNav">
         <a href="index.html" class="logo">
-            <!-- Logo with fallback -->
-            <div class="fallback-logo" id="logoFallback">EB</div>
-            <img src="logo.png" alt="ExposureBoost Logo" class="logo-img" 
-                 onerror="document.getElementById('logoFallback').style.display='flex'; this.style.display='none';">
+            <!-- Logo - make sure logo.png is in the same folder -->
+            <img src="logo.png" alt="ExposureBoost Logo" class="logo-img">
             <span class="logo-text">ExposureBoost</span>
         </a>
 
-        <button class="hamburger" id="hamburgerBtn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
+        <!-- Desktop Menu - NOW VISIBLE -->
         <div class="nav-center">
             <a href="index.html" class="active">Home</a>
             <a href="metal.html">Metal</a>
@@ -1353,16 +1027,23 @@
         </div>
 
         <div class="nav-right">
-            <a href="https://wa.me/447123456789" class="whatsapp-icon" target="_blank" aria-label="WhatsApp">
-                💬
+            <!-- Desktop WhatsApp -->
+            <a href="https://wa.me/447123456789" class="whatsapp" target="_blank">
+                <span>💬</span> WhatsApp
             </a>
+            
+            <!-- Cart -->
             <div class="icon-btn" id="cartIcon">
                 🛒
                 <span class="cart-count" id="cartCount">0</span>
             </div>
-            <a href="https://wa.me/447123456789" class="whatsapp" target="_blank">
-                <span>💬</span> WhatsApp
-            </a>
+            
+            <!-- Mobile Hamburger -->
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -1437,10 +1118,8 @@
 
                 <div class="card-container">
                     <div class="card-image">
-                        <!-- Test with a placeholder image first -->
-                        <img src="https://placehold.co/400x250/6e4dff/ffffff?text=Premium+NFC+Card" 
-                             alt="Premium NFC Card"
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/6e4dff/ffffff?text=Premium+NFC+Card';">
+                        <img src="goldmetal.svg" 
+                             alt="Premium NFC Card">
                     </div>
                 </div>
 
@@ -1465,9 +1144,8 @@
 
                 <div class="card-container">
                     <div class="card-image">
-                        <img src="https://placehold.co/400x250/b76e79/ffffff?text=Metal+Card" 
-                             alt="Metal NFC Card"
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/b76e79/ffffff?text=Metal+Card';">
+                        <img src="rosegold.svg" 
+                             alt="Metal NFC Card">
                     </div>
                 </div>
 
@@ -1492,9 +1170,8 @@
 
                 <div class="card-container">
                     <div class="card-image">
-                        <img src="https://placehold.co/400x250/8b4513/ffffff?text=Wood+Card" 
-                             alt="Wood NFC Card"
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/8b4513/ffffff?text=Wood+Card';">
+                        <img src="wood.svg" 
+                             alt="Wood NFC Card">
                     </div>
                 </div>
 
@@ -1519,9 +1196,8 @@
 
                 <div class="card-container">
                     <div class="card-image">
-                        <img src="https://placehold.co/400x250/3a86ff/ffffff?text=Plastic+Card" 
-                             alt="Plastic NFC Card"
-                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/3a86ff/ffffff?text=Plastic+Card';">
+                        <img src="plastic1.svg" 
+                             alt="Plastic NFC Card">
                     </div>
                 </div>
 
@@ -1656,24 +1332,25 @@
         let isMenuOpen = false;
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Check if logo.png exists, show fallback if not
+        // Check if logo.png exists
         function checkLogo() {
             const logoImg = document.querySelector('.logo-img');
-            const fallbackLogo = document.getElementById('logoFallback');
-            
             if (logoImg) {
-                // Test if image loads
                 const testImg = new Image();
                 testImg.src = logoImg.src;
                 testImg.onload = function() {
-                    // Image exists, hide fallback
-                    fallbackLogo.style.display = 'none';
-                    logoImg.style.display = 'block';
+                    console.log('Logo loaded successfully');
                 };
                 testImg.onerror = function() {
-                    // Image doesn't exist, show fallback
-                    fallbackLogo.style.display = 'flex';
-                    logoImg.style.display = 'none';
+                    console.log('Logo not found, using text only');
+                    // Add white border to make text stand out
+                    const logoText = document.querySelector('.logo-text');
+                    if (logoText) {
+                        logoText.style.padding = '5px 10px';
+                        logoText.style.border = '2px solid white';
+                        logoText.style.borderRadius = '8px';
+                        logoText.style.background = 'rgba(255,255,255,0.1)';
+                    }
                 };
             }
         }
@@ -1906,9 +1583,6 @@
                     }
                 });
             });
-
-            // Fix any stray semicolons in the HTML
-            document.body.innerHTML = document.body.innerHTML.replace(/;\s*$/gm, '');
         });
 
         // Initialize cart
