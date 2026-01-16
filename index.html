@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 
-   
+ 
 
     <style>
         :root {
@@ -54,7 +54,6 @@
             text-decoration: none;
         }
 
-        /* STICKY NAV - Fixed for visibility */
         .nav {
             display: flex;
             justify-content: space-between;
@@ -79,7 +78,6 @@
             box-shadow: 0 4px 30px rgba(110, 77, 255, 0.3);
         }
 
-        /* Logo styling - FIXED */
         .logo {
             display: flex;
             align-items: center;
@@ -101,7 +99,6 @@
             background: white;
         }
 
-        /* Text logo fallback */
         .logo-text {
             color: white;
             font-weight: 900;
@@ -111,7 +108,6 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
 
-        /* FIX: Make menu visible */
         .nav-center {
             display: flex;
             gap: 20px;
@@ -156,7 +152,6 @@
             justify-content: flex-end;
         }
 
-        /* HAMBURGER MENU - Fixed visibility */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -277,7 +272,6 @@
             box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
         }
 
-        /* MOBILE MENU - Fixed */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -419,7 +413,6 @@
             transform: rotate(90deg);
         }
 
-        /* Responsive */
         @media (max-width: 1024px) {
             .nav-center,
             .nav-right .whatsapp {
@@ -498,14 +491,12 @@
             }
         }
 
-        /* MAIN CONTENT */
         .main-container {
             padding-top: 70px;
             position: relative;
             z-index: 1;
         }
 
-        /* UNIVERSAL SECTION STYLES */
         .content-section {
             min-height: 100vh;
             display: flex;
@@ -523,7 +514,6 @@
             z-index: 2;
         }
 
-        /* SECTION BACKGROUNDS */
         .hero-bg {
             background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .35), transparent 60%),
                         radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .28), transparent 60%),
@@ -560,7 +550,6 @@
                         linear-gradient(180deg, #0F0F14 0%, #141422 100%);
         }
 
-        /* TYPOGRAPHY */
         .section-badge {
             display: inline-flex;
             align-items: center;
@@ -594,7 +583,6 @@
             margin-right: auto;
         }
 
-        /* CARD IMAGE STYLES - BORDER REMOVED */
         .card-image-container {
             width: 100%;
             display: flex;
@@ -628,7 +616,6 @@
             transform: scale(1.05);
         }
 
-        /* Buttons */
         .section-button {
             display: inline-flex;
             align-items: center;
@@ -655,7 +642,6 @@
             background: linear-gradient(135deg, #5a3de0, #ff39d0);
         }
 
-        /* TESTIMONIALS */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -700,7 +686,6 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
-        /* FAQ SECTION */
         .faq-list {
             display: flex;
             flex-direction: column;
@@ -766,7 +751,6 @@
             max-height: 500px;
         }
 
-        /* CART MODAL */
         .cart-modal {
             position: fixed;
             top: 0;
@@ -897,7 +881,28 @@
             margin: 0 20px 20px;
             padding: 16px;
             border-radius: 12px;
-    </style>
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(110, 77, 255, 0.4);
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            padding: 15px 25px;
+
 </head>
 
 <body>
@@ -1482,5 +1487,6 @@
     </script>
 </body>
 </html>
+
 
 
