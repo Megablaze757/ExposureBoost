@@ -819,23 +819,23 @@ section[id] {
     backdrop-filter: blur(10px);
 }
 
-/* FIXED: WEBP IMAGE CONTAINER - IMPROVED FOR WEBP SCALING */
+/* FIXED: WEBP IMAGE CONTAINER - PERFECT FIT */
 .bestseller-image {
     width: 100%;
-    height: 200px; /* Fixed height */
+    height: 200px;
     border-radius: 12px;
     margin-bottom: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: none; /* Remove border */
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.2);
+    background: transparent; /* Remove background */
     position: relative;
-    padding: 0; /* Remove padding to avoid cropping */
+    padding: 0;
 }
 
-/* FIXED: WebP container styling - NO OUTLINE/CONTAINER */
+/* FIXED: WebP container - FULL WIDTH */
 .bestseller-image .webp-container {
     width: 100%;
     height: 100%;
@@ -845,16 +845,17 @@ section[id] {
     position: relative;
 }
 
-/* FIXED: WebP specific styling - NO BORDERS OR OUTLINES */
+/* FIXED: WebP images - PERFECT FIT */
 .bestseller-image img.webp-image {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Changed from cover to contain */
+    object-fit: cover; /* Changed back to cover for full container fill */
     transition: transform 0.5s ease;
-    border: none; /* Remove any borders */
-    outline: none; /* Remove any outlines */
-    box-shadow: none; /* Remove any shadows */
-    background: transparent; /* Make background transparent */
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 12px; /* Match container border radius */
 }
 
 .bestseller-card:hover .bestseller-image img.webp-image {
@@ -4031,4 +4032,3 @@ section[id] {
 </script>
     
 </html>
-
