@@ -933,23 +933,24 @@ a {
 @media (max-width: 767px) {
     /* Reduce section padding on small screens */
     .content-section {
-        padding: 44px 16px;
+        padding: 52px 16px;
     }
 
     /* Keep titles consistent everywhere (match hero size on mobile) */
     .section-title {
-        font-size: 2.2rem;  /* was effectively 2.8rem for non-hero sections */
-        margin-bottom: 14px;
+        font-size: 2.2rem;
+        margin-bottom: 18px;
     }
 
     .section-subtitle {
         font-size: 1rem;
-        margin-bottom: 18px;
+        margin-bottom: 22px;
+        line-height: 1.4;
     }
 
     /* Reduce the vertical gap around images + keep consistent sizing */
     .card-image-container {
-        margin: 16px auto; /* was 40px */
+        margin: 20px auto;
     }
 
     .card-image {
@@ -958,15 +959,15 @@ a {
         aspect-ratio: 5 / 3;
     }
 
-    /* HERO: nudge title up slightly and button down slightly (still fits in one view) */
-    #hero.content-section {
-        min-height: calc(100vh - 64px);  /* account for fixed navbar */
-        padding: 18px 16px 28px;         /* slightly less top padding, a bit more bottom */
+    /* Give CTA buttons a bit more breathing room */
+    .section-button {
+        margin-top: 18px;
     }
 
-    /* Move CTA down a touch */
-    #hero .section-button {
-        margin-top: 14px;
+    /* HERO: nudge title up slightly and button down slightly (still fits in one view) */
+    #hero.content-section {
+        min-height: calc(100vh - 64px);
+        padding: 18px 16px 32px;
     }
 
     /* Touch devices: don't zoom on hover */
@@ -1103,9 +1104,7 @@ a {
 
                 <h2 class="section-title">Metal Card</h2>
 
-                <p class="section-subtitle">
-                    Premium weight & finish. Instant authority and status with our signature metal NFC card.
-                </p>
+                <p class="section-subtitle">Luxury</p>
 
                 <div class="card-image-container">
                     <div class="card-image">
@@ -1127,9 +1126,7 @@ a {
 
                 <h2 class="section-title">Wood Card</h2>
 
-                <p class="section-subtitle">
-                    Natural elegance. Sustainable and authentic craftsmanship with our wood NFC card.
-                </p>
+                <p class="section-subtitle">Sustainable</p>
 
                 <div class="card-image-container">
                     <div class="card-image">
@@ -1151,9 +1148,7 @@ a {
 
                 <h2 class="section-title">Plastic Card</h2>
 
-                <p class="section-subtitle">
-                    Modern durability. Colorful options for creative brands with our plastic NFC card.
-                </p>
+                <p class="section-subtitle">Endless possibilities</p>
 
                 <div class="card-image-container">
                     <div class="card-image">
