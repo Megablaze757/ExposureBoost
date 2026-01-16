@@ -512,8 +512,11 @@ a {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover;
+    background: transparent;
         object-position: center;
+    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4)); /* shadow without a box */
     }
+    box-shadow: none; /* removed faint container box */
 }
 
 /* MAIN CONTENT */
@@ -1010,25 +1013,9 @@ a {
 
 
 
-/* DESKTOP: Scale the HERO card container (not the img) so JS transforms on the img won't override it */
-@media (min-width: 768px) {
-    #hero .card-image {
-        transform: scale(1.08);
-        transform-origin: center;
-    }
 }
 
 
-/* REMOVE FAINT "BOX" BEHIND CARD IMAGES (force fully transparent) */
-.card-image-container {
-    background: transparent !important;
-}
-
-.card-image {
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-}
 
 </style>
 </head>
