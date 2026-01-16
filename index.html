@@ -929,40 +929,48 @@ a {
 }
 
 
-/* MOBILE: tighten spacing so hero fits without extra scroll */
+/* MOBILE: tighten spacing so each section fits (hero + materials) without extra scroll */
 @media (max-width: 767px) {
+    /* Reduce section padding on small screens */
     .content-section {
-        padding: 56px 16px; /* reduce from 80px on small screens */
+        padding: 44px 16px;
     }
 
-    /* Only the hero should try to fit within the viewport under the fixed nav */
-    #hero.content-section {
-        min-height: calc(100vh - 64px);
-        padding: 24px 16px 28px;
-    }
-
-    #hero .section-title {
-        font-size: 2.2rem;
+    /* Keep titles consistent everywhere (match hero size on mobile) */
+    .section-title {
+        font-size: 2.2rem;  /* was effectively 2.8rem for non-hero sections */
         margin-bottom: 14px;
     }
 
-    #hero .section-subtitle {
+    .section-subtitle {
         font-size: 1rem;
         margin-bottom: 18px;
     }
 
-    #hero .card-image-container {
-        margin: 18px auto;
+    /* Reduce the vertical gap around images + keep consistent sizing */
+    .card-image-container {
+        margin: 16px auto; /* was 40px */
     }
 
-    #hero .card-image {
+    .card-image {
         width: min(92vw, 420px);
         height: auto;
         aspect-ratio: 5 / 3;
     }
 
-    /* Hover effects don't matter on touch devices */
-    #hero .card-image:hover img {
+    /* HERO: nudge title up slightly and button down slightly (still fits in one view) */
+    #hero.content-section {
+        min-height: calc(100vh - 64px);  /* account for fixed navbar */
+        padding: 18px 16px 28px;         /* slightly less top padding, a bit more bottom */
+    }
+
+    /* Move CTA down a touch */
+    #hero .section-button {
+        margin-top: 14px;
+    }
+
+    /* Touch devices: don't zoom on hover */
+    .card-image:hover img {
         transform: none;
     }
 }
