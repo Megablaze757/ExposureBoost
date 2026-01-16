@@ -821,23 +821,33 @@ section[id] {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* IMPROVED: SVG IMAGE CONTAINER */
 .bestseller-image {
     width: 100%;
     height: 200px;
     border-radius: 12px;
-    overflow: hidden;
     margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
 }
 
-.bestseller-image img {
+.bestseller-image img,
+.bestseller-image svg {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.5s ease;
+    max-width: 100%;
+    max-height: 100%;
 }
 
-.bestseller-card:hover .bestseller-image img {
+.bestseller-card:hover .bestseller-image img,
+.bestseller-card:hover .bestseller-image svg {
     transform: scale(1.05);
 }
 
@@ -2822,8 +2832,10 @@ section[id] {
                 <div class="bestseller-card silver">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <img src="silver.svg" 
-                             alt="Silver Metal Card">
+                        <!-- Improved SVG scaling -->
+                        <object type="image/svg+xml" data="silver.svg" style="width: 100%; height: 100%;">
+                            <img src="silver.svg" alt="Silver Metal Card" style="width: 100%; height: 100%; object-fit: contain;">
+                        </object>
                     </div>
                     <h3 class="bestseller-title">Silver Metal Card</h3>
                     <p class="bestseller-description">Sleek, modern, and sophisticated. Perfect for tech companies and modern brands.</p>
@@ -2838,8 +2850,10 @@ section[id] {
                 <div class="bestseller-card rose-gold">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <img src="rosegold.svg" 
-                             alt="Rose Gold Metal Card">
+                        <!-- Improved SVG scaling -->
+                        <object type="image/svg+xml" data="rosegold.svg" style="width: 100%; height: 100%;">
+                            <img src="rosegold.svg" alt="Rose Gold Metal Card" style="width: 100%; height: 100%; object-fit: contain;">
+                        </object>
                     </div>
                     <h3 class="bestseller-title">Rose Gold Metal Card</h3>
                     <p class="bestseller-description">Contemporary, warm, and distinctive. Ideal for creative industries and fashion brands.</p>
@@ -2854,8 +2868,10 @@ section[id] {
                 <div class="bestseller-card gold">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <img src="goldmetal.svg" 
-                             alt="Gold Metal Card">
+                        <!-- Improved SVG scaling -->
+                        <object type="image/svg+xml" data="goldmetal.svg" style="width: 100%; height: 100%;">
+                            <img src="goldmetal.svg" alt="Gold Metal Card" style="width: 100%; height: 100%; object-fit: contain;">
+                        </object>
                     </div>
                     <h3 class="bestseller-title">Gold Metal Card</h3>
                     <p class="bestseller-description">The ultimate symbol of success and achievement. Perfect for executives and luxury brands.</p>
@@ -3958,6 +3974,7 @@ section[id] {
         console.log('5. WhatsApp links updated to +447754888841 ✓');
         console.log('6. Checkout linked to WhatsApp with formatted message ✓');
         console.log('7. Added card icon as logo ✓');
+        console.log('8. Improved SVG scaling in bestsellers section ✓');
         updateCart();
         
         // Add highlight style for selected metal text
@@ -3967,6 +3984,13 @@ section[id] {
                 color: var(--rose-gold-light);
                 font-weight: 700;
                 text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
+            }
+            
+            /* Ensure SVG objects display properly */
+            .bestseller-image object {
+                display: block;
+                width: 100%;
+                height: 100%;
             }
         `;
         document.head.appendChild(style);
