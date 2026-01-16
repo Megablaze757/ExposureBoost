@@ -591,16 +591,18 @@
             margin-right: auto;
         }
 
-        /* CARD CONTAINER */
-        .card-container {
+        /* CARD IMAGE STYLES - UPDATED */
+        .card-image-container {
             width: 100%;
-            max-width: 500px;
-            margin: 30px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px auto;
         }
 
         .card-image {
-            width: 100%;
-            height: 100%;
+            width: 500px;
+            height: 300px;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -617,6 +619,11 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .card-image:hover img {
+            transform: scale(1.05);
         }
 
         /* Buttons */
@@ -953,12 +960,10 @@
                 font-size: 1.1rem;
             }
 
-            .card-container {
-                max-width: 500px;
-            }
-
             .card-image {
-                height: 100%;
+                width: 100%;
+                max-width: 500px;
+                height: 300px;
             }
 
             .section-button {
@@ -997,12 +1002,15 @@
                 font-size: 1rem;
             }
 
-            .card-container {
-                max-width: 500px;
-            }
-
             .card-image {
-                height:300px;
+                height: 250px;
+            }
+        }
+
+        /* Small mobile */
+        @media (max-width: 350px) {
+            .card-image {
+                height: 200px;
             }
         }
     </style>
@@ -1116,12 +1124,12 @@
                     Luxury NFC cards + premium digital profile. Tap once for instant high-ticket impression.
                 </p>
 
-               
+                <div class="card-image-container">
                     <div class="card-image">
                         <img src="goldmetal.webp" 
                              alt="Premium NFC Card">
                     </div>
-       
+                </div>
 
                 <a href="#metal" class="section-button" id="browseCards">
                     Shop Now
@@ -1142,12 +1150,12 @@
                     Premium weight & finish. Instant authority and status with our signature metal NFC card.
                 </p>
 
-                
+                <div class="card-image-container">
                     <div class="card-image">
                         <img src="rosegold.webp" 
                              alt="Metal NFC Card">
                     </div>
-              
+                </div>
 
                 <a href="metal.html" class="section-button">
                     Shop Metal
@@ -1168,12 +1176,12 @@
                     Natural elegance. Sustainable and authentic craftsmanship with our wood NFC card.
                 </p>
 
-                
+                <div class="card-image-container">
                     <div class="card-image">
                         <img src="wood.webp" 
                              alt="Wood NFC Card">
                     </div>
-         
+                </div>
 
                 <a href="wood.html" class="section-button">
                     Shop Wood
@@ -1194,12 +1202,12 @@
                     Modern durability. Colorful options for creative brands with our plastic NFC card.
                 </p>
 
-               
+                <div class="card-image-container">
                     <div class="card-image">
                         <img src="plastic1.webp" 
                              alt="Plastic NFC Card">
                     </div>
-         
+                </div>
 
                 <a href="plastic.html" class="section-button">
                     Shop Plastic
@@ -1590,6 +1598,3 @@
     </script>
 </body>
 </html>
-
-
-
