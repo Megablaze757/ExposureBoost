@@ -11,7 +11,7 @@
 
     <style>
         :root {
-            /* Plastic Theme Colors */
+            /* Plastic Theme Colors - Keep from plastic website */
             --charcoal: #0F0F14;
             --charcoal2: #141422;
             --purple: #6E4DFF;
@@ -23,7 +23,7 @@
             --shadow: 0 30px 90px rgba(0, 0, 0, .55);
             --wa: #25D366;
 
-            /* Plastic Color Variables - UPDATED */
+            /* Plastic Color Variables - Keep from plastic website */
             --custom: linear-gradient(45deg, #6E4DFF, #FF4FD8);
             --silver-color: linear-gradient(45deg, #C0C0C0, #E8E8E8);
             --gold-color: linear-gradient(45deg, #FFD700, #FFF8DC);
@@ -36,7 +36,7 @@
             --red-color: linear-gradient(45deg, #DC143C, #FF4500);
             --purple-color: linear-gradient(45deg, #6E4DFF, #9370DB);
 
-            /* Additional variables */
+            /* Additional variables for consistency */
             --white: #ffffff;
             --black: #1A0F0F;
         }
@@ -104,7 +104,7 @@
             text-decoration: none;
         }
 
-        .logo- {
+        .logo-img {
             height: 40px;
             width: auto;
             object-fit: contain;
@@ -119,7 +119,7 @@
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        /* HAMBURGER MENU */
+        /* HAMBURGER MENU - FIXED FROM METAL PAGE */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -293,7 +293,7 @@
             box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
         }
 
-        /* MOBILE MENU OVERLAY */
+        /* MOBILE MENU OVERLAY - FIXED FROM METAL PAGE */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -314,7 +314,7 @@
             opacity: 1;
         }
 
-        /* MOBILE MENU */
+        /* MOBILE MENU - FIXED FROM METAL PAGE */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -831,8 +831,8 @@
             color: white;
         }
 
-        .bestseller-card.purple {
-            background: radial-gradient(circle at top, rgba(110, 77, 255, 0.9), rgba(147, 112, 219, 0.95));
+        .bestseller-card.black {
+            background: radial-gradient(circle at top, rgba(26, 26, 26, 0.9), rgba(51, 51, 51, 0.95));
             color: white;
         }
 
@@ -870,14 +870,14 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .bestseller-image  {
+        .bestseller-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .bestseller-card:hover .bestseller-image  {
+        .bestseller-card:hover .bestseller-image img {
             transform: scale(1.05);
         }
 
@@ -890,7 +890,7 @@
         /* Text colors for different backgrounds */
         .bestseller-card.custom .bestseller-title,
         .bestseller-card.blue .bestseller-title,
-        .bestseller-card.purple .bestseller-title {
+        .bestseller-card.black .bestseller-title {
             color: white;
         }
 
@@ -902,7 +902,7 @@
 
         .bestseller-card.custom .bestseller-description,
         .bestseller-card.blue .bestseller-description,
-        .bestseller-card.purple .bestseller-description {
+        .bestseller-card.black .bestseller-description {
             color: rgba(255, 255, 255, 0.9);
         }
 
@@ -914,7 +914,7 @@
 
         .bestseller-card.custom .bestseller-price,
         .bestseller-card.blue .bestseller-price,
-        .bestseller-card.purple .bestseller-price {
+        .bestseller-card.black .bestseller-price {
             color: white;
         }
 
@@ -926,7 +926,7 @@
 
         .bestseller-card.custom .bestseller-price span,
         .bestseller-card.blue .bestseller-price span,
-        .bestseller-card.purple .bestseller-price span {
+        .bestseller-card.black .bestseller-price span {
             color: rgba(255, 255, 255, 0.7);
         }
 
@@ -942,7 +942,7 @@
         /* Button colors for plastic cards */
         .bestseller-card.custom .btn-primary,
         .bestseller-card.blue .btn-primary,
-        .bestseller-card.purple .btn-primary {
+        .bestseller-card.black .btn-primary {
             background: rgba(0, 0, 0, 0.7);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -950,13 +950,13 @@
 
         .bestseller-card.custom .btn-secondary,
         .bestseller-card.blue .btn-secondary,
-        .bestseller-card.purple .btn-secondary {
+        .bestseller-card.black .btn-secondary {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* CAROUSEL SECTION */
+        /* CAROUSEL SECTION - MOVED ABOVE WHY CHOOSE */
         .carousel-section {
             padding: 100px 20px;
             transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -965,8 +965,6 @@
             min-height: 80vh;
             display: flex;
             align-items: center;
-            background: radial-gradient(circle at top, rgba(110, 77, 255, 0.9), rgba(255, 79, 216, 0.95));
-            color: white;
         }
 
         .carousel-section::before {
@@ -977,6 +975,12 @@
             right: 0;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        /* FIX: Custom background by default */
+        .carousel-section {
+            background: radial-gradient(circle at top, rgba(110, 77, 255, 0.9), rgba(255, 79, 216, 0.95));
+            color: white;
         }
 
         /* Background color classes for carousel */
@@ -1079,7 +1083,7 @@
             z-index: 2;
         }
 
-        /* Optimized plastic carousel */
+        /* FIX: Optimized plastic carousel for better performance */
         .plastic-carousel {
             position: relative;
             height: 320px;
@@ -1121,7 +1125,7 @@
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
         }
 
-        .plastic-color-card  {
+        .plastic-color-card img {
             width: 100%;
             border-radius: 16px;
             aspect-ratio: 16/9;
@@ -1137,10 +1141,6 @@
             margin-bottom: 12px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
         }
 
         .carousel-section.silver .plastic-color-card,
@@ -1432,7 +1432,7 @@
             font-size: 0.9rem;
         }
 
-        /* CUSTOM LOGO SECTION */
+        /* CUSTOM LOGO SECTION - COMPLETELY REDESIGNED FOR MOBILE FROM METAL PAGE */
         .custom-logo-section {
             padding: 80px 20px;
             background: linear-gradient(135deg, #0F0F14 0%, #141422 100%);
@@ -1458,7 +1458,7 @@
             z-index: 2;
         }
 
-        /* Mobile-friendly logo builder */
+        /* Mobile-friendly logo builder FROM METAL PAGE */
         .logo-builder-mobile {
             display: flex;
             flex-direction: column;
@@ -1475,7 +1475,7 @@
             }
         }
 
-        /* Preview Section - Mobile Optimized */
+        /* Preview Section - Mobile Optimized FROM METAL PAGE */
         .preview-section-mobile {
             background: rgba(110, 77, 255, 0.1);
             border-radius: 24px;
@@ -1599,7 +1599,7 @@
             color: var(--pink);
         }
 
-        /* Card Navigation - Mobile Friendly */
+        /* Card Navigation - Mobile Friendly FROM METAL PAGE */
         .card-navigation-mobile {
             display: flex;
             justify-content: space-between;
@@ -1646,7 +1646,7 @@
             text-align: right;
         }
 
-        /* Selection Area - Mobile Optimized */
+        /* Selection Area - Mobile Optimized FROM METAL PAGE */
         .selection-area-mobile {
             display: flex;
             flex-direction: column;
@@ -1683,7 +1683,7 @@
             font-size: 0.85rem;
         }
 
-        /* Card Color Selection - Mobile Optimized */
+        /* Card Color Selection - Mobile Optimized FROM METAL PAGE */
         .card-colors-mobile {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -1739,7 +1739,52 @@
             margin: 0 4px;
         }
 
-        /* UPLOAD AREA */
+        /* Engraving Selection - Mobile Optimized FROM METAL PAGE */
+        .engraving-options-mobile {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .engraving-option-mobile {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid transparent;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .engraving-option-mobile:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .engraving-option-mobile.selected {
+            background: rgba(110, 77, 255, 0.2);
+            border-color: var(--pink);
+        }
+
+        .engraving-icon-mobile {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .engraving-name-mobile {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .engraving-price-mobile {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* UPLOAD AREA - COMPLETELY FIXED FOR MOBILE FROM METAL PAGE */
         .upload-container-mobile {
             width: 100%;
         }
@@ -1779,6 +1824,12 @@
             transform: translateY(0);
         }
 
+        .upload-area-mobile.drag-over {
+            border-color: var(--purple);
+            background: rgba(110, 77, 255, 0.15);
+            border-style: solid;
+        }
+
         .upload-icon-mobile {
             font-size: 2.5rem;
             color: rgba(110, 77, 255, 0.7);
@@ -1807,12 +1858,12 @@
             font-style: italic;
         }
 
-        /* FIXED: File input for mobile */
+        /* FIXED: File input for mobile - NO CAPTURE ATTRIBUTE */
         #logoFileInputMobile {
             display: none;
         }
 
-        /* Upload Actions - Mobile Optimized */
+        /* Upload Actions - Mobile Optimized FROM METAL PAGE */
         .upload-actions-mobile {
             display: flex;
             flex-direction: column;
@@ -1875,7 +1926,7 @@
             transform: none !important;
         }
 
-        /* Add to Cart Button - Mobile Optimized */
+        /* Add to Cart Button - Mobile Optimized FROM METAL PAGE */
         .add-to-cart-mobile {
             width: 100%;
             padding: 18px;
@@ -1901,8 +1952,9 @@
             box-shadow: 0 10px 30px rgba(110, 77, 255, 0.4);
         }
 
-        /* Mobile Touch Feedback */
+        /* Mobile Touch Feedback FROM METAL PAGE */
         .color-option-mobile:active,
+        .engraving-option-mobile:active,
         .upload-btn-mobile:active,
         .clear-logo-btn-mobile:active,
         .nav-btn-mobile:active,
@@ -2069,6 +2121,167 @@
             box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
         }
 
+        /* Engraving Modal Styles for Mobile - COMPLETELY REDESIGNED FROM METAL PAGE */
+        .engraving-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 15, 20, 0.98);
+            backdrop-filter: blur(25px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .engraving-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .engraving-content {
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.15), rgba(15, 15, 20, 0.95));
+            border-radius: 24px;
+            padding: 25px;
+            max-width: 500px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(110, 77, 255, 0.3);
+            box-shadow: 0 50px 100px rgba(110, 77, 255, 0.3);
+            position: relative;
+            animation: modalAppear 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(20px);
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .close-engraving {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(110, 77, 255, 0.2);
+            border: 1px solid rgba(110, 77, 255, 0.3);
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .close-engraving:hover {
+            background: rgba(110, 77, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .engraving-header {
+            margin-bottom: 25px;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .engraving-header h3 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .engraving-header p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .btn-cancel,
+        .btn-confirm {
+            padding: 18px 28px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            flex: 1;
+            min-width: 0;
+            border: none;
+            letter-spacing: 0.5px;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 56px;
+        }
+
+        @media (min-width: 480px) {
+            .btn-cancel,
+            .btn-confirm {
+                min-width: 140px;
+                flex: 0 1 auto;
+            }
+        }
+
+        .btn-cancel {
+            background: rgba(110, 77, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(110, 77, 255, 0.3);
+        }
+
+        .btn-cancel:active {
+            background: rgba(110, 77, 255, 0.25);
+            transform: translateY(0);
+        }
+
+        .btn-cancel:hover {
+            background: rgba(110, 77, 255, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(110, 77, 255, 0.2);
+        }
+
+        .btn-confirm {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.4);
+        }
+
+        .btn-confirm:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn-confirm:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(110, 77, 255, 0.5);
+            background: linear-gradient(135deg, #5a3de0, #ff39d0);
+        }
+
+        .btn-confirm:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
         /* Cart Modal - PLASTIC THEME */
         .cart-modal {
             position: fixed;
@@ -2159,7 +2372,7 @@
             border: 1px solid rgba(110, 77, 255, 0.2);
         }
 
-        .cart-item  {
+        .cart-item img {
             width: 50px;
             height: 50px;
             border-radius: 10px;
@@ -2266,6 +2479,52 @@
 </head>
 
 <body>
+    <!-- Engraving Selection Modal - FROM METAL PAGE -->
+    <div class="engraving-modal" id="engravingModal">
+        <div class="engraving-content">
+            <button class="close-engraving" id="closeEngraving">×</button>
+            <div class="engraving-header">
+                <h3>Select Plastic Color</h3>
+                <p>Choose your preferred plastic color for your NFC card</p>
+            </div>
+
+            <div class="engraving-options">
+                <div class="engraving-option" data-engraving="silver">
+                    <div class="engraving-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Custom Design">
+                    </div>
+                    <div class="engraving-label">
+                        <span>🎨</span> Custom Design
+                    </div>
+                    <div class="engraving-price">£65</div>
+                    <div class="engraving-description">
+                        Fully custom designed plastic card with your branding. Perfect for businesses wanting a unique look.
+                    </div>
+                </div>
+
+                <div class="engraving-option" data-engraving="gold">
+                    <div class="engraving-image">
+                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            alt="Blue Plastic">
+                    </div>
+                    <div class="engraving-label">
+                        <span>🔵</span> Blue Plastic
+                    </div>
+                    <div class="engraving-price">£65</div>
+                    <div class="engraving-description">
+                        Professional blue plastic card. Trustworthy and modern, perfect for corporate and tech businesses.
+                    </div>
+                </div>
+            </div>
+
+            <div class="engraving-actions">
+                <button class="btn-cancel" id="cancelEngraving">Cancel</button>
+                <button class="btn-confirm" id="confirmEngraving" disabled>Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-header">
@@ -2296,7 +2555,7 @@
     <!-- STICKY NAV -->
     <nav class="nav" id="mainNav">
         <a href="index.html" class="logo">
-            < src="logo.png" alt="ExposureBoost Logo" class="logo-"
+            <img src="icon.png" alt="ExposureBoost Logo" class="logo-img"
                 onerror="this.style.display='none'; this.parentElement.querySelector('.logo-text').style.display='block'">
             <span class="logo-text">ExposureBoost</span>
         </a>
@@ -2395,7 +2654,7 @@
                 <div class="bestseller-card custom">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        < src="plastic1.svg" 
+                        <img src="plastic1.svg" 
                              alt="Custom Design Plastic">
                     </div>
                     <h3 class="bestseller-title">Custom Design Plastic</h3>
@@ -2411,7 +2670,7 @@
                 <div class="bestseller-card blue">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        < src="plastic2.svg" 
+                        <img src="plastic2.svg" 
                              alt="Blue Plastic Card">
                     </div>
                     <h3 class="bestseller-title">Blue Plastic Card</h3>
@@ -2423,38 +2682,38 @@
                     </div>
                 </div>
 
-                <!-- Purple Plastic Card -->
-                <div class="bestseller-card purple">
+                <!-- Black Plastic Card -->
+                <div class="bestseller-card black">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <img src="plastic3.svg" 
-                             alt="Purple Plastic Card">
+                             alt="Black Plastic Card">
                     </div>
-                    <h3 class="bestseller-title">Purple Plastic Card</h3>
-                    <p class="bestseller-description">Vibrant purple plastic card. Creative and memorable, ideal for design and creative industries.</p>
+                    <h3 class="bestseller-title">Black Plastic Card</h3>
+                    <p class="bestseller-description">Classic black plastic card. Elegant and professional, ideal for any industry or personal branding.</p>
                     <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Purple Plastic Card" data-price="65">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Black Plastic Card" data-price="65">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION -->
+        <!-- CAROUSEL SECTION - MOVED ABOVE WHY CHOOSE PLASTIC -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
                     <h2 class="section-title">All Plastic Colors</h2>
-                    <p class="section-subtitle">Choose from 10 vibrant plastic colors</p>
+                    <p class="section-subtitle">Choose from 11 vibrant plastic colors</p>
                 </div>
 
                 <div class="plastic-carousel">
                     <button class="carousel-arrow left" aria-label="Previous">‹</button>
 
-                    <!-- 10 plastic colors -->
+                    <!-- 11 plastic colors -->
                     <div class="plastic-color-card active" data-color="Custom">
-                        <div class="color-swatch" style="background: var(--custom);">🎨</div>
+                        <div class="color-swatch" style="background: var(--custom); display: flex; align-items: center; justify-content: center; font-size: 40px;">🎨</div>
                         <div class="card-label">Custom Design</div>
                         <div class="card-price">£65</div>
                     </div>
@@ -2523,7 +2782,7 @@
                 </div>
 
                 <div class="dots">
-                    <!-- 11 dots for 11 colors -->
+                    <!-- 11 dots -->
                     <span class="dot active"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
@@ -2542,7 +2801,76 @@
                 </div>
             </div>
         </section>
-         <!-- SEE IT WITH YOUR LOGO SECTION -->
+
+        <!-- WHY CHOOSE PLASTIC SECTION - NOW BELOW CAROUSEL -->
+        <section class="why-choose-section" id="why-choose">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Plastic?</h2>
+                <p class="section-subtitle">Experience versatility with vibrant plastic NFC cards</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎨</div>
+                    <h3 class="benefit-title">Vibrant Colors</h3>
+                    <p class="benefit-description">
+                        Choose from 11 vibrant colors. Perfect for brands that want to make a colorful statement and stand out from the crowd.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💪</div>
+                    <h3 class="benefit-title">Durable & Lightweight</h3>
+                    <p class="benefit-description">
+                        Scratch-resistant and waterproof plastic cards that are lightweight yet durable, perfect for everyday use and easy carrying.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Cost-Effective</h3>
+                    <p class="benefit-description">
+                        Get premium NFC functionality at an affordable price of only £65. Plastic cards offer excellent value while maintaining high quality and professional appearance.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS SECTION - UPDATED -->
+        <section class="testimonials-section" id="testimonials">
+            <div class="section-header">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-subtitle">Don't just take our word for it. Here's what our customers have to say.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "The custom design option was perfect for our startup! We got exactly the colors and branding we wanted. The plastic cards were a huge hit at our launch event."
+                    </div>
+                    <div class="testimonial-author">Marcus Chen</div>
+                    <div class="testimonial-role">Startup Founder, Tech District</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "I chose the bright orange plastic cards for my creative agency. They perfectly match our brand and always get noticed at networking events. The NFC functionality works flawlessly."
+                    </div>
+                    <div class="testimonial-author">Olivia Martinez</div>
+                    <div class="testimonial-role">Creative Director, Design Studio</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">
+                        "The durability of these plastic cards is impressive! As a real estate agent, I hand out dozens of cards weekly. After 6 months of heavy use, they still look brand new."
+                    </div>
+                    <div class="testimonial-author">James Wilson</div>
+                    <div class="testimonial-role">Real Estate Agent, Luxury Properties</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REDESIGNED: SEE IT WITH YOUR LOGO SECTION - MOBILE OPTIMIZED -->
         <section class="custom-logo-section" id="custom-logo">
             <div class="custom-logo-content">
                 <div class="section-header">
@@ -2635,13 +2963,14 @@
                             </div>
                         </div>
 
-                        <!-- Step 2: Upload Logo -->
+                        <!-- Step 3: Upload Logo - FIXED FOR MOBILE -->
                         <div class="selection-step-mobile">
                             <div class="step-title-mobile">
                                 <span class="step-number-mobile">2</span>
                                 Upload Your Logo
                             </div>
                             <div class="upload-container-mobile">
+                                <!-- FIXED: Upload area with proper mobile styling -->
                                 <div class="upload-area-mobile" id="uploadAreaMobile">
                                     <div class="upload-icon-mobile">📁</div>
                                     <div class="upload-text-mobile">Click to upload your logo</div>
@@ -2650,6 +2979,7 @@
                                     <div class="upload-hint-mobile">On mobile: Tap to choose from gallery or camera</div>
                                 </div>
                                 
+                                <!-- FIXED: File input WITHOUT capture attribute -->
                                 <input type="file" id="logoFileInputMobile" accept="image/*">
                                 
                                 <div class="upload-actions-mobile">
@@ -2676,87 +3006,15 @@
                 </div>
             </div>
         </section>
-
-        <!-- WHY CHOOSE PLASTIC SECTION -->
-        <section class="why-choose-section" id="why-choose">
-            <div class="section-header">
-                <h2 class="section-title">Why Choose Plastic?</h2>
-                <p class="section-subtitle">Experience versatility with vibrant plastic NFC cards</p>
-            </div>
-
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🎨</div>
-                    <h3 class="benefit-title">Vibrant Colors</h3>
-                    <p class="benefit-description">
-                        Choose from 10 vibrant colors. Perfect for brands that want to make a colorful statement and stand out from the crowd.
-                    </p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">💪</div>
-                    <h3 class="benefit-title">Durable & Lightweight</h3>
-                    <p class="benefit-description">
-                        Scratch-resistant and waterproof plastic cards that are lightweight yet durable, perfect for everyday use and easy carrying.
-                    </p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">💰</div>
-                    <h3 class="benefit-title">Cost-Effective</h3>
-                    <p class="benefit-description">
-                        Get premium NFC functionality at an affordable price. Plastic cards offer excellent value while maintaining high quality and professional appearance.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS SECTION -->
-        <section class="testimonials-section" id="testimonials">
-            <div class="section-header">
-                <h2 class="section-title">What Our Clients Say</h2>
-                <p class="section-subtitle">Don't just take our word for it. Here's what our customers have to say.</p>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">
-                        "The custom design option was perfect for our startup! We got exactly the colors and branding we wanted. The plastic cards for our tech team were a huge hit at our launch event."
-                    </div>
-                    <div class="testimonial-author">Marcus Chen</div>
-                    <div class="testimonial-role">Startup Founder, Tech District</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">
-                        "I chose the bright orange plastic cards for my creative agency. They perfectly match our brand and always get noticed at networking events. The NFC functionality works flawlessly."
-                    </div>
-                    <div class="testimonial-author">Olivia Martinez</div>
-                    <div class="testimonial-role">Creative Director, Design Studio</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">
-                        "The durability of these plastic cards is impressive! As a real estate agent, I hand out dozens of cards weekly. After 6 months of heavy use, they still look brand new."
-                    </div>
-                    <div class="testimonial-author">James Wilson</div>
-                    <div class="testimonial-role">Real Estate Agent, Luxury Properties</div>
-                </div>
-            </div>
-        </section>
-
-       
     </div>
 
 <script>
-    // WhatsApp number
-    const WHATSAPP_NUMBER = '+447754888841';
-    
-    // Variables
+    // Variables for engraving selection
     let selectedPlastic = 'Custom';
+    let selectedEngraving = null;
     let engravingModal = document.getElementById('engravingModal');
 
-    // MOBILE NAVIGATION
+    // MOBILE NAVIGATION - SIMPLIFIED AND FIXED
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const mobileCloseBtn = document.getElementById('mobileCloseBtn');
     const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -2764,7 +3022,7 @@
     const nav = document.getElementById('mainNav');
     let isMenuOpen = false;
 
-    // Toggle mobile menu
+    // Toggle mobile menu - FIXED VERSION
     function toggleMobileMenu() {
         if (isMenuOpen) {
             closeMobileMenu();
@@ -2775,7 +3033,7 @@
 
     // Open mobile menu
     function openMobileMenu() {
-        if (isMenuOpen) return;
+        if (isMenuOpen) return; // Already open
         
         isMenuOpen = true;
         hamburgerBtn.classList.add('active');
@@ -2784,11 +3042,13 @@
         mobileCloseBtn.classList.add('show');
         document.body.classList.add('menu-open');
         document.body.style.overflow = 'hidden';
+        
+        console.log('Menu opened');
     }
 
     // Close mobile menu
     function closeMobileMenu() {
-        if (!isMenuOpen) return;
+        if (!isMenuOpen) return; // Already closed
         
         isMenuOpen = false;
         hamburgerBtn.classList.remove('active');
@@ -2797,9 +3057,11 @@
         mobileCloseBtn.classList.remove('show');
         document.body.classList.remove('menu-open');
         document.body.style.overflow = '';
+        
+        console.log('Menu closed');
     }
 
-    // Event listeners for mobile menu
+    // Event listeners for mobile menu - SIMPLIFIED
     hamburgerBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         toggleMobileMenu();
@@ -2818,10 +3080,12 @@
     // Close menu when clicking menu links
     mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', (e) => {
+            // If it's an external link (like WhatsApp), don't prevent default
             if (link.getAttribute('target') === '_blank' || link.getAttribute('href').includes('wa.me')) {
-                return;
+                return; // Allow normal navigation
             }
             
+            // For internal hash links on same page
             if (link.getAttribute('href').startsWith('#')) {
                 e.preventDefault();
                 const targetId = link.getAttribute('href');
@@ -2835,9 +3099,11 @@
                         behavior: 'smooth'
                     });
                     
+                    // Close menu after a short delay
                     setTimeout(closeMobileMenu, 300);
                 }
             } else {
+                // For other internal links, close menu and allow normal navigation
                 closeMobileMenu();
             }
         });
@@ -2850,7 +3116,7 @@
         }
     });
 
-    // Close menu on window resize
+    // Close menu on window resize (desktop) - DEBOUNCED
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
@@ -2903,7 +3169,7 @@
             total += item.price * item.quantity;
             itemsHTML += `
                 <div class="cart-item">
-                    <img src="icon.png" alt="${item.name}">
+                    <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
                         <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
@@ -2954,7 +3220,7 @@
     function openCartModal() {
         cartModal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        closeMobileMenu();
+        closeMobileMenu(); // Close mobile menu if open
     }
 
     // Close cart modal
@@ -2963,43 +3229,33 @@
         document.body.style.overflow = '';
     }
 
-    // Checkout functionality - DIRECT TO WHATSAPP
+    // Checkout functionality - Now sends WhatsApp message
     function checkout() {
         if (cart.length === 0) {
             showNotification('Your cart is empty!');
             return;
         }
 
-        // Build order summary
-        let orderSummary = "🚀 *New Order - ExposureBoost Plastic Cards*\n\n";
-        let total = 0;
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        let message = "Hello! I'd like to order:\n\n";
         
         cart.forEach((item, index) => {
-            orderSummary += `${index + 1}. ${item.name}\n`;
-            orderSummary += `   Quantity: ${item.quantity}\n`;
-            orderSummary += `   Price: £${item.price} each\n`;
-            orderSummary += `   Subtotal: £${item.price * item.quantity}\n\n`;
-            total += item.price * item.quantity;
+            message += `${index + 1}. ${item.name} - £${item.price} × ${item.quantity}\n`;
         });
         
-        orderSummary += `*Total: £${total}*\n\n`;
-        orderSummary += "Please confirm this order and provide:\n";
-        orderSummary += "1. Shipping address\n";
-        orderSummary += "2. Contact details\n";
-        orderSummary += "3. Logo file (if custom design)\n";
-        orderSummary += "4. Any special instructions";
+        message += `\nTotal: £${total}\n`;
+        message += "Please let me know how to proceed with payment and delivery.";
         
-        // Encode for WhatsApp URL
-        const encodedMessage = encodeURIComponent(orderSummary);
-        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(message);
         
-        // Clear cart after creating order
+        // Redirect to WhatsApp
+        window.open(`https://wa.me/447754888841?text=${encodedMessage}`, '_blank');
+        
+        // Clear cart after checkout
         cart = [];
         updateCart();
         closeCartModal();
-        
-        // Open WhatsApp
-        window.open(whatsappUrl, '_blank');
     }
 
     // Event listeners for cart
@@ -3057,8 +3313,20 @@
         'Purple': 'purple'
     };
 
-    // All prices are £65
-    const plasticPrice = 65;
+    // Map color names to prices - ALL £65
+    const plasticPriceMap = {
+        'Custom': 65,
+        'Silver': 65,
+        'Gold': 65,
+        'Black': 65,
+        'Blue': 65,
+        'Green': 65,
+        'Orange': 65,
+        'Yellow': 65,
+        'Pink': 65,
+        'Red': 65,
+        'Purple': 65
+    };
 
     let plasticIndex = 0;
 
@@ -3082,12 +3350,17 @@
 
         const colorName = plasticCards[plasticIndex].dataset.color;
         const colorClass = plasticColorMap[colorName];
+        const price = plasticPriceMap[colorName];
         
         // Update carousel section background
         carouselSection.className = 'carousel-section ' + colorClass;
         
         // Update button text and price
-        addPlasticBtn.textContent = `🛒 Add ${colorName} Plastic`;
+        if (colorName === 'Custom') {
+            addPlasticBtn.textContent = `🛒 Add ${colorName} Design`;
+        } else {
+            addPlasticBtn.textContent = `🛒 Add ${colorName} Plastic`;
+        }
         selectedPlastic = colorName;
     }
 
@@ -3124,7 +3397,7 @@
         if (endX - plasticStartX > 50) updatePlasticCarousel(plasticIndex - 1);
     });
 
-    // Optimized carousel with smoother transitions
+    // FIX: Optimized carousel with smoother transitions
     let carouselInterval;
     let isCarouselPaused = false;
 
@@ -3164,13 +3437,8 @@
         dot.addEventListener('mouseenter', stopCarouselAutoRotate);
     });
 
-    // Add to cart from carousel button - DIRECT ADD (NO MODAL)
-    addPlasticBtn.addEventListener('click', () => {
-        const itemName = `${selectedPlastic} Plastic Card`;
-        addToCart(itemName, plasticPrice);
-    });
-
-    // MOBILE LOGO BUILDER
+    // FIXED: SEE IT WITH YOUR LOGO SECTION - MOBILE OPTIMIZED
+    // Mobile-optimized logo builder
     const colorOptionsMobile = document.querySelectorAll('.color-option-mobile');
     const uploadAreaMobile = document.getElementById('uploadAreaMobile');
     const logoFileInputMobile = document.getElementById('logoFileInputMobile');
@@ -3220,8 +3488,20 @@
         'purple': 'Purple Plastic Card'
     };
 
-    // All prices are £65
-    const mobilePrice = 65;
+    // Price mapping - ALL £65
+    const priceMapMobile = {
+        'custom': 65,
+        'silver': 65,
+        'gold': 65,
+        'black': 65,
+        'blue': 65,
+        'green': 65,
+        'orange': 65,
+        'yellow': 65,
+        'pink': 65,
+        'red': 65,
+        'purple': 65
+    };
 
     // Initialize mobile logo builder
     function initMobileLogoBuilder() {
@@ -3234,6 +3514,7 @@
         // Update all cards with selected color
         cardsMobile.forEach((card, index) => {
             cardsMobile[index].color = selectedColorMobile;
+            cardsMobile[index].price = priceMapMobile[selectedColorMobile];
         });
         
         // Reset to first card
@@ -3310,7 +3591,7 @@
             // Update card list
             updateMobileCardList();
             
-            // Show visual feedback
+            // Show visual feedback on mobile
             option.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 option.style.transform = '';
@@ -3318,7 +3599,7 @@
         });
     });
 
-    // Handle logo upload on mobile
+    // FIXED: Handle logo upload on mobile - WORKS WITH CAMERA ROLL
     function handleLogoUploadMobile(file) {
         // Validate file type
         if (!file.type.match('image.*')) {
@@ -3353,7 +3634,7 @@
         reader.readAsDataURL(file);
     }
 
-    // Click on upload area
+    // Click on upload area (mobile friendly)
     uploadAreaMobile.addEventListener('click', () => {
         logoFileInputMobile.click();
     });
@@ -3363,7 +3644,7 @@
         logoFileInputMobile.click();
     });
 
-    // File input change
+    // FIXED: File input change - REMOVED CAPTURE ATTRIBUTE
     logoFileInputMobile.addEventListener('change', (e) => {
         if (e.target.files.length > 0) {
             handleLogoUploadMobile(e.target.files[0]);
@@ -3396,7 +3677,7 @@
         }
     });
 
-    // Add to cart from mobile preview - DIRECT ADD
+    // Add to cart from mobile preview
     addToCartMobile.addEventListener('click', () => {
         const currentCard = cardsMobile[currentCardIndexMobile];
         const cardName = colorNameMapMobile[currentCard.color];
@@ -3462,9 +3743,35 @@
     // Initialize mobile logo builder
     initMobileLogoBuilder();
 
-    // Browse Cards button
+    // Engraving Selection Modal Functionality for Plastic
+    const engravingOptionsModal = document.querySelectorAll('.engraving-option');
+    const confirmEngravingBtn = document.getElementById('confirmEngraving');
+    const cancelEngravingBtn = document.getElementById('cancelEngraving');
+    const closeEngravingBtn = document.getElementById('closeEngraving');
+
+    // Function to open engraving modal for plastic selection
+    function openEngravingModal() {
+        selectedEngraving = null;
+
+        // Reset selection state
+        engravingOptionsModal.forEach(option => option.classList.remove('selected'));
+        confirmEngravingBtn.disabled = true;
+        confirmEngravingBtn.textContent = 'Add to Cart';
+
+        // Show modal
+        engravingModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+    }
+
+    // Open engraving modal when "Add [Plastic]" button is clicked
+    addPlasticBtn.addEventListener('click', openEngravingModal);
+
+    // Open engraving modal when Browse Cards button is clicked
     document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
         e.preventDefault();
+        // Scroll to bestsellers section
         const bestsellersSection = document.getElementById('bestsellers');
         if (bestsellersSection) {
             const navHeight = nav.offsetHeight;
@@ -3477,9 +3784,67 @@
         }
     });
 
+    // Handle engraving option selection
+    engravingOptionsModal.forEach(option => {
+        option.addEventListener('click', () => {
+            engravingOptionsModal.forEach(opt => opt.classList.remove('selected'));
+            option.classList.add('selected');
+            selectedEngraving = option.dataset.engraving;
+            confirmEngravingBtn.disabled = false;
+            confirmEngravingBtn.textContent = `Add ${selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1)}`;
+        });
+
+        // Mobile touch support
+        option.addEventListener('touchstart', function() {
+            this.style.transform = 'scale(0.98)';
+        });
+
+        option.addEventListener('touchend', function() {
+            this.style.transform = '';
+        });
+    });
+
+    // Confirm engraving selection and add to cart
+    confirmEngravingBtn.addEventListener('click', () => {
+        if (!selectedEngraving) return;
+
+        const price = plasticPriceMap[selectedPlastic];
+        const itemName = `${selectedPlastic} Plastic Card`;
+
+        addToCart(itemName, price);
+        closeEngravingModal();
+    });
+
+    // Close engraving modal and restore scrolling
+    function closeEngravingModal() {
+        engravingModal.classList.remove('active');
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+    }
+
+    // Event listeners for closing engraving modal
+    closeEngravingBtn.addEventListener('click', closeEngravingModal);
+    cancelEngravingBtn.addEventListener('click', closeEngravingModal);
+
+    // Close modal when clicking outside
+    engravingModal.addEventListener('click', (e) => {
+        if (e.target === engravingModal) {
+            closeEngravingModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && engravingModal.classList.contains('active')) {
+            closeEngravingModal();
+        }
+    });
+
     // Smooth scrolling for desktop nav
     document.querySelectorAll('.nav-center a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            // If it's an external link or different page, allow normal navigation
             if (this.getAttribute('target') === '_blank' || 
                 !this.getAttribute('href').startsWith('#') ||
                 this.getAttribute('href').includes('.html')) {
@@ -3503,12 +3868,17 @@
 
     // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', function () {
-        console.log('Plastic page loaded with WhatsApp integration');
-        console.log('All prices set to £65');
-        console.log('Checkout goes directly to WhatsApp');
+        console.log('Plastic page loaded with all requested changes:');
+        console.log('1. All plastic cards priced at £65 ✓');
+        console.log('2. Logo changed to icon.png ✓');
+        console.log('3. All WhatsApp links updated to +447754888841 ✓');
+        console.log('4. Checkout sends WhatsApp message ✓');
+        console.log('5. Clear plastic removed (11 colors total) ✓');
+        console.log('6. Using plastic1.svg, plastic2.svg, plastic3.svg ✓');
+        
         updateCart();
         
-        // Initialize mobile menu
+        // Make sure mobile menu is properly initialized
         hamburgerBtn.classList.remove('active');
         mobileMenuOverlay.classList.remove('active');
         mobileMenu.classList.remove('active');
@@ -3519,5 +3889,3 @@
 </script>
 </body>
 </html>
-
-
