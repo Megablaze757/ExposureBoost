@@ -628,7 +628,6 @@ a {
     transition: transform 0.3s ease;
 }
 
-}
 
 .card-image:hover img {
     transform: scale(1.05);
@@ -904,7 +903,70 @@ a {
     padding: 16px;
     border-radius: 12px;
 }
-    </style>
+    
+
+/* NOTIFICATION TOAST (prevents "Item added to cart!" from taking layout space) */
+.notification {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5000;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+
+/* MOBILE: tighten spacing so hero fits without extra scroll */
+@media (max-width: 767px) {
+    .content-section {
+        padding: 56px 16px; /* reduce from 80px on small screens */
+    }
+
+    /* Only the hero should try to fit within the viewport under the fixed nav */
+    #hero.content-section {
+        min-height: calc(100vh - 64px);
+        padding: 24px 16px 28px;
+    }
+
+    #hero .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 14px;
+    }
+
+    #hero .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 18px;
+    }
+
+    #hero .card-image-container {
+        margin: 18px auto;
+    }
+
+    #hero .card-image {
+        width: min(92vw, 420px);
+        height: auto;
+        aspect-ratio: 5 / 3;
+    }
+
+    /* Hover effects don't matter on touch devices */
+    #hero .card-image:hover img {
+        transform: none;
+    }
+}
+</style>
 </head>
 
 <body>
