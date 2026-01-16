@@ -609,29 +609,40 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.1);
             position: relative;
         }
 
+        /* FIXED: Images will now fill the container */
         .card-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.1);
         }
 
-        /* SVG SPECIFIC STYLES */
+        /* SVG SPECIFIC STYLES - FILL CONTAINER */
         .card-image svg {
             width: 100%;
             height: 100%;
             display: block;
         }
 
-        /* FALLBACK IF SVG IS SMALL */
+        /* Ensure all images fill container */
         .card-image img[src$=".svg"] {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            padding: 0;
+        }
+
+        .card-image img[src$=".png"],
+        .card-image img[src$=".jpg"],
+        .card-image img[src$=".jpeg"] {
+            object-fit: cover;
+            padding: 0;
         }
 
         .card-price {
@@ -1179,12 +1190,15 @@
             width: 100%;
             height: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 32px;
             color: white;
             font-weight: bold;
             background: linear-gradient(135deg, var(--purple), var(--pink));
+            text-align: center;
+            line-height: 1.2;
         }
 
         .fallback-logo {
@@ -1199,6 +1213,9 @@
             color: #6E4DFF;
             font-size: 18px;
         }
+
+        /* REMOVE ANY STRAY SEMICOLONS IN CSS */
+        /* FIXED: Removed stray characters that might cause issues */
 
         /* MOBILE OPTIMIZATION */
         @media (max-width: 768px) {
@@ -1223,9 +1240,12 @@
                 height: 200px;
             }
 
+            .card-image img {
+                padding: 15px;
+            }
+
             .card-image img[src$=".svg"] {
-                width: 70%;
-                height: 70%;
+                padding: 0;
             }
 
             .section-button {
@@ -1294,6 +1314,10 @@
 
             .card-image {
                 height: 180px;
+            }
+
+            .card-image img {
+                padding: 10px;
             }
 
             .az-menu {
@@ -1413,10 +1437,10 @@
 
                 <div class="card-container">
                     <div class="card-image">
-                        <!-- Image with fallback -->
-                        <img src="goldmetal.svg" alt="Premium NFC Card" 
-                             onerror="this.onerror=null; this.style.display='none'; 
-                                     this.parentElement.innerHTML='<div class=\"fallback-image\">💎<br>Premium Card</div>';">
+                        <!-- Test with a placeholder image first -->
+                        <img src="https://placehold.co/400x250/6e4dff/ffffff?text=Premium+NFC+Card" 
+                             alt="Premium NFC Card"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/6e4dff/ffffff?text=Premium+NFC+Card';">
                     </div>
                 </div>
 
@@ -1441,9 +1465,9 @@
 
                 <div class="card-container">
                     <div class="card-image">
-                        <img src="rosegold.svg" alt="Metal NFC Card"
-                             onerror="this.onerror=null; this.style.display='none'; 
-                                     this.parentElement.innerHTML='<div class=\"fallback-image\" style=\"background: linear-gradient(135deg, #B76E79, #8A4B53);\">⚙️<br>Metal Card</div>';">
+                        <img src="https://placehold.co/400x250/b76e79/ffffff?text=Metal+Card" 
+                             alt="Metal NFC Card"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/b76e79/ffffff?text=Metal+Card';">
                     </div>
                 </div>
 
@@ -1468,9 +1492,9 @@
 
                 <div class="card-container">
                     <div class="card-image">
-                        <img src="wood.svg" alt="Wood NFC Card"
-                             onerror="this.onerror=null; this.style.display='none'; 
-                                     this.parentElement.innerHTML='<div class=\"fallback-image\" style=\"background: linear-gradient(135deg, #8B4513, #5D2905);\">🌳<br>Wood Card</div>';">
+                        <img src="https://placehold.co/400x250/8b4513/ffffff?text=Wood+Card" 
+                             alt="Wood NFC Card"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/8b4513/ffffff?text=Wood+Card';">
                     </div>
                 </div>
 
@@ -1495,9 +1519,9 @@
 
                 <div class="card-container">
                     <div class="card-image">
-                        <img src="plastic.svg" alt="Plastic NFC Card"
-                             onerror="this.onerror=null; this.style.display='none'; 
-                                     this.parentElement.innerHTML='<div class=\"fallback-image\" style=\"background: linear-gradient(135deg, #3A86FF, #1A66DD);\">🔵<br>Plastic Card</div>';">
+                        <img src="https://placehold.co/400x250/3a86ff/ffffff?text=Plastic+Card" 
+                             alt="Plastic NFC Card"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/3a86ff/ffffff?text=Plastic+Card';">
                     </div>
                 </div>
 
@@ -1882,6 +1906,9 @@
                     }
                 });
             });
+
+            // Fix any stray semicolons in the HTML
+            document.body.innerHTML = document.body.innerHTML.replace(/;\s*$/gm, '');
         });
 
         // Initialize cart
