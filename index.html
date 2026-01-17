@@ -997,13 +997,31 @@ a {
     margin: 18px auto;
   }
 
-  /* Fixed image size on mobile so layout never jumps */
+  @media (max-width: 767px) {
+
+  /* SAME image sizing for hero + product sections */
   .card-image {
-    width: min(92vw, 420px);
-    height: 252px; /* 420 * 3/5 = 252 (5:3 ratio) */
+    width: min(88vw, 420px);
+    height: auto;
+    aspect-ratio: 5 / 3;
     overflow: hidden;
     border-radius: 20px;
   }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: none !important;
+  }
+
+  /* keep hover off on mobile */
+  .card-image:hover img {
+    transform: none !important;
+  }
+
 
   .card-image img {
     width: 100%;
