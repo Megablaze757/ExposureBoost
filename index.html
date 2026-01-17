@@ -1064,8 +1064,6 @@ a {
 
     <!-- MOBILE MENU OVERLAY -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-    <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
-
     <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="index.html" class="mobile-menu-item active">
@@ -1321,8 +1319,7 @@ a {
     <script>
         // NAVIGATION FUNCTIONALITY
         const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const mobileMenu = document.getElementById('mobileMenu');
         const nav = document.getElementById('mainNav');
 
@@ -1370,8 +1367,7 @@ a {
             hamburgerBtn.classList.add('active');
             mobileMenuOverlay.classList.add('active');
             mobileMenu.classList.add('active');
-            mobileCloseBtn.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+document.body.style.overflow = 'hidden';
         }
 
         function closeMobileMenu() {
@@ -1379,14 +1375,12 @@ a {
             hamburgerBtn.classList.remove('active');
             mobileMenuOverlay.classList.remove('active');
             mobileMenu.classList.remove('active');
-            mobileCloseBtn.style.display = 'none';
-            document.body.style.overflow = 'auto';
+document.body.style.overflow = 'auto';
         }
 
         // Event listeners
         hamburgerBtn.addEventListener('click', toggleMobileMenu);
-        mobileCloseBtn.addEventListener('click', closeMobileMenu);
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
