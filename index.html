@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -962,84 +963,67 @@ a {
 }
 
 
-/* MOBILE: tighten spacing so hero fits nicely (title top, image middle, CTA beneath) */
+/* MOBILE: tighten spacing so each section fits (hero + materials) without extra scroll */
 @media (max-width: 767px) {
+    /* Reduce section padding on small screens */
+    .content-section {
+        padding: 52px 16px;
+    }
 
-  /* Reduce section padding on small screens */
-  .content-section {
-    padding: 52px 16px;
-  }
+    /* Keep titles consistent everywhere (match hero size on mobile) */
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 18px;
+    }
 
-  /* Keep titles consistent everywhere (match hero size on mobile) */
-  .section-title {
-    font-size: 2.2rem;
-    margin-bottom: 14px;
-  }
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 22px;
+        line-height: 1.4;
+    }
 
-  .section-subtitle {
-    font-size: 1rem;
-    margin-bottom: 18px;
-    line-height: 1.4;
-  }
+    /* Reduce the vertical gap around images + keep consistent sizing */
+    .card-image-container {
+        margin: 20px auto;
+    }
 
-  /* HERO layout: Title at top, image centered, CTA beneath */
-  #hero.content-section {
-    min-height: calc(100vh - 64px);
-    padding: 18px 16px 32px;
+    .card-image {
+        width: min(92vw, 420px);
+        height: auto;
+        aspect-ratio: 5 / 3;
+    }
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
+    /* Give CTA buttons a bit more breathing room */
+    .section-button {
+        margin-top: 18px;
+    }
 
-  /* Reduce the vertical gap around images + keep consistent sizing */
-  .card-image-container {
-    margin: 18px auto;
-  }
+    /* HERO: nudge title up slightly and button down slightly (still fits in one view) */
+    #hero.content-section {
+        min-height: calc(100vh - 64px);
+        padding: 18px 16px 32px;
+    }
 
-  @media (max-width: 767px) {
+    /* Touch devices: don't zoom on hover */
+    .card-image:hover img {
+        transform: none;
+    }
+}
 
-  /* SAME image sizing for hero + product sections */
-  .card-image {
-    width: min(88vw, 420px);
-    height: auto;
-    aspect-ratio: 5 / 3;
-    overflow: hidden;
-    border-radius: 20px;
-  }
 
-  .card-image img {
-    width: 100%;
-    height: 100%;
+/* FORCE HERO CARD IMAGE TO MATCH ALL OTHER CARDS (desktop) */
+#hero .card-image {
+    width: 500px !important;
+    height: 300px !important;
+}
+
+#hero .card-image img {
+    width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
     object-position: center;
-    display: block;
-    transform: none !important;
-  }
+}
 
-  /* keep hover off on mobile */
-  .card-image:hover img {
-    transform: none !important;
-  }
-
-
-  .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-
-  /* Give CTA buttons a bit more breathing room */
-  .section-button {
-    margin-top: 16px;
-  }
-
-  /* Touch devices: don't zoom on hover */
-  .card-image:hover img {
-    transform: none;
-  }
 
         
         /* Disable hover effects on touch devices (mobile) */
@@ -1065,70 +1049,6 @@ a {
   }
 }
 
-/* ===== MOBILE FINAL OVERRIDE: HERO matches screenshot ===== */
-@media (max-width: 767px) {
-  /* Hero section: top text, centered image, CTA below */
-  #hero.content-section {
-    min-height: calc(100vh - 64px);
-    padding: 24px 16px 28px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  /* Top text block stays at top */
-  #hero .content-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  /* Title + subtitle spacing like screenshot */
-  #hero .section-title {
-    margin: 0 0 14px 0;
-    line-height: 1.05;
-  }
-
-  #hero .section-subtitle {
-    margin: 0 0 18px 0;
-  }
-
-  /* Middle: image takes the flexible space */
-  #hero .card-image-container {
-    margin: 0;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0 14px;
-  }
-
-  /* Hero image sizing */
-  #hero .card-image {
-    width: min(88vw, 420px);
-    height: auto !important;
-    aspect-ratio: 5 / 3;
-    overflow: hidden;
-    border-radius: 20px;
-  }
-
-  #hero .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    transform: none !important;
-  }
-
-  /* Bottom: CTA */
-  #hero .section-button {
-    margin: 0 auto;
-    width: min(78vw, 340px);
-    padding: 18px 22px;
-  }
-}
 
 
         
