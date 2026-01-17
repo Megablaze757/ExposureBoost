@@ -514,7 +514,12 @@ a {
         object-fit: cover;
         background: transparent;
         object-position: center;
-    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4)); /* shadow without a box */
+        -webkit-filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.35));
+        filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.35));
+        transform: translateZ(0);
+        will-change: transform, filter;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
     /* removed faint container box */
     #hero .card-image { box-shadow: none !important; }
@@ -536,6 +541,7 @@ a {
     padding: 80px 20px;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
 }
 
 .content-container {
@@ -642,6 +648,7 @@ a {
     background: transparent;
     border: none;
     position: relative;
+    contain: paint;
 }
 
 .card-image img {
@@ -652,13 +659,26 @@ a {
     display: block;
     border-radius: 20px;
     transition: transform 0.3s ease;
-    /* shadow that follows the image (no visible container box) */
-    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
+    background: transparent;
+    /*
+      Mobile Safari can briefly rasterize `filter: drop-shadow(...)` as a
+      rectangular layer while the image is loading/repainting.
+      Use a normal box-shadow on the IMG + compositor hints for stable rendering.
+    */
+    /* Use drop-shadow to avoid any visible rectangular "plate" behind the image */
+    -webkit-filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.35));
+    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.35));
+
+    /* iOS Safari stability hints (reduce random rectangular rasterization) */
+    transform: translateZ(0);
+    will-change: transform, filter;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 
 .card-image:hover img {
-    transform: scale(1.05);
+    transform: translateZ(0) scale(1.05);
 }
 
 
@@ -749,6 +769,7 @@ a {
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
+    isolation: isolate;
     transition: all 0.3s ease;
 }
 
@@ -791,6 +812,7 @@ a {
     padding: 0 30px;
     max-height: 0;
     overflow: hidden;
+    isolation: isolate;
     color: rgba(255, 255, 255, 0.78);
     line-height: 1.6;
     transition: all 0.3s ease;
