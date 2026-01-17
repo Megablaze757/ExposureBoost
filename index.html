@@ -1020,6 +1020,8 @@ a {
     object-position: center;
 }
 
+
+        
         /* Disable hover effects on touch devices (mobile) */
 @media (hover: none) and (pointer: coarse) {
   .card-image img {
@@ -1030,7 +1032,22 @@ a {
     transform: none !important;
   }
 }
+/* Mobile/touch: remove hover + remove drop-shadow to prevent iOS "rectangle" glitch */
+@media (hover: none) and (pointer: coarse) {
+  .card-image img {
+    filter: none !important;
+    -webkit-filter: none !important;
+    transition: none !important;
+  }
 
+  .card-image:hover img {
+    transform: none !important;
+  }
+}
+
+
+
+        
     </style>
 </head>
 
