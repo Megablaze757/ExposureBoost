@@ -1065,6 +1065,70 @@ a {
   }
 }
 
+/* ===== MOBILE FINAL OVERRIDE: HERO matches screenshot ===== */
+@media (max-width: 767px) {
+  /* Hero section: top text, centered image, CTA below */
+  #hero.content-section {
+    min-height: calc(100vh - 64px);
+    padding: 24px 16px 28px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Top text block stays at top */
+  #hero .content-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  /* Title + subtitle spacing like screenshot */
+  #hero .section-title {
+    margin: 0 0 14px 0;
+    line-height: 1.05;
+  }
+
+  #hero .section-subtitle {
+    margin: 0 0 18px 0;
+  }
+
+  /* Middle: image takes the flexible space */
+  #hero .card-image-container {
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 14px;
+  }
+
+  /* Hero image sizing */
+  #hero .card-image {
+    width: min(88vw, 420px);
+    height: auto !important;
+    aspect-ratio: 5 / 3;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  #hero .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: none !important;
+  }
+
+  /* Bottom: CTA */
+  #hero .section-button {
+    margin: 0 auto;
+    width: min(78vw, 340px);
+    padding: 18px 22px;
+  }
+}
 
 
         
