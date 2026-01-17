@@ -962,67 +962,66 @@ a {
 }
 
 
-/* MOBILE: tighten spacing so each section fits (hero + materials) without extra scroll */
+/* MOBILE: tighten spacing so hero fits nicely (title top, image middle, CTA beneath) */
 @media (max-width: 767px) {
-    /* Reduce section padding on small screens */
-    .content-section {
-        padding: 52px 16px;
-    }
 
-    /* Keep titles consistent everywhere (match hero size on mobile) */
-    .section-title {
-        font-size: 2.2rem;
-        margin-bottom: 18px;
-    }
+  /* Reduce section padding on small screens */
+  .content-section {
+    padding: 52px 16px;
+  }
 
-    .section-subtitle {
-        font-size: 1rem;
-        margin-bottom: 22px;
-        line-height: 1.4;
-    }
+  /* Keep titles consistent everywhere (match hero size on mobile) */
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 14px;
+  }
 
-    /* Reduce the vertical gap around images + keep consistent sizing */
-    .card-image-container {
-        margin: 20px auto;
-    }
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 18px;
+    line-height: 1.4;
+  }
 
-    .card-image {
-        width: min(92vw, 420px);
-        height: auto;
-        aspect-ratio: 5 / 3;
-    }
+  /* HERO layout: Title at top, image centered, CTA beneath */
+  #hero.content-section {
+    min-height: calc(100vh - 64px);
+    padding: 18px 16px 32px;
 
-    /* Give CTA buttons a bit more breathing room */
-    .section-button {
-        margin-top: 18px;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 
-    /* HERO: nudge title up slightly and button down slightly (still fits in one view) */
-    #hero.content-section {
-        min-height: calc(100vh - 64px);
-        padding: 18px 16px 32px;
-    }
+  /* Reduce the vertical gap around images + keep consistent sizing */
+  .card-image-container {
+    margin: 18px auto;
+  }
 
-    /* Touch devices: don't zoom on hover */
-    .card-image:hover img {
-        transform: none;
-    }
-}
+  /* Fixed image size on mobile so layout never jumps */
+  .card-image {
+    width: min(92vw, 420px);
+    height: 252px; /* 420 * 3/5 = 252 (5:3 ratio) */
+    overflow: hidden;
+    border-radius: 20px;
+  }
 
-
-/* FORCE HERO CARD IMAGE TO MATCH ALL OTHER CARDS (desktop) */
-#hero .card-image {
-    width: 500px !important;
-    height: 300px !important;
-}
-
-#hero .card-image img {
-    width: 100% !important;
-    height: 100% !important;
+  .card-image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
-}
+    display: block;
+  }
 
+  /* Give CTA buttons a bit more breathing room */
+  .section-button {
+    margin-top: 16px;
+  }
+
+  /* Touch devices: don't zoom on hover */
+  .card-image:hover img {
+    transform: none;
+  }
 
         
         /* Disable hover effects on touch devices (mobile) */
