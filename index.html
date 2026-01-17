@@ -1020,7 +1020,18 @@ a {
     object-position: center;
 }
 
-</style>
+        /* Disable hover effects on touch devices (mobile) */
+@media (hover: none) and (pointer: coarse) {
+  .card-image img {
+    transition: none !important;
+  }
+
+  .card-image:hover img {
+    transform: none !important;
+  }
+}
+
+    </style>
 </head>
 
 <body>
