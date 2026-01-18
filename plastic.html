@@ -1089,7 +1089,7 @@ section[id] {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 30px;
+    margin: 0 auto 50px;
     perspective: 1200px;
     max-width: 1400px;
     width: 95%;
@@ -1130,7 +1130,7 @@ section[id] {
     height: 240px;
     border-radius: 16px;
     object-fit: cover;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -1156,16 +1156,35 @@ section[id] {
     color: #FFFFFF;
 }
 
-/* Remove card label (plastic type text) */
 .card-label {
-    display: none;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.carousel-section.yellow .card-label,
+.carousel-section.orange .card-label,
+.carousel-section.white .card-label,
+.carousel-section.silver .card-label,
+.carousel-section.gold .card-label {
+    color: #1a1209;
+}
+
+.carousel-section.black .card-label,
+.carousel-section.blue .card-label,
+.carousel-section.purple .card-label,
+.carousel-section.red .card-label,
+.carousel-section.green .card-label,
+.carousel-section.pink .card-label,
+.carousel-section.cyan .card-label {
+    color: #FFFFFF;
 }
 
 .card-price {
     font-size: 1.8rem;
     font-weight: 900;
     text-align: center;
-    margin-top: 10px;
 }
 
 .carousel-section.yellow .card-price,
@@ -1237,6 +1256,46 @@ section[id] {
 .carousel-section.silver .carousel-arrow:hover,
 .carousel-section.gold .carousel-arrow:hover {
     background: rgba(255, 255, 255, 0.8);
+}
+
+/* Add to cart button in carousel - MOVED LOWER */
+.carousel-actions {
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.carousel-actions .btn {
+    background: rgba(0, 0, 0, 0.7);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    min-width: 200px;
+}
+
+.carousel-section.yellow .carousel-actions .btn,
+.carousel-section.orange .carousel-actions .btn,
+.carousel-section.white .carousel-actions .btn,
+.carousel-section.silver .carousel-actions .btn,
+.carousel-section.gold .carousel-actions .btn {
+    background: rgba(255, 255, 255, 0.7);
+    color: #1a1209;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.carousel-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-section.yellow .carousel-actions .btn:hover,
+.carousel-section.orange .carousel-actions .btn:hover,
+.carousel-section.white .carousel-actions .btn:hover,
+.carousel-section.silver .carousel-actions .btn:hover,
+.carousel-section.gold .carousel-actions .btn:hover {
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
 }
 
 /* WHY CHOOSE SECTION - PLASTIC THEME */
@@ -2038,46 +2097,6 @@ section[id] {
     .upload-subtext-mobile {
         font-size: 0.8rem;
     }
-}
-
-/* Add to cart button in carousel - MOVED LOWER */
-.carousel-actions {
-    text-align: center;
-    margin-top: 40px;
-    position: relative;
-    z-index: 10;
-}
-
-.carousel-actions .btn {
-    background: rgba(0, 0, 0, 0.7);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 16px 32px;
-    font-size: 1.1rem;
-    min-width: 200px;
-}
-
-.carousel-section.yellow .carousel-actions .btn,
-.carousel-section.orange .carousel-actions .btn,
-.carousel-section.white .carousel-actions .btn,
-.carousel-section.silver .carousel-actions .btn,
-.carousel-section.gold .carousel-actions .btn {
-    background: rgba(255, 255, 255, 0.7);
-    color: #1a1209;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.carousel-actions .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.carousel-section.yellow .carousel-actions .btn:hover,
-.carousel-section.orange .carousel-actions .btn:hover,
-.carousel-section.white .carousel-actions .btn:hover,
-.carousel-section.silver .carousel-actions .btn:hover,
-.carousel-section.gold .carousel-actions .btn:hover {
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
 }
 
 /* FINISH MODAL - PLASTIC THEME */
@@ -2890,61 +2909,73 @@ section[id] {
                     <!-- 12 plastic colors -->
                     <div class="plastic-color-card active" data-color="Black">
                         <img src="plasticblack.webp" alt="Black Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Black</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Blue">
                         <img src="plasticblue.webp" alt="Blue Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Blue</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Purple">
                         <img src="plasticpurple.webp" alt="Purple Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Purple</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Red">
                         <img src="plasticred.webp" alt="Red Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Red</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Green">
                         <img src="plasticgreen.webp" alt="Green Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Green</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Yellow">
                         <img src="plasticyellow.webp" alt="Yellow Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Yellow</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Orange">
                         <img src="plasticorange.webp" alt="Orange Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Orange</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Pink">
                         <img src="plasticpink.webp" alt="Pink Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Pink</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="White">
                         <img src="plasticwhite.webp" alt="White Plastic Card" class="carousel-card-image">
+                        <div class="card-label">White</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Cyan">
                         <img src="plasticcyan.webp" alt="Cyan Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Cyan</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Silver">
                         <img src="plasticsilver.webp" alt="Silver Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Silver</div>
                         <div class="card-price">£65</div>
                     </div>
 
                     <div class="plastic-color-card" data-color="Gold">
                         <img src="plasticgold.webp" alt="Gold Plastic Card" class="carousel-card-image">
+                        <div class="card-label">Gold</div>
                         <div class="card-price">£65</div>
                     </div>
 
@@ -3557,7 +3588,7 @@ section[id] {
             startCarouselAutoRotate();
         });
 
-        // Also pause when interacting with arrows or dots
+        // Also pause when interacting with arrows
         plasticPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
         plasticNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
 
@@ -4029,6 +4060,7 @@ section[id] {
             console.log('3. WhatsApp links updated to +447754888841 ✓');
             console.log('4. Modern plastic theme with purple/blue colors ✓');
             console.log('5. WebP images for all plastic colors ✓');
+            console.log('6. Dots removed from carousel ✓');
             updateCart();
             
             // Add highlight style for selected plastic text
