@@ -3,47 +3,44 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plastic Cards – Premium Plastic NFC Cards</title>
+    <title>Wood Cards – Premium Wooden NFC Cards</title>
     <link rel="icon" href="logo.png" type="image/png">
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
 :root {
-    /* Plastic Theme Colors - Vibrant, modern */
-    --plastic-blue: #4A6FA5;
-    --plastic-purple: #6E4DFF;
-    --plastic-pink: #FF4FD8;
-    --plastic-cyan: #00CED1;
-    --plastic-gradient: linear-gradient(135deg, #4A6FA5, #6E4DFF);
-    --plastic-dark-gradient: linear-gradient(135deg, #6E4DFF, #4A6FA5);
-    --plastic-shadow: 0 30px 90px rgba(110, 77, 255, .25);
-    --plastic-glass: rgba(110, 77, 255, .15);
+    /* Wood Theme Colors - Natural, earthy tones */
+    --wood-light: #E8D4C1;
+    --wood-medium: #D4B59E;
+    --wood-dark: #B76E3D;
+    --wood-darker: #8B4513;
+    --wood-gradient: linear-gradient(135deg, #E8D4C1, #B76E3D);
+    --wood-dark-gradient: linear-gradient(135deg, #B76E3D, #8B4513);
+    --wood-shadow: 0 30px 90px rgba(183, 110, 61, .25);
+    --wood-glass: rgba(183, 110, 61, .15);
     
-    /* Plastic-specific colors */
-    --plastic-bg-dark: #0F0F1A;
-    --plastic-bg-darker: #1A1A2E;
-    --plastic-nav-bg: linear-gradient(135deg, rgba(110, 77, 255, 0.95), rgba(74, 111, 165, 0.95));
-    --plastic-nav-scrolled: linear-gradient(135deg, rgba(110, 77, 255, 0.9), rgba(74, 111, 165, 0.9));
-    --plastic-menu-bg: linear-gradient(135deg, rgba(110, 77, 255, 0.98), rgba(74, 111, 165, 0.98));
+    /* Wood-specific colors */
+    --wood-bg-dark: #1A0F0A;
+    --wood-bg-darker: #2D1A0F;
+    --wood-nav-bg: linear-gradient(135deg, rgba(183, 110, 61, 0.95), rgba(232, 212, 193, 0.95));
+    --wood-nav-scrolled: linear-gradient(135deg, rgba(183, 110, 61, 0.9), rgba(232, 212, 193, 0.9));
+    --wood-menu-bg: linear-gradient(135deg, rgba(183, 110, 61, 0.98), rgba(232, 212, 193, 0.98));
     
-    /* Plastic color backgrounds for carousel - 10 colors total */
-    --plastic-black-bg: linear-gradient(135deg, #1A1A1A, #333333);
-    --plastic-blue-bg: linear-gradient(135deg, #4A6FA5, #6E8FD9);
-    --plastic-purple-bg: linear-gradient(135deg, #6E4DFF, #8B77FF);
-    --plastic-red-bg: linear-gradient(135deg, #FF4444, #FF6666);
-    --plastic-green-bg: linear-gradient(135deg, #00AA55, #00CC66);
-    --plastic-yellow-bg: linear-gradient(135deg, #FFD700, #FFFF00);
-    --plastic-orange-bg: linear-gradient(135deg, #FF8C00, #FFA500);
-    --plastic-pink-bg: linear-gradient(135deg, #FF4FD8, #FF77E0);
-    --plastic-white-bg: linear-gradient(135deg, #FFFFFF, #F5F5F5);
-    --plastic-cyan-bg: linear-gradient(135deg, #00CED1, #40E0D0);
-    --plastic-silver-bg: linear-gradient(135deg, #C0C0C0, #E0E0E0);
-    --plastic-gold-bg: linear-gradient(135deg, #FFD700, #F0E68C);
+    /* Wood type backgrounds */
+    --walnut-bg: linear-gradient(135deg, #5C4033, #3D281E);
+    --oak-bg: linear-gradient(135deg, #C19A6B, #8B7355);
+    --cherry-bg: linear-gradient(135deg, #A52A2A, #800000);
+    --maple-bg: linear-gradient(135deg, #F5DEB3, #D2B48C);
+    --mahogany-bg: linear-gradient(135deg, #8B4513, #A0522D);
+    --bamboo-bg: linear-gradient(135deg, #9ACD32, #6B8E23);
+    --teak-bg: linear-gradient(135deg, #B8860B, #8B6914);
+    --pine-bg: linear-gradient(135deg, #F0E68C, #BDB76B);
+    --birch-bg: linear-gradient(135deg, #FFF8DC, #F5F5DC);
     
     /* Additional variables */
-    --white: #FFFFFF;
-    --black: #0F0F1A;
+    --white: #FFF9F3;
+    --black: #1A0F0A;
     --wa: #25D366;
 }
 
@@ -61,7 +58,7 @@ body {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background: linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 100%);
+    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
     color: var(--white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -70,7 +67,7 @@ body {
 }
 
 html {
-    background: linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 100%);
+    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
 }
 
 a {
@@ -78,29 +75,29 @@ a {
     text-decoration: none;
 }
 
-/* STICKY NAV - PLASTIC THEME */
+/* STICKY NAV - WOOD THEME */
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px 20px;
-    background: var(--plastic-nav-bg);
+    background: var(--wood-nav-bg);
     backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(110, 77, 255, 0.3);
+    border-bottom: 1px solid rgba(232, 212, 193, 0.3);
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     min-height: 70px;
-    box-shadow: 0 4px 20px rgba(110, 77, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(183, 110, 61, 0.2);
 }
 
 .nav.scrolled {
     padding: 12px 20px;
-    background: var(--plastic-nav-scrolled);
-    box-shadow: 0 4px 30px rgba(110, 77, 255, 0.3);
+    background: var(--wood-nav-scrolled);
+    box-shadow: 0 4px 30px rgba(183, 110, 61, 0.3);
 }
 
 .logo {
@@ -175,7 +172,7 @@ a {
 }
 
 .nav-center a:hover {
-    color: #FF4FD8;
+    color: var(--wood-light);
     transform: translateY(-2px);
 }
 
@@ -186,7 +183,7 @@ a {
     left: 0;
     width: 0;
     height: 2px;
-    background: #FF4FD8;
+    background: var(--wood-light);
     transition: width 0.3s ease;
 }
 
@@ -215,21 +212,21 @@ a {
     transition: all 0.3s ease;
     flex-shrink: 0;
     color: var(--white);
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    border: 1px solid rgba(232, 212, 193, 0.3);
 }
 
 .icon-btn:hover {
-    background: rgba(110, 77, 255, 0.3);
+    background: rgba(232, 212, 193, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(110, 77, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(183, 110, 61, 0.2);
 }
 
 .cart-count {
     position: absolute;
     top: -5px;
     right: -5px;
-    background: #FF4FD8;
-    color: var(--white);
+    background: var(--wood-light);
+    color: var(--black);
     font-size: 10px;
     min-width: 16px;
     height: 16px;
@@ -238,7 +235,7 @@ a {
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    border: 2px solid rgba(255, 79, 216, 0.5);
+    border: 2px solid rgba(232, 212, 193, 0.5);
 }
 
 .whatsapp {
@@ -292,7 +289,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 15, 26, 0.95);
+    background: rgba(26, 15, 10, 0.95);
     z-index: 999;
     opacity: 0;
     visibility: hidden;
@@ -311,7 +308,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--plastic-menu-bg);
+    background: var(--wood-menu-bg);
     backdrop-filter: blur(30px);
     padding: 30px 20px 100px;
     display: flex;
@@ -342,18 +339,18 @@ a {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    border: 1px solid rgba(232, 212, 193, 0.3);
     margin-bottom: 4px;
-    -webkit-tap-highlight-color: rgba(110, 77, 255, 0.1);
+    -webkit-tap-highlight-color: rgba(232, 212, 193, 0.1);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .mobile-menu a:active {
-    background: rgba(110, 77, 255, 0.25);
+    background: rgba(232, 212, 193, 0.25);
 }
 
 .mobile-menu a:hover {
-    background: rgba(110, 77, 255, 0.25);
+    background: rgba(232, 212, 193, 0.25);
 }
 
 .mobile-menu .whatsapp {
@@ -365,7 +362,7 @@ a {
     min-height: 64px;
     justify-content: center;
     background: linear-gradient(135deg, #25d366, #128c7e);
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    border: 1px solid rgba(232, 212, 193, 0.3);
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
     font-weight: 700;
     display: flex;
@@ -384,8 +381,8 @@ a {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(110, 77, 255, 0.2);
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    background: rgba(232, 212, 193, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.3);
     display: none;
     align-items: center;
     justify-content: center;
@@ -401,13 +398,13 @@ a {
 }
 
 .mobile-close-btn:hover {
-    background: rgba(110, 77, 255, 0.3);
+    background: rgba(232, 212, 193, 0.3);
     transform: rotate(90deg);
 }
 
 .menu-divider {
     height: 1px;
-    background: rgba(110, 77, 255, 0.25);
+    background: rgba(232, 212, 193, 0.25);
     margin: 20px 0;
     width: 100%;
 }
@@ -418,7 +415,7 @@ a {
     text-align: center;
     color: rgba(255, 255, 255, 0.8);
     font-size: 13px;
-    border-top: 1px solid rgba(110, 77, 255, 0.2);
+    border-top: 1px solid rgba(232, 212, 193, 0.2);
 }
 
 /* Show hamburger and hide desktop nav on mobile */
@@ -551,7 +548,7 @@ section[id] {
     }
 }
 
-/* HERO SECTION - PLASTIC THEME */
+/* HERO SECTION - WOOD THEME */
 .hero-section {
     min-height: 90vh;
     display: flex;
@@ -562,9 +559,9 @@ section[id] {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .45), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(74, 111, 165, .35), transparent 60%),
-        linear-gradient(135deg, #1A1A2E 0%, #0F0F1A 100%);
+    background: radial-gradient(1200px 700px at 20% 30%, rgba(232, 212, 193, .45), transparent 60%),
+        radial-gradient(900px 500px at 80% 20%, rgba(183, 110, 61, .35), transparent 60%),
+        linear-gradient(135deg, #2D1A0F 0%, #1A0F0A 100%);
 }
 
 .hero-bg-blob {
@@ -577,7 +574,7 @@ section[id] {
     opacity: .45;
     z-index: 0;
     transform: translateZ(0);
-    background: linear-gradient(135deg, rgba(110, 77, 255, .85), rgba(74, 111, 165, .78));
+    background: linear-gradient(135deg, rgba(232, 212, 193, .85), rgba(183, 110, 61, .78));
 }
 
 .hero-bg-blob.b2 {
@@ -589,7 +586,7 @@ section[id] {
     opacity: .35;
     z-index: 0;
     transform: translateZ(0);
-    background: linear-gradient(135deg, rgba(74, 111, 165, .75), rgba(110, 77, 255, .65));
+    background: linear-gradient(135deg, rgba(183, 110, 61, .75), rgba(232, 212, 193, .65));
 }
 
 .hero-content {
@@ -607,7 +604,7 @@ section[id] {
     margin-bottom: 30px;
     color: var(--white);
     letter-spacing: -0.03em;
-    text-shadow: 0 2px 10px rgba(110, 77, 255, 0.3);
+    text-shadow: 0 2px 10px rgba(183, 110, 61, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -637,8 +634,8 @@ section[id] {
     height: 100%;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 25px 50px rgba(110, 77, 255, 0.4),
-        0 10px 30px rgba(15, 15, 26, 0.5);
+    box-shadow: 0 25px 50px rgba(183, 110, 61, 0.4),
+        0 10px 30px rgba(26, 15, 10, 0.5);
     background: transparent;
     display: flex;
     flex-direction: column;
@@ -667,7 +664,7 @@ section[id] {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 15, 26, 0.8);
+    background: rgba(26, 15, 10, 0.8);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -703,7 +700,7 @@ section[id] {
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* BUTTONS - PLASTIC THEME */
+/* BUTTONS - WOOD THEME */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -723,16 +720,16 @@ section[id] {
 }
 
 .btn-primary {
-    background: var(--plastic-gradient);
+    background: var(--wood-gradient);
     color: var(--white);
-    box-shadow: 0 4px 15px rgba(110, 77, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(183, 110, 61, 0.4);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(110, 77, 255, 0.6);
-    background: linear-gradient(135deg, #5A85FF, #8B77FF);
+    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.6);
+    background: linear-gradient(135deg, #F0E6DC, #D4A574);
 }
 
 .btn-secondary {
@@ -745,17 +742,17 @@ section[id] {
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
-    border-color: #FF4FD8;
+    border-color: var(--wood-light);
 }
 
 .hero-cta {
     margin-top: 40px;
 }
 
-/* BESTSELLERS SECTION - PLASTIC THEME */
+/* BESTSELLERS SECTION - WOOD THEME */
 .bestsellers-section {
     padding: 100px 20px;
-    background: linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 100%);
+    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
     position: relative;
     overflow: hidden;
 }
@@ -767,7 +764,7 @@ section[id] {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--plastic-purple), transparent);
+    background: linear-gradient(90deg, transparent, var(--wood-dark), transparent);
 }
 
 .section-header {
@@ -783,7 +780,7 @@ section[id] {
     line-height: 1.1;
     margin-bottom: 16px;
     color: var(--white);
-    text-shadow: 0 2px 4px rgba(110, 77, 255, 0.3);
+    text-shadow: 0 2px 4px rgba(183, 110, 61, 0.3);
 }
 
 .section-subtitle {
@@ -813,20 +810,20 @@ section[id] {
     backdrop-filter: blur(10px);
 }
 
-/* Plastic color backgrounds */
-.bestseller-card.blue {
-    background: radial-gradient(circle at top, rgba(74, 111, 165, 0.9), rgba(110, 143, 217, 0.95));
-    color: #FFFFFF;
+/* Wood type backgrounds */
+.bestseller-card.walnut {
+    background: radial-gradient(circle at top, rgba(92, 64, 51, 0.9), rgba(61, 40, 30, 0.95));
+    color: #F5E6D3;
 }
 
-.bestseller-card.purple {
-    background: radial-gradient(circle at top, rgba(110, 77, 255, 0.9), rgba(139, 119, 255, 0.95));
-    color: #FFFFFF;
+.bestseller-card.oak {
+    background: radial-gradient(circle at top, rgba(193, 154, 107, 0.9), rgba(139, 115, 85, 0.95));
+    color: #3D281E;
 }
 
-.bestseller-card.black {
-    background: radial-gradient(circle at top, rgba(26, 26, 26, 0.9), rgba(51, 51, 51, 0.95));
-    color: #FFFFFF;
+.bestseller-card.mahogany {
+    background: radial-gradient(circle at top, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.95));
+    color: #F5E6D3;
 }
 
 .bestseller-card:hover {
@@ -903,10 +900,13 @@ section[id] {
 }
 
 /* Text colors for different backgrounds */
-.bestseller-card.blue .bestseller-title,
-.bestseller-card.purple .bestseller-title,
-.bestseller-card.black .bestseller-title {
-    color: #FFFFFF;
+.bestseller-card.walnut .bestseller-title,
+.bestseller-card.mahogany .bestseller-title {
+    color: #F5E6D3;
+}
+
+.bestseller-card.oak .bestseller-title {
+    color: #3D281E;
 }
 
 .bestseller-description {
@@ -915,10 +915,13 @@ section[id] {
     font-size: 0.95rem;
 }
 
-.bestseller-card.blue .bestseller-description,
-.bestseller-card.purple .bestseller-description,
-.bestseller-card.black .bestseller-description {
-    color: rgba(255, 255, 255, 0.9);
+.bestseller-card.walnut .bestseller-description,
+.bestseller-card.mahogany .bestseller-description {
+    color: rgba(245, 230, 211, 0.9);
+}
+
+.bestseller-card.oak .bestseller-description {
+    color: rgba(61, 40, 30, 0.9);
 }
 
 .bestseller-price {
@@ -927,10 +930,13 @@ section[id] {
     margin-bottom: 20px;
 }
 
-.bestseller-card.blue .bestseller-price,
-.bestseller-card.purple .bestseller-price,
-.bestseller-card.black .bestseller-price {
-    color: #FFFFFF;
+.bestseller-card.walnut .bestseller-price,
+.bestseller-card.mahogany .bestseller-price {
+    color: #F5E6D3;
+}
+
+.bestseller-card.oak .bestseller-price {
+    color: #3D281E;
 }
 
 .bestseller-price span {
@@ -939,10 +945,13 @@ section[id] {
     margin-left: 5px;
 }
 
-.bestseller-card.blue .bestseller-price span,
-.bestseller-card.purple .bestseller-price span,
-.bestseller-card.black .bestseller-price span {
-    color: rgba(255, 255, 255, 0.7);
+.bestseller-card.walnut .bestseller-price span,
+.bestseller-card.mahogany .bestseller-price span {
+    color: rgba(245, 230, 211, 0.7);
+}
+
+.bestseller-card.oak .bestseller-price span {
+    color: rgba(61, 40, 30, 0.7);
 }
 
 .bestseller-actions {
@@ -954,24 +963,34 @@ section[id] {
     flex: 1;
 }
 
-/* Button colors for plastic cards */
-.bestseller-card.blue .btn-primary,
-.bestseller-card.purple .btn-primary,
-.bestseller-card.black .btn-primary {
+/* Button colors for wood cards */
+.bestseller-card.walnut .btn-primary,
+.bestseller-card.mahogany .btn-primary {
     background: rgba(0, 0, 0, 0.7);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #F5E6D3;
+    border: 1px solid rgba(245, 230, 211, 0.3);
 }
 
-.bestseller-card.blue .btn-secondary,
-.bestseller-card.purple .btn-secondary,
-.bestseller-card.black .btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+.bestseller-card.oak .btn-primary {
+    background: rgba(61, 40, 30, 0.7);
+    color: #F5E6D3;
+    border: 1px solid rgba(245, 230, 211, 0.3);
 }
 
-/* CAROUSEL SECTION - PLASTIC COLORS */
+.bestseller-card.walnut .btn-secondary,
+.bestseller-card.mahogany .btn-secondary {
+    background: rgba(245, 230, 211, 0.2);
+    color: #F5E6D3;
+    border: 1px solid rgba(245, 230, 211, 0.3);
+}
+
+.bestseller-card.oak .btn-secondary {
+    background: rgba(61, 40, 30, 0.2);
+    color: #3D281E;
+    border: 1px solid rgba(61, 40, 30, 0.3);
+}
+
+/* CAROUSEL SECTION - WOOD TYPES */
 .carousel-section {
     padding: 60px 20px 80px;
     transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -993,65 +1012,50 @@ section[id] {
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
 }
 
-/* Plastic color backgrounds for carousel - 12 colors total */
-.carousel-section.black {
-    background: var(--plastic-black-bg);
-    color: #FFFFFF;
+/* Wood type backgrounds for carousel */
+.carousel-section.walnut {
+    background: var(--walnut-bg);
+    color: #F5E6D3;
 }
 
-.carousel-section.blue {
-    background: var(--plastic-blue-bg);
-    color: #FFFFFF;
+.carousel-section.oak {
+    background: var(--oak-bg);
+    color: #3D281E;
 }
 
-.carousel-section.purple {
-    background: var(--plastic-purple-bg);
-    color: #FFFFFF;
+.carousel-section.cherry {
+    background: var(--cherry-bg);
+    color: #F5E6D3;
 }
 
-.carousel-section.red {
-    background: var(--plastic-red-bg);
-    color: #FFFFFF;
+.carousel-section.maple {
+    background: var(--maple-bg);
+    color: #3D281E;
 }
 
-.carousel-section.green {
-    background: var(--plastic-green-bg);
-    color: #FFFFFF;
+.carousel-section.mahogany {
+    background: var(--mahogany-bg);
+    color: #F5E6D3;
 }
 
-.carousel-section.yellow {
-    background: var(--plastic-yellow-bg);
-    color: #1a1209;
+.carousel-section.bamboo {
+    background: var(--bamboo-bg);
+    color: #F5E6D3;
 }
 
-.carousel-section.orange {
-    background: var(--plastic-orange-bg);
-    color: #1a1209;
+.carousel-section.teak {
+    background: var(--teak-bg);
+    color: #F5E6D3;
 }
 
-.carousel-section.pink {
-    background: var(--plastic-pink-bg);
-    color: #FFFFFF;
+.carousel-section.pine {
+    background: var(--pine-bg);
+    color: #3D281E;
 }
 
-.carousel-section.white {
-    background: var(--plastic-white-bg);
-    color: #1a1209;
-}
-
-.carousel-section.cyan {
-    background: var(--plastic-cyan-bg);
-    color: #FFFFFF;
-}
-
-.carousel-section.silver {
-    background: var(--plastic-silver-bg);
-    color: #1a1209;
-}
-
-.carousel-section.gold {
-    background: var(--plastic-gold-bg);
-    color: #1a1209;
+.carousel-section.birch {
+    background: var(--birch-bg);
+    color: #3D281E;
 }
 
 .carousel-container {
@@ -1083,7 +1087,7 @@ section[id] {
 }
 
 /* WIDER CAROUSEL */
-.plastic-carousel {
+.wood-carousel {
     position: relative;
     height: 500px;
     display: flex;
@@ -1098,7 +1102,7 @@ section[id] {
     flex: 1;
 }
 
-.plastic-color-card {
+.wood-type-card {
     position: absolute;
     width: 350px;
     background: rgba(255, 255, 255, 0.15);
@@ -1117,7 +1121,7 @@ section[id] {
     transform: translateZ(0);
 }
 
-.plastic-color-card.active {
+.wood-type-card.active {
     opacity: 1;
     transform: scale(1) rotateY(0deg);
     z-index: 3;
@@ -1125,7 +1129,7 @@ section[id] {
     box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5);
 }
 
-.plastic-color-card img {
+.wood-type-card img {
     width: 100%;
     height: 240px;
     border-radius: 16px;
@@ -1134,75 +1138,23 @@ section[id] {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.carousel-section.yellow .plastic-color-card,
-.carousel-section.orange .plastic-color-card,
-.carousel-section.white .plastic-color-card,
-.carousel-section.silver .plastic-color-card,
-.carousel-section.gold .plastic-color-card {
+.carousel-section.oak .wood-type-card,
+.carousel-section.maple .wood-type-card,
+.carousel-section.pine .wood-type-card,
+.carousel-section.birch .wood-type-card {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(0, 0, 0, 0.3);
-    color: #1a1209;
+    color: #3D281E;
 }
 
-.carousel-section.black .plastic-color-card,
-.carousel-section.blue .plastic-color-card,
-.carousel-section.purple .plastic-color-card,
-.carousel-section.red .plastic-color-card,
-.carousel-section.green .plastic-color-card,
-.carousel-section.pink .plastic-color-card,
-.carousel-section.cyan .plastic-color-card {
+.carousel-section.walnut .wood-type-card,
+.carousel-section.cherry .wood-type-card,
+.carousel-section.mahogany .wood-type-card,
+.carousel-section.bamboo .wood-type-card,
+.carousel-section.teak .wood-type-card {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #FFFFFF;
-}
-
-.card-label {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.carousel-section.yellow .card-label,
-.carousel-section.orange .card-label,
-.carousel-section.white .card-label,
-.carousel-section.silver .card-label,
-.carousel-section.gold .card-label {
-    color: #1a1209;
-}
-
-.carousel-section.black .card-label,
-.carousel-section.blue .card-label,
-.carousel-section.purple .card-label,
-.carousel-section.red .card-label,
-.carousel-section.green .card-label,
-.carousel-section.pink .card-label,
-.carousel-section.cyan .card-label {
-    color: #FFFFFF;
-}
-
-.card-price {
-    font-size: 1.8rem;
-    font-weight: 900;
-    text-align: center;
-}
-
-.carousel-section.yellow .card-price,
-.carousel-section.orange .card-price,
-.carousel-section.white .card-price,
-.carousel-section.silver .card-price,
-.carousel-section.gold .card-price {
-    color: #1a1209;
-}
-
-.carousel-section.black .card-price,
-.carousel-section.blue .card-price,
-.carousel-section.purple .card-price,
-.carousel-section.red .card-price,
-.carousel-section.green .card-price,
-.carousel-section.pink .card-price,
-.carousel-section.cyan .card-price {
-    color: #FFFFFF;
+    color: #F5E6D3;
 }
 
 /* FIXED: Carousel arrows */
@@ -1215,7 +1167,7 @@ section[id] {
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    color: #FFFFFF;
+    color: #F5E6D3;
     font-size: 28px;
     cursor: pointer;
     z-index: 20;
@@ -1240,22 +1192,20 @@ section[id] {
     right: 30px;
 }
 
-.carousel-section.yellow .carousel-arrow,
-.carousel-section.orange .carousel-arrow,
-.carousel-section.white .carousel-arrow,
-.carousel-section.silver .carousel-arrow,
-.carousel-section.gold .carousel-arrow {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    color: #1a1209;
+.carousel-section.oak .carousel-arrow,
+.carousel-section.maple .carousel-arrow,
+.carousel-section.pine .carousel-arrow,
+.carousel-section.birch .carousel-arrow {
+    background: rgba(245, 230, 211, 0.6);
+    border: 1px solid rgba(61, 40, 30, 0.3);
+    color: #3D281E;
 }
 
-.carousel-section.yellow .carousel-arrow:hover,
-.carousel-section.orange .carousel-arrow:hover,
-.carousel-section.white .carousel-arrow:hover,
-.carousel-section.silver .carousel-arrow:hover,
-.carousel-section.gold .carousel-arrow:hover {
-    background: rgba(255, 255, 255, 0.8);
+.carousel-section.oak .carousel-arrow:hover,
+.carousel-section.maple .carousel-arrow:hover,
+.carousel-section.pine .carousel-arrow:hover,
+.carousel-section.birch .carousel-arrow:hover {
+    background: rgba(245, 230, 211, 0.8);
 }
 
 .dots {
@@ -1273,52 +1223,46 @@ section[id] {
     transition: all 0.3s ease;
 }
 
-.carousel-section.yellow .dot,
-.carousel-section.orange .dot,
-.carousel-section.white .dot,
-.carousel-section.silver .dot,
-.carousel-section.gold .dot {
-    background: rgba(26, 18, 9, 0.3);
+.carousel-section.oak .dot,
+.carousel-section.maple .dot,
+.carousel-section.pine .dot,
+.carousel-section.birch .dot {
+    background: rgba(61, 40, 30, 0.3);
 }
 
-.carousel-section.black .dot,
-.carousel-section.blue .dot,
-.carousel-section.purple .dot,
-.carousel-section.red .dot,
-.carousel-section.green .dot,
-.carousel-section.pink .dot,
-.carousel-section.cyan .dot {
-    background: rgba(255, 255, 255, 0.3);
+.carousel-section.walnut .dot,
+.carousel-section.cherry .dot,
+.carousel-section.mahogany .dot,
+.carousel-section.bamboo .dot,
+.carousel-section.teak .dot {
+    background: rgba(245, 230, 211, 0.3);
 }
 
 .dot.active {
     transform: scale(1.3);
 }
 
-.carousel-section.yellow .dot.active,
-.carousel-section.orange .dot.active,
-.carousel-section.white .dot.active,
-.carousel-section.silver .dot.active,
-.carousel-section.gold .dot.active {
-    background: #1a1209;
-    box-shadow: 0 0 10px rgba(26, 18, 9, 0.5);
+.carousel-section.oak .dot.active,
+.carousel-section.maple .dot.active,
+.carousel-section.pine .dot.active,
+.carousel-section.birch .dot.active {
+    background: #3D281E;
+    box-shadow: 0 0 10px rgba(61, 40, 30, 0.5);
 }
 
-.carousel-section.black .dot.active,
-.carousel-section.blue .dot.active,
-.carousel-section.purple .dot.active,
-.carousel-section.red .dot.active,
-.carousel-section.green .dot.active,
-.carousel-section.pink .dot.active,
-.carousel-section.cyan .dot.active {
-    background: #FFFFFF;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+.carousel-section.walnut .dot.active,
+.carousel-section.cherry .dot.active,
+.carousel-section.mahogany .dot.active,
+.carousel-section.bamboo .dot.active,
+.carousel-section.teak .dot.active {
+    background: #F5E6D3;
+    box-shadow: 0 0 10px rgba(245, 230, 211, 0.5);
 }
 
-/* WHY CHOOSE SECTION - PLASTIC THEME */
+/* WHY CHOOSE SECTION - WOOD THEME */
 .why-choose-section {
     padding: 100px 20px;
-    background: linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 100%);
+    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
     position: relative;
     overflow: hidden;
 }
@@ -1330,7 +1274,7 @@ section[id] {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--plastic-purple), transparent);
+    background: linear-gradient(90deg, transparent, var(--wood-dark), transparent);
 }
 
 .benefits-grid {
@@ -1344,33 +1288,33 @@ section[id] {
 }
 
 .benefit-card {
-    background: rgba(110, 77, 255, 0.1);
+    background: rgba(232, 212, 193, 0.1);
     border-radius: 20px;
     padding: 30px;
-    border: 1px solid rgba(110, 77, 255, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.2);
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     backdrop-filter: blur(10px);
 }
 
 .benefit-card:hover {
     transform: translateY(-5px);
-    border-color: var(--plastic-purple);
-    box-shadow: 0 15px 30px rgba(110, 77, 255, 0.2);
-    background: rgba(110, 77, 255, 0.15);
+    border-color: var(--wood-light);
+    box-shadow: 0 15px 30px rgba(183, 110, 61, 0.2);
+    background: rgba(232, 212, 193, 0.15);
 }
 
 .benefit-icon {
     width: 60px;
     height: 60px;
     border-radius: 16px;
-    background: rgba(110, 77, 255, 0.2);
+    background: rgba(232, 212, 193, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
     margin-bottom: 20px;
     color: var(--white);
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    border: 1px solid rgba(232, 212, 193, 0.3);
 }
 
 .benefit-title {
@@ -1386,10 +1330,10 @@ section[id] {
     font-size: 0.95rem;
 }
 
-/* TESTIMONIALS SECTION - PLASTIC THEME */
+/* TESTIMONIALS SECTION - WOOD THEME */
 .testimonials-section {
     padding: 100px 20px;
-    background: linear-gradient(135deg, #1A1A2E 0%, #0F0F1A 100%);
+    background: linear-gradient(135deg, #2D1A0F 0%, #1A0F0A 100%);
     position: relative;
     overflow: hidden;
 }
@@ -1401,7 +1345,7 @@ section[id] {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--plastic-pink), transparent);
+    background: linear-gradient(90deg, transparent, var(--wood-medium), transparent);
 }
 
 .testimonials-grid {
@@ -1415,10 +1359,10 @@ section[id] {
 }
 
 .testimonial-card {
-    background: rgba(110, 77, 255, 0.1);
+    background: rgba(232, 212, 193, 0.1);
     border-radius: 20px;
     padding: 30px;
-    border: 1px solid rgba(110, 77, 255, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.2);
     position: relative;
     backdrop-filter: blur(10px);
 }
@@ -1442,10 +1386,10 @@ section[id] {
     font-size: 0.9rem;
 }
 
-/* CUSTOM LOGO SECTION - REDESIGNED FOR PLASTIC */
+/* CUSTOM LOGO SECTION - REDESIGNED FOR WOOD */
 .custom-logo-section {
     padding: 80px 20px;
-    background: linear-gradient(135deg, #0F0F1A 0%, #1A1A2E 100%);
+    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1458,7 +1402,7 @@ section[id] {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--plastic-purple), transparent);
+    background: linear-gradient(90deg, transparent, var(--wood-dark), transparent);
 }
 
 .custom-logo-content {
@@ -1487,10 +1431,10 @@ section[id] {
 
 /* Preview Section - Mobile Optimized */
 .preview-section-mobile {
-    background: rgba(110, 77, 255, 0.1);
+    background: rgba(232, 212, 193, 0.1);
     border-radius: 24px;
     padding: 25px;
-    border: 1px solid rgba(110, 77, 255, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.2);
     backdrop-filter: blur(10px);
     margin-bottom: 20px;
     position: relative;
@@ -1502,7 +1446,7 @@ section[id] {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 1px solid rgba(110, 77, 255, 0.3);
+    border-bottom: 1px solid rgba(232, 212, 193, 0.3);
 }
 
 .preview-title-mobile {
@@ -1514,8 +1458,8 @@ section[id] {
 .card-counter-mobile {
     font-size: 1rem;
     font-weight: 700;
-    color: #FF4FD8;
-    background: rgba(110, 77, 255, 0.2);
+    color: var(--wood-light);
+    background: rgba(232, 212, 193, 0.2);
     padding: 6px 12px;
     border-radius: 20px;
 }
@@ -1624,7 +1568,7 @@ section[id] {
 .preview-price-mobile {
     font-size: 1.3rem;
     font-weight: 900;
-    color: #FF4FD8;
+    color: var(--wood-light);
 }
 
 /* Card Navigation - Mobile Friendly */
@@ -1638,8 +1582,8 @@ section[id] {
 
 .nav-btn-mobile {
     flex: 1;
-    background: rgba(110, 77, 255, 0.2);
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    background: rgba(232, 212, 193, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.3);
     color: var(--white);
     padding: 14px;
     border-radius: 12px;
@@ -1656,7 +1600,7 @@ section[id] {
 }
 
 .nav-btn-mobile:hover {
-    background: rgba(110, 77, 255, 0.3);
+    background: rgba(232, 212, 193, 0.3);
     transform: translateY(-2px);
 }
 
@@ -1682,10 +1626,10 @@ section[id] {
 }
 
 .selection-step-mobile {
-    background: rgba(110, 77, 255, 0.1);
+    background: rgba(232, 212, 193, 0.1);
     border-radius: 20px;
     padding: 20px;
-    border: 1px solid rgba(110, 77, 255, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.2);
     backdrop-filter: blur(10px);
 }
 
@@ -1702,7 +1646,7 @@ section[id] {
 .step-number-mobile {
     width: 28px;
     height: 28px;
-    background: var(--plastic-gradient);
+    background: var(--wood-gradient);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1714,13 +1658,13 @@ section[id] {
 /* Card Color Selection - Mobile Optimized */
 .card-colors-mobile {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
 }
 
 @media (max-width: 480px) {
     .card-colors-mobile {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1767,14 +1711,14 @@ section[id] {
     margin: 0 4px;
 }
 
-/* Finish Selection - Mobile Optimized */
-.finish-options-mobile {
+/* Engraving Selection - Mobile Optimized */
+.engraving-options-mobile {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
 
-.finish-option-mobile {
+.engraving-option-mobile {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 18px;
@@ -1785,29 +1729,29 @@ section[id] {
     -webkit-tap-highlight-color: transparent;
 }
 
-.finish-option-mobile:hover {
+.engraving-option-mobile:hover {
     background: rgba(255, 255, 255, 0.15);
     transform: translateY(-3px);
 }
 
-.finish-option-mobile.selected {
-    background: rgba(110, 77, 255, 0.2);
-    border-color: #FF4FD8;
+.engraving-option-mobile.selected {
+    background: rgba(232, 212, 193, 0.2);
+    border-color: var(--wood-light);
 }
 
-.finish-icon-mobile {
+.engraving-icon-mobile {
     font-size: 1.8rem;
     margin-bottom: 8px;
 }
 
-.finish-name-mobile {
+.engraving-name-mobile {
     font-size: 0.95rem;
     font-weight: 700;
     color: var(--white);
     margin-bottom: 4px;
 }
 
-.finish-price-mobile {
+.engraving-price-mobile {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.8);
 }
@@ -1818,10 +1762,10 @@ section[id] {
 }
 
 .upload-area-mobile {
-    border: 2px dashed rgba(110, 77, 255, 0.5);
+    border: 2px dashed rgba(232, 212, 193, 0.5);
     border-radius: 16px;
     padding: 30px 20px;
-    background: rgba(110, 77, 255, 0.05);
+    background: rgba(232, 212, 193, 0.05);
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
@@ -1843,8 +1787,8 @@ section[id] {
 }
 
 .upload-area-mobile:hover {
-    border-color: var(--plastic-purple);
-    background: rgba(110, 77, 255, 0.1);
+    border-color: var(--wood-light);
+    background: rgba(232, 212, 193, 0.1);
     transform: translateY(-2px);
 }
 
@@ -1853,14 +1797,14 @@ section[id] {
 }
 
 .upload-area-mobile.drag-over {
-    border-color: var(--plastic-purple);
-    background: rgba(110, 77, 255, 0.15);
+    border-color: var(--wood-light);
+    background: rgba(232, 212, 193, 0.15);
     border-style: solid;
 }
 
 .upload-icon-mobile {
     font-size: 2.5rem;
-    color: rgba(110, 77, 255, 0.7);
+    color: rgba(232, 212, 193, 0.7);
     margin-bottom: 15px;
 }
 
@@ -1923,14 +1867,14 @@ section[id] {
 }
 
 .upload-btn-mobile {
-    background: var(--plastic-gradient);
+    background: var(--wood-gradient);
     color: var(--white);
-    box-shadow: 0 4px 15px rgba(110, 77, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(183, 110, 61, 0.3);
 }
 
 .upload-btn-mobile:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(110, 77, 255, 0.4);
+    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.4);
 }
 
 .upload-btn-mobile:active {
@@ -1938,13 +1882,13 @@ section[id] {
 }
 
 .clear-logo-btn-mobile {
-    background: rgba(110, 77, 255, 0.15);
+    background: rgba(232, 212, 193, 0.15);
     color: var(--white);
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    border: 1px solid rgba(232, 212, 193, 0.3);
 }
 
 .clear-logo-btn-mobile:hover {
-    background: rgba(110, 77, 255, 0.25);
+    background: rgba(232, 212, 193, 0.25);
     transform: translateY(-2px);
 }
 
@@ -1958,7 +1902,7 @@ section[id] {
 .add-to-cart-mobile {
     width: 100%;
     padding: 18px;
-    background: var(--plastic-gradient);
+    background: var(--wood-gradient);
     color: var(--white);
     border: none;
     border-radius: 14px;
@@ -1966,7 +1910,7 @@ section[id] {
     font-weight: 800;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(110, 77, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.3);
     margin-top: 20px;
     display: flex;
     align-items: center;
@@ -1977,12 +1921,12 @@ section[id] {
 
 .add-to-cart-mobile:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(110, 77, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(183, 110, 61, 0.4);
 }
 
 /* Mobile Touch Feedback */
 .color-option-mobile:active,
-.finish-option-mobile:active,
+.engraving-option-mobile:active,
 .upload-btn-mobile:active,
 .clear-logo-btn-mobile:active,
 .nav-btn-mobile:active,
@@ -2030,17 +1974,17 @@ section[id] {
         right: 10px;
     }
 
-    .plastic-carousel {
+    .wood-carousel {
         height: 400px;
         width: 90%;
     }
 
-    .plastic-color-card {
+    .wood-type-card {
         width: 280px;
         padding: 20px;
     }
 
-    .plastic-color-card img {
+    .wood-type-card img {
         height: 200px;
     }
 
@@ -2076,17 +2020,17 @@ section[id] {
         right: 5px;
     }
 
-    .plastic-carousel {
+    .wood-carousel {
         height: 350px;
         width: 90%;
     }
 
-    .plastic-color-card {
+    .wood-type-card {
         width: 240px;
         padding: 18px;
     }
 
-    .plastic-color-card img {
+    .wood-type-card img {
         height: 180px;
     }
 
@@ -2126,21 +2070,20 @@ section[id] {
 
 .carousel-actions .btn {
     background: rgba(0, 0, 0, 0.7);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #F5E6D3;
+    border: 1px solid rgba(245, 230, 211, 0.3);
     padding: 16px 32px;
     font-size: 1.1rem;
     min-width: 200px;
 }
 
-.carousel-section.yellow .carousel-actions .btn,
-.carousel-section.orange .carousel-actions .btn,
-.carousel-section.white .carousel-actions .btn,
-.carousel-section.silver .carousel-actions .btn,
-.carousel-section.gold .carousel-actions .btn {
-    background: rgba(255, 255, 255, 0.7);
-    color: #1a1209;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+.carousel-section.oak .carousel-actions .btn,
+.carousel-section.maple .carousel-actions .btn,
+.carousel-section.pine .carousel-actions .btn,
+.carousel-section.birch .carousel-actions .btn {
+    background: rgba(245, 230, 211, 0.7);
+    color: #3D281E;
+    border: 1px solid rgba(61, 40, 30, 0.3);
 }
 
 .carousel-actions .btn:hover {
@@ -2148,22 +2091,21 @@ section[id] {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-.carousel-section.yellow .carousel-actions .btn:hover,
-.carousel-section.orange .carousel-actions .btn:hover,
-.carousel-section.white .carousel-actions .btn:hover,
-.carousel-section.silver .carousel-actions .btn:hover,
-.carousel-section.gold .carousel-actions .btn:hover {
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+.carousel-section.oak .carousel-actions .btn:hover,
+.carousel-section.maple .carousel-actions .btn:hover,
+.carousel-section.pine .carousel-actions .btn:hover,
+.carousel-section.birch .carousel-actions .btn:hover {
+    box-shadow: 0 6px 20px rgba(245, 230, 211, 0.4);
 }
 
-/* FINISH MODAL - PLASTIC THEME */
-.finish-modal {
+/* ENGRAVING MODAL - WOOD THEME */
+.engraving-modal {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 15, 26, 0.98);
+    background: rgba(26, 15, 10, 0.98);
     backdrop-filter: blur(20px);
     z-index: 2000;
     display: none;
@@ -2176,21 +2118,21 @@ section[id] {
     -webkit-overflow-scrolling: touch;
 }
 
-.finish-modal.active {
+.engraving-modal.active {
     display: flex;
     opacity: 1;
 }
 
-.finish-content {
-    background: linear-gradient(135deg, rgba(15, 15, 26, 0.95), rgba(26, 26, 46, 0.98));
+.engraving-content {
+    background: linear-gradient(135deg, rgba(26, 15, 10, 0.95), rgba(45, 26, 15, 0.98));
     border-radius: 24px;
     padding: 30px;
     max-width: 500px;
     width: 95%;
     max-height: 85vh;
     overflow-y: auto;
-    border: 1px solid rgba(110, 77, 255, 0.3);
-    box-shadow: 0 40px 80px rgba(110, 77, 255, 0.25),
+    border: 1px solid rgba(232, 212, 193, 0.3);
+    box-shadow: 0 40px 80px rgba(183, 110, 61, 0.25),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
     position: relative;
     animation: modalAppear 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -2208,15 +2150,15 @@ section[id] {
     }
 }
 
-.close-finish {
+.close-engraving {
     position: absolute;
     top: 20px;
     right: 20px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(110, 77, 255, 0.15);
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    background: rgba(232, 212, 193, 0.15);
+    border: 1px solid rgba(232, 212, 193, 0.3);
     color: var(--white);
     font-size: 22px;
     cursor: pointer;
@@ -2228,27 +2170,27 @@ section[id] {
     -webkit-tap-highlight-color: transparent;
 }
 
-.close-finish:hover {
-    background: rgba(110, 77, 255, 0.3);
+.close-engraving:hover {
+    background: rgba(232, 212, 193, 0.3);
     transform: rotate(90deg);
 }
 
-.finish-header {
+.engraving-header {
     margin-bottom: 30px;
     text-align: center;
     padding: 0 10px;
 }
 
-.finish-header h3 {
+.engraving-header h3 {
     font-size: 1.8rem;
     font-weight: 900;
     margin-bottom: 12px;
     color: var(--white);
     line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(110, 77, 255, 0.3);
+    text-shadow: 0 2px 4px rgba(183, 110, 61, 0.3);
 }
 
-.finish-header p {
+.engraving-header p {
     color: rgba(255, 255, 255, 0.85);
     font-size: 1rem;
     line-height: 1.5;
@@ -2256,7 +2198,7 @@ section[id] {
     margin: 0 auto;
 }
 
-.finish-options {
+.engraving-options {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
@@ -2264,13 +2206,13 @@ section[id] {
 }
 
 @media (min-width: 768px) {
-    .finish-options {
+    .engraving-options {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-.finish-option {
-    background: rgba(110, 77, 255, 0.1);
+.engraving-option {
+    background: rgba(232, 212, 193, 0.1);
     border-radius: 18px;
     padding: 25px;
     cursor: pointer;
@@ -2282,69 +2224,69 @@ section[id] {
     -webkit-tap-highlight-color: transparent;
 }
 
-.finish-option::before {
+.engraving-option::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--plastic-gradient);
+    background: var(--wood-gradient);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.finish-option:hover {
-    background: rgba(110, 77, 255, 0.15);
+.engraving-option:hover {
+    background: rgba(232, 212, 193, 0.15);
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(110, 77, 255, 0.2);
+    box-shadow: 0 15px 30px rgba(183, 110, 61, 0.2);
 }
 
-.finish-option.selected {
-    background: rgba(110, 77, 255, 0.2);
-    border-color: #FF4FD8;
-    box-shadow: 0 20px 40px rgba(110, 77, 255, 0.3);
+.engraving-option.selected {
+    background: rgba(232, 212, 193, 0.2);
+    border-color: var(--wood-light);
+    box-shadow: 0 20px 40px rgba(183, 110, 61, 0.3);
 }
 
-.finish-option.selected::before {
+.engraving-option.selected::before {
     opacity: 1;
 }
 
-.finish-image {
+.engraving-image {
     width: 100%;
     height: 120px;
     border-radius: 12px;
     overflow: hidden;
     margin-bottom: 20px;
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    border: 1px solid rgba(232, 212, 193, 0.3);
     background: rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.finish-option[data-finish="glossy"] .finish-image {
-    background: linear-gradient(135deg, #4A6FA5, #6E8FD9);
+.engraving-option[data-engraving="natural"] .engraving-image {
+    background: linear-gradient(135deg, #8B4513, #A0522D);
 }
 
-.finish-option[data-finish="matte"] .finish-image {
-    background: linear-gradient(135deg, #333333, #666666);
+.engraving-option[data-engraving="burned"] .engraving-image {
+    background: linear-gradient(135deg, #3D281E, #1A0F0A);
 }
 
-.finish-image span {
+.engraving-image span {
     font-size: 3rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.finish-option[data-finish="glossy"] .finish-image span {
-    color: #FFFFFF;
+.engraving-option[data-engraving="natural"] .engraving-image span {
+    color: #F5E6D3;
 }
 
-.finish-option[data-finish="matte"] .finish-image span {
-    color: #FFFFFF;
+.engraving-option[data-engraving="burned"] .engraving-image span {
+    color: #F5E6D3;
 }
 
-.finish-label {
+.engraving-label {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2355,30 +2297,30 @@ section[id] {
     margin-bottom: 8px;
 }
 
-.finish-price {
+.engraving-price {
     font-size: 0.95rem;
-    color: #FF4FD8;
+    color: var(--wood-light);
     font-weight: 600;
     margin-bottom: 15px;
 }
 
-.finish-description {
+.engraving-description {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
     text-align: left;
 }
 
-.finish-actions {
+.engraving-actions {
     display: flex;
     flex-direction: column;
     gap: 15px;
     padding-top: 20px;
-    border-top: 1px solid rgba(110, 77, 255, 0.2);
+    border-top: 1px solid rgba(232, 212, 193, 0.2);
 }
 
 @media (min-width: 480px) {
-    .finish-actions {
+    .engraving-actions {
         flex-direction: row;
         justify-content: center;
     }
@@ -2410,26 +2352,26 @@ section[id] {
 }
 
 .btn-cancel {
-    background: rgba(110, 77, 255, 0.15);
+    background: rgba(232, 212, 193, 0.15);
     color: var(--white);
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    border: 1px solid rgba(232, 212, 193, 0.3);
 }
 
 .btn-cancel:active {
-    background: rgba(110, 77, 255, 0.25);
+    background: rgba(232, 212, 193, 0.25);
     transform: translateY(0);
 }
 
 .btn-cancel:hover {
-    background: rgba(110, 77, 255, 0.25);
+    background: rgba(232, 212, 193, 0.25);
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(110, 77, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(183, 110, 61, 0.2);
 }
 
 .btn-confirm {
-    background: var(--plastic-gradient);
+    background: var(--wood-gradient);
     color: var(--white);
-    box-shadow: 0 8px 25px rgba(110, 77, 255, 0.4);
+    box-shadow: 0 8px 25px rgba(183, 110, 61, 0.4);
 }
 
 .btn-confirm:active:not(:disabled) {
@@ -2438,8 +2380,8 @@ section[id] {
 
 .btn-confirm:hover:not(:disabled) {
     transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(110, 77, 255, 0.5);
-    background: linear-gradient(135deg, #5A85FF, #8B77FF);
+    box-shadow: 0 15px 35px rgba(183, 110, 61, 0.5);
+    background: linear-gradient(135deg, #F0E6DC, #D4A574);
 }
 
 .btn-confirm:disabled {
@@ -2449,34 +2391,34 @@ section[id] {
     box-shadow: none !important;
 }
 
-/* MOBILE SPECIFIC STYLES FOR FINISH MODAL */
+/* MOBILE SPECIFIC STYLES FOR ENGRAVING MODAL */
 @media (max-width: 767px) {
-    .finish-content {
+    .engraving-content {
         padding: 25px 20px;
         max-height: 90vh;
     }
 
-    .finish-header h3 {
+    .engraving-header h3 {
         font-size: 1.5rem;
     }
 
-    .finish-header p {
+    .engraving-header p {
         font-size: 0.95rem;
     }
 
-    .finish-option {
+    .engraving-option {
         padding: 20px;
     }
 
-    .finish-image {
+    .engraving-image {
         height: 100px;
     }
 
-    .finish-label {
+    .engraving-label {
         font-size: 1rem;
     }
 
-    .finish-description {
+    .engraving-description {
         font-size: 0.85rem;
     }
 
@@ -2487,7 +2429,7 @@ section[id] {
         min-height: 52px;
     }
 
-    .close-finish {
+    .close-engraving {
         width: 36px;
         height: 36px;
         font-size: 20px;
@@ -2497,54 +2439,54 @@ section[id] {
 }
 
 @media (max-width: 480px) {
-    .finish-content {
+    .engraving-content {
         padding: 20px 16px;
     }
 
-    .finish-header h3 {
+    .engraving-header h3 {
         font-size: 1.3rem;
     }
 
-    .finish-header p {
+    .engraving-header p {
         font-size: 0.9rem;
     }
 
-    .finish-option {
+    .engraving-option {
         padding: 18px;
     }
 
-    .finish-image {
+    .engraving-image {
         height: 90px;
         margin-bottom: 15px;
     }
 
-    .finish-image span {
+    .engraving-image span {
         font-size: 2.5rem;
     }
 
-    .finish-label {
+    .engraving-label {
         font-size: 0.95rem;
     }
 
-    .finish-description {
+    .engraving-description {
         font-size: 0.8rem;
     }
 }
 
-/* Cart Modal - PLASTIC THEME */
+/* Cart Modal - WOOD THEME */
 .cart-modal {
     position: fixed;
     top: 0;
     right: -400px;
     width: 400px;
     height: 100%;
-    background: linear-gradient(135deg, #0F0F1A, #1A1A2E);
-    border-left: 1px solid rgba(110, 77, 255, 0.2);
+    background: linear-gradient(135deg, #1A0F0A, #2D1A0F);
+    border-left: 1px solid rgba(232, 212, 193, 0.2);
     z-index: 2000;
     transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     flex-direction: column;
-    box-shadow: -20px 0 60px rgba(110, 77, 255, 0.3);
+    box-shadow: -20px 0 60px rgba(183, 110, 61, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -2563,7 +2505,7 @@ section[id] {
     justify-content: space-between;
     align-items: center;
     padding: 25px;
-    border-bottom: 1px solid rgba(110, 77, 255, 0.2);
+    border-bottom: 1px solid rgba(232, 212, 193, 0.2);
 }
 
 .cart-header h3 {
@@ -2577,8 +2519,8 @@ section[id] {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: rgba(110, 77, 255, 0.2);
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    background: rgba(232, 212, 193, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.3);
     color: var(--white);
     font-size: 20px;
     cursor: pointer;
@@ -2589,7 +2531,7 @@ section[id] {
 }
 
 .close-cart:hover {
-    background: rgba(110, 77, 255, 0.3);
+    background: rgba(232, 212, 193, 0.3);
     transform: rotate(90deg);
 }
 
@@ -2602,7 +2544,7 @@ section[id] {
 .empty-cart {
     text-align: center;
     padding: 60px 20px;
-    color: rgba(110, 77, 255, 0.7);
+    color: rgba(232, 212, 193, 0.7);
 }
 
 .empty-cart p {
@@ -2615,10 +2557,10 @@ section[id] {
     align-items: center;
     gap: 15px;
     padding: 18px;
-    background: rgba(110, 77, 255, 0.1);
+    background: rgba(232, 212, 193, 0.1);
     border-radius: 14px;
     margin-bottom: 12px;
-    border: 1px solid rgba(110, 77, 255, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.2);
 }
 
 .cart-item img {
@@ -2640,7 +2582,7 @@ section[id] {
 }
 
 .cart-item-price {
-    color: rgba(110, 77, 255, 0.8);
+    color: rgba(232, 212, 193, 0.8);
     font-size: 0.85rem;
 }
 
@@ -2648,8 +2590,8 @@ section[id] {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: rgba(110, 77, 255, 0.2);
-    border: 1px solid rgba(110, 77, 255, 0.3);
+    background: rgba(232, 212, 193, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.3);
     color: var(--white);
     cursor: pointer;
     display: flex;
@@ -2660,9 +2602,9 @@ section[id] {
 }
 
 .remove-item:hover {
-    background: rgba(110, 77, 255, 0.3);
-    border-color: #FF4FD8;
-    color: #FF4FD8;
+    background: rgba(232, 212, 193, 0.3);
+    border-color: var(--wood-light);
+    color: var(--wood-light);
 }
 
 .cart-total {
@@ -2670,7 +2612,7 @@ section[id] {
     justify-content: space-between;
     align-items: center;
     padding: 25px;
-    border-top: 1px solid rgba(110, 77, 255, 0.2);
+    border-top: 1px solid rgba(232, 212, 193, 0.2);
     font-size: 1.2rem;
     font-weight: 900;
     color: var(--white);
@@ -2680,7 +2622,7 @@ section[id] {
     margin: 0 25px 25px;
     padding: 18px;
     border-radius: 14px;
-    background: var(--plastic-gradient);
+    background: var(--wood-gradient);
     color: var(--white);
     font-weight: 700;
     font-size: 16px;
@@ -2691,20 +2633,20 @@ section[id] {
 
 .checkout-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(110, 77, 255, 0.4);
+    box-shadow: 0 10px 25px rgba(183, 110, 61, 0.4);
 }
 
-/* Notification - PLASTIC THEME */
+/* Notification - WOOD THEME */
 .notification {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: var(--plastic-gradient);
+    background: var(--wood-gradient);
     color: var(--white);
     padding: 18px 25px;
     border-radius: 14px;
     font-weight: 600;
-    box-shadow: 0 15px 40px rgba(110, 77, 255, 0.3);
+    box-shadow: 0 15px 40px rgba(183, 110, 61, 0.3);
     transform: translateY(100px);
     opacity: 0;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -2728,46 +2670,46 @@ section[id] {
 </head>
 
 <body>
-    <!-- FINISH SELECTION MODAL -->
-    <div class="finish-modal" id="finishModal">
-        <div class="finish-content">
-            <button class="close-finish" id="closeFinish">×</button>
-            <div class="finish-header">
-                <h3>Select Plastic Finish</h3>
-                <p>Choose between glossy or matte finish for your <span id="selectedPlasticText" class="highlight-text">Blue</span> plastic card</p>
+    <!-- ENGRAVING SELECTION MODAL -->
+    <div class="engraving-modal" id="engravingModal">
+        <div class="engraving-content">
+            <button class="close-engraving" id="closeEngraving">×</button>
+            <div class="engraving-header">
+                <h3>Select Engraving Type</h3>
+                <p>Choose between natural wood grain or laser-burned engraving for your <span id="selectedWoodText" class="highlight-text">Walnut</span> wood card</p>
             </div>
 
-            <div class="finish-options">
-                <div class="finish-option" data-finish="glossy">
-                    <div class="finish-image">
-                        <span>✨</span>
+            <div class="engraving-options">
+                <div class="engraving-option" data-engraving="natural">
+                    <div class="engraving-image">
+                        <span>🌳</span>
                     </div>
-                    <div class="finish-label">
-                        <span>✨</span> Glossy Finish
+                    <div class="engraving-label">
+                        <span>🌳</span> Natural Grain
                     </div>
-                    <div class="finish-price">No extra cost</div>
-                    <div class="finish-description">
-                        High-shine glossy finish that reflects light beautifully. Perfect for vibrant colors and creating a modern, eye-catching appearance.
+                    <div class="engraving-price">No extra cost</div>
+                    <div class="engraving-description">
+                        Showcases the natural beauty of wood grain. Perfect for organic brands and those wanting an authentic, earthy appearance.
                     </div>
                 </div>
 
-                <div class="finish-option" data-finish="matte">
-                    <div class="finish-image">
-                        <span>🔳</span>
+                <div class="engraving-option" data-engraving="burned">
+                    <div class="engraving-image">
+                        <span>🔥</span>
                     </div>
-                    <div class="finish-label">
-                        <span>🔳</span> Matte Finish
+                    <div class="engraving-label">
+                        <span>🔥</span> Laser Burned
                     </div>
-                    <div class="finish-price">No extra cost</div>
-                    <div class="finish-description">
-                        Smooth matte finish that's fingerprint-resistant. Ideal for a sophisticated, professional look with excellent readability.
+                    <div class="engraving-price">No extra cost</div>
+                    <div class="engraving-description">
+                        Precise laser burning creates crisp, permanent engravings. Ideal for intricate logos and detailed designs that stand the test of time.
                     </div>
                 </div>
             </div>
 
-            <div class="finish-actions">
-                <button class="btn-cancel" id="cancelFinish">Cancel</button>
-                <button class="btn-confirm" id="confirmFinish" disabled>Add to Cart</button>
+            <div class="engraving-actions">
+                <button class="btn-cancel" id="cancelEngraving">Cancel</button>
+                <button class="btn-confirm" id="confirmEngraving" disabled>Add to Cart</button>
             </div>
         </div>
     </div>
@@ -2799,7 +2741,7 @@ section[id] {
     <!-- MOBILE CLOSE BUTTON -->
     <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
 
-    <!-- STICKY NAV - PLASTIC THEME -->
+    <!-- STICKY NAV - WOOD THEME -->
     <nav class="nav" id="mainNav">
         <a href="index.html" class="logo">
             <img src="logo.png" alt=" Logo" class="logo-img">
@@ -2814,8 +2756,8 @@ section[id] {
         <div class="nav-center">
             <a href="index.html">Home</a>
             <a href="metal.html">Metal Cards</a>
-            <a href="wood.html">Wood Cards</a>
-            <a href="plastic.html" class="active">Plastic Cards</a>
+            <a href="wood.html" class="active">Wood Cards</a>
+            <a href="plastic.html">Plastic Cards</a>
             <a href="custom.html">Custom Cards</a>
             <a href="stands.html">Stands</a>
         </div>
@@ -2834,7 +2776,7 @@ section[id] {
         </div>
     </nav>
 
-    <!-- MOBILE MENU - PLASTIC THEME -->
+    <!-- MOBILE MENU - WOOD THEME -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="index.html" class="mobile-menu-item">
             <span>🏠</span> Home
@@ -2842,10 +2784,10 @@ section[id] {
         <a href="metal.html" class="mobile-menu-item">
             <span>⭐</span> Metal Cards
         </a>
-        <a href="wood.html" class="mobile-menu-item">
+        <a href="wood.html" class="mobile-menu-item active">
             <span>🌳</span> Wood Cards
         </a>
-        <a href="plastic.html" class="mobile-menu-item active">
+        <a href="plastic.html" class="mobile-menu-item">
             <span>🔵</span> Plastic Cards
         </a>
         <a href="custom.html" class="mobile-menu-item">
@@ -2867,17 +2809,17 @@ section[id] {
     </div>
 
     <div class="main-container">
-        <!-- HERO SECTION - PLASTIC THEME -->
+        <!-- HERO SECTION - WOOD THEME -->
         <section class="hero-section" id="hero">
             <div class="hero-bg-blob"></div>
             <div class="hero-bg-blob b2"></div>
             <div class="hero-content">
-                <h1 class="hero-title">Vibrant Plastic NFC Cards</h1>
+                <h1 class="hero-title">Premium Wooden NFC Cards</h1>
                 
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
                         <!-- Hero card image -->
-                        <img src="plasticblue.webp" alt="Blue Plastic NFC Card">
+                        <img src="woodwalnut.webp" alt="Walnut Wood NFC Card">
                         <div class="hero-card-upload-overlay">
                             <div class="upload-icon-mobile">📁</div>
                             <div class="hero-card-upload-text">Click to upload your logo</div>
@@ -2886,7 +2828,7 @@ section[id] {
                 </div>
 
                 <div class="hero-cta">
-                    <button class="btn btn-primary" id="browseCardsBtn">Browse Colors</button>
+                    <button class="btn btn-primary" id="browseCardsBtn">Browse Woods</button>
                 </div>
             </div>
         </section>
@@ -2894,157 +2836,118 @@ section[id] {
         <!-- BESTSELLERS SECTION -->
         <section class="bestsellers-section" id="bestsellers">
             <div class="section-header">
-                <h2 class="section-title">Our Plastic Bestsellers</h2>
-                <p class="section-subtitle">Vibrant plastic NFC cards that make colorful impressions</p>
+                <h2 class="section-title">Our Wood Bestsellers</h2>
+                <p class="section-subtitle">Premium wooden NFC cards that connect you to nature</p>
             </div>
 
             <div class="bestsellers-grid">
-                <!-- Blue Plastic Card -->
-                <div class="bestseller-card blue">
+                <!-- Walnut Wood Card -->
+                <div class="bestseller-card walnut">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="plasticblue.webp" alt="Blue Plastic Card" class="webp-image">
+                            <img src="woodwalnut.webp" alt="Walnut Wood Card" class="webp-image">
                         </div>
                     </div>
-                    <h3 class="bestseller-title">Blue Plastic Card</h3>
-                    <p class="bestseller-description">Professional blue plastic card. Trustworthy and modern, perfect for corporate and tech businesses.</p>
-                    <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
+                    <h3 class="bestseller-title">Walnut Wood Card</h3>
+                    <p class="bestseller-description">Rich, dark wood with beautiful grain patterns. Perfect for luxury brands and sophisticated professionals.</p>
+                    <div class="bestseller-price">£85 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Blue Plastic Card" data-price="65">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Walnut Wood Card" data-price="85">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
 
-                <!-- Purple Plastic Card -->
-                 <div class="bestseller-card purple">
+                <!-- Oak Wood Card -->
+                 <div class="bestseller-card oak">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="plasticpurple.webp" alt="Purple Plastic Card" class="webp-image">
+                            <img src="woodoak.webp" alt="Oak Wood Card" class="webp-image">
                         </div>
                     </div>
-                    <h3 class="bestseller-title">Purple Plastic Card</h3>
-                    <p class="bestseller-description">Creative purple plastic card. Perfect for creative agencies, design studios, and innovative brands.</p>
-                    <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
+                    <h3 class="bestseller-title">Oak Wood Card</h3>
+                    <p class="bestseller-description">Classic, light-colored wood with distinctive grain. Ideal for traditional businesses and heritage brands.</p>
+                    <div class="bestseller-price">£85 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Purple Plastic Card" data-price="65">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Oak Wood Card" data-price="85">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
 
-                <!-- Black Plastic Card -->
-                <div class="bestseller-card black">
+                <!-- Mahogany Wood Card -->
+                <div class="bestseller-card mahogany">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="plasticblack.webp" alt="Black Plastic Card" class="webp-image">
+                            <img src="woodmahogany.webp" alt="Mahogany Wood Card" class="webp-image">
                         </div>
                     </div>
-                    <h3 class="bestseller-title">Black Plastic Card</h3>
-                    <p class="bestseller-description">Classic black plastic card. Elegant and professional, ideal for any industry or personal branding.</p>
-                    <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
+                    <h3 class="bestseller-title">Mahogany Wood Card</h3>
+                    <p class="bestseller-description">Deep red-brown wood with luxurious appearance. Perfect for high-end brands and executive professionals.</p>
+                    <div class="bestseller-price">£85 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Black Plastic Card" data-price="65">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Mahogany Wood Card" data-price="85">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - 12 PLASTIC COLORS -->
+        <!-- CAROUSEL SECTION - 9 WOOD TYPES -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
-                    <h2 class="section-title">All Plastic Colors</h2>
-                    <p class="section-subtitle" style="display: none;">Choose from 12 vibrant plastic colors</p>
+                    <h2 class="section-title">Wood Collection</h2>
+                    <p class="section-subtitle" style="display: none;">Choose from 9 premium wood types</p>
                 </div>
 
-                <div class="plastic-carousel">
+                <div class="wood-carousel">
                     <button class="carousel-arrow left" aria-label="Previous">‹</button>
 
-                    <!-- 12 plastic colors -->
-                    <div class="plastic-color-card active" data-color="Black">
-                        <img src="plasticblack.webp" alt="Black Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Black</div>
-                        <div class="card-price">£65</div>
+                    <!-- 9 wood types -->
+                    <div class="wood-type-card active" data-color="Walnut">
+                        <img src="woodwalnut.webp" alt="Walnut Wood Card" class="carousel-card-image">
                     </div>
 
-                    <div class="plastic-color-card" data-color="Blue">
-                        <img src="plasticblue.webp" alt="Blue Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Blue</div>
-                        <div class="card-price">£65</div>
+                    <div class="wood-type-card" data-color="Oak">
+                        <img src="woodoak.webp" alt="Oak Wood Card" class="carousel-card-image">
                     </div>
 
-                    <div class="plastic-color-card" data-color="Purple">
-                        <img src="plasticpurple.webp" alt="Purple Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Purple</div>
-                        <div class="card-price">£65</div>
+                    <div class="wood-type-card" data-color="Cherry">
+                        <img src="woodcherry.webp" alt="Cherry Wood Card" class="carousel-card-image">
                     </div>
 
-                    <div class="plastic-color-card" data-color="Red">
-                        <img src="plasticred.webp" alt="Red Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Red</div>
-                        <div class="card-price">£65</div>
+                    <div class="wood-type-card" data-color="Maple">
+                        <img src="woodmaple.webp" alt="Maple Wood Card" class="carousel-card-image">
                     </div>
 
-                    <div class="plastic-color-card" data-color="Green">
-                        <img src="plasticgreen.webp" alt="Green Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Green</div>
-                        <div class="card-price">£65</div>
+                    <div class="wood-type-card" data-color="Mahogany">
+                        <img src="woodmahogany.webp" alt="Mahogany Wood Card" class="carousel-card-image">
                     </div>
 
-                    <div class="plastic-color-card" data-color="Yellow">
-                        <img src="plasticyellow.webp" alt="Yellow Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Yellow</div>
-                        <div class="card-price">£65</div>
+                    <div class="wood-type-card" data-color="Bamboo">
+                        <img src="woodbamboo.webp" alt="Bamboo Wood Card" class="carousel-card-image">
                     </div>
 
-                    <div class="plastic-color-card" data-color="Orange">
-                        <img src="plasticorange.webp" alt="Orange Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Orange</div>
-                        <div class="card-price">£65</div>
+                    <div class="wood-type-card" data-color="Teak">
+                        <img src="woodteak.webp" alt="Teak Wood Card" class="carousel-card-image">
                     </div>
 
-                    <div class="plastic-color-card" data-color="Pink">
-                        <img src="plasticpink.webp" alt="Pink Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Pink</div>
-                        <div class="card-price">£65</div>
+                    <div class="wood-type-card" data-color="Pine">
+                        <img src="woodpine.webp" alt="Pine Wood Card" class="carousel-card-image">
                     </div>
 
-                    <div class="plastic-color-card" data-color="White">
-                        <img src="plasticwhite.webp" alt="White Plastic Card" class="carousel-card-image">
-                        <div class="card-label">White</div>
-                        <div class="card-price">£65</div>
-                    </div>
-
-                    <div class="plastic-color-card" data-color="Cyan">
-                        <img src="plasticcyan.webp" alt="Cyan Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Cyan</div>
-                        <div class="card-price">£65</div>
-                    </div>
-
-                    <div class="plastic-color-card" data-color="Silver">
-                        <img src="plasticsilver.webp" alt="Silver Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Silver</div>
-                        <div class="card-price">£65</div>
-                    </div>
-
-                    <div class="plastic-color-card" data-color="Gold">
-                        <img src="plasticgold.webp" alt="Gold Plastic Card" class="carousel-card-image">
-                        <div class="card-label">Gold</div>
-                        <div class="card-price">£65</div>
+                    <div class="wood-type-card" data-color="Birch">
+                        <img src="woodbirch.webp" alt="Birch Wood Card" class="carousel-card-image">
                     </div>
 
                     <button class="carousel-arrow right" aria-label="Next">›</button>
                 </div>
 
-                <!-- 12 dots -->
+                <!-- 9 dots -->
                 <div class="dots">
                     <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
@@ -3057,7 +2960,7 @@ section[id] {
 
                 <!-- Add to Cart button -->
                 <div class="carousel-actions">
-                    <button class="btn" id="addPlasticBtn">🛒 Add Black Plastic</button>
+                    <button class="btn" id="addWoodBtn">🛒 Add Walnut Finish</button>
                 </div>
             </div>
         </section>
@@ -3067,7 +2970,7 @@ section[id] {
             <div class="custom-logo-content">
                 <div class="section-header">
                     <h2 class="section-title">See It With Your Logo</h2>
-                    <p class="section-subtitle">Upload your logo and see how it looks on different plastic cards</p>
+                    <p class="section-subtitle">Upload your logo and see how it looks on different wood cards</p>
                 </div>
 
                 <div class="logo-builder-mobile">
@@ -3075,7 +2978,7 @@ section[id] {
                     <div class="preview-section-mobile">
                         <div class="preview-header-mobile">
                             <div class="preview-title-mobile">Live Preview</div>
-                            <div class="card-counter-mobile" id="cardCounterMobile">1/12</div>
+                            <div class="card-counter-mobile" id="cardCounterMobile">1/9</div>
                         </div>
                         
                         <div class="preview-card-mobile" id="previewCardMobileClickable">
@@ -3091,10 +2994,10 @@ section[id] {
                         
                         <div class="preview-details-mobile">
                             <div class="selected-card-info-mobile">
-                                <div class="card-name-mobile" id="selectedCardNameMobile">Black Plastic Card</div>
-                                <div class="engraving-type-mobile" id="selectedEngravingTypeMobile">Glossy Finish</div>
+                                <div class="card-name-mobile" id="selectedCardNameMobile">Walnut Wood Card</div>
+                                <div class="engraving-type-mobile" id="selectedEngravingTypeMobile">Natural Grain</div>
                             </div>
-                            <div class="preview-price-mobile">£65</div>
+                            <div class="preview-price-mobile">£85</div>
                         </div>
                         
                         <div class="card-navigation-mobile">
@@ -3113,68 +3016,59 @@ section[id] {
 
                     <!-- Right Column: Selection Options -->
                     <div class="selection-area-mobile">
-                        <!-- Step 1: Choose Plastic Color -->
+                        <!-- Step 1: Choose Wood Type -->
                         <div class="selection-step-mobile">
                             <div class="step-title-mobile">
                                 <span class="step-number-mobile">1</span>
-                                Choose Plastic Color
+                                Choose Wood Type
                             </div>
                             <div class="card-colors-mobile">
-                                <div class="color-option-mobile selected" data-color="black" style="background: var(--plastic-black-bg);">
-                                    <div class="color-label-mobile">Black</div>
+                                <div class="color-option-mobile selected" data-color="walnut" style="background: var(--walnut-bg);">
+                                    <div class="color-label-mobile">Walnut</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="blue" style="background: var(--plastic-blue-bg);">
-                                    <div class="color-label-mobile">Blue</div>
+                                <div class="color-option-mobile" data-color="oak" style="background: var(--oak-bg);">
+                                    <div class="color-label-mobile">Oak</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="purple" style="background: var(--plastic-purple-bg);">
-                                    <div class="color-label-mobile">Purple</div>
+                                <div class="color-option-mobile" data-color="cherry" style="background: var(--cherry-bg);">
+                                    <div class="color-label-mobile">Cherry</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="red" style="background: var(--plastic-red-bg);">
-                                    <div class="color-label-mobile">Red</div>
+                                <div class="color-option-mobile" data-color="maple" style="background: var(--maple-bg);">
+                                    <div class="color-label-mobile">Maple</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="green" style="background: var(--plastic-green-bg);">
-                                    <div class="color-label-mobile">Green</div>
+                                <div class="color-option-mobile" data-color="mahogany" style="background: var(--mahogany-bg);">
+                                    <div class="color-label-mobile">Mahogany</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="yellow" style="background: var(--plastic-yellow-bg);">
-                                    <div class="color-label-mobile">Yellow</div>
+                                <div class="color-option-mobile" data-color="bamboo" style="background: var(--bamboo-bg);">
+                                    <div class="color-label-mobile">Bamboo</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="orange" style="background: var(--plastic-orange-bg);">
-                                    <div class="color-label-mobile">Orange</div>
+                                <div class="color-option-mobile" data-color="teak" style="background: var(--teak-bg);">
+                                    <div class="color-label-mobile">Teak</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="pink" style="background: var(--plastic-pink-bg);">
-                                    <div class="color-label-mobile">Pink</div>
+                                <div class="color-option-mobile" data-color="pine" style="background: var(--pine-bg);">
+                                    <div class="color-label-mobile">Pine</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="white" style="background: var(--plastic-white-bg);">
-                                    <div class="color-label-mobile">White</div>
-                                </div>
-                                <div class="color-option-mobile" data-color="cyan" style="background: var(--plastic-cyan-bg);">
-                                    <div class="color-label-mobile">Cyan</div>
-                                </div>
-                                <div class="color-option-mobile" data-color="silver" style="background: var(--plastic-silver-bg);">
-                                    <div class="color-label-mobile">Silver</div>
-                                </div>
-                                <div class="color-option-mobile" data-color="gold" style="background: var(--plastic-gold-bg);">
-                                    <div class="color-label-mobile">Gold</div>
+                                <div class="color-option-mobile" data-color="birch" style="background: var(--birch-bg);">
+                                    <div class="color-label-mobile">Birch</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Step 2: Choose Finish -->
+                        <!-- Step 2: Choose Engraving -->
                         <div class="selection-step-mobile">
                             <div class="step-title-mobile">
                                 <span class="step-number-mobile">2</span>
-                                Choose Finish
+                                Choose Engraving
                             </div>
-                            <div class="finish-options-mobile">
-                                <div class="finish-option-mobile selected" data-finish="glossy">
-                                    <div class="finish-icon-mobile">✨</div>
-                                    <div class="finish-name-mobile">Glossy</div>
-                                    <div class="finish-price-mobile">No extra cost</div>
+                            <div class="engraving-options-mobile">
+                                <div class="engraving-option-mobile selected" data-engraving="natural">
+                                    <div class="engraving-icon-mobile">🌳</div>
+                                    <div class="engraving-name-mobile">Natural Grain</div>
+                                    <div class="engraving-price-mobile">No extra cost</div>
                                 </div>
-                                <div class="finish-option-mobile" data-finish="matte">
-                                    <div class="finish-icon-mobile">🔳</div>
-                                    <div class="finish-name-mobile">Matte</div>
-                                    <div class="finish-price-mobile">No extra cost</div>
+                                <div class="engraving-option-mobile" data-engraving="burned">
+                                    <div class="engraving-icon-mobile">🔥</div>
+                                    <div class="engraving-name-mobile">Laser Burned</div>
+                                    <div class="engraving-price-mobile">No extra cost</div>
                                 </div>
                             </div>
                         </div>
@@ -3221,35 +3115,35 @@ section[id] {
             </div>
         </section>
         
-        <!-- WHY CHOOSE PLASTIC SECTION -->
+        <!-- WHY CHOOSE WOOD SECTION -->
         <section class="why-choose-section" id="why-choose">
             <div class="section-header">
-                <h2 class="section-title">Why Choose Plastic?</h2>
-                <p class="section-subtitle">Experience versatility with vibrant plastic NFC cards</p>
+                <h2 class="section-title">Why Choose Wood?</h2>
+                <p class="section-subtitle">Experience the natural elegance of premium wooden NFC cards</p>
             </div>
 
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <div class="benefit-icon">🎨</div>
-                    <h3 class="benefit-title">12 Vibrant Colors</h3>
+                    <div class="benefit-icon">🌳</div>
+                    <h3 class="benefit-title">Natural & Sustainable</h3>
                     <p class="benefit-description">
-                        Choose from 12 vibrant colors to perfectly match your brand. From classic black to eye-catching pink, find the perfect color for your business.
+                        Each wood card is unique with its own natural grain pattern. Made from sustainably sourced wood, they're perfect for eco-conscious brands.
                     </p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon">💪</div>
-                    <h3 class="benefit-title">Durable & Lightweight</h3>
+                    <div class="benefit-icon">✨</div>
+                    <h3 class="benefit-title">Warm & Tactile</h3>
                     <p class="benefit-description">
-                        Scratch-resistant and waterproof plastic cards that are lightweight yet durable, perfect for everyday use and easy carrying.
+                        Wood has a natural warmth and unique texture that creates an unforgettable tactile experience, setting you apart from plastic and metal competitors.
                     </p>
                 </div>
 
                 <div class="benefit-card">
-                    <div class="benefit-icon">💰</div>
-                    <h3 class="benefit-title">Cost-Effective</h3>
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Memorable Impact</h3>
                     <p class="benefit-description">
-                        Get premium NFC functionality at an affordable price of only £65. Plastic cards offer excellent value while maintaining high quality and professional appearance.
+                        Wood cards make a strong statement about values and craftsmanship. They're perfect for brands that want to convey authenticity and connection to nature.
                     </p>
                 </div>
             </div>
@@ -3265,36 +3159,36 @@ section[id] {
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-quote">
-                        "The blue plastic cards were perfect for our tech startup! The glossy finish looks professional and the NFC functionality works flawlessly every time."
+                        "The walnut wood card is absolutely stunning! As an eco-friendly brand, it perfectly represents our values. Clients love the natural feel and unique grain patterns."
                     </div>
-                    <div class="testimonial-author">Sarah Johnson</div>
-                    <div class="testimonial-role">Tech Startup Founder, London</div>
+                    <div class="testimonial-author">Emma Greenfield</div>
+                    <div class="testimonial-role">Sustainable Brand Owner, Cornwall</div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="testimonial-quote">
-                        "We chose pink plastic cards for our beauty brand launch. They matched our branding perfectly and were a huge hit at our industry event."
+                        "The oak wood cards were perfect for our craft brewery launch. They complemented our rustic branding perfectly and became instant conversation starters."
                     </div>
-                    <div class="testimonial-author">Mia Rodriguez</div>
-                    <div class="testimonial-role">Beauty Brand Owner, Manchester</div>
+                    <div class="testimonial-author">Tom Bennett</div>
+                    <div class="testimonial-role">Craft Brewery Founder, Yorkshire</div>
                 </div>
 
                 <div class="testimonial-card">
                     <div class="testimonial-quote">
-                        "The durability of these plastic cards is impressive! As a real estate agent, I hand out dozens of cards weekly. After 6 months, they still look brand new."
+                        "Mahogany wood cards for our architecture firm were a game-changer. They convey quality and craftsmanship in a way no plastic card ever could."
                     </div>
-                    <div class="testimonial-author">James Wilson</div>
-                    <div class="testimonial-role">Real Estate Agent, Birmingham</div>
+                    <div class="testimonial-author">David Chen</div>
+                    <div class="testimonial-role">Architecture Director, London</div>
                 </div>
             </div>
         </section>
     </div>
 
     <script>
-        // Variables for finish selection
-        let selectedPlastic = 'Black';
-        let selectedFinish = null;
-        let finishModal = document.getElementById('finishModal');
+        // Variables for engraving selection
+        let selectedWood = 'Walnut';
+        let selectedEngraving = null;
+        let engravingModal = document.getElementById('engravingModal');
         let uploadedLogoGlobal = null;
 
         // SIMPLE MOBILE MENU - FIXED
@@ -3558,92 +3452,89 @@ section[id] {
             updateCart();
         });
 
-        // Plastic Color Carousel with Background Change - 12 COLORS
-        const plasticCards = document.querySelectorAll('.plastic-color-card');
-        const plasticDots = document.querySelectorAll('.carousel-section .dot');
+        // Wood Type Carousel with Background Change - 9 WOOD TYPES
+        const woodCards = document.querySelectorAll('.wood-type-card');
+        const woodDots = document.querySelectorAll('.carousel-section .dot');
         const carouselSection = document.querySelector('.carousel-section');
-        const plasticPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
-        const plasticNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
-        const addPlasticBtn = document.getElementById('addPlasticBtn');
+        const woodPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
+        const woodNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
+        const addWoodBtn = document.getElementById('addWoodBtn');
 
-        // Map color names to CSS class names - 12 COLORS
-        const plasticColorMap = {
-            'Black': 'black',
-            'Blue': 'blue',
-            'Purple': 'purple',
-            'Red': 'red',
-            'Green': 'green',
-            'Yellow': 'yellow',
-            'Orange': 'orange',
-            'Pink': 'pink',
-            'White': 'white',
-            'Cyan': 'cyan',
-            'Silver': 'silver',
-            'Gold': 'gold'
+        // Map wood names to CSS class names - 9 WOOD TYPES
+        const woodTypeMap = {
+            'Walnut': 'walnut',
+            'Oak': 'oak',
+            'Cherry': 'cherry',
+            'Maple': 'maple',
+            'Mahogany': 'mahogany',
+            'Bamboo': 'bamboo',
+            'Teak': 'teak',
+            'Pine': 'pine',
+            'Birch': 'birch'
         };
 
-        let plasticIndex = 0;
+        let woodIndex = 0;
 
-        // Function to update plastic carousel
-        function updatePlasticCarousel(i) {
-            plasticCards[plasticIndex].classList.remove('active');
-            plasticDots[plasticIndex].classList.remove('active');
+        // Function to update wood carousel
+        function updateWoodCarousel(i) {
+            woodCards[woodIndex].classList.remove('active');
+            woodDots[woodIndex].classList.remove('active');
 
-            plasticIndex = (i + plasticCards.length) % plasticCards.length;
+            woodIndex = (i + woodCards.length) % woodCards.length;
 
-            plasticCards[plasticIndex].classList.add('active');
+            woodCards[woodIndex].classList.add('active');
             
             // Update dot colors based on active card
-            plasticDots.forEach((dot, index) => {
-                if (index === plasticIndex) {
+            woodDots.forEach((dot, index) => {
+                if (index === woodIndex) {
                     dot.classList.add('active');
                 } else {
                     dot.classList.remove('active');
                 }
             });
 
-            const colorName = plasticCards[plasticIndex].dataset.color;
-            const colorClass = plasticColorMap[colorName];
+            const woodName = woodCards[woodIndex].dataset.color;
+            const woodClass = woodTypeMap[woodName];
             
             // Update carousel section background
-            carouselSection.className = 'carousel-section ' + colorClass;
+            carouselSection.className = 'carousel-section ' + woodClass;
             
             // Update button text
-            addPlasticBtn.textContent = `🛒 Add ${colorName} Plastic`;
-            selectedPlastic = colorName;
+            addWoodBtn.textContent = `🛒 Add ${woodName} Finish`;
+            selectedWood = woodName;
         }
 
-        // Initialize plastic carousel
-        updatePlasticCarousel(0);
+        // Initialize wood carousel
+        updateWoodCarousel(0);
 
         // Manual navigation
-        plasticPrevBtn.addEventListener('click', (e) => {
+        woodPrevBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            updatePlasticCarousel(plasticIndex - 1);
+            updateWoodCarousel(woodIndex - 1);
         });
 
-        plasticNextBtn.addEventListener('click', (e) => {
+        woodNextBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            updatePlasticCarousel(plasticIndex + 1);
+            updateWoodCarousel(woodIndex + 1);
         });
 
         // Dot navigation
-        plasticDots.forEach((dot, i) => {
+        woodDots.forEach((dot, i) => {
             dot.addEventListener('click', () => {
-                updatePlasticCarousel(i);
+                updateWoodCarousel(i);
             });
         });
 
         // Touch/swipe support
-        let plasticStartX = 0;
-        document.querySelector('.plastic-carousel').addEventListener('touchstart', e => {
-            plasticStartX = e.touches[0].clientX;
+        let woodStartX = 0;
+        document.querySelector('.wood-carousel').addEventListener('touchstart', e => {
+            woodStartX = e.touches[0].clientX;
         });
 
-        document.querySelector('.plastic-carousel').addEventListener('touchend', e => {
+        document.querySelector('.wood-carousel').addEventListener('touchend', e => {
             const endX = e.changedTouches[0].clientX;
-            if (plasticStartX - endX > 50) updatePlasticCarousel(plasticIndex + 1);
-            if (endX - plasticStartX > 50) updatePlasticCarousel(plasticIndex - 1);
+            if (woodStartX - endX > 50) updateWoodCarousel(woodIndex + 1);
+            if (endX - woodStartX > 50) updateWoodCarousel(woodIndex - 1);
         });
 
         // FIX: Optimized carousel with smoother transitions
@@ -3654,7 +3545,7 @@ section[id] {
             if (carouselInterval) clearInterval(carouselInterval);
             carouselInterval = setInterval(() => {
                 if (!isCarouselPaused) {
-                    updatePlasticCarousel(plasticIndex + 1);
+                    updateWoodCarousel(woodIndex + 1);
                 }
             }, 5000);
         }
@@ -3670,25 +3561,25 @@ section[id] {
         startCarouselAutoRotate();
 
         // Pause on hover/interaction
-        document.querySelector('.plastic-carousel').addEventListener('mouseenter', () => {
+        document.querySelector('.wood-carousel').addEventListener('mouseenter', () => {
             stopCarouselAutoRotate();
         });
 
-        document.querySelector('.plastic-carousel').addEventListener('mouseleave', () => {
+        document.querySelector('.wood-carousel').addEventListener('mouseleave', () => {
             isCarouselPaused = false;
             startCarouselAutoRotate();
         });
 
         // Also pause when interacting with arrows or dots
-        plasticPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
-        plasticNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
-        plasticDots.forEach(dot => {
+        woodPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+        woodNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+        woodDots.forEach(dot => {
             dot.addEventListener('mouseenter', stopCarouselAutoRotate);
         });
 
-        // FIXED: SEE IT WITH YOUR LOGO SECTION - NOW 12 CARDS
+        // FIXED: SEE IT WITH YOUR LOGO SECTION - NOW 9 CARDS
         const colorOptionsMobile = document.querySelectorAll('.color-option-mobile');
-        const finishOptionsMobile = document.querySelectorAll('.finish-option-mobile');
+        const engravingOptionsMobile = document.querySelectorAll('.engraving-option-mobile');
         const uploadAreaMobile = document.getElementById('uploadAreaMobile');
         const logoFileInputMobile = document.getElementById('logoFileInputMobile');
         const uploadLogoBtnMobile = document.getElementById('uploadLogoBtnMobile');
@@ -3705,46 +3596,40 @@ section[id] {
         const addToCartMobile = document.getElementById('addToCartMobile');
         const heroCard = document.getElementById('heroCard');
 
-        // All available cards - 12 plastic colors
+        // All available cards - 9 wood types
         const cardsMobile = [
-            { id: 1, name: 'Black Plastic Card', color: 'black', finish: 'glossy', price: 65 },
-            { id: 2, name: 'Blue Plastic Card', color: 'blue', finish: 'glossy', price: 65 },
-            { id: 3, name: 'Purple Plastic Card', color: 'purple', finish: 'glossy', price: 65 },
-            { id: 4, name: 'Red Plastic Card', color: 'red', finish: 'glossy', price: 65 },
-            { id: 5, name: 'Green Plastic Card', color: 'green', finish: 'glossy', price: 65 },
-            { id: 6, name: 'Yellow Plastic Card', color: 'yellow', finish: 'glossy', price: 65 },
-            { id: 7, name: 'Orange Plastic Card', color: 'orange', finish: 'glossy', price: 65 },
-            { id: 8, name: 'Pink Plastic Card', color: 'pink', finish: 'glossy', price: 65 },
-            { id: 9, name: 'White Plastic Card', color: 'white', finish: 'glossy', price: 65 },
-            { id: 10, name: 'Cyan Plastic Card', color: 'cyan', finish: 'glossy', price: 65 },
-            { id: 11, name: 'Silver Plastic Card', color: 'silver', finish: 'glossy', price: 65 },
-            { id: 12, name: 'Gold Plastic Card', color: 'gold', finish: 'glossy', price: 65 }
+            { id: 1, name: 'Walnut Wood Card', color: 'walnut', engraving: 'natural', price: 85 },
+            { id: 2, name: 'Oak Wood Card', color: 'oak', engraving: 'natural', price: 85 },
+            { id: 3, name: 'Cherry Wood Card', color: 'cherry', engraving: 'natural', price: 85 },
+            { id: 4, name: 'Maple Wood Card', color: 'maple', engraving: 'natural', price: 85 },
+            { id: 5, name: 'Mahogany Wood Card', color: 'mahogany', engraving: 'natural', price: 85 },
+            { id: 6, name: 'Bamboo Wood Card', color: 'bamboo', engraving: 'natural', price: 85 },
+            { id: 7, name: 'Teak Wood Card', color: 'teak', engraving: 'natural', price: 85 },
+            { id: 8, name: 'Pine Wood Card', color: 'pine', engraving: 'natural', price: 85 },
+            { id: 9, name: 'Birch Wood Card', color: 'birch', engraving: 'natural', price: 85 }
         ];
 
         let currentCardIndexMobile = 0;
-        let selectedColorMobile = 'black';
-        let selectedFinishMobile = 'glossy';
+        let selectedColorMobile = 'walnut';
+        let selectedEngravingMobile = 'natural';
 
         // Color name mapping
         const colorNameMapMobile = {
-            'black': 'Black Plastic Card',
-            'blue': 'Blue Plastic Card',
-            'purple': 'Purple Plastic Card',
-            'red': 'Red Plastic Card',
-            'green': 'Green Plastic Card',
-            'yellow': 'Yellow Plastic Card',
-            'orange': 'Orange Plastic Card',
-            'pink': 'Pink Plastic Card',
-            'white': 'White Plastic Card',
-            'cyan': 'Cyan Plastic Card',
-            'silver': 'Silver Plastic Card',
-            'gold': 'Gold Plastic Card'
+            'walnut': 'Walnut Wood Card',
+            'oak': 'Oak Wood Card',
+            'cherry': 'Cherry Wood Card',
+            'maple': 'Maple Wood Card',
+            'mahogany': 'Mahogany Wood Card',
+            'bamboo': 'Bamboo Wood Card',
+            'teak': 'Teak Wood Card',
+            'pine': 'Pine Wood Card',
+            'birch': 'Birch Wood Card'
         };
 
-        // Finish name mapping
-        const finishNameMapMobile = {
-            'glossy': 'Glossy Finish',
-            'matte': 'Matte Finish'
+        // Engraving name mapping
+        const engravingNameMapMobile = {
+            'natural': 'Natural Grain',
+            'burned': 'Laser Burned'
         };
 
         // Initialize mobile logo builder
@@ -3755,10 +3640,10 @@ section[id] {
 
         // Update card list based on selections
         function updateMobileCardList() {
-            // Update all cards with selected color and finish
+            // Update all cards with selected color and engraving
             cardsMobile.forEach((card, index) => {
                 cardsMobile[index].color = selectedColorMobile;
-                cardsMobile[index].finish = selectedFinishMobile;
+                cardsMobile[index].engraving = selectedEngravingMobile;
             });
             
             // Reset to first card
@@ -3775,7 +3660,7 @@ section[id] {
             
             // Update text
             selectedCardNameMobile.textContent = colorNameMapMobile[card.color];
-            selectedEngravingTypeMobile.textContent = finishNameMapMobile[card.finish];
+            selectedEngravingTypeMobile.textContent = engravingNameMapMobile[card.engraving];
             
             // Update counter
             cardCounterMobile.textContent = `${currentCardIndexMobile + 1}/${cardsMobile.length}`;
@@ -3797,19 +3682,16 @@ section[id] {
         // Get CSS variable for card background
         function getCardBackgroundMobile(color) {
             switch(color) {
-                case 'black': return 'var(--plastic-black-bg)';
-                case 'blue': return 'var(--plastic-blue-bg)';
-                case 'purple': return 'var(--plastic-purple-bg)';
-                case 'red': return 'var(--plastic-red-bg)';
-                case 'green': return 'var(--plastic-green-bg)';
-                case 'yellow': return 'var(--plastic-yellow-bg)';
-                case 'orange': return 'var(--plastic-orange-bg)';
-                case 'pink': return 'var(--plastic-pink-bg)';
-                case 'white': return 'var(--plastic-white-bg)';
-                case 'cyan': return 'var(--plastic-cyan-bg)';
-                case 'silver': return 'var(--plastic-silver-bg)';
-                case 'gold': return 'var(--plastic-gold-bg)';
-                default: return 'var(--plastic-black-bg)';
+                case 'walnut': return 'var(--walnut-bg)';
+                case 'oak': return 'var(--oak-bg)';
+                case 'cherry': return 'var(--cherry-bg)';
+                case 'maple': return 'var(--maple-bg)';
+                case 'mahogany': return 'var(--mahogany-bg)';
+                case 'bamboo': return 'var(--bamboo-bg)';
+                case 'teak': return 'var(--teak-bg)';
+                case 'pine': return 'var(--pine-bg)';
+                case 'birch': return 'var(--birch-bg)';
+                default: return 'var(--walnut-bg)';
             }
         }
 
@@ -3859,7 +3741,7 @@ section[id] {
             reader.readAsDataURL(file);
         }
 
-        // Handle color selection on mobile
+        // Handle wood type selection on mobile
         colorOptionsMobile.forEach(option => {
             option.addEventListener('click', () => {
                 // Remove selected class from all options
@@ -3882,17 +3764,17 @@ section[id] {
             });
         });
 
-        // Handle finish selection on mobile
-        finishOptionsMobile.forEach(option => {
+        // Handle engraving selection on mobile
+        engravingOptionsMobile.forEach(option => {
             option.addEventListener('click', () => {
                 // Remove selected class from all options
-                finishOptionsMobile.forEach(opt => opt.classList.remove('selected'));
+                engravingOptionsMobile.forEach(opt => opt.classList.remove('selected'));
                 
                 // Add selected class to clicked option
                 option.classList.add('selected');
                 
-                // Update selected finish
-                selectedFinishMobile = option.dataset.finish;
+                // Update selected engraving
+                selectedEngravingMobile = option.dataset.engraving;
                 
                 // Update card list
                 updateMobileCardList();
@@ -3935,7 +3817,7 @@ section[id] {
             
             // Reset hero card image
             if (heroCard) {
-                heroCard.querySelector('img').src = 'plasticblue.webp';
+                heroCard.querySelector('img').src = 'woodwalnut.webp';
             }
             
             showNotification('Logo cleared');
@@ -3959,8 +3841,8 @@ section[id] {
         // Add to cart from mobile preview
         addToCartMobile.addEventListener('click', () => {
             const currentCard = cardsMobile[currentCardIndexMobile];
-            const finishType = finishNameMapMobile[currentCard.finish];
-            const cardName = `${colorNameMapMobile[currentCard.color]} (${finishType})`;
+            const engravingType = engravingNameMapMobile[currentCard.engraving];
+            const cardName = `${colorNameMapMobile[currentCard.color]} (${engravingType})`;
             
             addToCart(cardName, currentCard.price);
         });
@@ -3993,50 +3875,50 @@ section[id] {
             }
         });
 
-        // FINISH SELECTION MODAL
-        const finishOptionsModal = document.querySelectorAll('.finish-option');
-        const confirmFinishBtn = document.getElementById('confirmFinish');
-        const cancelFinishBtn = document.getElementById('cancelFinish');
-        const closeFinishBtn = document.getElementById('closeFinish');
-        const selectedPlasticText = document.getElementById('selectedPlasticText');
+        // ENGRAVING SELECTION MODAL
+        const engravingOptionsModal = document.querySelectorAll('.engraving-option');
+        const confirmEngravingBtn = document.getElementById('confirmEngraving');
+        const cancelEngravingBtn = document.getElementById('cancelEngraving');
+        const closeEngravingBtn = document.getElementById('closeEngraving');
+        const selectedWoodText = document.getElementById('selectedWoodText');
 
-        // Function to open finish modal for plastic selection
-        function openFinishModal() {
-            selectedPlasticText.textContent = selectedPlastic;
-            selectedFinish = null;
+        // Function to open engraving modal for wood selection
+        function openEngravingModal() {
+            selectedWoodText.textContent = selectedWood;
+            selectedEngraving = null;
 
             // Reset selection state
-            finishOptionsModal.forEach(option => {
+            engravingOptionsModal.forEach(option => {
                 option.classList.remove('selected');
                 // Remove any animation classes
                 option.style.transform = '';
             });
             
-            confirmFinishBtn.disabled = true;
-            confirmFinishBtn.textContent = 'Add to Cart';
+            confirmEngravingBtn.disabled = true;
+            confirmEngravingBtn.textContent = 'Add to Cart';
 
             // Show modal with better animation
-            finishModal.style.display = 'flex';
+            engravingModal.style.display = 'flex';
             setTimeout(() => {
-                finishModal.classList.add('active');
+                engravingModal.classList.add('active');
             }, 10);
             
             document.body.style.overflow = 'hidden';
         }
 
-        // Close finish modal and restore scrolling
-        function closeFinishModal() {
-            finishModal.classList.remove('active');
+        // Close engraving modal and restore scrolling
+        function closeEngravingModal() {
+            engravingModal.classList.remove('active');
             setTimeout(() => {
-                finishModal.style.display = 'none';
+                engravingModal.style.display = 'none';
                 document.body.style.overflow = '';
             }, 300);
         }
 
-        // Open finish modal when "Add [Plastic]" button is clicked
-        addPlasticBtn.addEventListener('click', openFinishModal);
+        // Open engraving modal when "Add [Wood Finish]" button is clicked
+        addWoodBtn.addEventListener('click', openEngravingModal);
 
-        // Open finish modal when Browse Cards button is clicked
+        // Open engraving modal when Browse Cards button is clicked
         document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
             e.preventDefault();
             // Scroll to bestsellers section
@@ -4052,8 +3934,8 @@ section[id] {
             }
         });
 
-        // Handle finish option selection with better visual feedback
-        finishOptionsModal.forEach(option => {
+        // Handle engraving option selection with better visual feedback
+        engravingOptionsModal.forEach(option => {
             option.addEventListener('click', () => {
                 // Visual feedback
                 option.style.transform = 'scale(0.98)';
@@ -4062,12 +3944,12 @@ section[id] {
                 }, 200);
                 
                 // Update selection
-                finishOptionsModal.forEach(opt => opt.classList.remove('selected'));
+                engravingOptionsModal.forEach(opt => opt.classList.remove('selected'));
                 option.classList.add('selected');
-                selectedFinish = option.dataset.finish;
-                confirmFinishBtn.disabled = false;
-                const finishType = selectedFinish === 'glossy' ? 'Glossy Finish' : 'Matte Finish';
-                confirmFinishBtn.textContent = `Add ${finishType}`;
+                selectedEngraving = option.dataset.engraving;
+                confirmEngravingBtn.disabled = false;
+                const engravingType = selectedEngraving === 'natural' ? 'Natural Grain' : 'Laser Burned';
+                confirmEngravingBtn.textContent = `Add ${engravingType}`;
             });
             
             // Add touch feedback for mobile
@@ -4080,44 +3962,44 @@ section[id] {
             });
         });
 
-        // Confirm finish selection and add to cart
-        confirmFinishBtn.addEventListener('click', () => {
-            if (!selectedFinish) return;
+        // Confirm engraving selection and add to cart
+        confirmEngravingBtn.addEventListener('click', () => {
+            if (!selectedEngraving) return;
 
-            const finishType = selectedFinish === 'glossy' ? 'Glossy Finish' : 'Matte Finish';
-            const itemName = `${selectedPlastic} Plastic Card (${finishType})`;
+            const engravingType = selectedEngraving === 'natural' ? 'Natural Grain' : 'Laser Burned';
+            const itemName = `${selectedWood} Wood Card (${engravingType})`;
 
             // Add visual feedback to confirm button
-            confirmFinishBtn.style.transform = 'scale(0.98)';
-            confirmFinishBtn.style.opacity = '0.8';
+            confirmEngravingBtn.style.transform = 'scale(0.98)';
+            confirmEngravingBtn.style.opacity = '0.8';
             
             setTimeout(() => {
-                addToCart(itemName, 65);
-                closeFinishModal();
+                addToCart(itemName, 85);
+                closeEngravingModal();
                 
                 // Reset button state
                 setTimeout(() => {
-                    confirmFinishBtn.style.transform = '';
-                    confirmFinishBtn.style.opacity = '';
+                    confirmEngravingBtn.style.transform = '';
+                    confirmEngravingBtn.style.opacity = '';
                 }, 300);
             }, 200);
         });
 
-        // Event listeners for closing finish modal
-        closeFinishBtn.addEventListener('click', closeFinishModal);
-        cancelFinishBtn.addEventListener('click', closeFinishModal);
+        // Event listeners for closing engraving modal
+        closeEngravingBtn.addEventListener('click', closeEngravingModal);
+        cancelEngravingBtn.addEventListener('click', closeEngravingModal);
 
         // Close modal when clicking outside
-        finishModal.addEventListener('click', (e) => {
-            if (e.target === finishModal) {
-                closeFinishModal();
+        engravingModal.addEventListener('click', (e) => {
+            if (e.target === engravingModal) {
+                closeEngravingModal();
             }
         });
 
         // Close modal with Escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && finishModal.classList.contains('active')) {
-                closeFinishModal();
+            if (e.key === 'Escape' && engravingModal.classList.contains('active')) {
+                closeEngravingModal();
             }
         });
 
@@ -4148,21 +4030,21 @@ section[id] {
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Plastic Page loaded with enhanced features:');
-            console.log('1. 12 vibrant plastic colors ✓');
-            console.log('2. All prices set to £65 ✓');
+            console.log('Wood Page loaded with enhanced features:');
+            console.log('1. 9 premium wood types ✓');
+            console.log('2. All prices set to £85 ✓');
             console.log('3. WhatsApp links updated to +447754888841 ✓');
-            console.log('4. Modern plastic theme with purple/blue colors ✓');
-            console.log('5. WebP images for all plastic colors ✓');
+            console.log('4. Natural wood theme with earthy colors ✓');
+            console.log('5. WebP images for all wood types ✓');
             updateCart();
             
-            // Add highlight style for selected plastic text
+            // Add highlight style for selected wood text
             const style = document.createElement('style');
             style.textContent = `
                 .highlight-text {
-                    color: #FF4FD8;
+                    color: var(--wood-light);
                     font-weight: 700;
-                    text-shadow: 0 2px 4px rgba(110, 77, 255, 0.3);
+                    text-shadow: 0 2px 4px rgba(183, 110, 61, 0.3);
                 }
                 
                 /* Ensure WebP images display properly */
