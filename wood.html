@@ -990,13 +990,13 @@ section[id] {
     border: 1px solid rgba(61, 40, 30, 0.3);
 }
 
-/* CAROUSEL SECTION - WOOD TYPES */
+/* CAROUSEL SECTION - WOOD TYPES - UPDATED TO MATCH BESTSELLERS */
 .carousel-section {
-    padding: 60px 20px 80px;
+    padding: 100px 20px; /* Match bestsellers padding */
     transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     overflow: hidden;
-    min-height: 85vh;
+    min-height: auto; /* Remove fixed height */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1059,81 +1059,71 @@ section[id] {
 }
 
 .carousel-container {
-    max-width: 1400px;
+    max-width: 1200px; /* Match bestsellers max-width */
     margin: 0 auto;
     position: relative;
     z-index: 2;
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .carousel-section .section-header {
-    margin-bottom: 40px;
+    margin-bottom: 60px; /* Match bestsellers margin */
     position: relative;
     z-index: 10;
     text-align: center;
 }
 
 .carousel-section .section-title {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
+    font-size: 2.5rem; /* Match bestsellers title size */
+    margin-bottom: 16px;
 }
 
 .carousel-section .section-subtitle {
     display: none;
 }
 
-/* WIDER CAROUSEL */
+/* UPDATED: Carousel to match bestsellers grid */
 .wood-carousel {
     position: relative;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 50px;
-    perspective: 1200px;
-    max-width: 1400px;
-    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Match bestsellers grid */
+    gap: 30px; /* Match bestsellers gap */
+    margin: 0 auto;
+    width: 100%;
     transform: translateZ(0);
     will-change: transform;
-    flex: 1;
 }
 
+/* Hide arrows for grid layout */
+.wood-carousel .carousel-arrow {
+    display: none;
+}
+
+/* UPDATED: Wood type cards to match bestseller cards */
 .wood-type-card {
-    position: absolute;
-    width: 350px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 24px;
-    padding: 25px;
-    opacity: 0;
-    transform: scale(0.85) rotateY(0deg);
-    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-    pointer-events: none;
-    transform-style: preserve-3d;
-    will-change: transform, opacity;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    z-index: 1;
+    border-radius: 20px;
+    padding: 30px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
     backdrop-filter: blur(10px);
-    transform: translateZ(0);
-    text-align: center;
+    width: 100%; /* Full width for grid */
+    opacity: 1; /* Always visible in grid */
+    transform: none; /* Remove carousel transforms */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.wood-type-card.active {
-    opacity: 1;
-    transform: scale(1) rotateY(0deg);
-    z-index: 3;
-    pointer-events: auto;
-    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5);
+.wood-type-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .wood-type-card img {
     width: 100%;
-    height: 240px;
-    border-radius: 16px;
+    height: 200px; /* Match bestseller image height */
+    border-radius: 12px;
     object-fit: cover;
     margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1158,9 +1148,9 @@ section[id] {
     color: #F5E6D3;
 }
 
-/* WOOD NAME AND PRICE STYLES */
+/* WOOD NAME AND PRICE STYLES - Updated to match bestsellers */
 .wood-card-label {
-    font-size: 1.4rem;
+    font-size: 1.5rem; /* Match bestseller title size */
     font-weight: 800;
     margin-bottom: 10px;
 }
@@ -1181,10 +1171,9 @@ section[id] {
 }
 
 .wood-card-price {
-    font-size: 1.6rem;
+    font-size: 1.8rem; /* Match bestseller price size */
     font-weight: 900;
-    color: var(--wood-light);
-    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .carousel-section.oak .wood-card-price,
@@ -1194,61 +1183,23 @@ section[id] {
     color: #3D281E;
 }
 
-/* FIXED: Carousel arrows */
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+.carousel-section.walnut .wood-card-price,
+.carousel-section.cherry .wood-card-price,
+.carousel-section.mahogany .wood-card-price,
+.carousel-section.bamboo .wood-card-price,
+.carousel-section.teak .wood-card-price {
     color: #F5E6D3;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
 }
 
-.carousel-arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+/* Remove carousel arrows since we're using grid */
+.carousel-arrow {
+    display: none;
 }
 
-.carousel-arrow.left {
-    left: 30px;
-}
-
-.carousel-arrow.right {
-    right: 30px;
-}
-
-.carousel-section.oak .carousel-arrow,
-.carousel-section.maple .carousel-arrow,
-.carousel-section.pine .carousel-arrow,
-.carousel-section.birch .carousel-arrow {
-    background: rgba(245, 230, 211, 0.6);
-    border: 1px solid rgba(61, 40, 30, 0.3);
-    color: #3D281E;
-}
-
-.carousel-section.oak .carousel-arrow:hover,
-.carousel-section.maple .carousel-arrow:hover,
-.carousel-section.pine .carousel-arrow:hover,
-.carousel-section.birch .carousel-arrow:hover {
-    background: rgba(245, 230, 211, 0.8);
-}
-
-/* CAROUSEL ACTIONS - MOVED LOWER */
+/* CAROUSEL ACTIONS - MOVED UP FOR BETTER PRICE VISIBILITY */
 .carousel-actions {
     text-align: center;
-    margin-top: 120px;
+    margin-top: 40px; /* Reduced from 120px */
     position: relative;
     z-index: 10;
 }
@@ -1410,7 +1361,7 @@ section[id] {
     font-size: 0.9rem;
 }
 
-/* CUSTOM LOGO SECTION - REDESIGNED FOR WOOD */
+/* CUSTOM LOGO SECTION - UPDATED TO MATCH METAL PAGE */
 .custom-logo-section {
     padding: 80px 20px;
     background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
@@ -1642,7 +1593,7 @@ section[id] {
     text-align: right;
 }
 
-/* Selection Area - Mobile Optimized */
+/* Selection Area - Mobile Optimized - UPDATED COLOR GRID */
 .selection-area-mobile {
     display: flex;
     flex-direction: column;
@@ -1655,6 +1606,68 @@ section[id] {
     padding: 20px;
     border: 1px solid rgba(232, 212, 193, 0.2);
     backdrop-filter: blur(10px);
+}
+
+/* UPDATED: Card Color Selection to match metal page (5x2 grid) */
+.card-colors-mobile {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns like metal page */
+    gap: 12px;
+}
+
+@media (max-width: 768px) {
+    .card-colors-mobile {
+        grid-template-columns: repeat(4, 1fr); /* 4 columns on tablet */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-colors-mobile {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on mobile */
+    }
+}
+
+@media (max-width: 360px) {
+    .card-colors-mobile {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on small mobile */
+    }
+}
+
+.color-option-mobile {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.color-option-mobile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.color-option-mobile.selected {
+    border-color: var(--white);
+    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.color-label-mobile {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 2px 4px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin: 0 4px;
 }
 
 /* NEW: Logo Size Control */
@@ -1706,62 +1719,6 @@ section[id] {
     cursor: pointer;
     border: 2px solid var(--white);
     box-shadow: 0 2px 8px rgba(183, 110, 61, 0.4);
-}
-
-/* Card Color Selection - Mobile Optimized */
-.card-colors-mobile {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-}
-
-@media (max-width: 480px) {
-    .card-colors-mobile {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 360px) {
-    .card-colors-mobile {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.color-option-mobile {
-    aspect-ratio: 1;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 3px solid transparent;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.color-option-mobile:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.color-option-mobile.selected {
-    border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
-.color-label-mobile {
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 2px 4px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
-    margin: 0 4px;
 }
 
 /* Engraving Selection - Mobile Optimized */
@@ -2031,7 +1988,8 @@ section[id] {
 
     .bestsellers-grid,
     .benefits-grid,
-    .testimonials-grid {
+    .testimonials-grid,
+    .wood-carousel {
         grid-template-columns: 1fr;
         gap: 20px;
     }
@@ -2050,34 +2008,12 @@ section[id] {
         right: 10px;
     }
 
-    .wood-carousel {
-        height: 400px;
-        width: 90%;
-    }
-
-    .wood-type-card {
-        width: 280px;
-        padding: 20px;
-    }
-
-    .wood-type-card img {
-        height: 200px;
-    }
-
-    .wood-card-label {
-        font-size: 1.2rem;
-    }
-
-    .wood-card-price {
-        font-size: 1.4rem;
-    }
-
     .custom-logo-section {
         padding: 60px 20px;
     }
 
     .carousel-actions {
-        margin-top: 100px;
+        margin-top: 30px; /* Further reduced for mobile */
     }
 }
 
@@ -2108,28 +2044,6 @@ section[id] {
         right: 5px;
     }
 
-    .wood-carousel {
-        height: 350px;
-        width: 90%;
-    }
-
-    .wood-type-card {
-        width: 240px;
-        padding: 18px;
-    }
-
-    .wood-type-card img {
-        height: 180px;
-    }
-
-    .wood-card-label {
-        font-size: 1.1rem;
-    }
-
-    .wood-card-price {
-        font-size: 1.3rem;
-    }
-
     .preview-card-mobile {
         height: 180px;
     }
@@ -2152,7 +2066,7 @@ section[id] {
     }
 
     .carousel-actions {
-        margin-top: 80px;
+        margin-top: 25px; /* Even smaller on mobile */
     }
 }
 
@@ -2952,19 +2866,18 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - 9 WOOD TYPES -->
+        <!-- CAROUSEL SECTION - 9 WOOD TYPES (NOW GRID LAYOUT) -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
                     <h2 class="section-title">All Wood Types</h2>
-                    <p class="section-subtitle" style="display: none;">Choose from 9 premium wood types</p>
+                    <p class="section-subtitle">Choose from 9 premium wood types</p>
                 </div>
 
+                <!-- UPDATED: Grid layout instead of carousel -->
                 <div class="wood-carousel">
-                    <button class="carousel-arrow left" aria-label="Previous">‹</button>
-
-                    <!-- 9 wood types WITH PRICES -->
-                    <div class="wood-type-card active" data-color="Walnut">
+                    <!-- 9 wood types in grid layout -->
+                    <div class="wood-type-card" data-color="Walnut">
                         <img src="woodwalnut.webp" alt="Walnut Wood Card" class="carousel-card-image">
                         <div class="wood-card-label">Walnut</div>
                         <div class="wood-card-price">£85</div>
@@ -3017,13 +2930,11 @@ section[id] {
                         <div class="wood-card-label">Birch</div>
                         <div class="wood-card-price">£85</div>
                     </div>
-
-                    <button class="carousel-arrow right" aria-label="Next">›</button>
                 </div>
 
-                <!-- Add to Cart button -->
+                <!-- Add to Cart button - MOVED UP -->
                 <div class="carousel-actions">
-                    <button class="btn" id="addWoodBtn">🛒 Add To Cart</button>
+                    <button class="btn" id="addWoodBtn">🛒 Add Walnut Finish</button>
                 </div>
             </div>
         </section>
@@ -3090,6 +3001,7 @@ section[id] {
                             <div class="step-title-mobile" style="margin-bottom: 20px;">
                                 Choose Wood Type
                             </div>
+                            <!-- UPDATED: 5-column grid like metal page -->
                             <div class="card-colors-mobile">
                                 <div class="color-option-mobile selected" data-color="walnut" style="background: var(--walnut-bg);">
                                     <div class="color-label-mobile">Walnut</div>
@@ -3525,10 +3437,8 @@ section[id] {
             updateCart();
         });
 
-        // Wood Type Carousel with Background Change - 9 WOOD TYPES
+        // UPDATED: Wood Type Grid instead of Carousel
         const woodCards = document.querySelectorAll('.wood-type-card');
-        const woodPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
-        const woodNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
         const addWoodBtn = document.getElementById('addWoodBtn');
 
         // Map wood names to CSS class names - 9 WOOD TYPES
@@ -3544,17 +3454,8 @@ section[id] {
             'Birch': 'birch'
         };
 
-        let woodIndex = 0;
-
-        // Function to update wood carousel
-        function updateWoodCarousel(i) {
-            woodCards[woodIndex].classList.remove('active');
-
-            woodIndex = (i + woodCards.length) % woodCards.length;
-
-            woodCards[woodIndex].classList.add('active');
-
-            const woodName = woodCards[woodIndex].dataset.color;
+        // Function to update selected wood
+        function updateSelectedWood(woodName) {
             const woodClass = woodTypeMap[woodName];
             
             // Update carousel section background
@@ -3565,69 +3466,23 @@ section[id] {
             selectedWood = woodName;
         }
 
-        // Initialize wood carousel
+        // Initialize wood grid
         const carouselSection = document.querySelector('.carousel-section');
-        updateWoodCarousel(0);
+        updateSelectedWood('Walnut');
 
-        // Manual navigation
-        woodPrevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            updateWoodCarousel(woodIndex - 1);
+        // Add click event to each wood card
+        woodCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                const woodName = card.dataset.color;
+                updateSelectedWood(woodName);
+                
+                // Add visual feedback
+                card.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    card.style.transform = '';
+                }, 200);
+            });
         });
-
-        woodNextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            updateWoodCarousel(woodIndex + 1);
-        });
-
-        // Touch/swipe support
-        let woodStartX = 0;
-        document.querySelector('.wood-carousel').addEventListener('touchstart', e => {
-            woodStartX = e.touches[0].clientX;
-        });
-
-        document.querySelector('.wood-carousel').addEventListener('touchend', e => {
-            const endX = e.changedTouches[0].clientX;
-            if (woodStartX - endX > 50) updateWoodCarousel(woodIndex + 1);
-            if (endX - woodStartX > 50) updateWoodCarousel(woodIndex - 1);
-        });
-
-        // FIX: Optimized carousel with smoother transitions
-        let carouselInterval;
-        let isCarouselPaused = false;
-
-        function startCarouselAutoRotate() {
-            if (carouselInterval) clearInterval(carouselInterval);
-            carouselInterval = setInterval(() => {
-                if (!isCarouselPaused) {
-                    updateWoodCarousel(woodIndex + 1);
-                }
-            }, 5000);
-        }
-
-        function stopCarouselAutoRotate() {
-            isCarouselPaused = true;
-            if (carouselInterval) {
-                clearInterval(carouselInterval);
-            }
-        }
-
-        // Start auto-rotate
-        startCarouselAutoRotate();
-
-        // Pause on hover/interaction
-        document.querySelector('.wood-carousel').addEventListener('mouseenter', () => {
-            stopCarouselAutoRotate();
-        });
-
-        document.querySelector('.wood-carousel').addEventListener('mouseleave', () => {
-            isCarouselPaused = false;
-            startCarouselAutoRotate();
-        });
-
-        // Also pause when interacting with arrows or dots
-        woodPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
-        woodNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
 
         // FIXED: SEE IT WITH YOUR LOGO SECTION - NOW 9 CARDS
         const colorOptionsMobile = document.querySelectorAll('.color-option-mobile');
@@ -3956,7 +3811,7 @@ section[id] {
 
             const currentCard = cardsMobile[currentCardIndexMobile];
             const engravingType = engravingNameMapMobile[currentCard.engraving];
-            const cardName = `${colorNameMapMobile[currentCard.color]} Wood Card`;
+            const cardName = `${colorNameMapMobile[currentCard.color]}`;
             
             // Create message with details
             let message = "Hello! I'd like to get a custom mockup for a wood NFC card.\n\n";
@@ -4165,18 +4020,19 @@ section[id] {
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Wood Page loaded with enhanced features:');
-            console.log('1. 9 premium wood types ✓');
+            console.log('1. 9 premium wood types in grid layout ✓');
             console.log('2. All prices set to £85 ✓');
             console.log('3. WhatsApp links updated to +447754888841 ✓');
             console.log('4. Natural wood theme with earthy colors ✓');
             console.log('5. WebP images for all wood types ✓');
-            console.log('6. Carousel dots removed ✓');
-            console.log('7. Add to Cart button moved lower for better price visibility ✓');
-            console.log('8. Prices now displayed on carousel cards ✓');
+            console.log('6. Grid layout instead of carousel ✓');
+            console.log('7. Add to Cart button moved up for better price visibility ✓');
+            console.log('8. Prices now clearly visible on all cards ✓');
             console.log('9. Logo size adjustment slider added ✓');
             console.log('10. Clear card button added ✓');
             console.log('11. WhatsApp send logo functionality ✓');
-            console.log('12. Updated layout to match metal page ✓');
+            console.log('12. Color grid matches metal page (5 columns) ✓');
+            console.log('13. Carousel cards same size as bestsellers ✓');
             updateCart();
             
             // Add highlight style for selected wood text
@@ -4210,9 +4066,14 @@ section[id] {
                 /* Improved carousel card display */
                 .wood-type-card img {
                     width: 100%;
-                    height: 240px;
+                    height: 200px;
                     object-fit: cover;
-                    border-radius: 16px;
+                    border-radius: 12px;
+                }
+                
+                /* Ensure color options are square */
+                .color-option-mobile {
+                    aspect-ratio: 1;
                 }
             `;
             document.head.appendChild(style);
