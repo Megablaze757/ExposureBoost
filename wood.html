@@ -1119,6 +1119,7 @@ section[id] {
     z-index: 1;
     backdrop-filter: blur(10px);
     transform: translateZ(0);
+    text-align: center;
 }
 
 .wood-type-card.active {
@@ -1155,6 +1156,42 @@ section[id] {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #F5E6D3;
+}
+
+/* WOOD NAME AND PRICE STYLES */
+.wood-card-label {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.carousel-section.oak .wood-card-label,
+.carousel-section.maple .wood-card-label,
+.carousel-section.pine .wood-card-label,
+.carousel-section.birch .wood-card-label {
+    color: #3D281E;
+}
+
+.carousel-section.walnut .wood-card-label,
+.carousel-section.cherry .wood-card-label,
+.carousel-section.mahogany .wood-card-label,
+.carousel-section.bamboo .wood-card-label,
+.carousel-section.teak .wood-card-label {
+    color: #F5E6D3;
+}
+
+.wood-card-price {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--wood-light);
+    margin-top: 10px;
+}
+
+.carousel-section.oak .wood-card-price,
+.carousel-section.maple .wood-card-price,
+.carousel-section.pine .wood-card-price,
+.carousel-section.birch .wood-card-price {
+    color: #3D281E;
 }
 
 /* FIXED: Carousel arrows */
@@ -1975,6 +2012,14 @@ section[id] {
         height: 200px;
     }
 
+    .wood-card-label {
+        font-size: 1.2rem;
+    }
+
+    .wood-card-price {
+        font-size: 1.4rem;
+    }
+
     .custom-logo-section {
         padding: 60px 20px;
     }
@@ -2023,6 +2068,14 @@ section[id] {
 
     .wood-type-card img {
         height: 180px;
+    }
+
+    .wood-card-label {
+        font-size: 1.1rem;
+    }
+
+    .wood-card-price {
+        font-size: 1.3rem;
     }
 
     .preview-card-mobile {
@@ -2862,41 +2915,59 @@ section[id] {
                 <div class="wood-carousel">
                     <button class="carousel-arrow left" aria-label="Previous">‹</button>
 
-                    <!-- 9 wood types - NO TEXT LABELS -->
+                    <!-- 9 wood types WITH PRICES -->
                     <div class="wood-type-card active" data-color="Walnut">
                         <img src="woodwalnut.webp" alt="Walnut Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Walnut</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
                     <div class="wood-type-card" data-color="Oak">
                         <img src="woodoak.webp" alt="Oak Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Oak</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
                     <div class="wood-type-card" data-color="Cherry">
                         <img src="woodcherry.webp" alt="Cherry Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Cherry</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
                     <div class="wood-type-card" data-color="Maple">
                         <img src="woodmaple.webp" alt="Maple Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Maple</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
                     <div class="wood-type-card" data-color="Mahogany">
                         <img src="woodmahogany.webp" alt="Mahogany Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Mahogany</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
                     <div class="wood-type-card" data-color="Bamboo">
                         <img src="woodbamboo.webp" alt="Bamboo Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Bamboo</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
                     <div class="wood-type-card" data-color="Teak">
                         <img src="woodteak.webp" alt="Teak Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Teak</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
                     <div class="wood-type-card" data-color="Pine">
                         <img src="woodpine.webp" alt="Pine Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Pine</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
                     <div class="wood-type-card" data-color="Birch">
                         <img src="woodbirch.webp" alt="Birch Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Birch</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
                     <button class="carousel-arrow right" aria-label="Next">›</button>
@@ -3961,6 +4032,7 @@ section[id] {
             console.log('5. WebP images for all wood types ✓');
             console.log('6. Carousel dots removed ✓');
             console.log('7. Add to Cart button moved lower for better price visibility ✓');
+            console.log('8. Prices now displayed on carousel cards ✓');
             updateCart();
             
             // Add highlight style for selected wood text
