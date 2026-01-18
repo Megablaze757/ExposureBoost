@@ -33,7 +33,7 @@
     --silver: #E8D4D1;
     --wa: #25D366;
     
-    /* Metal color backgrounds for carousel - ADDED RED AND WHITE */
+    /* Metal color backgrounds for carousel */
     --black-bg: linear-gradient(135deg, #000000, #333333);
     --blue-bg: linear-gradient(135deg, #0066CC, #004488);
     --green-bg: linear-gradient(135deg, #00AA55, #008844);
@@ -203,7 +203,7 @@ a {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: rgba(255, 245, 243, 0.2);
+    background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
@@ -335,7 +335,7 @@ a {
     padding: 18px 24px;
     border-radius: 16px;
     transition: all 0.3s ease;
-    background: rgba(255, 245, 243, 0.15);
+    background: rgba(255, 255, 255, 0.15);
     text-align: left;
     min-height: 60px;
     display: flex;
@@ -736,14 +736,14 @@ section[id] {
 }
 
 .btn-secondary {
-    background: rgba(224, 191, 184, 0.2);
+    background: rgba(255, 255, 255, 0.2);
     color: var(--white);
-    border: 1px solid rgba(224, 191, 184, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-    background: rgba(224, 191, 184, 0.3);
+    background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
     border-color: var(--rose-gold-light);
 }
@@ -973,11 +973,11 @@ section[id] {
 
 /* CAROUSEL SECTION - WIDER WITH RED AND WHITE */
 .carousel-section {
-    padding: 40px 20px; /* Reduced padding to give more space to carousel */
+    padding: 60px 20px 80px; /* Increased bottom padding for lower button */
     transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     overflow: hidden;
-    min-height: 85vh; /* Increased to take more vertical space */
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -999,7 +999,7 @@ section[id] {
     color: #FFFFFF;
 }
 
-/* Background color classes for carousel - ADDED RED AND WHITE */
+/* Background color classes for carousel */
 .carousel-section.black {
     background: var(--black-bg);
     color: #FFFFFF;
@@ -1086,7 +1086,7 @@ section[id] {
 }
 
 .carousel-container {
-    max-width: 1600px; /* WIDER CONTAINER */
+    max-width: 1400px; /* Wider container */
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -1097,27 +1097,38 @@ section[id] {
     justify-content: center;
 }
 
-/* Section header positioned at top with FIXED Z-INDEX */
+/* REMOVED: "All Metal Finishes" text - replaced with simple title */
 .carousel-section .section-header {
-    margin-bottom: 30px;
+    margin-bottom: 40px; /* Increased space below header */
     position: relative;
-    z-index: 100; /* Increased z-index to stay above arrows */
+    z-index: 10;
+    text-align: center;
 }
 
-/* WIDER CAROUSEL - TAKES MAJORITY OF SPACE */
+/* Simplified title - removed subtitle */
+.carousel-section .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.carousel-section .section-subtitle {
+    display: none; /* Hide the subtitle */
+}
+
+/* WIDER CAROUSEL */
 .metal-carousel {
     position: relative;
-    height: 500px; /* Increased height to take more space */
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px auto 30px; /* Reduced top margin */
+    margin: 0 auto 50px; /* Increased bottom margin for lower button */
     perspective: 1200px;
-    max-width: 1500px; /* WIDER MAX WIDTH */
-    width: 100%;
+    max-width: 1400px; /* Wider max width */
+    width: 95%; /* Wider width */
     transform: translateZ(0);
     will-change: transform;
-    flex: 1; /* Takes available space */
+    flex: 1;
 }
 
 .metal-color-card {
@@ -1149,7 +1160,7 @@ section[id] {
 
 .metal-color-card img {
     width: 100%;
-    height: 240px; /* Increased height */
+    height: 240px;
     border-radius: 16px;
     object-fit: cover;
     margin-bottom: 20px;
@@ -1177,7 +1188,7 @@ section[id] {
 }
 
 .card-label {
-    font-size: 1.5rem; /* Increased font size */
+    font-size: 1.5rem;
     font-weight: 800;
     margin-bottom: 10px;
     text-align: center;
@@ -1200,7 +1211,7 @@ section[id] {
 }
 
 .card-price {
-    font-size: 1.8rem; /* Increased font size */
+    font-size: 1.8rem;
     font-weight: 900;
     text-align: center;
 }
@@ -1221,12 +1232,12 @@ section[id] {
     color: #FFFFFF;
 }
 
-/* FIXED: Carousel arrows with higher z-index and proper positioning */
+/* FIXED: Carousel arrows - ensure they're above cards */
 .carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 60px; /* Increased size */
+    width: 60px;
     height: 60px;
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.6);
@@ -1234,7 +1245,7 @@ section[id] {
     color: white;
     font-size: 28px;
     cursor: pointer;
-    z-index: 100; /* HIGHER Z-INDEX TO STAY ABOVE CARDS */
+    z-index: 20; /* Higher z-index to be above cards */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1249,11 +1260,11 @@ section[id] {
 }
 
 .carousel-arrow.left {
-    left: 40px; /* Increased from 20px */
+    left: 30px; /* Increased from 20px */
 }
 
 .carousel-arrow.right {
-    right: 40px; /* Increased from 20px */
+    right: 30px; /* Increased from 20px */
 }
 
 .carousel-section.yellow .carousel-arrow,
@@ -1276,9 +1287,7 @@ section[id] {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin: 30px 0 40px;
-    position: relative;
-    z-index: 10;
+    margin: 30px 0 60px; /* Increased bottom margin for more space */
 }
 
 .dot {
@@ -2035,19 +2044,20 @@ section[id] {
     }
 
     .carousel-arrow.left {
-        left: 15px;
+        left: 10px;
     }
 
     .carousel-arrow.right {
-        right: 15px;
+        right: 10px;
     }
 
     .metal-carousel {
         height: 400px;
+        width: 90%;
     }
 
     .metal-color-card {
-        width: 300px;
+        width: 280px;
         padding: 20px;
     }
 
@@ -2080,19 +2090,20 @@ section[id] {
     }
 
     .carousel-arrow.left {
-        left: 10px;
+        left: 5px;
     }
 
     .carousel-arrow.right {
-        right: 10px;
+        right: 5px;
     }
 
     .metal-carousel {
         height: 350px;
+        width: 90%;
     }
 
     .metal-color-card {
-        width: 260px;
+        width: 240px;
         padding: 18px;
     }
 
@@ -2126,10 +2137,10 @@ section[id] {
     }
 }
 
-/* Add to cart button in carousel */
+/* Add to cart button in carousel - MOVED LOWER */
 .carousel-actions {
     text-align: center;
-    margin-top: 20px; /* Reduced margin */
+    margin-top: 40px; /* Increased from 20px */
     position: relative;
     z-index: 10;
 }
@@ -2965,12 +2976,14 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - WIDER WITH RED AND WHITE -->
+        <!-- CAROUSEL SECTION - NOW 9 COLORS INCLUDING RED AND WHITE -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
+                <!-- SIMPLIFIED HEADER - No "All Metal Finishes" text -->
                 <div class="section-header">
-                    <h2 class="section-title">All Metal Finishes</h2>
-                    <p class="section-subtitle">Choose from 9 premium metal finishes with silver or gold engraving</p>
+                    <h2 class="section-title">Metal Cards</h2>
+                    <!-- Subtitle hidden -->
+                    <p class="section-subtitle" style="display: none;">Choose from 9 premium metal finishes</p>
                 </div>
 
                 <div class="metal-carousel">
@@ -3034,8 +3047,8 @@ section[id] {
                     <button class="carousel-arrow right" aria-label="Next">›</button>
                 </div>
 
+                <!-- Updated to 9 dots -->
                 <div class="dots">
-                    <!-- 9 dots for 9 colors -->
                     <span class="dot active"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
@@ -3047,6 +3060,7 @@ section[id] {
                     <span class="dot"></span>
                 </div>
 
+                <!-- Add to Cart button moved lower with more margin -->
                 <div class="carousel-actions">
                     <button class="btn" id="addMetalBtn">🛒 Add Black Finish</button>
                 </div>
@@ -3540,7 +3554,7 @@ section[id] {
             updateCart();
         });
 
-        // Metal Color Carousel with Background Change - WIDER WITH RED AND WHITE
+        // Metal Color Carousel with Background Change - NOW 9 COLORS
         const metalCards = document.querySelectorAll('.metal-color-card');
         const metalDots = document.querySelectorAll('.carousel-section .dot');
         const carouselSection = document.querySelector('.carousel-section');
@@ -3665,7 +3679,7 @@ section[id] {
             dot.addEventListener('mouseenter', stopCarouselAutoRotate);
         });
 
-        // FIXED: SEE IT WITH YOUR LOGO SECTION
+        // FIXED: SEE IT WITH YOUR LOGO SECTION - NOW 9 CARDS
         const colorOptionsMobile = document.querySelectorAll('.color-option-mobile');
         const engravingOptionsMobile = document.querySelectorAll('.engraving-option-mobile');
         const uploadAreaMobile = document.getElementById('uploadAreaMobile');
@@ -4120,15 +4134,14 @@ section[id] {
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Metal Page loaded with enhanced features:');
             console.log('1. Added Red and White to carousel (9 total colors) ✓');
-            console.log('2. Made carousel wider: 350px cards, 1500px max-width ✓');
-            console.log('3. Fixed text covering arrows: Increased z-index to 100 ✓');
-            console.log('4. Fixed overlapping issues with proper positioning ✓');
-            console.log('5. Hero card outline removed ✓');
+            console.log('2. Wider carousel (350px cards, 1400px max width) ✓');
+            console.log('3. Fixed arrow/text overlap (z-index: 20) ✓');
+            console.log('4. Removed "All Metal Finishes" text ✓');
+            console.log('5. Add to cart button moved lower (40px margin) ✓');
             console.log('6. All prices set to £95 ✓');
             console.log('7. WhatsApp links updated to +447754888841 ✓');
-            console.log('8. Checkout linked to WhatsApp with formatted message ✓');
-            console.log('9. Card icon as logo ✓');
-            console.log('10. WebP images for faster loading ✓');
+            console.log('8. Hero card outline removed ✓');
+            console.log('9. WebP images for all colors ✓');
             updateCart();
             
             // Add highlight style for selected metal text
