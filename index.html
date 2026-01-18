@@ -503,25 +503,6 @@ a {
         font-size: 11px;
         font-weight: 700;
     }
-
-
-    /* Force HERO to use the exact same card sizing rules as the other sections on mobile */
-    #hero .card-image {
-        width: min(92vw, 420px) !important;
-        height: auto !important;
-        aspect-ratio: 5 / 3;
-    }
-
-    #hero .card-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover;
-        background: transparent;
-        object-position: center;
-    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4)); /* shadow without a box */
-    }
-    /* removed faint container box */
-    #hero .card-image { box-shadow: none !important; }
 }
 
 /* MAIN CONTENT */
@@ -1011,40 +992,21 @@ a {
 }
 
 
-/* FORCE HERO CARD IMAGE TO MATCH ALL OTHER CARDS (desktop) */
-#hero .card-image {
-    width: 500px !important;
-    height: 300px !important;
+/* FORCE HERO CARD IMAGE TO MATCH ALL OTHER CARDS (desktop ONLY) */
+@media (min-width: 768px) {
+    #hero .card-image {
+        width: 500px;
+        height: 300px;
+    }
+
+    #hero .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 }
-
-#hero .card-image img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-    object-position: center;
-}
-
-
-        
-        /* Disable hover effects on touch devices (mobile) */
-@media (hover: none) and (pointer: coarse) {
-  .card-image img {
-    transition: none !important;
-  }
-
-  .card-image:hover img {
-    transform: none !important;
-  }
-}
-/* Mobile/touch: remove hover + remove drop-shadow to prevent iOS "rectangle" glitch */
-@media (hover: none) and (pointer: coarse) {
-  .card-image img {
-    filter: none !important;
-    -webkit-filter: none !important;
-    transition: none !important;
-  }
-
-  .card-image:hover img {
+.card-image:hover img {
     transform: none !important;
   }
 }
@@ -1052,7 +1014,21 @@ a {
 
 
         
-    </style>
+    
+/* Touch devices (mobile/tablet): disable hover + prevent iOS filter glitches */
+@media (hover: none) and (pointer: coarse) {
+    .card-image img {
+        transition: none !important;
+        -webkit-filter: none !important;
+        filter: none !important;
+    }
+
+    .card-image:hover img {
+        transform: none !important;
+    }
+}
+
+</style>
 </head>
 
 <body>
