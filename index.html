@@ -1027,6 +1027,17 @@ a {
         transform: none !important;
     }
 }
+/* Mobile Safari: disable filter: drop-shadow to prevent rectangle flash */
+@media (hover: none) and (pointer: coarse) {
+  .card-image img {
+    -webkit-filter: none !important; /* disables drop-shadow */
+    filter: none !important;         /* disables drop-shadow */
+  }
+
+  .card-image:hover img {
+    transform: none !important;
+  }
+}
 
 </style>
 </head>
