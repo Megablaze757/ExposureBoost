@@ -808,6 +808,9 @@ section[id] {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    min-height: 550px; /* Fixed height for consistency */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Wood type backgrounds */
@@ -913,6 +916,7 @@ section[id] {
     line-height: 1.6;
     margin-bottom: 20px;
     font-size: 0.95rem;
+    flex-grow: 1;
 }
 
 .bestseller-card.walnut .bestseller-description,
@@ -957,6 +961,7 @@ section[id] {
 .bestseller-actions {
     display: flex;
     gap: 10px;
+    margin-top: auto;
 }
 
 .bestseller-actions .btn {
@@ -990,13 +995,13 @@ section[id] {
     border: 1px solid rgba(61, 40, 30, 0.3);
 }
 
-/* CAROUSEL SECTION - WOOD TYPES - UPDATED TO MATCH BESTSELLERS */
+/* CAROUSEL SECTION - WOOD TYPES */
 .carousel-section {
-    padding: 100px 20px; /* Match bestsellers padding */
+    padding: 60px 20px 120px; /* Increased bottom padding for lower button */
     transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     overflow: hidden;
-    min-height: auto; /* Remove fixed height */
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1059,71 +1064,85 @@ section[id] {
 }
 
 .carousel-container {
-    max-width: 1200px; /* Match bestsellers max-width */
+    max-width: 1400px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .carousel-section .section-header {
-    margin-bottom: 60px; /* Match bestsellers margin */
+    margin-bottom: 40px;
     position: relative;
     z-index: 10;
     text-align: center;
 }
 
 .carousel-section .section-title {
-    font-size: 2.5rem; /* Match bestsellers title size */
-    margin-bottom: 16px;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
 }
 
 .carousel-section .section-subtitle {
     display: none;
 }
 
-/* UPDATED: Carousel to match bestsellers grid */
+/* INCREASED CAROUSEL CARD SIZE TO MATCH BESTSELLERS */
 .wood-carousel {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Match bestsellers grid */
-    gap: 30px; /* Match bestsellers gap */
-    margin: 0 auto;
-    width: 100%;
+    height: 600px; /* Increased height for larger cards */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 80px; /* Increased bottom margin for lower button */
+    perspective: 1200px;
+    max-width: 1400px;
+    width: 95%;
     transform: translateZ(0);
     will-change: transform;
+    flex: 1;
 }
 
-/* Hide arrows for grid layout */
-.wood-carousel .carousel-arrow {
-    display: none;
-}
-
-/* UPDATED: Wood type cards to match bestseller cards */
 .wood-type-card {
-    border-radius: 20px;
-    padding: 30px;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
+    position: absolute;
+    width: 320px; /* Increased to match bestseller cards */
+    height: 500px; /* Fixed height to match bestsellers */
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 30px; /* Increased padding */
+    opacity: 0;
+    transform: scale(0.85) rotateY(0deg);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1;
     backdrop-filter: blur(10px);
-    width: 100%; /* Full width for grid */
-    opacity: 1; /* Always visible in grid */
-    transform: none; /* Remove carousel transforms */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: translateZ(0);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out content evenly */
 }
 
-.wood-type-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+.wood-type-card.active {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+    z-index: 3;
+    pointer-events: auto;
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5);
 }
 
 .wood-type-card img {
     width: 100%;
     height: 200px; /* Match bestseller image height */
-    border-radius: 12px;
+    border-radius: 16px;
     object-fit: cover;
     margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1148,11 +1167,12 @@ section[id] {
     color: #F5E6D3;
 }
 
-/* WOOD NAME AND PRICE STYLES - Updated to match bestsellers */
+/* WOOD NAME AND PRICE STYLES */
 .wood-card-label {
-    font-size: 1.5rem; /* Match bestseller title size */
+    font-size: 1.4rem;
     font-weight: 800;
     margin-bottom: 10px;
+    min-height: 40px;
 }
 
 .carousel-section.oak .wood-card-label,
@@ -1171,9 +1191,11 @@ section[id] {
 }
 
 .wood-card-price {
-    font-size: 1.8rem; /* Match bestseller price size */
+    font-size: 1.8rem; /* Increased font size */
     font-weight: 900;
-    margin-bottom: 20px;
+    color: var(--wood-light);
+    margin-top: 10px;
+    min-height: 50px;
 }
 
 .carousel-section.oak .wood-card-price,
@@ -1183,23 +1205,61 @@ section[id] {
     color: #3D281E;
 }
 
-.carousel-section.walnut .wood-card-price,
-.carousel-section.cherry .wood-card-price,
-.carousel-section.mahogany .wood-card-price,
-.carousel-section.bamboo .wood-card-price,
-.carousel-section.teak .wood-card-price {
-    color: #F5E6D3;
-}
-
-/* Remove carousel arrows since we're using grid */
+/* FIXED: Carousel arrows - positioned higher for larger cards */
 .carousel-arrow {
-    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #F5E6D3;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
-/* CAROUSEL ACTIONS - MOVED UP FOR BETTER PRICE VISIBILITY */
+.carousel-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-arrow.left {
+    left: 30px;
+}
+
+.carousel-arrow.right {
+    right: 30px;
+}
+
+.carousel-section.oak .carousel-arrow,
+.carousel-section.maple .carousel-arrow,
+.carousel-section.pine .carousel-arrow,
+.carousel-section.birch .carousel-arrow {
+    background: rgba(245, 230, 211, 0.6);
+    border: 1px solid rgba(61, 40, 30, 0.3);
+    color: #3D281E;
+}
+
+.carousel-section.oak .carousel-arrow:hover,
+.carousel-section.maple .carousel-arrow:hover,
+.carousel-section.pine .carousel-arrow:hover,
+.carousel-section.birch .carousel-arrow:hover {
+    background: rgba(245, 230, 211, 0.8);
+}
+
+/* CAROUSEL ACTIONS - MOVED LOWER */
 .carousel-actions {
     text-align: center;
-    margin-top: 40px; /* Reduced from 120px */
+    margin-top: 100px; /* INCREASED MARGIN TO MOVE BUTTON MUCH LOWER */
     position: relative;
     z-index: 10;
 }
@@ -1211,6 +1271,7 @@ section[id] {
     padding: 16px 32px;
     font-size: 1.1rem;
     min-width: 200px;
+    height: 60px;
 }
 
 .carousel-section.oak .carousel-actions .btn,
@@ -1361,7 +1422,7 @@ section[id] {
     font-size: 0.9rem;
 }
 
-/* CUSTOM LOGO SECTION - UPDATED TO MATCH METAL PAGE */
+/* UPDATED CUSTOM LOGO SECTION - MATCHES METAL PAGE LAYOUT */
 .custom-logo-section {
     padding: 80px 20px;
     background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
@@ -1387,7 +1448,7 @@ section[id] {
     z-index: 2;
 }
 
-/* Mobile-friendly logo builder */
+/* Mobile-friendly logo builder - 2 COLUMN LAYOUT LIKE METAL PAGE */
 .logo-builder-mobile {
     display: flex;
     flex-direction: column;
@@ -1404,7 +1465,7 @@ section[id] {
     }
 }
 
-/* Preview Section - Mobile Optimized */
+/* Preview Section - Match metal page sizing */
 .preview-section-mobile {
     background: rgba(232, 212, 193, 0.1);
     border-radius: 24px;
@@ -1413,6 +1474,7 @@ section[id] {
     backdrop-filter: blur(10px);
     margin-bottom: 20px;
     position: relative;
+    height: fit-content;
 }
 
 .preview-header-mobile {
@@ -1480,6 +1542,7 @@ section[id] {
     object-fit: contain;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     display: none;
+    transition: transform 0.3s ease;
 }
 
 .preview-logo-mobile.visible {
@@ -1593,7 +1656,7 @@ section[id] {
     text-align: right;
 }
 
-/* Selection Area - Mobile Optimized - UPDATED COLOR GRID */
+/* UPDATED SELECTION AREA - MATCHES METAL PAGE */
 .selection-area-mobile {
     display: flex;
     flex-direction: column;
@@ -1608,28 +1671,37 @@ section[id] {
     backdrop-filter: blur(10px);
 }
 
-/* UPDATED: Card Color Selection to match metal page (5x2 grid) */
+/* REMOVED STEP NUMBERS - Cleaner look like metal page */
+.step-title-mobile {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.step-title-mobile .step-number-mobile {
+    display: none; /* Hide step numbers like metal page */
+}
+
+/* Card Color Selection - 5x2 GRID LIKE METAL PAGE */
 .card-colors-mobile {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columns like metal page */
+    grid-template-columns: repeat(5, 1fr);
     gap: 12px;
 }
 
 @media (max-width: 768px) {
     .card-colors-mobile {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns on tablet */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 480px) {
     .card-colors-mobile {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns on mobile */
-    }
-}
-
-@media (max-width: 360px) {
-    .card-colors-mobile {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on small mobile */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1670,58 +1742,7 @@ section[id] {
     margin: 0 4px;
 }
 
-/* NEW: Logo Size Control */
-.logo-size-control-mobile {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 20px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    backdrop-filter: blur(10px);
-    margin-top: 25px;
-}
-
-.size-label-mobile {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 15px;
-    display: block;
-}
-
-.size-slider-mobile {
-    width: 100%;
-    height: 6px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: rgba(232, 212, 193, 0.2);
-    border-radius: 3px;
-    outline: none;
-    margin: 15px 0;
-}
-
-.size-slider-mobile::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: var(--wood-gradient);
-    cursor: pointer;
-    border: 2px solid var(--white);
-    box-shadow: 0 2px 8px rgba(183, 110, 61, 0.4);
-}
-
-.size-slider-mobile::-moz-range-thumb {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: var(--wood-gradient);
-    cursor: pointer;
-    border: 2px solid var(--white);
-    box-shadow: 0 2px 8px rgba(183, 110, 61, 0.4);
-}
-
-/* Engraving Selection - Mobile Optimized */
+/* Engraving Selection - Same as metal page */
 .engraving-options-mobile {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1766,7 +1787,57 @@ section[id] {
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* UPLOAD AREA - FIXED FOR MOBILE */
+/* NEW: Logo Size Control */
+.logo-size-control-mobile {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(232, 212, 193, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(232, 212, 193, 0.2);
+}
+
+.size-label-mobile {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.size-slider-mobile {
+    width: 100%;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(232, 212, 193, 0.2);
+    border-radius: 4px;
+    outline: none;
+    margin: 10px 0;
+}
+
+.size-slider-mobile::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--wood-gradient);
+    cursor: pointer;
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.size-slider-mobile::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--wood-gradient);
+    cursor: pointer;
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* UPLOAD AREA - Same as metal page */
 .upload-container-mobile {
     width: 100%;
 }
@@ -1845,7 +1916,7 @@ section[id] {
     display: none;
 }
 
-/* Upload Actions - Mobile Optimized */
+/* Upload Actions - Same as metal page */
 .upload-actions-mobile {
     display: flex;
     flex-direction: column;
@@ -1908,37 +1979,34 @@ section[id] {
     transform: none !important;
 }
 
-/* Action Buttons Container */
-.action-buttons-mobile {
+/* Add to Cart and Clear Card Buttons - Side by side like metal page */
+.preview-actions-mobile {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    gap: 15px;
     margin-top: 20px;
 }
 
-@media (min-width: 480px) {
-    .action-buttons-mobile {
-        flex-direction: row;
-    }
-}
-
-.add-to-cart-mobile {
+.add-to-cart-mobile, .clear-card-btn-mobile {
+    flex: 1;
     padding: 18px;
-    background: var(--wood-gradient);
-    color: var(--white);
     border: none;
     border-radius: 14px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 800;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     -webkit-tap-highlight-color: transparent;
-    flex: 1;
+    min-height: 56px;
+}
+
+.add-to-cart-mobile {
+    background: var(--wood-gradient);
+    color: var(--white);
+    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.3);
 }
 
 .add-to-cart-mobile:hover {
@@ -1947,13 +2015,15 @@ section[id] {
 }
 
 .clear-card-btn-mobile {
-    background: rgba(183, 110, 61, 0.2);
+    background: rgba(232, 212, 193, 0.15);
     color: var(--white);
-    font-weight: 700;
+    border: 1px solid rgba(232, 212, 193, 0.3);
 }
 
-.clear-card-btn-mobile:hover:not(:disabled) {
-    background: rgba(183, 110, 61, 0.3);
+.clear-card-btn-mobile:hover {
+    background: rgba(232, 212, 193, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.2);
 }
 
 /* Mobile Touch Feedback */
@@ -1988,8 +2058,7 @@ section[id] {
 
     .bestsellers-grid,
     .benefits-grid,
-    .testimonials-grid,
-    .wood-carousel {
+    .testimonials-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
@@ -2008,12 +2077,39 @@ section[id] {
         right: 10px;
     }
 
+    .wood-carousel {
+        height: 550px;
+        width: 90%;
+    }
+
+    .wood-type-card {
+        width: 280px;
+        height: 450px;
+        padding: 25px;
+    }
+
+    .wood-type-card img {
+        height: 180px;
+    }
+
+    .wood-card-label {
+        font-size: 1.2rem;
+    }
+
+    .wood-card-price {
+        font-size: 1.6rem;
+    }
+
     .custom-logo-section {
         padding: 60px 20px;
     }
 
     .carousel-actions {
-        margin-top: 30px; /* Further reduced for mobile */
+        margin-top: 80px;
+    }
+    
+    .preview-actions-mobile {
+        flex-direction: column;
     }
 }
 
@@ -2044,12 +2140,39 @@ section[id] {
         right: 5px;
     }
 
+    .wood-carousel {
+        height: 500px;
+        width: 90%;
+    }
+
+    .wood-type-card {
+        width: 240px;
+        height: 400px;
+        padding: 20px;
+    }
+
+    .wood-type-card img {
+        height: 160px;
+    }
+
+    .wood-card-label {
+        font-size: 1.1rem;
+    }
+
+    .wood-card-price {
+        font-size: 1.4rem;
+    }
+
     .preview-card-mobile {
         height: 180px;
     }
 
     .selection-step-mobile {
         padding: 18px;
+    }
+
+    .step-title-mobile {
+        font-size: 1.1rem;
     }
 
     .upload-area-mobile {
@@ -2066,7 +2189,7 @@ section[id] {
     }
 
     .carousel-actions {
-        margin-top: 25px; /* Even smaller on mobile */
+        margin-top: 60px;
     }
 }
 
@@ -2866,18 +2989,19 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - 9 WOOD TYPES (NOW GRID LAYOUT) -->
+        <!-- UPDATED CAROUSEL SECTION - LARGER CARDS, BUTTON LOWER -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
                     <h2 class="section-title">All Wood Types</h2>
-                    <p class="section-subtitle">Choose from 9 premium wood types</p>
+                    <p class="section-subtitle" style="display: none;">Choose from 9 premium wood types</p>
                 </div>
 
-                <!-- UPDATED: Grid layout instead of carousel -->
                 <div class="wood-carousel">
-                    <!-- 9 wood types in grid layout -->
-                    <div class="wood-type-card" data-color="Walnut">
+                    <button class="carousel-arrow left" aria-label="Previous">‹</button>
+
+                    <!-- 9 wood types WITH PRICES - LARGER CARDS -->
+                    <div class="wood-type-card active" data-color="Walnut">
                         <img src="woodwalnut.webp" alt="Walnut Wood Card" class="carousel-card-image">
                         <div class="wood-card-label">Walnut</div>
                         <div class="wood-card-price">£85</div>
@@ -2930,16 +3054,18 @@ section[id] {
                         <div class="wood-card-label">Birch</div>
                         <div class="wood-card-price">£85</div>
                     </div>
+
+                    <button class="carousel-arrow right" aria-label="Next">›</button>
                 </div>
 
-                <!-- Add to Cart button - MOVED UP -->
+                <!-- Add to Cart button - MOVED MUCH LOWER FOR PRICE VISIBILITY -->
                 <div class="carousel-actions">
                     <button class="btn" id="addWoodBtn">🛒 Add Walnut Finish</button>
                 </div>
             </div>
         </section>
 
-        <!-- CUSTOM LOGO SECTION - UPDATED LAYOUT -->
+        <!-- UPDATED CUSTOM LOGO SECTION - MATCHES METAL PAGE LAYOUT -->
         <section class="custom-logo-section" id="custom-logo">
             <div class="custom-logo-content">
                 <div class="section-header">
@@ -2983,8 +3109,14 @@ section[id] {
                             </button>
                         </div>
                         
-                        <!-- Action Buttons -->
-                        <div class="action-buttons-mobile">
+                        <!-- NEW: Logo Size Control -->
+                        <div class="logo-size-control-mobile">
+                            <label class="size-label-mobile">Logo Size: <span id="logoSizeValueMobile">70%</span></label>
+                            <input type="range" id="logoSizeSliderMobile" min="40" max="100" value="70" class="size-slider-mobile">
+                        </div>
+                        
+                        <!-- Updated: Add to Cart and Clear Card buttons side by side -->
+                        <div class="preview-actions-mobile">
                             <button class="add-to-cart-mobile" id="addToCartMobile">
                                 🛒 Add to Cart
                             </button>
@@ -2994,14 +3126,13 @@ section[id] {
                         </div>
                     </div>
 
-                    <!-- Right Column: Selection Options -->
+                    <!-- Right Column: Selection Options - MATCHES METAL PAGE -->
                     <div class="selection-area-mobile">
-                        <!-- Choose Wood Type -->
+                        <!-- Choose Wood Type - Clean layout like metal page -->
                         <div class="selection-step-mobile">
-                            <div class="step-title-mobile" style="margin-bottom: 20px;">
+                            <div class="step-title-mobile">
                                 Choose Wood Type
                             </div>
-                            <!-- UPDATED: 5-column grid like metal page -->
                             <div class="card-colors-mobile">
                                 <div class="color-option-mobile selected" data-color="walnut" style="background: var(--walnut-bg);">
                                     <div class="color-label-mobile">Walnut</div>
@@ -3033,9 +3164,9 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Choose Engraving -->
+                        <!-- Choose Engraving - Clean layout like metal page -->
                         <div class="selection-step-mobile">
-                            <div class="step-title-mobile" style="margin-bottom: 20px;">
+                            <div class="step-title-mobile">
                                 Choose Engraving
                             </div>
                             <div class="engraving-options-mobile">
@@ -3052,15 +3183,9 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Logo Size Control -->
-                        <div class="logo-size-control-mobile">
-                            <label class="size-label-mobile">Logo Size: <span id="logoSizeValueMobile">70%</span></label>
-                            <input type="range" id="logoSizeSliderMobile" min="40" max="100" value="70" class="size-slider-mobile">
-                        </div>
-
-                        <!-- Upload Your Logo -->
+                        <!-- Upload Your Logo - Same as metal page -->
                         <div class="selection-step-mobile">
-                            <div class="step-title-mobile" style="margin-bottom: 20px;">
+                            <div class="step-title-mobile">
                                 Upload Your Logo
                             </div>
                             <div class="upload-container-mobile">
@@ -3079,7 +3204,7 @@ section[id] {
                                         <span>📁</span> Upload Logo
                                     </button>
                                     <button class="clear-logo-btn-mobile" id="clearLogoBtnMobile" disabled>
-                                        <span>🗑️</span> Clear
+                                        <span>🗑️</span> Clear Logo
                                     </button>
                                 </div>
                             </div>
@@ -3092,9 +3217,9 @@ section[id] {
                     <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
                         Send us your logo on WhatsApp and we'll create a custom mockup for you
                     </p>
-                    <button class="btn whatsapp" id="whatsappSendBtn" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
+                    <a href="https://wa.me/447754888841" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
                         <span>📞</span> Send Logo on WhatsApp
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -3174,7 +3299,7 @@ section[id] {
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
         let uploadedLogoGlobal = null;
-        let logoSizeGlobal = 70; // Default logo size in percentage
+        let currentLogoSize = 70; // Default logo size in percentage
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3437,8 +3562,10 @@ section[id] {
             updateCart();
         });
 
-        // UPDATED: Wood Type Grid instead of Carousel
+        // Wood Type Carousel with Background Change - 9 WOOD TYPES
         const woodCards = document.querySelectorAll('.wood-type-card');
+        const woodPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
+        const woodNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
         const addWoodBtn = document.getElementById('addWoodBtn');
 
         // Map wood names to CSS class names - 9 WOOD TYPES
@@ -3454,8 +3581,17 @@ section[id] {
             'Birch': 'birch'
         };
 
-        // Function to update selected wood
-        function updateSelectedWood(woodName) {
+        let woodIndex = 0;
+
+        // Function to update wood carousel
+        function updateWoodCarousel(i) {
+            woodCards[woodIndex].classList.remove('active');
+
+            woodIndex = (i + woodCards.length) % woodCards.length;
+
+            woodCards[woodIndex].classList.add('active');
+
+            const woodName = woodCards[woodIndex].dataset.color;
             const woodClass = woodTypeMap[woodName];
             
             // Update carousel section background
@@ -3466,25 +3602,71 @@ section[id] {
             selectedWood = woodName;
         }
 
-        // Initialize wood grid
+        // Initialize wood carousel
         const carouselSection = document.querySelector('.carousel-section');
-        updateSelectedWood('Walnut');
+        updateWoodCarousel(0);
 
-        // Add click event to each wood card
-        woodCards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                const woodName = card.dataset.color;
-                updateSelectedWood(woodName);
-                
-                // Add visual feedback
-                card.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    card.style.transform = '';
-                }, 200);
-            });
+        // Manual navigation
+        woodPrevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateWoodCarousel(woodIndex - 1);
         });
 
-        // FIXED: SEE IT WITH YOUR LOGO SECTION - NOW 9 CARDS
+        woodNextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            updateWoodCarousel(woodIndex + 1);
+        });
+
+        // Touch/swipe support
+        let woodStartX = 0;
+        document.querySelector('.wood-carousel').addEventListener('touchstart', e => {
+            woodStartX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.wood-carousel').addEventListener('touchend', e => {
+            const endX = e.changedTouches[0].clientX;
+            if (woodStartX - endX > 50) updateWoodCarousel(woodIndex + 1);
+            if (endX - woodStartX > 50) updateWoodCarousel(woodIndex - 1);
+        });
+
+        // FIX: Optimized carousel with smoother transitions
+        let carouselInterval;
+        let isCarouselPaused = false;
+
+        function startCarouselAutoRotate() {
+            if (carouselInterval) clearInterval(carouselInterval);
+            carouselInterval = setInterval(() => {
+                if (!isCarouselPaused) {
+                    updateWoodCarousel(woodIndex + 1);
+                }
+            }, 5000);
+        }
+
+        function stopCarouselAutoRotate() {
+            isCarouselPaused = true;
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+            }
+        }
+
+        // Start auto-rotate
+        startCarouselAutoRotate();
+
+        // Pause on hover/interaction
+        document.querySelector('.wood-carousel').addEventListener('mouseenter', () => {
+            stopCarouselAutoRotate();
+        });
+
+        document.querySelector('.wood-carousel').addEventListener('mouseleave', () => {
+            isCarouselPaused = false;
+            startCarouselAutoRotate();
+        });
+
+        // Also pause when interacting with arrows or dots
+        woodPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+        woodNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+
+        // UPDATED: SEE IT WITH YOUR LOGO SECTION - NOW MATCHES METAL PAGE
         const colorOptionsMobile = document.querySelectorAll('.color-option-mobile');
         const engravingOptionsMobile = document.querySelectorAll('.engraving-option-mobile');
         const uploadAreaMobile = document.getElementById('uploadAreaMobile');
@@ -3505,7 +3687,6 @@ section[id] {
         const heroCard = document.getElementById('heroCard');
         const logoSizeSliderMobile = document.getElementById('logoSizeSliderMobile');
         const logoSizeValueMobile = document.getElementById('logoSizeValueMobile');
-        const whatsappSendBtn = document.getElementById('whatsappSendBtn');
 
         // All available cards - 9 wood types
         const cardsMobile = [
@@ -3526,15 +3707,15 @@ section[id] {
 
         // Color name mapping
         const colorNameMapMobile = {
-            'walnut': 'Walnut Wood Card',
-            'oak': 'Oak Wood Card',
-            'cherry': 'Cherry Wood Card',
-            'maple': 'Maple Wood Card',
-            'mahogany': 'Mahogany Wood Card',
-            'bamboo': 'Bamboo Wood Card',
-            'teak': 'Teak Wood Card',
-            'pine': 'Pine Wood Card',
-            'birch': 'Birch Wood Card'
+            'walnut': 'Walnut',
+            'oak': 'Oak',
+            'cherry': 'Cherry',
+            'maple': 'Maple',
+            'mahogany': 'Mahogany',
+            'bamboo': 'Bamboo',
+            'teak': 'Teak',
+            'pine': 'Pine',
+            'birch': 'Birch'
         };
 
         // Engraving name mapping
@@ -3547,21 +3728,7 @@ section[id] {
         function initMobileLogoBuilder() {
             updateMobilePreview();
             updateMobileCardList();
-            
-            // Initialize logo size slider
-            logoSizeSliderMobile.addEventListener('input', function() {
-                logoSizeGlobal = this.value;
-                logoSizeValueMobile.textContent = `${logoSizeGlobal}%`;
-                updateLogoSize();
-            });
-        }
-
-        // Update logo size
-        function updateLogoSize() {
-            if (previewLogoMobile.classList.contains('visible')) {
-                previewLogoMobile.style.maxWidth = `${logoSizeGlobal}%`;
-                previewLogoMobile.style.maxHeight = `${logoSizeGlobal}%`;
-            }
+            updateLogoSize();
         }
 
         // Update card list based on selections
@@ -3585,7 +3752,7 @@ section[id] {
             previewCardMobile.style.background = getCardBackgroundMobile(card.color);
             
             // Update text
-            selectedCardNameMobile.textContent = colorNameMapMobile[card.color];
+            selectedCardNameMobile.textContent = `${colorNameMapMobile[card.color]} Wood Card`;
             selectedEngravingTypeMobile.textContent = engravingNameMapMobile[card.engraving];
             
             // Update counter
@@ -3596,18 +3763,18 @@ section[id] {
                 previewLogoMobile.src = uploadedLogoGlobal;
                 previewLogoMobile.classList.add('visible');
                 previewPlaceholderMobile.style.display = 'none';
+                // Apply logo size
                 updateLogoSize();
-                clearLogoBtnMobile.disabled = false;
-                clearCardBtnMobile.disabled = false;
             } else {
                 previewLogoMobile.classList.remove('visible');
                 previewPlaceholderMobile.style.display = 'flex';
-                clearLogoBtnMobile.disabled = true;
-                clearCardBtnMobile.disabled = true;
             }
             
             // Update navigation buttons
             updateMobileNavigation();
+            
+            // Update clear card button state
+            clearCardBtnMobile.disabled = !uploadedLogoGlobal;
         }
 
         // Get CSS variable for card background
@@ -3630,6 +3797,15 @@ section[id] {
         function updateMobileNavigation() {
             prevCardBtnMobile.disabled = currentCardIndexMobile === 0;
             nextCardBtnMobile.disabled = currentCardIndexMobile === cardsMobile.length - 1;
+        }
+
+        // Update logo size based on slider
+        function updateLogoSize() {
+            if (previewLogoMobile) {
+                previewLogoMobile.style.maxWidth = `${currentLogoSize}%`;
+                previewLogoMobile.style.maxHeight = `${currentLogoSize}%`;
+                logoSizeValueMobile.textContent = `${currentLogoSize}%`;
+            }
         }
 
         // Handle logo upload function
@@ -3655,6 +3831,8 @@ section[id] {
                 // Update preview display
                 previewLogoMobile.classList.add('visible');
                 previewPlaceholderMobile.style.display = 'none';
+                
+                // Apply logo size
                 updateLogoSize();
                 
                 // Enable clear buttons
@@ -3720,6 +3898,12 @@ section[id] {
             });
         });
 
+        // Handle logo size slider
+        logoSizeSliderMobile.addEventListener('input', function() {
+            currentLogoSize = this.value;
+            updateLogoSize();
+        });
+
         // Click on upload area (mobile friendly)
         uploadAreaMobile.addEventListener('click', () => {
             if (!uploadedLogoGlobal) {
@@ -3757,7 +3941,7 @@ section[id] {
             showNotification('Logo cleared');
         });
 
-        // Clear card button
+        // Clear card button (resets everything)
         clearCardBtnMobile.addEventListener('click', () => {
             previewLogoMobile.src = '';
             uploadedLogoGlobal = null;
@@ -3766,16 +3950,41 @@ section[id] {
             logoFileInputMobile.value = '';
             clearLogoBtnMobile.disabled = true;
             clearCardBtnMobile.disabled = true;
-            logoSizeGlobal = 70;
+            
+            // Reset to default settings
+            selectedColorMobile = 'walnut';
+            selectedEngravingMobile = 'natural';
+            
+            // Reset color selection
+            colorOptionsMobile.forEach(opt => {
+                opt.classList.remove('selected');
+                if (opt.dataset.color === 'walnut') {
+                    opt.classList.add('selected');
+                }
+            });
+            
+            // Reset engraving selection
+            engravingOptionsMobile.forEach(opt => {
+                opt.classList.remove('selected');
+                if (opt.dataset.engraving === 'natural') {
+                    opt.classList.add('selected');
+                }
+            });
+            
+            // Reset logo size
             logoSizeSliderMobile.value = 70;
-            logoSizeValueMobile.textContent = '70%';
+            currentLogoSize = 70;
+            updateLogoSize();
             
             // Reset hero card image
             if (heroCard) {
                 heroCard.querySelector('img').src = 'woodwalnut.webp';
             }
             
-            showNotification('Card cleared and reset to default');
+            // Update card list
+            updateMobileCardList();
+            
+            showNotification('Card settings cleared');
         });
 
         // Card navigation on mobile
@@ -3797,43 +4006,9 @@ section[id] {
         addToCartMobile.addEventListener('click', () => {
             const currentCard = cardsMobile[currentCardIndexMobile];
             const engravingType = engravingNameMapMobile[currentCard.engraving];
-            const cardName = `${colorNameMapMobile[currentCard.color]} (${engravingType})`;
+            const cardName = `${colorNameMapMobile[currentCard.color]} Wood Card (${engravingType})`;
             
             addToCart(cardName, currentCard.price);
-        });
-
-        // WhatsApp send button
-        whatsappSendBtn.addEventListener('click', () => {
-            if (!uploadedLogoGlobal) {
-                showNotification('Please upload a logo first');
-                return;
-            }
-
-            const currentCard = cardsMobile[currentCardIndexMobile];
-            const engravingType = engravingNameMapMobile[currentCard.engraving];
-            const cardName = `${colorNameMapMobile[currentCard.color]}`;
-            
-            // Create message with details
-            let message = "Hello! I'd like to get a custom mockup for a wood NFC card.\n\n";
-            message += `• Wood Type: ${colorNameMapMobile[currentCard.color]}\n`;
-            message += `• Engraving: ${engravingType}\n`;
-            message += `• Logo Size: ${logoSizeGlobal}%\n`;
-            message += `• Price: £85\n\n`;
-            message += "I've attached my logo and would like to see a mockup before ordering.";
-            
-            // For WhatsApp, we can only send text messages
-            // In a real implementation, you would need a server to handle file uploads
-            // For now, we'll just send the text message
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
-            
-            window.open(whatsappUrl, '_blank');
-            
-            // Note: To send files via WhatsApp, you would need:
-            // 1. Upload the file to your server
-            // 2. Get a URL for the file
-            // 3. Send that URL in the WhatsApp message
-            showNotification('Opening WhatsApp to send logo details...');
         });
 
         // Initialize mobile logo builder
@@ -4020,19 +4195,14 @@ section[id] {
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Wood Page loaded with enhanced features:');
-            console.log('1. 9 premium wood types in grid layout ✓');
-            console.log('2. All prices set to £85 ✓');
-            console.log('3. WhatsApp links updated to +447754888841 ✓');
-            console.log('4. Natural wood theme with earthy colors ✓');
-            console.log('5. WebP images for all wood types ✓');
-            console.log('6. Grid layout instead of carousel ✓');
-            console.log('7. Add to Cart button moved up for better price visibility ✓');
-            console.log('8. Prices now clearly visible on all cards ✓');
-            console.log('9. Logo size adjustment slider added ✓');
-            console.log('10. Clear card button added ✓');
-            console.log('11. WhatsApp send logo functionality ✓');
-            console.log('12. Color grid matches metal page (5 columns) ✓');
-            console.log('13. Carousel cards same size as bestsellers ✓');
+            console.log('1. Updated carousel with larger cards (matching bestseller size) ✓');
+            console.log('2. Add to Cart button moved lower for better price visibility ✓');
+            console.log('3. Custom logo section matches metal page layout ✓');
+            console.log('4. Added logo size adjustment slider ✓');
+            console.log('5. Added Clear Card button ✓');
+            console.log('6. All wood types (9) available ✓');
+            console.log('7. All prices set to £85 ✓');
+            console.log('8. WhatsApp links updated to +447754888841 ✓');
             updateCart();
             
             // Add highlight style for selected wood text
@@ -4062,23 +4232,9 @@ section[id] {
                     box-shadow: none;
                     background: transparent;
                 }
-                
-                /* Improved carousel card display */
-                .wood-type-card img {
-                    width: 100%;
-                    height: 200px;
-                    object-fit: cover;
-                    border-radius: 12px;
-                }
-                
-                /* Ensure color options are square */
-                .color-option-mobile {
-                    aspect-ratio: 1;
-                }
             `;
             document.head.appendChild(style);
         });
     </script>
 </body>
 </html>
-
