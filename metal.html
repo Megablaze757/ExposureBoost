@@ -700,7 +700,7 @@ section[id] {
 
 .hero-subtext {
     font-size: 12px;
-    color: rgba(255, 245, 243, 0.8);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* BUTTONS - METAL THEME */
@@ -788,7 +788,7 @@ section[id] {
 
 .section-subtitle {
     font-size: 1.08rem;
-    color: rgba(255, 245, 243, 0.85);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.65;
     max-width: 800px;
     margin: 0 auto;
@@ -971,9 +971,9 @@ section[id] {
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-/* CAROUSEL SECTION - TAKES UP MAJORITY OF SCREEN */
+/* CAROUSEL SECTION - WIDER WITH MORE COLORS */
 .carousel-section {
-    padding: 40px 20px; /* Reduced padding to give more space to carousel */
+    padding: 20px 20px 40px; /* Reduced top padding */
     transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     overflow: hidden;
@@ -999,7 +999,7 @@ section[id] {
     color: #FFFFFF;
 }
 
-/* Background color classes for carousel */
+/* Background color classes for carousel - ADDED RED AND WHITE */
 .carousel-section.black {
     background: var(--black-bg);
     color: #FFFFFF;
@@ -1050,7 +1050,7 @@ section[id] {
     color: #1a1209;
 }
 
-/* Update text colors for dark backgrounds */
+/* Update text colors for dark backgrounds - ADDED RED AND WHITE */
 .carousel-section.black .section-title,
 .carousel-section.blue .section-title,
 .carousel-section.green .section-title,
@@ -1086,7 +1086,7 @@ section[id] {
 }
 
 .carousel-container {
-    max-width: 1400px;
+    max-width: 1600px; /* Increased width */
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -1097,24 +1097,25 @@ section[id] {
     justify-content: center;
 }
 
-/* Section header positioned at top */
+/* Section header positioned at top - REMOVED OVERLAP */
 .carousel-section .section-header {
-    margin-bottom: 30px;
+    margin-bottom: 20px; /* Reduced margin */
     position: relative;
     z-index: 10;
+    padding: 0 20px;
 }
 
-/* BIGGER CAROUSEL - TAKES MAJORITY OF SPACE */
+/* WIDER CAROUSEL - TAKES MAJORITY OF SPACE */
 .metal-carousel {
     position: relative;
     height: 500px; /* Increased height to take more space */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px auto 30px; /* Reduced top margin */
+    margin: 0 auto 20px; /* Reduced top margin */
     perspective: 1200px;
-    max-width: 1300px;
-    width: 100%;
+    max-width: 1500px; /* Increased width */
+    width: 95%; /* Wider on desktop */
     transform: translateZ(0);
     will-change: transform;
     flex: 1; /* Takes available space */
@@ -1122,7 +1123,7 @@ section[id] {
 
 .metal-color-card {
     position: absolute;
-    width: 320px; /* Increased width */
+    width: 350px; /* Increased width */
     background: rgba(255, 255, 255, 0.15);
     border-radius: 24px;
     padding: 25px;
@@ -1149,7 +1150,7 @@ section[id] {
 
 .metal-color-card img {
     width: 100%;
-    height: 240px; /* Increased height */
+    height: 260px; /* Increased height */
     border-radius: 16px;
     object-fit: cover;
     margin-bottom: 20px;
@@ -1177,7 +1178,7 @@ section[id] {
 }
 
 .card-label {
-    font-size: 1.5rem; /* Increased font size */
+    font-size: 1.6rem; /* Increased font size */
     font-weight: 800;
     margin-bottom: 10px;
     text-align: center;
@@ -1200,7 +1201,7 @@ section[id] {
 }
 
 .card-price {
-    font-size: 1.8rem; /* Increased font size */
+    font-size: 2rem; /* Increased font size */
     font-weight: 900;
     text-align: center;
 }
@@ -1248,11 +1249,11 @@ section[id] {
 }
 
 .carousel-arrow.left {
-    left: 20px;
+    left: 10px; /* Moved closer to edge */
 }
 
 .carousel-arrow.right {
-    right: 20px;
+    right: 10px; /* Moved closer to edge */
 }
 
 .carousel-section.yellow .carousel-arrow,
@@ -1274,13 +1275,14 @@ section[id] {
 .dots {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin: 30px 0 40px;
+    gap: 12px;
+    margin: 25px 0 30px;
+    flex-wrap: wrap;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1720,7 +1722,7 @@ section[id] {
     font-size: 0.85rem;
 }
 
-/* Card Color Selection - Mobile Optimized */
+/* Card Color Selection - Mobile Optimized - ADDED RED AND WHITE */
 .card-colors-mobile {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -2032,15 +2034,16 @@ section[id] {
     }
 
     .carousel-arrow.left {
-        left: 10px;
+        left: 5px;
     }
 
     .carousel-arrow.right {
-        right: 10px;
+        right: 5px;
     }
 
     .metal-carousel {
         height: 400px;
+        width: 100%;
     }
 
     .metal-color-card {
@@ -2077,11 +2080,11 @@ section[id] {
     }
 
     .carousel-arrow.left {
-        left: 5px;
+        left: 2px;
     }
 
     .carousel-arrow.right {
-        right: 5px;
+        right: 2px;
     }
 
     .metal-carousel {
@@ -2962,18 +2965,18 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - BIGGER TAKING MAJORITY OF SCREEN -->
+        <!-- CAROUSEL SECTION - WIDER WITH 9 COLORS INCLUDING RED AND WHITE -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
                     <h2 class="section-title">All Metal Finishes</h2>
-                    <p class="section-subtitle">Choose from 7 premium metal finishes with silver or gold engraving</p>
+                    <p class="section-subtitle">Choose from 9 premium metal finishes with silver or gold engraving</p>
                 </div>
 
                 <div class="metal-carousel">
                     <button class="carousel-arrow left" aria-label="Previous">‹</button>
 
-                    <!-- 7 colors including Gold, Silver, Rose Gold -->
+                    <!-- 9 colors including Red and White -->
                     <div class="metal-color-card active" data-color="Black">
                         <img src="newblack.webp" alt="Black Metal Card" class="carousel-card-image">
                         <div class="card-label">Black</div>
@@ -2995,6 +2998,18 @@ section[id] {
                     <div class="metal-color-card" data-color="Purple">
                         <img src="newpurple.webp" alt="Purple Metal Card" class="carousel-card-image">
                         <div class="card-label">Purple</div>
+                        <div class="card-price">£95</div>
+                    </div>
+
+                    <div class="metal-color-card" data-color="Red">
+                        <img src="newred.webp" alt="Red Metal Card" class="carousel-card-image">
+                        <div class="card-label">Red</div>
+                        <div class="card-price">£95</div>
+                    </div>
+
+                    <div class="metal-color-card" data-color="White">
+                        <img src="newwhite.webp" alt="White Metal Card" class="carousel-card-image">
+                        <div class="card-label">White</div>
                         <div class="card-price">£95</div>
                     </div>
 
@@ -3020,8 +3035,10 @@ section[id] {
                 </div>
 
                 <div class="dots">
-                    <!-- Exactly 7 dots -->
+                    <!-- 9 dots for 9 colors -->
                     <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
@@ -3049,7 +3066,7 @@ section[id] {
                     <div class="preview-section-mobile">
                         <div class="preview-header-mobile">
                             <div class="preview-title-mobile">Live Preview</div>
-                            <div class="card-counter-mobile" id="cardCounterMobile">1/7</div>
+                            <div class="card-counter-mobile" id="cardCounterMobile">1/9</div>
                         </div>
                         
                         <div class="preview-card-mobile" id="previewCardMobileClickable">
@@ -3105,6 +3122,12 @@ section[id] {
                                 </div>
                                 <div class="color-option-mobile" data-color="purple" style="background: var(--purple-bg);">
                                     <div class="color-label-mobile">Purple</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="red" style="background: var(--red-bg);">
+                                    <div class="color-label-mobile">Red</div>
+                                </div>
+                                <div class="color-option-mobile" data-color="white" style="background: var(--white-bg);">
+                                    <div class="color-label-mobile">White</div>
                                 </div>
                                 <div class="color-option-mobile" data-color="gold" style="background: var(--gold-bg);">
                                     <div class="color-label-mobile">Gold</div>
@@ -3517,7 +3540,7 @@ section[id] {
             updateCart();
         });
 
-        // Metal Color Carousel with Background Change - BIGGER
+        // Metal Color Carousel with Background Change - WIDER WITH 9 COLORS
         const metalCards = document.querySelectorAll('.metal-color-card');
         const metalDots = document.querySelectorAll('.carousel-section .dot');
         const carouselSection = document.querySelector('.carousel-section');
@@ -3525,12 +3548,14 @@ section[id] {
         const metalNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
         const addMetalBtn = document.getElementById('addMetalBtn');
 
-        // Map color names to CSS class names - 7 COLORS including Gold, Silver, Rose Gold
+        // Map color names to CSS class names - 9 COLORS including Red and White
         const metalColorMap = {
             'Black': 'black',
             'Blue': 'blue',
             'Green': 'green',
             'Purple': 'purple',
+            'Red': 'red',
+            'White': 'white',
             'Gold': 'gold',
             'Silver': 'silver',
             'Rosegold': 'rosegold'
@@ -3659,15 +3684,17 @@ section[id] {
         const addToCartMobile = document.getElementById('addToCartMobile');
         const heroCard = document.getElementById('heroCard');
 
-        // All available cards - 7 colors including Gold, Silver, Rose Gold
+        // All available cards - 9 colors including Red and White
         const cardsMobile = [
             { id: 1, name: 'Black Metal Card', color: 'black', engraving: 'silver', price: 95 },
             { id: 2, name: 'Blue Metal Card', color: 'blue', engraving: 'silver', price: 95 },
             { id: 3, name: 'Green Metal Card', color: 'green', engraving: 'silver', price: 95 },
             { id: 4, name: 'Purple Metal Card', color: 'purple', engraving: 'silver', price: 95 },
-            { id: 5, name: 'Gold Metal Card', color: 'gold', engraving: 'silver', price: 95 },
-            { id: 6, name: 'Silver Metal Card', color: 'silver', engraving: 'silver', price: 95 },
-            { id: 7, name: 'Rose Gold Metal Card', color: 'rosegold', engraving: 'silver', price: 95 }
+            { id: 5, name: 'Red Metal Card', color: 'red', engraving: 'silver', price: 95 },
+            { id: 6, name: 'White Metal Card', color: 'white', engraving: 'silver', price: 95 },
+            { id: 7, name: 'Gold Metal Card', color: 'gold', engraving: 'silver', price: 95 },
+            { id: 8, name: 'Silver Metal Card', color: 'silver', engraving: 'silver', price: 95 },
+            { id: 9, name: 'Rose Gold Metal Card', color: 'rosegold', engraving: 'silver', price: 95 }
         ];
 
         let currentCardIndexMobile = 0;
@@ -3680,6 +3707,8 @@ section[id] {
             'blue': 'Blue',
             'green': 'Green',
             'purple': 'Purple',
+            'red': 'Red',
+            'white': 'White',
             'gold': 'Gold',
             'silver': 'Silver',
             'rosegold': 'Rose Gold'
@@ -3745,6 +3774,8 @@ section[id] {
                 case 'blue': return 'var(--blue-bg)';
                 case 'green': return 'var(--green-bg)';
                 case 'purple': return 'var(--purple-bg)';
+                case 'red': return 'var(--red-bg)';
+                case 'white': return 'var(--white-bg)';
                 case 'gold': return 'var(--gold-bg)';
                 case 'silver': return 'var(--silver-bg)';
                 case 'rosegold': return 'var(--rosegold-bg)';
@@ -4088,11 +4119,11 @@ section[id] {
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Metal Page loaded with enhanced features:');
-            console.log('1. Hero card outline removed ✓');
-            console.log('2. Bigger carousel takes majority of screen ✓');
-            console.log('3. Carousel height increased to 500px ✓');
-            console.log('4. Carousel cards enlarged to 320px width ✓');
-            console.log('5. All carousel items use actual images ✓');
+            console.log('1. Added Red and White to carousel (9 total colors) ✓');
+            console.log('2. Wider carousel (350px cards, 1500px max width) ✓');
+            console.log('3. Reduced top padding to remove text overlap ✓');
+            console.log('4. Hero card outline removed ✓');
+            console.log('5. Carousel takes majority of screen ✓');
             console.log('6. All prices set to £95 ✓');
             console.log('7. WhatsApp links updated to +447754888841 ✓');
             console.log('8. Checkout linked to WhatsApp with formatted message ✓');
