@@ -1134,7 +1134,6 @@ section[id] {
     height: 240px;
     border-radius: 16px;
     object-fit: cover;
-    margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -1208,56 +1207,7 @@ section[id] {
     background: rgba(245, 230, 211, 0.8);
 }
 
-.dots {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 30px 0 60px;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-section.oak .dot,
-.carousel-section.maple .dot,
-.carousel-section.pine .dot,
-.carousel-section.birch .dot {
-    background: rgba(61, 40, 30, 0.3);
-}
-
-.carousel-section.walnut .dot,
-.carousel-section.cherry .dot,
-.carousel-section.mahogany .dot,
-.carousel-section.bamboo .dot,
-.carousel-section.teak .dot {
-    background: rgba(245, 230, 211, 0.3);
-}
-
-.dot.active {
-    transform: scale(1.3);
-}
-
-.carousel-section.oak .dot.active,
-.carousel-section.maple .dot.active,
-.carousel-section.pine .dot.active,
-.carousel-section.birch .dot.active {
-    background: #3D281E;
-    box-shadow: 0 0 10px rgba(61, 40, 30, 0.5);
-}
-
-.carousel-section.walnut .dot.active,
-.carousel-section.cherry .dot.active,
-.carousel-section.mahogany .dot.active,
-.carousel-section.bamboo .dot.active,
-.carousel-section.teak .dot.active {
-    background: #F5E6D3;
-    box-shadow: 0 0 10px rgba(245, 230, 211, 0.5);
-}
+/* REMOVED: Dots section completely */
 
 /* WHY CHOOSE SECTION - WOOD THEME */
 .why-choose-section {
@@ -2945,18 +2895,7 @@ section[id] {
                     <button class="carousel-arrow right" aria-label="Next">›</button>
                 </div>
 
-                <!-- 9 dots -->
-                <div class="dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
+                <!-- NO DOTS SECTION - REMOVED -->
 
                 <!-- Add to Cart button -->
                 <div class="carousel-actions">
@@ -3454,8 +3393,6 @@ section[id] {
 
         // Wood Type Carousel with Background Change - 9 WOOD TYPES
         const woodCards = document.querySelectorAll('.wood-type-card');
-        const woodDots = document.querySelectorAll('.carousel-section .dot');
-        const carouselSection = document.querySelector('.carousel-section');
         const woodPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
         const woodNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
         const addWoodBtn = document.getElementById('addWoodBtn');
@@ -3478,20 +3415,10 @@ section[id] {
         // Function to update wood carousel
         function updateWoodCarousel(i) {
             woodCards[woodIndex].classList.remove('active');
-            woodDots[woodIndex].classList.remove('active');
 
             woodIndex = (i + woodCards.length) % woodCards.length;
 
             woodCards[woodIndex].classList.add('active');
-            
-            // Update dot colors based on active card
-            woodDots.forEach((dot, index) => {
-                if (index === woodIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
 
             const woodName = woodCards[woodIndex].dataset.color;
             const woodClass = woodTypeMap[woodName];
@@ -3505,6 +3432,7 @@ section[id] {
         }
 
         // Initialize wood carousel
+        const carouselSection = document.querySelector('.carousel-section');
         updateWoodCarousel(0);
 
         // Manual navigation
@@ -3516,13 +3444,6 @@ section[id] {
         woodNextBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             updateWoodCarousel(woodIndex + 1);
-        });
-
-        // Dot navigation
-        woodDots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                updateWoodCarousel(i);
-            });
         });
 
         // Touch/swipe support
@@ -3570,12 +3491,9 @@ section[id] {
             startCarouselAutoRotate();
         });
 
-        // Also pause when interacting with arrows or dots
+        // Also pause when interacting with arrows
         woodPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
         woodNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
-        woodDots.forEach(dot => {
-            dot.addEventListener('mouseenter', stopCarouselAutoRotate);
-        });
 
         // FIXED: SEE IT WITH YOUR LOGO SECTION - NOW 9 CARDS
         const colorOptionsMobile = document.querySelectorAll('.color-option-mobile');
@@ -4036,6 +3954,8 @@ section[id] {
             console.log('3. WhatsApp links updated to +447754888841 ✓');
             console.log('4. Natural wood theme with earthy colors ✓');
             console.log('5. WebP images for all wood types ✓');
+            console.log('6. Carousel dots removed ✓');
+            console.log('7. Wood type text removed from carousel ✓');
             updateCart();
             
             // Add highlight style for selected wood text
