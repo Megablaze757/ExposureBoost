@@ -1248,7 +1248,7 @@ section[id] {
 /* CAROUSEL ACTIONS - MOVED LOWER */
 .carousel-actions {
     text-align: center;
-    margin-top: 120px; /* INCREASED MARGIN TO MOVE BUTTON LOWER */
+    margin-top: 120px;
     position: relative;
     z-index: 10;
 }
@@ -1657,26 +1657,55 @@ section[id] {
     backdrop-filter: blur(10px);
 }
 
-.step-title-mobile {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* NEW: Logo Size Control */
+.logo-size-control-mobile {
+    background: rgba(232, 212, 193, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(232, 212, 193, 0.2);
+    backdrop-filter: blur(10px);
+    margin-top: 25px;
 }
 
-.step-number-mobile {
-    width: 28px;
-    height: 28px;
-    background: var(--wood-gradient);
+.size-label-mobile {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.size-slider-mobile {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(232, 212, 193, 0.2);
+    border-radius: 3px;
+    outline: none;
+    margin: 15px 0;
+}
+
+.size-slider-mobile::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 0.85rem;
+    background: var(--wood-gradient);
+    cursor: pointer;
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 8px rgba(183, 110, 61, 0.4);
+}
+
+.size-slider-mobile::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--wood-gradient);
+    cursor: pointer;
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 8px rgba(183, 110, 61, 0.4);
 }
 
 /* Card Color Selection - Mobile Optimized */
@@ -1873,7 +1902,7 @@ section[id] {
     }
 }
 
-.upload-btn-mobile, .clear-logo-btn-mobile {
+.upload-btn-mobile, .clear-logo-btn-mobile, .clear-card-btn-mobile {
     padding: 16px 20px;
     border-radius: 12px;
     font-weight: 700;
@@ -1905,26 +1934,38 @@ section[id] {
     transform: translateY(0);
 }
 
-.clear-logo-btn-mobile {
+.clear-logo-btn-mobile, .clear-card-btn-mobile {
     background: rgba(232, 212, 193, 0.15);
     color: var(--white);
     border: 1px solid rgba(232, 212, 193, 0.3);
 }
 
-.clear-logo-btn-mobile:hover {
+.clear-logo-btn-mobile:hover, .clear-card-btn-mobile:hover {
     background: rgba(232, 212, 193, 0.25);
     transform: translateY(-2px);
 }
 
-.clear-logo-btn-mobile:disabled {
+.clear-logo-btn-mobile:disabled, .clear-card-btn-mobile:disabled {
     opacity: 0.5;
     cursor: not-allowed;
     transform: none !important;
 }
 
-/* Add to Cart Button - Mobile Optimized */
+/* Action Buttons Container */
+.action-buttons-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+@media (min-width: 480px) {
+    .action-buttons-mobile {
+        flex-direction: row;
+    }
+}
+
 .add-to-cart-mobile {
-    width: 100%;
     padding: 18px;
     background: var(--wood-gradient);
     color: var(--white);
@@ -1935,12 +1976,12 @@ section[id] {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 6px 20px rgba(183, 110, 61, 0.3);
-    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     -webkit-tap-highlight-color: transparent;
+    flex: 1;
 }
 
 .add-to-cart-mobile:hover {
@@ -1948,11 +1989,22 @@ section[id] {
     box-shadow: 0 10px 30px rgba(183, 110, 61, 0.4);
 }
 
+.clear-card-btn-mobile {
+    background: rgba(183, 110, 61, 0.2);
+    color: var(--white);
+    font-weight: 700;
+}
+
+.clear-card-btn-mobile:hover:not(:disabled) {
+    background: rgba(183, 110, 61, 0.3);
+}
+
 /* Mobile Touch Feedback */
 .color-option-mobile:active,
 .engraving-option-mobile:active,
 .upload-btn-mobile:active,
 .clear-logo-btn-mobile:active,
+.clear-card-btn-mobile:active,
 .nav-btn-mobile:active,
 .add-to-cart-mobile:active {
     transform: scale(0.98);
@@ -2025,7 +2077,7 @@ section[id] {
     }
 
     .carousel-actions {
-        margin-top: 100px; /* Adjusted for mobile */
+        margin-top: 100px;
     }
 }
 
@@ -2086,10 +2138,6 @@ section[id] {
         padding: 18px;
     }
 
-    .step-title-mobile {
-        font-size: 1.1rem;
-    }
-
     .upload-area-mobile {
         padding: 25px 15px;
         min-height: 160px;
@@ -2104,7 +2152,7 @@ section[id] {
     }
 
     .carousel-actions {
-        margin-top: 80px; /* Further adjusted for small mobile */
+        margin-top: 80px;
     }
 }
 
@@ -2908,7 +2956,7 @@ section[id] {
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
-                    
+                    <h2 class="section-title">All Wood Types</h2>
                     <p class="section-subtitle" style="display: none;">Choose from 9 premium wood types</p>
                 </div>
 
@@ -2973,18 +3021,14 @@ section[id] {
                     <button class="carousel-arrow right" aria-label="Next">›</button>
                 </div>
 
-                <!-- Add to Cart button - MOVED LOWER -->
-                <div >
-                    
-                </div>
-                <div>
+                <!-- Add to Cart button -->
+                <div class="carousel-actions">
                     <button class="btn" id="addWoodBtn">🛒 Add To Cart</button>
                 </div>
-                
             </div>
         </section>
 
-        <!-- CUSTOM LOGO SECTION -->
+        <!-- CUSTOM LOGO SECTION - UPDATED LAYOUT -->
         <section class="custom-logo-section" id="custom-logo">
             <div class="custom-logo-content">
                 <div class="section-header">
@@ -3028,17 +3072,22 @@ section[id] {
                             </button>
                         </div>
                         
-                        <button class="add-to-cart-mobile" id="addToCartMobile">
-                            🛒 Add to Cart
-                        </button>
+                        <!-- Action Buttons -->
+                        <div class="action-buttons-mobile">
+                            <button class="add-to-cart-mobile" id="addToCartMobile">
+                                🛒 Add to Cart
+                            </button>
+                            <button class="clear-card-btn-mobile" id="clearCardBtnMobile" disabled>
+                                🗑️ Clear Card
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Right Column: Selection Options -->
                     <div class="selection-area-mobile">
-                        <!-- Step 1: Choose Wood Type -->
+                        <!-- Choose Wood Type -->
                         <div class="selection-step-mobile">
-                            <div class="step-title-mobile">
-                                <span class="step-number-mobile">1</span>
+                            <div class="step-title-mobile" style="margin-bottom: 20px;">
                                 Choose Wood Type
                             </div>
                             <div class="card-colors-mobile">
@@ -3072,10 +3121,9 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Step 2: Choose Engraving -->
+                        <!-- Choose Engraving -->
                         <div class="selection-step-mobile">
-                            <div class="step-title-mobile">
-                                <span class="step-number-mobile">2</span>
+                            <div class="step-title-mobile" style="margin-bottom: 20px;">
                                 Choose Engraving
                             </div>
                             <div class="engraving-options-mobile">
@@ -3092,10 +3140,15 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Step 3: Upload Logo -->
+                        <!-- Logo Size Control -->
+                        <div class="logo-size-control-mobile">
+                            <label class="size-label-mobile">Logo Size: <span id="logoSizeValueMobile">70%</span></label>
+                            <input type="range" id="logoSizeSliderMobile" min="40" max="100" value="70" class="size-slider-mobile">
+                        </div>
+
+                        <!-- Upload Your Logo -->
                         <div class="selection-step-mobile">
-                            <div class="step-title-mobile">
-                                <span class="step-number-mobile">3</span>
+                            <div class="step-title-mobile" style="margin-bottom: 20px;">
                                 Upload Your Logo
                             </div>
                             <div class="upload-container-mobile">
@@ -3127,9 +3180,9 @@ section[id] {
                     <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
                         Send us your logo on WhatsApp and we'll create a custom mockup for you
                     </p>
-                    <a href="https://wa.me/447754888841" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
+                    <button class="btn whatsapp" id="whatsappSendBtn" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
                         <span>📞</span> Send Logo on WhatsApp
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
@@ -3209,6 +3262,7 @@ section[id] {
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
         let uploadedLogoGlobal = null;
+        let logoSizeGlobal = 70; // Default logo size in percentage
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3582,6 +3636,7 @@ section[id] {
         const logoFileInputMobile = document.getElementById('logoFileInputMobile');
         const uploadLogoBtnMobile = document.getElementById('uploadLogoBtnMobile');
         const clearLogoBtnMobile = document.getElementById('clearLogoBtnMobile');
+        const clearCardBtnMobile = document.getElementById('clearCardBtnMobile');
         const previewLogoMobile = document.getElementById('previewLogoMobile');
         const previewPlaceholderMobile = document.getElementById('previewPlaceholderMobile');
         const previewCardMobile = document.getElementById('previewCardMobile');
@@ -3593,6 +3648,9 @@ section[id] {
         const selectedEngravingTypeMobile = document.getElementById('selectedEngravingTypeMobile');
         const addToCartMobile = document.getElementById('addToCartMobile');
         const heroCard = document.getElementById('heroCard');
+        const logoSizeSliderMobile = document.getElementById('logoSizeSliderMobile');
+        const logoSizeValueMobile = document.getElementById('logoSizeValueMobile');
+        const whatsappSendBtn = document.getElementById('whatsappSendBtn');
 
         // All available cards - 9 wood types
         const cardsMobile = [
@@ -3634,6 +3692,21 @@ section[id] {
         function initMobileLogoBuilder() {
             updateMobilePreview();
             updateMobileCardList();
+            
+            // Initialize logo size slider
+            logoSizeSliderMobile.addEventListener('input', function() {
+                logoSizeGlobal = this.value;
+                logoSizeValueMobile.textContent = `${logoSizeGlobal}%`;
+                updateLogoSize();
+            });
+        }
+
+        // Update logo size
+        function updateLogoSize() {
+            if (previewLogoMobile.classList.contains('visible')) {
+                previewLogoMobile.style.maxWidth = `${logoSizeGlobal}%`;
+                previewLogoMobile.style.maxHeight = `${logoSizeGlobal}%`;
+            }
         }
 
         // Update card list based on selections
@@ -3668,9 +3741,14 @@ section[id] {
                 previewLogoMobile.src = uploadedLogoGlobal;
                 previewLogoMobile.classList.add('visible');
                 previewPlaceholderMobile.style.display = 'none';
+                updateLogoSize();
+                clearLogoBtnMobile.disabled = false;
+                clearCardBtnMobile.disabled = false;
             } else {
                 previewLogoMobile.classList.remove('visible');
                 previewPlaceholderMobile.style.display = 'flex';
+                clearLogoBtnMobile.disabled = true;
+                clearCardBtnMobile.disabled = true;
             }
             
             // Update navigation buttons
@@ -3722,9 +3800,11 @@ section[id] {
                 // Update preview display
                 previewLogoMobile.classList.add('visible');
                 previewPlaceholderMobile.style.display = 'none';
+                updateLogoSize();
                 
-                // Enable clear button
+                // Enable clear buttons
                 clearLogoBtnMobile.disabled = false;
+                clearCardBtnMobile.disabled = false;
                 
                 // Update hero card if needed
                 if (heroCard) {
@@ -3812,6 +3892,7 @@ section[id] {
             previewPlaceholderMobile.style.display = 'flex';
             logoFileInputMobile.value = '';
             clearLogoBtnMobile.disabled = true;
+            clearCardBtnMobile.disabled = true;
             
             // Reset hero card image
             if (heroCard) {
@@ -3819,6 +3900,27 @@ section[id] {
             }
             
             showNotification('Logo cleared');
+        });
+
+        // Clear card button
+        clearCardBtnMobile.addEventListener('click', () => {
+            previewLogoMobile.src = '';
+            uploadedLogoGlobal = null;
+            previewLogoMobile.classList.remove('visible');
+            previewPlaceholderMobile.style.display = 'flex';
+            logoFileInputMobile.value = '';
+            clearLogoBtnMobile.disabled = true;
+            clearCardBtnMobile.disabled = true;
+            logoSizeGlobal = 70;
+            logoSizeSliderMobile.value = 70;
+            logoSizeValueMobile.textContent = '70%';
+            
+            // Reset hero card image
+            if (heroCard) {
+                heroCard.querySelector('img').src = 'woodwalnut.webp';
+            }
+            
+            showNotification('Card cleared and reset to default');
         });
 
         // Card navigation on mobile
@@ -3843,6 +3945,40 @@ section[id] {
             const cardName = `${colorNameMapMobile[currentCard.color]} (${engravingType})`;
             
             addToCart(cardName, currentCard.price);
+        });
+
+        // WhatsApp send button
+        whatsappSendBtn.addEventListener('click', () => {
+            if (!uploadedLogoGlobal) {
+                showNotification('Please upload a logo first');
+                return;
+            }
+
+            const currentCard = cardsMobile[currentCardIndexMobile];
+            const engravingType = engravingNameMapMobile[currentCard.engraving];
+            const cardName = `${colorNameMapMobile[currentCard.color]} Wood Card`;
+            
+            // Create message with details
+            let message = "Hello! I'd like to get a custom mockup for a wood NFC card.\n\n";
+            message += `• Wood Type: ${colorNameMapMobile[currentCard.color]}\n`;
+            message += `• Engraving: ${engravingType}\n`;
+            message += `• Logo Size: ${logoSizeGlobal}%\n`;
+            message += `• Price: £85\n\n`;
+            message += "I've attached my logo and would like to see a mockup before ordering.";
+            
+            // For WhatsApp, we can only send text messages
+            // In a real implementation, you would need a server to handle file uploads
+            // For now, we'll just send the text message
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Note: To send files via WhatsApp, you would need:
+            // 1. Upload the file to your server
+            // 2. Get a URL for the file
+            // 3. Send that URL in the WhatsApp message
+            showNotification('Opening WhatsApp to send logo details...');
         });
 
         // Initialize mobile logo builder
@@ -4037,6 +4173,10 @@ section[id] {
             console.log('6. Carousel dots removed ✓');
             console.log('7. Add to Cart button moved lower for better price visibility ✓');
             console.log('8. Prices now displayed on carousel cards ✓');
+            console.log('9. Logo size adjustment slider added ✓');
+            console.log('10. Clear card button added ✓');
+            console.log('11. WhatsApp send logo functionality ✓');
+            console.log('12. Updated layout to match metal page ✓');
             updateCart();
             
             // Add highlight style for selected wood text
@@ -4066,10 +4206,17 @@ section[id] {
                     box-shadow: none;
                     background: transparent;
                 }
+                
+                /* Improved carousel card display */
+                .wood-type-card img {
+                    width: 100%;
+                    height: 240px;
+                    object-fit: cover;
+                    border-radius: 16px;
+                }
             `;
             document.head.appendChild(style);
         });
     </script>
 </body>
 </html>
-
