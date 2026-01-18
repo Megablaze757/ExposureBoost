@@ -1134,6 +1134,7 @@ section[id] {
     height: 240px;
     border-radius: 16px;
     object-fit: cover;
+    margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -1207,7 +1208,43 @@ section[id] {
     background: rgba(245, 230, 211, 0.8);
 }
 
-/* REMOVED: Dots section completely */
+/* CAROUSEL ACTIONS - MOVED LOWER */
+.carousel-actions {
+    text-align: center;
+    margin-top: 120px; /* INCREASED MARGIN TO MOVE BUTTON LOWER */
+    position: relative;
+    z-index: 10;
+}
+
+.carousel-actions .btn {
+    background: rgba(0, 0, 0, 0.7);
+    color: #F5E6D3;
+    border: 1px solid rgba(245, 230, 211, 0.3);
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    min-width: 200px;
+}
+
+.carousel-section.oak .carousel-actions .btn,
+.carousel-section.maple .carousel-actions .btn,
+.carousel-section.pine .carousel-actions .btn,
+.carousel-section.birch .carousel-actions .btn {
+    background: rgba(245, 230, 211, 0.7);
+    color: #3D281E;
+    border: 1px solid rgba(61, 40, 30, 0.3);
+}
+
+.carousel-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-section.oak .carousel-actions .btn:hover,
+.carousel-section.maple .carousel-actions .btn:hover,
+.carousel-section.pine .carousel-actions .btn:hover,
+.carousel-section.birch .carousel-actions .btn:hover {
+    box-shadow: 0 6px 20px rgba(245, 230, 211, 0.4);
+}
 
 /* WHY CHOOSE SECTION - WOOD THEME */
 .why-choose-section {
@@ -1941,6 +1978,10 @@ section[id] {
     .custom-logo-section {
         padding: 60px 20px;
     }
+
+    .carousel-actions {
+        margin-top: 100px; /* Adjusted for mobile */
+    }
 }
 
 @media (max-width: 480px) {
@@ -2008,44 +2049,10 @@ section[id] {
     .upload-subtext-mobile {
         font-size: 0.8rem;
     }
-}
 
-/* Add to cart button in carousel - MOVED LOWER */
-.carousel-actions {
-    text-align: center;
-    margin-top: 40px;
-    position: relative;
-    z-index: 10;
-}
-
-.carousel-actions .btn {
-    background: rgba(0, 0, 0, 0.7);
-    color: #F5E6D3;
-    border: 1px solid rgba(245, 230, 211, 0.3);
-    padding: 16px 32px;
-    font-size: 1.1rem;
-    min-width: 200px;
-}
-
-.carousel-section.oak .carousel-actions .btn,
-.carousel-section.maple .carousel-actions .btn,
-.carousel-section.pine .carousel-actions .btn,
-.carousel-section.birch .carousel-actions .btn {
-    background: rgba(245, 230, 211, 0.7);
-    color: #3D281E;
-    border: 1px solid rgba(61, 40, 30, 0.3);
-}
-
-.carousel-actions .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.carousel-section.oak .carousel-actions .btn:hover,
-.carousel-section.maple .carousel-actions .btn:hover,
-.carousel-section.pine .carousel-actions .btn:hover,
-.carousel-section.birch .carousel-actions .btn:hover {
-    box-shadow: 0 6px 20px rgba(245, 230, 211, 0.4);
+    .carousel-actions {
+        margin-top: 80px; /* Further adjusted for small mobile */
+    }
 }
 
 /* ENGRAVING MODAL - WOOD THEME */
@@ -2895,9 +2902,7 @@ section[id] {
                     <button class="carousel-arrow right" aria-label="Next">›</button>
                 </div>
 
-                <!-- NO DOTS SECTION - REMOVED -->
-
-                <!-- Add to Cart button -->
+                <!-- Add to Cart button - MOVED LOWER -->
                 <div class="carousel-actions">
                     <button class="btn" id="addWoodBtn">🛒 Add Walnut Finish</button>
                 </div>
@@ -3491,7 +3496,7 @@ section[id] {
             startCarouselAutoRotate();
         });
 
-        // Also pause when interacting with arrows
+        // Also pause when interacting with arrows or dots
         woodPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
         woodNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
 
@@ -3955,7 +3960,7 @@ section[id] {
             console.log('4. Natural wood theme with earthy colors ✓');
             console.log('5. WebP images for all wood types ✓');
             console.log('6. Carousel dots removed ✓');
-            console.log('7. Wood type text removed from carousel ✓');
+            console.log('7. Add to Cart button moved lower for better price visibility ✓');
             updateCart();
             
             // Add highlight style for selected wood text
