@@ -636,16 +636,15 @@ section[id] {
     height: 100%;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(224, 191, 184, 0.4),
-        0 25px 50px rgba(183, 110, 121, 0.4),
+    box-shadow: 0 25px 50px rgba(183, 110, 121, 0.4),
         0 10px 30px rgba(26, 15, 15, 0.5);
-    background: linear-gradient(135deg, var(--rose-gold-light), var(--rose-gold-dark));
+    /* REMOVED: border outline */
+    background: transparent; /* Changed from gradient background */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    border: 2px solid rgba(224, 191, 184, 0.5);
+    padding: 0; /* Removed padding */
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -659,7 +658,7 @@ section[id] {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: 20px; /* Match card border radius */
 }
 
 .hero-card-upload-overlay {
@@ -972,15 +971,16 @@ section[id] {
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-/* CAROUSEL SECTION - BIGGER WITH IMAGES */
+/* CAROUSEL SECTION - TAKES UP MAJORITY OF SCREEN */
 .carousel-section {
-    padding: 100px 20px;
+    padding: 40px 20px; /* Reduced padding to give more space to carousel */
     transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     overflow: hidden;
-    min-height: 80vh;
+    min-height: 85vh; /* Increased to take more vertical space */
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .carousel-section::before {
@@ -1091,29 +1091,41 @@ section[id] {
     position: relative;
     z-index: 2;
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* BIGGER CAROUSEL */
+/* Section header positioned at top */
+.carousel-section .section-header {
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+/* BIGGER CAROUSEL - TAKES MAJORITY OF SPACE */
 .metal-carousel {
     position: relative;
-    height: 400px; /* Increased height */
+    height: 500px; /* Increased height to take more space */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px auto 30px;
+    margin: 20px auto 30px; /* Reduced top margin */
     perspective: 1200px;
     max-width: 1300px;
     width: 100%;
     transform: translateZ(0);
     will-change: transform;
+    flex: 1; /* Takes available space */
 }
 
 .metal-color-card {
     position: absolute;
-    width: 280px; /* Increased width */
+    width: 320px; /* Increased width */
     background: rgba(255, 255, 255, 0.15);
     border-radius: 24px;
-    padding: 20px;
+    padding: 25px;
     opacity: 0;
     transform: scale(0.85) rotateY(0deg);
     transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -1137,10 +1149,10 @@ section[id] {
 
 .metal-color-card img {
     width: 100%;
-    height: 200px; /* Increased height */
+    height: 240px; /* Increased height */
     border-radius: 16px;
     object-fit: cover;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -1165,9 +1177,9 @@ section[id] {
 }
 
 .card-label {
-    font-size: 1.3rem; /* Increased font size */
+    font-size: 1.5rem; /* Increased font size */
     font-weight: 800;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -1188,7 +1200,7 @@ section[id] {
 }
 
 .card-price {
-    font-size: 1.5rem; /* Increased font size */
+    font-size: 1.8rem; /* Increased font size */
     font-weight: 900;
     text-align: center;
 }
@@ -1378,7 +1390,7 @@ section[id] {
 }
 
 .benefit-description {
-    color: rgba(255, 245, 243, 0.85);
+    color: rgba(255, 255, 255, 0.85);
     line-height: 1.6;
     font-size: 0.95rem;
 }
@@ -1423,7 +1435,7 @@ section[id] {
 .testimonial-quote {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: rgba(255, 245, 243, 0.95);
+    color: rgba(255, 255, 255, 0.95);
     margin-bottom: 20px;
     font-style: italic;
 }
@@ -1435,7 +1447,7 @@ section[id] {
 }
 
 .testimonial-role {
-    color: rgba(255, 245, 243, 0.7);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
 }
 
@@ -2028,16 +2040,16 @@ section[id] {
     }
 
     .metal-carousel {
-        height: 350px;
+        height: 400px;
     }
 
     .metal-color-card {
-        width: 250px;
-        padding: 18px;
+        width: 280px;
+        padding: 20px;
     }
 
     .metal-color-card img {
-        height: 180px;
+        height: 200px;
     }
 
     .custom-logo-section {
@@ -2073,16 +2085,16 @@ section[id] {
     }
 
     .metal-carousel {
-        height: 320px;
+        height: 350px;
     }
 
     .metal-color-card {
-        width: 220px;
-        padding: 16px;
+        width: 240px;
+        padding: 18px;
     }
 
     .metal-color-card img {
-        height: 160px;
+        height: 180px;
     }
 
     .preview-card-mobile {
@@ -2114,7 +2126,9 @@ section[id] {
 /* Add to cart button in carousel */
 .carousel-actions {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px; /* Reduced margin */
+    position: relative;
+    z-index: 10;
 }
 
 .carousel-actions .btn {
@@ -2242,7 +2256,7 @@ section[id] {
 }
 
 .engraving-header p {
-    color: rgba(255, 245, 243, 0.85);
+    color: rgba(255, 255, 255, 0.85);
     font-size: 1rem;
     line-height: 1.5;
     max-width: 400px;
@@ -2357,7 +2371,7 @@ section[id] {
 
 .engraving-description {
     font-size: 0.9rem;
-    color: rgba(255, 245, 243, 0.8);
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
     text-align: left;
 }
@@ -2869,7 +2883,7 @@ section[id] {
                 
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
-                        <!-- Hero card image -->
+                        <!-- Hero card image - NO OUTLINE -->
                         <img src="newblack.webp" alt="Black Metal NFC Card">
                         <div class="hero-card-upload-overlay">
                             <div class="upload-icon-mobile">📁</div>
@@ -2948,7 +2962,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - BIGGER WITH IMAGES -->
+        <!-- CAROUSEL SECTION - BIGGER TAKING MAJORITY OF SCREEN -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
@@ -4074,15 +4088,16 @@ section[id] {
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Metal Page loaded with enhanced features:');
-            console.log('1. Bigger carousel with images for each element ✓');
-            console.log('2. Hero card uses image and clickable to upload logo ✓');
-            console.log('3. Cards in "See it with your logo" are clickable when no logo uploaded ✓');
-            console.log('4. All carousel items use actual images ✓');
-            console.log('5. All prices set to £95 ✓');
-            console.log('6. WhatsApp links updated to +447754888841 ✓');
-            console.log('7. Checkout linked to WhatsApp with formatted message ✓');
-            console.log('8. Card icon as logo ✓');
-            console.log('9. WebP images for faster loading ✓');
+            console.log('1. Hero card outline removed ✓');
+            console.log('2. Bigger carousel takes majority of screen ✓');
+            console.log('3. Carousel height increased to 500px ✓');
+            console.log('4. Carousel cards enlarged to 320px width ✓');
+            console.log('5. All carousel items use actual images ✓');
+            console.log('6. All prices set to £95 ✓');
+            console.log('7. WhatsApp links updated to +447754888841 ✓');
+            console.log('8. Checkout linked to WhatsApp with formatted message ✓');
+            console.log('9. Card icon as logo ✓');
+            console.log('10. WebP images for faster loading ✓');
             updateCart();
             
             // Add highlight style for selected metal text
