@@ -646,13 +646,49 @@ section[id] {
     align-items: center;
     padding: 20px;
     border: 2px solid rgba(224, 191, 184, 0.5);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.hero-icon {
-    font-size: 50px;
-    margin-bottom: 20px;
+.hero-card:hover {
+    transform: scale(1.05);
+}
+
+.hero-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.hero-card-upload-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 15, 15, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.hero-card:hover .hero-card-upload-overlay {
+    opacity: 1;
+}
+
+.hero-card-upload-text {
+    font-size: 14px;
+    font-weight: 600;
     color: var(--white);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    text-align: center;
 }
 
 .hero-text {
@@ -936,7 +972,7 @@ section[id] {
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-/* CAROUSEL SECTION - MOVED ABOVE WHY CHOOSE METAL */
+/* CAROUSEL SECTION - BIGGER WITH IMAGES */
 .carousel-section {
     padding: 100px 20px;
     transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -1050,22 +1086,23 @@ section[id] {
 }
 
 .carousel-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
-/* FIX: Optimized metal carousel for better performance */
+/* BIGGER CAROUSEL */
 .metal-carousel {
     position: relative;
-    height: 320px;
+    height: 400px; /* Increased height */
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 40px auto 30px;
     perspective: 1200px;
-    max-width: 1100px;
+    max-width: 1300px;
     width: 100%;
     transform: translateZ(0);
     will-change: transform;
@@ -1073,12 +1110,12 @@ section[id] {
 
 .metal-color-card {
     position: absolute;
-    width: 220px;
+    width: 280px; /* Increased width */
     background: rgba(255, 255, 255, 0.15);
     border-radius: 24px;
-    padding: 16px;
+    padding: 20px;
     opacity: 0;
-    transform: scale(0.92) rotateY(0deg);
+    transform: scale(0.85) rotateY(0deg);
     transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
     pointer-events: none;
@@ -1095,23 +1132,16 @@ section[id] {
     transform: scale(1) rotateY(0deg);
     z-index: 3;
     pointer-events: auto;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5);
 }
 
 .metal-color-card img {
     width: 100%;
+    height: 200px; /* Increased height */
     border-radius: 16px;
-    aspect-ratio: 16/9;
     object-fit: cover;
-    margin-bottom: 12px;
-}
-
-.color-swatch {
-    width: 100%;
-    height: 140px;
-    border-radius: 16px;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .carousel-section.yellow .metal-color-card,
@@ -1135,9 +1165,10 @@ section[id] {
 }
 
 .card-label {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 6px;
+    font-size: 1.3rem; /* Increased font size */
+    font-weight: 800;
+    margin-bottom: 8px;
+    text-align: center;
 }
 
 .carousel-section.yellow .card-label,
@@ -1157,8 +1188,9 @@ section[id] {
 }
 
 .card-price {
-    font-size: 1.3rem;
-    font-weight: 800;
+    font-size: 1.5rem; /* Increased font size */
+    font-weight: 900;
+    text-align: center;
 }
 
 .carousel-section.yellow .card-price,
@@ -1181,13 +1213,13 @@ section[id] {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
+    width: 60px; /* Increased size */
+    height: 60px;
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
     z-index: 10;
     display: flex;
@@ -1200,7 +1232,7 @@ section[id] {
 .carousel-arrow:hover {
     background: rgba(0, 0, 0, 0.8);
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .carousel-arrow.left {
@@ -1230,13 +1262,13 @@ section[id] {
 .dots {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin: 20px 0 30px;
+    gap: 15px;
+    margin: 30px 0 40px;
 }
 
 .dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1259,7 +1291,7 @@ section[id] {
 }
 
 .dot.active {
-    transform: scale(1.2);
+    transform: scale(1.3);
 }
 
 .carousel-section.yellow .dot.active,
@@ -1332,7 +1364,7 @@ section[id] {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: ;
+    font-size: 24px;
     margin-bottom: 20px;
     color: var(--white);
     border: 1px solid rgba(224, 191, 184, 0.3);
@@ -1458,6 +1490,7 @@ section[id] {
     border: 1px solid rgba(224, 191, 184, 0.2);
     backdrop-filter: blur(10px);
     margin-bottom: 20px;
+    position: relative;
 }
 
 .preview-header-mobile {
@@ -1494,6 +1527,12 @@ section[id] {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
     position: relative;
     border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.preview-card-mobile:hover {
+    transform: scale(1.02);
 }
 
 @media (min-width: 768px) {
@@ -1529,6 +1568,11 @@ section[id] {
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .placeholder-icon-mobile {
@@ -1540,6 +1584,12 @@ section[id] {
 .placeholder-text-mobile {
     font-size: 1.1rem;
     font-weight: 600;
+}
+
+.placeholder-subtext-mobile {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    opacity: 0.8;
 }
 
 .preview-details-mobile {
@@ -1964,9 +2014,9 @@ section[id] {
     }
 
     .carousel-arrow {
-        width: 36px;
-        height: 36px;
-        font-size: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
     }
 
     .carousel-arrow.left {
@@ -1978,16 +2028,16 @@ section[id] {
     }
 
     .metal-carousel {
-        height: 280px;
+        height: 350px;
     }
 
     .metal-color-card {
-        width: 200px;
-        padding: 14px;
+        width: 250px;
+        padding: 18px;
     }
 
-    .color-swatch {
-        height: 120px;
+    .metal-color-card img {
+        height: 180px;
     }
 
     .custom-logo-section {
@@ -2009,9 +2059,9 @@ section[id] {
     }
 
     .carousel-arrow {
-        width: 32px;
-        height: 32px;
-        font-size: 18px;
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
     }
 
     .carousel-arrow.left {
@@ -2023,16 +2073,16 @@ section[id] {
     }
 
     .metal-carousel {
-        height: 260px;
+        height: 320px;
     }
 
     .metal-color-card {
-        width: 180px;
-        padding: 12px;
+        width: 220px;
+        padding: 16px;
     }
 
-    .color-swatch {
-        height: 100px;
+    .metal-color-card img {
+        height: 160px;
     }
 
     .preview-card-mobile {
@@ -2071,6 +2121,9 @@ section[id] {
     background: rgba(0, 0, 0, 0.7);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    min-width: 200px;
 }
 
 .carousel-section.yellow .carousel-actions .btn,
@@ -2815,10 +2868,13 @@ section[id] {
                 <h1 class="hero-title">Premium Metal NFC Cards</h1>
                 
                 <div class="hero-card-container">
-                    <div class="hero-card">
-                        <div class="hero-icon">⭐</div>
-                        <div class="hero-text">Premium Metal NFC Card</div>
-                        <div class="hero-subtext">Tap to Connect</div>
+                    <div class="hero-card" id="heroCard">
+                        <!-- Hero card image -->
+                        <img src="newblack.webp" alt="Black Metal NFC Card">
+                        <div class="hero-card-upload-overlay">
+                            <div class="upload-icon-mobile">📁</div>
+                            <div class="hero-card-upload-text">Click to upload your logo</div>
+                        </div>
                     </div>
                 </div>
 
@@ -2892,7 +2948,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION -->
+        <!-- CAROUSEL SECTION - BIGGER WITH IMAGES -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
@@ -2905,49 +2961,43 @@ section[id] {
 
                     <!-- 7 colors including Gold, Silver, Rose Gold -->
                     <div class="metal-color-card active" data-color="Black">
-                        <!-- INSERTED: Black carousel image -->
-<img src="newblack.webp" alt="Black Metal Card" class="carousel-card-image">
-<!-- /INSERTED -->
-
+                        <img src="newblack.webp" alt="Black Metal Card" class="carousel-card-image">
                         <div class="card-label">Black</div>
                         <div class="card-price">£95</div>
                     </div>
 
                     <div class="metal-color-card" data-color="Blue">
-                        <div class="color-swatch" style="background: var(--blue-bg);"></div>
+                        <img src="newblue.webp" alt="Blue Metal Card" class="carousel-card-image">
                         <div class="card-label">Blue</div>
                         <div class="card-price">£95</div>
                     </div>
 
                     <div class="metal-color-card" data-color="Green">
-                      <!-- INSERTED: Green carousel image -->
-<img src="newgreen.webp" alt="Green Metal Card" class="carousel-card-image">
-<!-- /INSERTED -->
-
+                        <img src="newgreen.webp" alt="Green Metal Card" class="carousel-card-image">
                         <div class="card-label">Green</div>
                         <div class="card-price">£95</div>
                     </div>
 
                     <div class="metal-color-card" data-color="Purple">
-                        <div class="color-swatch" style="background: var(--purple-bg);"></div>
+                        <img src="newpurple.webp" alt="Purple Metal Card" class="carousel-card-image">
                         <div class="card-label">Purple</div>
                         <div class="card-price">£95</div>
                     </div>
 
                     <div class="metal-color-card" data-color="Gold">
-                        <div class="color-swatch" style="background: var(--gold-bg);"></div>
+                        <img src="newgold.webp" alt="Gold Metal Card" class="carousel-card-image">
                         <div class="card-label">Gold</div>
                         <div class="card-price">£95</div>
                     </div>
 
                     <div class="metal-color-card" data-color="Silver">
-                        <div class="color-swatch" style="background: var(--silver-bg);"></div>
+                        <img src="newsilver.webp" alt="Silver Metal Card" class="carousel-card-image">
                         <div class="card-label">Silver</div>
                         <div class="card-price">£95</div>
                     </div>
 
                     <div class="metal-color-card" data-color="Rosegold">
-                        <div class="color-swatch" style="background: var(--rosegold-bg);"></div>
+                        <img src="newrosegold.webp" alt="Rose Gold Metal Card" class="carousel-card-image">
                         <div class="card-label">Rose Gold</div>
                         <div class="card-price">£95</div>
                     </div>
@@ -2988,11 +3038,12 @@ section[id] {
                             <div class="card-counter-mobile" id="cardCounterMobile">1/7</div>
                         </div>
                         
-                        <div class="preview-card-mobile">
+                        <div class="preview-card-mobile" id="previewCardMobileClickable">
                             <div class="preview-card-inner-mobile" id="previewCardMobile">
                                 <div class="preview-placeholder-mobile" id="previewPlaceholderMobile">
-                                    <div class="placeholder-icon-mobile">🏢</div>
-                                    <div class="placeholder-text-mobile">Upload your logo</div>
+                                    <div class="placeholder-icon-mobile">📁</div>
+                                    <div class="placeholder-text-mobile">Click to upload your logo</div>
+                                    <div class="placeholder-subtext-mobile">PNG, JPG up to 10MB</div>
                                 </div>
                                 <img class="preview-logo-mobile" id="previewLogoMobile" alt="Your Logo">
                             </div>
@@ -3189,6 +3240,7 @@ section[id] {
         let selectedMetal = 'Black';
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
+        let uploadedLogoGlobal = null;
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3451,7 +3503,7 @@ section[id] {
             updateCart();
         });
 
-        // Metal Color Carousel with Background Change
+        // Metal Color Carousel with Background Change - BIGGER
         const metalCards = document.querySelectorAll('.metal-color-card');
         const metalDots = document.querySelectorAll('.carousel-section .dot');
         const carouselSection = document.querySelector('.carousel-section');
@@ -3584,12 +3636,14 @@ section[id] {
         const previewLogoMobile = document.getElementById('previewLogoMobile');
         const previewPlaceholderMobile = document.getElementById('previewPlaceholderMobile');
         const previewCardMobile = document.getElementById('previewCardMobile');
+        const previewCardMobileClickable = document.getElementById('previewCardMobileClickable');
         const prevCardBtnMobile = document.getElementById('prevCardBtnMobile');
         const nextCardBtnMobile = document.getElementById('nextCardBtnMobile');
         const cardCounterMobile = document.getElementById('cardCounterMobile');
         const selectedCardNameMobile = document.getElementById('selectedCardNameMobile');
         const selectedEngravingTypeMobile = document.getElementById('selectedEngravingTypeMobile');
         const addToCartMobile = document.getElementById('addToCartMobile');
+        const heroCard = document.getElementById('heroCard');
 
         // All available cards - 7 colors including Gold, Silver, Rose Gold
         const cardsMobile = [
@@ -3605,7 +3659,6 @@ section[id] {
         let currentCardIndexMobile = 0;
         let selectedColorMobile = 'black';
         let selectedEngravingMobile = 'silver';
-        let uploadedLogoMobile = null;
 
         // Color name mapping
         const colorNameMapMobile = {
@@ -3658,12 +3711,13 @@ section[id] {
             cardCounterMobile.textContent = `${currentCardIndexMobile + 1}/${cardsMobile.length}`;
             
             // Show/hide logo
-            if (uploadedLogoMobile) {
+            if (uploadedLogoGlobal) {
+                previewLogoMobile.src = uploadedLogoGlobal;
                 previewLogoMobile.classList.add('visible');
                 previewPlaceholderMobile.style.display = 'none';
             } else {
                 previewLogoMobile.classList.remove('visible');
-                previewPlaceholderMobile.style.display = 'block';
+                previewPlaceholderMobile.style.display = 'flex';
             }
             
             // Update navigation buttons
@@ -3688,6 +3742,46 @@ section[id] {
         function updateMobileNavigation() {
             prevCardBtnMobile.disabled = currentCardIndexMobile === 0;
             nextCardBtnMobile.disabled = currentCardIndexMobile === cardsMobile.length - 1;
+        }
+
+        // Handle logo upload function
+        function handleLogoUpload(file) {
+            // Validate file type
+            if (!file.type.match('image.*')) {
+                showNotification('Please select an image file (JPG, PNG, GIF, etc.)');
+                return;
+            }
+
+            // Validate file size (max 10MB)
+            if (file.size > 10 * 1024 * 1024) {
+                showNotification('File is too large. Maximum size is 10MB.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Update preview
+                uploadedLogoGlobal = e.target.result;
+                previewLogoMobile.src = uploadedLogoGlobal;
+                
+                // Update preview display
+                previewLogoMobile.classList.add('visible');
+                previewPlaceholderMobile.style.display = 'none';
+                
+                // Enable clear button
+                clearLogoBtnMobile.disabled = false;
+                
+                // Update hero card if needed
+                if (heroCard) {
+                    heroCard.querySelector('img').src = uploadedLogoGlobal;
+                }
+                
+                showNotification('Logo uploaded successfully!');
+            };
+            reader.onerror = function() {
+                showNotification('Error reading file. Please try again.');
+            };
+            reader.readAsDataURL(file);
         }
 
         // Handle color selection on mobile
@@ -3736,44 +3830,11 @@ section[id] {
             });
         });
 
-        // Handle logo upload on mobile
-        function handleLogoUploadMobile(file) {
-            // Validate file type
-            if (!file.type.match('image.*')) {
-                showNotification('Please select an image file (JPG, PNG, GIF, etc.)');
-                return;
-            }
-
-            // Validate file size (max 10MB)
-            if (file.size > 10 * 1024 * 1024) {
-                showNotification('File is too large. Maximum size is 10MB.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                // Update preview
-                previewLogoMobile.src = e.target.result;
-                uploadedLogoMobile = e.target.result;
-                
-                // Update preview display
-                previewLogoMobile.classList.add('visible');
-                previewPlaceholderMobile.style.display = 'none';
-                
-                // Enable clear button
-                clearLogoBtnMobile.disabled = false;
-                
-                showNotification('Logo uploaded successfully!');
-            };
-            reader.onerror = function() {
-                showNotification('Error reading file. Please try again.');
-            };
-            reader.readAsDataURL(file);
-        }
-
         // Click on upload area (mobile friendly)
         uploadAreaMobile.addEventListener('click', () => {
-            logoFileInputMobile.click();
+            if (!uploadedLogoGlobal) {
+                logoFileInputMobile.click();
+            }
         });
 
         // Click on upload button
@@ -3784,18 +3845,24 @@ section[id] {
         // File input change
         logoFileInputMobile.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
-                handleLogoUploadMobile(e.target.files[0]);
+                handleLogoUpload(e.target.files[0]);
             }
         });
 
         // Clear logo button
         clearLogoBtnMobile.addEventListener('click', () => {
             previewLogoMobile.src = '';
-            uploadedLogoMobile = null;
+            uploadedLogoGlobal = null;
             previewLogoMobile.classList.remove('visible');
-            previewPlaceholderMobile.style.display = 'block';
+            previewPlaceholderMobile.style.display = 'flex';
             logoFileInputMobile.value = '';
             clearLogoBtnMobile.disabled = true;
+            
+            // Reset hero card image
+            if (heroCard) {
+                heroCard.querySelector('img').src = 'newblack.webp';
+            }
+            
             showNotification('Logo cleared');
         });
 
@@ -3825,6 +3892,31 @@ section[id] {
 
         // Initialize mobile logo builder
         initMobileLogoBuilder();
+
+        // CLICK ON CARD TO UPLOAD LOGO (when no logo uploaded yet)
+        previewCardMobileClickable.addEventListener('click', () => {
+            if (!uploadedLogoGlobal) {
+                logoFileInputMobile.click();
+            }
+        });
+
+        // HERO CARD CLICK TO UPLOAD
+        heroCard.addEventListener('click', () => {
+            if (!uploadedLogoGlobal) {
+                logoFileInputMobile.click();
+            } else {
+                // Scroll to custom logo section if logo already uploaded
+                const customLogoSection = document.getElementById('custom-logo');
+                if (customLogoSection) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = customLogoSection.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
 
         // IMPROVED ENGRAVING SELECTION MODAL
         const engravingOptionsModal = document.querySelectorAll('.engraving-option');
@@ -3981,15 +4073,16 @@ section[id] {
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal Page loaded with WebP images and fixed cropping:');
-            console.log('1. SVG images converted to WebP format ✓');
-            console.log('2. Removed outline/container around WebP images ✓');
-            console.log('3. Fixed cropping issues by using object-fit: cover ✓');
-            console.log('4. All prices set to £95 ✓');
-            console.log('5. WhatsApp links updated to +447754888841 ✓');
-            console.log('6. Checkout linked to WhatsApp with formatted message ✓');
-            console.log('7. Added card icon as logo ✓');
-            console.log('8. WebP images will be cleaner and load faster than SVG ✓');
+            console.log('Metal Page loaded with enhanced features:');
+            console.log('1. Bigger carousel with images for each element ✓');
+            console.log('2. Hero card uses image and clickable to upload logo ✓');
+            console.log('3. Cards in "See it with your logo" are clickable when no logo uploaded ✓');
+            console.log('4. All carousel items use actual images ✓');
+            console.log('5. All prices set to £95 ✓');
+            console.log('6. WhatsApp links updated to +447754888841 ✓');
+            console.log('7. Checkout linked to WhatsApp with formatted message ✓');
+            console.log('8. Card icon as logo ✓');
+            console.log('9. WebP images for faster loading ✓');
             updateCart();
             
             // Add highlight style for selected metal text
