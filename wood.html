@@ -1004,7 +1004,7 @@ section[id] {
 /* CAROUSEL SECTION - PROPER CAROUSEL */
 .carousel-section {
     padding: 100px 20px;
-    background: var(--carousel-walnut-bg); /* Default background */
+    background: var(--carousel-walnut-bg);
     position: relative;
     overflow: hidden;
     transition: background 0.5s ease;
@@ -1039,34 +1039,60 @@ section[id] {
     margin-bottom: 16px;
 }
 
-/* PROPER CAROUSEL */
-.wood-carousel {
+/* Carousel Styles */
+.wood-carousel-wrapper {
     position: relative;
+    width: 100%;
     overflow: hidden;
-    padding: 20px 0;
+    padding: 0 60px;
+}
+
+@media (max-width: 768px) {
+    .wood-carousel-wrapper {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wood-carousel-wrapper {
+        padding: 0 20px;
+    }
 }
 
 .wood-carousel-track {
     display: flex;
-    gap: 30px;
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    padding: 20px 0;
+    gap: 30px;
+    padding: 10px 0;
 }
 
 /* Carousel cards matching bestseller style */
 .wood-carousel-card {
+    flex: 0 0 calc(33.333% - 20px);
     border-radius: 20px;
     padding: 30px;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
-    min-width: 300px;
-    flex: 0 0 auto;
-    cursor: pointer;
-    height: 450px;
+    height: 500px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
+    min-width: 300px;
+}
+
+@media (max-width: 1024px) {
+    .wood-carousel-card {
+        flex: 0 0 calc(50% - 15px);
+    }
+}
+
+@media (max-width: 768px) {
+    .wood-carousel-card {
+        flex: 0 0 calc(100% - 0px);
+        min-width: 280px;
+    }
 }
 
 /* Wood type backgrounds for carousel cards */
@@ -1167,6 +1193,28 @@ section[id] {
     color: #3D281E;
 }
 
+.wood-carousel-description {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.wood-carousel-card.walnut .wood-carousel-description,
+.wood-carousel-card.cherry .wood-carousel-description,
+.wood-carousel-card.mahogany .wood-carousel-description,
+.wood-carousel-card.bamboo .wood-carousel-description,
+.wood-carousel-card.teak .wood-carousel-description {
+    color: rgba(245, 230, 211, 0.9);
+}
+
+.wood-carousel-card.oak .wood-carousel-description,
+.wood-carousel-card.maple .wood-carousel-description,
+.wood-carousel-card.pine .wood-carousel-description,
+.wood-carousel-card.birch .wood-carousel-description {
+    color: rgba(61, 40, 30, 0.9);
+}
+
 .wood-carousel-price {
     font-size: 1.8rem;
     font-weight: 900;
@@ -1204,81 +1252,89 @@ section[id] {
     flex: 1;
 }
 
-/* Carousel Navigation */
+/* Carousel Navigation Arrows */
 .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(232, 212, 193, 0.3);
+    border: 1px solid rgba(232, 212, 193, 0.5);
+    border-radius: 50%;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 15px;
-    margin-top: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: var(--white);
+    font-size: 24px;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
 }
 
+.carousel-nav:hover {
+    background: rgba(232, 212, 193, 0.5);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 15px rgba(183, 110, 61, 0.4);
+}
+
+.carousel-nav.prev {
+    left: 0;
+}
+
+.carousel-nav.next {
+    right: 0;
+}
+
+.carousel-nav.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+}
+
+.carousel-nav.disabled:hover {
+    background: rgba(232, 212, 193, 0.3);
+    transform: translateY(-50%) scale(1);
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+/* Carousel Dots */
 .carousel-dots {
     display: flex;
+    justify-content: center;
     gap: 10px;
+    margin-top: 30px;
 }
 
 .carousel-dot {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: rgba(232, 212, 193, 0.3);
+    border: 1px solid rgba(232, 212, 193, 0.5);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .carousel-dot.active {
     background: var(--wood-light);
+    border-color: var(--wood-light);
     transform: scale(1.2);
 }
 
-.carousel-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(232, 212, 193, 0.2);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    color: var(--white);
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-}
-
-.carousel-btn:hover {
-    background: rgba(232, 212, 193, 0.3);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-btn.prev {
-    left: -60px;
-}
-
-.carousel-btn.next {
-    right: -60px;
-}
-
-@media (max-width: 768px) {
-    .carousel-btn {
-        display: none;
-    }
-    
-    .wood-carousel-card {
-        min-width: 280px;
-        height: 420px;
-    }
-}
-
-@media (max-width: 480px) {
-    .wood-carousel-card {
-        min-width: 260px;
-        height: 400px;
-    }
+.carousel-dot:hover {
+    background: rgba(232, 212, 193, 0.5);
+    transform: scale(1.1);
 }
 
 /* WHY CHOOSE SECTION - WOOD THEME */
@@ -2195,6 +2251,102 @@ section[id] {
     margin: 0 auto;
 }
 
+/* Quantity Controls */
+.quantity-controls {
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(232, 212, 193, 0.1);
+    border-radius: 16px;
+    border: 1px solid rgba(232, 212, 193, 0.2);
+}
+
+.quantity-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.quantity-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(232, 212, 193, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.3);
+    color: var(--white);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.quantity-btn:hover:not(:disabled) {
+    background: rgba(232, 212, 193, 0.3);
+    transform: scale(1.1);
+}
+
+.quantity-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.quantity-input {
+    width: 60px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(232, 212, 193, 0.1);
+    border: 1px solid rgba(232, 212, 193, 0.3);
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+}
+
+.quantity-input:focus {
+    border-color: var(--wood-light);
+    box-shadow: 0 0 0 2px rgba(183, 110, 61, 0.3);
+}
+
+.quantity-presets {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.quantity-preset-btn {
+    padding: 8px 16px;
+    background: rgba(232, 212, 193, 0.1);
+    border: 1px solid rgba(232, 212, 193, 0.3);
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quantity-preset-btn:hover {
+    background: rgba(232, 212, 193, 0.2);
+}
+
+.quantity-preset-btn.active {
+    background: var(--wood-gradient);
+    border-color: var(--wood-light);
+}
+
 /* Cart Modal - WOOD THEME */
 .cart-modal {
     position: fixed;
@@ -2429,9 +2581,25 @@ section[id] {
                 </div>
             </div>
 
+            <!-- Quantity Controls -->
+            <div class="quantity-controls">
+                <div class="quantity-title">Select Quantity</div>
+                <div class="quantity-selector">
+                    <button class="quantity-btn" id="quantityDecrease">-</button>
+                    <input type="number" class="quantity-input" id="quantityInput" value="1" min="1" max="100">
+                    <button class="quantity-btn" id="quantityIncrease">+</button>
+                </div>
+                <div class="quantity-presets">
+                    <button class="quantity-preset-btn" data-quantity="1">1 Card</button>
+                    <button class="quantity-preset-btn active" data-quantity="5">5 Cards</button>
+                    <button class="quantity-preset-btn" data-quantity="10">10 Cards</button>
+                    <button class="quantity-preset-btn" data-quantity="20">20 Cards</button>
+                </div>
+            </div>
+
             <div class="engraving-actions">
                 <button class="btn-cancel" id="cancelEngraving">Cancel</button>
-                <button class="btn-confirm" id="confirmEngraving" disabled>Add to Cart</button>
+                <button class="btn-confirm" id="confirmEngraving">Add to Cart - £<span id="engravingTotalPrice">85</span></button>
             </div>
         </div>
     </div>
@@ -2616,7 +2784,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - 9 WOOD TYPES PROPER CAROUSEL -->
+        <!-- CAROUSEL SECTION - 9 WOOD TYPES MATCHING BESTSELLER STYLE -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
@@ -2624,9 +2792,8 @@ section[id] {
                     <p class="section-subtitle">Choose from 9 premium wood types</p>
                 </div>
 
-                <div class="wood-carousel">
-                    <button class="carousel-btn prev" id="carouselPrev">‹</button>
-                    <button class="carousel-btn next" id="carouselNext">›</button>
+                <div class="wood-carousel-wrapper">
+                    <button class="carousel-nav prev" id="carouselPrev">‹</button>
                     
                     <div class="wood-carousel-track" id="carouselTrack">
                         <!-- Walnut -->
@@ -2635,6 +2802,7 @@ section[id] {
                                 <img src="woodwalnut.webp" alt="Walnut Wood Card">
                             </div>
                             <h3 class="wood-carousel-title">Walnut Wood Card</h3>
+                            <p class="wood-carousel-description">Rich, dark wood with beautiful grain patterns. Perfect for luxury brands and sophisticated professionals.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Walnut Wood Card" data-price="85">🛒 Add to Cart</button>
@@ -2647,6 +2815,7 @@ section[id] {
                                 <img src="woodoak.webp" alt="Oak Wood Card">
                             </div>
                             <h3 class="wood-carousel-title">Oak Wood Card</h3>
+                            <p class="wood-carousel-description">Classic, light-colored wood with distinctive grain. Ideal for traditional businesses and heritage brands.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Oak Wood Card" data-price="85">🛒 Add to Cart</button>
@@ -2659,6 +2828,7 @@ section[id] {
                                 <img src="woodcherry.webp" alt="Cherry Wood Card">
                             </div>
                             <h3 class="wood-carousel-title">Cherry Wood Card</h3>
+                            <p class="wood-carousel-description">Warm, rich reddish-brown wood. Perfect for brands wanting a touch of elegance and warmth.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Cherry Wood Card" data-price="85">🛒 Add to Cart</button>
@@ -2671,6 +2841,7 @@ section[id] {
                                 <img src="woodmaple.webp" alt="Maple Wood Card">
                             </div>
                             <h3 class="wood-carousel-title">Maple Wood Card</h3>
+                            <p class="wood-carousel-description">Light-colored wood with subtle grain. Perfect for clean, modern brands and minimalist designs.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Maple Wood Card" data-price="85">🛒 Add to Cart</button>
@@ -2683,6 +2854,7 @@ section[id] {
                                 <img src="woodmahogany.webp" alt="Mahogany Wood Card">
                             </div>
                             <h3 class="wood-carousel-title">Mahogany Wood Card</h3>
+                            <p class="wood-carousel-description">Deep red-brown wood with luxurious appearance. Perfect for high-end brands and executive professionals.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Mahogany Wood Card" data-price="85">🛒 Add to Cart</button>
@@ -2695,6 +2867,7 @@ section[id] {
                                 <img src="woodbamboo.webp" alt="Bamboo Wood Card">
                             </div>
                             <h3 class="wood-carousel-title">Bamboo Wood Card</h3>
+                            <p class="wood-carousel-description">Sustainable, fast-growing wood with unique texture. Perfect for eco-friendly and Asian-inspired brands.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Bamboo Wood Card" data-price="85">🛒 Add to Cart</button>
@@ -2707,6 +2880,7 @@ section[id] {
                                 <img src="woodteak.webp" alt="Teak Wood Card">
                             </div>
                             <h3 class="wood-carousel-title">Teak Wood Card</h3>
+                            <p class="wood-carousel-description">Durable, golden-brown wood. Perfect for outdoor brands and those wanting exceptional durability.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Teak Wood Card" data-price="85">🛒 Add to Cart</button>
@@ -2719,6 +2893,7 @@ section[id] {
                                 <img src="woodpine.webp" alt="Pine Wood Card">
                             </div>
                             <h3 class="wood-carousel-title">Pine Wood Card</h3>
+                            <p class="wood-carousel-description">Light-colored wood with prominent grain. Perfect for rustic brands and traditional craftsmanship.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Pine Wood Card" data-price="85">🛒 Add to Cart</button>
@@ -2731,6 +2906,7 @@ section[id] {
                                 <img src="woodbirch.webp" alt="Birch Wood Card">
                             </div>
                             <h3 class="wood-carousel-title">Birch Wood Card</h3>
+                            <p class="wood-carousel-description">Pale wood with smooth texture. Perfect for Scandinavian-inspired brands and minimalist aesthetics.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Birch Wood Card" data-price="85">🛒 Add to Cart</button>
@@ -2738,11 +2914,11 @@ section[id] {
                         </div>
                     </div>
                     
-                    <div class="carousel-nav">
-                        <div class="carousel-dots" id="carouselDots">
-                            <!-- Dots will be generated by JavaScript -->
-                        </div>
-                    </div>
+                    <button class="carousel-nav next" id="carouselNext">›</button>
+                </div>
+
+                <div class="carousel-dots" id="carouselDots">
+                    <!-- Dots will be added dynamically -->
                 </div>
             </div>
         </section>
@@ -2977,6 +3153,8 @@ section[id] {
         let engravingModal = document.getElementById('engravingModal');
         let uploadedLogoGlobal = null;
         let logoSize = 70; // Default logo size percentage
+        let currentEngravingData = null; // Store data for engraving modal
+        let engravingQuantity = 1; // Default quantity for engraving modal
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3128,21 +3306,21 @@ section[id] {
         }
 
         // Add to cart function
-        function addToCart(name, price) {
+        function addToCart(name, price, quantity = 1) {
             const existingItem = cart.find(item => item.name === name);
 
             if (existingItem) {
-                existingItem.quantity += 1;
+                existingItem.quantity += quantity;
             } else {
                 cart.push({
                     name: name,
                     price: price,
-                    quantity: 1
+                    quantity: quantity
                 });
             }
 
             updateCart();
-            showNotification(`${name} added to cart!`);
+            showNotification(`${name} (${quantity}×) added to cart!`);
         }
 
         // Remove from cart
@@ -3235,7 +3413,8 @@ section[id] {
                 button.addEventListener('click', (e) => {
                     const name = e.target.dataset.name;
                     const price = parseInt(e.target.dataset.price);
-                    addToCart(name, price);
+                    // Open engraving modal instead of directly adding to cart
+                    openEngravingModal(name, price);
                 });
             });
 
@@ -3249,9 +3428,118 @@ section[id] {
             updateCart();
         });
 
+        // ENGRAVING MODAL FUNCTIONALITY
+        const closeEngraving = document.getElementById('closeEngraving');
+        const cancelEngraving = document.getElementById('cancelEngraving');
+        const confirmEngraving = document.getElementById('confirmEngraving');
+        const selectedWoodText = document.getElementById('selectedWoodText');
+        const engravingOptions = document.querySelectorAll('.engraving-option');
+        const engravingTotalPrice = document.getElementById('engravingTotalPrice');
+        const quantityDecrease = document.getElementById('quantityDecrease');
+        const quantityIncrease = document.getElementById('quantityIncrease');
+        const quantityInput = document.getElementById('quantityInput');
+        const quantityPresetBtns = document.querySelectorAll('.quantity-preset-btn');
+
+        // Open engraving modal
+        function openEngravingModal(name, price) {
+            currentEngravingData = { name, price };
+            selectedWoodText.textContent = name.split(' ')[0]; // Get wood type from name
+            engravingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Reset to defaults
+            engravingQuantity = 1;
+            quantityInput.value = 1;
+            updateEngravingPrice();
+            
+            // Reset engraving selection
+            engravingOptions.forEach(option => option.classList.remove('selected'));
+            engravingOptions[0].classList.add('selected');
+            
+            // Reset quantity presets
+            quantityPresetBtns.forEach(btn => btn.classList.remove('active'));
+            quantityPresetBtns[0].classList.add('active');
+        }
+
+        // Close engraving modal
+        function closeEngravingModal() {
+            engravingModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Update engraving price based on quantity
+        function updateEngravingPrice() {
+            if (!currentEngravingData) return;
+            const total = currentEngravingData.price * engravingQuantity;
+            engravingTotalPrice.textContent = total;
+        }
+
+        // Quantity controls
+        quantityDecrease.addEventListener('click', () => {
+            if (engravingQuantity > 1) {
+                engravingQuantity--;
+                quantityInput.value = engravingQuantity;
+                updateEngravingPrice();
+            }
+        });
+
+        quantityIncrease.addEventListener('click', () => {
+            if (engravingQuantity < 100) {
+                engravingQuantity++;
+                quantityInput.value = engravingQuantity;
+                updateEngravingPrice();
+            }
+        });
+
+        quantityInput.addEventListener('change', () => {
+            let value = parseInt(quantityInput.value);
+            if (isNaN(value) || value < 1) value = 1;
+            if (value > 100) value = 100;
+            engravingQuantity = value;
+            quantityInput.value = value;
+            updateEngravingPrice();
+        });
+
+        // Quantity preset buttons
+        quantityPresetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const quantity = parseInt(btn.dataset.quantity);
+                engravingQuantity = quantity;
+                quantityInput.value = quantity;
+                updateEngravingPrice();
+                
+                quantityPresetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Engraving selection
+        engravingOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                engravingOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+
+        // Confirm engraving selection
+        confirmEngraving.addEventListener('click', () => {
+            if (!currentEngravingData) return;
+            
+            const engravingType = document.querySelector('.engraving-option.selected').dataset.engraving;
+            const engravingName = engravingType === 'natural' ? 'Natural Grain' : 'Laser Burned';
+            const itemName = `${currentEngravingData.name} (${engravingName})`;
+            
+            addToCart(itemName, currentEngravingData.price, engravingQuantity);
+            closeEngravingModal();
+        });
+
+        // Close engraving modal
+        closeEngraving.addEventListener('click', closeEngravingModal);
+        cancelEngraving.addEventListener('click', closeEngravingModal);
+
         // CUSTOM LOGO BUILDER
         const woodColorOptions = document.querySelectorAll('.wood-color-option');
-        const engravingOptions = document.querySelectorAll('.engraving-option');
+        const customEngravingOptions = document.querySelectorAll('.engraving-option');
         const uploadArea = document.getElementById('uploadArea');
         const logoFileInput = document.getElementById('logoFileInput');
         const uploadLogoBtn = document.getElementById('uploadLogoBtn');
@@ -3415,10 +3703,10 @@ section[id] {
         });
 
         // Handle engraving selection
-        engravingOptions.forEach(option => {
+        customEngravingOptions.forEach(option => {
             option.addEventListener('click', () => {
                 // Remove selected class from all options
-                engravingOptions.forEach(opt => opt.classList.remove('selected'));
+                customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
                 
                 // Add selected class to clicked option
                 option.classList.add('selected');
@@ -3481,7 +3769,7 @@ section[id] {
             document.querySelector('.wood-color-option[data-color="walnut"]').classList.add('selected');
             selectedWoodColor = 'walnut';
             
-            engravingOptions.forEach(opt => opt.classList.remove('selected'));
+            customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
             document.querySelector('.engraving-option[data-engraving="natural"]').classList.add('selected');
             selectedEngravingTypeValue = 'natural';
             
@@ -3513,7 +3801,8 @@ section[id] {
             const engravingType = engravingTypeMap[selectedEngravingTypeValue];
             const itemName = `${cardName} (${engravingType})`;
             
-            addToCart(itemName, 85);
+            // Open engraving modal with quantity selection
+            openEngravingModal(cardName, 85);
         });
 
         // Logo size slider
@@ -3626,7 +3915,7 @@ section[id] {
             });
         });
 
-        // PROPER CAROUSEL FUNCTIONALITY
+        // CAROUSEL FUNCTIONALITY
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
@@ -3635,88 +3924,82 @@ section[id] {
         const carouselCards = document.querySelectorAll('.wood-carousel-card');
 
         let currentSlide = 0;
-        const slidesPerView = 3;
-        const cardWidth = 330; // 300px width + 30px gap
-        const totalSlides = carouselCards.length;
+        let cardsPerView = 3;
+        let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
 
-        // Calculate how many slides we can show based on screen width
-        function getSlidesPerView() {
-            if (window.innerWidth <= 480) return 1;
-            if (window.innerWidth <= 768) return 2;
-            return 3;
+        // Initialize carousel
+        function initCarousel() {
+            updateCardsPerView();
+            createDots();
+            updateCarousel();
         }
 
-        // Create carousel dots
+        // Update cards per view based on screen size
+        function updateCardsPerView() {
+            if (window.innerWidth <= 768) {
+                cardsPerView = 1;
+            } else if (window.innerWidth <= 1024) {
+                cardsPerView = 2;
+            } else {
+                cardsPerView = 3;
+            }
+            totalSlides = Math.ceil(carouselCards.length / cardsPerView);
+            createDots();
+            updateCarousel();
+        }
+
+        // Create dots for carousel
         function createDots() {
             carouselDots.innerHTML = '';
-            const slidesToShow = Math.ceil(totalSlides / getSlidesPerView());
-            
-            for (let i = 0; i < slidesToShow; i++) {
+            for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('div');
-                dot.className = 'carousel-dot';
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(i));
+                dot.classList.add('carousel-dot');
+                if (i === currentSlide) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    currentSlide = i;
+                    updateCarousel();
+                });
                 carouselDots.appendChild(dot);
             }
         }
 
-        // Update dots
-        function updateDots() {
-            const dots = document.querySelectorAll('.carousel-dot');
-            const currentDot = Math.floor(currentSlide / getSlidesPerView());
-            
-            dots.forEach((dot, index) => {
-                if (index === currentDot) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        // Go to specific slide
-        function goToSlide(slideIndex) {
-            const slidesPerView = getSlidesPerView();
-            currentSlide = slideIndex * slidesPerView;
-            
-            // Ensure we don't go beyond the last slide
-            if (currentSlide >= totalSlides - slidesPerView) {
-                currentSlide = totalSlides - slidesPerView;
-            }
-            
-            updateCarouselPosition();
-            updateDots();
-        }
-
         // Update carousel position
-        function updateCarouselPosition() {
-            const translateX = -currentSlide * cardWidth;
+        function updateCarousel() {
+            const cardWidth = carouselCards[0].offsetWidth + 30; // width + gap
+            const translateX = -currentSlide * cardsPerView * cardWidth;
             carouselTrack.style.transform = `translateX(${translateX}px)`;
+            
+            // Update dots
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Update navigation buttons
+            carouselPrev.classList.toggle('disabled', currentSlide === 0);
+            carouselNext.classList.toggle('disabled', currentSlide >= totalSlides - 1);
         }
 
         // Next slide
         function nextSlide() {
-            const slidesPerView = getSlidesPerView();
-            if (currentSlide < totalSlides - slidesPerView) {
-                currentSlide += slidesPerView;
-            } else {
-                currentSlide = 0; // Loop back to start
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateCarousel();
             }
-            updateCarouselPosition();
-            updateDots();
         }
 
         // Previous slide
         function prevSlide() {
-            const slidesPerView = getSlidesPerView();
             if (currentSlide > 0) {
-                currentSlide -= slidesPerView;
-            } else {
-                currentSlide = totalSlides - slidesPerView; // Loop to end
+                currentSlide--;
+                updateCarousel();
             }
-            updateCarouselPosition();
-            updateDots();
         }
+
+        // Event listeners for carousel navigation
+        carouselPrev.addEventListener('click', prevSlide);
+        carouselNext.addEventListener('click', nextSlide);
 
         // CAROUSEL BACKGROUND COLOR CHANGER
         // Function to update carousel background based on hovered card
@@ -3752,41 +4035,19 @@ section[id] {
             });
         });
 
-        // Initialize carousel
-        function initCarousel() {
-            createDots();
-            updateCarouselPosition();
-            
-            // Event listeners for navigation
-            carouselPrev.addEventListener('click', prevSlide);
-            carouselNext.addEventListener('click', nextSlide);
-            
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                createDots();
-                updateCarouselPosition();
-            });
-            
-            // Auto-advance carousel every 5 seconds
-            setInterval(() => {
-                nextSlide();
-            }, 5000);
-        }
-
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Wood Page loaded with enhanced features:');
-            console.log('1. Custom logo section redesigned to match metal page ✓');
-            console.log('2. Logo size controls added (slider + presets) ✓');
-            console.log('3. Clear card button replaces navigation arrows ✓');
-            console.log('4. PROPER CAROUSEL with navigation buttons and dots ✓');
-            console.log('5. All wood colors same size as metal page ✓');
-            console.log('6. Carousel section background changes on card hover ✓');
-            console.log('7. WhatsApp links updated to +447754888841 ✓');
-            console.log('8. All prices set to £85 ✓');
+            console.log('1. Working carousel with navigation arrows ✓');
+            console.log('2. No auto-advance, manual control only ✓');
+            console.log('3. Full cards displayed (not cut in half) ✓');
+            console.log('4. Engraving modal with quantity adjustment ✓');
+            console.log('5. Carousel background changes on card hover ✓');
+            console.log('6. WhatsApp links updated to +447754888841 ✓');
+            console.log('7. All prices set to £85 ✓');
             
-            updateCart();
             initCarousel();
+            updateCart();
             
             // Add highlight style for selected wood text
             const style = document.createElement('style');
@@ -3821,7 +4082,7 @@ section[id] {
                     display: grid;
                     grid-template-columns: 1fr;
                     gap: 20px;
-                    margin-bottom: 30px;
+                    margin-bottom: 20px;
                 }
                 
                 @media (min-width: 768px) {
@@ -3897,7 +4158,6 @@ section[id] {
                     flex-direction: column;
                     gap: 15px;
                     padding-top: 20px;
-                    border-top: 1px solid rgba(232, 212, 193, 0.2);
                 }
                 
                 @media (min-width: 480px) {
@@ -3962,6 +4222,11 @@ section[id] {
                 }
             `;
             document.head.appendChild(style);
+        });
+
+        // Update carousel on window resize
+        window.addEventListener('resize', () => {
+            updateCardsPerView();
         });
     </script>
 </body>
