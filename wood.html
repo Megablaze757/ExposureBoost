@@ -1001,7 +1001,7 @@ section[id] {
     border: 1px solid rgba(61, 40, 30, 0.3);
 }
 
-/* CAROUSEL SECTION - MATCHING BESTSELLER STYLE */
+/* CAROUSEL SECTION - PROPER CAROUSEL */
 .carousel-section {
     padding: 100px 20px;
     background: var(--carousel-walnut-bg); /* Default background */
@@ -1039,15 +1039,18 @@ section[id] {
     margin-bottom: 16px;
 }
 
-/* CAROUSEL AS BESTSELLER GRID */
-.wood-carousel-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
+/* PROPER CAROUSEL */
+.wood-carousel {
     position: relative;
-    z-index: 2;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.wood-carousel-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    padding: 20px 0;
 }
 
 /* Carousel cards matching bestseller style */
@@ -1058,10 +1061,12 @@ section[id] {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
-    height: 100%;
+    min-width: 300px;
+    flex: 0 0 auto;
+    cursor: pointer;
+    height: 450px;
     display: flex;
     flex-direction: column;
-    cursor: pointer;
 }
 
 /* Wood type backgrounds for carousel cards */
@@ -1197,6 +1202,83 @@ section[id] {
 
 .wood-carousel-actions .btn {
     flex: 1;
+}
+
+/* Carousel Navigation */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(232, 212, 193, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--wood-light);
+    transform: scale(1.2);
+}
+
+.carousel-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(232, 212, 193, 0.2);
+    border: 1px solid rgba(232, 212, 193, 0.3);
+    color: var(--white);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: rgba(232, 212, 193, 0.3);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+    left: -60px;
+}
+
+.carousel-btn.next {
+    right: -60px;
+}
+
+@media (max-width: 768px) {
+    .carousel-btn {
+        display: none;
+    }
+    
+    .wood-carousel-card {
+        min-width: 280px;
+        height: 420px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wood-carousel-card {
+        min-width: 260px;
+        height: 400px;
+    }
 }
 
 /* WHY CHOOSE SECTION - WOOD THEME */
@@ -1958,7 +2040,6 @@ section[id] {
     }
 
     .bestsellers-grid,
-    .wood-carousel-grid,
     .benefits-grid,
     .testimonials-grid {
         grid-template-columns: 1fr;
@@ -2535,7 +2616,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - 9 WOOD TYPES MATCHING BESTSELLER STYLE -->
+        <!-- CAROUSEL SECTION - 9 WOOD TYPES PROPER CAROUSEL -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
@@ -2543,112 +2624,123 @@ section[id] {
                     <p class="section-subtitle">Choose from 9 premium wood types</p>
                 </div>
 
-                <div class="wood-carousel-grid">
-                    <!-- Walnut -->
-                    <div class="wood-carousel-card walnut" data-wood="walnut">
-                        <div class="wood-carousel-image">
-                            <img src="woodwalnut.webp" alt="Walnut Wood Card">
+                <div class="wood-carousel">
+                    <button class="carousel-btn prev" id="carouselPrev">‹</button>
+                    <button class="carousel-btn next" id="carouselNext">›</button>
+                    
+                    <div class="wood-carousel-track" id="carouselTrack">
+                        <!-- Walnut -->
+                        <div class="wood-carousel-card walnut" data-wood="walnut">
+                            <div class="wood-carousel-image">
+                                <img src="woodwalnut.webp" alt="Walnut Wood Card">
+                            </div>
+                            <h3 class="wood-carousel-title">Walnut Wood Card</h3>
+                            <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
+                            <div class="wood-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Walnut Wood Card" data-price="85">🛒 Add to Cart</button>
+                            </div>
                         </div>
-                        <h3 class="wood-carousel-title">Walnut Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Walnut Wood Card" data-price="85">🛒 Add to Cart</button>
+
+                        <!-- Oak -->
+                        <div class="wood-carousel-card oak" data-wood="oak">
+                            <div class="wood-carousel-image">
+                                <img src="woodoak.webp" alt="Oak Wood Card">
+                            </div>
+                            <h3 class="wood-carousel-title">Oak Wood Card</h3>
+                            <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
+                            <div class="wood-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Oak Wood Card" data-price="85">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Cherry -->
+                        <div class="wood-carousel-card cherry" data-wood="cherry">
+                            <div class="wood-carousel-image">
+                                <img src="woodcherry.webp" alt="Cherry Wood Card">
+                            </div>
+                            <h3 class="wood-carousel-title">Cherry Wood Card</h3>
+                            <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
+                            <div class="wood-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Cherry Wood Card" data-price="85">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Maple -->
+                        <div class="wood-carousel-card maple" data-wood="maple">
+                            <div class="wood-carousel-image">
+                                <img src="woodmaple.webp" alt="Maple Wood Card">
+                            </div>
+                            <h3 class="wood-carousel-title">Maple Wood Card</h3>
+                            <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
+                            <div class="wood-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Maple Wood Card" data-price="85">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Mahogany -->
+                        <div class="wood-carousel-card mahogany" data-wood="mahogany">
+                            <div class="wood-carousel-image">
+                                <img src="woodmahogany.webp" alt="Mahogany Wood Card">
+                            </div>
+                            <h3 class="wood-carousel-title">Mahogany Wood Card</h3>
+                            <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
+                            <div class="wood-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Mahogany Wood Card" data-price="85">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Bamboo -->
+                        <div class="wood-carousel-card bamboo" data-wood="bamboo">
+                            <div class="wood-carousel-image">
+                                <img src="woodbamboo.webp" alt="Bamboo Wood Card">
+                            </div>
+                            <h3 class="wood-carousel-title">Bamboo Wood Card</h3>
+                            <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
+                            <div class="wood-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Bamboo Wood Card" data-price="85">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Teak -->
+                        <div class="wood-carousel-card teak" data-wood="teak">
+                            <div class="wood-carousel-image">
+                                <img src="woodteak.webp" alt="Teak Wood Card">
+                            </div>
+                            <h3 class="wood-carousel-title">Teak Wood Card</h3>
+                            <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
+                            <div class="wood-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Teak Wood Card" data-price="85">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Pine -->
+                        <div class="wood-carousel-card pine" data-wood="pine">
+                            <div class="wood-carousel-image">
+                                <img src="woodpine.webp" alt="Pine Wood Card">
+                            </div>
+                            <h3 class="wood-carousel-title">Pine Wood Card</h3>
+                            <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
+                            <div class="wood-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Pine Wood Card" data-price="85">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Birch -->
+                        <div class="wood-carousel-card birch" data-wood="birch">
+                            <div class="wood-carousel-image">
+                                <img src="woodbirch.webp" alt="Birch Wood Card">
+                            </div>
+                            <h3 class="wood-carousel-title">Birch Wood Card</h3>
+                            <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
+                            <div class="wood-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Birch Wood Card" data-price="85">🛒 Add to Cart</button>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Oak -->
-                    <div class="wood-carousel-card oak" data-wood="oak">
-                        <div class="wood-carousel-image">
-                            <img src="woodoak.webp" alt="Oak Wood Card">
-                        </div>
-                        <h3 class="wood-carousel-title">Oak Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Oak Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <!-- Cherry -->
-                    <div class="wood-carousel-card cherry" data-wood="cherry">
-                        <div class="wood-carousel-image">
-                            <img src="woodcherry.webp" alt="Cherry Wood Card">
-                        </div>
-                        <h3 class="wood-carousel-title">Cherry Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Cherry Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <!-- Maple -->
-                    <div class="wood-carousel-card maple" data-wood="maple">
-                        <div class="wood-carousel-image">
-                            <img src="woodmaple.webp" alt="Maple Wood Card">
-                        </div>
-                        <h3 class="wood-carousel-title">Maple Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Maple Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <!-- Mahogany -->
-                    <div class="wood-carousel-card mahogany" data-wood="mahogany">
-                        <div class="wood-carousel-image">
-                            <img src="woodmahogany.webp" alt="Mahogany Wood Card">
-                        </div>
-                        <h3 class="wood-carousel-title">Mahogany Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Mahogany Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <!-- Bamboo -->
-                    <div class="wood-carousel-card bamboo" data-wood="bamboo">
-                        <div class="wood-carousel-image">
-                            <img src="woodbamboo.webp" alt="Bamboo Wood Card">
-                        </div>
-                        <h3 class="wood-carousel-title">Bamboo Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Bamboo Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <!-- Teak -->
-                    <div class="wood-carousel-card teak" data-wood="teak">
-                        <div class="wood-carousel-image">
-                            <img src="woodteak.webp" alt="Teak Wood Card">
-                        </div>
-                        <h3 class="wood-carousel-title">Teak Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Teak Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <!-- Pine -->
-                    <div class="wood-carousel-card pine" data-wood="pine">
-                        <div class="wood-carousel-image">
-                            <img src="woodpine.webp" alt="Pine Wood Card">
-                        </div>
-                        <h3 class="wood-carousel-title">Pine Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Pine Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <!-- Birch -->
-                    <div class="wood-carousel-card birch" data-wood="birch">
-                        <div class="wood-carousel-image">
-                            <img src="woodbirch.webp" alt="Birch Wood Card">
-                        </div>
-                        <h3 class="wood-carousel-title">Birch Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Birch Wood Card" data-price="85">🛒 Add to Cart</button>
+                    
+                    <div class="carousel-nav">
+                        <div class="carousel-dots" id="carouselDots">
+                            <!-- Dots will be generated by JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -3534,10 +3626,99 @@ section[id] {
             });
         });
 
-        // CAROUSEL BACKGROUND COLOR CHANGER
+        // PROPER CAROUSEL FUNCTIONALITY
         const carouselSection = document.querySelector('.carousel-section');
+        const carouselTrack = document.getElementById('carouselTrack');
+        const carouselPrev = document.getElementById('carouselPrev');
+        const carouselNext = document.getElementById('carouselNext');
+        const carouselDots = document.getElementById('carouselDots');
         const carouselCards = document.querySelectorAll('.wood-carousel-card');
 
+        let currentSlide = 0;
+        const slidesPerView = 3;
+        const cardWidth = 330; // 300px width + 30px gap
+        const totalSlides = carouselCards.length;
+
+        // Calculate how many slides we can show based on screen width
+        function getSlidesPerView() {
+            if (window.innerWidth <= 480) return 1;
+            if (window.innerWidth <= 768) return 2;
+            return 3;
+        }
+
+        // Create carousel dots
+        function createDots() {
+            carouselDots.innerHTML = '';
+            const slidesToShow = Math.ceil(totalSlides / getSlidesPerView());
+            
+            for (let i = 0; i < slidesToShow; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot';
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                carouselDots.appendChild(dot);
+            }
+        }
+
+        // Update dots
+        function updateDots() {
+            const dots = document.querySelectorAll('.carousel-dot');
+            const currentDot = Math.floor(currentSlide / getSlidesPerView());
+            
+            dots.forEach((dot, index) => {
+                if (index === currentDot) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // Go to specific slide
+        function goToSlide(slideIndex) {
+            const slidesPerView = getSlidesPerView();
+            currentSlide = slideIndex * slidesPerView;
+            
+            // Ensure we don't go beyond the last slide
+            if (currentSlide >= totalSlides - slidesPerView) {
+                currentSlide = totalSlides - slidesPerView;
+            }
+            
+            updateCarouselPosition();
+            updateDots();
+        }
+
+        // Update carousel position
+        function updateCarouselPosition() {
+            const translateX = -currentSlide * cardWidth;
+            carouselTrack.style.transform = `translateX(${translateX}px)`;
+        }
+
+        // Next slide
+        function nextSlide() {
+            const slidesPerView = getSlidesPerView();
+            if (currentSlide < totalSlides - slidesPerView) {
+                currentSlide += slidesPerView;
+            } else {
+                currentSlide = 0; // Loop back to start
+            }
+            updateCarouselPosition();
+            updateDots();
+        }
+
+        // Previous slide
+        function prevSlide() {
+            const slidesPerView = getSlidesPerView();
+            if (currentSlide > 0) {
+                currentSlide -= slidesPerView;
+            } else {
+                currentSlide = totalSlides - slidesPerView; // Loop to end
+            }
+            updateCarouselPosition();
+            updateDots();
+        }
+
+        // CAROUSEL BACKGROUND COLOR CHANGER
         // Function to update carousel background based on hovered card
         function updateCarouselBackground(woodType) {
             carouselSection.style.background = carouselBackgroundMap[woodType];
@@ -3571,18 +3752,41 @@ section[id] {
             });
         });
 
+        // Initialize carousel
+        function initCarousel() {
+            createDots();
+            updateCarouselPosition();
+            
+            // Event listeners for navigation
+            carouselPrev.addEventListener('click', prevSlide);
+            carouselNext.addEventListener('click', nextSlide);
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                createDots();
+                updateCarouselPosition();
+            });
+            
+            // Auto-advance carousel every 5 seconds
+            setInterval(() => {
+                nextSlide();
+            }, 5000);
+        }
+
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Wood Page loaded with enhanced features:');
             console.log('1. Custom logo section redesigned to match metal page ✓');
             console.log('2. Logo size controls added (slider + presets) ✓');
             console.log('3. Clear card button replaces navigation arrows ✓');
-            console.log('4. Carousel matches bestseller style (grid layout) ✓');
+            console.log('4. PROPER CAROUSEL with navigation buttons and dots ✓');
             console.log('5. All wood colors same size as metal page ✓');
             console.log('6. Carousel section background changes on card hover ✓');
             console.log('7. WhatsApp links updated to +447754888841 ✓');
             console.log('8. All prices set to £85 ✓');
+            
             updateCart();
+            initCarousel();
             
             // Add highlight style for selected wood text
             const style = document.createElement('style');
