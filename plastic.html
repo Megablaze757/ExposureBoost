@@ -3110,7 +3110,7 @@ section[id] {
             updateCart();
         });
 
-        // PLASTIC CAROUSEL - EXACT WOOD PAGE STYLE
+                // PLASTIC CAROUSEL - EXACT WOOD PAGE STYLE
         const plasticCards = document.querySelectorAll('.plastic-color-card');
         const carouselPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
         const carouselNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
@@ -3119,7 +3119,6 @@ section[id] {
         const decreaseQuantityBtn = document.getElementById('decreaseQuantity');
         const increaseQuantityBtn = document.getElementById('increaseQuantity');
         const quantityDisplay = document.getElementById('quantityDisplay');
-        const browseCardsBtn = document.getElementById('browseCardsBtn');
 
         let currentCarouselIndex = 1; // Start with Blue (index 1)
         const totalCards = plasticCards.length;
@@ -3152,7 +3151,7 @@ section[id] {
                     card.classList.add('next');
                 } else {
                     card.style.opacity = '0';
-                    card.style.transform = 'scale(0.85) translateX(0)';
+                    card.style.transform = 'scale(0.8) translateX(0)';
                 }
             });
             
@@ -3206,20 +3205,6 @@ section[id] {
             addToCart(itemName, 65, carouselQuantity);
             carouselQuantity = 1;
             updateQuantityDisplay();
-        });
-
-        // Browse cards button
-        browseCardsBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const carouselSection = document.getElementById('carousel');
-            if (carouselSection) {
-                const navHeight = nav.offsetHeight;
-                const targetPosition = carouselSection.offsetTop - navHeight;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
         });
 
         // Initialize carousel
@@ -3612,4 +3597,5 @@ section[id] {
     </script>
 </body>
 </html>
+
 
