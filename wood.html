@@ -990,12 +990,16 @@ section[id] {
     border: 1px solid rgba(61, 40, 30, 0.3);
 }
 
-/* CAROUSEL SECTION - MATCHING BESTSELLER STYLE */
+/* CAROUSEL SECTION - WOOD TYPES */
 .carousel-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
+    padding: 60px 20px 80px;
+    transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-section::before {
@@ -1005,50 +1009,107 @@ section[id] {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--wood-dark), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* Wood type backgrounds for carousel */
+.carousel-section.walnut {
+    background: var(--walnut-bg);
+    color: #F5E6D3;
+}
+
+.carousel-section.oak {
+    background: var(--oak-bg);
+    color: #3D281E;
+}
+
+.carousel-section.cherry {
+    background: var(--cherry-bg);
+    color: #F5E6D3;
+}
+
+.carousel-section.maple {
+    background: var(--maple-bg);
+    color: #3D281E;
+}
+
+.carousel-section.mahogany {
+    background: var(--mahogany-bg);
+    color: #F5E6D3;
+}
+
+.carousel-section.bamboo {
+    background: var(--bamboo-bg);
+    color: #F5E6D3;
+}
+
+.carousel-section.teak {
+    background: var(--teak-bg);
+    color: #F5E6D3;
+}
+
+.carousel-section.pine {
+    background: var(--pine-bg);
+    color: #3D281E;
+}
+
+.carousel-section.birch {
+    background: var(--birch-bg);
+    color: #3D281E;
 }
 
 .carousel-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .carousel-section .section-header {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     position: relative;
     z-index: 10;
     text-align: center;
 }
 
 .carousel-section .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
 }
 
-/* WOOD CAROUSEL */
+.carousel-section .section-subtitle {
+    display: none;
+}
+
+/* WIDER CAROUSEL */
 .wood-carousel {
     position: relative;
     height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 auto 50px;
     perspective: 1200px;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 95%;
     transform: translateZ(0);
     will-change: transform;
     flex: 1;
 }
 
-.wood-carousel-card {
+.wood-type-card {
     position: absolute;
-    width: 300px;
-    background: radial-gradient(circle at top, rgba(92, 64, 51, 0.9), rgba(61, 40, 30, 0.95));
-    border-radius: 20px;
-    padding: 30px;
+    width: 350px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 25px;
+    opacity: 0;
+    transform: scale(0.85) rotateY(0deg);
     transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
     pointer-events: none;
@@ -1059,170 +1120,81 @@ section[id] {
     backdrop-filter: blur(10px);
     transform: translateZ(0);
     text-align: center;
-    opacity: 0;
-    transform: scale(0.85) translateX(0);
 }
 
-.wood-carousel-card.active {
+.wood-type-card.active {
     opacity: 1;
-    transform: scale(1) translateX(0);
+    transform: scale(1) rotateY(0deg);
     z-index: 3;
     pointer-events: auto;
     box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5);
 }
 
-.wood-carousel-card img {
+.wood-type-card img {
     width: 100%;
-    height: 200px;
-    border-radius: 12px;
+    height: 240px;
+    border-radius: 16px;
     object-fit: cover;
     margin-bottom: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.wood-carousel-title {
-    font-size: 1.5rem;
+.carousel-section.oak .wood-type-card,
+.carousel-section.maple .wood-type-card,
+.carousel-section.pine .wood-type-card,
+.carousel-section.birch .wood-type-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: #3D281E;
+}
+
+.carousel-section.walnut .wood-type-card,
+.carousel-section.cherry .wood-type-card,
+.carousel-section.mahogany .wood-type-card,
+.carousel-section.bamboo .wood-type-card,
+.carousel-section.teak .wood-type-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #F5E6D3;
+}
+
+/* WOOD NAME AND PRICE STYLES */
+.wood-card-label {
+    font-size: 1.4rem;
     font-weight: 800;
     margin-bottom: 10px;
+}
+
+.carousel-section.oak .wood-card-label,
+.carousel-section.maple .wood-card-label,
+.carousel-section.pine .wood-card-label,
+.carousel-section.birch .wood-card-label {
+    color: #3D281E;
+}
+
+.carousel-section.walnut .wood-card-label,
+.carousel-section.cherry .wood-card-label,
+.carousel-section.mahogany .wood-card-label,
+.carousel-section.bamboo .wood-card-label,
+.carousel-section.teak .wood-card-label {
     color: #F5E6D3;
 }
 
-.wood-carousel-price {
-    font-size: 1.8rem;
+.wood-card-price {
+    font-size: 1.6rem;
     font-weight: 900;
-    margin-bottom: 20px;
-    color: #F5E6D3;
+    color: var(--wood-light);
+    margin-top: 10px;
 }
 
-.wood-carousel-price span {
-    font-size: 0.9rem;
-    font-weight: 400;
-    margin-left: 5px;
-    color: rgba(245, 230, 211, 0.7);
-}
-
-.wood-carousel-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.wood-carousel-actions .btn {
-    flex: 1;
-}
-
-/* Wood type backgrounds for carousel cards */
-.wood-carousel-card.walnut {
-    background: radial-gradient(circle at top, rgba(92, 64, 51, 0.9), rgba(61, 40, 30, 0.95));
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.oak {
-    background: radial-gradient(circle at top, rgba(193, 154, 107, 0.9), rgba(139, 115, 85, 0.95));
+.carousel-section.oak .wood-card-price,
+.carousel-section.maple .wood-card-price,
+.carousel-section.pine .wood-card-price,
+.carousel-section.birch .wood-card-price {
     color: #3D281E;
 }
 
-.wood-carousel-card.cherry {
-    background: radial-gradient(circle at top, rgba(165, 42, 42, 0.9), rgba(128, 0, 0, 0.95));
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.maple {
-    background: radial-gradient(circle at top, rgba(245, 222, 179, 0.9), rgba(210, 180, 140, 0.95));
-    color: #3D281E;
-}
-
-.wood-carousel-card.mahogany {
-    background: radial-gradient(circle at top, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.95));
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.bamboo {
-    background: radial-gradient(circle at top, rgba(154, 205, 50, 0.9), rgba(107, 142, 35, 0.95));
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.teak {
-    background: radial-gradient(circle at top, rgba(184, 134, 11, 0.9), rgba(139, 105, 20, 0.95));
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.pine {
-    background: radial-gradient(circle at top, rgba(240, 230, 140, 0.9), rgba(189, 183, 107, 0.95));
-    color: #3D281E;
-}
-
-.wood-carousel-card.birch {
-    background: radial-gradient(circle at top, rgba(255, 248, 220, 0.9), rgba(245, 245, 220, 0.95));
-    color: #3D281E;
-}
-
-/* Text colors for different backgrounds */
-.wood-carousel-card.walnut .wood-carousel-title,
-.wood-carousel-card.cherry .wood-carousel-title,
-.wood-carousel-card.mahogany .wood-carousel-title,
-.wood-carousel-card.bamboo .wood-carousel-title,
-.wood-carousel-card.teak .wood-carousel-title {
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.oak .wood-carousel-title,
-.wood-carousel-card.maple .wood-carousel-title,
-.wood-carousel-card.pine .wood-carousel-title,
-.wood-carousel-card.birch .wood-carousel-title {
-    color: #3D281E;
-}
-
-.wood-carousel-card.walnut .wood-carousel-price,
-.wood-carousel-card.cherry .wood-carousel-price,
-.wood-carousel-card.mahogany .wood-carousel-price,
-.wood-carousel-card.bamboo .wood-carousel-price,
-.wood-carousel-card.teak .wood-carousel-price {
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.oak .wood-carousel-price,
-.wood-carousel-card.maple .wood-carousel-price,
-.wood-carousel-card.pine .wood-carousel-price,
-.wood-carousel-card.birch .wood-carousel-price {
-    color: #3D281E;
-}
-
-.wood-carousel-card.walnut .wood-carousel-price span,
-.wood-carousel-card.cherry .wood-carousel-price span,
-.wood-carousel-card.mahogany .wood-carousel-price span,
-.wood-carousel-card.bamboo .wood-carousel-price span,
-.wood-carousel-card.teak .wood-carousel-price span {
-    color: rgba(245, 230, 211, 0.7);
-}
-
-.wood-carousel-card.oak .wood-carousel-price span,
-.wood-carousel-card.maple .wood-carousel-price span,
-.wood-carousel-card.pine .wood-carousel-price span,
-.wood-carousel-card.birch .wood-carousel-price span {
-    color: rgba(61, 40, 30, 0.7);
-}
-
-/* Button colors for carousel cards */
-.wood-carousel-card.walnut .btn-primary,
-.wood-carousel-card.cherry .btn-primary,
-.wood-carousel-card.mahogany .btn-primary,
-.wood-carousel-card.bamboo .btn-primary,
-.wood-carousel-card.teak .btn-primary {
-    background: rgba(0, 0, 0, 0.7);
-    color: #F5E6D3;
-    border: 1px solid rgba(245, 230, 211, 0.3);
-}
-
-.wood-carousel-card.oak .btn-primary,
-.wood-carousel-card.maple .btn-primary,
-.wood-carousel-card.pine .btn-primary,
-.wood-carousel-card.birch .btn-primary {
-    background: rgba(61, 40, 30, 0.7);
-    color: #F5E6D3;
-    border: 1px solid rgba(245, 230, 211, 0.3);
-}
-
-/* Carousel arrows */
+/* FIXED: Carousel arrows */
 .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -1255,6 +1227,60 @@ section[id] {
 
 .carousel-arrow.right {
     right: 30px;
+}
+
+.carousel-section.oak .carousel-arrow,
+.carousel-section.maple .carousel-arrow,
+.carousel-section.pine .carousel-arrow,
+.carousel-section.birch .carousel-arrow {
+    background: rgba(245, 230, 211, 0.6);
+    border: 1px solid rgba(61, 40, 30, 0.3);
+    color: #3D281E;
+}
+
+.carousel-section.oak .carousel-arrow:hover,
+.carousel-section.maple .carousel-arrow:hover,
+.carousel-section.pine .carousel-arrow:hover,
+.carousel-section.birch .carousel-arrow:hover {
+    background: rgba(245, 230, 211, 0.8);
+}
+
+/* CAROUSEL ACTIONS - MOVED LOWER */
+.carousel-actions {
+    text-align: center;
+    margin-top: 120px; /* INCREASED MARGIN TO MOVE BUTTON LOWER */
+    position: relative;
+    z-index: 10;
+}
+
+.carousel-actions .btn {
+    background: rgba(0, 0, 0, 0.7);
+    color: #F5E6D3;
+    border: 1px solid rgba(245, 230, 211, 0.3);
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    min-width: 200px;
+}
+
+.carousel-section.oak .carousel-actions .btn,
+.carousel-section.maple .carousel-actions .btn,
+.carousel-section.pine .carousel-actions .btn,
+.carousel-section.birch .carousel-actions .btn {
+    background: rgba(245, 230, 211, 0.7);
+    color: #3D281E;
+    border: 1px solid rgba(61, 40, 30, 0.3);
+}
+
+.carousel-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-section.oak .carousel-actions .btn:hover,
+.carousel-section.maple .carousel-actions .btn:hover,
+.carousel-section.pine .carousel-actions .btn:hover,
+.carousel-section.birch .carousel-actions .btn:hover {
+    box-shadow: 0 6px 20px rgba(245, 230, 211, 0.4);
 }
 
 /* WHY CHOOSE SECTION - WOOD THEME */
@@ -1384,7 +1410,7 @@ section[id] {
     font-size: 0.9rem;
 }
 
-/* CUSTOM LOGO SECTION - REDESIGNED TO MATCH METAL PAGE */
+/* CUSTOM LOGO SECTION - REDESIGNED */
 .custom-logo-section {
     padding: 80px 20px;
     background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
@@ -1410,49 +1436,47 @@ section[id] {
     z-index: 2;
 }
 
-/* Logo Builder Grid */
-.logo-builder-grid {
+/* REDESIGNED: Logo builder - Similar to metal page */
+.logo-builder-redesigned {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 40px;
     margin: 40px 0;
 }
 
-@media (max-width: 992px) {
-    .logo-builder-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
+@media (min-width: 992px) {
+    .logo-builder-redesigned {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
-/* Preview Section */
-.preview-container {
+/* Preview Section - Redesigned */
+.preview-section-redesigned {
     background: rgba(232, 212, 193, 0.1);
     border-radius: 24px;
-    padding: 25px;
+    padding: 30px;
     border: 1px solid rgba(232, 212, 193, 0.2);
     backdrop-filter: blur(10px);
-    height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 25px;
 }
 
-.preview-header {
+.preview-header-redesigned {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(232, 212, 193, 0.3);
 }
 
-.preview-title {
-    font-size: 1.3rem;
+.preview-title-redesigned {
+    font-size: 1.4rem;
     font-weight: 800;
     color: var(--white);
 }
 
-.card-counter {
+.card-counter-redesigned {
     font-size: 1rem;
     font-weight: 700;
     color: var(--wood-light);
@@ -1461,449 +1485,89 @@ section[id] {
     border-radius: 20px;
 }
 
-.preview-card-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
-.preview-card {
-    width: 100%;
-    max-width: 350px;
-    height: 220px;
-    margin: 0 auto;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+/* Logo Preview Card - Improved */
+.logo-preview-container {
     position: relative;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     cursor: pointer;
-    transition: transform 0.3s ease;
+    background: var(--walnut-bg);
+    transition: all 0.3s ease;
 }
 
-.preview-card:hover {
-    transform: scale(1.02);
-}
-
-.preview-card-inner {
+.logo-preview-inner {
     width: 100%;
     height: 100%;
     position: relative;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
 }
 
-.preview-logo {
-    max-width: 70%;
-    max-height: 70%;
+.logo-preview-image {
+    max-width: 80%;
+    max-height: 80%;
     object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    display: none;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+    cursor: move;
 }
 
-.preview-logo.visible {
-    display: block;
-}
-
-.preview-placeholder {
+.upload-placeholder {
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+    padding: 30px;
 }
 
-.placeholder-icon {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+.upload-placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
     opacity: 0.6;
 }
 
-.placeholder-text {
-    font-size: 1.1rem;
+.upload-placeholder-text {
+    font-size: 1.2rem;
     font-weight: 600;
+    margin-bottom: 8px;
 }
 
-.placeholder-subtext {
+.upload-placeholder-subtext {
     font-size: 0.9rem;
-    margin-top: 5px;
     opacity: 0.8;
 }
 
-.preview-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-}
-
-.selected-card-info {
-    text-align: left;
-}
-
-.card-name {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 5px;
-}
-
-.engraving-type {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.preview-price {
-    font-size: 1.3rem;
-    font-weight: 900;
-    color: var(--wood-light);
-}
-
-/* Clear Card Button */
-.clear-card-btn {
-    width: 100%;
-    padding: 16px;
-    background: rgba(232, 212, 193, 0.15);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    color: var(--white);
-    border-radius: 14px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.clear-card-btn:hover {
-    background: rgba(232, 212, 193, 0.25);
-    transform: translateY(-2px);
-}
-
-.clear-card-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
-/* Selection Options */
-.selection-options {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-/* Wood Color Selection */
-.wood-colors-section {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-.wood-colors-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.wood-colors-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-@media (max-width: 768px) {
-    .wood-colors-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.wood-color-option {
-    aspect-ratio: 1;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 3px solid transparent;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.wood-color-option:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.wood-color-option.selected {
-    border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
-.color-label {
-    position: absolute;
-    bottom: 8px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 4px 6px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
-    margin: 0 8px;
-}
-
-/* Engraving Selection */
-.engraving-section {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-.engraving-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.engraving-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.engraving-option {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    border: 2px solid transparent;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.engraving-option:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
-}
-
-.engraving-option.selected {
-    background: rgba(232, 212, 193, 0.2);
-    border-color: var(--wood-light);
-}
-
-.engraving-icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-.engraving-name {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 4px;
-}
-
-.engraving-price {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* Logo Upload Section */
-.logo-upload-section {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-.logo-upload-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.upload-container {
-    width: 100%;
-}
-
-.upload-area {
-    border: 2px dashed rgba(232, 212, 193, 0.5);
-    border-radius: 16px;
-    padding: 30px 20px;
-    background: rgba(232, 212, 193, 0.05);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    margin-bottom: 20px;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.upload-area:hover {
-    border-color: var(--wood-light);
-    background: rgba(232, 212, 193, 0.1);
-    transform: translateY(-2px);
-}
-
-.upload-area.drag-over {
-    border-color: var(--wood-light);
-    background: rgba(232, 212, 193, 0.15);
-    border-style: solid;
-}
-
-.upload-icon {
-    font-size: 2.5rem;
-    color: rgba(232, 212, 193, 0.7);
-    margin-bottom: 15px;
-}
-
-.upload-text {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-
-.upload-subtext {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 5px;
-    line-height: 1.4;
-}
-
-.upload-hint {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 10px;
-    font-style: italic;
-}
-
-/* File input */
-#logoFileInput {
-    display: none;
-}
-
-/* Upload Actions */
-.upload-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-}
-
-@media (min-width: 480px) {
-    .upload-actions {
-        flex-direction: row;
-    }
-}
-
-.upload-btn, .clear-logo-btn {
-    padding: 16px 20px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex: 1;
-    min-height: 52px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.upload-btn {
-    background: var(--wood-gradient);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(183, 110, 61, 0.3);
-}
-
-.upload-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.4);
-}
-
-.clear-logo-btn {
-    background: rgba(232, 212, 193, 0.15);
-    color: var(--white);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-}
-
-.clear-logo-btn:hover {
-    background: rgba(232, 212, 193, 0.25);
-    transform: translateY(-2px);
-}
-
-.clear-logo-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
 /* Logo Size Controls */
-.logo-size-section {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    backdrop-filter: blur(10px);
-    margin-top: 25px;
-}
-
-.logo-size-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
 .logo-size-controls {
+    background: rgba(232, 212, 193, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(232, 212, 193, 0.2);
+}
+
+.size-control-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 15px;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    gap: 10px;
 }
 
 .size-slider-container {
-    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .size-slider {
-    width: 100%;
+    flex: 1;
     height: 8px;
     -webkit-appearance: none;
     appearance: none;
@@ -1918,61 +1582,171 @@ section[id] {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: var(--wood-light);
+    background: var(--wood-gradient);
     cursor: pointer;
-    border: 3px solid var(--white);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 8px rgba(183, 110, 61, 0.3);
 }
 
 .size-slider::-moz-range-thumb {
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: var(--wood-light);
+    background: var(--wood-gradient);
     cursor: pointer;
-    border: 3px solid var(--white);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 8px rgba(183, 110, 61, 0.3);
 }
 
 .size-value {
-    font-size: 1rem;
     font-weight: 700;
     color: var(--wood-light);
+    min-width: 40px;
     text-align: center;
-    margin-top: 10px;
 }
 
-.size-presets {
+/* Color Selection Grid */
+.color-selection-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 15px;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-.size-preset-btn {
-    padding: 10px;
-    background: rgba(232, 212, 193, 0.1);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    border-radius: 8px;
-    color: var(--white);
-    font-size: 0.9rem;
-    font-weight: 600;
+@media (min-width: 768px) {
+    .color-selection-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.color-option-redesigned {
+    aspect-ratio: 1;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.size-preset-btn:hover {
+.color-option-redesigned:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.color-option-redesigned.selected {
+    border-color: var(--white);
+    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.color-label-redesigned {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 2px 4px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+/* Engraving Selection */
+.engraving-selection {
+    background: rgba(232, 212, 193, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid rgba(232, 212, 193, 0.2);
+    margin-bottom: 20px;
+}
+
+.engraving-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.engraving-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.engraving-option-redesigned {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.engraving-option-redesigned:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.engraving-option-redesigned.selected {
     background: rgba(232, 212, 193, 0.2);
-}
-
-.size-preset-btn.active {
-    background: var(--wood-gradient);
     border-color: var(--wood-light);
 }
 
-/* Add to Cart Button */
-.add-to-cart-btn {
-    width: 100%;
+.engraving-icon-redesigned {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.engraving-name-redesigned {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.engraving-price-redesigned {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.clear-card-btn {
+    flex: 1;
+    background: rgba(232, 212, 193, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(232, 212, 193, 0.3);
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.clear-card-btn:hover {
+    background: rgba(232, 212, 193, 0.25);
+    transform: translateY(-2px);
+}
+
+.add-to-cart-redesigned {
+    flex: 2;
     padding: 18px;
     background: var(--wood-gradient);
     color: var(--white);
@@ -1983,17 +1757,138 @@ section[id] {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 6px 20px rgba(183, 110, 61, 0.3);
-    margin-top: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    -webkit-tap-highlight-color: transparent;
 }
 
-.add-to-cart-btn:hover {
+.add-to-cart-redesigned:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(183, 110, 61, 0.4);
+}
+
+/* Upload Area - Redesigned */
+.upload-container-redesigned {
+    background: rgba(232, 212, 193, 0.1);
+    border-radius: 24px;
+    padding: 30px;
+    border: 1px solid rgba(232, 212, 193, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.upload-area-redesigned {
+    border: 2px dashed rgba(232, 212, 193, 0.5);
+    border-radius: 16px;
+    padding: 40px 20px;
+    background: rgba(232, 212, 193, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.upload-area-redesigned:hover {
+    border-color: var(--wood-light);
+    background: rgba(232, 212, 193, 0.1);
+    transform: translateY(-2px);
+}
+
+.upload-icon-redesigned {
+    font-size: 3rem;
+    color: rgba(232, 212, 193, 0.7);
+    margin-bottom: 20px;
+}
+
+.upload-text-redesigned {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.upload-subtext-redesigned {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.upload-hint-redesigned {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* Upload Actions */
+.upload-actions-redesigned {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+@media (min-width: 480px) {
+    .upload-actions-redesigned {
+        flex-direction: row;
+    }
+}
+
+.upload-btn-redesigned, .clear-logo-btn-redesigned {
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    min-height: 52px;
+}
+
+.upload-btn-redesigned {
+    background: var(--wood-gradient);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(183, 110, 61, 0.3);
+}
+
+.upload-btn-redesigned:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.4);
+}
+
+.clear-logo-btn-redesigned {
+    background: rgba(232, 212, 193, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(232, 212, 193, 0.3);
+}
+
+.clear-logo-btn-redesigned:hover {
+    background: rgba(232, 212, 193, 0.25);
+    transform: translateY(-2px);
+}
+
+.clear-logo-btn-redesigned:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* File Input */
+#logoFileInputRedesigned {
+    display: none;
 }
 
 .whatsapp-help {
@@ -2022,18 +1917,6 @@ section[id] {
         gap: 20px;
     }
 
-    .custom-logo-section {
-        padding: 60px 20px;
-    }
-
-    .preview-card {
-        height: 200px;
-    }
-
-    .wood-colors-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
     .carousel-arrow {
         width: 50px;
         height: 50px;
@@ -2053,13 +1936,38 @@ section[id] {
         width: 90%;
     }
 
-    .wood-carousel-card {
+    .wood-type-card {
         width: 280px;
         padding: 20px;
     }
 
-    .wood-carousel-card img {
-        height: 160px;
+    .wood-type-card img {
+        height: 200px;
+    }
+
+    .wood-card-label {
+        font-size: 1.2rem;
+    }
+
+    .wood-card-price {
+        font-size: 1.4rem;
+    }
+
+    .custom-logo-section {
+        padding: 60px 20px;
+    }
+
+    .carousel-actions {
+        margin-top: 100px; /* Adjusted for mobile */
+    }
+    
+    .logo-builder-redesigned {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .color-selection-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -2072,30 +1980,8 @@ section[id] {
         font-size: 1.8rem;
     }
 
-    .bestseller-actions,
-    .wood-carousel-actions {
+    .bestseller-actions {
         flex-direction: column;
-    }
-
-    .preview-card {
-        height: 180px;
-    }
-
-    .wood-colors-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .upload-area {
-        padding: 25px 15px;
-        min-height: 160px;
-    }
-
-    .upload-text {
-        font-size: 1rem;
-    }
-
-    .upload-subtext {
-        font-size: 0.8rem;
     }
 
     .carousel-arrow {
@@ -2117,13 +2003,33 @@ section[id] {
         width: 90%;
     }
 
-    .wood-carousel-card {
+    .wood-type-card {
         width: 240px;
         padding: 18px;
     }
 
-    .wood-carousel-card img {
-        height: 140px;
+    .wood-type-card img {
+        height: 180px;
+    }
+
+    .wood-card-label {
+        font-size: 1.1rem;
+    }
+
+    .wood-card-price {
+        font-size: 1.3rem;
+    }
+
+    .color-selection-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .carousel-actions {
+        margin-top: 80px; /* Further adjusted for small mobile */
     }
 }
 
@@ -2225,6 +2131,281 @@ section[id] {
     line-height: 1.5;
     max-width: 400px;
     margin: 0 auto;
+}
+
+.engraving-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+    .engraving-options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.engraving-option {
+    background: rgba(232, 212, 193, 0.1);
+    border-radius: 18px;
+    padding: 25px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-align: center;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.engraving-option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--wood-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.engraving-option:hover {
+    background: rgba(232, 212, 193, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(183, 110, 61, 0.2);
+}
+
+.engraving-option.selected {
+    background: rgba(232, 212, 193, 0.2);
+    border-color: var(--wood-light);
+    box-shadow: 0 20px 40px rgba(183, 110, 61, 0.3);
+}
+
+.engraving-option.selected::before {
+    opacity: 1;
+}
+
+.engraving-image {
+    width: 100%;
+    height: 120px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid rgba(232, 212, 193, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.engraving-option[data-engraving="natural"] .engraving-image {
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+}
+
+.engraving-option[data-engraving="burned"] .engraving-image {
+    background: linear-gradient(135deg, #3D281E, #1A0F0A);
+}
+
+.engraving-image span {
+    font-size: 3rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.engraving-option[data-engraving="natural"] .engraving-image span {
+    color: #F5E6D3;
+}
+
+.engraving-option[data-engraving="burned"] .engraving-image span {
+    color: #F5E6D3;
+}
+
+.engraving-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.engraving-price {
+    font-size: 0.95rem;
+    color: var(--wood-light);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.engraving-description {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    text-align: left;
+}
+
+.engraving-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(232, 212, 193, 0.2);
+}
+
+@media (min-width: 480px) {
+    .engraving-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.btn-cancel,
+.btn-confirm {
+    padding: 18px 28px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    flex: 1;
+    min-width: 0;
+    border: none;
+    letter-spacing: 0.5px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 56px;
+}
+
+@media (min-width: 480px) {
+    .btn-cancel,
+    .btn-confirm {
+        min-width: 140px;
+        flex: 0 1 auto;
+    }
+}
+
+.btn-cancel {
+    background: rgba(232, 212, 193, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(232, 212, 193, 0.3);
+}
+
+.btn-cancel:active {
+    background: rgba(232, 212, 193, 0.25);
+    transform: translateY(0);
+}
+
+.btn-cancel:hover {
+    background: rgba(232, 212, 193, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(183, 110, 61, 0.2);
+}
+
+.btn-confirm {
+    background: var(--wood-gradient);
+    color: var(--white);
+    box-shadow: 0 8px 25px rgba(183, 110, 61, 0.4);
+}
+
+.btn-confirm:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-confirm:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(183, 110, 61, 0.5);
+    background: linear-gradient(135deg, #F0E6DC, #D4A574);
+}
+
+.btn-confirm:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* MOBILE SPECIFIC STYLES FOR ENGRAVING MODAL */
+@media (max-width: 767px) {
+    .engraving-content {
+        padding: 25px 20px;
+        max-height: 90vh;
+    }
+
+    .engraving-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .engraving-header p {
+        font-size: 0.95rem;
+    }
+
+    .engraving-option {
+        padding: 20px;
+    }
+
+    .engraving-image {
+        height: 100px;
+    }
+
+    .engraving-label {
+        font-size: 1rem;
+    }
+
+    .engraving-description {
+        font-size: 0.85rem;
+    }
+
+    .btn-cancel,
+    .btn-confirm {
+        padding: 16px 24px;
+        font-size: 15px;
+        min-height: 52px;
+    }
+
+    .close-engraving {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .engraving-content {
+        padding: 20px 16px;
+    }
+
+    .engraving-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .engraving-header p {
+        font-size: 0.9rem;
+    }
+
+    .engraving-option {
+        padding: 18px;
+    }
+
+    .engraving-image {
+        height: 90px;
+        margin-bottom: 15px;
+    }
+
+    .engraving-image span {
+        font-size: 2.5rem;
+    }
+
+    .engraving-label {
+        font-size: 0.95rem;
+    }
+
+    .engraving-description {
+        font-size: 0.8rem;
+    }
 }
 
 /* Cart Modal - WOOD THEME */
@@ -2575,7 +2756,7 @@ section[id] {
                         <!-- Hero card image -->
                         <img src="woodwalnut.webp" alt="Walnut Wood NFC Card">
                         <div class="hero-card-upload-overlay">
-                            <div class="upload-icon">📁</div>
+                            <div class="upload-icon-mobile">📁</div>
                             <div class="hero-card-upload-text">Click to upload your logo</div>
                         </div>
                     </div>
@@ -2648,101 +2829,83 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - 9 WOOD TYPES AS CAROUSEL -->
+        <!-- CAROUSEL SECTION - 9 WOOD TYPES -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
-                    <h2 class="section-title">All Wood Types</h2>
-                    <p class="section-subtitle">Choose from 9 premium wood types</p>
+                    
+                    <p class="section-subtitle" style="display: none;">Choose from 9 premium wood types</p>
                 </div>
 
                 <div class="wood-carousel">
                     <button class="carousel-arrow left" aria-label="Previous">‹</button>
 
-                    <!-- 9 wood types in carousel -->
-                    <div class="wood-carousel-card walnut active" data-wood="walnut">
-                        <img src="woodwalnut.webp" alt="Walnut Wood Card">
-                        <h3 class="wood-carousel-title">Walnut Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Walnut Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
+                    <!-- 9 wood types WITH PRICES -->
+                    <div class="wood-type-card active" data-color="Walnut">
+                        <img src="woodwalnut.webp" alt="Walnut Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Walnut</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
-                    <div class="wood-carousel-card oak" data-wood="oak">
-                        <img src="woodoak.webp" alt="Oak Wood Card">
-                        <h3 class="wood-carousel-title">Oak Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Oak Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
+                    <div class="wood-type-card" data-color="Oak">
+                        <img src="woodoak.webp" alt="Oak Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Oak</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
-                    <div class="wood-carousel-card cherry" data-wood="cherry">
-                        <img src="woodcherry.webp" alt="Cherry Wood Card">
-                        <h3 class="wood-carousel-title">Cherry Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Cherry Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
+                    <div class="wood-type-card" data-color="Cherry">
+                        <img src="woodcherry.webp" alt="Cherry Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Cherry</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
-                    <div class="wood-carousel-card maple" data-wood="maple">
-                        <img src="woodmaple.webp" alt="Maple Wood Card">
-                        <h3 class="wood-carousel-title">Maple Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Maple Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
+                    <div class="wood-type-card" data-color="Maple">
+                        <img src="woodmaple.webp" alt="Maple Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Maple</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
-                    <div class="wood-carousel-card mahogany" data-wood="mahogany">
-                        <img src="woodmahogany.webp" alt="Mahogany Wood Card">
-                        <h3 class="wood-carousel-title">Mahogany Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Mahogany Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
+                    <div class="wood-type-card" data-color="Mahogany">
+                        <img src="woodmahogany.webp" alt="Mahogany Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Mahogany</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
-                    <div class="wood-carousel-card bamboo" data-wood="bamboo">
-                        <img src="woodbamboo.webp" alt="Bamboo Wood Card">
-                        <h3 class="wood-carousel-title">Bamboo Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Bamboo Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
+                    <div class="wood-type-card" data-color="Bamboo">
+                        <img src="woodbamboo.webp" alt="Bamboo Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Bamboo</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
-                    <div class="wood-carousel-card teak" data-wood="teak">
-                        <img src="woodteak.webp" alt="Teak Wood Card">
-                        <h3 class="wood-carousel-title">Teak Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Teak Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
+                    <div class="wood-type-card" data-color="Teak">
+                        <img src="woodteak.webp" alt="Teak Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Teak</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
-                    <div class="wood-carousel-card pine" data-wood="pine">
-                        <img src="woodpine.webp" alt="Pine Wood Card">
-                        <h3 class="wood-carousel-title">Pine Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Pine Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
+                    <div class="wood-type-card" data-color="Pine">
+                        <img src="woodpine.webp" alt="Pine Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Pine</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
-                    <div class="wood-carousel-card birch" data-wood="birch">
-                        <img src="woodbirch.webp" alt="Birch Wood Card">
-                        <h3 class="wood-carousel-title">Birch Wood Card</h3>
-                        <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
-                        <div class="wood-carousel-actions">
-                            <button class="btn btn-primary add-to-cart-carousel" data-name="Birch Wood Card" data-price="85">🛒 Add to Cart</button>
-                        </div>
+                    <div class="wood-type-card" data-color="Birch">
+                        <img src="woodbirch.webp" alt="Birch Wood Card" class="carousel-card-image">
+                        <div class="wood-card-label">Birch</div>
+                        <div class="wood-card-price">£85</div>
                     </div>
 
                     <button class="carousel-arrow right" aria-label="Next">›</button>
                 </div>
+
+                <!-- Add to Cart button - MOVED LOWER -->
+                <div >
+                    
+                </div>
+                <div>
+                    <button class="btn" id="addWoodBtn">🛒 Add To Cart</button>
+                </div>
+                
             </div>
         </section>
 
@@ -2754,136 +2917,114 @@ section[id] {
                     <p class="section-subtitle">Upload your logo and see how it looks on different wood cards</p>
                 </div>
 
-                <div class="logo-builder-grid">
-                    <!-- Left Column: Preview -->
-                    <div class="preview-container">
-                        <div class="preview-header">
-                            <div class="preview-title">Live Preview</div>
-                            <div class="card-counter" id="cardCounter">Walnut</div>
+                <div class="logo-builder-redesigned">
+                    <!-- Left Column: Card Preview & Controls -->
+                    <div class="preview-section-redesigned">
+                        <div class="preview-header-redesigned">
+                            <div class="preview-title-redesigned">Live Preview</div>
+                            <div class="card-counter-redesigned" id="cardCounterRedesigned">Walnut</div>
                         </div>
                         
-                        <div class="preview-card-wrapper">
-                            <div class="preview-card" id="previewCard">
-                                <div class="preview-card-inner" id="previewCardInner">
-                                    <div class="preview-placeholder" id="previewPlaceholder">
-                                        <div class="placeholder-icon">📁</div>
-                                        <div class="placeholder-text">Click to upload your logo</div>
-                                        <div class="placeholder-subtext">PNG, JPG up to 10MB</div>
-                                    </div>
-                                    <img class="preview-logo" id="previewLogo" alt="Your Logo">
+                        <div class="logo-preview-container" id="logoPreviewContainer">
+                            <div class="logo-preview-inner" id="logoPreviewInner">
+                                <div class="upload-placeholder" id="uploadPlaceholderRedesigned">
+                                    <div class="upload-placeholder-icon">📁</div>
+                                    <div class="upload-placeholder-text">Upload your logo to preview</div>
+                                    <div class="upload-placeholder-subtext">Click to select an image file</div>
+                                </div>
+                                <img class="logo-preview-image" id="logoPreviewImage" alt="Your Logo" style="display: none;">
+                            </div>
+                        </div>
+                        
+                        <!-- Logo Size Controls -->
+                        <div class="logo-size-controls">
+                            <div class="size-control-title">
+                                <span>📏</span> Logo Size
+                            </div>
+                            <div class="size-slider-container">
+                                <input type="range" min="10" max="100" value="60" class="size-slider" id="logoSizeSlider">
+                                <div class="size-value" id="logoSizeValue">60%</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Color Selection Grid -->
+                        <div class="color-selection-grid">
+                            <div class="color-option-redesigned selected" data-color="walnut" style="background: var(--walnut-bg);">
+                                <div class="color-label-redesigned">Walnut</div>
+                            </div>
+                            <div class="color-option-redesigned" data-color="oak" style="background: var(--oak-bg);">
+                                <div class="color-label-redesigned">Oak</div>
+                            </div>
+                            <div class="color-option-redesigned" data-color="cherry" style="background: var(--cherry-bg);">
+                                <div class="color-label-redesigned">Cherry</div>
+                            </div>
+                            <div class="color-option-redesigned" data-color="maple" style="background: var(--maple-bg);">
+                                <div class="color-label-redesigned">Maple</div>
+                            </div>
+                            <div class="color-option-redesigned" data-color="mahogany" style="background: var(--mahogany-bg);">
+                                <div class="color-label-redesigned">Mahogany</div>
+                            </div>
+                            <div class="color-option-redesigned" data-color="bamboo" style="background: var(--bamboo-bg);">
+                                <div class="color-label-redesigned">Bamboo</div>
+                            </div>
+                            <div class="color-option-redesigned" data-color="teak" style="background: var(--teak-bg);">
+                                <div class="color-label-redesigned">Teak</div>
+                            </div>
+                            <div class="color-option-redesigned" data-color="pine" style="background: var(--pine-bg);">
+                                <div class="color-label-redesigned">Pine</div>
+                            </div>
+                            <div class="color-option-redesigned" data-color="birch" style="background: var(--birch-bg);">
+                                <div class="color-label-redesigned">Birch</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Engraving Selection -->
+                        <div class="engraving-selection">
+                            <div class="engraving-title">Engraving Type</div>
+                            <div class="engraving-options-grid">
+                                <div class="engraving-option-redesigned selected" data-engraving="natural">
+                                    <div class="engraving-icon-redesigned">🌳</div>
+                                    <div class="engraving-name-redesigned">Natural Grain</div>
+                                    <div class="engraving-price-redesigned">No extra cost</div>
+                                </div>
+                                <div class="engraving-option-redesigned" data-engraving="burned">
+                                    <div class="engraving-icon-redesigned">🔥</div>
+                                    <div class="engraving-name-redesigned">Laser Burned</div>
+                                    <div class="engraving-price-redesigned">No extra cost</div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="preview-details">
-                            <div class="selected-card-info">
-                                <div class="card-name" id="selectedCardName">Walnut Wood Card</div>
-                                <div class="engraving-type" id="selectedEngravingType">Natural Grain</div>
-                            </div>
-                            <div class="preview-price">£85</div>
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button class="clear-card-btn" id="clearCardBtnRedesigned">
+                                <span>🗑️</span> Clear Card
+                            </button>
+                            <button class="add-to-cart-redesigned" id="addToCartRedesigned">
+                                🛒 Add to Cart - £85
+                            </button>
                         </div>
-                        
-                        <button class="clear-card-btn" id="clearCardBtn">
-                            <span>🗑️</span> Clear Card Preview
-                        </button>
-                        
-                        <button class="add-to-cart-btn" id="addToCartBtn">
-                            🛒 Add to Cart
-                        </button>
                     </div>
 
-                    <!-- Right Column: Selection Options -->
-                    <div class="selection-options">
-                        <!-- Wood Color Selection -->
-                        <div class="wood-colors-section">
-                            <div class="wood-colors-title">Choose Wood Type</div>
-                            <div class="wood-colors-grid">
-                                <div class="wood-color-option selected" data-color="walnut" style="background: var(--walnut-bg);">
-                                    <div class="color-label">Walnut</div>
-                                </div>
-                                <div class="wood-color-option" data-color="oak" style="background: var(--oak-bg);">
-                                    <div class="color-label">Oak</div>
-                                </div>
-                                <div class="wood-color-option" data-color="cherry" style="background: var(--cherry-bg);">
-                                    <div class="color-label">Cherry</div>
-                                </div>
-                                <div class="wood-color-option" data-color="maple" style="background: var(--maple-bg);">
-                                    <div class="color-label">Maple</div>
-                                </div>
-                                <div class="wood-color-option" data-color="mahogany" style="background: var(--mahogany-bg);">
-                                    <div class="color-label">Mahogany</div>
-                                </div>
-                                <div class="wood-color-option" data-color="bamboo" style="background: var(--bamboo-bg);">
-                                    <div class="color-label">Bamboo</div>
-                                </div>
-                                <div class="wood-color-option" data-color="teak" style="background: var(--teak-bg);">
-                                    <div class="color-label">Teak</div>
-                                </div>
-                                <div class="wood-color-option" data-color="pine" style="background: var(--pine-bg);">
-                                    <div class="color-label">Pine</div>
-                                </div>
-                                <div class="wood-color-option" data-color="birch" style="background: var(--birch-bg);">
-                                    <div class="color-label">Birch</div>
-                                </div>
-                            </div>
+                    <!-- Right Column: Logo Upload -->
+                    <div class="upload-container-redesigned">
+                        <div class="upload-area-redesigned" id="uploadAreaRedesigned">
+                            <div class="upload-icon-redesigned">📁</div>
+                            <div class="upload-text-redesigned">Upload Your Logo</div>
+                            <div class="upload-subtext-redesigned">Drag & drop or click to browse</div>
+                            <div class="upload-subtext-redesigned">PNG, JPG up to 10MB</div>
+                            <div class="upload-hint-redesigned">For best results, use a transparent PNG with white logo</div>
                         </div>
-
-                        <!-- Engraving Selection -->
-                        <div class="engraving-section">
-                            <div class="engraving-title">Choose Engraving</div>
-                            <div class="engraving-options">
-                                <div class="engraving-option selected" data-engraving="natural">
-                                    <div class="engraving-icon">🌳</div>
-                                    <div class="engraving-name">Natural Grain</div>
-                                    <div class="engraving-price">No extra cost</div>
-                                </div>
-                                <div class="engraving-option" data-engraving="burned">
-                                    <div class="engraving-icon">🔥</div>
-                                    <div class="engraving-name">Laser Burned</div>
-                                    <div class="engraving-price">No extra cost</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Logo Upload -->
-                        <div class="logo-upload-section">
-                            <div class="logo-upload-title">Upload Your Logo</div>
-                            <div class="upload-container">
-                                <div class="upload-area" id="uploadArea">
-                                    <div class="upload-icon">📁</div>
-                                    <div class="upload-text">Click to upload your logo</div>
-                                    <div class="upload-subtext">Choose from camera roll or take a photo</div>
-                                    <div class="upload-subtext">PNG, JPG up to 10MB</div>
-                                    <div class="upload-hint">On mobile: Tap to choose from gallery or camera</div>
-                                </div>
-                                
-                                <input type="file" id="logoFileInput" accept="image/*">
-                                
-                                <div class="upload-actions">
-                                    <button class="upload-btn" id="uploadLogoBtn">
-                                        <span>📁</span> Upload Logo
-                                    </button>
-                                    <button class="clear-logo-btn" id="clearLogoBtn" disabled>
-                                        <span>🗑️</span> Clear Logo
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Logo Size Controls -->
-                        <div class="logo-size-section">
-                            <div class="logo-size-title">Adjust Logo Size</div>
-                            <div class="logo-size-controls">
-                                <div class="size-slider-container">
-                                    <input type="range" min="20" max="100" value="70" class="size-slider" id="logoSizeSlider">
-                                </div>
-                                <div class="size-value" id="logoSizeValue">70%</div>
-                                <div class="size-presets">
-                                    <button class="size-preset-btn" data-size="50">Small</button>
-                                    <button class="size-preset-btn active" data-size="70">Medium</button>
-                                    <button class="size-preset-btn" data-size="90">Large</button>
-                                </div>
-                            </div>
+                        
+                        <input type="file" id="logoFileInputRedesigned" accept="image/*">
+                        
+                        <div class="upload-actions-redesigned">
+                            <button class="upload-btn-redesigned" id="uploadLogoBtnRedesigned">
+                                <span>📁</span> Upload Logo
+                            </button>
+                            <button class="clear-logo-btn-redesigned" id="clearLogoBtnRedesigned" disabled>
+                                <span>🗑️</span> Clear Logo
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -2975,7 +3116,7 @@ section[id] {
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
         let uploadedLogoGlobal = null;
-        let logoSize = 70; // Default logo size percentage
+        let logoSize = 60; // Default logo size percentage
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3220,17 +3361,7 @@ section[id] {
 
         // Add to cart buttons for bestseller cards
         document.addEventListener('DOMContentLoaded', () => {
-            // Bestseller cards
             document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseInt(e.target.dataset.price);
-                    addToCart(name, price);
-                });
-            });
-
-            // Carousel cards
-            document.querySelectorAll('.add-to-cart-carousel').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const name = e.target.dataset.name;
                     const price = parseInt(e.target.dataset.price);
@@ -3248,23 +3379,48 @@ section[id] {
             updateCart();
         });
 
-        // WOOD CAROUSEL
-        const woodCarouselCards = document.querySelectorAll('.wood-carousel-card');
+        // Wood Type Carousel with Background Change - 9 WOOD TYPES
+        const woodCards = document.querySelectorAll('.wood-type-card');
         const woodPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
         const woodNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
+        const addWoodBtn = document.getElementById('addWoodBtn');
+
+        // Map wood names to CSS class names - 9 WOOD TYPES
+        const woodTypeMap = {
+            'Walnut': 'walnut',
+            'Oak': 'oak',
+            'Cherry': 'cherry',
+            'Maple': 'maple',
+            'Mahogany': 'mahogany',
+            'Bamboo': 'bamboo',
+            'Teak': 'teak',
+            'Pine': 'pine',
+            'Birch': 'birch'
+        };
 
         let woodIndex = 0;
 
         // Function to update wood carousel
         function updateWoodCarousel(i) {
-            woodCarouselCards[woodIndex].classList.remove('active');
+            woodCards[woodIndex].classList.remove('active');
 
-            woodIndex = (i + woodCarouselCards.length) % woodCarouselCards.length;
+            woodIndex = (i + woodCards.length) % woodCards.length;
 
-            woodCarouselCards[woodIndex].classList.add('active');
+            woodCards[woodIndex].classList.add('active');
+
+            const woodName = woodCards[woodIndex].dataset.color;
+            const woodClass = woodTypeMap[woodName];
+            
+            // Update carousel section background
+            carouselSection.className = 'carousel-section ' + woodClass;
+            
+            // Update button text
+            addWoodBtn.textContent = `🛒 Add ${woodName} Finish`;
+            selectedWood = woodName;
         }
 
         // Initialize wood carousel
+        const carouselSection = document.querySelector('.carousel-section');
         updateWoodCarousel(0);
 
         // Manual navigation
@@ -3290,127 +3446,136 @@ section[id] {
             if (endX - woodStartX > 50) updateWoodCarousel(woodIndex - 1);
         });
 
-        // Auto-rotate carousel
-        let woodCarouselInterval;
-        let isWoodCarouselPaused = false;
+        // FIX: Optimized carousel with smoother transitions
+        let carouselInterval;
+        let isCarouselPaused = false;
 
-        function startWoodCarouselAutoRotate() {
-            if (woodCarouselInterval) clearInterval(woodCarouselInterval);
-            woodCarouselInterval = setInterval(() => {
-                if (!isWoodCarouselPaused) {
+        function startCarouselAutoRotate() {
+            if (carouselInterval) clearInterval(carouselInterval);
+            carouselInterval = setInterval(() => {
+                if (!isCarouselPaused) {
                     updateWoodCarousel(woodIndex + 1);
                 }
             }, 5000);
         }
 
-        function stopWoodCarouselAutoRotate() {
-            isWoodCarouselPaused = true;
-            if (woodCarouselInterval) {
-                clearInterval(woodCarouselInterval);
+        function stopCarouselAutoRotate() {
+            isCarouselPaused = true;
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
             }
         }
 
         // Start auto-rotate
-        startWoodCarouselAutoRotate();
+        startCarouselAutoRotate();
 
         // Pause on hover/interaction
         document.querySelector('.wood-carousel').addEventListener('mouseenter', () => {
-            stopWoodCarouselAutoRotate();
+            stopCarouselAutoRotate();
         });
 
         document.querySelector('.wood-carousel').addEventListener('mouseleave', () => {
-            isWoodCarouselPaused = false;
-            startWoodCarouselAutoRotate();
+            isCarouselPaused = false;
+            startCarouselAutoRotate();
         });
 
-        // CUSTOM LOGO BUILDER
-        const woodColorOptions = document.querySelectorAll('.wood-color-option');
-        const engravingOptions = document.querySelectorAll('.engraving-option');
-        const uploadArea = document.getElementById('uploadArea');
-        const logoFileInput = document.getElementById('logoFileInput');
-        const uploadLogoBtn = document.getElementById('uploadLogoBtn');
-        const clearLogoBtn = document.getElementById('clearLogoBtn');
-        const previewLogo = document.getElementById('previewLogo');
-        const previewPlaceholder = document.getElementById('previewPlaceholder');
-        const previewCardInner = document.getElementById('previewCardInner');
-        const previewCard = document.getElementById('previewCard');
-        const cardCounter = document.getElementById('cardCounter');
-        const selectedCardName = document.getElementById('selectedCardName');
-        const selectedEngravingType = document.getElementById('selectedEngravingType');
-        const addToCartBtn = document.getElementById('addToCartBtn');
-        const clearCardBtn = document.getElementById('clearCardBtn');
+        // Also pause when interacting with arrows or dots
+        woodPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+        woodNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
+
+        // REDESIGNED: SEE IT WITH YOUR LOGO SECTION
+        const colorOptionsRedesigned = document.querySelectorAll('.color-option-redesigned');
+        const engravingOptionsRedesigned = document.querySelectorAll('.engraving-option-redesigned');
+        const uploadAreaRedesigned = document.getElementById('uploadAreaRedesigned');
+        const logoFileInputRedesigned = document.getElementById('logoFileInputRedesigned');
+        const uploadLogoBtnRedesigned = document.getElementById('uploadLogoBtnRedesigned');
+        const clearLogoBtnRedesigned = document.getElementById('clearLogoBtnRedesigned');
+        const clearCardBtnRedesigned = document.getElementById('clearCardBtnRedesigned');
+        const logoPreviewImage = document.getElementById('logoPreviewImage');
+        const uploadPlaceholderRedesigned = document.getElementById('uploadPlaceholderRedesigned');
+        const logoPreviewContainer = document.getElementById('logoPreviewContainer');
+        const logoPreviewInner = document.getElementById('logoPreviewInner');
+        const cardCounterRedesigned = document.getElementById('cardCounterRedesigned');
+        const addToCartRedesigned = document.getElementById('addToCartRedesigned');
         const heroCard = document.getElementById('heroCard');
         const logoSizeSlider = document.getElementById('logoSizeSlider');
         const logoSizeValue = document.getElementById('logoSizeValue');
-        const sizePresetBtns = document.querySelectorAll('.size-preset-btn');
 
-        // Wood type mapping
-        const woodTypeMap = {
-            'walnut': 'Walnut Wood Card',
-            'oak': 'Oak Wood Card',
-            'cherry': 'Cherry Wood Card',
-            'maple': 'Maple Wood Card',
-            'mahogany': 'Mahogany Wood Card',
-            'bamboo': 'Bamboo Wood Card',
-            'teak': 'Teak Wood Card',
-            'pine': 'Pine Wood Card',
-            'birch': 'Birch Wood Card'
+        // Color name mapping
+        const colorNameMapRedesigned = {
+            'walnut': 'Walnut',
+            'oak': 'Oak',
+            'cherry': 'Cherry',
+            'maple': 'Maple',
+            'mahogany': 'Mahogany',
+            'bamboo': 'Bamboo',
+            'teak': 'Teak',
+            'pine': 'Pine',
+            'birch': 'Birch'
         };
 
-        // Engraving type mapping
-        const engravingTypeMap = {
+        // Engraving name mapping
+        const engravingNameMapRedesigned = {
             'natural': 'Natural Grain',
             'burned': 'Laser Burned'
         };
 
-        // Background mapping
-        const woodBackgroundMap = {
-            'walnut': 'var(--walnut-bg)',
-            'oak': 'var(--oak-bg)',
-            'cherry': 'var(--cherry-bg)',
-            'maple': 'var(--maple-bg)',
-            'mahogany': 'var(--mahogany-bg)',
-            'bamboo': 'var(--bamboo-bg)',
-            'teak': 'var(--teak-bg)',
-            'pine': 'var(--pine-bg)',
-            'birch': 'var(--birch-bg)'
-        };
+        let selectedColorRedesigned = 'walnut';
+        let selectedEngravingRedesigned = 'natural';
 
-        let selectedWoodColor = 'walnut';
-        let selectedEngravingTypeValue = 'natural';
-
-        // Initialize custom logo builder
-        function initCustomLogoBuilder() {
-            updatePreview();
+        // Initialize redesigned logo builder
+        function initRedesignedLogoBuilder() {
+            updateLogoPreview();
         }
 
-        // Update preview
-        function updatePreview() {
+        // Update logo preview
+        function updateLogoPreview() {
             // Update card background
-            previewCardInner.style.background = woodBackgroundMap[selectedWoodColor];
+            logoPreviewContainer.style.background = getCardBackgroundRedesigned(selectedColorRedesigned);
             
-            // Update text
-            selectedCardName.textContent = woodTypeMap[selectedWoodColor];
-            selectedEngravingType.textContent = engravingTypeMap[selectedEngravingTypeValue];
+            // Update counter text
+            cardCounterRedesigned.textContent = colorNameMapRedesigned[selectedColorRedesigned];
             
-            // Update counter
-            cardCounter.textContent = woodTypeMap[selectedWoodColor].split(' ')[0];
+            // Update logo size
+            updateLogoSize();
             
-            // Show/hide logo and update size
+            // Show/hide logo
             if (uploadedLogoGlobal) {
-                previewLogo.src = uploadedLogoGlobal;
-                previewLogo.classList.add('visible');
-                previewLogo.style.transform = `scale(${logoSize / 100})`;
-                previewPlaceholder.style.display = 'none';
-                clearCardBtn.disabled = false;
+                logoPreviewImage.src = uploadedLogoGlobal;
+                logoPreviewImage.style.display = 'block';
+                uploadPlaceholderRedesigned.style.display = 'none';
+                clearLogoBtnRedesigned.disabled = false;
             } else {
-                previewLogo.classList.remove('visible');
-                previewPlaceholder.style.display = 'flex';
-                clearCardBtn.disabled = true;
+                logoPreviewImage.style.display = 'none';
+                uploadPlaceholderRedesigned.style.display = 'flex';
+                clearLogoBtnRedesigned.disabled = true;
             }
         }
 
-        // Handle logo upload
+        // Get CSS variable for card background
+        function getCardBackgroundRedesigned(color) {
+            switch(color) {
+                case 'walnut': return 'var(--walnut-bg)';
+                case 'oak': return 'var(--oak-bg)';
+                case 'cherry': return 'var(--cherry-bg)';
+                case 'maple': return 'var(--maple-bg)';
+                case 'mahogany': return 'var(--mahogany-bg)';
+                case 'bamboo': return 'var(--bamboo-bg)';
+                case 'teak': return 'var(--teak-bg)';
+                case 'pine': return 'var(--pine-bg)';
+                case 'birch': return 'var(--birch-bg)';
+                default: return 'var(--walnut-bg)';
+            }
+        }
+
+        // Update logo size
+        function updateLogoSize() {
+            logoPreviewImage.style.width = `${logoSize}%`;
+            logoPreviewImage.style.height = 'auto';
+            logoSizeValue.textContent = `${logoSize}%`;
+        }
+
+        // Handle logo upload function
         function handleLogoUpload(file) {
             // Validate file type
             if (!file.type.match('image.*')) {
@@ -3428,16 +3593,14 @@ section[id] {
             reader.onload = function(e) {
                 // Update preview
                 uploadedLogoGlobal = e.target.result;
-                previewLogo.src = uploadedLogoGlobal;
+                logoPreviewImage.src = uploadedLogoGlobal;
                 
                 // Update preview display
-                previewLogo.classList.add('visible');
-                previewLogo.style.transform = `scale(${logoSize / 100})`;
-                previewPlaceholder.style.display = 'none';
+                logoPreviewImage.style.display = 'block';
+                uploadPlaceholderRedesigned.style.display = 'none';
                 
-                // Enable clear buttons
-                clearLogoBtn.disabled = false;
-                clearCardBtn.disabled = false;
+                // Enable clear button
+                clearLogoBtnRedesigned.disabled = false;
                 
                 // Update hero card if needed
                 if (heroCard) {
@@ -3445,6 +3608,9 @@ section[id] {
                 }
                 
                 showNotification('Logo uploaded successfully!');
+                
+                // Update logo size
+                updateLogoSize();
             };
             reader.onerror = function() {
                 showNotification('Error reading file. Please try again.');
@@ -3452,22 +3618,22 @@ section[id] {
             reader.readAsDataURL(file);
         }
 
-        // Handle wood color selection
-        woodColorOptions.forEach(option => {
+        // Handle color selection
+        colorOptionsRedesigned.forEach(option => {
             option.addEventListener('click', () => {
                 // Remove selected class from all options
-                woodColorOptions.forEach(opt => opt.classList.remove('selected'));
+                colorOptionsRedesigned.forEach(opt => opt.classList.remove('selected'));
                 
                 // Add selected class to clicked option
                 option.classList.add('selected');
                 
                 // Update selected color
-                selectedWoodColor = option.dataset.color;
+                selectedColorRedesigned = option.dataset.color;
                 
                 // Update preview
-                updatePreview();
+                updateLogoPreview();
                 
-                // Visual feedback
+                // Show visual feedback
                 option.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     option.style.transform = '';
@@ -3476,21 +3642,18 @@ section[id] {
         });
 
         // Handle engraving selection
-        engravingOptions.forEach(option => {
+        engravingOptionsRedesigned.forEach(option => {
             option.addEventListener('click', () => {
                 // Remove selected class from all options
-                engravingOptions.forEach(opt => opt.classList.remove('selected'));
+                engravingOptionsRedesigned.forEach(opt => opt.classList.remove('selected'));
                 
                 // Add selected class to clicked option
                 option.classList.add('selected');
                 
                 // Update selected engraving
-                selectedEngravingTypeValue = option.dataset.engraving;
+                selectedEngravingRedesigned = option.dataset.engraving;
                 
-                // Update preview
-                updatePreview();
-                
-                // Visual feedback
+                // Show visual feedback
                 option.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     option.style.transform = '';
@@ -3498,34 +3661,39 @@ section[id] {
             });
         });
 
+        // Logo size slider
+        logoSizeSlider.addEventListener('input', (e) => {
+            logoSize = parseInt(e.target.value);
+            updateLogoSize();
+        });
+
         // Click on upload area
-        uploadArea.addEventListener('click', () => {
+        uploadAreaRedesigned.addEventListener('click', () => {
             if (!uploadedLogoGlobal) {
-                logoFileInput.click();
+                logoFileInputRedesigned.click();
             }
         });
 
         // Click on upload button
-        uploadLogoBtn.addEventListener('click', () => {
-            logoFileInput.click();
+        uploadLogoBtnRedesigned.addEventListener('click', () => {
+            logoFileInputRedesigned.click();
         });
 
         // File input change
-        logoFileInput.addEventListener('change', (e) => {
+        logoFileInputRedesigned.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
                 handleLogoUpload(e.target.files[0]);
             }
         });
 
         // Clear logo button
-        clearLogoBtn.addEventListener('click', () => {
-            previewLogo.src = '';
+        clearLogoBtnRedesigned.addEventListener('click', () => {
+            logoPreviewImage.src = '';
             uploadedLogoGlobal = null;
-            previewLogo.classList.remove('visible');
-            previewPlaceholder.style.display = 'flex';
-            logoFileInput.value = '';
-            clearLogoBtn.disabled = true;
-            clearCardBtn.disabled = true;
+            logoPreviewImage.style.display = 'none';
+            uploadPlaceholderRedesigned.style.display = 'flex';
+            logoFileInputRedesigned.value = '';
+            clearLogoBtnRedesigned.disabled = true;
             
             // Reset hero card image
             if (heroCard) {
@@ -3536,99 +3704,48 @@ section[id] {
         });
 
         // Clear card button
-        clearCardBtn.addEventListener('click', () => {
-            // Reset to default walnut card
-            woodColorOptions.forEach(opt => opt.classList.remove('selected'));
-            document.querySelector('.wood-color-option[data-color="walnut"]').classList.add('selected');
-            selectedWoodColor = 'walnut';
+        clearCardBtnRedesigned.addEventListener('click', () => {
+            // Reset to default
+            selectedColorRedesigned = 'walnut';
+            selectedEngravingRedesigned = 'natural';
             
-            engravingOptions.forEach(opt => opt.classList.remove('selected'));
-            document.querySelector('.engraving-option[data-engraving="natural"]').classList.add('selected');
-            selectedEngravingTypeValue = 'natural';
-            
-            // Clear logo if uploaded
-            if (uploadedLogoGlobal) {
-                previewLogo.src = '';
-                uploadedLogoGlobal = null;
-                previewLogo.classList.remove('visible');
-                previewPlaceholder.style.display = 'flex';
-                logoFileInput.value = '';
-                clearLogoBtn.disabled = true;
-                clearCardBtn.disabled = true;
-            }
-            
-            // Reset logo size
-            logoSize = 70;
-            logoSizeSlider.value = 70;
-            logoSizeValue.textContent = '70%';
-            sizePresetBtns.forEach(btn => btn.classList.remove('active'));
-            document.querySelector('.size-preset-btn[data-size="70"]').classList.add('active');
-            
-            updatePreview();
-            showNotification('Card reset to default');
-        });
-
-        // Add to cart from preview
-        addToCartBtn.addEventListener('click', () => {
-            const cardName = woodTypeMap[selectedWoodColor];
-            const engravingType = engravingTypeMap[selectedEngravingTypeValue];
-            const itemName = `${cardName} (${engravingType})`;
-            
-            addToCart(itemName, 85);
-        });
-
-        // Logo size slider
-        logoSizeSlider.addEventListener('input', () => {
-            logoSize = parseInt(logoSizeSlider.value);
-            logoSizeValue.textContent = `${logoSize}%`;
-            
-            // Update size preset buttons
-            sizePresetBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Find closest preset
-            const presets = [50, 70, 90];
-            const closest = presets.reduce((prev, curr) => {
-                return Math.abs(curr - logoSize) < Math.abs(prev - logoSize) ? curr : prev;
-            });
-            
-            document.querySelector(`.size-preset-btn[data-size="${closest}"]`).classList.add('active');
-            
-            // Update logo size if uploaded
-            if (uploadedLogoGlobal) {
-                previewLogo.style.transform = `scale(${logoSize / 100})`;
-            }
-        });
-
-        // Size preset buttons
-        sizePresetBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const size = parseInt(btn.dataset.size);
-                logoSize = size;
-                logoSizeSlider.value = size;
-                logoSizeValue.textContent = `${size}%`;
-                
-                // Update active state
-                sizePresetBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Update logo size if uploaded
-                if (uploadedLogoGlobal) {
-                    previewLogo.style.transform = `scale(${logoSize / 100})`;
+            // Update color selection
+            colorOptionsRedesigned.forEach(opt => {
+                opt.classList.remove('selected');
+                if (opt.dataset.color === 'walnut') {
+                    opt.classList.add('selected');
                 }
             });
+            
+            // Update engraving selection
+            engravingOptionsRedesigned.forEach(opt => {
+                opt.classList.remove('selected');
+                if (opt.dataset.engraving === 'natural') {
+                    opt.classList.add('selected');
+                }
+            });
+            
+            // Update preview
+            updateLogoPreview();
+            
+            showNotification('Card reset to defaults');
         });
 
-        // Click on card to upload logo
-        previewCard.addEventListener('click', () => {
-            if (!uploadedLogoGlobal) {
-                logoFileInput.click();
-            }
+        // Add to cart from redesigned section
+        addToCartRedesigned.addEventListener('click', () => {
+            const engravingType = engravingNameMapRedesigned[selectedEngravingRedesigned];
+            const cardName = `${colorNameMapRedesigned[selectedColorRedesigned]} Wood Card (${engravingType})`;
+            
+            addToCart(cardName, 85);
         });
+
+        // Initialize redesigned logo builder
+        initRedesignedLogoBuilder();
 
         // HERO CARD CLICK TO UPLOAD
         heroCard.addEventListener('click', () => {
             if (!uploadedLogoGlobal) {
-                logoFileInput.click();
+                logoFileInputRedesigned.click();
             } else {
                 // Scroll to custom logo section if logo already uploaded
                 const customLogoSection = document.getElementById('custom-logo');
@@ -3643,7 +3760,50 @@ section[id] {
             }
         });
 
-        // Browse cards button
+        // ENGRAVING SELECTION MODAL
+        const engravingOptionsModal = document.querySelectorAll('.engraving-option');
+        const confirmEngravingBtn = document.getElementById('confirmEngraving');
+        const cancelEngravingBtn = document.getElementById('cancelEngraving');
+        const closeEngravingBtn = document.getElementById('closeEngraving');
+        const selectedWoodText = document.getElementById('selectedWoodText');
+
+        // Function to open engraving modal for wood selection
+        function openEngravingModal() {
+            selectedWoodText.textContent = selectedWood;
+            selectedEngraving = null;
+
+            // Reset selection state
+            engravingOptionsModal.forEach(option => {
+                option.classList.remove('selected');
+                // Remove any animation classes
+                option.style.transform = '';
+            });
+            
+            confirmEngravingBtn.disabled = true;
+            confirmEngravingBtn.textContent = 'Add to Cart';
+
+            // Show modal with better animation
+            engravingModal.style.display = 'flex';
+            setTimeout(() => {
+                engravingModal.classList.add('active');
+            }, 10);
+            
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close engraving modal and restore scrolling
+        function closeEngravingModal() {
+            engravingModal.classList.remove('active');
+            setTimeout(() => {
+                engravingModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Open engraving modal when "Add [Wood Finish]" button is clicked
+        addWoodBtn.addEventListener('click', openEngravingModal);
+
+        // Open engraving modal when Browse Cards button is clicked
         document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
             e.preventDefault();
             // Scroll to bestsellers section
@@ -3659,8 +3819,74 @@ section[id] {
             }
         });
 
-        // Initialize custom logo builder
-        initCustomLogoBuilder();
+        // Handle engraving option selection with better visual feedback
+        engravingOptionsModal.forEach(option => {
+            option.addEventListener('click', () => {
+                // Visual feedback
+                option.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    option.style.transform = '';
+                }, 200);
+                
+                // Update selection
+                engravingOptionsModal.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedEngraving = option.dataset.engraving;
+                confirmEngravingBtn.disabled = false;
+                const engravingType = selectedEngraving === 'natural' ? 'Natural Grain' : 'Laser Burned';
+                confirmEngravingBtn.textContent = `Add ${engravingType}`;
+            });
+            
+            // Add touch feedback for mobile
+            option.addEventListener('touchstart', () => {
+                option.style.transform = 'scale(0.98)';
+            });
+            
+            option.addEventListener('touchend', () => {
+                option.style.transform = '';
+            });
+        });
+
+        // Confirm engraving selection and add to cart
+        confirmEngravingBtn.addEventListener('click', () => {
+            if (!selectedEngraving) return;
+
+            const engravingType = selectedEngraving === 'natural' ? 'Natural Grain' : 'Laser Burned';
+            const itemName = `${selectedWood} Wood Card (${engravingType})`;
+
+            // Add visual feedback to confirm button
+            confirmEngravingBtn.style.transform = 'scale(0.98)';
+            confirmEngravingBtn.style.opacity = '0.8';
+            
+            setTimeout(() => {
+                addToCart(itemName, 85);
+                closeEngravingModal();
+                
+                // Reset button state
+                setTimeout(() => {
+                    confirmEngravingBtn.style.transform = '';
+                    confirmEngravingBtn.style.opacity = '';
+                }, 300);
+            }, 200);
+        });
+
+        // Event listeners for closing engraving modal
+        closeEngravingBtn.addEventListener('click', closeEngravingModal);
+        cancelEngravingBtn.addEventListener('click', closeEngravingModal);
+
+        // Close modal when clicking outside
+        engravingModal.addEventListener('click', (e) => {
+            if (e.target === engravingModal) {
+                closeEngravingModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && engravingModal.classList.contains('active')) {
+                closeEngravingModal();
+            }
+        });
 
         // Smooth scrolling for desktop nav
         document.querySelectorAll('.nav-center a').forEach(anchor => {
@@ -3690,13 +3916,17 @@ section[id] {
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Wood Page loaded with enhanced features:');
-            console.log('1. All wood types converted to carousel ✓');
-            console.log('2. Carousel matches bestseller card style ✓');
-            console.log('3. Custom logo section with logo size controls ✓');
-            console.log('4. Clear card button replaces navigation arrows ✓');
-            console.log('5. All wood colors same size as metal page ✓');
+            console.log('1. Redesigned "See It With Your Logo" section ✓');
+            console.log('2. Logo size adjustment slider added ✓');
+            console.log('3. Clear Card button replaces arrows ✓');
+            console.log('4. 9 wood type colors with consistent sizing ✓');
+            console.log('5. All prices set to £85 ✓');
             console.log('6. WhatsApp links updated to +447754888841 ✓');
-            console.log('7. All prices set to £85 ✓');
+            console.log('7. Natural wood theme with earthy colors ✓');
+            console.log('8. WebP images for all wood types ✓');
+            console.log('9. Carousel dots removed ✓');
+            console.log('10. Add to Cart button moved lower for better price visibility ✓');
+            console.log('11. Prices now displayed on carousel cards ✓');
             updateCart();
             
             // Add highlight style for selected wood text
@@ -3727,149 +3957,11 @@ section[id] {
                     background: transparent;
                 }
                 
-                /* Engraving modal styles */
-                .engraving-options {
-                    display: grid;
-                    grid-template-columns: 1fr;
-                    gap: 20px;
-                    margin-bottom: 30px;
-                }
-                
-                @media (min-width: 768px) {
-                    .engraving-options {
-                        grid-template-columns: 1fr 1fr;
-                    }
-                }
-                
-                .engraving-option {
-                    background: rgba(232, 212, 193, 0.1);
-                    border-radius: 18px;
-                    padding: 25px;
-                    cursor: pointer;
-                    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-                    text-align: center;
-                    border: 2px solid transparent;
-                    position: relative;
-                    overflow: hidden;
-                }
-                
-                .engraving-option:hover {
-                    background: rgba(232, 212, 193, 0.15);
-                    transform: translateY(-5px);
-                    box-shadow: 0 15px 30px rgba(183, 110, 61, 0.2);
-                }
-                
-                .engraving-option.selected {
-                    background: rgba(232, 212, 193, 0.2);
-                    border-color: var(--wood-light);
-                    box-shadow: 0 20px 40px rgba(183, 110, 61, 0.3);
-                }
-                
-                .engraving-image {
-                    width: 100%;
-                    height: 120px;
-                    border-radius: 12px;
-                    overflow: hidden;
-                    margin-bottom: 20px;
-                    border: 1px solid rgba(232, 212, 193, 0.3);
-                    background: rgba(0, 0, 0, 0.2);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-                
-                .engraving-label {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    font-size: 1.1rem;
-                    font-weight: 800;
-                    color: var(--white);
-                    margin-bottom: 8px;
-                }
-                
-                .engraving-price {
-                    font-size: 0.95rem;
-                    color: var(--wood-light);
-                    font-weight: 600;
-                    margin-bottom: 15px;
-                }
-                
-                .engraving-description {
-                    font-size: 0.9rem;
-                    color: rgba(255, 255, 255, 0.8);
-                    line-height: 1.5;
-                    text-align: left;
-                }
-                
-                .engraving-actions {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-                    padding-top: 20px;
-                    border-top: 1px solid rgba(232, 212, 193, 0.2);
-                }
-                
-                @media (min-width: 480px) {
-                    .engraving-actions {
-                        flex-direction: row;
-                        justify-content: center;
-                    }
-                }
-                
-                .btn-cancel,
-                .btn-confirm {
-                    padding: 18px 28px;
-                    border-radius: 14px;
-                    font-weight: 800;
-                    font-size: 16px;
-                    cursor: pointer;
-                    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-                    flex: 1;
-                    min-width: 0;
-                    border: none;
-                    letter-spacing: 0.5px;
-                    text-align: center;
-                    min-height: 56px;
-                }
-                
-                @media (min-width: 480px) {
-                    .btn-cancel,
-                    .btn-confirm {
-                        min-width: 140px;
-                        flex: 0 1 auto;
-                    }
-                }
-                
-                .btn-cancel {
-                    background: rgba(232, 212, 193, 0.15);
-                    color: var(--white);
-                    border: 1px solid rgba(232, 212, 193, 0.3);
-                }
-                
-                .btn-cancel:hover {
-                    background: rgba(232, 212, 193, 0.25);
-                    transform: translateY(-3px);
-                    box-shadow: 0 10px 25px rgba(183, 110, 61, 0.2);
-                }
-                
-                .btn-confirm {
-                    background: var(--wood-gradient);
-                    color: var(--white);
-                    box-shadow: 0 8px 25px rgba(183, 110, 61, 0.4);
-                }
-                
-                .btn-confirm:hover:not(:disabled) {
-                    transform: translateY(-3px);
-                    box-shadow: 0 15px 35px rgba(183, 110, 61, 0.5);
-                }
-                
-                .btn-confirm:disabled {
-                    opacity: 0.5;
-                    cursor: not-allowed;
-                    transform: none !important;
-                    box-shadow: none !important;
+                /* Draggable logo */
+                .logo-preview-image {
+                    cursor: move;
+                    user-select: none;
+                    -webkit-user-drag: none;
                 }
             `;
             document.head.appendChild(style);
