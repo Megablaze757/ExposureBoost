@@ -27,7 +27,7 @@
     --plastic-nav-scrolled: linear-gradient(135deg, rgba(110, 77, 255, 0.9), rgba(74, 111, 165, 0.9));
     --plastic-menu-bg: linear-gradient(135deg, rgba(110, 77, 255, 0.98), rgba(74, 111, 165, 0.98));
     
-    /* Plastic color backgrounds for carousel - 10 colors total */
+    /* Plastic color backgrounds for carousel - 12 colors total */
     --plastic-black-bg: linear-gradient(135deg, #1A1A1A, #333333);
     --plastic-blue-bg: linear-gradient(135deg, #4A6FA5, #6E8FD9);
     --plastic-purple-bg: linear-gradient(135deg, #6E4DFF, #8B77FF);
@@ -2099,7 +2099,7 @@ section[id] {
     }
 }
 
-/* FINISH MODAL - PLASTIC THEME */
+/* FINISH MODAL - PLASTIC THEME - ENHANCED WITH QUANTITY */
 .finish-modal {
     position: fixed;
     top: 0;
@@ -2312,6 +2312,61 @@ section[id] {
     text-align: left;
 }
 
+/* QUANTITY SELECTOR IN MODAL */
+.quantity-selector-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(110, 77, 255, 0.1);
+    border-radius: 16px;
+    border: 1px solid rgba(110, 77, 255, 0.2);
+}
+
+.quantity-btn-modal {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(110, 77, 255, 0.2);
+    border: 1px solid rgba(110, 77, 255, 0.3);
+    color: var(--white);
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.quantity-btn-modal:hover {
+    background: rgba(110, 77, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.quantity-btn-modal:active {
+    transform: scale(0.95);
+}
+
+.quantity-display-modal {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--white);
+    min-width: 60px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(110, 77, 255, 0.3);
+}
+
+.quantity-label-modal {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 5px;
+    text-align: center;
+}
+
 .finish-actions {
     display: flex;
     flex-direction: column;
@@ -2423,6 +2478,22 @@ section[id] {
         font-size: 0.85rem;
     }
 
+    .quantity-selector-modal {
+        padding: 15px;
+        margin: 20px 0;
+    }
+
+    .quantity-btn-modal {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .quantity-display-modal {
+        font-size: 1.3rem;
+        min-width: 50px;
+    }
+
     .btn-cancel,
     .btn-confirm {
         padding: 16px 24px;
@@ -2472,9 +2543,25 @@ section[id] {
     .finish-description {
         font-size: 0.8rem;
     }
+
+    .quantity-selector-modal {
+        padding: 12px;
+        margin: 15px 0;
+    }
+
+    .quantity-btn-modal {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .quantity-display-modal {
+        font-size: 1.2rem;
+        min-width: 45px;
+    }
 }
 
-/* Cart Modal - PLASTIC THEME */
+/* Cart Modal - PLASTIC THEME - ENHANCED WITH QUANTITY */
 .cart-modal {
     position: fixed;
     top: 0;
@@ -2587,6 +2674,42 @@ section[id] {
     font-size: 0.85rem;
 }
 
+/* Cart item quantity controls */
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.cart-quantity-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(110, 77, 255, 0.2);
+    border: 1px solid rgba(110, 77, 255, 0.3);
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cart-quantity-btn:hover {
+    background: rgba(110, 77, 255, 0.3);
+}
+
+.cart-quantity-display {
+    font-size: 0.9rem;
+    color: var(--white);
+    min-width: 30px;
+    text-align: center;
+    font-weight: 600;
+}
+
 .remove-item {
     width: 28px;
     height: 28px;
@@ -2667,11 +2790,328 @@ section[id] {
     transform: translateY(0);
     opacity: 1;
 }
+
+/* LOGO ZOOM MODAL */
+.logo-zoom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 15, 26, 0.98);
+    backdrop-filter: blur(20px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.logo-zoom-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.logo-zoom-content {
+    background: linear-gradient(135deg, rgba(15, 15, 26, 0.95), rgba(26, 26, 46, 0.98));
+    border-radius: 24px;
+    padding: 30px;
+    max-width: 600px;
+    width: 95%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 1px solid rgba(110, 77, 255, 0.3);
+    box-shadow: 0 40px 80px rgba(110, 77, 255, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    animation: modalAppear 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(10px);
+}
+
+.close-zoom {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(110, 77, 255, 0.15);
+    border: 1px solid rgba(110, 77, 255, 0.3);
+    color: var(--white);
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.close-zoom:hover {
+    background: rgba(110, 77, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.logo-zoom-header {
+    margin-bottom: 25px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.logo-zoom-header h3 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: var(--white);
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(110, 77, 255, 0.3);
+}
+
+.logo-zoom-header p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.zoomed-logo-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    border: 2px solid rgba(110, 77, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.zoomed-logo {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.logo-position-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(110, 77, 255, 0.1);
+    border-radius: 16px;
+    border: 1px solid rgba(110, 77, 255, 0.2);
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.control-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--white);
+    min-width: 100px;
+}
+
+.control-slider {
+    flex: 1;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(110, 77, 255, 0.2);
+    border-radius: 4px;
+    outline: none;
+}
+
+.control-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--plastic-gradient);
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(110, 77, 255, 0.4);
+}
+
+.control-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--plastic-gradient);
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(110, 77, 255, 0.4);
+}
+
+.control-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #FF4FD8;
+    min-width: 40px;
+    text-align: center;
+}
+
+.logo-zoom-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(110, 77, 255, 0.2);
+}
+
+@media (min-width: 480px) {
+    .logo-zoom-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.btn-reset-logo,
+.btn-save-logo {
+    padding: 16px 24px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    flex: 1;
+    min-width: 0;
+    border: none;
+    letter-spacing: 0.5px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 52px;
+}
+
+@media (min-width: 480px) {
+    .btn-reset-logo,
+    .btn-save-logo {
+        min-width: 140px;
+        flex: 0 1 auto;
+    }
+}
+
+.btn-reset-logo {
+    background: rgba(110, 77, 255, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(110, 77, 255, 0.3);
+}
+
+.btn-reset-logo:hover {
+    background: rgba(110, 77, 255, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(110, 77, 255, 0.2);
+}
+
+.btn-save-logo {
+    background: var(--plastic-gradient);
+    color: var(--white);
+    box-shadow: 0 8px 25px rgba(110, 77, 255, 0.4);
+}
+
+.btn-save-logo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(110, 77, 255, 0.5);
+    background: linear-gradient(135deg, #5A85FF, #8B77FF);
+}
+
+/* Mobile specific styles for logo zoom modal */
+@media (max-width: 767px) {
+    .logo-zoom-content {
+        padding: 25px 20px;
+        max-height: 90vh;
+    }
+
+    .logo-zoom-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .logo-zoom-header p {
+        font-size: 0.95rem;
+    }
+
+    .zoomed-logo-container {
+        height: 250px;
+    }
+
+    .logo-position-controls {
+        padding: 15px;
+    }
+
+    .control-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .control-label {
+        min-width: auto;
+        text-align: center;
+    }
+
+    .btn-reset-logo,
+    .btn-save-logo {
+        padding: 14px 20px;
+        font-size: 14px;
+        min-height: 48px;
+    }
+
+    .close-zoom {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-zoom-content {
+        padding: 20px 16px;
+    }
+
+    .logo-zoom-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .logo-zoom-header p {
+        font-size: 0.9rem;
+    }
+
+    .zoomed-logo-container {
+        height: 200px;
+    }
+
+    .control-slider::-webkit-slider-thumb {
+        width: 20px;
+        height: 20px;
+    }
+
+    .control-slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+    }
+}
     </style>
 </head>
 
 <body>
-    <!-- FINISH SELECTION MODAL -->
+    <!-- FINISH SELECTION MODAL WITH QUANTITY -->
     <div class="finish-modal" id="finishModal">
         <div class="finish-content">
             <button class="close-finish" id="closeFinish">×</button>
@@ -2708,9 +3148,55 @@ section[id] {
                 </div>
             </div>
 
+            <!-- Quantity Selector in Modal -->
+            <div class="quantity-selector-modal">
+                <div class="quantity-label-modal">Quantity</div>
+                <button class="quantity-btn-modal" id="decreaseQuantityModal">−</button>
+                <div class="quantity-display-modal" id="quantityDisplayModal">1</div>
+                <button class="quantity-btn-modal" id="increaseQuantityModal">+</button>
+            </div>
+
             <div class="finish-actions">
                 <button class="btn-cancel" id="cancelFinish">Cancel</button>
-                <button class="btn-confirm" id="confirmFinish" disabled>Add to Cart</button>
+                <button class="btn-confirm" id="confirmFinish" disabled>Add to Cart (1)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGO ZOOM MODAL -->
+    <div class="logo-zoom-modal" id="logoZoomModal">
+        <div class="logo-zoom-content">
+            <button class="close-zoom" id="closeZoom">×</button>
+            <div class="logo-zoom-header">
+                <h3>Adjust Logo Position & Size</h3>
+                <p>Drag the sliders to adjust your logo position and size on the card</p>
+            </div>
+
+            <div class="zoomed-logo-container" id="zoomedLogoContainer">
+                <img class="zoomed-logo" id="zoomedLogo" alt="Your Logo">
+            </div>
+
+            <div class="logo-position-controls">
+                <div class="control-group">
+                    <div class="control-label">Size</div>
+                    <input type="range" min="50" max="150" value="100" class="control-slider" id="logoSizeSlider">
+                    <div class="control-value" id="logoSizeValue">100%</div>
+                </div>
+                <div class="control-group">
+                    <div class="control-label">Horizontal</div>
+                    <input type="range" min="-20" max="20" value="0" class="control-slider" id="logoXSlider">
+                    <div class="control-value" id="logoXValue">0px</div>
+                </div>
+                <div class="control-group">
+                    <div class="control-label">Vertical</div>
+                    <input type="range" min="-20" max="20" value="0" class="control-slider" id="logoYSlider">
+                    <div class="control-value" id="logoYValue">0px</div>
+                </div>
+            </div>
+
+            <div class="logo-zoom-actions">
+                <button class="btn-reset-logo" id="resetLogoBtn">Reset</button>
+                <button class="btn-save-logo" id="saveLogoBtn">Save Changes</button>
             </div>
         </div>
     </div>
@@ -2842,7 +3328,7 @@ section[id] {
             </div>
 
             <div class="bestsellers-grid">
-                <!--  Plastic Card -->
+                <!-- Blue Plastic Card -->
                 <div class="bestseller-card blue">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
@@ -2851,7 +3337,7 @@ section[id] {
                         </div>
                     </div>
                     <h3 class="bestseller-title">Blue Plastic Card</h3>
-                    <p class="bestseller-description">Professional custom-designed  plastic card. Trustworthy and modern, perfect for any business looking to stand out</p>
+                    <p class="bestseller-description">Professional custom-designed plastic card. Trustworthy and modern, perfect for any business looking to stand out</p>
                     <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
                         <button class="btn btn-primary add-to-cart" data-name="Blue Plastic Card" data-price="65">🛒 Add to Cart</button>
@@ -3027,6 +3513,12 @@ section[id] {
                             </button>
                             <button class="nav-btn-mobile next" id="nextCardBtnMobile">
                                 Next <span>›</span>
+                            </button>
+                        </div>
+                        
+                        <div class="logo-adjust-buttons">
+                            <button class="nav-btn-mobile" id="adjustLogoBtn" style="margin-top: 15px;">
+                                <span>🔍</span> Adjust Logo Position
                             </button>
                         </div>
                         
@@ -3220,6 +3712,36 @@ section[id] {
         let selectedFinish = null;
         let finishModal = document.getElementById('finishModal');
         let uploadedLogoGlobal = null;
+        let logoSize = 100; // Default logo size percentage
+        let logoX = 0; // Default horizontal position
+        let logoY = 0; // Default vertical position
+
+        // Quantity variables
+        let quantity = 1;
+        const quantityDisplayModal = document.getElementById('quantityDisplayModal');
+        const decreaseQuantityModal = document.getElementById('decreaseQuantityModal');
+        const increaseQuantityModal = document.getElementById('increaseQuantityModal');
+        const confirmFinishBtn = document.getElementById('confirmFinish');
+
+        // Quantity controls
+        decreaseQuantityModal.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                updateQuantityDisplay();
+            }
+        });
+
+        increaseQuantityModal.addEventListener('click', () => {
+            if (quantity < 10) {
+                quantity++;
+                updateQuantityDisplay();
+            }
+        });
+
+        function updateQuantityDisplay() {
+            quantityDisplayModal.textContent = quantity;
+            confirmFinishBtn.textContent = `Add to Cart (${quantity})`;
+        }
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3341,7 +3863,7 @@ section[id] {
             renderCartItems();
         }
 
-        // Render cart items in modal
+        // Render cart items in modal with quantity controls
         function renderCartItems() {
             if (cart.length === 0) {
                 cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
@@ -3359,7 +3881,12 @@ section[id] {
                         <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
+                            <div class="cart-item-price">£${item.price} × ${item.quantity} = £${item.price * item.quantity}</div>
+                            <div class="cart-item-quantity">
+                                <button class="cart-quantity-btn" onclick="decreaseCartItem(${index})">−</button>
+                                <div class="cart-quantity-display">${item.quantity}</div>
+                                <button class="cart-quantity-btn" onclick="increaseCartItem(${index})">+</button>
+                            </div>
                         </div>
                         <button class="remove-item" onclick="removeFromCart(${index})">×</button>
                     </div>
@@ -3370,28 +3897,44 @@ section[id] {
             cartTotal.textContent = `£${total}`;
         }
 
-        // Add to cart function
-        function addToCart(name, price) {
+        // Add to cart function with quantity
+        function addToCart(name, price, qty = 1) {
             const existingItem = cart.find(item => item.name === name);
 
             if (existingItem) {
-                existingItem.quantity += 1;
+                existingItem.quantity += qty;
             } else {
                 cart.push({
                     name: name,
                     price: price,
-                    quantity: 1
+                    quantity: qty
                 });
             }
 
             updateCart();
-            showNotification(`${name} added to cart!`);
+            showNotification(`${name} (${qty}) added to cart!`);
         }
 
         // Remove from cart
         function removeFromCart(index) {
             cart.splice(index, 1);
             updateCart();
+        }
+
+        // Increase cart item quantity
+        function increaseCartItem(index) {
+            cart[index].quantity++;
+            updateCart();
+        }
+
+        // Decrease cart item quantity
+        function decreaseCartItem(index) {
+            if (cart[index].quantity > 1) {
+                cart[index].quantity--;
+                updateCart();
+            } else {
+                removeFromCart(index);
+            }
         }
 
         // Show notification
@@ -3607,6 +4150,20 @@ section[id] {
         const selectedEngravingTypeMobile = document.getElementById('selectedEngravingTypeMobile');
         const addToCartMobile = document.getElementById('addToCartMobile');
         const heroCard = document.getElementById('heroCard');
+        const adjustLogoBtn = document.getElementById('adjustLogoBtn');
+
+        // Logo zoom modal elements
+        const logoZoomModal = document.getElementById('logoZoomModal');
+        const closeZoom = document.getElementById('closeZoom');
+        const zoomedLogo = document.getElementById('zoomedLogo');
+        const logoSizeSlider = document.getElementById('logoSizeSlider');
+        const logoXSlider = document.getElementById('logoXSlider');
+        const logoYSlider = document.getElementById('logoYSlider');
+        const logoSizeValue = document.getElementById('logoSizeValue');
+        const logoXValue = document.getElementById('logoXValue');
+        const logoYValue = document.getElementById('logoYValue');
+        const resetLogoBtn = document.getElementById('resetLogoBtn');
+        const saveLogoBtn = document.getElementById('saveLogoBtn');
 
         // All available cards - 12 plastic colors
         const cardsMobile = [
@@ -3669,7 +4226,7 @@ section[id] {
             updateMobilePreview();
         }
 
-        // Update mobile preview
+        // Update mobile preview with logo adjustments
         function updateMobilePreview() {
             const card = cardsMobile[currentCardIndexMobile];
             
@@ -3688,9 +4245,23 @@ section[id] {
                 previewLogoMobile.src = uploadedLogoGlobal;
                 previewLogoMobile.classList.add('visible');
                 previewPlaceholderMobile.style.display = 'none';
+                
+                // Apply logo adjustments
+                previewLogoMobile.style.width = `${logoSize}%`;
+                previewLogoMobile.style.height = `${logoSize}%`;
+                previewLogoMobile.style.transform = `translate(${logoX}px, ${logoY}px)`;
+                
+                // Enable adjust logo button
+                adjustLogoBtn.disabled = false;
             } else {
                 previewLogoMobile.classList.remove('visible');
                 previewPlaceholderMobile.style.display = 'flex';
+                previewLogoMobile.style.width = '';
+                previewLogoMobile.style.height = '';
+                previewLogoMobile.style.transform = '';
+                
+                // Disable adjust logo button
+                adjustLogoBtn.disabled = true;
             }
             
             // Update navigation buttons
@@ -3742,12 +4313,34 @@ section[id] {
                 uploadedLogoGlobal = e.target.result;
                 previewLogoMobile.src = uploadedLogoGlobal;
                 
+                // Update zoom modal logo
+                zoomedLogo.src = uploadedLogoGlobal;
+                
+                // Reset logo adjustments to default
+                logoSize = 100;
+                logoX = 0;
+                logoY = 0;
+                
+                // Update sliders to default values
+                logoSizeSlider.value = logoSize;
+                logoXSlider.value = logoX;
+                logoYSlider.value = logoY;
+                logoSizeValue.textContent = `${logoSize}%`;
+                logoXValue.textContent = `${logoX}px`;
+                logoYValue.textContent = `${logoY}px`;
+                
                 // Update preview display
                 previewLogoMobile.classList.add('visible');
                 previewPlaceholderMobile.style.display = 'none';
                 
-                // Enable clear button
+                // Apply logo adjustments
+                previewLogoMobile.style.width = `${logoSize}%`;
+                previewLogoMobile.style.height = `${logoSize}%`;
+                previewLogoMobile.style.transform = `translate(${logoX}px, ${logoY}px)`;
+                
+                // Enable clear button and adjust logo button
                 clearLogoBtnMobile.disabled = false;
+                adjustLogoBtn.disabled = false;
                 
                 // Update hero card if needed
                 if (heroCard) {
@@ -3835,6 +4428,7 @@ section[id] {
             previewPlaceholderMobile.style.display = 'flex';
             logoFileInputMobile.value = '';
             clearLogoBtnMobile.disabled = true;
+            adjustLogoBtn.disabled = true;
             
             // Reset hero card image
             if (heroCard) {
@@ -3898,7 +4492,6 @@ section[id] {
 
         // FINISH SELECTION MODAL
         const finishOptionsModal = document.querySelectorAll('.finish-option');
-        const confirmFinishBtn = document.getElementById('confirmFinish');
         const cancelFinishBtn = document.getElementById('cancelFinish');
         const closeFinishBtn = document.getElementById('closeFinish');
         const selectedPlasticText = document.getElementById('selectedPlasticText');
@@ -3907,6 +4500,7 @@ section[id] {
         function openFinishModal() {
             selectedPlasticText.textContent = selectedPlastic;
             selectedFinish = null;
+            quantity = 1; // Reset quantity to 1
 
             // Reset selection state
             finishOptionsModal.forEach(option => {
@@ -3916,7 +4510,8 @@ section[id] {
             });
             
             confirmFinishBtn.disabled = true;
-            confirmFinishBtn.textContent = 'Add to Cart';
+            confirmFinishBtn.textContent = 'Add to Cart (1)';
+            updateQuantityDisplay();
 
             // Show modal with better animation
             finishModal.style.display = 'flex';
@@ -3970,7 +4565,7 @@ section[id] {
                 selectedFinish = option.dataset.finish;
                 confirmFinishBtn.disabled = false;
                 const finishType = selectedFinish === 'glossy' ? 'Glossy Finish' : 'Matte Finish';
-                confirmFinishBtn.textContent = `Add ${finishType}`;
+                confirmFinishBtn.textContent = `Add ${finishType} (${quantity})`;
             });
             
             // Add touch feedback for mobile
@@ -3983,7 +4578,7 @@ section[id] {
             });
         });
 
-        // Confirm finish selection and add to cart
+        // Confirm finish selection and add to cart with quantity
         confirmFinishBtn.addEventListener('click', () => {
             if (!selectedFinish) return;
 
@@ -3995,7 +4590,7 @@ section[id] {
             confirmFinishBtn.style.opacity = '0.8';
             
             setTimeout(() => {
-                addToCart(itemName, 65);
+                addToCart(itemName, 65, quantity);
                 closeFinishModal();
                 
                 // Reset button state
@@ -4021,6 +4616,110 @@ section[id] {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && finishModal.classList.contains('active')) {
                 closeFinishModal();
+            }
+        });
+
+        // LOGO ZOOM MODAL FUNCTIONALITY
+        // Open logo zoom modal
+        adjustLogoBtn.addEventListener('click', () => {
+            if (!uploadedLogoGlobal) return;
+            
+            // Set zoomed logo
+            zoomedLogo.src = uploadedLogoGlobal;
+            
+            // Update slider values
+            logoSizeSlider.value = logoSize;
+            logoXSlider.value = logoX;
+            logoYSlider.value = logoY;
+            logoSizeValue.textContent = `${logoSize}%`;
+            logoXValue.textContent = `${logoX}px`;
+            logoYValue.textContent = `${logoY}px`;
+            
+            // Apply current adjustments to zoomed logo
+            updateZoomedLogo();
+            
+            // Show modal
+            logoZoomModal.style.display = 'flex';
+            setTimeout(() => {
+                logoZoomModal.classList.add('active');
+            }, 10);
+            
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close logo zoom modal
+        function closeLogoZoomModal() {
+            logoZoomModal.classList.remove('active');
+            setTimeout(() => {
+                logoZoomModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Update zoomed logo based on slider values
+        function updateZoomedLogo() {
+            zoomedLogo.style.width = `${logoSize}%`;
+            zoomedLogo.style.height = `${logoSize}%`;
+            zoomedLogo.style.transform = `translate(${logoX}px, ${logoY}px)`;
+        }
+
+        // Update logo adjustments based on slider values
+        function updateLogoAdjustments() {
+            logoSize = parseInt(logoSizeSlider.value);
+            logoX = parseInt(logoXSlider.value);
+            logoY = parseInt(logoYSlider.value);
+            
+            logoSizeValue.textContent = `${logoSize}%`;
+            logoXValue.textContent = `${logoX}px`;
+            logoYValue.textContent = `${logoY}px`;
+            
+            // Update zoomed logo preview
+            updateZoomedLogo();
+            
+            // Update main preview logo
+            previewLogoMobile.style.width = `${logoSize}%`;
+            previewLogoMobile.style.height = `${logoSize}%`;
+            previewLogoMobile.style.transform = `translate(${logoX}px, ${logoY}px)`;
+        }
+
+        // Slider event listeners
+        logoSizeSlider.addEventListener('input', updateLogoAdjustments);
+        logoXSlider.addEventListener('input', updateLogoAdjustments);
+        logoYSlider.addEventListener('input', updateLogoAdjustments);
+
+        // Reset logo adjustments
+        resetLogoBtn.addEventListener('click', () => {
+            logoSize = 100;
+            logoX = 0;
+            logoY = 0;
+            
+            logoSizeSlider.value = logoSize;
+            logoXSlider.value = logoX;
+            logoYSlider.value = logoY;
+            
+            updateLogoAdjustments();
+        });
+
+        // Save logo adjustments
+        saveLogoBtn.addEventListener('click', () => {
+            closeLogoZoomModal();
+            showNotification('Logo adjustments saved!');
+        });
+
+        // Close logo zoom modal
+        closeZoom.addEventListener('click', closeLogoZoomModal);
+
+        // Close modal when clicking outside
+        logoZoomModal.addEventListener('click', (e) => {
+            if (e.target === logoZoomModal) {
+                closeLogoZoomModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && logoZoomModal.classList.contains('active')) {
+                closeLogoZoomModal();
             }
         });
 
@@ -4058,6 +4757,9 @@ section[id] {
             console.log('4. Modern plastic theme with purple/blue colors ✓');
             console.log('5. WebP images for all plastic colors ✓');
             console.log('6. Dots removed from carousel ✓');
+            console.log('7. Quantity selector added to modal ✓');
+            console.log('8. Logo zoom and position adjustment feature ✓');
+            console.log('9. Cart quantity controls ✓');
             updateCart();
             
             // Add highlight style for selected plastic text
@@ -4087,11 +4789,46 @@ section[id] {
                     box-shadow: none;
                     background: transparent;
                 }
+                
+                /* Logo adjust button styling */
+                .logo-adjust-buttons {
+                    display: flex;
+                    gap: 10px;
+                    margin-top: 15px;
+                }
+                
+                #adjustLogoBtn {
+                    background: rgba(110, 77, 255, 0.2);
+                    border: 1px solid rgba(110, 77, 255, 0.3);
+                    color: var(--white);
+                    padding: 14px;
+                    border-radius: 12px;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                    flex: 1;
+                    min-height: 50px;
+                    -webkit-tap-highlight-color: transparent;
+                }
+                
+                #adjustLogoBtn:hover:not(:disabled) {
+                    background: rgba(110, 77, 255, 0.3);
+                    transform: translateY(-2px);
+                }
+                
+                #adjustLogoBtn:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                    transform: none !important;
+                }
             `;
             document.head.appendChild(style);
         });
     </script>
 </body>
 </html>
-
-
