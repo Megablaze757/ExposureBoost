@@ -1046,6 +1046,7 @@ section[id] {
     width: 100%;
     overflow: hidden;
     padding: 0 60px;
+    touch-action: pan-y pinch-zoom;
 }
 
 @media (max-width: 768px) {
@@ -1065,6 +1066,10 @@ section[id] {
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     gap: 30px;
     padding: 10px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 /* Carousel cards matching bestseller style */
@@ -1081,6 +1086,10 @@ section[id] {
     flex-direction: column;
     cursor: pointer;
     min-width: 300px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 @media (max-width: 1024px) {
@@ -1689,26 +1698,33 @@ section[id] {
     gap: 25px;
 }
 
-/* Wood Color Selection */
+/* Wood Color Selection - SMALLER */
 .wood-colors-section {
     background: rgba(232, 212, 193, 0.1);
     border-radius: 20px;
-    padding: 25px;
+    padding: 20px;
     border: 1px solid rgba(232, 212, 193, 0.2);
     backdrop-filter: blur(10px);
 }
 
 .wood-colors-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 800;
     color: var(--white);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .wood-colors-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+@media (max-width: 1024px) {
+    .wood-colors-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
@@ -1717,41 +1733,58 @@ section[id] {
     }
 }
 
+@media (max-width: 480px) {
+    .wood-colors-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+}
+
 .wood-color-option {
     aspect-ratio: 1;
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    border: 3px solid transparent;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    min-height: 40px;
 }
 
 .wood-color-option:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .wood-color-option.selected {
     border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 2px var(--white), 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
 }
 
 .color-label {
     position: absolute;
-    bottom: 8px;
+    bottom: 4px;
     left: 0;
     right: 0;
     text-align: center;
     color: white;
-    font-size: 0.8rem;
+    font-size: 0.65rem;
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 4px 6px;
+    padding: 2px 4px;
     background: rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
-    margin: 0 8px;
+    border-radius: 4px;
+    margin: 0 4px;
+    line-height: 1.2;
+}
+
+@media (max-width: 480px) {
+    .color-label {
+        font-size: 0.6rem;
+        padding: 1px 3px;
+    }
 }
 
 /* Engraving Selection */
@@ -2997,7 +3030,7 @@ section[id] {
 
                     <!-- Right Column: Selection Options -->
                     <div class="selection-options">
-                        <!-- Wood Color Selection -->
+                        <!-- Wood Color Selection - SMALLER -->
                         <div class="wood-colors-section">
                             <div class="wood-colors-title">Choose Wood Type</div>
                             <div class="wood-colors-grid">
@@ -3182,6 +3215,13 @@ section[id] {
         let currentEngravingData = null; // Store data for engraving modal
         let engravingQuantity = 1; // Default quantity for engraving modal
         let currentCarouselBackground = 'var(--carousel-walnut-bg)';
+        
+        // Carousel variables
+        let isCarouselCircular = true; // Enable circular scrolling
+        let carouselStartX = 0;
+        let carouselCurrentX = 0;
+        let isDragging = false;
+        let dragThreshold = 50; // Minimum drag distance to trigger slide change
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3942,13 +3982,14 @@ section[id] {
             });
         });
 
-        // CAROUSEL FUNCTIONALITY WITH BACKGROUND CHANGES
+        // CAROUSEL FUNCTIONALITY WITH SWIPE AND CIRCULAR SCROLLING
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
         const carouselNext = document.getElementById('carouselNext');
         const carouselDots = document.getElementById('carouselDots');
         const carouselCards = document.querySelectorAll('.wood-carousel-card');
+        const carouselWrapper = document.querySelector('.wood-carousel-wrapper');
 
         let currentSlide = 0;
         let cardsPerView = 3;
@@ -3960,6 +4001,9 @@ section[id] {
             createDots();
             updateCarousel();
             updateCarouselBackground();
+            
+            // Add swipe functionality
+            addSwipeListeners();
         }
 
         // Update cards per view based on screen size
@@ -3995,10 +4039,11 @@ section[id] {
             }
         }
 
-        // Update carousel position
+        // Update carousel position with smooth animation
         function updateCarousel() {
             const cardWidth = carouselCards[0].offsetWidth + 30; // width + gap
             const translateX = -currentSlide * cardsPerView * cardWidth;
+            carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
             carouselTrack.style.transform = `translateX(${translateX}px)`;
             
             // Update dots
@@ -4007,8 +4052,8 @@ section[id] {
             });
             
             // Update navigation buttons
-            carouselPrev.classList.toggle('disabled', currentSlide === 0);
-            carouselNext.classList.toggle('disabled', currentSlide >= totalSlides - 1);
+            carouselPrev.classList.toggle('disabled', !isCarouselCircular && currentSlide === 0);
+            carouselNext.classList.toggle('disabled', !isCarouselCircular && currentSlide >= totalSlides - 1);
         }
 
         // Update carousel background based on current slide
@@ -4062,21 +4107,112 @@ section[id] {
             });
         });
 
-        // Next slide
+        // Next slide with circular scrolling
         function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
+            if (isCarouselCircular) {
+                currentSlide = (currentSlide + 1) % totalSlides;
+            } else if (currentSlide < totalSlides - 1) {
                 currentSlide++;
-                updateCarousel();
-                updateCarouselBackground();
             }
+            updateCarousel();
+            updateCarouselBackground();
         }
 
-        // Previous slide
+        // Previous slide with circular scrolling
         function prevSlide() {
-            if (currentSlide > 0) {
+            if (isCarouselCircular) {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            } else if (currentSlide > 0) {
                 currentSlide--;
-                updateCarousel();
-                updateCarouselBackground();
+            }
+            updateCarousel();
+            updateCarouselBackground();
+        }
+
+        // SWIPE FUNCTIONALITY
+        function addSwipeListeners() {
+            let startX = 0;
+            let currentX = 0;
+            let isSwiping = false;
+            
+            // Mouse events
+            carouselWrapper.addEventListener('mousedown', (e) => {
+                startSwipe(e.clientX);
+            });
+            
+            carouselWrapper.addEventListener('mousemove', (e) => {
+                if (isSwiping) {
+                    handleSwipeMove(e.clientX);
+                }
+            });
+            
+            carouselWrapper.addEventListener('mouseup', () => {
+                endSwipe();
+            });
+            
+            carouselWrapper.addEventListener('mouseleave', () => {
+                if (isSwiping) {
+                    endSwipe();
+                }
+            });
+            
+            // Touch events
+            carouselWrapper.addEventListener('touchstart', (e) => {
+                startSwipe(e.touches[0].clientX);
+            }, { passive: true });
+            
+            carouselWrapper.addEventListener('touchmove', (e) => {
+                if (isSwiping) {
+                    handleSwipeMove(e.touches[0].clientX);
+                }
+            }, { passive: true });
+            
+            carouselWrapper.addEventListener('touchend', () => {
+                endSwipe();
+            });
+            
+            function startSwipe(x) {
+                startX = x;
+                currentX = x;
+                isSwiping = true;
+                carouselTrack.style.transition = 'none';
+            }
+            
+            function handleSwipeMove(x) {
+                if (!isSwiping) return;
+                
+                currentX = x;
+                const diff = startX - currentX;
+                
+                // Move track while dragging
+                const cardWidth = carouselCards[0].offsetWidth + 30;
+                const baseTranslate = -currentSlide * cardsPerView * cardWidth;
+                const dragTranslate = -diff;
+                carouselTrack.style.transform = `translateX(${baseTranslate + dragTranslate}px)`;
+            }
+            
+            function endSwipe() {
+                if (!isSwiping) return;
+                
+                const diff = startX - currentX;
+                const cardWidth = carouselCards[0].offsetWidth + 30;
+                const threshold = cardWidth * 0.2; // 20% of card width threshold
+                
+                // Determine if swipe is significant enough to change slide
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0) {
+                        // Swipe left - next slide
+                        nextSlide();
+                    } else {
+                        // Swipe right - previous slide
+                        prevSlide();
+                    }
+                } else {
+                    // Return to current slide
+                    updateCarousel();
+                }
+                
+                isSwiping = false;
             }
         }
 
@@ -4088,12 +4224,14 @@ section[id] {
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Wood Page loaded with enhanced features:');
             console.log('1. Working carousel with navigation arrows ✓');
-            console.log('2. No auto-advance, manual control only ✓');
-            console.log('3. Full cards displayed (not cut in half) ✓');
-            console.log('4. Engraving modal with quantity adjustment ✓');
-            console.log('5. Carousel background changes on card hover ✓');
-            console.log('6. WhatsApp links updated to +447754888841 ✓');
-            console.log('7. All prices set to £85 ✓');
+            console.log('2. Swipe functionality added ✓');
+            console.log('3. Circular scrolling enabled ✓');
+            console.log('4. Full cards displayed (not cut in half) ✓');
+            console.log('5. Engraving modal with quantity adjustment ✓');
+            console.log('6. Carousel background changes on card hover ✓');
+            console.log('7. Smaller custom card color selection ✓');
+            console.log('8. WhatsApp links updated to +447754888841 ✓');
+            console.log('9. All prices set to £85 ✓');
             
             initCarousel();
             updateCart();
