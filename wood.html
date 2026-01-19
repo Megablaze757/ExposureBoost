@@ -1007,7 +1007,7 @@ section[id] {
     background: var(--carousel-walnut-bg);
     position: relative;
     overflow: hidden;
-    transition: background 0.5s ease;
+    transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .carousel-section::before {
@@ -1018,6 +1018,7 @@ section[id] {
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--wood-dark), transparent);
+    z-index: 2;
 }
 
 .carousel-container {
@@ -2251,7 +2252,7 @@ section[id] {
     margin: 0 auto;
 }
 
-/* Quantity Controls */
+/* Quantity Controls - IMPROVED FOR MOBILE */
 .quantity-controls {
     margin: 25px 0;
     padding: 20px;
@@ -2277,18 +2278,19 @@ section[id] {
 }
 
 .quantity-btn {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: rgba(232, 212, 193, 0.2);
     border: 1px solid rgba(232, 212, 193, 0.3);
     color: var(--white);
-    font-size: 20px;
+    font-size: 22px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: rgba(232, 212, 193, 0.1);
 }
 
 .quantity-btn:hover:not(:disabled) {
@@ -2301,17 +2303,28 @@ section[id] {
     cursor: not-allowed;
 }
 
+/* Improved quantity input for mobile */
 .quantity-input {
-    width: 60px;
-    height: 40px;
-    border-radius: 10px;
+    width: 80px;
+    height: 48px;
+    border-radius: 12px;
     background: rgba(232, 212, 193, 0.1);
     border: 1px solid rgba(232, 212, 193, 0.3);
     color: var(--white);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
     text-align: center;
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Remove spinner buttons on mobile */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .quantity-input:focus {
@@ -2319,23 +2332,36 @@ section[id] {
     box-shadow: 0 0 0 2px rgba(183, 110, 61, 0.3);
 }
 
+/* Improved quantity presets for mobile */
 .quantity-presets {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin-top: 15px;
 }
 
+@media (min-width: 480px) {
+    .quantity-presets {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 .quantity-preset-btn {
-    padding: 8px 16px;
+    padding: 12px 8px;
     background: rgba(232, 212, 193, 0.1);
     border: 1px solid rgba(232, 212, 193, 0.3);
-    border-radius: 8px;
+    border-radius: 10px;
     color: var(--white);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    -webkit-tap-highlight-color: rgba(232, 212, 193, 0.1);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .quantity-preset-btn:hover {
@@ -2581,7 +2607,7 @@ section[id] {
                 </div>
             </div>
 
-            <!-- Quantity Controls -->
+            <!-- Quantity Controls - IMPROVED FOR MOBILE -->
             <div class="quantity-controls">
                 <div class="quantity-title">Select Quantity</div>
                 <div class="quantity-selector">
@@ -3155,6 +3181,7 @@ section[id] {
         let logoSize = 70; // Default logo size percentage
         let currentEngravingData = null; // Store data for engraving modal
         let engravingQuantity = 1; // Default quantity for engraving modal
+        let currentCarouselBackground = 'var(--carousel-walnut-bg)';
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3915,7 +3942,7 @@ section[id] {
             });
         });
 
-        // CAROUSEL FUNCTIONALITY
+        // CAROUSEL FUNCTIONALITY WITH BACKGROUND CHANGES
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
@@ -3932,6 +3959,7 @@ section[id] {
             updateCardsPerView();
             createDots();
             updateCarousel();
+            updateCarouselBackground();
         }
 
         // Update cards per view based on screen size
@@ -3946,6 +3974,7 @@ section[id] {
             totalSlides = Math.ceil(carouselCards.length / cardsPerView);
             createDots();
             updateCarousel();
+            updateCarouselBackground();
         }
 
         // Create dots for carousel
@@ -3960,6 +3989,7 @@ section[id] {
                 dot.addEventListener('click', () => {
                     currentSlide = i;
                     updateCarousel();
+                    updateCarouselBackground();
                 });
                 carouselDots.appendChild(dot);
             }
@@ -3981,11 +4011,63 @@ section[id] {
             carouselNext.classList.toggle('disabled', currentSlide >= totalSlides - 1);
         }
 
+        // Update carousel background based on current slide
+        function updateCarouselBackground() {
+            // Get the first card in the current slide
+            const firstCardIndex = currentSlide * cardsPerView;
+            if (carouselCards[firstCardIndex]) {
+                const woodType = carouselCards[firstCardIndex].dataset.wood;
+                const newBackground = carouselBackgroundMap[woodType] || 'var(--carousel-walnut-bg)';
+                
+                if (newBackground !== currentCarouselBackground) {
+                    carouselSection.style.background = newBackground;
+                    currentCarouselBackground = newBackground;
+                }
+            }
+        }
+
+        // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
+        // Function to update carousel background based on hovered card
+        function updateCarouselBackgroundOnHover(woodType) {
+            const newBackground = carouselBackgroundMap[woodType] || 'var(--carousel-walnut-bg)';
+            if (newBackground !== currentCarouselBackground) {
+                carouselSection.style.background = newBackground;
+            }
+        }
+
+        // Function to reset carousel background to current slide
+        function resetCarouselBackgroundToCurrent() {
+            updateCarouselBackground();
+        }
+
+        // Add hover event listeners to carousel cards
+        carouselCards.forEach(card => {
+            const woodType = card.dataset.wood;
+            
+            card.addEventListener('mouseenter', () => {
+                updateCarouselBackgroundOnHover(woodType);
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                resetCarouselBackgroundToCurrent();
+            });
+            
+            // For touch devices
+            card.addEventListener('touchstart', () => {
+                updateCarouselBackgroundOnHover(woodType);
+            });
+            
+            card.addEventListener('touchend', () => {
+                setTimeout(resetCarouselBackgroundToCurrent, 1000);
+            });
+        });
+
         // Next slide
         function nextSlide() {
             if (currentSlide < totalSlides - 1) {
                 currentSlide++;
                 updateCarousel();
+                updateCarouselBackground();
             }
         }
 
@@ -3994,46 +4076,13 @@ section[id] {
             if (currentSlide > 0) {
                 currentSlide--;
                 updateCarousel();
+                updateCarouselBackground();
             }
         }
 
         // Event listeners for carousel navigation
         carouselPrev.addEventListener('click', prevSlide);
         carouselNext.addEventListener('click', nextSlide);
-
-        // CAROUSEL BACKGROUND COLOR CHANGER
-        // Function to update carousel background based on hovered card
-        function updateCarouselBackground(woodType) {
-            carouselSection.style.background = carouselBackgroundMap[woodType];
-        }
-
-        // Function to reset carousel background to default
-        function resetCarouselBackground() {
-            carouselSection.style.background = 'var(--carousel-walnut-bg)';
-        }
-
-        // Add hover event listeners to carousel cards
-        carouselCards.forEach(card => {
-            const woodType = card.dataset.wood;
-            
-            card.addEventListener('mouseenter', () => {
-                updateCarouselBackground(woodType);
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                resetCarouselBackground();
-            });
-            
-            // For touch devices
-            card.addEventListener('touchstart', () => {
-                updateCarouselBackground(woodType);
-            });
-            
-            // Reset background after touch ends
-            document.addEventListener('touchend', () => {
-                setTimeout(resetCarouselBackground, 1000);
-            });
-        });
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
