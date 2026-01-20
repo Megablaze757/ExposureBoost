@@ -2076,6 +2076,41 @@ section[id] {
     backdrop-filter: blur(10px);
 }
 
+
+
+/* === SEE IT WITH YOUR LOGO: UX IMPROVEMENTS === */
+@media (min-width: 993px) {
+    /* Keep preview visible while you choose options */
+    .preview-container { position: sticky; top: 90px; }
+}
+
+/* Make the right column feel more "builder-like" */
+.selection-options { align-content: start; }
+
+/* Allow 3 buttons to wrap nicely (Upload / Clear / Demo) */
+.upload-actions { flex-wrap: wrap; }
+.upload-btn, .clear-logo-btn, .demo-logo-btn { flex: 1 1 160px; }
+
+.demo-logo-btn {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--white);
+    border: 1px solid rgba(224, 191, 184, 0.35);
+    width: 100%;
+    margin-top: 10px;
+}
+.demo-logo-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+}
+
+/* Small helper note under upload area */
+.logo-note {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.45;
+}
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
     .section-title {
@@ -2833,7 +2868,85 @@ section[id] {
     transform: translateY(0);
     opacity: 1;
 }
-    </style>
+    
+/* =========================================================
+   INSERTED: Mobile optimizations for "See It With Your Logo"
+   - Bigger preview, better spacing, bigger tap targets
+   - Stack actions, reduce hover-only animations
+   - Disable iOS filter shadow in preview to prevent flashes
+   ========================================================= */
+@media (max-width: 768px) {
+  .custom-logo-section {
+    padding: 60px 16px;
+  }
+
+  .logo-builder-grid {
+    margin: 24px 0;
+    gap: 22px;
+  }
+
+  .preview-container {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .preview-card {
+    max-width: 92vw;
+    height: auto;
+    aspect-ratio: 5 / 3;
+  }
+
+  .preview-placeholder {
+    padding: 14px;
+  }
+
+  .controls-panel {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  /* Make upload area easier to tap */
+  .upload-area {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  /* Make color options larger + consistent */
+  .metal-color-options {
+    gap: 10px;
+  }
+  .metal-color-option {
+    border-radius: 12px;
+    min-width: 58px;
+    min-height: 58px;
+  }
+
+  /* Stack action buttons */
+  .logo-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .logo-actions .btn {
+    width: 100%;
+  }
+
+  /* Reduce hover transforms on mobile */
+  .metal-color-option:hover,
+  .preview-card:hover,
+  .preview-logo:hover {
+    transform: none !important;
+  }
+}
+
+/* Touch devices (mobile/tablet): prevent Safari compositing flashes in preview */
+@media (hover: none) and (pointer: coarse) {
+  .preview-logo {
+    -webkit-filter: none !important;
+    filter: none !important;
+  }
+}
+
+</style>
 </head>
 
 <body>
@@ -3337,6 +3450,12 @@ section[id] {
                                         <span>🗑️</span> Clear Logo
                                     </button>
                                 </div>
+
+                                <!-- ADDED: Demo logo button (quick preview) -->
+                                <button class="demo-logo-btn" id="demoLogoBtn">
+                                    <span>✨</span> Try Demo Logo
+                                </button>
+                                <div class="logo-note">Tip: Transparent PNG works best. If your logo has a white box, remove the background in Canva first.</div>
                             </div>
                         </div>
 
@@ -3737,7 +3856,7 @@ section[id] {
         });
 
         // IMPROVED ENGRAVING SELECTION MODAL WITH QUANTITY
-        const engravingOptionsModal = document.querySelectorAll('.engraving-option');
+        const engravingOptionsModal = document.querySelectorAll('#engravingModal .engraving-option');
         const confirmEngravingBtn = document.getElementById('confirmEngraving');
         const cancelEngravingBtn = document.getElementById('cancelEngraving');
         const closeEngravingBtn = document.getElementById('closeEngraving');
@@ -3746,7 +3865,7 @@ section[id] {
         const quantityDecrease = document.getElementById('quantityDecrease');
         const quantityIncrease = document.getElementById('quantityIncrease');
         const quantityInput = document.getElementById('quantityInput');
-        const quantityPresetBtns = document.querySelectorAll('.quantity-preset-btn');
+        const quantityPresetBtns = document.querySelectorAll('#engravingModal .quantity-preset-btn');
 
         // Open engraving modal
         function openEngravingModal(name, price) {
@@ -3838,7 +3957,7 @@ section[id] {
         confirmEngravingBtn.addEventListener('click', () => {
             if (!currentEngravingData) return;
             
-            const engravingType = document.querySelector('.engraving-option.selected').dataset.engraving;
+            const engravingType = document.querySelector('#engravingModal .engraving-option.selected').dataset.engraving;
             const engravingName = engravingType === 'silver' ? 'Silver Engraving' : 'Gold Engraving';
             const itemName = `${currentEngravingData.name} (${engravingName})`;
             
@@ -3852,11 +3971,12 @@ section[id] {
 
         // CUSTOM LOGO BUILDER
         const metalColorOptions = document.querySelectorAll('.metal-color-option');
-        const customEngravingOptions = document.querySelectorAll('.engraving-option');
+        const customEngravingOptions = document.querySelectorAll('.custom-logo-section .engraving-section .engraving-option');
         const uploadArea = document.getElementById('uploadArea');
         const logoFileInput = document.getElementById('logoFileInput');
         const uploadLogoBtn = document.getElementById('uploadLogoBtn');
         const clearLogoBtn = document.getElementById('clearLogoBtn');
+        const demoLogoBtn = document.getElementById('demoLogoBtn');
         const previewLogo = document.getElementById('previewLogo');
         const previewPlaceholder = document.getElementById('previewPlaceholder');
         const previewCardInner = document.getElementById('previewCardInner');
