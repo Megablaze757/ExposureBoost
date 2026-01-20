@@ -2076,41 +2076,6 @@ section[id] {
     backdrop-filter: blur(10px);
 }
 
-
-
-/* === SEE IT WITH YOUR LOGO: UX IMPROVEMENTS === */
-@media (min-width: 993px) {
-    /* Keep preview visible while you choose options */
-    .preview-container { position: sticky; top: 90px; }
-}
-
-/* Make the right column feel more "builder-like" */
-.selection-options { align-content: start; }
-
-/* Allow 3 buttons to wrap nicely (Upload / Clear / Demo) */
-.upload-actions { flex-wrap: wrap; }
-.upload-btn, .clear-logo-btn, .demo-logo-btn { flex: 1 1 160px; }
-
-.demo-logo-btn {
-    background: rgba(255, 255, 255, 0.14);
-    color: var(--white);
-    border: 1px solid rgba(224, 191, 184, 0.35);
-    width: 100%;
-    margin-top: 10px;
-}
-.demo-logo-btn:hover {
-    background: rgba(255, 255, 255, 0.22);
-    transform: translateY(-2px);
-}
-
-/* Small helper note under upload area */
-.logo-note {
-    margin-top: 10px;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.45;
-}
-
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
     .section-title {
@@ -2870,80 +2835,103 @@ section[id] {
 }
     
 /* =========================================================
-   INSERTED: Mobile optimizations for "See It With Your Logo"
-   - Bigger preview, better spacing, bigger tap targets
-   - Stack actions, reduce hover-only animations
-   - Disable iOS filter shadow in preview to prevent flashes
+   INSERTED: Mobile-first "See It With Your Logo" refinement
+   - Slider directly under preview
+   - Compact color + engraving controls
+   - Removed duplicate upload boxes
    ========================================================= */
-@media (max-width: 768px) {
-  .custom-logo-section {
-    padding: 60px 16px;
-  }
-
-  .logo-builder-grid {
-    margin: 24px 0;
-    gap: 22px;
-  }
-
-  .preview-container {
-    padding: 18px;
-    border-radius: 18px;
-  }
-
-  .preview-card {
-    max-width: 92vw;
-    height: auto;
-    aspect-ratio: 5 / 3;
-  }
-
-  .preview-placeholder {
-    padding: 14px;
-  }
-
-  .controls-panel {
-    padding: 18px;
-    border-radius: 18px;
-  }
-
-  /* Make upload area easier to tap */
-  .upload-area {
-    padding: 18px;
-    border-radius: 16px;
-  }
-
-  /* Make color options larger + consistent */
-  .metal-color-options {
-    gap: 10px;
-  }
-  .metal-color-option {
-    border-radius: 12px;
-    min-width: 58px;
-    min-height: 58px;
-  }
-
-  /* Stack action buttons */
-  .logo-actions {
+.preview-upload-controls {
+    margin-top: 14px;
+    display: flex;
     flex-direction: column;
-    gap: 12px;
-  }
-  .logo-actions .btn {
-    width: 100%;
-  }
-
-  /* Reduce hover transforms on mobile */
-  .metal-color-option:hover,
-  .preview-card:hover,
-  .preview-logo:hover {
-    transform: none !important;
-  }
+    gap: 10px;
 }
 
-/* Touch devices (mobile/tablet): prevent Safari compositing flashes in preview */
-@media (hover: none) and (pointer: coarse) {
-  .preview-logo {
-    -webkit-filter: none !important;
-    filter: none !important;
-  }
+.upload-actions.compact {
+    display: flex;
+    gap: 10px;
+}
+
+.upload-actions.compact .upload-btn,
+.upload-actions.compact .clear-logo-btn {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+}
+
+.logo-recommendation {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.35;
+}
+
+/* Make the preview card itself clickable feeling */
+.preview-card {
+    cursor: pointer;
+}
+
+/* Mobile: compact controls + slider placement */
+@media (max-width: 768px) {
+    .logo-builder-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin: 26px 0;
+    }
+
+    /* Keep preview first, then size slider, then options */
+    .preview-container { order: 1; }
+    .selection-options { order: 3; }
+
+    /* Logo size block: tighter */
+    .logo-size-section {
+        margin-top: 14px;
+        padding: 14px;
+        border-radius: 16px;
+    }
+    .logo-size-title { font-size: 0.95rem; }
+    .size-value { font-size: 0.95rem; }
+
+    /* Hide size preset buttons on mobile (keeps it clean) */
+    .size-presets { display: none; }
+
+    /* Smaller color buttons */
+    .metal-colors-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+    .metal-color-option {
+        border-radius: 10px;
+        border-width: 2px;
+        box-shadow: none;
+    }
+    .metal-color-option .color-label {
+        font-size: 0.68rem;
+        padding: 4px 2px;
+    }
+
+    /* Smaller engraving buttons */
+    .engraving-options {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .engraving-option {
+        padding: 12px;
+        border-radius: 12px;
+    }
+    .engraving-icon { font-size: 1rem; }
+    .engraving-name { font-size: 0.9rem; }
+    .engraving-price { display: none; }
+
+    /* Upload controls: full width & compact */
+    .preview-upload-controls .logo-recommendation { font-size: 0.82rem; }
+}
+
+/* Auto-fit logo nicely (safe area) */
+.preview-logo {
+    max-width: 72%;
+    max-height: 72%;
+    object-fit: contain;
 }
 
 </style>
@@ -3357,6 +3345,43 @@ section[id] {
                                 </div>
                             </div>
                         </div>
+
+                        <!-- INSERTED: Logo size moved directly under preview -->
+                        <div class="logo-size-section">
+                                                    <div class="logo-size-title">Logo Size:</div>
+                                                    <div class="logo-size-controls">
+                                                        <div class="size-slider-container">
+                                                            <input type="range" min="20" max="100" value="70" class="size-slider" id="logoSizeSlider">
+                                                        </div>
+                                                        <div class="size-value" id="logoSizeValue">70%</div>
+                                                        <div class="size-presets">
+                                                            <button class="size-preset-btn" data-size="50">Small</button>
+                                                            <button class="size-preset-btn active" data-size="70">Medium</button>
+                                                            <button class="size-preset-btn" data-size="90">Large</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                        <!-- /INSERTED -->
+
+
+                        <!-- INSERTED: Upload controls moved under preview (mobile-first) -->
+                        <div class="preview-upload-controls">
+                            <input type="file" id="logoFileInput" accept="image/*">
+
+                            <div class="upload-actions compact">
+                                <button class="upload-btn" id="uploadLogoBtn">
+                                    <span>📁</span> Upload Logo
+                                </button>
+                                <button class="clear-logo-btn" id="clearLogoBtn" disabled>
+                                    <span>🗑️</span> Clear Logo
+                                </button>
+                            </div>
+
+                            <div class="logo-recommendation">
+                                Recommended: transparent PNG/SVG, <strong>1000×1000px+</strong>, centered with no extra padding. Your logo will auto-fit in the preview.
+                            </div>
+                        </div>
+                        <!-- /INSERTED -->
                         
                         <div class="preview-details">
                             <div class="selected-card-info">
@@ -3428,52 +3453,7 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Logo Upload -->
-                        <div class="logo-upload-section">
-                            <div class="logo-upload-title">Upload Your Logo</div>
-                            <div class="upload-container">
-                                <div class="upload-area" id="uploadArea">
-                                    <div class="upload-icon">📁</div>
-                                    <div class="upload-text">Click to upload your logo</div>
-                                    <div class="upload-subtext">Drag & drop or click to select</div>
-                                    <div class="upload-subtext">PNG, JPG up to 10MB</div>
-                                    <div class="upload-hint">For best results, use a transparent PNG</div>
-                                </div>
-                                
-                                <input type="file" id="logoFileInput" accept="image/*">
-                                
-                                <div class="upload-actions">
-                                    <button class="upload-btn" id="uploadLogoBtn">
-                                        <span>📁</span> Upload Logo
-                                    </button>
-                                    <button class="clear-logo-btn" id="clearLogoBtn" disabled>
-                                        <span>🗑️</span> Clear Logo
-                                    </button>
-                                </div>
-
-                                <!-- ADDED: Demo logo button (quick preview) -->
-                                <button class="demo-logo-btn" id="demoLogoBtn">
-                                    <span>✨</span> Try Demo Logo
-                                </button>
-                                <div class="logo-note">Tip: Transparent PNG works best. If your logo has a white box, remove the background in Canva first.</div>
-                            </div>
-                        </div>
-
-                        <!-- Logo Size Controls -->
-                        <div class="logo-size-section">
-                            <div class="logo-size-title">Logo Size:</div>
-                            <div class="logo-size-controls">
-                                <div class="size-slider-container">
-                                    <input type="range" min="20" max="100" value="70" class="size-slider" id="logoSizeSlider">
-                                </div>
-                                <div class="size-value" id="logoSizeValue">70%</div>
-                                <div class="size-presets">
-                                    <button class="size-preset-btn" data-size="50">Small</button>
-                                    <button class="size-preset-btn active" data-size="70">Medium</button>
-                                    <button class="size-preset-btn" data-size="90">Large</button>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -3856,7 +3836,7 @@ section[id] {
         });
 
         // IMPROVED ENGRAVING SELECTION MODAL WITH QUANTITY
-        const engravingOptionsModal = document.querySelectorAll('#engravingModal .engraving-option');
+        const engravingOptionsModal = document.querySelectorAll('.engraving-option');
         const confirmEngravingBtn = document.getElementById('confirmEngraving');
         const cancelEngravingBtn = document.getElementById('cancelEngraving');
         const closeEngravingBtn = document.getElementById('closeEngraving');
@@ -3865,7 +3845,7 @@ section[id] {
         const quantityDecrease = document.getElementById('quantityDecrease');
         const quantityIncrease = document.getElementById('quantityIncrease');
         const quantityInput = document.getElementById('quantityInput');
-        const quantityPresetBtns = document.querySelectorAll('#engravingModal .quantity-preset-btn');
+        const quantityPresetBtns = document.querySelectorAll('.quantity-preset-btn');
 
         // Open engraving modal
         function openEngravingModal(name, price) {
@@ -3957,7 +3937,7 @@ section[id] {
         confirmEngravingBtn.addEventListener('click', () => {
             if (!currentEngravingData) return;
             
-            const engravingType = document.querySelector('#engravingModal .engraving-option.selected').dataset.engraving;
+            const engravingType = document.querySelector('.engraving-option.selected').dataset.engraving;
             const engravingName = engravingType === 'silver' ? 'Silver Engraving' : 'Gold Engraving';
             const itemName = `${currentEngravingData.name} (${engravingName})`;
             
@@ -3971,12 +3951,11 @@ section[id] {
 
         // CUSTOM LOGO BUILDER
         const metalColorOptions = document.querySelectorAll('.metal-color-option');
-        const customEngravingOptions = document.querySelectorAll('.custom-logo-section .engraving-section .engraving-option');
+        const customEngravingOptions = document.querySelectorAll('.engraving-option');
         const uploadArea = document.getElementById('uploadArea');
         const logoFileInput = document.getElementById('logoFileInput');
         const uploadLogoBtn = document.getElementById('uploadLogoBtn');
         const clearLogoBtn = document.getElementById('clearLogoBtn');
-        const demoLogoBtn = document.getElementById('demoLogoBtn');
         const previewLogo = document.getElementById('previewLogo');
         const previewPlaceholder = document.getElementById('previewPlaceholder');
         const previewCardInner = document.getElementById('previewCardInner');
@@ -4146,7 +4125,7 @@ section[id] {
         });
 
         // Click on upload area
-        uploadArea.addEventListener('click', () => {
+        if (uploadArea) uploadArea.addEventListener('click', () => {
             if (!uploadedLogoGlobal) {
                 logoFileInput.click();
             }
