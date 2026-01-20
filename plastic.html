@@ -676,33 +676,13 @@ section[id] {
     border-radius: 20px;
 }
 
+/* REMOVED UPLOAD OVERLAY FROM HERO CARD */
 .hero-card-upload-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(10, 26, 47, 0.8);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 2;
-}
-
-.hero-card:hover .hero-card-upload-overlay {
-    opacity: 1;
+    display: none; /* Completely removed */
 }
 
 .hero-card-upload-text {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--white);
-    margin-top: 10px;
-    text-align: center;
+    display: none; /* Completely removed */
 }
 
 .hero-text {
@@ -2796,12 +2776,8 @@ section[id] {
                 
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
-                        <!-- Hero card image -->
+                        <!-- Hero card image - NO UPLOAD OVERLAY -->
                         <img src="plasticblue.webp" alt="Blue Plastic NFC Card">
-                        <div class="hero-card-upload-overlay">
-                            <div class="upload-icon">📁</div>
-                            <div class="hero-card-upload-text">Click to upload your logo</div>
-                        </div>
                     </div>
                 </div>
 
@@ -3999,33 +3975,28 @@ section[id] {
             }
         });
 
-        // HERO CARD CLICK TO UPLOAD
+        // HERO CARD CLICK TO UPLOAD - REMOVED UPLOAD FUNCTIONALITY
         heroCard.addEventListener('click', () => {
-            if (!uploadedLogoGlobal) {
-                logoFileInput.click();
-            } else {
-                // Scroll to custom logo section if logo already uploaded
-                const customLogoSection = document.getElementById('custom-logo');
-                if (customLogoSection) {
-                    const navHeight = nav.offsetHeight;
-                    const targetPosition = customLogoSection.offsetTop - navHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+            // Scroll to carousel section instead of uploading logo
+            const carouselSection = document.getElementById('carousel');
+            if (carouselSection) {
+                const navHeight = nav.offsetHeight;
+                const targetPosition = carouselSection.offsetTop - navHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
 
         // Browse cards button
         document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
             e.preventDefault();
-            // Scroll to bestsellers section
-            const bestsellersSection = document.getElementById('bestsellers');
-            if (bestsellersSection) {
+            // Scroll to carousel section
+            const carouselSection = document.getElementById('carousel');
+            if (carouselSection) {
                 const navHeight = nav.offsetHeight;
-                const targetPosition = bestsellersSection.offsetTop - navHeight;
-
+                const targetPosition = carouselSection.offsetTop - navHeight;
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -4061,7 +4032,7 @@ section[id] {
             });
         });
 
-        // CAROUSEL FUNCTIONALITY WITH BACKGROUND CHANGES
+        // CIRCULAR CAROUSEL FUNCTIONALITY
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
@@ -4071,14 +4042,46 @@ section[id] {
 
         let currentSlide = 0;
         let cardsPerView = 3;
-        let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
+        let totalSlides = carouselCards.length; // Total actual slides for circular carousel
+        let isAnimating = false;
 
-        // Initialize carousel
-        function initCarousel() {
+        // Initialize circular carousel
+        function initCircularCarousel() {
             updateCardsPerView();
-            createDots();
-            updateCarousel();
+            createCircularDots();
+            updateCircularCarousel();
             updateCarouselBackground();
+            
+            // Clone first and last cards for circular effect
+            setupCircularCards();
+        }
+
+        // Setup circular cards by cloning first and last cards
+        function setupCircularCards() {
+            // Clear existing track
+            carouselTrack.innerHTML = '';
+            
+            // Clone last card and prepend
+            const lastCardClone = carouselCards[carouselCards.length - 1].cloneNode(true);
+            lastCardClone.classList.add('clone');
+            carouselTrack.appendChild(lastCardClone);
+            
+            // Add all original cards
+            carouselCards.forEach(card => {
+                carouselTrack.appendChild(card);
+            });
+            
+            // Clone first card and append
+            const firstCardClone = carouselCards[0].cloneNode(true);
+            firstCardClone.classList.add('clone');
+            carouselTrack.appendChild(firstCardClone);
+            
+            // Update carouselCards reference
+            const allCards = document.querySelectorAll('.plastic-carousel-card');
+            
+            // Set initial position to show first original card
+            const cardWidth = allCards[0].offsetWidth + 30;
+            carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
         }
 
         // Update cards per view based on screen size
@@ -4090,14 +4093,10 @@ section[id] {
             } else {
                 cardsPerView = 3;
             }
-            totalSlides = Math.ceil(carouselCards.length / cardsPerView);
-            createDots();
-            updateCarousel();
-            updateCarouselBackground();
         }
 
-        // Create dots for carousel
-        function createDots() {
+        // Create dots for circular carousel
+        function createCircularDots() {
             carouselDots.innerHTML = '';
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('div');
@@ -4106,18 +4105,23 @@ section[id] {
                     dot.classList.add('active');
                 }
                 dot.addEventListener('click', () => {
-                    currentSlide = i;
-                    updateCarousel();
-                    updateCarouselBackground();
+                    if (!isAnimating) {
+                        goToSlide(i);
+                    }
                 });
                 carouselDots.appendChild(dot);
             }
         }
 
-        // Update carousel position
-        function updateCarousel() {
-            const cardWidth = carouselCards[0].offsetWidth + 30; // width + gap
-            const translateX = -currentSlide * cardsPerView * cardWidth;
+        // Update circular carousel position
+        function updateCircularCarousel() {
+            const allCards = document.querySelectorAll('.plastic-carousel-card');
+            if (allCards.length === 0) return;
+            
+            const cardWidth = allCards[0].offsetWidth + 30;
+            const translateX = -(currentSlide + 1) * cardWidth;
+            
+            carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
             carouselTrack.style.transform = `translateX(${translateX}px)`;
             
             // Update dots
@@ -4126,27 +4130,95 @@ section[id] {
             });
             
             // Update navigation buttons
-            carouselPrev.classList.toggle('disabled', currentSlide === 0);
-            carouselNext.classList.toggle('disabled', currentSlide >= totalSlides - 1);
+            carouselPrev.classList.remove('disabled');
+            carouselNext.classList.remove('disabled');
+        }
+
+        // Go to specific slide
+        function goToSlide(slideIndex) {
+            if (isAnimating) return;
+            
+            isAnimating = true;
+            currentSlide = slideIndex;
+            updateCircularCarousel();
+            updateCarouselBackground();
+            
+            setTimeout(() => {
+                isAnimating = false;
+            }, 500);
+        }
+
+        // Next slide with circular logic
+        function nextSlide() {
+            if (isAnimating) return;
+            
+            isAnimating = true;
+            currentSlide = (currentSlide + 1) % totalSlides;
+            
+            updateCircularCarousel();
+            updateCarouselBackground();
+            
+            // Check if we need to jump to beginning (circular logic)
+            setTimeout(() => {
+                if (currentSlide === 0) {
+                    // Jump to first original card without animation
+                    const allCards = document.querySelectorAll('.plastic-carousel-card');
+                    const cardWidth = allCards[0].offsetWidth + 30;
+                    carouselTrack.style.transition = 'none';
+                    carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
+                    
+                    // Force reflow
+                    carouselTrack.offsetHeight;
+                    
+                    // Restore transition
+                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                }
+                isAnimating = false;
+            }, 500);
+        }
+
+        // Previous slide with circular logic
+        function prevSlide() {
+            if (isAnimating) return;
+            
+            isAnimating = true;
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            
+            updateCircularCarousel();
+            updateCarouselBackground();
+            
+            // Check if we need to jump to end (circular logic)
+            setTimeout(() => {
+                if (currentSlide === totalSlides - 1) {
+                    // Jump to last original card without animation
+                    const allCards = document.querySelectorAll('.plastic-carousel-card');
+                    const cardWidth = allCards[0].offsetWidth + 30;
+                    carouselTrack.style.transition = 'none';
+                    carouselTrack.style.transform = `translateX(-${(totalSlides) * cardWidth}px)`;
+                    
+                    // Force reflow
+                    carouselTrack.offsetHeight;
+                    
+                    // Restore transition
+                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                }
+                isAnimating = false;
+            }, 500);
         }
 
         // Update carousel background based on current slide
         function updateCarouselBackground() {
-            // Get the first card in the current slide
-            const firstCardIndex = currentSlide * cardsPerView;
-            if (carouselCards[firstCardIndex]) {
-                const plasticType = carouselCards[firstCardIndex].dataset.plastic;
-                const newBackground = carouselBackgroundMap[plasticType] || 'var(--carousel-blue-bg)';
-                
-                if (newBackground !== currentCarouselBackground) {
-                    carouselSection.style.background = newBackground;
-                    currentCarouselBackground = newBackground;
-                }
+            // Get the current slide's plastic type
+            const plasticType = carouselCards[currentSlide].dataset.plastic;
+            const newBackground = carouselBackgroundMap[plasticType] || 'var(--carousel-blue-bg)';
+            
+            if (newBackground !== currentCarouselBackground) {
+                carouselSection.style.background = newBackground;
+                currentCarouselBackground = newBackground;
             }
         }
 
         // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
-        // Function to update carousel background based on hovered card
         function updateCarouselBackgroundOnHover(plasticType) {
             const newBackground = carouselBackgroundMap[plasticType] || 'var(--carousel-blue-bg)';
             if (newBackground !== currentCarouselBackground) {
@@ -4154,50 +4226,29 @@ section[id] {
             }
         }
 
-        // Function to reset carousel background to current slide
         function resetCarouselBackgroundToCurrent() {
             updateCarouselBackground();
         }
 
         // Add hover event listeners to carousel cards
-        carouselCards.forEach(card => {
-            const plasticType = card.dataset.plastic;
-            
-            card.addEventListener('mouseenter', () => {
-                updateCarouselBackgroundOnHover(plasticType);
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                resetCarouselBackgroundToCurrent();
-            });
-            
-            // For touch devices
-            card.addEventListener('touchstart', () => {
-                updateCarouselBackgroundOnHover(plasticType);
-            });
-            
-            card.addEventListener('touchend', () => {
-                setTimeout(resetCarouselBackgroundToCurrent, 1000);
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for carousel to be set up
+            setTimeout(() => {
+                const allCards = document.querySelectorAll('.plastic-carousel-card:not(.clone)');
+                
+                allCards.forEach(card => {
+                    const plasticType = card.dataset.plastic;
+                    
+                    card.addEventListener('mouseenter', () => {
+                        updateCarouselBackgroundOnHover(plasticType);
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        resetCarouselBackgroundToCurrent();
+                    });
+                });
+            }, 100);
         });
-
-        // Next slide
-        function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateCarousel();
-                updateCarouselBackground();
-            }
-        }
-
-        // Previous slide
-        function prevSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateCarousel();
-                updateCarouselBackground();
-            }
-        }
 
         // Event listeners for carousel navigation
         carouselPrev.addEventListener('click', prevSlide);
@@ -4206,15 +4257,16 @@ section[id] {
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Plastic Page loaded with enhanced features:');
-            console.log('1. Working carousel with navigation arrows ✓');
-            console.log('2. No auto-advance, manual control only ✓');
-            console.log('3. Full cards displayed (not cut in half) ✓');
-            console.log('4. Finish modal with quantity adjustment ✓');
-            console.log('5. Carousel background changes on card hover ✓');
-            console.log('6. WhatsApp links updated to +447754888841 ✓');
-            console.log('7. All prices set to £65 ✓');
+            console.log('1. CIRCULAR CAROUSEL with seamless looping ✓');
+            console.log('2. Removed upload button from hero card ✓');
+            console.log('3. Manual control with navigation arrows ✓');
+            console.log('4. Full cards displayed (not cut in half) ✓');
+            console.log('5. Finish modal with quantity adjustment ✓');
+            console.log('6. Carousel background changes on card hover ✓');
+            console.log('7. WhatsApp links updated to +447754888841 ✓');
+            console.log('8. All prices set to £65 ✓');
             
-            initCarousel();
+            initCircularCarousel();
             updateCart();
             
             // Add highlight style for selected plastic text
@@ -4388,6 +4440,11 @@ section[id] {
                     transform: none !important;
                     box-shadow: none !important;
                 }
+                
+                /* Hide clone cards from screen readers */
+                .plastic-carousel-card.clone {
+                    visibility: visible;
+                }
             `;
             document.head.appendChild(style);
         });
@@ -4395,7 +4452,27 @@ section[id] {
         // Update carousel on window resize
         window.addEventListener('resize', () => {
             updateCardsPerView();
+            // Re-initialize carousel on resize to handle responsive changes
+            setTimeout(() => {
+                initCircularCarousel();
+            }, 100);
         });
+
+        // Auto-advance carousel (optional - disabled for manual control)
+        // let carouselInterval;
+        // function startAutoAdvance() {
+        //     carouselInterval = setInterval(nextSlide, 5000);
+        // }
+        // function stopAutoAdvance() {
+        //     clearInterval(carouselInterval);
+        // }
+        
+        // Pause auto-advance on hover
+        // carouselTrack.addEventListener('mouseenter', stopAutoAdvance);
+        // carouselTrack.addEventListener('mouseleave', startAutoAdvance);
+        
+        // Start auto-advance initially
+        // startAutoAdvance();
     </script>
 </body>
 </html>
