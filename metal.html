@@ -44,6 +44,17 @@
     --gold-bg: linear-gradient(135deg, #FFD700, #D4AF37);
     --rosegold-bg: linear-gradient(135deg, #B76E79, #E0BFB8);
     --silver-bg: linear-gradient(135deg, #C0C0C0, #A9A9A9);
+    
+    /* CAROUSEL SECTION BACKGROUNDS */
+    --carousel-black-bg: linear-gradient(135deg, #1A0F0F 0%, #2D2D2D 100%);
+    --carousel-blue-bg: linear-gradient(135deg, #1A0F0F 0%, #004488 100%);
+    --carousel-green-bg: linear-gradient(135deg, #1A0F0F 0%, #008844 100%);
+    --carousel-purple-bg: linear-gradient(135deg, #1A0F0F 0%, #6A1BC2 100%);
+    --carousel-red-bg: linear-gradient(135deg, #1A0F0F 0%, #CC3333 100%);
+    --carousel-white-bg: linear-gradient(135deg, #1A0F0F 0%, #F0F0F0 100%);
+    --carousel-gold-bg: linear-gradient(135deg, #1A0F0F 0%, #D4AF37 100%);
+    --carousel-silver-bg: linear-gradient(135deg, #1A0F0F 0%, #A9A9A9 100%);
+    --carousel-rosegold-bg: linear-gradient(135deg, #1A0F0F 0%, #E0BFB8 100%);
 }
 
 * {
@@ -638,13 +649,12 @@ section[id] {
     overflow: hidden;
     box-shadow: 0 25px 50px rgba(183, 110, 121, 0.4),
         0 10px 30px rgba(26, 15, 15, 0.5);
-    /* REMOVED: border outline */
-    background: transparent; /* Changed from gradient background */
+    background: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0; /* Removed padding */
+    padding: 0;
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -658,7 +668,7 @@ section[id] {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 20px; /* Match card border radius */
+    border-radius: 20px;
 }
 
 .hero-card-upload-overlay {
@@ -859,12 +869,12 @@ section[id] {
     height: 200px;
     border-radius: 12px;
     margin-bottom: 20px;
-    border: none; /* Remove border */
+    border: none;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent; /* Remove background */
+    background: transparent;
     position: relative;
     padding: 0;
 }
@@ -883,13 +893,13 @@ section[id] {
 .bestseller-image img.webp-image {
     width: 95%;
     height: 95%;
-    object-fit: cover; /* Changed back to cover for full container fill */
+    object-fit: cover;
     transition: transform 0.5s ease;
     border: none;
     outline: none;
     box-shadow: none;
     background: transparent;
-    border-radius: 12px; /* Match container border radius */
+    border-radius: 12px;
 }
 
 .bestseller-card:hover .bestseller-image img.webp-image {
@@ -971,16 +981,13 @@ section[id] {
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-/* CAROUSEL SECTION - WIDER WITH RED AND WHITE */
+/* CAROUSEL SECTION - LIKE PLASTIC PAGE */
 .carousel-section {
-    padding: 60px 20px 80px; /* Increased bottom padding for lower button */
-    transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    padding: 100px 20px;
+    background: var(--carousel-black-bg);
     position: relative;
     overflow: hidden;
-    min-height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .carousel-section::before {
@@ -991,349 +998,279 @@ section[id] {
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-}
-
-/* FIX: Black background by default (no gold) */
-.carousel-section {
-    background: var(--black-bg);
-    color: #FFFFFF;
-}
-
-/* Background color classes for carousel */
-.carousel-section.black {
-    background: var(--black-bg);
-    color: #FFFFFF;
-}
-
-.carousel-section.blue {
-    background: var(--blue-bg);
-    color: #FFFFFF;
-}
-
-.carousel-section.green {
-    background: var(--green-bg);
-    color: #FFFFFF;
-}
-
-.carousel-section.purple {
-    background: var(--purple-bg);
-    color: #FFFFFF;
-}
-
-.carousel-section.yellow {
-    background: var(--yellow-bg);
-    color: #1a1209;
-}
-
-.carousel-section.red {
-    background: var(--red-bg);
-    color: #FFFFFF;
-}
-
-.carousel-section.white {
-    background: var(--white-bg);
-    color: #1a1209;
-}
-
-.carousel-section.gold {
-    background: var(--gold-bg);
-    color: #1a1209;
-}
-
-.carousel-section.rosegold {
-    background: var(--rosegold-bg);
-    color: #FFFFFF;
-}
-
-.carousel-section.silver {
-    background: var(--silver-bg);
-    color: #1a1209;
-}
-
-/* Update text colors for dark backgrounds */
-.carousel-section.black .section-title,
-.carousel-section.blue .section-title,
-.carousel-section.green .section-title,
-.carousel-section.purple .section-title,
-.carousel-section.red .section-title,
-.carousel-section.rosegold .section-title {
-    color: #FFFFFF;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.carousel-section.black .section-subtitle,
-.carousel-section.blue .section-subtitle,
-.carousel-section.green .section-subtitle,
-.carousel-section.purple .section-subtitle,
-.carousel-section.red .section-subtitle,
-.carousel-section.rosegold .section-subtitle {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.carousel-section.yellow .section-title,
-.carousel-section.white .section-title,
-.carousel-section.gold .section-title,
-.carousel-section.silver .section-title {
-    color: #1a1209;
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
-}
-
-.carousel-section.yellow .section-subtitle,
-.carousel-section.white .section-subtitle,
-.carousel-section.gold .section-subtitle,
-.carousel-section.silver .section-subtitle {
-    color: rgba(26, 18, 9, 0.9);
+    z-index: 2;
 }
 
 .carousel-container {
-    max-width: 1400px; /* Wider container */
+    max-width: 1200px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
-/* REMOVED: "All Metal Finishes" text - replaced with simple title */
 .carousel-section .section-header {
-    margin-bottom: 40px; /* Increased space below header */
+    margin-bottom: 60px;
     position: relative;
     z-index: 10;
     text-align: center;
 }
 
-/* Simplified title - removed subtitle */
 .carousel-section .section-title {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+    margin-bottom: 16px;
 }
 
-.carousel-section .section-subtitle {
-    display: none; /* Hide the subtitle */
-}
-
-/* WIDER CAROUSEL */
-.metal-carousel {
+/* Carousel Styles */
+.metal-carousel-wrapper {
     position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 0 60px;
+}
+
+@media (max-width: 768px) {
+    .metal-carousel-wrapper {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .metal-carousel-wrapper {
+        padding: 0 20px;
+    }
+}
+
+.metal-carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    gap: 30px;
+    padding: 10px 0;
+}
+
+/* Carousel cards matching bestseller style */
+.metal-carousel-card {
+    flex: 0 0 calc(33.333% - 20px);
+    border-radius: 20px;
+    padding: 30px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
     height: 500px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 50px; /* Increased bottom margin for lower button */
-    perspective: 1200px;
-    max-width: 1400px; /* Wider max width */
-    width: 95%; /* Wider width */
-    transform: translateZ(0);
-    will-change: transform;
-    flex: 1;
+    flex-direction: column;
+    cursor: pointer;
+    min-width: 300px;
 }
 
-.metal-color-card {
-    position: absolute;
-    width: 350px; /* Increased width */
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 24px;
-    padding: 25px;
-    opacity: 0;
-    transform: scale(0.85) rotateY(0deg);
-    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-    pointer-events: none;
-    transform-style: preserve-3d;
-    will-change: transform, opacity;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    z-index: 1;
-    backdrop-filter: blur(10px);
-    transform: translateZ(0);
+@media (max-width: 1024px) {
+    .metal-carousel-card {
+        flex: 0 0 calc(50% - 15px);
+    }
 }
 
-.metal-color-card.active {
-    opacity: 1;
-    transform: scale(1) rotateY(0deg);
-    z-index: 3;
-    pointer-events: auto;
-    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5);
+@media (max-width: 768px) {
+    .metal-carousel-card {
+        flex: 0 0 calc(100% - 0px);
+        min-width: 280px;
+    }
 }
 
-.metal-color-card img {
-    width: 100%;
-    height: 240px;
-    border-radius: 16px;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.carousel-section.yellow .metal-color-card,
-.carousel-section.white .metal-color-card,
-.carousel-section.gold .metal-color-card,
-.carousel-section.silver .metal-color-card {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    color: #1a1209;
-}
-
-.carousel-section.black .metal-color-card,
-.carousel-section.blue .metal-color-card,
-.carousel-section.green .metal-color-card,
-.carousel-section.purple .metal-color-card,
-.carousel-section.red .metal-color-card,
-.carousel-section.rosegold .metal-color-card {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+/* Metal color backgrounds for carousel cards */
+.metal-carousel-card.black {
+    background: radial-gradient(circle at top, rgba(0, 0, 0, 0.9), rgba(51, 51, 51, 0.95));
     color: #FFFFFF;
 }
 
-.card-label {
+.metal-carousel-card.blue {
+    background: radial-gradient(circle at top, rgba(0, 102, 204, 0.9), rgba(0, 68, 136, 0.95));
+    color: #FFFFFF;
+}
+
+.metal-carousel-card.green {
+    background: radial-gradient(circle at top, rgba(0, 170, 85, 0.9), rgba(0, 136, 68, 0.95));
+    color: #FFFFFF;
+}
+
+.metal-carousel-card.purple {
+    background: radial-gradient(circle at top, rgba(138, 43, 226, 0.9), rgba(106, 27, 194, 0.95));
+    color: #FFFFFF;
+}
+
+.metal-carousel-card.red {
+    background: radial-gradient(circle at top, rgba(255, 68, 68, 0.9), rgba(204, 51, 51, 0.95));
+    color: #FFFFFF;
+}
+
+.metal-carousel-card.white {
+    background: radial-gradient(circle at top, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.95));
+    color: #1a1209;
+}
+
+.metal-carousel-card.gold {
+    background: radial-gradient(circle at top, rgba(255, 215, 0, 0.9), rgba(212, 175, 55, 0.95));
+    color: #1a1209;
+}
+
+.metal-carousel-card.silver {
+    background: radial-gradient(circle at top, rgba(192, 192, 192, 0.9), rgba(169, 169, 169, 0.95));
+    color: #1a1209;
+}
+
+.metal-carousel-card.rosegold {
+    background: radial-gradient(circle at top, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.95));
+    color: #1a1209;
+}
+
+.metal-carousel-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Carousel card image */
+.metal-carousel-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    position: relative;
+}
+
+.metal-carousel-image img {
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
+}
+
+.metal-carousel-card:hover .metal-carousel-image img {
+    transform: scale(1.05);
+}
+
+.metal-carousel-title {
     font-size: 1.5rem;
     font-weight: 800;
     margin-bottom: 10px;
-    text-align: center;
 }
 
-.carousel-section.yellow .card-label,
-.carousel-section.white .card-label,
-.carousel-section.gold .card-label,
-.carousel-section.silver .card-label {
-    color: #1a1209;
+.metal-carousel-description {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    flex-grow: 1;
 }
 
-.carousel-section.black .card-label,
-.carousel-section.blue .card-label,
-.carousel-section.green .card-label,
-.carousel-section.purple .card-label,
-.carousel-section.red .card-label,
-.carousel-section.rosegold .card-label {
-    color: #FFFFFF;
-}
-
-.card-price {
+.metal-carousel-price {
     font-size: 1.8rem;
     font-weight: 900;
-    text-align: center;
+    margin-bottom: 20px;
 }
 
-.carousel-section.yellow .card-price,
-.carousel-section.white .card-price,
-.carousel-section.gold .card-price,
-.carousel-section.silver .card-price {
-    color: #1a1209;
+.metal-carousel-price span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-left: 5px;
 }
 
-.carousel-section.black .card-price,
-.carousel-section.blue .card-price,
-.carousel-section.green .card-price,
-.carousel-section.purple .card-price,
-.carousel-section.red .card-price,
-.carousel-section.rosegold .card-price {
-    color: #FFFFFF;
+.metal-carousel-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
 }
 
-/* FIXED: Carousel arrows - ensure they're above cards */
-.carousel-arrow {
+.metal-carousel-actions .btn {
+    flex: 1;
+}
+
+/* Carousel Navigation Arrows */
+.carousel-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
+    background: rgba(224, 191, 184, 0.3);
+    border: 1px solid rgba(224, 191, 184, 0.5);
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 20; /* Higher z-index to be above cards */
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     transition: all 0.3s ease;
+    z-index: 10;
+    color: var(--white);
+    font-size: 24px;
+    font-weight: bold;
     backdrop-filter: blur(10px);
 }
 
-.carousel-arrow:hover {
-    background: rgba(0, 0, 0, 0.8);
+.carousel-nav:hover {
+    background: rgba(224, 191, 184, 0.5);
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.4);
 }
 
-.carousel-arrow.left {
-    left: 30px; /* Increased from 20px */
+.carousel-nav.prev {
+    left: 0;
 }
 
-.carousel-arrow.right {
-    right: 30px; /* Increased from 20px */
+.carousel-nav.next {
+    right: 0;
 }
 
-.carousel-section.yellow .carousel-arrow,
-.carousel-section.white .carousel-arrow,
-.carousel-section.gold .carousel-arrow,
-.carousel-section.silver .carousel-arrow {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    color: #1a1209;
+.carousel-nav.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
 }
 
-.carousel-section.yellow .carousel-arrow:hover,
-.carousel-section.white .carousel-arrow:hover,
-.carousel-section.gold .carousel-arrow:hover,
-.carousel-section.silver .carousel-arrow:hover {
-    background: rgba(255, 255, 255, 0.8);
+.carousel-nav.disabled:hover {
+    background: rgba(224, 191, 184, 0.3);
+    transform: translateY(-50%) scale(1);
+    box-shadow: none;
 }
 
-.dots {
+@media (max-width: 768px) {
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+/* Carousel Dots */
+.carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin: 30px 0 60px; /* Increased bottom margin for more space */
+    gap: 10px;
+    margin-top: 30px;
 }
 
-.dot {
+.carousel-dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    background: rgba(224, 191, 184, 0.3);
+    border: 1px solid rgba(224, 191, 184, 0.5);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.carousel-section.yellow .dot,
-.carousel-section.white .dot,
-.carousel-section.gold .dot,
-.carousel-section.silver .dot {
-    background: rgba(26, 18, 9, 0.3);
+.carousel-dot.active {
+    background: var(--rose-gold-light);
+    border-color: var(--rose-gold-light);
+    transform: scale(1.2);
 }
 
-.carousel-section.black .dot,
-.carousel-section.blue .dot,
-.carousel-section.green .dot,
-.carousel-section.purple .dot,
-.carousel-section.red .dot,
-.carousel-section.rosegold .dot {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.dot.active {
-    transform: scale(1.3);
-}
-
-.carousel-section.yellow .dot.active,
-.carousel-section.white .dot.active,
-.carousel-section.gold .dot.active,
-.carousel-section.silver .dot.active {
-    background: #1a1209;
-    box-shadow: 0 0 10px rgba(26, 18, 9, 0.5);
-}
-
-.carousel-section.black .dot.active,
-.carousel-section.blue .dot.active,
-.carousel-section.green .dot.active,
-.carousel-section.purple .dot.active,
-.carousel-section.red .dot.active,
-.carousel-section.rosegold .dot.active {
-    background: #FFFFFF;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+.carousel-dot:hover {
+    background: rgba(224, 191, 184, 0.5);
+    transform: scale(1.1);
 }
 
 /* WHY CHOOSE SECTION - METAL THEME */
@@ -1463,7 +1400,7 @@ section[id] {
     font-size: 0.9rem;
 }
 
-/* CUSTOM LOGO SECTION - COMPLETELY REDESIGNED FOR MOBILE */
+/* CUSTOM LOGO SECTION - UPDATED LIKE PLASTIC PAGE */
 .custom-logo-section {
     padding: 80px 20px;
     background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
@@ -1489,35 +1426,34 @@ section[id] {
     z-index: 2;
 }
 
-/* Mobile-friendly logo builder */
-.logo-builder-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+/* Logo Builder Grid */
+.logo-builder-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
     margin: 40px 0;
 }
 
-@media (min-width: 992px) {
-    .logo-builder-mobile {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: start;
+@media (max-width: 992px) {
+    .logo-builder-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
     }
 }
 
-/* Preview Section - Mobile Optimized */
-.preview-section-mobile {
+/* Preview Section */
+.preview-container {
     background: rgba(224, 191, 184, 0.1);
     border-radius: 24px;
     padding: 25px;
     border: 1px solid rgba(224, 191, 184, 0.2);
     backdrop-filter: blur(10px);
-    margin-bottom: 20px;
-    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.preview-header-mobile {
+.preview-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1526,13 +1462,13 @@ section[id] {
     border-bottom: 1px solid rgba(224, 191, 184, 0.3);
 }
 
-.preview-title-mobile {
+.preview-title {
     font-size: 1.3rem;
     font-weight: 800;
     color: var(--white);
 }
 
-.card-counter-mobile {
+.card-counter {
     font-size: 1rem;
     font-weight: 700;
     color: var(--rose-gold-light);
@@ -1541,11 +1477,20 @@ section[id] {
     border-radius: 20px;
 }
 
-.preview-card-mobile {
+.preview-card-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.preview-card {
     width: 100%;
-    max-width: 320px;
-    height: 200px;
-    margin: 0 auto 25px;
+    max-width: 350px;
+    height: 220px;
+    margin: 0 auto;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
@@ -1555,18 +1500,11 @@ section[id] {
     transition: transform 0.3s ease;
 }
 
-.preview-card-mobile:hover {
+.preview-card:hover {
     transform: scale(1.02);
 }
 
-@media (min-width: 768px) {
-    .preview-card-mobile {
-        height: 220px;
-        max-width: 350px;
-    }
-}
-
-.preview-card-inner-mobile {
+.preview-card-inner {
     width: 100%;
     height: 100%;
     position: relative;
@@ -1576,19 +1514,20 @@ section[id] {
     justify-content: center;
 }
 
-.preview-logo-mobile {
+.preview-logo {
     max-width: 70%;
     max-height: 70%;
     object-fit: contain;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     display: none;
+    transition: transform 0.3s ease;
 }
 
-.preview-logo-mobile.visible {
+.preview-logo.visible {
     display: block;
 }
 
-.preview-placeholder-mobile {
+.preview-placeholder {
     text-align: center;
     color: rgba(255, 255, 255, 0.7);
     padding: 20px;
@@ -1599,24 +1538,24 @@ section[id] {
     height: 100%;
 }
 
-.placeholder-icon-mobile {
+.placeholder-icon {
     font-size: 2.5rem;
     margin-bottom: 10px;
     opacity: 0.6;
 }
 
-.placeholder-text-mobile {
+.placeholder-text {
     font-size: 1.1rem;
     font-weight: 600;
 }
 
-.placeholder-subtext-mobile {
+.placeholder-subtext {
     font-size: 0.9rem;
     margin-top: 5px;
     opacity: 0.8;
 }
 
-.preview-details-mobile {
+.preview-details {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1626,44 +1565,36 @@ section[id] {
     border-radius: 12px;
 }
 
-.selected-card-info-mobile {
+.selected-card-info {
     text-align: left;
 }
 
-.card-name-mobile {
+.card-name {
     font-size: 1.1rem;
     font-weight: 800;
     color: var(--white);
     margin-bottom: 5px;
 }
 
-.engraving-type-mobile {
+.engraving-type {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.8);
 }
 
-.preview-price-mobile {
+.preview-price {
     font-size: 1.3rem;
     font-weight: 900;
     color: var(--rose-gold-light);
 }
 
-/* Card Navigation - Mobile Friendly */
-.card-navigation-mobile {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-    gap: 15px;
-}
-
-.nav-btn-mobile {
-    flex: 1;
-    background: rgba(224, 191, 184, 0.2);
+/* Clear Card Button */
+.clear-card-btn {
+    width: 100%;
+    padding: 16px;
+    background: rgba(224, 191, 184, 0.15);
     border: 1px solid rgba(224, 191, 184, 0.3);
     color: var(--white);
-    padding: 14px;
-    border-radius: 12px;
+    border-radius: 14px;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -1671,312 +1602,24 @@ section[id] {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    min-height: 50px;
-    -webkit-tap-highlight-color: transparent;
+    gap: 10px;
+    margin-top: 20px;
+    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
 }
 
-.nav-btn-mobile:hover {
-    background: rgba(224, 191, 184, 0.3);
+.clear-card-btn:hover {
+    background: rgba(224, 191, 184, 0.25);
     transform: translateY(-2px);
 }
 
-.nav-btn-mobile:disabled {
+.clear-card-btn:disabled {
     opacity: 0.3;
     cursor: not-allowed;
     transform: none !important;
 }
 
-.nav-btn-mobile.prev {
-    text-align: left;
-}
-
-.nav-btn-mobile.next {
-    text-align: right;
-}
-
-/* Selection Area - Mobile Optimized */
-.selection-area-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.selection-step-mobile {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 20px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-.step-title-mobile {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.step-number-mobile {
-    width: 28px;
-    height: 28px;
-    background: var(--rose-gold-gradient);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 0.85rem;
-}
-
-/* Card Color Selection - Mobile Optimized */
-.card-colors-mobile {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-}
-
-@media (max-width: 480px) {
-    .card-colors-mobile {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 360px) {
-    .card-colors-mobile {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.color-option-mobile {
-    aspect-ratio: 1;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 3px solid transparent;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.color-option-mobile:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.color-option-mobile.selected {
-    border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
-.color-label-mobile {
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 2px 4px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
-    margin: 0 4px;
-}
-
-/* Engraving Selection - Mobile Optimized */
-.engraving-options-mobile {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.engraving-option-mobile {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 18px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    border: 2px solid transparent;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.engraving-option-mobile:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
-}
-
-.engraving-option-mobile.selected {
-    background: rgba(224, 191, 184, 0.2);
-    border-color: var(--rose-gold-light);
-}
-
-.engraving-icon-mobile {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-.engraving-name-mobile {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 4px;
-}
-
-.engraving-price-mobile {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* UPLOAD AREA - COMPLETELY FIXED FOR MOBILE */
-.upload-container-mobile {
-    width: 100%;
-}
-
-.upload-area-mobile {
-    border: 2px dashed rgba(224, 191, 184, 0.5);
-    border-radius: 16px;
-    padding: 30px 20px;
-    background: rgba(224, 191, 184, 0.05);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    margin-bottom: 20px;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-@media (min-width: 768px) {
-    .upload-area-mobile {
-        min-height: 200px;
-        padding: 40px 20px;
-    }
-}
-
-.upload-area-mobile:hover {
-    border-color: var(--rose-gold-light);
-    background: rgba(224, 191, 184, 0.1);
-    transform: translateY(-2px);
-}
-
-.upload-area-mobile:active {
-    transform: translateY(0);
-}
-
-.upload-area-mobile.drag-over {
-    border-color: var(--rose-gold-light);
-    background: rgba(224, 191, 184, 0.15);
-    border-style: solid;
-}
-
-.upload-icon-mobile {
-    font-size: 2.5rem;
-    color: rgba(224, 191, 184, 0.7);
-    margin-bottom: 15px;
-}
-
-.upload-text-mobile {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-
-.upload-subtext-mobile {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 5px;
-    line-height: 1.4;
-}
-
-.upload-hint-mobile {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 10px;
-    font-style: italic;
-}
-
-/* FIXED: File input for mobile - NO CAPTURE ATTRIBUTE */
-#logoFileInputMobile {
-    display: none;
-}
-
-/* Upload Actions - Mobile Optimized */
-.upload-actions-mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-}
-
-@media (min-width: 480px) {
-    .upload-actions-mobile {
-        flex-direction: row;
-    }
-}
-
-.upload-btn-mobile, .clear-logo-btn-mobile {
-    padding: 16px 20px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex: 1;
-    min-height: 52px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.upload-btn-mobile {
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
-}
-
-.upload-btn-mobile:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
-}
-
-.upload-btn-mobile:active {
-    transform: translateY(0);
-}
-
-.clear-logo-btn-mobile {
-    background: rgba(224, 191, 184, 0.15);
-    color: var(--white);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.clear-logo-btn-mobile:hover {
-    background: rgba(224, 191, 184, 0.25);
-    transform: translateY(-2px);
-}
-
-.clear-logo-btn-mobile:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
-/* Add to Cart Button - Mobile Optimized */
-.add-to-cart-mobile {
+/* Add to Cart Button */
+.add-to-cart-btn {
     width: 100%;
     padding: 18px;
     background: var(--rose-gold-gradient);
@@ -1996,19 +1639,388 @@ section[id] {
     -webkit-tap-highlight-color: transparent;
 }
 
-.add-to-cart-mobile:hover {
+.add-to-cart-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
 }
 
-/* Mobile Touch Feedback */
-.color-option-mobile:active,
-.engraving-option-mobile:active,
-.upload-btn-mobile:active,
-.clear-logo-btn-mobile:active,
-.nav-btn-mobile:active,
-.add-to-cart-mobile:active {
-    transform: scale(0.98);
+/* Selection Options */
+.selection-options {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Metal Color Selection */
+.metal-colors-section {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.metal-colors-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.metal-colors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 768px) {
+    .metal-colors-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.metal-color-option {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.metal-color-option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.metal-color-option.selected {
+    border-color: var(--white);
+    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.color-label {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 4px 6px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    margin: 0 8px;
+}
+
+/* For light colors, use dark text */
+.metal-color-option[data-color="white"] .color-label,
+.metal-color-option[data-color="gold"] .color-label,
+.metal-color-option[data-color="silver"] .color-label,
+.metal-color-option[data-color="rosegold"] .color-label {
+    color: #1a1209;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Engraving Selection */
+.engraving-section {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.engraving-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.engraving-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.engraving-option {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.engraving-option:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.engraving-option.selected {
+    background: rgba(224, 191, 184, 0.2);
+    border-color: var(--rose-gold-light);
+}
+
+.engraving-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.engraving-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.engraving-price {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Logo Upload Section */
+.logo-upload-section {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.logo-upload-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.upload-container {
+    width: 100%;
+}
+
+.upload-area {
+    border: 2px dashed rgba(224, 191, 184, 0.5);
+    border-radius: 16px;
+    padding: 30px 20px;
+    background: rgba(224, 191, 184, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-bottom: 20px;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.upload-area:hover {
+    border-color: var(--rose-gold-light);
+    background: rgba(224, 191, 184, 0.1);
+    transform: translateY(-2px);
+}
+
+.upload-area.drag-over {
+    border-color: var(--rose-gold-light);
+    background: rgba(224, 191, 184, 0.15);
+    border-style: solid;
+}
+
+.upload-icon {
+    font-size: 2.5rem;
+    color: rgba(224, 191, 184, 0.7);
+    margin-bottom: 15px;
+}
+
+.upload-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.upload-subtext {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.upload-hint {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* File input */
+#logoFileInput {
+    display: none;
+}
+
+/* Upload Actions */
+.upload-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+@media (min-width: 480px) {
+    .upload-actions {
+        flex-direction: row;
+    }
+}
+
+.upload-btn, .clear-logo-btn {
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    min-height: 52px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.upload-btn {
+    background: var(--rose-gold-gradient);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
+}
+
+.upload-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
+}
+
+.clear-logo-btn {
+    background: rgba(224, 191, 184, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+}
+
+.clear-logo-btn:hover {
+    background: rgba(224, 191, 184, 0.25);
+    transform: translateY(-2px);
+}
+
+.clear-logo-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Logo Size Controls */
+.logo-size-section {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+    margin-top: 25px;
+}
+
+.logo-size-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.logo-size-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.size-slider-container {
+    width: 100%;
+}
+
+.size-slider {
+    width: 100%;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(224, 191, 184, 0.2);
+    border-radius: 4px;
+    outline: none;
+}
+
+.size-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--rose-gold-light);
+    cursor: pointer;
+    border: 3px solid var(--white);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.size-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--rose-gold-light);
+    cursor: pointer;
+    border: 3px solid var(--white);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.size-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--rose-gold-light);
+    text-align: center;
+    margin-top: 10px;
+}
+
+.size-presets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.size-preset-btn {
+    padding: 10px;
+    background: rgba(224, 191, 184, 0.1);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.size-preset-btn:hover {
+    background: rgba(224, 191, 184, 0.2);
+}
+
+.size-preset-btn.active {
+    background: var(--rose-gold-gradient);
+    border-color: var(--rose-gold-light);
 }
 
 .whatsapp-help {
@@ -2037,36 +2049,16 @@ section[id] {
         gap: 20px;
     }
 
-    .carousel-arrow {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
+    .custom-logo-section {
+        padding: 60px 20px;
     }
 
-    .carousel-arrow.left {
-        left: 10px;
-    }
-
-    .carousel-arrow.right {
-        right: 10px;
-    }
-
-    .metal-carousel {
-        height: 400px;
-        width: 90%;
-    }
-
-    .metal-color-card {
-        width: 280px;
-        padding: 20px;
-    }
-
-    .metal-color-card img {
+    .preview-card {
         height: 200px;
     }
 
-    .custom-logo-section {
-        padding: 60px 20px;
+    .metal-colors-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -2079,104 +2071,35 @@ section[id] {
         font-size: 1.8rem;
     }
 
-    .bestseller-actions {
+    .bestseller-actions,
+    .metal-carousel-actions {
         flex-direction: column;
     }
 
-    .carousel-arrow {
-        width: 44px;
-        height: 44px;
-        font-size: 20px;
-    }
-
-    .carousel-arrow.left {
-        left: 5px;
-    }
-
-    .carousel-arrow.right {
-        right: 5px;
-    }
-
-    .metal-carousel {
-        height: 350px;
-        width: 90%;
-    }
-
-    .metal-color-card {
-        width: 240px;
-        padding: 18px;
-    }
-
-    .metal-color-card img {
+    .preview-card {
         height: 180px;
     }
 
-    .preview-card-mobile {
-        height: 180px;
+    .metal-colors-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .selection-step-mobile {
-        padding: 18px;
-    }
-
-    .step-title-mobile {
-        font-size: 1.1rem;
-    }
-
-    .upload-area-mobile {
+    .upload-area {
         padding: 25px 15px;
         min-height: 160px;
     }
 
-    .upload-text-mobile {
+    .upload-text {
         font-size: 1rem;
     }
 
-    .upload-subtext-mobile {
+    .upload-subtext {
         font-size: 0.8rem;
     }
 }
 
-/* Add to cart button in carousel - MOVED LOWER */
-.carousel-actions {
-    text-align: center;
-    margin-top: 40px; /* Increased from 20px */
-    position: relative;
-    z-index: 10;
-}
-
-.carousel-actions .btn {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 16px 32px;
-    font-size: 1.1rem;
-    min-width: 200px;
-}
-
-.carousel-section.yellow .carousel-actions .btn,
-.carousel-section.white .carousel-actions .btn,
-.carousel-section.gold .carousel-actions .btn,
-.carousel-section.silver .carousel-actions .btn {
-    background: rgba(255, 255, 255, 0.7);
-    color: #1a1209;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.carousel-actions .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.carousel-section.yellow .carousel-actions .btn:hover,
-.carousel-section.white .carousel-actions .btn:hover,
-.carousel-section.gold .carousel-actions .btn:hover,
-.carousel-section.silver .carousel-actions .btn:hover {
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
-}
-
 /* ============================================================================
-   IMPROVED ENGRAVING MODAL - METAL THEME
+   IMPROVED ENGRAVING MODAL - METAL THEME WITH QUANTITY SELECTOR
    ============================================================================ */
 .engraving-modal {
     position: fixed;
@@ -2388,6 +2311,124 @@ section[id] {
     color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
     text-align: left;
+}
+
+/* Quantity Controls - ADDED LIKE PLASTIC PAGE */
+.quantity-controls {
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 16px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+}
+
+.quantity-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.quantity-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(224, 191, 184, 0.2);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    color: var(--white);
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
+}
+
+.quantity-btn:hover:not(:disabled) {
+    background: rgba(224, 191, 184, 0.3);
+    transform: scale(1.1);
+}
+
+.quantity-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.quantity-input {
+    width: 80px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(224, 191, 184, 0.1);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    color: var(--white);
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-input:focus {
+    border-color: var(--rose-gold-light);
+    box-shadow: 0 0 0 2px rgba(183, 110, 121, 0.3);
+}
+
+.quantity-presets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+@media (min-width: 480px) {
+    .quantity-presets {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.quantity-preset-btn {
+    padding: 12px 8px;
+    background: rgba(224, 191, 184, 0.1);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    border-radius: 10px;
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.quantity-preset-btn:hover {
+    background: rgba(224, 191, 184, 0.2);
+}
+
+.quantity-preset-btn.active {
+    background: var(--rose-gold-gradient);
+    border-color: var(--rose-gold-light);
 }
 
 .engraving-actions {
@@ -2749,7 +2790,7 @@ section[id] {
 </head>
 
 <body>
-    <!-- IMPROVED ENGRAVING SELECTION MODAL -->
+    <!-- IMPROVED ENGRAVING SELECTION MODAL WITH QUANTITY SELECTOR -->
     <div class="engraving-modal" id="engravingModal">
         <div class="engraving-content">
             <button class="close-engraving" id="closeEngraving">×</button>
@@ -2786,9 +2827,25 @@ section[id] {
                 </div>
             </div>
 
+            <!-- Quantity Controls - ADDED -->
+            <div class="quantity-controls">
+                <div class="quantity-title">Select Quantity</div>
+                <div class="quantity-selector">
+                    <button class="quantity-btn" id="quantityDecrease">-</button>
+                    <input type="number" class="quantity-input" id="quantityInput" value="1" min="1" max="100">
+                    <button class="quantity-btn" id="quantityIncrease">+</button>
+                </div>
+                <div class="quantity-presets">
+                    <button class="quantity-preset-btn" data-quantity="1">1 Card</button>
+                    <button class="quantity-preset-btn active" data-quantity="5">5 Cards</button>
+                    <button class="quantity-preset-btn" data-quantity="10">10 Cards</button>
+                    <button class="quantity-preset-btn" data-quantity="20">20 Cards</button>
+                </div>
+            </div>
+
             <div class="engraving-actions">
                 <button class="btn-cancel" id="cancelEngraving">Cancel</button>
-                <button class="btn-confirm" id="confirmEngraving" disabled>Add to Cart</button>
+                <button class="btn-confirm" id="confirmEngraving" disabled>Add to Cart - £<span id="engravingTotalPrice">95</span></button>
             </div>
         </div>
     </div>
@@ -2900,14 +2957,14 @@ section[id] {
                         <!-- Hero card image - NO OUTLINE -->
                         <img src="newblack.webp" alt="Black Metal NFC Card">
                         <div class="hero-card-upload-overlay">
-                            <div class="upload-icon-mobile">📁</div>
+                            <div class="upload-icon">📁</div>
                             <div class="hero-card-upload-text">Click to upload your logo</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="hero-cta">
-                    <button class="btn btn-primary" id="browseCardsBtn">Browse </button>
+                    <button class="btn btn-primary" id="browseCardsBtn">Browse Colors</button>
                 </div>
             </div>
         </section>
@@ -2924,7 +2981,6 @@ section[id] {
                 <div class="bestseller-card silver">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <!-- CHANGED: SVG to WebP with no outline/container -->
                         <div class="webp-container">
                             <img src="newsilver.webp" alt="Silver Metal Card" class="webp-image">
                         </div>
@@ -2942,7 +2998,6 @@ section[id] {
                  <div class="bestseller-card rose-gold">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <!-- CHANGED: SVG to WebP with no outline/container -->
                         <div class="webp-container">
                             <img src="newrosegold.webp" alt="Rose Gold Metal Card" class="webp-image">
                         </div>
@@ -2960,7 +3015,6 @@ section[id] {
                 <div class="bestseller-card gold">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
-                        <!-- CHANGED: SVG to WebP with no outline/container -->
                         <div class="webp-container">
                             <img src="newgold.webp" alt="Gold Metal Card" class="webp-image">
                         </div>
@@ -2976,98 +3030,146 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - NOW 9 COLORS INCLUDING RED AND WHITE -->
+        <!-- CAROUSEL SECTION - UPDATED LIKE PLASTIC PAGE -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
-                <!-- SIMPLIFIED HEADER - No "All Metal Finishes" text -->
                 <div class="section-header">
-                   
-                    <!-- Subtitle hidden -->
-                    <p class="section-subtitle" style="display: none;">Choose from 9 premium metal finishes</p>
+                    <h2 class="section-title">9 Premium Metal Colors</h2>
+                    <p class="section-subtitle">Choose from our premium metal colors. All prices at £95.</p>
                 </div>
 
-                <div class="metal-carousel">
-                    <button class="carousel-arrow left" aria-label="Previous">‹</button>
+                <div class="metal-carousel-wrapper">
+                    <button class="carousel-nav prev" id="carouselPrev">‹</button>
+                    
+                    <div class="metal-carousel-track" id="carouselTrack">
+                        <!-- Black -->
+                        <div class="metal-carousel-card black" data-metal="black">
+                            <div class="metal-carousel-image">
+                                <img src="newblack.webp" alt="Black Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">Black Metal Card</h3>
+                            <p class="metal-carousel-description">Sophisticated black metal card. Perfect for luxury brands and premium presentations.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Black Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
 
-                    <!-- 9 colors including Red and White -->
-                    <div class="metal-color-card active" data-color="Black">
-                        <img src="newblack.webp" alt="Black Metal Card" class="carousel-card-image">
-                        <div class="card-label">Black</div>
-                        <div class="card-price">£95</div>
+                        <!-- Blue -->
+                        <div class="metal-carousel-card blue" data-metal="blue">
+                            <div class="metal-carousel-image">
+                                <img src="newblue.webp" alt="Blue Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">Blue Metal Card</h3>
+                            <p class="metal-carousel-description">Professional blue metal card. Ideal for corporate brands and tech companies.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Blue Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Green -->
+                        <div class="metal-carousel-card green" data-metal="green">
+                            <div class="metal-carousel-image">
+                                <img src="newgreen.webp" alt="Green Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">Green Metal Card</h3>
+                            <p class="metal-carousel-description">Natural green metal card. Perfect for eco-friendly brands and health services.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Green Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Purple -->
+                        <div class="metal-carousel-card purple" data-metal="purple">
+                            <div class="metal-carousel-image">
+                                <img src="newpurple.webp" alt="Purple Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">Purple Metal Card</h3>
+                            <p class="metal-carousel-description">Creative purple metal card. Great for design studios and innovative brands.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Purple Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Red -->
+                        <div class="metal-carousel-card red" data-metal="red">
+                            <div class="metal-carousel-image">
+                                <img src="newred.webp" alt="Red Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">Red Metal Card</h3>
+                            <p class="metal-carousel-description">Bold red metal card. Perfect for entertainment and statement-making brands.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Red Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- White -->
+                        <div class="metal-carousel-card white" data-metal="white">
+                            <div class="metal-carousel-image">
+                                <img src="newwhite.webp" alt="White Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">White Metal Card</h3>
+                            <p class="metal-carousel-description">Clean white metal card. Ideal for minimalist brands and modern design studios.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="White Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Gold -->
+                        <div class="metal-carousel-card gold" data-metal="gold">
+                            <div class="metal-carousel-image">
+                                <img src="newgold.webp" alt="Gold Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">Gold Metal Card</h3>
+                            <p class="metal-carousel-description">Luxurious gold metal card. The ultimate symbol of success and achievement.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Gold Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Silver -->
+                        <div class="metal-carousel-card silver" data-metal="silver">
+                            <div class="metal-carousel-image">
+                                <img src="newsilver.webp" alt="Silver Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">Silver Metal Card</h3>
+                            <p class="metal-carousel-description">Sleek silver metal card. Perfect for tech companies and modern professional brands.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Silver Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Rose Gold -->
+                        <div class="metal-carousel-card rosegold" data-metal="rosegold">
+                            <div class="metal-carousel-image">
+                                <img src="newrosegold.webp" alt="Rose Gold Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">Rose Gold Metal Card</h3>
+                            <p class="metal-carousel-description">Warm rose gold metal card. Ideal for creative industries and fashion brands.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Rose Gold Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="metal-color-card" data-color="Blue">
-                        <img src="newblue.webp" alt="Blue Metal Card" class="carousel-card-image">
-                        <div class="card-label">Blue</div>
-                        <div class="card-price">£95</div>
-                    </div>
-
-                    <div class="metal-color-card" data-color="Green">
-                        <img src="newgreen.webp" alt="Green Metal Card" class="carousel-card-image">
-                        <div class="card-label">Green</div>
-                        <div class="card-price">£95</div>
-                    </div>
-
-                    <div class="metal-color-card" data-color="Purple">
-                        <img src="newpurple.webp" alt="Purple Metal Card" class="carousel-card-image">
-                        <div class="card-label">Purple</div>
-                        <div class="card-price">£95</div>
-                    </div>
-
-                    <div class="metal-color-card" data-color="Red">
-                        <img src="newred.webp" alt="Red Metal Card" class="carousel-card-image">
-                        <div class="card-label">Red</div>
-                        <div class="card-price">£95</div>
-                    </div>
-
-                    <div class="metal-color-card" data-color="White">
-                        <img src="newwhite.webp" alt="White Metal Card" class="carousel-card-image">
-                        <div class="card-label">White</div>
-                        <div class="card-price">£95</div>
-                    </div>
-
-                    <div class="metal-color-card" data-color="Gold">
-                        <img src="newgold.webp" alt="Gold Metal Card" class="carousel-card-image">
-                        <div class="card-label">Gold</div>
-                        <div class="card-price">£95</div>
-                    </div>
-
-                    <div class="metal-color-card" data-color="Silver">
-                        <img src="newsilver.webp" alt="Silver Metal Card" class="carousel-card-image">
-                        <div class="card-label">Silver</div>
-                        <div class="card-price">£95</div>
-                    </div>
-
-                    <div class="metal-color-card" data-color="Rosegold">
-                        <img src="newrosegold.webp" alt="Rose Gold Metal Card" class="carousel-card-image">
-                        <div class="card-label">Rose Gold</div>
-                        <div class="card-price">£95</div>
-                    </div>
-
-                    <button class="carousel-arrow right" aria-label="Next">›</button>
+                    
+                    <button class="carousel-nav next" id="carouselNext">›</button>
                 </div>
 
-                <!-- Updated to 9 dots -->
-                <div class="dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-
-                <!-- Add to Cart button moved lower with more margin -->
-                <div class="carousel-actions">
-                    <button class="btn" id="addMetalBtn">🛒 Add Black Finish</button>
+                <div class="carousel-dots" id="carouselDots">
+                    <!-- Dots will be added dynamically -->
                 </div>
             </div>
         </section>
 
-        <!-- CUSTOM LOGO SECTION -->
+        <!-- CUSTOM LOGO SECTION - UPDATED LIKE PLASTIC PAGE -->
         <section class="custom-logo-section" id="custom-logo">
             <div class="custom-logo-content">
                 <div class="section-header">
@@ -3075,130 +3177,135 @@ section[id] {
                     <p class="section-subtitle">Upload your logo and see how it looks on different metal cards</p>
                 </div>
 
-                <div class="logo-builder-mobile">
-                    <!-- Left Column: Card Preview -->
-                    <div class="preview-section-mobile">
-                        <div class="preview-header-mobile">
-                            <div class="preview-title-mobile">Live Preview</div>
-                            <div class="card-counter-mobile" id="cardCounterMobile">1/9</div>
+                <div class="logo-builder-grid">
+                    <!-- Left Column: Preview -->
+                    <div class="preview-container">
+                        <div class="preview-header">
+                            <div class="preview-title">Live Preview</div>
+                            <div class="card-counter" id="cardCounter">Black</div>
                         </div>
                         
-                        <div class="preview-card-mobile" id="previewCardMobileClickable">
-                            <div class="preview-card-inner-mobile" id="previewCardMobile">
-                                <div class="preview-placeholder-mobile" id="previewPlaceholderMobile">
-                                    <div class="placeholder-icon-mobile">📁</div>
-                                    <div class="placeholder-text-mobile">Click to upload your logo</div>
-                                    <div class="placeholder-subtext-mobile">PNG, JPG up to 10MB</div>
+                        <div class="preview-card-wrapper">
+                            <div class="preview-card" id="previewCard">
+                                <div class="preview-card-inner" id="previewCardInner">
+                                    <div class="preview-placeholder" id="previewPlaceholder">
+                                        <div class="placeholder-icon">📁</div>
+                                        <div class="placeholder-text">Upload your logo to preview</div>
+                                        <div class="placeholder-subtext">PNG, JPG up to 10MB</div>
+                                    </div>
+                                    <img class="preview-logo" id="previewLogo" alt="Your Logo">
                                 </div>
-                                <img class="preview-logo-mobile" id="previewLogoMobile" alt="Your Logo">
                             </div>
                         </div>
                         
-                        <div class="preview-details-mobile">
-                            <div class="selected-card-info-mobile">
-                                <div class="card-name-mobile" id="selectedCardNameMobile">Black Metal Card</div>
-                                <div class="engraving-type-mobile" id="selectedEngravingTypeMobile">Silver Engraving</div>
+                        <div class="preview-details">
+                            <div class="selected-card-info">
+                                <div class="card-name" id="selectedCardName">Black Metal Card</div>
+                                <div class="engraving-type" id="selectedEngravingType">Silver Engraving</div>
                             </div>
-                            <div class="preview-price-mobile">£95</div>
+                            <div class="preview-price">£95</div>
                         </div>
                         
-                        <div class="card-navigation-mobile">
-                            <button class="nav-btn-mobile prev" id="prevCardBtnMobile" disabled>
-                                <span>‹</span> Previous
-                            </button>
-                            <button class="nav-btn-mobile next" id="nextCardBtnMobile">
-                                Next <span>›</span>
-                            </button>
-                        </div>
+                        <!-- Clear Card Button - ADDED -->
+                        <button class="clear-card-btn" id="clearCardBtn">
+                            <span>🗑️</span> Clear Card Preview
+                        </button>
                         
-                        <button class="add-to-cart-mobile" id="addToCartMobile">
+                        <button class="add-to-cart-btn" id="addToCartBtn">
                             🛒 Add to Cart
                         </button>
                     </div>
 
                     <!-- Right Column: Selection Options -->
-                    <div class="selection-area-mobile">
-                        <!-- Step 1: Choose Card Color -->
-                        <div class="selection-step-mobile">
-                            <div class="step-title-mobile">
-                                <span class="step-number-mobile">1</span>
-                                Choose Card Color
-                            </div>
-                            <div class="card-colors-mobile">
-                                <div class="color-option-mobile selected" data-color="black" style="background: var(--black-bg);">
-                                    <div class="color-label-mobile">Black</div>
+                    <div class="selection-options">
+                        <!-- Metal Color Selection -->
+                        <div class="metal-colors-section">
+                            <div class="metal-colors-title">Choose Metal Color</div>
+                            <div class="metal-colors-grid">
+                                <div class="metal-color-option selected" data-color="black" style="background: var(--black-bg);">
+                                    <div class="color-label">Black</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="blue" style="background: var(--blue-bg);">
-                                    <div class="color-label-mobile">Blue</div>
+                                <div class="metal-color-option" data-color="blue" style="background: var(--blue-bg);">
+                                    <div class="color-label">Blue</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="green" style="background: var(--green-bg);">
-                                    <div class="color-label-mobile">Green</div>
+                                <div class="metal-color-option" data-color="green" style="background: var(--green-bg);">
+                                    <div class="color-label">Green</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="purple" style="background: var(--purple-bg);">
-                                    <div class="color-label-mobile">Purple</div>
+                                <div class="metal-color-option" data-color="purple" style="background: var(--purple-bg);">
+                                    <div class="color-label">Purple</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="red" style="background: var(--red-bg);">
-                                    <div class="color-label-mobile">Red</div>
+                                <div class="metal-color-option" data-color="red" style="background: var(--red-bg);">
+                                    <div class="color-label">Red</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="white" style="background: var(--white-bg);">
-                                    <div class="color-label-mobile">White</div>
+                                <div class="metal-color-option" data-color="white" style="background: var(--white-bg);">
+                                    <div class="color-label">White</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="gold" style="background: var(--gold-bg);">
-                                    <div class="color-label-mobile">Gold</div>
+                                <div class="metal-color-option" data-color="gold" style="background: var(--gold-bg);">
+                                    <div class="color-label">Gold</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="silver" style="background: var(--silver-bg);">
-                                    <div class="color-label-mobile">Silver</div>
+                                <div class="metal-color-option" data-color="silver" style="background: var(--silver-bg);">
+                                    <div class="color-label">Silver</div>
                                 </div>
-                                <div class="color-option-mobile" data-color="rosegold" style="background: var(--rosegold-bg);">
-                                    <div class="color-label-mobile">Rose Gold</div>
+                                <div class="metal-color-option" data-color="rosegold" style="background: var(--rosegold-bg);">
+                                    <div class="color-label">Rose Gold</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Step 2: Choose Engraving -->
-                        <div class="selection-step-mobile">
-                            <div class="step-title-mobile">
-                                <span class="step-number-mobile">2</span>
-                                Choose Engraving
-                            </div>
-                            <div class="engraving-options-mobile">
-                                <div class="engraving-option-mobile selected" data-engraving="silver">
-                                    <div class="engraving-icon-mobile">⚪</div>
-                                    <div class="engraving-name-mobile">Silver</div>
-                                    <div class="engraving-price-mobile">No extra cost</div>
+                        <!-- Engraving Selection -->
+                        <div class="engraving-section">
+                            <div class="engraving-title">Choose Engraving</div>
+                            <div class="engraving-options">
+                                <div class="engraving-option selected" data-engraving="silver">
+                                    <div class="engraving-icon">⚪</div>
+                                    <div class="engraving-name">Silver</div>
+                                    <div class="engraving-price">No extra cost</div>
                                 </div>
-                                <div class="engraving-option-mobile" data-engraving="gold">
-                                    <div class="engraving-icon-mobile">⭐</div>
-                                    <div class="engraving-name-mobile">Gold</div>
-                                    <div class="engraving-price-mobile">No extra cost</div>
+                                <div class="engraving-option" data-engraving="gold">
+                                    <div class="engraving-icon">⭐</div>
+                                    <div class="engraving-name">Gold</div>
+                                    <div class="engraving-price">No extra cost</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Step 3: Upload Logo -->
-                        <div class="selection-step-mobile">
-                            <div class="step-title-mobile">
-                                <span class="step-number-mobile">3</span>
-                                Upload Your Logo
-                            </div>
-                            <div class="upload-container-mobile">
-                                <div class="upload-area-mobile" id="uploadAreaMobile">
-                                    <div class="upload-icon-mobile">📁</div>
-                                    <div class="upload-text-mobile">Click to upload your logo</div>
-                                    <div class="upload-subtext-mobile">Choose from camera roll or take a photo</div>
-                                    <div class="upload-subtext-mobile">PNG, JPG up to 10MB</div>
-                                    <div class="upload-hint-mobile">On mobile: Tap to choose from gallery or camera</div>
+                        <!-- Logo Upload -->
+                        <div class="logo-upload-section">
+                            <div class="logo-upload-title">Upload Your Logo</div>
+                            <div class="upload-container">
+                                <div class="upload-area" id="uploadArea">
+                                    <div class="upload-icon">📁</div>
+                                    <div class="upload-text">Click to upload your logo</div>
+                                    <div class="upload-subtext">Drag & drop or click to select</div>
+                                    <div class="upload-subtext">PNG, JPG up to 10MB</div>
+                                    <div class="upload-hint">For best results, use a transparent PNG</div>
                                 </div>
                                 
-                                <input type="file" id="logoFileInputMobile" accept="image/*">
+                                <input type="file" id="logoFileInput" accept="image/*">
                                 
-                                <div class="upload-actions-mobile">
-                                    <button class="upload-btn-mobile" id="uploadLogoBtnMobile">
+                                <div class="upload-actions">
+                                    <button class="upload-btn" id="uploadLogoBtn">
                                         <span>📁</span> Upload Logo
                                     </button>
-                                    <button class="clear-logo-btn-mobile" id="clearLogoBtnMobile" disabled>
-                                        <span>🗑️</span> Clear
+                                    <button class="clear-logo-btn" id="clearLogoBtn" disabled>
+                                        <span>🗑️</span> Clear Logo
                                     </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logo Size Controls - ADDED -->
+                        <div class="logo-size-section">
+                            <div class="logo-size-title">Logo Size:</div>
+                            <div class="logo-size-controls">
+                                <div class="size-slider-container">
+                                    <input type="range" min="20" max="100" value="70" class="size-slider" id="logoSizeSlider">
+                                </div>
+                                <div class="size-value" id="logoSizeValue">70%</div>
+                                <div class="size-presets">
+                                    <button class="size-preset-btn" data-size="50">Small</button>
+                                    <button class="size-preset-btn active" data-size="70">Medium</button>
+                                    <button class="size-preset-btn" data-size="90">Large</button>
                                 </div>
                             </div>
                         </div>
@@ -3208,7 +3315,7 @@ section[id] {
                 <div class="whatsapp-help">
                     <h3 style="margin-bottom: 15px; font-size: 1.2rem;">Need help with your logo?</h3>
                     <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
-                        Send us your logo on WhatsApp and we'll create a custom mockup for you
+                        Send us your logo on WhatsApp and we'll create a custom mockup for you. Our design team can also help optimize your logo for the best results on metal cards.
                     </p>
                     <a href="https://wa.me/447754888841" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
                         <span>📞</span> Send Logo on WhatsApp
@@ -3292,6 +3399,10 @@ section[id] {
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
         let uploadedLogoGlobal = null;
+        let logoSize = 70; // Default logo size percentage
+        let currentEngravingData = null; // Store data for engraving modal
+        let engravingQuantity = 1; // Default quantity for engraving modal
+        let currentCarouselBackground = 'var(--carousel-black-bg)';
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3443,21 +3554,21 @@ section[id] {
         }
 
         // Add to cart function
-        function addToCart(name, price) {
+        function addToCart(name, price, quantity = 1) {
             const existingItem = cart.find(item => item.name === name);
 
             if (existingItem) {
-                existingItem.quantity += 1;
+                existingItem.quantity += quantity;
             } else {
                 cart.push({
                     name: name,
                     price: price,
-                    quantity: 1
+                    quantity: quantity
                 });
             }
 
             updateCart();
-            showNotification(`${name} added to cart!`);
+            showNotification(`${name} (${quantity}×) added to cart!`);
         }
 
         // Remove from cart
@@ -3536,11 +3647,23 @@ section[id] {
 
         // Add to cart buttons for bestseller cards
         document.addEventListener('DOMContentLoaded', () => {
+            // Bestseller cards
             document.querySelectorAll('.add-to-cart').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const name = e.target.dataset.name;
                     const price = parseInt(e.target.dataset.price);
-                    addToCart(name, price);
+                    // Open engraving modal instead of directly adding to cart
+                    openEngravingModal(name, price);
+                });
+            });
+
+            // Carousel cards
+            document.querySelectorAll('.add-to-cart-carousel').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const name = e.target.dataset.name;
+                    const price = parseInt(e.target.dataset.price);
+                    // Open engraving modal
+                    openEngravingModal(name, price);
                 });
             });
 
@@ -3554,256 +3677,217 @@ section[id] {
             updateCart();
         });
 
-        // Metal Color Carousel with Background Change - NOW 9 COLORS
-        const metalCards = document.querySelectorAll('.metal-color-card');
-        const metalDots = document.querySelectorAll('.carousel-section .dot');
-        const carouselSection = document.querySelector('.carousel-section');
-        const metalPrevBtn = document.querySelector('.carousel-section .carousel-arrow.left');
-        const metalNextBtn = document.querySelector('.carousel-section .carousel-arrow.right');
-        const addMetalBtn = document.getElementById('addMetalBtn');
+        // ENGRAVING MODAL FUNCTIONALITY WITH QUANTITY SELECTOR
+        const closeEngraving = document.getElementById('closeEngraving');
+        const cancelEngraving = document.getElementById('cancelEngraving');
+        const confirmEngraving = document.getElementById('confirmEngraving');
+        const selectedMetalText = document.getElementById('selectedMetalText');
+        const engravingOptions = document.querySelectorAll('.engraving-option');
+        const engravingTotalPrice = document.getElementById('engravingTotalPrice');
+        const quantityDecrease = document.getElementById('quantityDecrease');
+        const quantityIncrease = document.getElementById('quantityIncrease');
+        const quantityInput = document.getElementById('quantityInput');
+        const quantityPresetBtns = document.querySelectorAll('.quantity-preset-btn');
 
-        // Map color names to CSS class names - 9 COLORS including Red and White
-        const metalColorMap = {
-            'Black': 'black',
-            'Blue': 'blue',
-            'Green': 'green',
-            'Purple': 'purple',
-            'Red': 'red',
-            'White': 'white',
-            'Gold': 'gold',
-            'Silver': 'silver',
-            'Rosegold': 'rosegold'
-        };
-
-        let metalIndex = 0;
-
-        // Function to update metal carousel
-        function updateMetalCarousel(i) {
-            metalCards[metalIndex].classList.remove('active');
-            metalDots[metalIndex].classList.remove('active');
-
-            metalIndex = (i + metalCards.length) % metalCards.length;
-
-            metalCards[metalIndex].classList.add('active');
+        // Open engraving modal
+        function openEngravingModal(name, price) {
+            currentEngravingData = { name, price };
+            selectedMetalText.textContent = name.split(' ')[0]; // Get metal type from name
+            engravingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
             
-            // Update dot colors based on active card
-            metalDots.forEach((dot, index) => {
-                if (index === metalIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-
-            const colorName = metalCards[metalIndex].dataset.color;
-            const colorClass = metalColorMap[colorName];
+            // Reset to defaults
+            engravingQuantity = 1;
+            quantityInput.value = 1;
+            updateEngravingPrice();
             
-            // Update carousel section background
-            carouselSection.className = 'carousel-section ' + colorClass;
+            // Reset engraving selection
+            engravingOptions.forEach(option => option.classList.remove('selected'));
+            engravingOptions[0].classList.add('selected');
             
-            // Update button text
-            addMetalBtn.textContent = `🛒 Add ${colorName} Finish`;
-            selectedMetal = colorName;
+            // Reset quantity presets
+            quantityPresetBtns.forEach(btn => btn.classList.remove('active'));
+            quantityPresetBtns[0].classList.add('active');
         }
 
-        // Initialize metal carousel
-        updateMetalCarousel(0);
-
-        // Manual navigation
-        metalPrevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            updateMetalCarousel(metalIndex - 1);
-        });
-
-        metalNextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            updateMetalCarousel(metalIndex + 1);
-        });
-
-        // Dot navigation
-        metalDots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                updateMetalCarousel(i);
-            });
-        });
-
-        // Touch/swipe support
-        let metalStartX = 0;
-        document.querySelector('.metal-carousel').addEventListener('touchstart', e => {
-            metalStartX = e.touches[0].clientX;
-        });
-
-        document.querySelector('.metal-carousel').addEventListener('touchend', e => {
-            const endX = e.changedTouches[0].clientX;
-            if (metalStartX - endX > 50) updateMetalCarousel(metalIndex + 1);
-            if (endX - metalStartX > 50) updateMetalCarousel(metalIndex - 1);
-        });
-
-        // FIX: Optimized carousel with smoother transitions
-        let carouselInterval;
-        let isCarouselPaused = false;
-
-        function startCarouselAutoRotate() {
-            if (carouselInterval) clearInterval(carouselInterval);
-            carouselInterval = setInterval(() => {
-                if (!isCarouselPaused) {
-                    updateMetalCarousel(metalIndex + 1);
-                }
-            }, 5000);
+        // Close engraving modal
+        function closeEngravingModal() {
+            engravingModal.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        function stopCarouselAutoRotate() {
-            isCarouselPaused = true;
-            if (carouselInterval) {
-                clearInterval(carouselInterval);
+        // Update engraving price based on quantity
+        function updateEngravingPrice() {
+            if (!currentEngravingData) return;
+            const total = currentEngravingData.price * engravingQuantity;
+            engravingTotalPrice.textContent = total;
+        }
+
+        // Quantity controls
+        quantityDecrease.addEventListener('click', () => {
+            if (engravingQuantity > 1) {
+                engravingQuantity--;
+                quantityInput.value = engravingQuantity;
+                updateEngravingPrice();
             }
-        }
-
-        // Start auto-rotate
-        startCarouselAutoRotate();
-
-        // Pause on hover/interaction
-        document.querySelector('.metal-carousel').addEventListener('mouseenter', () => {
-            stopCarouselAutoRotate();
         });
 
-        document.querySelector('.metal-carousel').addEventListener('mouseleave', () => {
-            isCarouselPaused = false;
-            startCarouselAutoRotate();
+        quantityIncrease.addEventListener('click', () => {
+            if (engravingQuantity < 100) {
+                engravingQuantity++;
+                quantityInput.value = engravingQuantity;
+                updateEngravingPrice();
+            }
         });
 
-        // Also pause when interacting with arrows or dots
-        metalPrevBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
-        metalNextBtn.addEventListener('mouseenter', stopCarouselAutoRotate);
-        metalDots.forEach(dot => {
-            dot.addEventListener('mouseenter', stopCarouselAutoRotate);
+        quantityInput.addEventListener('change', () => {
+            let value = parseInt(quantityInput.value);
+            if (isNaN(value) || value < 1) value = 1;
+            if (value > 100) value = 100;
+            engravingQuantity = value;
+            quantityInput.value = value;
+            updateEngravingPrice();
         });
 
-        // FIXED: SEE IT WITH YOUR LOGO SECTION - NOW 9 CARDS
-        const colorOptionsMobile = document.querySelectorAll('.color-option-mobile');
-        const engravingOptionsMobile = document.querySelectorAll('.engraving-option-mobile');
-        const uploadAreaMobile = document.getElementById('uploadAreaMobile');
-        const logoFileInputMobile = document.getElementById('logoFileInputMobile');
-        const uploadLogoBtnMobile = document.getElementById('uploadLogoBtnMobile');
-        const clearLogoBtnMobile = document.getElementById('clearLogoBtnMobile');
-        const previewLogoMobile = document.getElementById('previewLogoMobile');
-        const previewPlaceholderMobile = document.getElementById('previewPlaceholderMobile');
-        const previewCardMobile = document.getElementById('previewCardMobile');
-        const previewCardMobileClickable = document.getElementById('previewCardMobileClickable');
-        const prevCardBtnMobile = document.getElementById('prevCardBtnMobile');
-        const nextCardBtnMobile = document.getElementById('nextCardBtnMobile');
-        const cardCounterMobile = document.getElementById('cardCounterMobile');
-        const selectedCardNameMobile = document.getElementById('selectedCardNameMobile');
-        const selectedEngravingTypeMobile = document.getElementById('selectedEngravingTypeMobile');
-        const addToCartMobile = document.getElementById('addToCartMobile');
+        // Quantity preset buttons
+        quantityPresetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const quantity = parseInt(btn.dataset.quantity);
+                engravingQuantity = quantity;
+                quantityInput.value = quantity;
+                updateEngravingPrice();
+                
+                quantityPresetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Engraving selection
+        engravingOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                engravingOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                confirmEngraving.disabled = false;
+            });
+        });
+
+        // Confirm engraving selection
+        confirmEngraving.addEventListener('click', () => {
+            if (!currentEngravingData) return;
+            
+            const engravingType = document.querySelector('.engraving-option.selected').dataset.engraving;
+            const engravingName = engravingType === 'silver' ? 'Silver Engraving' : 'Gold Engraving';
+            const itemName = `${currentEngravingData.name} (${engravingName})`;
+            
+            addToCart(itemName, currentEngravingData.price, engravingQuantity);
+            closeEngravingModal();
+        });
+
+        // Close engraving modal
+        closeEngraving.addEventListener('click', closeEngravingModal);
+        cancelEngraving.addEventListener('click', closeEngravingModal);
+
+        // CUSTOM LOGO BUILDER
+        const metalColorOptions = document.querySelectorAll('.metal-color-option');
+        const customEngravingOptions = document.querySelectorAll('.engraving-option');
+        const uploadArea = document.getElementById('uploadArea');
+        const logoFileInput = document.getElementById('logoFileInput');
+        const uploadLogoBtn = document.getElementById('uploadLogoBtn');
+        const clearLogoBtn = document.getElementById('clearLogoBtn');
+        const previewLogo = document.getElementById('previewLogo');
+        const previewPlaceholder = document.getElementById('previewPlaceholder');
+        const previewCardInner = document.getElementById('previewCardInner');
+        const previewCard = document.getElementById('previewCard');
+        const cardCounter = document.getElementById('cardCounter');
+        const selectedCardName = document.getElementById('selectedCardName');
+        const selectedEngravingType = document.getElementById('selectedEngravingType');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const clearCardBtn = document.getElementById('clearCardBtn');
         const heroCard = document.getElementById('heroCard');
+        const logoSizeSlider = document.getElementById('logoSizeSlider');
+        const logoSizeValue = document.getElementById('logoSizeValue');
+        const sizePresetBtns = document.querySelectorAll('.size-preset-btn');
 
-        // All available cards - 9 colors including Red and White
-        const cardsMobile = [
-            { id: 1, name: 'Black Metal Card', color: 'black', engraving: 'silver', price: 95 },
-            { id: 2, name: 'Blue Metal Card', color: 'blue', engraving: 'silver', price: 95 },
-            { id: 3, name: 'Green Metal Card', color: 'green', engraving: 'silver', price: 95 },
-            { id: 4, name: 'Purple Metal Card', color: 'purple', engraving: 'silver', price: 95 },
-            { id: 5, name: 'Red Metal Card', color: 'red', engraving: 'silver', price: 95 },
-            { id: 6, name: 'White Metal Card', color: 'white', engraving: 'silver', price: 95 },
-            { id: 7, name: 'Gold Metal Card', color: 'gold', engraving: 'silver', price: 95 },
-            { id: 8, name: 'Silver Metal Card', color: 'silver', engraving: 'silver', price: 95 },
-            { id: 9, name: 'Rose Gold Metal Card', color: 'rosegold', engraving: 'silver', price: 95 }
-        ];
-
-        let currentCardIndexMobile = 0;
-        let selectedColorMobile = 'black';
-        let selectedEngravingMobile = 'silver';
-
-        // Color name mapping
-        const colorNameMapMobile = {
-            'black': 'Black',
-            'blue': 'Blue',
-            'green': 'Green',
-            'purple': 'Purple',
-            'red': 'Red',
-            'white': 'White',
-            'gold': 'Gold',
-            'silver': 'Silver',
-            'rosegold': 'Rose Gold'
+        // Metal type mapping
+        const metalTypeMap = {
+            'black': 'Black Metal Card',
+            'blue': 'Blue Metal Card',
+            'green': 'Green Metal Card',
+            'purple': 'Purple Metal Card',
+            'red': 'Red Metal Card',
+            'white': 'White Metal Card',
+            'gold': 'Gold Metal Card',
+            'silver': 'Silver Metal Card',
+            'rosegold': 'Rose Gold Metal Card'
         };
 
-        // Engraving name mapping
-        const engravingNameMapMobile = {
+        // Engraving type mapping
+        const engravingTypeMap = {
             'silver': 'Silver Engraving',
             'gold': 'Gold Engraving'
         };
 
-        // Initialize mobile logo builder
-        function initMobileLogoBuilder() {
-            updateMobilePreview();
-            updateMobileCardList();
+        // Background mapping
+        const metalBackgroundMap = {
+            'black': 'var(--black-bg)',
+            'blue': 'var(--blue-bg)',
+            'green': 'var(--green-bg)',
+            'purple': 'var(--purple-bg)',
+            'red': 'var(--red-bg)',
+            'white': 'var(--white-bg)',
+            'gold': 'var(--gold-bg)',
+            'silver': 'var(--silver-bg)',
+            'rosegold': 'var(--rosegold-bg)'
+        };
+
+        // Carousel background mapping
+        const carouselBackgroundMap = {
+            'black': 'var(--carousel-black-bg)',
+            'blue': 'var(--carousel-blue-bg)',
+            'green': 'var(--carousel-green-bg)',
+            'purple': 'var(--carousel-purple-bg)',
+            'red': 'var(--carousel-red-bg)',
+            'white': 'var(--carousel-white-bg)',
+            'gold': 'var(--carousel-gold-bg)',
+            'silver': 'var(--carousel-silver-bg)',
+            'rosegold': 'var(--carousel-rosegold-bg)'
+        };
+
+        let selectedMetalColor = 'black';
+        let selectedEngravingTypeValue = 'silver';
+
+        // Initialize custom logo builder
+        function initCustomLogoBuilder() {
+            updatePreview();
         }
 
-        // Update card list based on selections
-        function updateMobileCardList() {
-            // Update all cards with selected color and engraving
-            cardsMobile.forEach((card, index) => {
-                cardsMobile[index].color = selectedColorMobile;
-                cardsMobile[index].engraving = selectedEngravingMobile;
-            });
-            
-            // Reset to first card
-            currentCardIndexMobile = 0;
-            updateMobilePreview();
-        }
-
-        // Update mobile preview
-        function updateMobilePreview() {
-            const card = cardsMobile[currentCardIndexMobile];
-            
+        // Update preview
+        function updatePreview() {
             // Update card background
-            previewCardMobile.style.background = getCardBackgroundMobile(card.color);
+            previewCardInner.style.background = metalBackgroundMap[selectedMetalColor];
             
             // Update text
-            selectedCardNameMobile.textContent = `${colorNameMapMobile[card.color]} Metal Card`;
-            selectedEngravingTypeMobile.textContent = engravingNameMapMobile[card.engraving];
+            selectedCardName.textContent = metalTypeMap[selectedMetalColor];
+            selectedEngravingType.textContent = engravingTypeMap[selectedEngravingTypeValue];
             
             // Update counter
-            cardCounterMobile.textContent = `${currentCardIndexMobile + 1}/${cardsMobile.length}`;
+            cardCounter.textContent = metalTypeMap[selectedMetalColor].split(' ')[0];
             
-            // Show/hide logo
+            // Show/hide logo and update size
             if (uploadedLogoGlobal) {
-                previewLogoMobile.src = uploadedLogoGlobal;
-                previewLogoMobile.classList.add('visible');
-                previewPlaceholderMobile.style.display = 'none';
+                previewLogo.src = uploadedLogoGlobal;
+                previewLogo.classList.add('visible');
+                previewLogo.style.transform = `scale(${logoSize / 100})`;
+                previewPlaceholder.style.display = 'none';
+                clearCardBtn.disabled = false;
             } else {
-                previewLogoMobile.classList.remove('visible');
-                previewPlaceholderMobile.style.display = 'flex';
-            }
-            
-            // Update navigation buttons
-            updateMobileNavigation();
-        }
-
-        // Get CSS variable for card background
-        function getCardBackgroundMobile(color) {
-            switch(color) {
-                case 'black': return 'var(--black-bg)';
-                case 'blue': return 'var(--blue-bg)';
-                case 'green': return 'var(--green-bg)';
-                case 'purple': return 'var(--purple-bg)';
-                case 'red': return 'var(--red-bg)';
-                case 'white': return 'var(--white-bg)';
-                case 'gold': return 'var(--gold-bg)';
-                case 'silver': return 'var(--silver-bg)';
-                case 'rosegold': return 'var(--rosegold-bg)';
-                default: return 'var(--black-bg)';
+                previewLogo.classList.remove('visible');
+                previewPlaceholder.style.display = 'flex';
+                clearCardBtn.disabled = true;
             }
         }
 
-        // Update mobile navigation buttons
-        function updateMobileNavigation() {
-            prevCardBtnMobile.disabled = currentCardIndexMobile === 0;
-            nextCardBtnMobile.disabled = currentCardIndexMobile === cardsMobile.length - 1;
-        }
-
-        // Handle logo upload function
+        // Handle logo upload
         function handleLogoUpload(file) {
             // Validate file type
             if (!file.type.match('image.*')) {
@@ -3821,14 +3905,16 @@ section[id] {
             reader.onload = function(e) {
                 // Update preview
                 uploadedLogoGlobal = e.target.result;
-                previewLogoMobile.src = uploadedLogoGlobal;
+                previewLogo.src = uploadedLogoGlobal;
                 
                 // Update preview display
-                previewLogoMobile.classList.add('visible');
-                previewPlaceholderMobile.style.display = 'none';
+                previewLogo.classList.add('visible');
+                previewLogo.style.transform = `scale(${logoSize / 100})`;
+                previewPlaceholder.style.display = 'none';
                 
-                // Enable clear button
-                clearLogoBtnMobile.disabled = false;
+                // Enable clear buttons
+                clearLogoBtn.disabled = false;
+                clearCardBtn.disabled = false;
                 
                 // Update hero card if needed
                 if (heroCard) {
@@ -3843,22 +3929,22 @@ section[id] {
             reader.readAsDataURL(file);
         }
 
-        // Handle color selection on mobile
-        colorOptionsMobile.forEach(option => {
+        // Handle metal color selection
+        metalColorOptions.forEach(option => {
             option.addEventListener('click', () => {
                 // Remove selected class from all options
-                colorOptionsMobile.forEach(opt => opt.classList.remove('selected'));
+                metalColorOptions.forEach(opt => opt.classList.remove('selected'));
                 
                 // Add selected class to clicked option
                 option.classList.add('selected');
                 
                 // Update selected color
-                selectedColorMobile = option.dataset.color;
+                selectedMetalColor = option.dataset.color;
                 
-                // Update card list
-                updateMobileCardList();
+                // Update preview
+                updatePreview();
                 
-                // Show visual feedback on mobile
+                // Visual feedback
                 option.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     option.style.transform = '';
@@ -3866,22 +3952,22 @@ section[id] {
             });
         });
 
-        // Handle engraving selection on mobile
-        engravingOptionsMobile.forEach(option => {
+        // Handle engraving selection
+        customEngravingOptions.forEach(option => {
             option.addEventListener('click', () => {
                 // Remove selected class from all options
-                engravingOptionsMobile.forEach(opt => opt.classList.remove('selected'));
+                customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
                 
                 // Add selected class to clicked option
                 option.classList.add('selected');
                 
                 // Update selected engraving
-                selectedEngravingMobile = option.dataset.engraving;
+                selectedEngravingTypeValue = option.dataset.engraving;
                 
-                // Update card list
-                updateMobileCardList();
+                // Update preview
+                updatePreview();
                 
-                // Show visual feedback on mobile
+                // Visual feedback
                 option.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     option.style.transform = '';
@@ -3889,33 +3975,34 @@ section[id] {
             });
         });
 
-        // Click on upload area (mobile friendly)
-        uploadAreaMobile.addEventListener('click', () => {
+        // Click on upload area
+        uploadArea.addEventListener('click', () => {
             if (!uploadedLogoGlobal) {
-                logoFileInputMobile.click();
+                logoFileInput.click();
             }
         });
 
         // Click on upload button
-        uploadLogoBtnMobile.addEventListener('click', () => {
-            logoFileInputMobile.click();
+        uploadLogoBtn.addEventListener('click', () => {
+            logoFileInput.click();
         });
 
         // File input change
-        logoFileInputMobile.addEventListener('change', (e) => {
+        logoFileInput.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
                 handleLogoUpload(e.target.files[0]);
             }
         });
 
         // Clear logo button
-        clearLogoBtnMobile.addEventListener('click', () => {
-            previewLogoMobile.src = '';
+        clearLogoBtn.addEventListener('click', () => {
+            previewLogo.src = '';
             uploadedLogoGlobal = null;
-            previewLogoMobile.classList.remove('visible');
-            previewPlaceholderMobile.style.display = 'flex';
-            logoFileInputMobile.value = '';
-            clearLogoBtnMobile.disabled = true;
+            previewLogo.classList.remove('visible');
+            previewPlaceholder.style.display = 'flex';
+            logoFileInput.value = '';
+            clearLogoBtn.disabled = true;
+            clearCardBtn.disabled = true;
             
             // Reset hero card image
             if (heroCard) {
@@ -3925,44 +4012,101 @@ section[id] {
             showNotification('Logo cleared');
         });
 
-        // Card navigation on mobile
-        prevCardBtnMobile.addEventListener('click', () => {
-            if (currentCardIndexMobile > 0) {
-                currentCardIndexMobile--;
-                updateMobilePreview();
-            }
-        });
-
-        nextCardBtnMobile.addEventListener('click', () => {
-            if (currentCardIndexMobile < cardsMobile.length - 1) {
-                currentCardIndexMobile++;
-                updateMobilePreview();
-            }
-        });
-
-        // Add to cart from mobile preview
-        addToCartMobile.addEventListener('click', () => {
-            const currentCard = cardsMobile[currentCardIndexMobile];
-            const engravingType = engravingNameMapMobile[currentCard.engraving];
-            const cardName = `${colorNameMapMobile[currentCard.color]} Metal Card (${engravingType})`;
+        // Clear card button
+        clearCardBtn.addEventListener('click', () => {
+            // Reset to default black card
+            metalColorOptions.forEach(opt => opt.classList.remove('selected'));
+            document.querySelector('.metal-color-option[data-color="black"]').classList.add('selected');
+            selectedMetalColor = 'black';
             
-            addToCart(cardName, currentCard.price);
+            customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
+            document.querySelector('.engraving-option[data-engraving="silver"]').classList.add('selected');
+            selectedEngravingTypeValue = 'silver';
+            
+            // Clear logo if uploaded
+            if (uploadedLogoGlobal) {
+                previewLogo.src = '';
+                uploadedLogoGlobal = null;
+                previewLogo.classList.remove('visible');
+                previewPlaceholder.style.display = 'flex';
+                logoFileInput.value = '';
+                clearLogoBtn.disabled = true;
+                clearCardBtn.disabled = true;
+            }
+            
+            // Reset logo size
+            logoSize = 70;
+            logoSizeSlider.value = 70;
+            logoSizeValue.textContent = '70%';
+            sizePresetBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.size-preset-btn[data-size="70"]').classList.add('active');
+            
+            updatePreview();
+            showNotification('Card reset to default');
         });
 
-        // Initialize mobile logo builder
-        initMobileLogoBuilder();
+        // Add to cart from preview
+        addToCartBtn.addEventListener('click', () => {
+            const cardName = metalTypeMap[selectedMetalColor];
+            const engravingType = engravingTypeMap[selectedEngravingTypeValue];
+            const itemName = `${cardName} (${engravingType})`;
+            
+            // Open engraving modal with quantity selection
+            openEngravingModal(cardName, 95);
+        });
 
-        // CLICK ON CARD TO UPLOAD LOGO (when no logo uploaded yet)
-        previewCardMobileClickable.addEventListener('click', () => {
-            if (!uploadedLogoGlobal) {
-                logoFileInputMobile.click();
+        // Logo size slider
+        logoSizeSlider.addEventListener('input', () => {
+            logoSize = parseInt(logoSizeSlider.value);
+            logoSizeValue.textContent = `${logoSize}%`;
+            
+            // Update size preset buttons
+            sizePresetBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Find closest preset
+            const presets = [50, 70, 90];
+            const closest = presets.reduce((prev, curr) => {
+                return Math.abs(curr - logoSize) < Math.abs(prev - logoSize) ? curr : prev;
+            });
+            
+            document.querySelector(`.size-preset-btn[data-size="${closest}"]`).classList.add('active');
+            
+            // Update logo size if uploaded
+            if (uploadedLogoGlobal) {
+                previewLogo.style.transform = `scale(${logoSize / 100})`;
             }
         });
 
-        // HERO CARD CLICK TO UPLOAD
+        // Size preset buttons
+        sizePresetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const size = parseInt(btn.dataset.size);
+                logoSize = size;
+                logoSizeSlider.value = size;
+                logoSizeValue.textContent = `${size}%`;
+                
+                // Update active state
+                sizePresetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update logo size if uploaded
+                if (uploadedLogoGlobal) {
+                    previewLogo.style.transform = `scale(${logoSize / 100})`;
+                }
+            });
+        });
+
+        // Click on card to upload logo
+        previewCard.addEventListener('click', () => {
+            if (!uploadedLogoGlobal) {
+                logoFileInput.click();
+            }
+        });
+
+        // HERO CARD CLICK
         heroCard.addEventListener('click', () => {
             if (!uploadedLogoGlobal) {
-                logoFileInputMobile.click();
+                logoFileInput.click();
             } else {
                 // Scroll to custom logo section if logo already uploaded
                 const customLogoSection = document.getElementById('custom-logo');
@@ -3977,58 +4121,14 @@ section[id] {
             }
         });
 
-        // IMPROVED ENGRAVING SELECTION MODAL
-        const engravingOptionsModal = document.querySelectorAll('.engraving-option');
-        const confirmEngravingBtn = document.getElementById('confirmEngraving');
-        const cancelEngravingBtn = document.getElementById('cancelEngraving');
-        const closeEngravingBtn = document.getElementById('closeEngraving');
-        const selectedMetalText = document.getElementById('selectedMetalText');
-
-        // Function to open engraving modal for metal selection
-        function openEngravingModal() {
-            selectedMetalText.textContent = selectedMetal;
-            selectedEngraving = null;
-
-            // Reset selection state
-            engravingOptionsModal.forEach(option => {
-                option.classList.remove('selected');
-                // Remove any animation classes
-                option.style.transform = '';
-            });
-            
-            confirmEngravingBtn.disabled = true;
-            confirmEngravingBtn.textContent = 'Add to Cart';
-
-            // Show modal with better animation
-            engravingModal.style.display = 'flex';
-            setTimeout(() => {
-                engravingModal.classList.add('active');
-            }, 10);
-            
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Close engraving modal and restore scrolling
-        function closeEngravingModal() {
-            engravingModal.classList.remove('active');
-            setTimeout(() => {
-                engravingModal.style.display = 'none';
-                document.body.style.overflow = '';
-            }, 300);
-        }
-
-        // Open engraving modal when "Add [Metal Finish]" button is clicked
-        addMetalBtn.addEventListener('click', openEngravingModal);
-
-        // Open engraving modal when Browse Cards button is clicked
+        // Browse cards button
         document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
             e.preventDefault();
-            // Scroll to bestsellers section
-            const bestsellersSection = document.getElementById('bestsellers');
-            if (bestsellersSection) {
+            // Scroll to carousel section
+            const carouselSection = document.getElementById('carousel');
+            if (carouselSection) {
                 const navHeight = nav.offsetHeight;
-                const targetPosition = bestsellersSection.offsetTop - navHeight;
-
+                const targetPosition = carouselSection.offsetTop - navHeight;
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -4036,74 +4136,8 @@ section[id] {
             }
         });
 
-        // Handle engraving option selection with better visual feedback
-        engravingOptionsModal.forEach(option => {
-            option.addEventListener('click', () => {
-                // Visual feedback
-                option.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    option.style.transform = '';
-                }, 200);
-                
-                // Update selection
-                engravingOptionsModal.forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-                selectedEngraving = option.dataset.engraving;
-                confirmEngravingBtn.disabled = false;
-                const engravingType = selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1);
-                confirmEngravingBtn.textContent = `Add ${engravingType} Engraving`;
-            });
-            
-            // Add touch feedback for mobile
-            option.addEventListener('touchstart', () => {
-                option.style.transform = 'scale(0.98)';
-            });
-            
-            option.addEventListener('touchend', () => {
-                option.style.transform = '';
-            });
-        });
-
-        // Confirm engraving selection and add to cart
-        confirmEngravingBtn.addEventListener('click', () => {
-            if (!selectedEngraving) return;
-
-            const engravingType = selectedEngraving.charAt(0).toUpperCase() + selectedEngraving.slice(1);
-            const itemName = `${selectedMetal} Metal Card (${engravingType} Engraving)`;
-
-            // Add visual feedback to confirm button
-            confirmEngravingBtn.style.transform = 'scale(0.98)';
-            confirmEngravingBtn.style.opacity = '0.8';
-            
-            setTimeout(() => {
-                addToCart(itemName, 95);
-                closeEngravingModal();
-                
-                // Reset button state
-                setTimeout(() => {
-                    confirmEngravingBtn.style.transform = '';
-                    confirmEngravingBtn.style.opacity = '';
-                }, 300);
-            }, 200);
-        });
-
-        // Event listeners for closing engraving modal
-        closeEngravingBtn.addEventListener('click', closeEngravingModal);
-        cancelEngravingBtn.addEventListener('click', closeEngravingModal);
-
-        // Close modal when clicking outside
-        engravingModal.addEventListener('click', (e) => {
-            if (e.target === engravingModal) {
-                closeEngravingModal();
-            }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && engravingModal.classList.contains('active')) {
-                closeEngravingModal();
-            }
-        });
+        // Initialize custom logo builder
+        initCustomLogoBuilder();
 
         // Smooth scrolling for desktop nav
         document.querySelectorAll('.nav-center a').forEach(anchor => {
@@ -4130,18 +4164,181 @@ section[id] {
             });
         });
 
+        // CAROUSEL FUNCTIONALITY - LIKE PLASTIC PAGE
+        const carouselSection = document.querySelector('.carousel-section');
+        const carouselTrack = document.getElementById('carouselTrack');
+        const carouselPrev = document.getElementById('carouselPrev');
+        const carouselNext = document.getElementById('carouselNext');
+        const carouselDots = document.getElementById('carouselDots');
+        const carouselCards = document.querySelectorAll('.metal-carousel-card');
+
+        let currentSlide = 0;
+        let cardsPerView = 3;
+        let totalSlides = carouselCards.length;
+        let isAnimating = false;
+
+        // Initialize carousel
+        function initCarousel() {
+            updateCardsPerView();
+            createDots();
+            updateCarousel();
+            updateCarouselBackground();
+        }
+
+        // Update cards per view based on screen size
+        function updateCardsPerView() {
+            if (window.innerWidth <= 768) {
+                cardsPerView = 1;
+            } else if (window.innerWidth <= 1024) {
+                cardsPerView = 2;
+            } else {
+                cardsPerView = 3;
+            }
+        }
+
+        // Create dots for carousel
+        function createDots() {
+            carouselDots.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (i === currentSlide) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    if (!isAnimating) {
+                        goToSlide(i);
+                    }
+                });
+                carouselDots.appendChild(dot);
+            }
+        }
+
+        // Update carousel position
+        function updateCarousel() {
+            const allCards = document.querySelectorAll('.metal-carousel-card');
+            if (allCards.length === 0) return;
+            
+            const cardWidth = allCards[0].offsetWidth + 30;
+            const translateX = -currentSlide * cardWidth * cardsPerView;
+            
+            carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            carouselTrack.style.transform = `translateX(${translateX}px)`;
+            
+            // Update dots
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+            
+            // Update navigation buttons
+            carouselPrev.classList.toggle('disabled', currentSlide === 0);
+            carouselNext.classList.toggle('disabled', currentSlide >= Math.ceil(totalSlides / cardsPerView) - 1);
+        }
+
+        // Go to specific slide
+        function goToSlide(slideIndex) {
+            if (isAnimating) return;
+            
+            isAnimating = true;
+            currentSlide = slideIndex;
+            updateCarousel();
+            updateCarouselBackground();
+            
+            setTimeout(() => {
+                isAnimating = false;
+            }, 500);
+        }
+
+        // Next slide
+        function nextSlide() {
+            if (isAnimating || currentSlide >= Math.ceil(totalSlides / cardsPerView) - 1) return;
+            
+            isAnimating = true;
+            currentSlide++;
+            
+            updateCarousel();
+            updateCarouselBackground();
+            
+            setTimeout(() => {
+                isAnimating = false;
+            }, 500);
+        }
+
+        // Previous slide
+        function prevSlide() {
+            if (isAnimating || currentSlide === 0) return;
+            
+            isAnimating = true;
+            currentSlide--;
+            
+            updateCarousel();
+            updateCarouselBackground();
+            
+            setTimeout(() => {
+                isAnimating = false;
+            }, 500);
+        }
+
+        // Update carousel background based on current slide
+        function updateCarouselBackground() {
+            // Get the current slide's metal type
+            const visibleCards = Array.from(carouselCards).slice(currentSlide * cardsPerView, currentSlide * cardsPerView + cardsPerView);
+            if (visibleCards.length > 0) {
+                const metalType = visibleCards[0].dataset.metal;
+                const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
+                
+                if (newBackground !== currentCarouselBackground) {
+                    carouselSection.style.background = newBackground;
+                    currentCarouselBackground = newBackground;
+                }
+            }
+        }
+
+        // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
+        function updateCarouselBackgroundOnHover(metalType) {
+            const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
+            if (newBackground !== currentCarouselBackground) {
+                carouselSection.style.background = newBackground;
+            }
+        }
+
+        function resetCarouselBackgroundToCurrent() {
+            updateCarouselBackground();
+        }
+
+        // Add hover event listeners to carousel cards
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for carousel to be set up
+            setTimeout(() => {
+                carouselCards.forEach(card => {
+                    const metalType = card.dataset.metal;
+                    
+                    card.addEventListener('mouseenter', () => {
+                        updateCarouselBackgroundOnHover(metalType);
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        resetCarouselBackgroundToCurrent();
+                    });
+                });
+            }, 100);
+        });
+
+        // Event listeners for carousel navigation
+        carouselPrev.addEventListener('click', prevSlide);
+        carouselNext.addEventListener('click', nextSlide);
+
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Metal Page loaded with enhanced features:');
-            console.log('1. Added Red and White to carousel (9 total colors) ✓');
-            console.log('2. Wider carousel (350px cards, 1400px max width) ✓');
-            console.log('3. Fixed arrow/text overlap (z-index: 20) ✓');
-            console.log('4. Removed "All Metal Finishes" text ✓');
-            console.log('5. Add to cart button moved lower (40px margin) ✓');
+            console.log('1. Horizontal carousel like plastic page ✓');
+            console.log('2. Clear card button added ✓');
+            console.log('3. Logo size slider controls ✓');
+            console.log('4. Quantity selector in engraving modal ✓');
+            console.log('5. WhatsApp links updated to +447754888841 ✓');
             console.log('6. All prices set to £95 ✓');
-            console.log('7. WhatsApp links updated to +447754888841 ✓');
-            console.log('8. Hero card outline removed ✓');
-            console.log('9. WebP images for all colors ✓');
+            
+            initCarousel();
             updateCart();
             
             // Add highlight style for selected metal text
@@ -4153,7 +4350,7 @@ section[id] {
                     text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
                 }
                 
-                /* Ensure WebP images display properly */
+                /* Ensure images display properly */
                 .webp-container {
                     display: flex;
                     align-items: center;
@@ -4171,16 +4368,17 @@ section[id] {
                     box-shadow: none;
                     background: transparent;
                 }
-                
-                /* Fallback styling for when WebP images are not loaded */
-                .bestseller-image .webp-container::after {
-                    content: 'Metal Card Preview';
-                    color: rgba(255, 255, 255, 0.5);
-                    font-size: 0.8rem;
-                    display: none;
-                }
             `;
             document.head.appendChild(style);
+        });
+
+        // Update carousel on window resize
+        window.addEventListener('resize', () => {
+            updateCardsPerView();
+            // Re-initialize carousel on resize to handle responsive changes
+            setTimeout(() => {
+                initCarousel();
+            }, 100);
         });
     </script>
 </body>
