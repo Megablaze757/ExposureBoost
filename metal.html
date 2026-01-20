@@ -50,7 +50,7 @@
     --carousel-blue-bg: linear-gradient(135deg, #1A0F0F 0%, #004488 100%);
     --carousel-green-bg: linear-gradient(135deg, #1A0F0F 0%, #008844 100%);
     --carousel-purple-bg: linear-gradient(135deg, #1A0F0F 0%, #6A1BC2 100%);
-    --carousel-red-bg: linear-gradient(135deg, #1A0F0F 0%, #CC3333 100%);
+    --carousel-red-bg: linear-gradient(135deg, #1A0F0F 0%, #3B1A5A 20%, #1A2F5A 40%, #1A5A3B 60%, #5A4A1A 80%, #5A1A2F 100%);
     --carousel-white-bg: linear-gradient(135deg, #1A0F0F 0%, #F0F0F0 100%);
     --carousel-gold-bg: linear-gradient(135deg, #1A0F0F 0%, #D4AF37 100%);
     --carousel-silver-bg: linear-gradient(135deg, #1A0F0F 0%, #A9A9A9 100%);
@@ -80,7 +80,7 @@ body {
 }
 
 html {
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
+    background: linear-gradient(135deg, #2B0F3A 0%, #13214A 20%, #0F3A4A 40%, #0F4A2B 60%, #4A3A0F 80%, #4A0F1A 100%);
 }
 
 a {
@@ -1097,11 +1097,39 @@ section[id] {
     color: #FFFFFF;
 }
 
-.metal-carousel-card.red {
-    background: radial-gradient(circle at top, rgba(255, 68, 68, 0.9), rgba(204, 51, 51, 0.95));
+.metal-carousel-card.custom {
+    position: relative;
+    overflow: hidden;
+    background: var(--carousel-red-bg);
     color: #FFFFFF;
 }
 
+.metal-carousel-card.custom::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.38);
+    z-index: 0;
+}
+
+.metal-carousel-card.custom * {
+    position: relative;
+    z-index: 1;
+}
+
+.metal-carousel-card.custom .custom-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(6px);
+}
 .metal-carousel-card.white {
     background: radial-gradient(circle at top, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.95));
     color: #1a1209;
@@ -1163,7 +1191,7 @@ section[id] {
 .metal-carousel-card.blue .metal-carousel-title,
 .metal-carousel-card.green .metal-carousel-title,
 .metal-carousel-card.purple .metal-carousel-title,
-.metal-carousel-card.red .metal-carousel-title,
+.metal-carousel-card.custom .metal-carousel-title,
 .metal-carousel-card.rosegold .metal-carousel-title {
     color: #FFFFFF;
 }
@@ -1185,7 +1213,7 @@ section[id] {
 .metal-carousel-card.blue .metal-carousel-description,
 .metal-carousel-card.green .metal-carousel-description,
 .metal-carousel-card.purple .metal-carousel-description,
-.metal-carousel-card.red .metal-carousel-description,
+.metal-carousel-card.custom .metal-carousel-description,
 .metal-carousel-card.rosegold .metal-carousel-description {
     color: rgba(255, 255, 255, 0.9);
 }
@@ -1206,7 +1234,7 @@ section[id] {
 .metal-carousel-card.blue .metal-carousel-price,
 .metal-carousel-card.green .metal-carousel-price,
 .metal-carousel-card.purple .metal-carousel-price,
-.metal-carousel-card.red .metal-carousel-price,
+.metal-carousel-card.custom .metal-carousel-price,
 .metal-carousel-card.rosegold .metal-carousel-price {
     color: #FFFFFF;
 }
@@ -2944,6 +2972,16 @@ section[id] {
     object-fit: contain;
 }
 
+
+/* Mobile swipe support for carousel */
+.metal-carousel-track {
+  touch-action: pan-y;
+  cursor: grab;
+}
+.metal-carousel-track:active {
+  cursor: grabbing;
+}
+
 </style>
 </head>
 
@@ -3252,16 +3290,18 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Red -->
-                        <div class="metal-carousel-card red" data-metal="red">
-                            <div class="metal-carousel-image">
-                                <img src="newred.webp" alt="Red Metal Card">
+                        <!-- Custom -->
+                        <div class="metal-carousel-card custom" data-metal="custom">
+                            
+                            <div class="custom-badge">Any Colour / Any Finish</div>
+<div class="metal-carousel-image">
+                                <img src="newcustom.webp" alt="Custom Metal Card">
                             </div>
-                            <h3 class="metal-carousel-title">Red Metal Card</h3>
-                            <p class="metal-carousel-description">Bold red metal card. Great for entertainment, food & beverage, and brands wanting to make a statement.</p>
+                            <h3 class="metal-carousel-title">Custom Metal Card</h3>
+                            <p class="metal-carousel-description">Fully custom metal card. Choose any colour, finish, and branding for a one-of-a-kind premium look.</p>
                             <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
                             <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Red Metal Card" data-price="95">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Custom Metal Card" data-price="95">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3422,9 +3462,6 @@ section[id] {
                                 <div class="metal-color-option" data-color="purple" style="background: var(--purple-bg);">
                                     <div class="color-label">Purple</div>
                                 </div>
-                                <div class="metal-color-option" data-color="red" style="background: var(--red-bg);">
-                                    <div class="color-label">Red</div>
-                                </div>
                                 <div class="metal-color-option" data-color="white" style="background: var(--white-bg);">
                                     <div class="color-label">White</div>
                                 </div>
@@ -3541,7 +3578,7 @@ section[id] {
             'blue': 'var(--carousel-blue-bg)',
             'green': 'var(--carousel-green-bg)',
             'purple': 'var(--carousel-purple-bg)',
-            'red': 'var(--carousel-red-bg)',
+            'custom': 'var(--carousel-red-bg)',
             'white': 'var(--carousel-white-bg)',
             'gold': 'var(--carousel-gold-bg)',
             'silver': 'var(--carousel-silver-bg)',
@@ -3959,7 +3996,7 @@ section[id] {
             'blue': 'Blue Metal Card',
             'green': 'Green Metal Card',
             'purple': 'Purple Metal Card',
-            'red': 'Red Metal Card',
+            'custom': 'Custom Metal Card',
             'white': 'White Metal Card',
             'gold': 'Gold Metal Card',
             'silver': 'Silver Metal Card',
@@ -3972,7 +4009,7 @@ section[id] {
             'blue': 'var(--blue-bg)',
             'green': 'var(--green-bg)',
             'purple': 'var(--purple-bg)',
-            'red': 'var(--red-bg)',
+            'custom': 'var(--red-bg)',
             'white': 'var(--white-bg)',
             'gold': 'var(--gold-bg)',
             'silver': 'var(--silver-bg)',
@@ -4509,5 +4546,55 @@ section[id] {
             }, 100);
         });
     </script>
+
+<script>
+(function () {
+  const track = document.querySelector(".metal-carousel-track");
+  if (!track) return;
+
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
+
+  function getX(e) {
+    return (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
+  }
+
+  function onStart(e) {
+    isDragging = true;
+    startX = getX(e);
+    currentX = startX;
+  }
+
+  function onMove(e) {
+    if (!isDragging) return;
+    currentX = getX(e);
+  }
+
+  function onEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+
+    const diff = currentX - startX;
+    const threshold = 50;
+
+    if (diff > threshold) {
+      document.querySelector(".metal-carousel-prev")?.click();
+    } else if (diff < -threshold) {
+      document.querySelector(".metal-carousel-next")?.click();
+    }
+  }
+
+  track.addEventListener("touchstart", onStart, { passive: true });
+  track.addEventListener("touchmove", onMove, { passive: true });
+  track.addEventListener("touchend", onEnd, { passive: true });
+
+  track.addEventListener("mousedown", onStart);
+  track.addEventListener("mousemove", onMove);
+  track.addEventListener("mouseup", onEnd);
+  track.addEventListener("mouseleave", onEnd);
+})();
+</script>
+
 </body>
 </html>
