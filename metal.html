@@ -1948,19 +1948,23 @@ section[id] {
 
 /* Logo Size Controls */
 .logo-size-section {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-    margin-top: 25px;
-}
+        margin-top: 8px;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+    }
 
 .logo-size-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
+    display: none;
+}
+
+.size-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--rose-gold-light);
+    text-align: center;
+    margin-top: 8px;
 }
 
 .logo-size-controls {
@@ -2853,11 +2857,13 @@ section[id] {
 }
 
 .upload-actions.compact .upload-btn,
+.upload-actions.compact .upload-btn,
 .upload-actions.compact .clear-logo-btn {
     flex: 1;
-    padding: 12px 14px;
+    padding: 8px 10px;
     border-radius: 12px;
-    font-size: 0.95rem;
+    font-size: 0.82rem;
+    min-height: 40px;
 }
 
 .logo-recommendation {
@@ -2883,14 +2889,18 @@ section[id] {
     .preview-container { order: 1; }
     .selection-options { order: 3; }
 
-    /* Logo size block: tighter */
+    /* Logo size block: unboxed + directly under preview */
     .logo-size-section {
-        margin-top: 14px;
-        padding: 14px;
-        border-radius: 16px;
+        margin-top: 8px;
+        padding: 0;
+        border-radius: 0;
+        border: 0;
+        background: transparent;
     }
-    .logo-size-title { font-size: 0.95rem; }
-    .size-value { font-size: 0.95rem; }
+    .logo-size-title {
+    display: none;
+}
+    .size-value { font-size: 0.9rem; }
 
     /* Hide size preset buttons on mobile (keeps it clean) */
     .size-presets { display: none; }
@@ -3351,13 +3361,13 @@ section[id] {
                                                     <div class="logo-size-title">Logo Size:</div>
                                                     <div class="logo-size-controls">
                                                         <div class="size-slider-container">
-                                                            <input type="range" min="20" max="100" value="70" class="size-slider" id="logoSizeSlider">
+                                                            <input type="range" min="10" max="200" value="50" class="size-slider" id="logoSizeSlider">
                                                         </div>
-                                                        <div class="size-value" id="logoSizeValue">70%</div>
+                                                        <div class="size-value" id="logoSizeValue">50%</div>
                                                         <div class="size-presets">
-                                                            <button class="size-preset-btn" data-size="50">Small</button>
-                                                            <button class="size-preset-btn active" data-size="70">Medium</button>
-                                                            <button class="size-preset-btn" data-size="90">Large</button>
+                                                            <button class="size-preset-btn active" data-size="50">Default</button>
+                                                            <button class="size-preset-btn" data-size="100">100%</button>
+                                                            <button class="size-preset-btn" data-size="150">Large</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3386,16 +3396,10 @@ section[id] {
                         <div class="preview-details">
                             <div class="selected-card-info">
                                 <div class="card-name" id="selectedCardName">Black Metal Card</div>
-                                <div class="engraving-type" id="selectedEngravingType">Silver Engraving</div>
                             </div>
                             <div class="preview-price">£95</div>
                         </div>
-                        
-                        <button class="clear-card-btn" id="clearCardBtn">
-                            <span>🗑️</span> Clear Card Preview
-                        </button>
-                        
-                        <button class="add-to-cart-btn" id="addToCartBtn">
+<button class="add-to-cart-btn" id="addToCartBtn">
                             🛒 Add to Cart
                         </button>
                     </div>
@@ -3436,25 +3440,7 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Engraving Selection -->
-                        <div class="engraving-section">
-                            <div class="engraving-title">Choose Engraving</div>
-                            <div class="engraving-options">
-                                <div class="engraving-option selected" data-engraving="silver">
-                                    <div class="engraving-icon">⚪</div>
-                                    <div class="engraving-name">Silver</div>
-                                    <div class="engraving-price">No extra cost</div>
-                                </div>
-                                <div class="engraving-option" data-engraving="gold">
-                                    <div class="engraving-icon">⭐</div>
-                                    <div class="engraving-name">Gold</div>
-                                    <div class="engraving-price">No extra cost</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        
-                    </div>
+</div>
                 </div>
 
                 <div class="whatsapp-help">
@@ -3544,7 +3530,7 @@ section[id] {
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
         let uploadedLogoGlobal = null;
-        let logoSize = 70; // Default logo size percentage
+        let logoSize = 50; // Default logo size percentage
         let currentEngravingData = null; // Store data for engraving modal
         let engravingQuantity = 1; // Default quantity for engraving modal
         let currentCarouselBackground = 'var(--carousel-black-bg)';
@@ -3951,7 +3937,6 @@ section[id] {
 
         // CUSTOM LOGO BUILDER
         const metalColorOptions = document.querySelectorAll('.metal-color-option');
-        const customEngravingOptions = document.querySelectorAll('.engraving-option');
         const uploadArea = document.getElementById('uploadArea');
         const logoFileInput = document.getElementById('logoFileInput');
         const uploadLogoBtn = document.getElementById('uploadLogoBtn');
@@ -3962,9 +3947,7 @@ section[id] {
         const previewCard = document.getElementById('previewCard');
         const cardCounter = document.getElementById('cardCounter');
         const selectedCardName = document.getElementById('selectedCardName');
-        const selectedEngravingType = document.getElementById('selectedEngravingType');
         const addToCartBtn = document.getElementById('addToCartBtn');
-        const clearCardBtn = document.getElementById('clearCardBtn');
         const heroCard = document.getElementById('heroCard');
         const logoSizeSlider = document.getElementById('logoSizeSlider');
         const logoSizeValue = document.getElementById('logoSizeValue');
@@ -3983,12 +3966,6 @@ section[id] {
             'rosegold': 'Rose Gold Metal Card'
         };
 
-        // Engraving type mapping
-        const engravingTypeMap = {
-            'silver': 'Silver Engraving',
-            'gold': 'Gold Engraving'
-        };
-
         // Background mapping
         const metalBackgroundMap = {
             'black': 'var(--black-bg)',
@@ -4003,7 +3980,6 @@ section[id] {
         };
 
         let selectedMetalColor = 'black';
-        let selectedEngravingTypeValue = 'silver';
 
         // Initialize custom logo builder
         function initCustomLogoBuilder() {
@@ -4017,7 +3993,6 @@ section[id] {
             
             // Update text
             selectedCardName.textContent = metalTypeMap[selectedMetalColor];
-            selectedEngravingType.textContent = engravingTypeMap[selectedEngravingTypeValue];
             
             // Update counter
             cardCounter.textContent = metalTypeMap[selectedMetalColor].split(' ')[0];
@@ -4028,11 +4003,9 @@ section[id] {
                 previewLogo.classList.add('visible');
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
-                clearCardBtn.disabled = false;
             } else {
                 previewLogo.classList.remove('visible');
                 previewPlaceholder.style.display = 'flex';
-                clearCardBtn.disabled = true;
             }
         }
 
@@ -4063,7 +4036,6 @@ section[id] {
                 
                 // Enable clear buttons
                 clearLogoBtn.disabled = false;
-                clearCardBtn.disabled = false;
                 
                 // Update hero card if needed
                 if (heroCard) {
@@ -4089,29 +4061,6 @@ section[id] {
                 
                 // Update selected color
                 selectedMetalColor = option.dataset.color;
-                
-                // Update preview
-                updatePreview();
-                
-                // Visual feedback
-                option.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    option.style.transform = '';
-                }, 200);
-            });
-        });
-
-        // Handle engraving selection
-        customEngravingOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                // Remove selected class from all options
-                customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
-                option.classList.add('selected');
-                
-                // Update selected engraving
-                selectedEngravingTypeValue = option.dataset.engraving;
                 
                 // Update preview
                 updatePreview();
@@ -4151,7 +4100,6 @@ section[id] {
             previewPlaceholder.style.display = 'flex';
             logoFileInput.value = '';
             clearLogoBtn.disabled = true;
-            clearCardBtn.disabled = true;
             
             // Reset hero card image
             if (heroCard) {
@@ -4161,44 +4109,9 @@ section[id] {
             showNotification('Logo cleared');
         });
 
-        // Clear card button
-        clearCardBtn.addEventListener('click', () => {
-            // Reset to default black card
-            metalColorOptions.forEach(opt => opt.classList.remove('selected'));
-            document.querySelector('.metal-color-option[data-color="black"]').classList.add('selected');
-            selectedMetalColor = 'black';
-            
-            customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
-            document.querySelector('.engraving-option[data-engraving="silver"]').classList.add('selected');
-            selectedEngravingTypeValue = 'silver';
-            
-            // Clear logo if uploaded
-            if (uploadedLogoGlobal) {
-                previewLogo.src = '';
-                uploadedLogoGlobal = null;
-                previewLogo.classList.remove('visible');
-                previewPlaceholder.style.display = 'flex';
-                logoFileInput.value = '';
-                clearLogoBtn.disabled = true;
-                clearCardBtn.disabled = true;
-            }
-            
-            // Reset logo size
-            logoSize = 70;
-            logoSizeSlider.value = 70;
-            logoSizeValue.textContent = '70%';
-            sizePresetBtns.forEach(btn => btn.classList.remove('active'));
-            document.querySelector('.size-preset-btn[data-size="70"]').classList.add('active');
-            
-            updatePreview();
-            showNotification('Card reset to default');
-        });
-
         // Add to cart from preview
         addToCartBtn.addEventListener('click', () => {
             const cardName = metalTypeMap[selectedMetalColor];
-            const engravingType = engravingTypeMap[selectedEngravingTypeValue];
-            const itemName = `${cardName} (${engravingType})`;
             
             // Open engraving modal with quantity selection
             openEngravingModal(cardName, 95);
@@ -4213,7 +4126,7 @@ section[id] {
             sizePresetBtns.forEach(btn => btn.classList.remove('active'));
             
             // Find closest preset
-            const presets = [50, 70, 90];
+            const presets = [50, 100, 150];
             const closest = presets.reduce((prev, curr) => {
                 return Math.abs(curr - logoSize) < Math.abs(prev - logoSize) ? curr : prev;
             });
