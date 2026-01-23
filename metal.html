@@ -671,34 +671,7 @@ section[id] {
     border-radius: 20px;
 }
 
-.hero-card-upload-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 15, 15, 0.8);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 2;
-}
-
-.hero-card:hover .hero-card-upload-overlay {
-    opacity: 1;
-}
-
-.hero-card-upload-text {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--white);
-    margin-top: 10px;
-    text-align: center;
-}
+/* REMOVED: Hero card upload overlay (request #1) */
 
 .hero-text {
     font-size: 18px;
@@ -1695,7 +1668,34 @@ section[id] {
     gap: 25px;
 }
 
-/* Metal Color Selection */
+/* Add to Cart Button - MOVED TO TOP */
+.add-to-cart-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--rose-gold-gradient);
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
+    margin-top: 0;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
+}
+
+/* Metal Color Selection - MOVED BELOW ADD TO CART */
 .metal-colors-section {
     background: rgba(224, 191, 184, 0.1);
     border-radius: 20px;
@@ -2068,32 +2068,6 @@ section[id] {
 .size-preset-btn.active {
     background: var(--rose-gold-gradient);
     border-color: var(--rose-gold-light);
-}
-
-/* Add to Cart Button */
-.add-to-cart-btn {
-    width: 100%;
-    padding: 18px;
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    border: none;
-    border-radius: 14px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
-    margin-top: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.add-to-cart-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
 }
 
 .whatsapp-help {
@@ -3147,12 +3121,8 @@ section[id] {
                 
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
-                        <!-- Hero card image - NO OUTLINE -->
+                        <!-- Hero card image - NO UPLOAD OVERLAY (request #1) -->
                         <img src="newblack.webp" alt="Black Metal NFC Card">
-                        <div class="hero-card-upload-overlay">
-                            <div class="upload-icon">📁</div>
-                            <div class="hero-card-upload-text">Click to upload your logo</div>
-                        </div>
                     </div>
                 </div>
 
@@ -3235,7 +3205,21 @@ section[id] {
                     <button class="carousel-nav prev" id="carouselPrev">‹</button>
                     
                     <div class="metal-carousel-track" id="carouselTrack">
-                        <!-- Black -->
+                        <!-- Custom - REORDERED TO FIRST (request #2) -->
+                        <div class="metal-carousel-card custom" data-metal="custom">
+                            <div class="custom-badge">Any Colour / Any Finish</div>
+                            <div class="metal-carousel-image">
+                                <img src="newcustom.webp" alt="Custom Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">Custom Metal Card</h3>
+                            <p class="metal-carousel-description">Fully custom metal card. Choose any colour, finish, and branding for a one-of-a-kind premium look.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Custom Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Black - REORDERED TO SECOND (request #2) -->
                         <div class="metal-carousel-card black" data-metal="black">
                             <div class="metal-carousel-image">
                                 <img src="newblack.webp" alt="Black Metal Card">
@@ -3245,6 +3229,19 @@ section[id] {
                             <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
                             <div class="metal-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Black Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- White - REORDERED TO THIRD (request #2) -->
+                        <div class="metal-carousel-card white" data-metal="white">
+                            <div class="metal-carousel-image">
+                                <img src="newwhite.webp" alt="White Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">White Metal Card</h3>
+                            <p class="metal-carousel-description">Clean white metal card. Perfect for minimalist brands, medical services, and modern design studios.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="White Metal Card" data-price="95">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3284,34 +3281,6 @@ section[id] {
                             <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
                             <div class="metal-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Purple Metal Card" data-price="95">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- Custom -->
-                        <div class="metal-carousel-card custom" data-metal="custom">
-                            
-                            <div class="custom-badge">Any Colour / Any Finish</div>
-<div class="metal-carousel-image">
-                                <img src="newcustom.webp" alt="Custom Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">Custom Metal Card</h3>
-                            <p class="metal-carousel-description">Fully custom metal card. Choose any colour, finish, and branding for a one-of-a-kind premium look.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Custom Metal Card" data-price="95">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- White -->
-                        <div class="metal-carousel-card white" data-metal="white">
-                            <div class="metal-carousel-image">
-                                <img src="newwhite.webp" alt="White Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">White Metal Card</h3>
-                            <p class="metal-carousel-description">Clean white metal card. Perfect for minimalist brands, medical services, and modern design studios.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="White Metal Card" data-price="95">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3395,21 +3364,20 @@ section[id] {
 
                         <!-- INSERTED: Logo size moved directly under preview -->
                         <div class="logo-size-section">
-                                                    <div class="logo-size-title">Logo Size:</div>
-                                                    <div class="logo-size-controls">
-                                                        <div class="size-slider-container">
-                                                            <input type="range" min="10" max="200" value="50" class="size-slider" id="logoSizeSlider">
-                                                        </div>
-                                                        <div class="size-value" id="logoSizeValue">50%</div>
-                                                        <div class="size-presets">
-                                                            <button class="size-preset-btn active" data-size="50">Default</button>
-                                                            <button class="size-preset-btn" data-size="100">100%</button>
-                                                            <button class="size-preset-btn" data-size="150">Large</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                            <div class="logo-size-title">Logo Size:</div>
+                            <div class="logo-size-controls">
+                                <div class="size-slider-container">
+                                    <input type="range" min="10" max="200" value="50" class="size-slider" id="logoSizeSlider">
+                                </div>
+                                <div class="size-value" id="logoSizeValue">50%</div>
+                                <div class="size-presets">
+                                    <button class="size-preset-btn active" data-size="50">Default</button>
+                                    <button class="size-preset-btn" data-size="100">100%</button>
+                                    <button class="size-preset-btn" data-size="150">Large</button>
+                                </div>
+                            </div>
+                        </div>
                         <!-- /INSERTED -->
-
 
                         <!-- INSERTED: Upload controls moved under preview (mobile-first) -->
                         <div class="preview-upload-controls">
@@ -3436,14 +3404,16 @@ section[id] {
                             </div>
                             <div class="preview-price">£95</div>
                         </div>
-<button class="add-to-cart-btn" id="addToCartBtn">
-                            🛒 Add to Cart
-                        </button>
                     </div>
 
-                    <!-- Right Column: Selection Options -->
+                    <!-- Right Column: Selection Options - REORDERED (request #3) -->
                     <div class="selection-options">
-                        <!-- Metal Color Selection -->
+                        <!-- Add to Cart Button - MOVED TO TOP (request #3) -->
+                        <button class="add-to-cart-btn" id="addToCartBtn">
+                            🛒 Add to Cart
+                        </button>
+
+                        <!-- Metal Color Selection - MOVED BELOW ADD TO CART (request #3) -->
                         <div class="metal-colors-section">
                             <div class="metal-colors-title">Choose Metal Color</div>
                             <div class="metal-colors-grid">
@@ -3473,8 +3443,7 @@ section[id] {
                                 </div>
                             </div>
                         </div>
-
-</div>
+                    </div>
                 </div>
 
                 <div class="whatsapp-help">
@@ -4494,6 +4463,10 @@ section[id] {
             console.log('6. Carousel background changes on card hover ✓');
             console.log('7. WhatsApp links updated to +447754888841 ✓');
             console.log('8. All prices set to £95 ✓');
+            console.log('9. Changes applied:');
+            console.log('   - Upload button removed from hero card ✓');
+            console.log('   - Carousel reordered: Custom, Black, White first ✓');
+            console.log('   - Custom card section: Add to Cart moved above Choose Color ✓');
             
             initCircularCarousel();
             updateCart();
