@@ -77,6 +77,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
     touch-action: manipulation;
     background-attachment: fixed;
+    /* PERFORMANCE: Reduce lag by preventing unnecessary repaints */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 html {
@@ -991,21 +995,17 @@ section[id] {
     margin-bottom: 16px;
 }
 
-/* Carousel Styles */
+/* Carousel Styles - PERFORMANCE OPTIMIZED */
 .metal-carousel-wrapper {
     position: relative;
     width: 100%;
     overflow: hidden;
     padding: 0 60px;
+    /* PERFORMANCE: GPU acceleration */
+    transform: translateZ(0);
 }
 
 @media (max-width: 768px) {
-    .metal-carousel-wrapper {
-        padding: 0 40px;
-    }
-}
-
-@media (max-width: 480px) {
     .metal-carousel-wrapper {
         padding: 0 20px;
     }
@@ -1016,9 +1016,11 @@ section[id] {
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     gap: 30px;
     padding: 10px 0;
+    /* PERFORMANCE: Will-change for smooth animations */
+    will-change: transform;
 }
 
-/* Carousel cards matching bestseller style */
+/* PERFORMANCE: Reduced number of cards visible at once on mobile */
 .metal-carousel-card {
     flex: 0 0 calc(33.333% - 20px);
     border-radius: 20px;
@@ -1032,6 +1034,9 @@ section[id] {
     flex-direction: column;
     cursor: pointer;
     min-width: 300px;
+    /* PERFORMANCE: GPU acceleration */
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 @media (max-width: 1024px) {
@@ -1044,6 +1049,14 @@ section[id] {
     .metal-carousel-card {
         flex: 0 0 calc(100% - 0px);
         min-width: 280px;
+        /* PERFORMANCE: Show only 2 cards on mobile */
+        flex: 0 0 calc(100% - 20px);
+        margin: 0 10px;
+    }
+    
+    .metal-carousel-track {
+        gap: 20px;
+        padding: 10px 5px;
     }
 }
 
@@ -1126,7 +1139,7 @@ section[id] {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Carousel card image */
+/* Carousel card image - PERFORMANCE OPTIMIZED */
 .metal-carousel-image {
     width: 100%;
     height: 200px;
@@ -1138,6 +1151,8 @@ section[id] {
     justify-content: center;
     background: transparent;
     position: relative;
+    /* PERFORMANCE: GPU acceleration */
+    transform: translateZ(0);
 }
 
 .metal-carousel-image img {
@@ -1146,6 +1161,8 @@ section[id] {
     object-fit: cover;
     border-radius: 12px;
     transition: transform 0.5s ease;
+    /* PERFORMANCE: GPU acceleration */
+    transform: translateZ(0);
 }
 
 .metal-carousel-card:hover .metal-carousel-image img {
@@ -1279,9 +1296,7 @@ section[id] {
 
 @media (max-width: 768px) {
     .carousel-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
+        display: none; /* Hide arrows on mobile - use swipe instead */
     }
 }
 
@@ -1441,7 +1456,7 @@ section[id] {
     font-size: 0.9rem;
 }
 
-/* CUSTOM LOGO SECTION - UPDATED */
+/* CUSTOM LOGO SECTION - REORGANIZED FOR MOBILE */
 .custom-logo-section {
     padding: 80px 20px;
     background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
@@ -1467,31 +1482,22 @@ section[id] {
     z-index: 2;
 }
 
-/* Logo Builder Grid */
-.logo-builder-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+/* Logo Builder - SIMPLIFIED MOBILE-FIRST LAYOUT */
+.logo-builder-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     margin: 40px 0;
 }
 
-@media (max-width: 992px) {
-    .logo-builder-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-}
-
-/* Preview Section */
+/* Preview Section - Now full width */
 .preview-container {
     background: rgba(224, 191, 184, 0.1);
     border-radius: 24px;
     padding: 25px;
     border: 1px solid rgba(224, 191, 184, 0.2);
     backdrop-filter: blur(10px);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
 }
 
 .preview-header {
@@ -1519,7 +1525,6 @@ section[id] {
 }
 
 .preview-card-wrapper {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1596,6 +1601,84 @@ section[id] {
     opacity: 0.8;
 }
 
+/* UPDATED: Colors section now appears directly below preview on mobile */
+.mobile-colors-section {
+    width: 100%;
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+    margin-top: 20px;
+}
+
+.mobile-colors-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.mobile-colors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 480px) {
+    .mobile-colors-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+}
+
+.mobile-color-option {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-color-option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-color-option.selected {
+    border-color: var(--white);
+    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.mobile-color-label {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 3px 4px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    margin: 0 4px;
+}
+
+/* For light colors, use dark text */
+.mobile-color-option[data-color="white"] .mobile-color-label,
+.mobile-color-option[data-color="gold"] .mobile-color-label,
+.mobile-color-option[data-color="silver"] .mobile-color-label {
+    color: #1a1209;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
+}
+
 .preview-details {
     display: flex;
     justify-content: space-between;
@@ -1617,291 +1700,47 @@ section[id] {
     margin-bottom: 5px;
 }
 
-.engraving-type {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
 .preview-price {
     font-size: 1.3rem;
     font-weight: 900;
     color: var(--rose-gold-light);
 }
 
-/* Clear Card Button */
-.clear-card-btn {
-    width: 100%;
-    padding: 16px;
-    background: rgba(224, 191, 184, 0.15);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    border-radius: 14px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
-}
-
-.clear-card-btn:hover {
-    background: rgba(224, 191, 184, 0.25);
-    transform: translateY(-2px);
-}
-
-.clear-card-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
-/* Selection Options */
-.selection-options {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-/* Metal Color Selection - ABOVE ADD TO CART */
-.metal-colors-section {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-.metal-colors-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.metal-colors-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
-
-@media (max-width: 768px) {
-    .metal-colors-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.metal-color-option {
-    aspect-ratio: 1;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 3px solid transparent;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.metal-color-option:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.metal-color-option.selected {
-    border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
-.color-label {
-    position: absolute;
-    bottom: 8px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 4px 6px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
-    margin: 0 8px;
-}
-
-/* For light colors, use dark text */
-.metal-color-option[data-color="white"] .color-label,
-.metal-color-option[data-color="gold"] .color-label,
-.metal-color-option[data-color="silver"] .color-label {
-    color: #1a1209;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.7);
-}
-
-/* Engraving Selection */
-.engraving-section {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-.engraving-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.engraving-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.engraving-option {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+/* Upload Controls */
+.upload-controls {
+    margin-top: 25px;
     padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    border: 2px solid transparent;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.engraving-option:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
-}
-
-.engraving-option.selected {
-    background: rgba(224, 191, 184, 0.2);
-    border-color: var(--rose-gold-light);
-}
-
-.engraving-icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-.engraving-name {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 4px;
-}
-
-.engraving-price {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* Logo Upload Section */
-.logo-upload-section {
     background: rgba(224, 191, 184, 0.1);
     border-radius: 20px;
-    padding: 25px;
     border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
 }
 
-.logo-upload-title {
+.upload-controls-title {
     font-size: 1.2rem;
     font-weight: 800;
     color: var(--white);
-    margin-bottom: 20px;
-}
-
-.upload-container {
-    width: 100%;
-}
-
-.upload-area {
-    border: 2px dashed rgba(224, 191, 184, 0.5);
-    border-radius: 16px;
-    padding: 30px 20px;
-    background: rgba(224, 191, 184, 0.05);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    margin-bottom: 15px;
     text-align: center;
-    margin-bottom: 20px;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 180px;
+}
+
+.logo-upload-actions {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.upload-area:hover {
-    border-color: var(--rose-gold-light);
-    background: rgba(224, 191, 184, 0.1);
-    transform: translateY(-2px);
-}
-
-.upload-area.drag-over {
-    border-color: var(--rose-gold-light);
-    background: rgba(224, 191, 184, 0.15);
-    border-style: solid;
-}
-
-.upload-icon {
-    font-size: 2.5rem;
-    color: rgba(224, 191, 184, 0.7);
+    gap: 12px;
     margin-bottom: 15px;
 }
 
-.upload-text {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-
-.upload-subtext {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 5px;
-    line-height: 1.4;
-}
-
-.upload-hint {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 10px;
-    font-style: italic;
-}
-
-/* File input */
-#logoFileInput {
-    display: none;
-}
-
-/* Upload Actions */
-.upload-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-}
-
 @media (min-width: 480px) {
-    .upload-actions {
+    .logo-upload-actions {
         flex-direction: row;
     }
 }
 
 .upload-btn, .clear-logo-btn {
-    padding: 16px 20px;
+    padding: 14px 20px;
     border-radius: 12px;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
@@ -1910,8 +1749,7 @@ section[id] {
     justify-content: center;
     gap: 8px;
     flex: 1;
-    min-height: 52px;
-    -webkit-tap-highlight-color: transparent;
+    min-height: 48px;
 }
 
 .upload-btn {
@@ -1942,25 +1780,29 @@ section[id] {
     transform: none !important;
 }
 
-/* Logo Size Controls */
-.logo-size-section {
-        margin-top: 8px;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
-    }
-
-.logo-size-title {
-    display: none;
+.logo-recommendation {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.35;
+    text-align: center;
+    margin-top: 15px;
 }
 
-.size-value {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--rose-gold-light);
+/* Logo Size Controls */
+.logo-size-section {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+}
+
+.logo-size-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 15px;
     text-align: center;
-    margin-top: 8px;
 }
 
 .logo-size-controls {
@@ -2041,7 +1883,16 @@ section[id] {
     border-color: var(--rose-gold-light);
 }
 
-/* Add to Cart Button - BELOW COLORS */
+/* Add to Cart Button - Standalone section */
+.add-to-cart-section {
+    margin-top: 30px;
+    padding: 25px;
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+}
+
 .add-to-cart-btn {
     width: 100%;
     padding: 18px;
@@ -2054,12 +1905,10 @@ section[id] {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
-    margin-top: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .add-to-cart-btn:hover {
@@ -2074,6 +1923,28 @@ section[id] {
     border-radius: 20px;
     border: 1px solid rgba(37, 211, 102, 0.3);
     backdrop-filter: blur(10px);
+}
+
+/* Desktop layout */
+@media (min-width: 992px) {
+    .logo-builder-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: start;
+    }
+    
+    .mobile-colors-section {
+        margin-top: 0;
+    }
+    
+    .upload-controls {
+        margin-top: 0;
+    }
+    
+    .logo-size-section {
+        margin-top: 20px;
+    }
 }
 
 /* RESPONSIVE DESIGN */
@@ -2101,8 +1972,8 @@ section[id] {
         height: 200px;
     }
 
-    .metal-colors-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .mobile-colors-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -2124,21 +1995,14 @@ section[id] {
         height: 180px;
     }
 
-    .metal-colors-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .mobile-colors-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
     }
 
-    .upload-area {
-        padding: 25px 15px;
-        min-height: 160px;
-    }
-
-    .upload-text {
-        font-size: 1rem;
-    }
-
-    .upload-subtext {
-        font-size: 0.8rem;
+    .mobile-color-label {
+        font-size: 0.6rem;
+        padding: 2px 3px;
     }
 }
 
@@ -2558,88 +2422,6 @@ section[id] {
     box-shadow: none !important;
 }
 
-/* MOBILE SPECIFIC STYLES FOR ENGRAVING MODAL */
-@media (max-width: 767px) {
-    .engraving-content {
-        padding: 25px 20px;
-        max-height: 90vh;
-    }
-
-    .engraving-header h3 {
-        font-size: 1.5rem;
-    }
-
-    .engraving-header p {
-        font-size: 0.95rem;
-    }
-
-    .engraving-option {
-        padding: 20px;
-    }
-
-    .engraving-image {
-        height: 100px;
-    }
-
-    .engraving-label {
-        font-size: 1rem;
-    }
-
-    .engraving-description {
-        font-size: 0.85rem;
-    }
-
-    .btn-cancel,
-    .btn-confirm {
-        padding: 16px 24px;
-        font-size: 15px;
-        min-height: 52px;
-    }
-
-    .close-engraving {
-        width: 36px;
-        height: 36px;
-        font-size: 20px;
-        top: 15px;
-        right: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .engraving-content {
-        padding: 20px 16px;
-    }
-
-    .engraving-header h3 {
-        font-size: 1.3rem;
-    }
-
-    .engraving-header p {
-        font-size: 0.9rem;
-    }
-
-    .engraving-option {
-        padding: 18px;
-    }
-
-    .engraving-image {
-        height: 90px;
-        margin-bottom: 15px;
-    }
-
-    .engraving-image span {
-        font-size: 2.5rem;
-    }
-
-    .engraving-label {
-        font-size: 0.95rem;
-    }
-
-    .engraving-description {
-        font-size: 0.8rem;
-    }
-}
-
 /* Cart Modal - METAL THEME */
 .cart-modal {
     position: fixed;
@@ -2833,121 +2615,64 @@ section[id] {
     transform: translateY(0);
     opacity: 1;
 }
-    
-/* =========================================================
-   INSERTED: Mobile-first "See It With Your Logo" refinement
-   - Slider directly under preview
-   - Compact color + engraving controls
-   - Removed duplicate upload boxes
-   ========================================================= */
-.preview-upload-controls {
-    margin-top: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
-.upload-actions.compact {
-    display: flex;
-    gap: 10px;
-}
-
-.upload-actions.compact .upload-btn,
-.upload-actions.compact .upload-btn,
-.upload-actions.compact .clear-logo-btn {
-    flex: 1;
-    padding: 8px 10px;
-    border-radius: 12px;
-    font-size: 0.82rem;
-    min-height: 40px;
-}
-
-.logo-recommendation {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.35;
-}
-
-/* Make the preview card itself clickable feeling */
-.preview-card {
-    cursor: pointer;
-}
-
-/* Mobile: compact controls + slider placement */
+/* PERFORMANCE OPTIMIZATIONS */
+/* Reduce animations on mobile for better performance */
 @media (max-width: 768px) {
-    .logo-builder-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-        margin: 26px 0;
+    .bestseller-card,
+    .metal-carousel-card,
+    .benefit-card,
+    .testimonial-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
-    /* Keep preview first, then size slider, then options */
-    .preview-container { order: 1; }
-    .selection-options { order: 3; }
-
-    /* Logo size block: unboxed + directly under preview */
-    .logo-size-section {
-        margin-top: 8px;
-        padding: 0;
-        border-radius: 0;
-        border: 0;
-        background: transparent;
+    
+    .btn,
+    .icon-btn,
+    .whatsapp {
+        transition: all 0.2s ease;
     }
-    .logo-size-title {
+    
+    /* Reduce blur effects on mobile */
+    .nav,
+    .mobile-menu,
+    .bestseller-card,
+    .metal-carousel-card,
+    .benefit-card {
+        backdrop-filter: blur(5px);
+    }
+}
+
+/* File input */
+#logoFileInput {
     display: none;
 }
-    .size-value { font-size: 0.9rem; }
 
-    /* Hide size preset buttons on mobile (keeps it clean) */
-    .size-presets { display: none; }
-
-    /* Smaller color buttons */
-    .metal-colors-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 8px;
+/* Hover states for touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .nav-center a:hover::after {
+        width: 0;
     }
-    .metal-color-option {
-        border-radius: 10px;
-        border-width: 2px;
-        box-shadow: none;
+    
+    .nav-center a:hover {
+        transform: none;
     }
-    .metal-color-option .color-label {
-        font-size: 0.68rem;
-        padding: 4px 2px;
+    
+    .icon-btn:hover,
+    .whatsapp:hover,
+    .btn:hover,
+    .metal-color-option:hover,
+    .engraving-option:hover {
+        transform: none;
     }
-
-    /* Smaller engraving buttons */
-    .engraving-options {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+    
+    /* Active states for touch */
+    .icon-btn:active,
+    .whatsapp:active,
+    .btn:active,
+    .metal-color-option:active,
+    .engraving-option:active {
+        transform: scale(0.98);
     }
-    .engraving-option {
-        padding: 12px;
-        border-radius: 12px;
-    }
-    .engraving-icon { font-size: 1rem; }
-    .engraving-name { font-size: 0.9rem; }
-    .engraving-price { display: none; }
-
-    /* Upload controls: full width & compact */
-    .preview-upload-controls .logo-recommendation { font-size: 0.82rem; }
-}
-
-/* Auto-fit logo nicely (safe area) */
-.preview-logo {
-    max-width: 72%;
-    max-height: 72%;
-    object-fit: contain;
-}
-
-
-/* Mobile swipe support for carousel */
-.metal-carousel-track {
-  touch-action: pan-y;
-  cursor: grab;
-}
-.metal-carousel-track:active {
-  cursor: grabbing;
 }
 
 </style>
@@ -3330,7 +3055,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CUSTOM LOGO SECTION - UPDATED -->
+        <!-- CUSTOM LOGO SECTION - REORGANIZED FOR MOBILE -->
         <section class="custom-logo-section" id="custom-logo">
             <div class="custom-logo-content">
                 <div class="section-header">
@@ -3338,8 +3063,8 @@ section[id] {
                     <p class="section-subtitle">Upload your logo and see how it looks on different metal cards</p>
                 </div>
 
-                <div class="logo-builder-grid">
-                    <!-- Left Column: Preview -->
+                <div class="logo-builder-container">
+                    <!-- Preview Section -->
                     <div class="preview-container">
                         <div class="preview-header">
                             <div class="preview-title">Live Preview</div>
@@ -3359,9 +3084,69 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- INSERTED: Logo size moved directly under preview -->
+                        <!-- COLOR SELECTION - NOW DIRECTLY BELOW PREVIEW ON MOBILE -->
+                        <div class="mobile-colors-section">
+                            <div class="mobile-colors-title">Choose Metal Color</div>
+                            <div class="mobile-colors-grid">
+                                <div class="mobile-color-option selected" data-color="black" style="background: var(--black-bg);">
+                                    <div class="mobile-color-label">Black</div>
+                                </div>
+                                <div class="mobile-color-option" data-color="blue" style="background: var(--blue-bg);">
+                                    <div class="mobile-color-label">Blue</div>
+                                </div>
+                                <div class="mobile-color-option" data-color="green" style="background: var(--green-bg);">
+                                    <div class="mobile-color-label">Green</div>
+                                </div>
+                                <div class="mobile-color-option" data-color="purple" style="background: var(--purple-bg);">
+                                    <div class="mobile-color-label">Purple</div>
+                                </div>
+                                <div class="mobile-color-option" data-color="white" style="background: var(--white-bg);">
+                                    <div class="mobile-color-label">White</div>
+                                </div>
+                                <div class="mobile-color-option" data-color="gold" style="background: var(--gold-bg);">
+                                    <div class="mobile-color-label">Gold</div>
+                                </div>
+                                <div class="mobile-color-option" data-color="silver" style="background: var(--silver-bg);">
+                                    <div class="mobile-color-label">Silver</div>
+                                </div>
+                                <div class="mobile-color-option" data-color="rosegold" style="background: var(--rosegold-bg);">
+                                    <div class="mobile-color-label">Rose Gold</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="preview-details">
+                            <div class="selected-card-info">
+                                <div class="card-name" id="selectedCardName">Black Metal Card</div>
+                            </div>
+                            <div class="preview-price">£95</div>
+                        </div>
+                    </div>
+
+                    <!-- Controls Section -->
+                    <div class="controls-section">
+                        <!-- Upload Controls -->
+                        <div class="upload-controls">
+                            <div class="upload-controls-title">Upload Your Logo</div>
+                            <input type="file" id="logoFileInput" accept="image/*">
+                            
+                            <div class="logo-upload-actions">
+                                <button class="upload-btn" id="uploadLogoBtn">
+                                    <span>📁</span> Upload Logo
+                                </button>
+                                <button class="clear-logo-btn" id="clearLogoBtn" disabled>
+                                    <span>🗑️</span> Clear Logo
+                                </button>
+                            </div>
+                            
+                            <div class="logo-recommendation">
+                                Recommended: transparent PNG/SVG, <strong>1000×1000px+</strong>, centered with no extra padding. Your logo will auto-fit in the preview.
+                            </div>
+                        </div>
+
+                        <!-- Logo Size Controls -->
                         <div class="logo-size-section">
-                            <div class="logo-size-title">Logo Size:</div>
+                            <div class="logo-size-title">Logo Size</div>
                             <div class="logo-size-controls">
                                 <div class="size-slider-container">
                                     <input type="range" min="10" max="200" value="50" class="size-slider" id="logoSizeSlider">
@@ -3374,72 +3159,13 @@ section[id] {
                                 </div>
                             </div>
                         </div>
-                        <!-- /INSERTED -->
 
-                        <!-- INSERTED: Upload controls moved under preview (mobile-first) -->
-                        <div class="preview-upload-controls">
-                            <input type="file" id="logoFileInput" accept="image/*">
-
-                            <div class="upload-actions compact">
-                                <button class="upload-btn" id="uploadLogoBtn">
-                                    <span>📁</span> Upload Logo
-                                </button>
-                                <button class="clear-logo-btn" id="clearLogoBtn" disabled>
-                                    <span>🗑️</span> Clear Logo
-                                </button>
-                            </div>
-
-                            <div class="logo-recommendation">
-                                Recommended: transparent PNG/SVG, <strong>1000×1000px+</strong>, centered with no extra padding. Your logo will auto-fit in the preview.
-                            </div>
+                        <!-- Add to Cart Section -->
+                        <div class="add-to-cart-section">
+                            <button class="add-to-cart-btn" id="addToCartBtn">
+                                🛒 Add to Cart
+                            </button>
                         </div>
-                        <!-- /INSERTED -->
-                        
-                        <div class="preview-details">
-                            <div class="selected-card-info">
-                                <div class="card-name" id="selectedCardName">Black Metal Card</div>
-                            </div>
-                            <div class="preview-price">£95</div>
-                        </div>
-                    </div>
-
-                    <!-- Right Column: Selection Options - COLORS ABOVE ADD TO CART -->
-                    <div class="selection-options">
-                        <!-- Metal Color Selection - ABOVE ADD TO CART -->
-                        <div class="metal-colors-section">
-                            <div class="metal-colors-title">Choose Metal Color</div>
-                            <div class="metal-colors-grid">
-                                <div class="metal-color-option selected" data-color="black" style="background: var(--black-bg);">
-                                    <div class="color-label">Black</div>
-                                </div>
-                                <div class="metal-color-option" data-color="blue" style="background: var(--blue-bg);">
-                                    <div class="color-label">Blue</div>
-                                </div>
-                                <div class="metal-color-option" data-color="green" style="background: var(--green-bg);">
-                                    <div class="color-label">Green</div>
-                                </div>
-                                <div class="metal-color-option" data-color="purple" style="background: var(--purple-bg);">
-                                    <div class="color-label">Purple</div>
-                                </div>
-                                <div class="metal-color-option" data-color="white" style="background: var(--white-bg);">
-                                    <div class="color-label">White</div>
-                                </div>
-                                <div class="metal-color-option" data-color="gold" style="background: var(--gold-bg);">
-                                    <div class="color-label">Gold</div>
-                                </div>
-                                <div class="metal-color-option" data-color="silver" style="background: var(--silver-bg);">
-                                    <div class="color-label">Silver</div>
-                                </div>
-                                <div class="metal-color-option" data-color="rosegold" style="background: var(--rosegold-bg);">
-                                    <div class="color-label">Rose Gold</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Add to Cart Button - BELOW COLORS -->
-                        <button class="add-to-cart-btn" id="addToCartBtn">
-                            🛒 Add to Cart
-                        </button>
                     </div>
                 </div>
 
@@ -3525,6 +3251,11 @@ section[id] {
     </div>
 
     <script>
+        // Performance optimizations
+        let isAnimating = false;
+        let animationFrameId = null;
+        let lastScrollTime = 0;
+        
         // Variables for engraving selection
         let selectedMetal = 'Black';
         let selectedEngraving = null;
@@ -3641,14 +3372,21 @@ section[id] {
             }
         });
 
-        // Sticky Navigation
-        window.addEventListener('scroll', () => {
+        // Sticky Navigation - PERFORMANCE OPTIMIZED
+        function handleScroll() {
+            const now = Date.now();
+            if (now - lastScrollTime < 100) return; // Throttle to 10fps
+            
+            lastScrollTime = now;
+            
             if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
             }
-        });
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
         // Cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -3935,9 +3673,8 @@ section[id] {
         closeEngravingBtn.addEventListener('click', closeEngravingModal);
         cancelEngravingBtn.addEventListener('click', closeEngravingModal);
 
-        // CUSTOM LOGO BUILDER
-        const metalColorOptions = document.querySelectorAll('.metal-color-option');
-        const uploadArea = document.getElementById('uploadArea');
+        // CUSTOM LOGO BUILDER - UPDATED FOR MOBILE
+        const mobileColorOptions = document.querySelectorAll('.mobile-color-option');
         const logoFileInput = document.getElementById('logoFileInput');
         const uploadLogoBtn = document.getElementById('uploadLogoBtn');
         const clearLogoBtn = document.getElementById('clearLogoBtn');
@@ -4045,11 +3782,11 @@ section[id] {
             reader.readAsDataURL(file);
         }
 
-        // Handle metal color selection
-        metalColorOptions.forEach(option => {
+        // Handle metal color selection - UPDATED FOR MOBILE
+        mobileColorOptions.forEach(option => {
             option.addEventListener('click', () => {
                 // Remove selected class from all options
-                metalColorOptions.forEach(opt => opt.classList.remove('selected'));
+                mobileColorOptions.forEach(opt => opt.classList.remove('selected'));
                 
                 // Add selected class to clicked option
                 option.classList.add('selected');
@@ -4066,13 +3803,6 @@ section[id] {
                     option.style.transform = '';
                 }, 200);
             });
-        });
-
-        // Click on upload area
-        if (uploadArea) uploadArea.addEventListener('click', () => {
-            if (!uploadedLogoGlobal) {
-                logoFileInput.click();
-            }
         });
 
         // Click on upload button
@@ -4215,7 +3945,7 @@ section[id] {
             });
         });
 
-        // CIRCULAR CAROUSEL FUNCTIONALITY
+        // CIRCULAR CAROUSEL FUNCTIONALITY WITH SWIPE SUPPORT
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
@@ -4226,7 +3956,11 @@ section[id] {
         let currentSlide = 0;
         let cardsPerView = 3;
         let totalSlides = carouselCards.length; // Total actual slides for circular carousel
-        let isAnimating = false;
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationId = null;
 
         // Initialize circular carousel
         function initCircularCarousel() {
@@ -4237,6 +3971,85 @@ section[id] {
             
             // Clone first and last cards for circular effect
             setupCircularCards();
+            
+            // Add touch/swipe support
+            setupSwipeSupport();
+        }
+
+        // Setup swipe support for mobile
+        function setupSwipeSupport() {
+            if (!carouselTrack) return;
+            
+            // Touch events for mobile
+            carouselTrack.addEventListener('touchstart', touchStart);
+            carouselTrack.addEventListener('touchmove', touchMove);
+            carouselTrack.addEventListener('touchend', touchEnd);
+            
+            // Mouse events for desktop
+            carouselTrack.addEventListener('mousedown', touchStart);
+            carouselTrack.addEventListener('mousemove', touchMove);
+            carouselTrack.addEventListener('mouseup', touchEnd);
+            carouselTrack.addEventListener('mouseleave', touchEnd);
+            
+            // Prevent image drag
+            carouselTrack.querySelectorAll('img').forEach(img => {
+                img.addEventListener('dragstart', (e) => e.preventDefault());
+            });
+        }
+
+        function touchStart(e) {
+            if (isAnimating) return;
+            
+            isDragging = true;
+            startPos = getPositionX(e);
+            carouselTrack.style.transition = 'none';
+            
+            // Cancel any ongoing animation
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        }
+
+        function touchMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            
+            const currentPosition = getPositionX(e);
+            const diff = currentPosition - startPos;
+            
+            // Only allow horizontal movement
+            currentTranslate = prevTranslate + diff;
+            
+            // Apply the translation
+            carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
+        }
+
+        function touchEnd() {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            
+            const movedBy = currentTranslate - prevTranslate;
+            const threshold = 50; // Minimum swipe distance
+            
+            if (movedBy < -threshold) {
+                // Swipe left - next slide
+                nextSlide();
+            } else if (movedBy > threshold) {
+                // Swipe right - previous slide
+                prevSlide();
+            } else {
+                // Not enough movement, return to original position
+                updateCircularCarousel();
+            }
+            
+            startPos = 0;
+            prevTranslate = currentTranslate;
+        }
+
+        function getPositionX(e) {
+            return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
         }
 
         // Setup circular cards by cloning first and last cards
@@ -4259,12 +4072,20 @@ section[id] {
             firstCardClone.classList.add('clone');
             carouselTrack.appendChild(firstCardClone);
             
-            // Set initial position to show first original card
+            // Set initial position
+            updateCarouselPosition();
+        }
+
+        function updateCarouselPosition() {
             const allCards = document.querySelectorAll('.metal-carousel-card');
-            if (allCards.length > 0) {
-                const cardWidth = allCards[0].offsetWidth + 30;
-                carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
-            }
+            if (allCards.length === 0) return;
+            
+            const cardWidth = allCards[0].offsetWidth + 30;
+            currentTranslate = -(currentSlide + 1) * cardWidth;
+            prevTranslate = currentTranslate;
+            
+            carouselTrack.style.transition = 'none';
+            carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
         }
 
         // Update cards per view based on screen size
@@ -4288,7 +4109,7 @@ section[id] {
                     dot.classList.add('active');
                 }
                 dot.addEventListener('click', () => {
-                    if (!isAnimating) {
+                    if (!isAnimating && !isDragging) {
                         goToSlide(i);
                     }
                 });
@@ -4302,10 +4123,11 @@ section[id] {
             if (allCards.length === 0) return;
             
             const cardWidth = allCards[0].offsetWidth + 30;
-            const translateX = -(currentSlide + 1) * cardWidth;
+            currentTranslate = -(currentSlide + 1) * cardWidth;
+            prevTranslate = currentTranslate;
             
             carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            carouselTrack.style.transform = `translateX(${translateX}px)`;
+            carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
             
             // Update dots
             document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
@@ -4319,7 +4141,7 @@ section[id] {
 
         // Go to specific slide
         function goToSlide(slideIndex) {
-            if (isAnimating) return;
+            if (isAnimating || isDragging) return;
             
             isAnimating = true;
             currentSlide = slideIndex;
@@ -4328,12 +4150,13 @@ section[id] {
             
             setTimeout(() => {
                 isAnimating = false;
+                checkForCircularJump();
             }, 500);
         }
 
         // Next slide with circular logic
         function nextSlide() {
-            if (isAnimating) return;
+            if (isAnimating || isDragging) return;
             
             isAnimating = true;
             currentSlide = (currentSlide + 1) % totalSlides;
@@ -4341,28 +4164,15 @@ section[id] {
             updateCircularCarousel();
             updateCarouselBackground();
             
-            // Check if we need to jump to beginning (circular logic)
             setTimeout(() => {
-                if (currentSlide === 0) {
-                    // Jump to first original card without animation
-                    const allCards = document.querySelectorAll('.metal-carousel-card');
-                    const cardWidth = allCards[0].offsetWidth + 30;
-                    carouselTrack.style.transition = 'none';
-                    carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
-                    
-                    // Force reflow
-                    carouselTrack.offsetHeight;
-                    
-                    // Restore transition
-                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                }
                 isAnimating = false;
+                checkForCircularJump();
             }, 500);
         }
 
         // Previous slide with circular logic
         function prevSlide() {
-            if (isAnimating) return;
+            if (isAnimating || isDragging) return;
             
             isAnimating = true;
             currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
@@ -4370,23 +4180,38 @@ section[id] {
             updateCircularCarousel();
             updateCarouselBackground();
             
-            // Check if we need to jump to end (circular logic)
             setTimeout(() => {
-                if (currentSlide === totalSlides - 1) {
-                    // Jump to last original card without animation
-                    const allCards = document.querySelectorAll('.metal-carousel-card');
-                    const cardWidth = allCards[0].offsetWidth + 30;
-                    carouselTrack.style.transition = 'none';
-                    carouselTrack.style.transform = `translateX(-${(totalSlides) * cardWidth}px)`;
-                    
-                    // Force reflow
-                    carouselTrack.offsetHeight;
-                    
-                    // Restore transition
-                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                }
                 isAnimating = false;
+                checkForCircularJump();
             }, 500);
+        }
+
+        // Check if we need to jump to beginning/end (circular logic)
+        function checkForCircularJump() {
+            const allCards = document.querySelectorAll('.metal-carousel-card');
+            const cardWidth = allCards[0].offsetWidth + 30;
+            
+            if (currentSlide === 0) {
+                // Jump to first original card without animation
+                carouselTrack.style.transition = 'none';
+                carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
+                
+                // Force reflow
+                carouselTrack.offsetHeight;
+                
+                // Restore transition
+                carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            } else if (currentSlide === totalSlides - 1) {
+                // Jump to last original card without animation
+                carouselTrack.style.transition = 'none';
+                carouselTrack.style.transform = `translateX(-${(totalSlides) * cardWidth}px)`;
+                
+                // Force reflow
+                carouselTrack.offsetHeight;
+                
+                // Restore transition
+                carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            }
         }
 
         // Update carousel background based on current slide
@@ -4439,20 +4264,13 @@ section[id] {
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal Page loaded with enhanced features:');
-            console.log('1. CIRCULAR CAROUSEL with seamless looping ✓');
-            console.log('2. "See It With Your Logo" section updated ✓');
-            console.log('3. Clear card button added ✓');
-            console.log('4. Logo size slider added ✓');
-            console.log('5. Quantity selector in engraving modal ✓');
-            console.log('6. Carousel background changes on card hover ✓');
-            console.log('7. WhatsApp links updated to +447754888841 ✓');
-            console.log('8. All prices set to £95 ✓');
-            console.log('9. Changes applied:');
-            console.log('   - Upload button removed from hero card ✓');
-            console.log('   - Hero card upload functionality disabled ✓');
-            console.log('   - Carousel reordered: Custom, Black, White first ✓');
-            console.log('   - Custom card section: Colors above Add to Cart ✓');
+            console.log('Metal Page loaded with performance improvements:');
+            console.log('1. CIRCULAR CAROUSEL with touch/swipe support ✓');
+            console.log('2. Mobile-first "See It With Your Logo" layout ✓');
+            console.log('3. Colors moved directly below preview on mobile ✓');
+            console.log('4. Performance optimizations for reduced lag ✓');
+            console.log('5. Throttled scroll events ✓');
+            console.log('6. GPU acceleration for animations ✓');
             
             initCircularCarousel();
             updateCart();
@@ -4489,68 +4307,31 @@ section[id] {
                 .metal-carousel-card.clone {
                     visibility: visible;
                 }
+                
+                /* Improve touch feedback */
+                @media (max-width: 768px) {
+                    .metal-carousel-track {
+                        cursor: grab;
+                    }
+                    
+                    .metal-carousel-track:active {
+                        cursor: grabbing;
+                    }
+                }
             `;
             document.head.appendChild(style);
         });
 
         // Update carousel on window resize
+        let resizeTimeout;
         window.addEventListener('resize', () => {
-            updateCardsPerView();
-            // Re-initialize carousel on resize to handle responsive changes
-            setTimeout(() => {
-                initCircularCarousel();
-            }, 100);
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                updateCardsPerView();
+                updateCarouselPosition();
+                updateCircularCarousel();
+            }, 250);
         });
     </script>
-
-<script>
-(function () {
-  const track = document.querySelector(".metal-carousel-track");
-  if (!track) return;
-
-  let startX = 0;
-  let currentX = 0;
-  let isDragging = false;
-
-  function getX(e) {
-    return (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX;
-  }
-
-  function onStart(e) {
-    isDragging = true;
-    startX = getX(e);
-    currentX = startX;
-  }
-
-  function onMove(e) {
-    if (!isDragging) return;
-    currentX = getX(e);
-  }
-
-  function onEnd() {
-    if (!isDragging) return;
-    isDragging = false;
-
-    const diff = currentX - startX;
-    const threshold = 50;
-
-    if (diff > threshold) {
-      document.querySelector(".metal-carousel-prev")?.click();
-    } else if (diff < -threshold) {
-      document.querySelector(".metal-carousel-next")?.click();
-    }
-  }
-
-  track.addEventListener("touchstart", onStart, { passive: true });
-  track.addEventListener("touchmove", onMove, { passive: true });
-  track.addEventListener("touchend", onEnd, { passive: true });
-
-  track.addEventListener("mousedown", onStart);
-  track.addEventListener("mousemove", onMove);
-  track.addEventListener("mouseup", onEnd);
-  track.addEventListener("mouseleave", onEnd);
-})();
-</script>
-
 </body>
 </html>
