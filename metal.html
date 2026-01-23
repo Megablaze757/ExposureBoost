@@ -656,8 +656,8 @@ section[id] {
     align-items: center;
     padding: 0;
     position: relative;
-    cursor: pointer;
     transition: transform 0.3s ease;
+    cursor: default; /* Changed from pointer to default */
 }
 
 .hero-card:hover {
@@ -670,8 +670,6 @@ section[id] {
     object-fit: cover;
     border-radius: 20px;
 }
-
-/* REMOVED: Hero card upload overlay (request #1) */
 
 .hero-text {
     font-size: 18px;
@@ -1668,34 +1666,7 @@ section[id] {
     gap: 25px;
 }
 
-/* Add to Cart Button - MOVED TO TOP */
-.add-to-cart-btn {
-    width: 100%;
-    padding: 18px;
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    border: none;
-    border-radius: 14px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
-    margin-top: 0;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.add-to-cart-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
-}
-
-/* Metal Color Selection - MOVED BELOW ADD TO CART */
+/* Metal Color Selection - ABOVE ADD TO CART */
 .metal-colors-section {
     background: rgba(224, 191, 184, 0.1);
     border-radius: 20px;
@@ -2068,6 +2039,32 @@ section[id] {
 .size-preset-btn.active {
     background: var(--rose-gold-gradient);
     border-color: var(--rose-gold-light);
+}
+
+/* Add to Cart Button - BELOW COLORS */
+.add-to-cart-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--rose-gold-gradient);
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
 }
 
 .whatsapp-help {
@@ -3121,7 +3118,7 @@ section[id] {
                 
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
-                        <!-- Hero card image - NO UPLOAD OVERLAY (request #1) -->
+                        <!-- Hero card image - NO UPLOAD FUNCTIONALITY -->
                         <img src="newblack.webp" alt="Black Metal NFC Card">
                     </div>
                 </div>
@@ -3205,7 +3202,7 @@ section[id] {
                     <button class="carousel-nav prev" id="carouselPrev">‹</button>
                     
                     <div class="metal-carousel-track" id="carouselTrack">
-                        <!-- Custom - REORDERED TO FIRST (request #2) -->
+                        <!-- Custom - REORDERED TO FIRST -->
                         <div class="metal-carousel-card custom" data-metal="custom">
                             <div class="custom-badge">Any Colour / Any Finish</div>
                             <div class="metal-carousel-image">
@@ -3219,7 +3216,7 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Black - REORDERED TO SECOND (request #2) -->
+                        <!-- Black - REORDERED TO SECOND -->
                         <div class="metal-carousel-card black" data-metal="black">
                             <div class="metal-carousel-image">
                                 <img src="newblack.webp" alt="Black Metal Card">
@@ -3232,7 +3229,7 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- White - REORDERED TO THIRD (request #2) -->
+                        <!-- White - REORDERED TO THIRD -->
                         <div class="metal-carousel-card white" data-metal="white">
                             <div class="metal-carousel-image">
                                 <img src="newwhite.webp" alt="White Metal Card">
@@ -3406,14 +3403,9 @@ section[id] {
                         </div>
                     </div>
 
-                    <!-- Right Column: Selection Options - REORDERED (request #3) -->
+                    <!-- Right Column: Selection Options - COLORS ABOVE ADD TO CART -->
                     <div class="selection-options">
-                        <!-- Add to Cart Button - MOVED TO TOP (request #3) -->
-                        <button class="add-to-cart-btn" id="addToCartBtn">
-                            🛒 Add to Cart
-                        </button>
-
-                        <!-- Metal Color Selection - MOVED BELOW ADD TO CART (request #3) -->
+                        <!-- Metal Color Selection - ABOVE ADD TO CART -->
                         <div class="metal-colors-section">
                             <div class="metal-colors-title">Choose Metal Color</div>
                             <div class="metal-colors-grid">
@@ -3443,6 +3435,11 @@ section[id] {
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Add to Cart Button - BELOW COLORS -->
+                        <button class="add-to-cart-btn" id="addToCartBtn">
+                            🛒 Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -4040,11 +4037,6 @@ section[id] {
                 // Enable clear buttons
                 clearLogoBtn.disabled = false;
                 
-                // Update hero card if needed
-                if (heroCard) {
-                    heroCard.querySelector('img').src = uploadedLogoGlobal;
-                }
-                
                 showNotification('Logo uploaded successfully!');
             };
             reader.onerror = function() {
@@ -4103,11 +4095,6 @@ section[id] {
             previewPlaceholder.style.display = 'flex';
             logoFileInput.value = '';
             clearLogoBtn.disabled = true;
-            
-            // Reset hero card image
-            if (heroCard) {
-                heroCard.querySelector('img').src = 'newblack.webp';
-            }
             
             showNotification('Logo cleared');
         });
@@ -4168,21 +4155,19 @@ section[id] {
             }
         });
 
-        // HERO CARD CLICK
-        heroCard.addEventListener('click', () => {
-            if (!uploadedLogoGlobal) {
-                logoFileInput.click();
-            } else {
-                // Scroll to custom logo section if logo already uploaded
-                const customLogoSection = document.getElementById('custom-logo');
-                if (customLogoSection) {
-                    const navHeight = nav.offsetHeight;
-                    const targetPosition = customLogoSection.offsetTop - navHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+        // HERO CARD CLICK - REMOVED UPLOAD FUNCTIONALITY
+        heroCard.addEventListener('click', (e) => {
+            // No upload functionality for hero card
+            e.preventDefault();
+            // Scroll to custom logo section instead
+            const customLogoSection = document.getElementById('custom-logo');
+            if (customLogoSection) {
+                const navHeight = nav.offsetHeight;
+                const targetPosition = customLogoSection.offsetTop - navHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
 
@@ -4465,8 +4450,9 @@ section[id] {
             console.log('8. All prices set to £95 ✓');
             console.log('9. Changes applied:');
             console.log('   - Upload button removed from hero card ✓');
+            console.log('   - Hero card upload functionality disabled ✓');
             console.log('   - Carousel reordered: Custom, Black, White first ✓');
-            console.log('   - Custom card section: Add to Cart moved above Choose Color ✓');
+            console.log('   - Custom card section: Colors above Add to Cart ✓');
             
             initCircularCarousel();
             updateCart();
