@@ -1474,7 +1474,7 @@ section[id] {
     font-size: 0.9rem;
 }
 
-/* CUSTOM LOGO SECTION - REDESIGNED TO MATCH METAL PAGE */
+/* CUSTOM LOGO SECTION - OPTIMIZED FOR MOBILE */
 .custom-logo-section {
     padding: 80px 20px;
     background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
@@ -1500,31 +1500,22 @@ section[id] {
     z-index: 2;
 }
 
-/* Logo Builder Grid */
-.logo-builder-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+/* MOBILE OPTIMIZED LAYOUT - SINGLE COLUMN */
+.logo-builder-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     margin: 40px 0;
 }
 
-@media (max-width: 992px) {
-    .logo-builder-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-}
-
-/* Preview Section */
+/* Preview Section - Now on top */
 .preview-container {
     background: rgba(232, 212, 193, 0.1);
     border-radius: 24px;
     padding: 25px;
     border: 1px solid rgba(232, 212, 193, 0.2);
     backdrop-filter: blur(10px);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
 }
 
 .preview-header {
@@ -1552,7 +1543,7 @@ section[id] {
 }
 
 .preview-card-wrapper {
-    flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1691,99 +1682,113 @@ section[id] {
     transform: none !important;
 }
 
-/* Selection Options */
+/* Selection Options - Now all below the card */
 .selection-options {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-/* Wood Color Selection - SMALLER */
+/* Wood Color Selection - NOW DIRECTLY BELOW THE CARD - EXTRA SMALL FOR MOBILE */
 .wood-colors-section {
     background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 20px;
+    border-radius: 16px;
+    padding: 15px;
     border: 1px solid rgba(232, 212, 193, 0.2);
     backdrop-filter: blur(10px);
+    order: 1; /* Make sure it appears first after the card */
+    margin-top: -10px; /* Pull it closer to the card */
 }
 
 .wood-colors-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 800;
     color: var(--white);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     text-align: center;
 }
 
+/* EXTRA SMALL WOOD COLOR GRID FOR MOBILE */
 .wood-colors-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
+    gap: 6px;
 }
 
 @media (max-width: 1024px) {
     .wood-colors-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
     }
 }
 
 @media (max-width: 768px) {
     .wood-colors-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
     }
 }
 
 @media (max-width: 480px) {
     .wood-colors-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
     }
 }
 
+/* EXTRA SMALL WOOD COLOR BUTTONS */
 .wood-color-option {
     aspect-ratio: 1;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     border: 2px solid transparent;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    min-height: 40px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    min-height: 30px; /* MUCH SMALLER */
 }
 
 .wood-color-option:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .wood-color-option.selected {
     border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 2px var(--white), 0 2px 5px rgba(0, 0, 0, 0.3);
     transform: scale(1.05);
 }
 
+/* EXTRA SMALL COLOR LABELS */
 .color-label {
     position: absolute;
-    bottom: 4px;
+    bottom: 2px;
     left: 0;
     right: 0;
     text-align: center;
     color: white;
-    font-size: 0.65rem;
+    font-size: 0.55rem; /* SMALLER FONT */
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 2px 4px;
+    padding: 1px 2px;
     background: rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
-    margin: 0 4px;
-    line-height: 1.2;
+    border-radius: 3px;
+    margin: 0 2px;
+    line-height: 1;
+    display: none; /* Hide labels on small buttons */
+}
+
+/* Show labels only on selected or hover */
+.wood-color-option.selected .color-label,
+.wood-color-option:hover .color-label {
+    display: block;
 }
 
 @media (max-width: 480px) {
     .color-label {
-        font-size: 0.6rem;
-        padding: 1px 3px;
+        font-size: 0.5rem;
+        padding: 1px;
     }
 }
 
@@ -1794,6 +1799,7 @@ section[id] {
     padding: 25px;
     border: 1px solid rgba(232, 212, 193, 0.2);
     backdrop-filter: blur(10px);
+    order: 2;
 }
 
 .engraving-title {
@@ -1854,6 +1860,7 @@ section[id] {
     padding: 25px;
     border: 1px solid rgba(232, 212, 193, 0.2);
     backdrop-filter: blur(10px);
+    order: 3;
 }
 
 .logo-upload-title {
@@ -1996,7 +2003,7 @@ section[id] {
     padding: 25px;
     border: 1px solid rgba(232, 212, 193, 0.2);
     backdrop-filter: blur(10px);
-    margin-top: 25px;
+    order: 4;
 }
 
 .logo-size-title {
@@ -2098,6 +2105,7 @@ section[id] {
     transition: all 0.3s ease;
     box-shadow: 0 6px 20px rgba(183, 110, 61, 0.3);
     margin-top: 25px;
+    order: 5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2117,6 +2125,55 @@ section[id] {
     border-radius: 20px;
     border: 1px solid rgba(37, 211, 102, 0.3);
     backdrop-filter: blur(10px);
+    order: 6;
+}
+
+/* DESKTOP LAYOUT - TWO COLUMNS */
+@media (min-width: 992px) {
+    .logo-builder-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin: 40px 0;
+    }
+    
+    /* Reset order for desktop */
+    .preview-container,
+    .wood-colors-section,
+    .engraving-section,
+    .logo-upload-section,
+    .logo-size-section,
+    .add-to-cart-btn,
+    .whatsapp-help {
+        order: 0;
+    }
+    
+    .selection-options {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    /* Make wood color buttons larger on desktop */
+    .wood-colors-section {
+        padding: 20px;
+        margin-top: 0;
+    }
+    
+    .wood-colors-grid {
+        gap: 8px;
+    }
+    
+    .wood-color-option {
+        min-height: 40px;
+        border-radius: 8px;
+    }
+    
+    .color-label {
+        font-size: 0.65rem;
+        padding: 2px 4px;
+        display: block; /* Always show labels on desktop */
+    }
 }
 
 /* RESPONSIVE DESIGN */
@@ -2144,8 +2201,17 @@ section[id] {
         height: 200px;
     }
 
-    .wood-colors-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .upload-area {
+        padding: 25px 15px;
+        min-height: 160px;
+    }
+
+    .upload-text {
+        font-size: 1rem;
+    }
+
+    .upload-subtext {
+        font-size: 0.8rem;
     }
 }
 
@@ -2168,20 +2234,13 @@ section[id] {
     }
 
     .wood-colors-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3px;
     }
-
-    .upload-area {
-        padding: 25px 15px;
-        min-height: 160px;
-    }
-
-    .upload-text {
-        font-size: 1rem;
-    }
-
-    .upload-subtext {
-        font-size: 0.8rem;
+    
+    .wood-color-option {
+        min-height: 28px;
+        border-radius: 5px;
     }
 }
 
@@ -2982,7 +3041,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CUSTOM LOGO SECTION - REDESIGNED -->
+        <!-- CUSTOM LOGO SECTION - OPTIMIZED FOR MOBILE -->
         <section class="custom-logo-section" id="custom-logo">
             <div class="custom-logo-content">
                 <div class="section-header">
@@ -2990,8 +3049,9 @@ section[id] {
                     <p class="section-subtitle">Upload your logo and see how it looks on different wood cards</p>
                 </div>
 
-                <div class="logo-builder-grid">
-                    <!-- Left Column: Preview -->
+                <!-- MOBILE-OPTIMIZED SINGLE COLUMN LAYOUT -->
+                <div class="logo-builder-container">
+                    <!-- Preview Card - Now on Top with Wood Colors directly below -->
                     <div class="preview-container">
                         <div class="preview-header">
                             <div class="preview-title">Live Preview</div>
@@ -3011,26 +3071,7 @@ section[id] {
                             </div>
                         </div>
                         
-                        <div class="preview-details">
-                            <div class="selected-card-info">
-                                <div class="card-name" id="selectedCardName">Walnut Wood Card</div>
-                                <div class="engraving-type" id="selectedEngravingType">Natural Grain</div>
-                            </div>
-                            <div class="preview-price">£85</div>
-                        </div>
-                        
-                        <button class="clear-card-btn" id="clearCardBtn">
-                            <span>🗑️</span> Clear Card Preview
-                        </button>
-                        
-                        <button class="add-to-cart-btn" id="addToCartBtn">
-                            🛒 Add to Cart
-                        </button>
-                    </div>
-
-                    <!-- Right Column: Selection Options -->
-                    <div class="selection-options">
-                        <!-- Wood Color Selection - SMALLER -->
+                        <!-- WOOD COLOR SELECTION - NOW DIRECTLY BELOW THE CARD -->
                         <div class="wood-colors-section">
                             <div class="wood-colors-title">Choose Wood Type</div>
                             <div class="wood-colors-grid">
@@ -3063,7 +3104,26 @@ section[id] {
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="preview-details">
+                            <div class="selected-card-info">
+                                <div class="card-name" id="selectedCardName">Walnut Wood Card</div>
+                                <div class="engraving-type" id="selectedEngravingType">Natural Grain</div>
+                            </div>
+                            <div class="preview-price">£85</div>
+                        </div>
+                        
+                        <button class="clear-card-btn" id="clearCardBtn">
+                            <span>🗑️</span> Clear Card Preview
+                        </button>
+                        
+                        <button class="add-to-cart-btn" id="addToCartBtn">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
 
+                    <!-- Selection Options - Now in Single Column Below -->
+                    <div class="selection-options">
                         <!-- Engraving Selection -->
                         <div class="engraving-section">
                             <div class="engraving-title">Choose Engraving</div>
@@ -4229,7 +4289,7 @@ section[id] {
             console.log('4. Full cards displayed (not cut in half) ✓');
             console.log('5. Engraving modal with quantity adjustment ✓');
             console.log('6. Carousel background changes on card hover ✓');
-            console.log('7. Smaller custom card color selection ✓');
+            console.log('7. MOBILE OPTIMIZED: EXTRA SMALL wood color buttons directly below card ✓');
             console.log('8. WhatsApp links updated to +447754888841 ✓');
             console.log('9. All prices set to £85 ✓');
             
