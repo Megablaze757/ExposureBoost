@@ -1016,6 +1016,13 @@ section[id] {
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     gap: 30px;
     padding: 10px 0;
+    cursor: grab;
+    user-select: none;
+}
+
+.metal-carousel-track.dragging {
+    transition: none;
+    cursor: grabbing;
 }
 
 /* Carousel cards matching bestseller style */
@@ -1032,6 +1039,8 @@ section[id] {
     flex-direction: column;
     cursor: pointer;
     min-width: 300px;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 @media (max-width: 1024px) {
@@ -4121,7 +4130,7 @@ section[id] {
 
         let currentSlide = 0;
         let cardsPerView = 3;
-        let totalSlides = carouselCards.length; // Total actual slides for circular carousel
+        let totalSlides = carouselCards.length;
         let isAnimating = false;
         
         // Swipe variables
@@ -4129,6 +4138,9 @@ section[id] {
         let startPosition = 0;
         let currentPosition = 0;
         let dragThreshold = 50;
+        let startX = 0;
+        let currentX = 0;
+        let isSwiping = false;
 
         // Initialize circular carousel
         function initCircularCarousel() {
@@ -4335,12 +4347,8 @@ section[id] {
             });
         }
 
-        // SWIPE SUPPORT FOR MOBILE CAROUSEL
+        // SWIPE SUPPORT FOR MOBILE CAROUSEL - IMPROVED VERSION
         function addSwipeSupport() {
-            let startX = 0;
-            let currentX = 0;
-            let isSwiping = false;
-            
             function getX(e) {
                 return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
             }
@@ -4396,9 +4404,9 @@ section[id] {
             carouselTrack.addEventListener('touchend', onEnd, { passive: false });
             
             carouselTrack.addEventListener('mousedown', onStart);
-            carouselTrack.addEventListener('mousemove', onMove);
-            carouselTrack.addEventListener('mouseup', onEnd);
-            carouselTrack.addEventListener('mouseleave', onEnd);
+            document.addEventListener('mousemove', onMove);
+            document.addEventListener('mouseup', onEnd);
+            document.addEventListener('mouseleave', onEnd);
             
             // Prevent image drag
             carouselTrack.addEventListener('dragstart', (e) => e.preventDefault());
