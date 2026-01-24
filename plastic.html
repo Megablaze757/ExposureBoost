@@ -654,7 +654,7 @@ section[id] {
     overflow: hidden;
     box-shadow: 0 25px 50px rgba(33, 150, 243, 0.4),
         0 10px 30px rgba(10, 26, 47, 0.5);
-    background: var(--blue-plastic-bg);
+    background: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -676,13 +676,33 @@ section[id] {
     border-radius: 20px;
 }
 
-/* REMOVED UPLOAD OVERLAY FROM HERO CARD */
 .hero-card-upload-overlay {
-    display: none; /* Completely removed */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 26, 47, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.hero-card:hover .hero-card-upload-overlay {
+    opacity: 1;
 }
 
 .hero-card-upload-text {
-    display: none; /* Completely removed */
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-top: 10px;
+    text-align: center;
 }
 
 .hero-text {
@@ -1498,7 +1518,7 @@ section[id] {
     font-size: 0.9rem;
 }
 
-/* CUSTOM LOGO SECTION */
+/* CUSTOM LOGO SECTION - OPTIMIZED FOR MOBILE */
 .custom-logo-section {
     padding: 80px 20px;
     background: linear-gradient(135deg, #0A1A2F 0%, #1A2B4F 100%);
@@ -1524,31 +1544,22 @@ section[id] {
     z-index: 2;
 }
 
-/* Logo Builder Grid */
-.logo-builder-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+/* MOBILE OPTIMIZED LAYOUT - SINGLE COLUMN */
+.logo-builder-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     margin: 40px 0;
 }
 
-@media (max-width: 992px) {
-    .logo-builder-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-}
-
-/* Preview Section */
+/* Preview Section - Now on top */
 .preview-container {
     background: rgba(33, 150, 243, 0.1);
     border-radius: 24px;
     padding: 25px;
     border: 1px solid rgba(227, 242, 253, 0.2);
     backdrop-filter: blur(10px);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
 }
 
 .preview-header {
@@ -1576,7 +1587,7 @@ section[id] {
 }
 
 .preview-card-wrapper {
-    flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1715,76 +1726,101 @@ section[id] {
     transform: none !important;
 }
 
-/* Selection Options */
+/* Selection Options - Now all below the card */
 .selection-options {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-/* Plastic Color Selection */
+/* Plastic Color Selection - NOW DIRECTLY BELOW THE CARD - EXTRA SMALL FOR MOBILE */
 .plastic-colors-section {
     background: rgba(33, 150, 243, 0.1);
-    border-radius: 20px;
-    padding: 25px;
+    border-radius: 16px;
+    padding: 15px;
     border: 1px solid rgba(227, 242, 253, 0.2);
     backdrop-filter: blur(10px);
+    order: 1; /* Make sure it appears first after the card */
+    margin-top: -10px; /* Pull it closer to the card */
 }
 
 .plastic-colors-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 800;
     color: var(--white);
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    text-align: center;
 }
 
+/* EXTRA SMALL PLASTIC COLOR GRID FOR MOBILE */
 .plastic-colors-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 6px;
+}
+
+@media (max-width: 1024px) {
+    .plastic-colors-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+    }
 }
 
 @media (max-width: 768px) {
     .plastic-colors-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
     }
 }
 
+@media (max-width: 480px) {
+    .plastic-colors-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+    }
+}
+
+/* EXTRA SMALL PLASTIC COLOR BUTTONS */
 .plastic-color-option {
     aspect-ratio: 1;
-    border-radius: 12px;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    border: 3px solid transparent;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    min-height: 30px; /* MUCH SMALLER */
 }
 
 .plastic-color-option:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .plastic-color-option.selected {
     border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0 2px var(--white), 0 2px 5px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
 }
 
+/* EXTRA SMALL COLOR LABELS */
 .color-label {
     position: absolute;
-    bottom: 8px;
+    bottom: 2px;
     left: 0;
     right: 0;
     text-align: center;
     color: white;
-    font-size: 0.7rem;
+    font-size: 0.55rem; /* SMALLER FONT */
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 4px 6px;
+    padding: 1px 2px;
     background: rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
-    margin: 0 8px;
+    border-radius: 3px;
+    margin: 0 2px;
+    line-height: 1;
+    display: none; /* Hide labels on small buttons */
 }
 
 /* For light colors, use dark text */
@@ -1796,6 +1832,19 @@ section[id] {
     background: rgba(255, 255, 255, 0.7);
 }
 
+/* Show labels only on selected or hover */
+.plastic-color-option.selected .color-label,
+.plastic-color-option:hover .color-label {
+    display: block;
+}
+
+@media (max-width: 480px) {
+    .color-label {
+        font-size: 0.5rem;
+        padding: 1px;
+    }
+}
+
 /* Finish Selection */
 .finish-section {
     background: rgba(33, 150, 243, 0.1);
@@ -1803,6 +1852,7 @@ section[id] {
     padding: 25px;
     border: 1px solid rgba(227, 242, 253, 0.2);
     backdrop-filter: blur(10px);
+    order: 2;
 }
 
 .finish-title {
@@ -1863,6 +1913,7 @@ section[id] {
     padding: 25px;
     border: 1px solid rgba(227, 242, 253, 0.2);
     backdrop-filter: blur(10px);
+    order: 3;
 }
 
 .logo-upload-title {
@@ -1880,7 +1931,7 @@ section[id] {
     border: 2px dashed rgba(227, 242, 253, 0.5);
     border-radius: 16px;
     padding: 30px 20px;
-    background: rgba(33, 150, 243, 0.05);
+    background: rgba(227, 242, 253, 0.05);
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
@@ -1896,13 +1947,13 @@ section[id] {
 
 .upload-area:hover {
     border-color: var(--plastic-light);
-    background: rgba(33, 150, 243, 0.1);
+    background: rgba(227, 242, 253, 0.1);
     transform: translateY(-2px);
 }
 
 .upload-area.drag-over {
     border-color: var(--plastic-light);
-    background: rgba(33, 150, 243, 0.15);
+    background: rgba(227, 242, 253, 0.15);
     border-style: solid;
 }
 
@@ -2005,7 +2056,7 @@ section[id] {
     padding: 25px;
     border: 1px solid rgba(227, 242, 253, 0.2);
     backdrop-filter: blur(10px);
-    margin-top: 25px;
+    order: 4;
 }
 
 .logo-size-title {
@@ -2107,6 +2158,7 @@ section[id] {
     transition: all 0.3s ease;
     box-shadow: 0 6px 20px rgba(33, 150, 243, 0.3);
     margin-top: 25px;
+    order: 5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2126,6 +2178,56 @@ section[id] {
     border-radius: 20px;
     border: 1px solid rgba(37, 211, 102, 0.3);
     backdrop-filter: blur(10px);
+    order: 6;
+}
+
+/* DESKTOP LAYOUT - TWO COLUMNS */
+@media (min-width: 992px) {
+    .logo-builder-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin: 40px 0;
+    }
+    
+    /* Reset order for desktop */
+    .preview-container,
+    .plastic-colors-section,
+    .finish-section,
+    .logo-upload-section,
+    .logo-size-section,
+    .add-to-cart-btn,
+    .whatsapp-help {
+        order: 0;
+    }
+    
+    .selection-options {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    /* Make plastic color buttons larger on desktop */
+    .plastic-colors-section {
+        padding: 20px;
+        margin-top: 0;
+    }
+    
+    .plastic-colors-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
+    }
+    
+    .plastic-color-option {
+        min-height: 40px;
+        border-radius: 8px;
+    }
+    
+    .color-label {
+        font-size: 0.65rem;
+        padding: 2px 4px;
+        display: block; /* Always show labels on desktop */
+    }
 }
 
 /* RESPONSIVE DESIGN */
@@ -2153,8 +2255,17 @@ section[id] {
         height: 200px;
     }
 
-    .plastic-colors-grid {
-        grid-template-columns: repeat(3, 1fr);
+    .upload-area {
+        padding: 25px 15px;
+        min-height: 160px;
+    }
+
+    .upload-text {
+        font-size: 1rem;
+    }
+
+    .upload-subtext {
+        font-size: 0.8rem;
     }
 }
 
@@ -2177,20 +2288,13 @@ section[id] {
     }
 
     .plastic-colors-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3px;
     }
-
-    .upload-area {
-        padding: 25px 15px;
-        min-height: 160px;
-    }
-
-    .upload-text {
-        font-size: 1rem;
-    }
-
-    .upload-subtext {
-        font-size: 0.8rem;
+    
+    .plastic-color-option {
+        min-height: 28px;
+        border-radius: 5px;
     }
 }
 
@@ -2776,8 +2880,12 @@ section[id] {
                 
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
-                        <!-- Hero card image - NO UPLOAD OVERLAY -->
+                        <!-- Hero card image -->
                         <img src="plasticblue.webp" alt="Blue Plastic NFC Card">
+                        <div class="hero-card-upload-overlay">
+                            <div class="upload-icon">📁</div>
+                            <div class="hero-card-upload-text">Click to upload your logo</div>
+                        </div>
                     </div>
                 </div>
 
@@ -2852,8 +2960,8 @@ section[id] {
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
-                    <h2 class="section-title">12 Vibrant Plastic Colors</h2>
-                    <p class="section-subtitle">Choose from our premium plastic colors. All prices at £65.</p>
+                    <h2 class="section-title">All Plastic Colors</h2>
+                    <p class="section-subtitle">Choose from 12 vibrant plastic colors</p>
                 </div>
 
                 <div class="plastic-carousel-wrapper">
@@ -3026,7 +3134,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CUSTOM LOGO SECTION -->
+        <!-- CUSTOM LOGO SECTION - OPTIMIZED FOR MOBILE -->
         <section class="custom-logo-section" id="custom-logo">
             <div class="custom-logo-content">
                 <div class="section-header">
@@ -3034,8 +3142,9 @@ section[id] {
                     <p class="section-subtitle">Upload your logo and see how it looks on different plastic cards</p>
                 </div>
 
-                <div class="logo-builder-grid">
-                    <!-- Left Column: Preview -->
+                <!-- MOBILE-OPTIMIZED SINGLE COLUMN LAYOUT -->
+                <div class="logo-builder-container">
+                    <!-- Preview Card - Now on Top with Plastic Colors directly below -->
                     <div class="preview-container">
                         <div class="preview-header">
                             <div class="preview-title">Live Preview</div>
@@ -3047,7 +3156,7 @@ section[id] {
                                 <div class="preview-card-inner" id="previewCardInner">
                                     <div class="preview-placeholder" id="previewPlaceholder">
                                         <div class="placeholder-icon">📁</div>
-                                        <div class="placeholder-text">Upload your logo to preview</div>
+                                        <div class="placeholder-text">Click to upload your logo</div>
                                         <div class="placeholder-subtext">PNG, JPG up to 10MB</div>
                                     </div>
                                     <img class="preview-logo" id="previewLogo" alt="Your Logo">
@@ -3055,26 +3164,7 @@ section[id] {
                             </div>
                         </div>
                         
-                        <div class="preview-details">
-                            <div class="selected-card-info">
-                                <div class="card-name" id="selectedCardName">Blue Plastic Card</div>
-                                <div class="finish-type" id="selectedFinishType">Glossy Finish</div>
-                            </div>
-                            <div class="preview-price">£65</div>
-                        </div>
-                        
-                        <button class="clear-card-btn" id="clearCardBtn">
-                            <span>🗑️</span> Clear Card Preview
-                        </button>
-                        
-                        <button class="add-to-cart-btn" id="addToCartBtn">
-                            🛒 Add to Cart
-                        </button>
-                    </div>
-
-                    <!-- Right Column: Selection Options -->
-                    <div class="selection-options">
-                        <!-- Plastic Color Selection -->
+                        <!-- PLASTIC COLOR SELECTION - NOW DIRECTLY BELOW THE CARD -->
                         <div class="plastic-colors-section">
                             <div class="plastic-colors-title">Choose Plastic Color</div>
                             <div class="plastic-colors-grid">
@@ -3116,7 +3206,26 @@ section[id] {
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="preview-details">
+                            <div class="selected-card-info">
+                                <div class="card-name" id="selectedCardName">Blue Plastic Card</div>
+                                <div class="finish-type" id="selectedFinishType">Glossy Finish</div>
+                            </div>
+                            <div class="preview-price">£65</div>
+                        </div>
+                        
+                        <button class="clear-card-btn" id="clearCardBtn">
+                            <span>🗑️</span> Clear Card Preview
+                        </button>
+                        
+                        <button class="add-to-cart-btn" id="addToCartBtn">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
 
+                    <!-- Selection Options - Now in Single Column Below -->
+                    <div class="selection-options">
                         <!-- Finish Selection -->
                         <div class="finish-section">
                             <div class="finish-title">Choose Finish</div>
@@ -3141,9 +3250,9 @@ section[id] {
                                 <div class="upload-area" id="uploadArea">
                                     <div class="upload-icon">📁</div>
                                     <div class="upload-text">Click to upload your logo</div>
-                                    <div class="upload-subtext">Drag & drop or click to select</div>
+                                    <div class="upload-subtext">Choose from camera roll or take a photo</div>
                                     <div class="upload-subtext">PNG, JPG up to 10MB</div>
-                                    <div class="upload-hint">For best results, use a transparent PNG</div>
+                                    <div class="upload-hint">On mobile: Tap to choose from gallery or camera</div>
                                 </div>
                                 
                                 <input type="file" id="logoFileInput" accept="image/*">
@@ -3161,7 +3270,7 @@ section[id] {
 
                         <!-- Logo Size Controls -->
                         <div class="logo-size-section">
-                            <div class="logo-size-title">Logo Size:</div>
+                            <div class="logo-size-title">Adjust Logo Size</div>
                             <div class="logo-size-controls">
                                 <div class="size-slider-container">
                                     <input type="range" min="20" max="100" value="70" class="size-slider" id="logoSizeSlider">
@@ -3180,7 +3289,7 @@ section[id] {
                 <div class="whatsapp-help">
                     <h3 style="margin-bottom: 15px; font-size: 1.2rem;">Need help with your logo?</h3>
                     <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
-                        Send us your logo on WhatsApp and we'll create a custom mockup for you. Our design team can also help optimize your logo for the best results on plastic cards.
+                        Send us your logo on WhatsApp and we'll create a custom mockup for you
                     </p>
                     <a href="https://wa.me/447754888841" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
                         <span>📞</span> Send Logo on WhatsApp
@@ -3975,28 +4084,33 @@ section[id] {
             }
         });
 
-        // HERO CARD CLICK TO UPLOAD - REMOVED UPLOAD FUNCTIONALITY
+        // HERO CARD CLICK TO UPLOAD
         heroCard.addEventListener('click', () => {
-            // Scroll to carousel section instead of uploading logo
-            const carouselSection = document.getElementById('carousel');
-            if (carouselSection) {
-                const navHeight = nav.offsetHeight;
-                const targetPosition = carouselSection.offsetTop - navHeight;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+            if (!uploadedLogoGlobal) {
+                logoFileInput.click();
+            } else {
+                // Scroll to custom logo section if logo already uploaded
+                const customLogoSection = document.getElementById('custom-logo');
+                if (customLogoSection) {
+                    const navHeight = nav.offsetHeight;
+                    const targetPosition = customLogoSection.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
 
         // Browse cards button
         document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
             e.preventDefault();
-            // Scroll to carousel section
-            const carouselSection = document.getElementById('carousel');
-            if (carouselSection) {
+            // Scroll to bestsellers section
+            const bestsellersSection = document.getElementById('bestsellers');
+            if (bestsellersSection) {
                 const navHeight = nav.offsetHeight;
-                const targetPosition = carouselSection.offsetTop - navHeight;
+                const targetPosition = bestsellersSection.offsetTop - navHeight;
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -4032,56 +4146,25 @@ section[id] {
             });
         });
 
-        // CIRCULAR CAROUSEL FUNCTIONALITY
+        // CAROUSEL FUNCTIONALITY
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
         const carouselNext = document.getElementById('carouselNext');
         const carouselDots = document.getElementById('carouselDots');
         const carouselCards = document.querySelectorAll('.plastic-carousel-card');
+        const carouselWrapper = document.querySelector('.plastic-carousel-wrapper');
 
         let currentSlide = 0;
         let cardsPerView = 3;
-        let totalSlides = carouselCards.length; // Total actual slides for circular carousel
-        let isAnimating = false;
+        let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
 
-        // Initialize circular carousel
-        function initCircularCarousel() {
+        // Initialize carousel
+        function initCarousel() {
             updateCardsPerView();
-            createCircularDots();
-            updateCircularCarousel();
+            createDots();
+            updateCarousel();
             updateCarouselBackground();
-            
-            // Clone first and last cards for circular effect
-            setupCircularCards();
-        }
-
-        // Setup circular cards by cloning first and last cards
-        function setupCircularCards() {
-            // Clear existing track
-            carouselTrack.innerHTML = '';
-            
-            // Clone last card and prepend
-            const lastCardClone = carouselCards[carouselCards.length - 1].cloneNode(true);
-            lastCardClone.classList.add('clone');
-            carouselTrack.appendChild(lastCardClone);
-            
-            // Add all original cards
-            carouselCards.forEach(card => {
-                carouselTrack.appendChild(card);
-            });
-            
-            // Clone first card and append
-            const firstCardClone = carouselCards[0].cloneNode(true);
-            firstCardClone.classList.add('clone');
-            carouselTrack.appendChild(firstCardClone);
-            
-            // Update carouselCards reference
-            const allCards = document.querySelectorAll('.plastic-carousel-card');
-            
-            // Set initial position to show first original card
-            const cardWidth = allCards[0].offsetWidth + 30;
-            carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
         }
 
         // Update cards per view based on screen size
@@ -4093,10 +4176,14 @@ section[id] {
             } else {
                 cardsPerView = 3;
             }
+            totalSlides = Math.ceil(carouselCards.length / cardsPerView);
+            createDots();
+            updateCarousel();
+            updateCarouselBackground();
         }
 
-        // Create dots for circular carousel
-        function createCircularDots() {
+        // Create dots for carousel
+        function createDots() {
             carouselDots.innerHTML = '';
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('div');
@@ -4105,22 +4192,18 @@ section[id] {
                     dot.classList.add('active');
                 }
                 dot.addEventListener('click', () => {
-                    if (!isAnimating) {
-                        goToSlide(i);
-                    }
+                    currentSlide = i;
+                    updateCarousel();
+                    updateCarouselBackground();
                 });
                 carouselDots.appendChild(dot);
             }
         }
 
-        // Update circular carousel position
-        function updateCircularCarousel() {
-            const allCards = document.querySelectorAll('.plastic-carousel-card');
-            if (allCards.length === 0) return;
-            
-            const cardWidth = allCards[0].offsetWidth + 30;
-            const translateX = -(currentSlide + 1) * cardWidth;
-            
+        // Update carousel position
+        function updateCarousel() {
+            const cardWidth = carouselCards[0].offsetWidth + 30; // width + gap
+            const translateX = -currentSlide * cardsPerView * cardWidth;
             carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
             carouselTrack.style.transform = `translateX(${translateX}px)`;
             
@@ -4130,95 +4213,27 @@ section[id] {
             });
             
             // Update navigation buttons
-            carouselPrev.classList.remove('disabled');
-            carouselNext.classList.remove('disabled');
-        }
-
-        // Go to specific slide
-        function goToSlide(slideIndex) {
-            if (isAnimating) return;
-            
-            isAnimating = true;
-            currentSlide = slideIndex;
-            updateCircularCarousel();
-            updateCarouselBackground();
-            
-            setTimeout(() => {
-                isAnimating = false;
-            }, 500);
-        }
-
-        // Next slide with circular logic
-        function nextSlide() {
-            if (isAnimating) return;
-            
-            isAnimating = true;
-            currentSlide = (currentSlide + 1) % totalSlides;
-            
-            updateCircularCarousel();
-            updateCarouselBackground();
-            
-            // Check if we need to jump to beginning (circular logic)
-            setTimeout(() => {
-                if (currentSlide === 0) {
-                    // Jump to first original card without animation
-                    const allCards = document.querySelectorAll('.plastic-carousel-card');
-                    const cardWidth = allCards[0].offsetWidth + 30;
-                    carouselTrack.style.transition = 'none';
-                    carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
-                    
-                    // Force reflow
-                    carouselTrack.offsetHeight;
-                    
-                    // Restore transition
-                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                }
-                isAnimating = false;
-            }, 500);
-        }
-
-        // Previous slide with circular logic
-        function prevSlide() {
-            if (isAnimating) return;
-            
-            isAnimating = true;
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            
-            updateCircularCarousel();
-            updateCarouselBackground();
-            
-            // Check if we need to jump to end (circular logic)
-            setTimeout(() => {
-                if (currentSlide === totalSlides - 1) {
-                    // Jump to last original card without animation
-                    const allCards = document.querySelectorAll('.plastic-carousel-card');
-                    const cardWidth = allCards[0].offsetWidth + 30;
-                    carouselTrack.style.transition = 'none';
-                    carouselTrack.style.transform = `translateX(-${(totalSlides) * cardWidth}px)`;
-                    
-                    // Force reflow
-                    carouselTrack.offsetHeight;
-                    
-                    // Restore transition
-                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                }
-                isAnimating = false;
-            }, 500);
+            carouselPrev.classList.toggle('disabled', currentSlide === 0);
+            carouselNext.classList.toggle('disabled', currentSlide >= totalSlides - 1);
         }
 
         // Update carousel background based on current slide
         function updateCarouselBackground() {
-            // Get the current slide's plastic type
-            const plasticType = carouselCards[currentSlide].dataset.plastic;
-            const newBackground = carouselBackgroundMap[plasticType] || 'var(--carousel-blue-bg)';
-            
-            if (newBackground !== currentCarouselBackground) {
-                carouselSection.style.background = newBackground;
-                currentCarouselBackground = newBackground;
+            // Get the first card in the current slide
+            const firstCardIndex = currentSlide * cardsPerView;
+            if (carouselCards[firstCardIndex]) {
+                const plasticType = carouselCards[firstCardIndex].dataset.plastic;
+                const newBackground = carouselBackgroundMap[plasticType] || 'var(--carousel-blue-bg)';
+                
+                if (newBackground !== currentCarouselBackground) {
+                    carouselSection.style.background = newBackground;
+                    currentCarouselBackground = newBackground;
+                }
             }
         }
 
         // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
+        // Function to update carousel background based on hovered card
         function updateCarouselBackgroundOnHover(plasticType) {
             const newBackground = carouselBackgroundMap[plasticType] || 'var(--carousel-blue-bg)';
             if (newBackground !== currentCarouselBackground) {
@@ -4226,29 +4241,50 @@ section[id] {
             }
         }
 
+        // Function to reset carousel background to current slide
         function resetCarouselBackgroundToCurrent() {
             updateCarouselBackground();
         }
 
         // Add hover event listeners to carousel cards
-        document.addEventListener('DOMContentLoaded', function() {
-            // Wait for carousel to be set up
-            setTimeout(() => {
-                const allCards = document.querySelectorAll('.plastic-carousel-card:not(.clone)');
-                
-                allCards.forEach(card => {
-                    const plasticType = card.dataset.plastic;
-                    
-                    card.addEventListener('mouseenter', () => {
-                        updateCarouselBackgroundOnHover(plasticType);
-                    });
-                    
-                    card.addEventListener('mouseleave', () => {
-                        resetCarouselBackgroundToCurrent();
-                    });
-                });
-            }, 100);
+        carouselCards.forEach(card => {
+            const plasticType = card.dataset.plastic;
+            
+            card.addEventListener('mouseenter', () => {
+                updateCarouselBackgroundOnHover(plasticType);
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                resetCarouselBackgroundToCurrent();
+            });
+            
+            // For touch devices
+            card.addEventListener('touchstart', () => {
+                updateCarouselBackgroundOnHover(plasticType);
+            });
+            
+            card.addEventListener('touchend', () => {
+                setTimeout(resetCarouselBackgroundToCurrent, 1000);
+            });
         });
+
+        // Next slide
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateCarousel();
+                updateCarouselBackground();
+            }
+        }
+
+        // Previous slide
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+                updateCarouselBackground();
+            }
+        }
 
         // Event listeners for carousel navigation
         carouselPrev.addEventListener('click', prevSlide);
@@ -4257,16 +4293,15 @@ section[id] {
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Plastic Page loaded with enhanced features:');
-            console.log('1. CIRCULAR CAROUSEL with seamless looping ✓');
-            console.log('2. Removed upload button from hero card ✓');
-            console.log('3. Manual control with navigation arrows ✓');
-            console.log('4. Full cards displayed (not cut in half) ✓');
-            console.log('5. Finish modal with quantity adjustment ✓');
-            console.log('6. Carousel background changes on card hover ✓');
-            console.log('7. WhatsApp links updated to +447754888841 ✓');
-            console.log('8. All prices set to £65 ✓');
+            console.log('1. MOBILE OPTIMIZED: EXTRA SMALL plastic color buttons directly below card ✓');
+            console.log('2. Working carousel with navigation arrows ✓');
+            console.log('3. Full cards displayed (not cut in half) ✓');
+            console.log('4. Finish modal with quantity adjustment ✓');
+            console.log('5. Carousel background changes on card hover ✓');
+            console.log('6. WhatsApp links updated to +447754888841 ✓');
+            console.log('7. All prices set to £65 ✓');
             
-            initCircularCarousel();
+            initCarousel();
             updateCart();
             
             // Add highlight style for selected plastic text
@@ -4440,11 +4475,6 @@ section[id] {
                     transform: none !important;
                     box-shadow: none !important;
                 }
-                
-                /* Hide clone cards from screen readers */
-                .plastic-carousel-card.clone {
-                    visibility: visible;
-                }
             `;
             document.head.appendChild(style);
         });
@@ -4452,27 +4482,7 @@ section[id] {
         // Update carousel on window resize
         window.addEventListener('resize', () => {
             updateCardsPerView();
-            // Re-initialize carousel on resize to handle responsive changes
-            setTimeout(() => {
-                initCircularCarousel();
-            }, 100);
         });
-
-        // Auto-advance carousel (optional - disabled for manual control)
-        // let carouselInterval;
-        // function startAutoAdvance() {
-        //     carouselInterval = setInterval(nextSlide, 5000);
-        // }
-        // function stopAutoAdvance() {
-        //     clearInterval(carouselInterval);
-        // }
-        
-        // Pause auto-advance on hover
-        // carouselTrack.addEventListener('mouseenter', stopAutoAdvance);
-        // carouselTrack.addEventListener('mouseleave', startAutoAdvance);
-        
-        // Start auto-advance initially
-        // startAutoAdvance();
     </script>
 </body>
 </html>
