@@ -669,35 +669,6 @@ section[id] {
     border-radius: 20px;
 }
 
-.hero-card-upload-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 15, 10, 0.8);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 2;
-}
-
-.hero-card:hover .hero-card-upload-overlay {
-    opacity: 1;
-}
-
-.hero-card-upload-text {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--white);
-    margin-top: 10px;
-    text-align: center;
-}
-
 .hero-text {
     font-size: 18px;
     font-weight: 600;
@@ -2826,12 +2797,8 @@ section[id] {
                 
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
-                        <!-- Hero card image -->
+                        <!-- Hero card image only - no upload overlay -->
                         <img src="woodwalnut.webp" alt="Walnut Wood NFC Card">
-                        <div class="hero-card-upload-overlay">
-
-                            
-                        </div>
                     </div>
                 </div>
 
@@ -3980,22 +3947,11 @@ section[id] {
             }
         });
 
-        // HERO CARD CLICK TO UPLOAD
+        // HERO CARD CLICK TO UPLOAD - REMOVED
+        // Hero card now just shows the walnut wood card image
         heroCard.addEventListener('click', () => {
-            if (!uploadedLogoGlobal) {
-                logoFileInput.click();
-            } else {
-                // Scroll to custom logo section if logo already uploaded
-                const customLogoSection = document.getElementById('custom-logo');
-                if (customLogoSection) {
-                    const navHeight = nav.offsetHeight;
-                    const targetPosition = customLogoSection.offsetTop - navHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
+            // Removed upload functionality
+            // Card now only displays walnut wood card image
         });
 
         // Browse cards button
@@ -4292,6 +4248,7 @@ section[id] {
             console.log('7. MOBILE OPTIMIZED: EXTRA SMALL wood color buttons directly below card ✓');
             console.log('8. WhatsApp links updated to +447754888841 ✓');
             console.log('9. All prices set to £85 ✓');
+            console.log('10. Hero card upload overlay removed - now just shows walnut wood card ✓');
             
             initCarousel();
             updateCart();
@@ -4478,4 +4435,3 @@ section[id] {
     </script>
 </body>
 </html>
-
