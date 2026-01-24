@@ -77,10 +77,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
     touch-action: manipulation;
     background-attachment: fixed;
-    /* PERFORMANCE: Reduce lag by preventing unnecessary repaints */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translateZ(0);
 }
 
 html {
@@ -995,17 +991,21 @@ section[id] {
     margin-bottom: 16px;
 }
 
-/* Carousel Styles - PERFORMANCE OPTIMIZED */
+/* Carousel Styles */
 .metal-carousel-wrapper {
     position: relative;
     width: 100%;
     overflow: hidden;
     padding: 0 60px;
-    /* PERFORMANCE: GPU acceleration */
-    transform: translateZ(0);
 }
 
 @media (max-width: 768px) {
+    .metal-carousel-wrapper {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 480px) {
     .metal-carousel-wrapper {
         padding: 0 20px;
     }
@@ -1016,11 +1016,9 @@ section[id] {
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     gap: 30px;
     padding: 10px 0;
-    /* PERFORMANCE: Will-change for smooth animations */
-    will-change: transform;
 }
 
-/* PERFORMANCE: Reduced number of cards visible at once on mobile */
+/* Carousel cards matching bestseller style */
 .metal-carousel-card {
     flex: 0 0 calc(33.333% - 20px);
     border-radius: 20px;
@@ -1034,9 +1032,6 @@ section[id] {
     flex-direction: column;
     cursor: pointer;
     min-width: 300px;
-    /* PERFORMANCE: GPU acceleration */
-    transform: translateZ(0);
-    backface-visibility: hidden;
 }
 
 @media (max-width: 1024px) {
@@ -1049,14 +1044,6 @@ section[id] {
     .metal-carousel-card {
         flex: 0 0 calc(100% - 0px);
         min-width: 280px;
-        /* PERFORMANCE: Show only 2 cards on mobile */
-        flex: 0 0 calc(100% - 20px);
-        margin: 0 10px;
-    }
-    
-    .metal-carousel-track {
-        gap: 20px;
-        padding: 10px 5px;
     }
 }
 
@@ -1139,7 +1126,7 @@ section[id] {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Carousel card image - PERFORMANCE OPTIMIZED */
+/* Carousel card image */
 .metal-carousel-image {
     width: 100%;
     height: 200px;
@@ -1151,8 +1138,6 @@ section[id] {
     justify-content: center;
     background: transparent;
     position: relative;
-    /* PERFORMANCE: GPU acceleration */
-    transform: translateZ(0);
 }
 
 .metal-carousel-image img {
@@ -1161,8 +1146,6 @@ section[id] {
     object-fit: cover;
     border-radius: 12px;
     transition: transform 0.5s ease;
-    /* PERFORMANCE: GPU acceleration */
-    transform: translateZ(0);
 }
 
 .metal-carousel-card:hover .metal-carousel-image img {
@@ -1296,7 +1279,9 @@ section[id] {
 
 @media (max-width: 768px) {
     .carousel-nav {
-        display: none; /* Hide arrows on mobile - use swipe instead */
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
     }
 }
 
@@ -1456,7 +1441,7 @@ section[id] {
     font-size: 0.9rem;
 }
 
-/* CUSTOM LOGO SECTION - REORGANIZED FOR MOBILE */
+/* CUSTOM LOGO SECTION - UPDATED */
 .custom-logo-section {
     padding: 80px 20px;
     background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
@@ -1482,22 +1467,31 @@ section[id] {
     z-index: 2;
 }
 
-/* Logo Builder - SIMPLIFIED MOBILE-FIRST LAYOUT */
-.logo-builder-container {
+/* Logo Builder Grid - MOBILE FIRST */
+.logo-builder-grid {
     display: flex;
     flex-direction: column;
     gap: 30px;
     margin: 40px 0;
 }
 
-/* Preview Section - Now full width */
+@media (min-width: 992px) {
+    .logo-builder-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+/* Preview Section */
 .preview-container {
     background: rgba(224, 191, 184, 0.1);
     border-radius: 24px;
     padding: 25px;
     border: 1px solid rgba(224, 191, 184, 0.2);
     backdrop-filter: blur(10px);
-    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .preview-header {
@@ -1525,10 +1519,6 @@ section[id] {
 }
 
 .preview-card-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     margin-bottom: 25px;
 }
 
@@ -1601,79 +1591,73 @@ section[id] {
     opacity: 0.8;
 }
 
-/* UPDATED: Colors section now appears directly below preview on mobile */
-.mobile-colors-section {
-    width: 100%;
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 20px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-    margin-top: 20px;
+/* MOBILE-FRIENDLY COLOR SELECTION BELOW PREVIEW */
+.preview-color-selection {
+    margin: 25px 0;
 }
 
-.mobile-colors-title {
-    font-size: 1.2rem;
-    font-weight: 800;
+.preview-color-title {
+    font-size: 1.1rem;
+    font-weight: 700;
     color: var(--white);
-    margin-bottom: 20px;
-    text-align: center;
+    margin-bottom: 15px;
+    text-align: left;
 }
 
-.mobile-colors-grid {
+.preview-colors-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 12px;
 }
 
 @media (max-width: 480px) {
-    .mobile-colors-grid {
+    .preview-colors-grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: 8px;
+        gap: 10px;
     }
 }
 
-.mobile-color-option {
+.preview-color-option {
     aspect-ratio: 1;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     border: 3px solid transparent;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.mobile-color-option:hover {
+.preview-color-option:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.mobile-color-option.selected {
+.preview-color-option.selected {
     border-color: var(--white);
     box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-.mobile-color-label {
+.preview-color-label {
     position: absolute;
     bottom: 8px;
     left: 0;
     right: 0;
     text-align: center;
     color: white;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 3px 4px;
+    padding: 4px 6px;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 6px;
-    margin: 0 4px;
+    margin: 0 8px;
 }
 
 /* For light colors, use dark text */
-.mobile-color-option[data-color="white"] .mobile-color-label,
-.mobile-color-option[data-color="gold"] .mobile-color-label,
-.mobile-color-option[data-color="silver"] .mobile-color-label {
+.preview-color-option[data-color="white"] .preview-color-label,
+.preview-color-option[data-color="gold"] .preview-color-label,
+.preview-color-option[data-color="silver"] .preview-color-label {
     color: #1a1209;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
     background: rgba(255, 255, 255, 0.7);
@@ -1700,47 +1684,225 @@ section[id] {
     margin-bottom: 5px;
 }
 
+.engraving-type {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
 .preview-price {
     font-size: 1.3rem;
     font-weight: 900;
     color: var(--rose-gold-light);
 }
 
-/* Upload Controls */
-.upload-controls {
-    margin-top: 25px;
-    padding: 20px;
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
+/* Selection Options - Only desktop */
+.selection-options {
+    display: none;
 }
 
-.upload-controls-title {
+@media (min-width: 992px) {
+    .selection-options {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .preview-color-selection {
+        display: none;
+    }
+}
+
+/* Metal Color Selection */
+.metal-colors-section {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.metal-colors-title {
     font-size: 1.2rem;
     font-weight: 800;
     color: var(--white);
-    margin-bottom: 15px;
-    text-align: center;
+    margin-bottom: 20px;
 }
 
-.logo-upload-actions {
+.metal-colors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+/* Add to Cart Button - Mobile version */
+.preview-add-to-cart {
+    width: 100%;
+    padding: 18px;
+    background: var(--rose-gold-gradient);
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.preview-add-to-cart:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
+}
+
+@media (min-width: 992px) {
+    .preview-add-to-cart {
+        display: none;
+    }
+    
+    .add-to-cart-btn {
+        display: block;
+    }
+}
+
+/* Clear Card Button */
+.clear-card-btn {
+    width: 100%;
+    padding: 16px;
+    background: rgba(224, 191, 184, 0.15);
+    border: 1px solid rgba(224, 191, 184, 0.3);
+    color: var(--white);
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
+}
+
+.clear-card-btn:hover {
+    background: rgba(224, 191, 184, 0.25);
+    transform: translateY(-2px);
+}
+
+.clear-card-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Logo Upload Section */
+.logo-upload-section {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.logo-upload-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.upload-container {
+    width: 100%;
+}
+
+.upload-area {
+    border: 2px dashed rgba(224, 191, 184, 0.5);
+    border-radius: 16px;
+    padding: 30px 20px;
+    background: rgba(224, 191, 184, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin-bottom: 20px;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.upload-area:hover {
+    border-color: var(--rose-gold-light);
+    background: rgba(224, 191, 184, 0.1);
+    transform: translateY(-2px);
+}
+
+.upload-area.drag-over {
+    border-color: var(--rose-gold-light);
+    background: rgba(224, 191, 184, 0.15);
+    border-style: solid;
+}
+
+.upload-icon {
+    font-size: 2.5rem;
+    color: rgba(224, 191, 184, 0.7);
+    margin-bottom: 15px;
+}
+
+.upload-text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.upload-subtext {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.upload-hint {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* File input */
+#logoFileInput {
+    display: none;
+}
+
+/* Upload Actions */
+.upload-actions {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 15px;
+    width: 100%;
 }
 
 @media (min-width: 480px) {
-    .logo-upload-actions {
+    .upload-actions {
         flex-direction: row;
     }
 }
 
 .upload-btn, .clear-logo-btn {
-    padding: 14px 20px;
+    padding: 16px 20px;
     border-radius: 12px;
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
@@ -1749,7 +1911,8 @@ section[id] {
     justify-content: center;
     gap: 8px;
     flex: 1;
-    min-height: 48px;
+    min-height: 52px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .upload-btn {
@@ -1780,29 +1943,24 @@ section[id] {
     transform: none !important;
 }
 
-.logo-recommendation {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.35;
-    text-align: center;
-    margin-top: 15px;
-}
-
 /* Logo Size Controls */
 .logo-size-section {
-    margin-top: 20px;
-    padding: 20px;
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
+    margin: 20px 0;
 }
 
 .logo-size-title {
-    font-size: 1.1rem;
-    font-weight: 800;
+    font-size: 1rem;
+    font-weight: 700;
     color: var(--white);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+}
+
+.size-value {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--rose-gold-light);
     text-align: center;
+    margin-top: 8px;
 }
 
 .logo-size-controls {
@@ -1847,14 +2005,6 @@ section[id] {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.size-value {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--rose-gold-light);
-    text-align: center;
-    margin-top: 10px;
-}
-
 .size-presets {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1883,16 +2033,7 @@ section[id] {
     border-color: var(--rose-gold-light);
 }
 
-/* Add to Cart Button - Standalone section */
-.add-to-cart-section {
-    margin-top: 30px;
-    padding: 25px;
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-}
-
+/* Add to Cart Button - Desktop version */
 .add-to-cart-btn {
     width: 100%;
     padding: 18px;
@@ -1905,10 +2046,12 @@ section[id] {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
-    display: flex;
+    margin-top: 25px;
+    display: none;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .add-to-cart-btn:hover {
@@ -1923,28 +2066,6 @@ section[id] {
     border-radius: 20px;
     border: 1px solid rgba(37, 211, 102, 0.3);
     backdrop-filter: blur(10px);
-}
-
-/* Desktop layout */
-@media (min-width: 992px) {
-    .logo-builder-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        align-items: start;
-    }
-    
-    .mobile-colors-section {
-        margin-top: 0;
-    }
-    
-    .upload-controls {
-        margin-top: 0;
-    }
-    
-    .logo-size-section {
-        margin-top: 20px;
-    }
 }
 
 /* RESPONSIVE DESIGN */
@@ -1972,8 +2093,15 @@ section[id] {
         height: 200px;
     }
 
-    .mobile-colors-grid {
+    .preview-colors-grid {
         grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Simplify mobile menu animations */
+    .mobile-menu a {
+        animation: none;
+        opacity: 1;
+        transform: none;
     }
 }
 
@@ -1995,14 +2123,18 @@ section[id] {
         height: 180px;
     }
 
-    .mobile-colors-grid {
+    .preview-colors-grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: 6px;
+        gap: 8px;
     }
-
-    .mobile-color-label {
-        font-size: 0.6rem;
-        padding: 2px 3px;
+    
+    .preview-color-option {
+        border-width: 2px;
+    }
+    
+    .preview-color-label {
+        font-size: 0.65rem;
+        padding: 3px 4px;
     }
 }
 
@@ -2422,6 +2554,88 @@ section[id] {
     box-shadow: none !important;
 }
 
+/* MOBILE SPECIFIC STYLES FOR ENGRAVING MODAL */
+@media (max-width: 767px) {
+    .engraving-content {
+        padding: 25px 20px;
+        max-height: 90vh;
+    }
+
+    .engraving-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .engraving-header p {
+        font-size: 0.95rem;
+    }
+
+    .engraving-option {
+        padding: 20px;
+    }
+
+    .engraving-image {
+        height: 100px;
+    }
+
+    .engraving-label {
+        font-size: 1rem;
+    }
+
+    .engraving-description {
+        font-size: 0.85rem;
+    }
+
+    .btn-cancel,
+    .btn-confirm {
+        padding: 16px 24px;
+        font-size: 15px;
+        min-height: 52px;
+    }
+
+    .close-engraving {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .engraving-content {
+        padding: 20px 16px;
+    }
+
+    .engraving-header h3 {
+        font-size: 1.3rem;
+    }
+
+    .engraving-header p {
+        font-size: 0.9rem;
+    }
+
+    .engraving-option {
+        padding: 18px;
+    }
+
+    .engraving-image {
+        height: 90px;
+        margin-bottom: 15px;
+    }
+
+    .engraving-image span {
+        font-size: 2.5rem;
+    }
+
+    .engraving-label {
+        font-size: 0.95rem;
+    }
+
+    .engraving-description {
+        font-size: 0.8rem;
+    }
+}
+
 /* Cart Modal - METAL THEME */
 .cart-modal {
     position: fixed;
@@ -2617,64 +2831,45 @@ section[id] {
 }
 
 /* PERFORMANCE OPTIMIZATIONS */
-/* Reduce animations on mobile for better performance */
+/* Reduce animation complexity */
+.bestseller-card,
+.benefit-card,
+.testimonial-card,
+.metal-carousel-card {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Simplify hover effects for mobile */
 @media (max-width: 768px) {
-    .bestseller-card,
-    .metal-carousel-card,
-    .benefit-card,
-    .testimonial-card {
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    .bestseller-card:hover,
+    .metal-carousel-card:hover,
+    .benefit-card:hover {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
     }
     
-    .btn,
-    .icon-btn,
-    .whatsapp {
-        transition: all 0.2s ease;
-    }
-    
-    /* Reduce blur effects on mobile */
-    .nav,
-    .mobile-menu,
-    .bestseller-card,
-    .metal-carousel-card,
-    .benefit-card {
-        backdrop-filter: blur(5px);
+    /* Disable heavy animations on mobile */
+    .hero-bg-blob,
+    .hero-bg-blob.b2 {
+        animation: none !important;
     }
 }
 
-/* File input */
-#logoFileInput {
-    display: none;
+/* Mobile swipe support for carousel */
+.metal-carousel-track {
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
 }
 
-/* Hover states for touch devices */
-@media (hover: none) and (pointer: coarse) {
-    .nav-center a:hover::after {
-        width: 0;
-    }
-    
-    .nav-center a:hover {
-        transform: none;
-    }
-    
-    .icon-btn:hover,
-    .whatsapp:hover,
-    .btn:hover,
-    .metal-color-option:hover,
-    .engraving-option:hover {
-        transform: none;
-    }
-    
-    /* Active states for touch */
-    .icon-btn:active,
-    .whatsapp:active,
-    .btn:active,
-    .metal-color-option:active,
-    .engraving-option:active {
-        transform: scale(0.98);
-    }
+.metal-carousel-track:active {
+    cursor: grabbing;
 }
 
+.metal-carousel-track.dragging {
+    transition: none;
+}
 </style>
 </head>
 
@@ -3055,7 +3250,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CUSTOM LOGO SECTION - REORGANIZED FOR MOBILE -->
+        <!-- CUSTOM LOGO SECTION - UPDATED -->
         <section class="custom-logo-section" id="custom-logo">
             <div class="custom-logo-content">
                 <div class="section-header">
@@ -3063,8 +3258,8 @@ section[id] {
                     <p class="section-subtitle">Upload your logo and see how it looks on different metal cards</p>
                 </div>
 
-                <div class="logo-builder-container">
-                    <!-- Preview Section -->
+                <div class="logo-builder-grid">
+                    <!-- Left Column: Preview with colors directly below on mobile -->
                     <div class="preview-container">
                         <div class="preview-header">
                             <div class="preview-title">Live Preview</div>
@@ -3084,88 +3279,108 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- COLOR SELECTION - NOW DIRECTLY BELOW PREVIEW ON MOBILE -->
-                        <div class="mobile-colors-section">
-                            <div class="mobile-colors-title">Choose Metal Color</div>
-                            <div class="mobile-colors-grid">
-                                <div class="mobile-color-option selected" data-color="black" style="background: var(--black-bg);">
-                                    <div class="mobile-color-label">Black</div>
+                        <!-- Color selection directly below preview on mobile -->
+                        <div class="preview-color-selection">
+                            <div class="preview-color-title">Choose Metal Color</div>
+                            <div class="preview-colors-grid">
+                                <div class="preview-color-option selected" data-color="black" style="background: var(--black-bg);">
+                                    <div class="preview-color-label">Black</div>
                                 </div>
-                                <div class="mobile-color-option" data-color="blue" style="background: var(--blue-bg);">
-                                    <div class="mobile-color-label">Blue</div>
+                                <div class="preview-color-option" data-color="blue" style="background: var(--blue-bg);">
+                                    <div class="preview-color-label">Blue</div>
                                 </div>
-                                <div class="mobile-color-option" data-color="green" style="background: var(--green-bg);">
-                                    <div class="mobile-color-label">Green</div>
+                                <div class="preview-color-option" data-color="green" style="background: var(--green-bg);">
+                                    <div class="preview-color-label">Green</div>
                                 </div>
-                                <div class="mobile-color-option" data-color="purple" style="background: var(--purple-bg);">
-                                    <div class="mobile-color-label">Purple</div>
+                                <div class="preview-color-option" data-color="purple" style="background: var(--purple-bg);">
+                                    <div class="preview-color-label">Purple</div>
                                 </div>
-                                <div class="mobile-color-option" data-color="white" style="background: var(--white-bg);">
-                                    <div class="mobile-color-label">White</div>
+                                <div class="preview-color-option" data-color="white" style="background: var(--white-bg);">
+                                    <div class="preview-color-label">White</div>
                                 </div>
-                                <div class="mobile-color-option" data-color="gold" style="background: var(--gold-bg);">
-                                    <div class="mobile-color-label">Gold</div>
+                                <div class="preview-color-option" data-color="gold" style="background: var(--gold-bg);">
+                                    <div class="preview-color-label">Gold</div>
                                 </div>
-                                <div class="mobile-color-option" data-color="silver" style="background: var(--silver-bg);">
-                                    <div class="mobile-color-label">Silver</div>
+                                <div class="preview-color-option" data-color="silver" style="background: var(--silver-bg);">
+                                    <div class="preview-color-label">Silver</div>
                                 </div>
-                                <div class="mobile-color-option" data-color="rosegold" style="background: var(--rosegold-bg);">
-                                    <div class="mobile-color-label">Rose Gold</div>
+                                <div class="preview-color-option" data-color="rosegold" style="background: var(--rosegold-bg);">
+                                    <div class="preview-color-label">Rose Gold</div>
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="preview-details">
                             <div class="selected-card-info">
                                 <div class="card-name" id="selectedCardName">Black Metal Card</div>
                             </div>
                             <div class="preview-price">£95</div>
                         </div>
+                        
+                        <!-- Mobile Add to Cart Button -->
+                        <button class="preview-add-to-cart" id="previewAddToCartBtn">
+                            🛒 Add to Cart
+                        </button>
+                        
+                        <!-- Logo Upload Controls -->
+                        <div class="logo-upload-section">
+                            <div class="logo-upload-title">Upload Your Logo</div>
+                            <div class="upload-container">
+                                <input type="file" id="logoFileInput" accept="image/*">
+                                
+                                <div class="upload-actions">
+                                    <button class="upload-btn" id="uploadLogoBtn">
+                                        <span>📁</span> Upload Logo
+                                    </button>
+                                    <button class="clear-logo-btn" id="clearLogoBtn" disabled>
+                                        <span>🗑️</span> Clear Logo
+                                    </button>
+                                </div>
+                                
+                                <div class="logo-recommendation" style="margin-top: 15px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.75);">
+                                    Recommended: transparent PNG/SVG, <strong>1000×1000px+</strong>, centered with no extra padding.
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Controls Section -->
-                    <div class="controls-section">
-                        <!-- Upload Controls -->
-                        <div class="upload-controls">
-                            <div class="upload-controls-title">Upload Your Logo</div>
-                            <input type="file" id="logoFileInput" accept="image/*">
-                            
-                            <div class="logo-upload-actions">
-                                <button class="upload-btn" id="uploadLogoBtn">
-                                    <span>📁</span> Upload Logo
-                                </button>
-                                <button class="clear-logo-btn" id="clearLogoBtn" disabled>
-                                    <span>🗑️</span> Clear Logo
-                                </button>
-                            </div>
-                            
-                            <div class="logo-recommendation">
-                                Recommended: transparent PNG/SVG, <strong>1000×1000px+</strong>, centered with no extra padding. Your logo will auto-fit in the preview.
-                            </div>
-                        </div>
-
-                        <!-- Logo Size Controls -->
-                        <div class="logo-size-section">
-                            <div class="logo-size-title">Logo Size</div>
-                            <div class="logo-size-controls">
-                                <div class="size-slider-container">
-                                    <input type="range" min="10" max="200" value="50" class="size-slider" id="logoSizeSlider">
+                    <!-- Right Column: Desktop-only selection options -->
+                    <div class="selection-options">
+                        <!-- Metal Color Selection - Desktop version -->
+                        <div class="metal-colors-section">
+                            <div class="metal-colors-title">Choose Metal Color</div>
+                            <div class="metal-colors-grid">
+                                <div class="metal-color-option selected" data-color="black" style="background: var(--black-bg);">
+                                    <div class="color-label">Black</div>
                                 </div>
-                                <div class="size-value" id="logoSizeValue">50%</div>
-                                <div class="size-presets">
-                                    <button class="size-preset-btn active" data-size="50">Default</button>
-                                    <button class="size-preset-btn" data-size="100">100%</button>
-                                    <button class="size-preset-btn" data-size="150">Large</button>
+                                <div class="metal-color-option" data-color="blue" style="background: var(--blue-bg);">
+                                    <div class="color-label">Blue</div>
+                                </div>
+                                <div class="metal-color-option" data-color="green" style="background: var(--green-bg);">
+                                    <div class="color-label">Green</div>
+                                </div>
+                                <div class="metal-color-option" data-color="purple" style="background: var(--purple-bg);">
+                                    <div class="color-label">Purple</div>
+                                </div>
+                                <div class="metal-color-option" data-color="white" style="background: var(--white-bg);">
+                                    <div class="color-label">White</div>
+                                </div>
+                                <div class="metal-color-option" data-color="gold" style="background: var(--gold-bg);">
+                                    <div class="color-label">Gold</div>
+                                </div>
+                                <div class="metal-color-option" data-color="silver" style="background: var(--silver-bg);">
+                                    <div class="color-label">Silver</div>
+                                </div>
+                                <div class="metal-color-option" data-color="rosegold" style="background: var(--rosegold-bg);">
+                                    <div class="color-label">Rose Gold</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Add to Cart Section -->
-                        <div class="add-to-cart-section">
-                            <button class="add-to-cart-btn" id="addToCartBtn">
-                                🛒 Add to Cart
-                            </button>
-                        </div>
+                        <!-- Add to Cart Button - Desktop version -->
+                        <button class="add-to-cart-btn" id="addToCartBtn">
+                            🛒 Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -3251,12 +3466,6 @@ section[id] {
     </div>
 
     <script>
-    <script>
-        // Performance optimizations
-        let isAnimating = false;
-        let animationFrameId = null;
-        let lastScrollTime = 0;
-        
         // Variables for engraving selection
         let selectedMetal = 'Black';
         let selectedEngraving = null;
@@ -3373,21 +3582,14 @@ section[id] {
             }
         });
 
-        // Sticky Navigation - PERFORMANCE OPTIMIZED
-        function handleScroll() {
-            const now = Date.now();
-            if (now - lastScrollTime < 100) return; // Throttle to 10fps
-            
-            lastScrollTime = now;
-            
+        // Sticky Navigation
+        window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
             }
-        }
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
+        });
 
         // Cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -3674,8 +3876,8 @@ section[id] {
         closeEngravingBtn.addEventListener('click', closeEngravingModal);
         cancelEngravingBtn.addEventListener('click', closeEngravingModal);
 
-        // CUSTOM LOGO BUILDER - UPDATED FOR MOBILE
-        const mobileColorOptions = document.querySelectorAll('.mobile-color-option');
+        // CUSTOM LOGO BUILDER
+        const metalColorOptions = document.querySelectorAll('.metal-color-option, .preview-color-option');
         const logoFileInput = document.getElementById('logoFileInput');
         const uploadLogoBtn = document.getElementById('uploadLogoBtn');
         const clearLogoBtn = document.getElementById('clearLogoBtn');
@@ -3686,10 +3888,8 @@ section[id] {
         const cardCounter = document.getElementById('cardCounter');
         const selectedCardName = document.getElementById('selectedCardName');
         const addToCartBtn = document.getElementById('addToCartBtn');
+        const previewAddToCartBtn = document.getElementById('previewAddToCartBtn');
         const heroCard = document.getElementById('heroCard');
-        const logoSizeSlider = document.getElementById('logoSizeSlider');
-        const logoSizeValue = document.getElementById('logoSizeValue');
-        const sizePresetBtns = document.querySelectorAll('.size-preset-btn');
 
         // Metal type mapping
         const metalTypeMap = {
@@ -3735,11 +3935,10 @@ section[id] {
             // Update counter
             cardCounter.textContent = metalTypeMap[selectedMetalColor].split(' ')[0];
             
-            // Show/hide logo and update size
+            // Show/hide logo
             if (uploadedLogoGlobal) {
                 previewLogo.src = uploadedLogoGlobal;
                 previewLogo.classList.add('visible');
-                previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
             } else {
                 previewLogo.classList.remove('visible');
@@ -3769,7 +3968,6 @@ section[id] {
                 
                 // Update preview display
                 previewLogo.classList.add('visible');
-                previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
                 
                 // Enable clear buttons
@@ -3783,11 +3981,13 @@ section[id] {
             reader.readAsDataURL(file);
         }
 
-        // Handle metal color selection - UPDATED FOR MOBILE
-        mobileColorOptions.forEach(option => {
+        // Handle metal color selection
+        metalColorOptions.forEach(option => {
             option.addEventListener('click', () => {
                 // Remove selected class from all options
-                mobileColorOptions.forEach(opt => opt.classList.remove('selected'));
+                document.querySelectorAll('.metal-color-option.selected, .preview-color-option.selected').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
                 
                 // Add selected class to clicked option
                 option.classList.add('selected');
@@ -3831,53 +4031,18 @@ section[id] {
         });
 
         // Add to cart from preview
-        addToCartBtn.addEventListener('click', () => {
+        function addToCartFromPreview() {
             const cardName = metalTypeMap[selectedMetalColor];
             
             // Open engraving modal with quantity selection
             openEngravingModal(cardName, 95);
-        });
+        }
 
-        // Logo size slider
-        logoSizeSlider.addEventListener('input', () => {
-            logoSize = parseInt(logoSizeSlider.value);
-            logoSizeValue.textContent = `${logoSize}%`;
-            
-            // Update size preset buttons
-            sizePresetBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Find closest preset
-            const presets = [50, 100, 150];
-            const closest = presets.reduce((prev, curr) => {
-                return Math.abs(curr - logoSize) < Math.abs(prev - logoSize) ? curr : prev;
-            });
-            
-            document.querySelector(`.size-preset-btn[data-size="${closest}"]`).classList.add('active');
-            
-            // Update logo size if uploaded
-            if (uploadedLogoGlobal) {
-                previewLogo.style.transform = `scale(${logoSize / 100})`;
-            }
-        });
-
-        // Size preset buttons
-        sizePresetBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const size = parseInt(btn.dataset.size);
-                logoSize = size;
-                logoSizeSlider.value = size;
-                logoSizeValue.textContent = `${size}%`;
-                
-                // Update active state
-                sizePresetBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Update logo size if uploaded
-                if (uploadedLogoGlobal) {
-                    previewLogo.style.transform = `scale(${logoSize / 100})`;
-                }
-            });
-        });
+        // Desktop add to cart button
+        addToCartBtn.addEventListener('click', addToCartFromPreview);
+        
+        // Mobile add to cart button
+        previewAddToCartBtn.addEventListener('click', addToCartFromPreview);
 
         // Click on card to upload logo
         previewCard.addEventListener('click', () => {
@@ -3946,7 +4111,7 @@ section[id] {
             });
         });
 
-        // CIRCULAR CAROUSEL FUNCTIONALITY WITH SWIPE SUPPORT - CENTERED
+        // CIRCULAR CAROUSEL FUNCTIONALITY WITH SWIPE SUPPORT
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
@@ -3956,107 +4121,27 @@ section[id] {
 
         let currentSlide = 0;
         let cardsPerView = 3;
-        let totalSlides = carouselCards.length;
+        let totalSlides = carouselCards.length; // Total actual slides for circular carousel
+        let isAnimating = false;
+        
+        // Swipe variables
         let isDragging = false;
-        let startPos = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationId = null;
-        let cardWidth = 0;
-        let gapSize = 30;
-        let trackWidth = 0;
+        let startPosition = 0;
+        let currentPosition = 0;
+        let dragThreshold = 50;
 
         // Initialize circular carousel
         function initCircularCarousel() {
             updateCardsPerView();
             createCircularDots();
-            setupCircularCards();
-            updateCarouselPosition();
+            updateCircularCarousel();
             updateCarouselBackground();
             
-            // Add touch/swipe support
-            setupSwipeSupport();
+            // Clone first and last cards for circular effect
+            setupCircularCards();
             
-            // Center first slide
-            setTimeout(() => {
-                centerCurrentSlide();
-            }, 100);
-        }
-
-        // Setup swipe support for mobile
-        function setupSwipeSupport() {
-            if (!carouselTrack) return;
-            
-            // Touch events for mobile
-            carouselTrack.addEventListener('touchstart', touchStart);
-            carouselTrack.addEventListener('touchmove', touchMove);
-            carouselTrack.addEventListener('touchend', touchEnd);
-            
-            // Mouse events for desktop
-            carouselTrack.addEventListener('mousedown', touchStart);
-            carouselTrack.addEventListener('mousemove', touchMove);
-            carouselTrack.addEventListener('mouseup', touchEnd);
-            carouselTrack.addEventListener('mouseleave', touchEnd);
-            
-            // Prevent image drag
-            carouselTrack.querySelectorAll('img').forEach(img => {
-                img.addEventListener('dragstart', (e) => e.preventDefault());
-            });
-        }
-
-        function touchStart(e) {
-            if (isAnimating) return;
-            
-            isDragging = true;
-            startPos = getPositionX(e);
-            carouselTrack.style.transition = 'none';
-            
-            // Cancel any ongoing animation
-            if (animationId) {
-                cancelAnimationFrame(animationId);
-            }
-        }
-
-        function touchMove(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            
-            const currentPosition = getPositionX(e);
-            const diff = currentPosition - startPos;
-            
-            // Only allow horizontal movement
-            currentTranslate = prevTranslate + diff;
-            
-            // Apply the translation
-            carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
-        }
-
-        function touchEnd() {
-            if (!isDragging) return;
-            
-            isDragging = false;
-            carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            
-            const movedBy = currentTranslate - prevTranslate;
-            const threshold = 50; // Minimum swipe distance
-            
-            if (movedBy < -threshold) {
-                // Swipe left - next slide
-                nextSlide();
-            } else if (movedBy > threshold) {
-                // Swipe right - previous slide
-                prevSlide();
-            } else {
-                // Not enough movement, center current slide
-                centerCurrentSlide();
-            }
-            
-            startPos = 0;
-            prevTranslate = currentTranslate;
-        }
-
-        function getPositionX(e) {
-            return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            // Add swipe support for mobile
+            addSwipeSupport();
         }
 
         // Setup circular cards by cloning first and last cards
@@ -4078,6 +4163,13 @@ section[id] {
             const firstCardClone = carouselCards[0].cloneNode(true);
             firstCardClone.classList.add('clone');
             carouselTrack.appendChild(firstCardClone);
+            
+            // Set initial position to show first original card
+            const allCards = document.querySelectorAll('.metal-carousel-card');
+            if (allCards.length > 0) {
+                const cardWidth = allCards[0].offsetWidth + 30;
+                carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
+            }
         }
 
         // Update cards per view based on screen size
@@ -4091,44 +4183,34 @@ section[id] {
             }
         }
 
-        // Calculate and update carousel position
-        function updateCarouselPosition() {
+        // Create dots for circular carousel
+        function createCircularDots() {
+            carouselDots.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (i === currentSlide) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    if (!isAnimating) {
+                        goToSlide(i);
+                    }
+                });
+                carouselDots.appendChild(dot);
+            }
+        }
+
+        // Update circular carousel position
+        function updateCircularCarousel() {
             const allCards = document.querySelectorAll('.metal-carousel-card');
             if (allCards.length === 0) return;
             
-            // Get first card width
-            const firstCard = allCards[0];
-            cardWidth = firstCard.offsetWidth;
-            
-            // Calculate total track width
-            trackWidth = (cardWidth + gapSize) * allCards.length - gapSize;
-            carouselTrack.style.width = `${trackWidth}px`;
-            
-            // Calculate container width
-            const containerWidth = document.querySelector('.metal-carousel-wrapper').offsetWidth;
-            
-            // Update position
-            updateCarouselTransform();
-        }
-
-        // Update carousel transform for centered slides
-        function updateCarouselTransform() {
-            if (isDragging) return;
-            
-            const allCards = document.querySelectorAll('.metal-carousel-card');
-            const containerWidth = document.querySelector('.metal-carousel-wrapper').offsetWidth;
-            
-            // Calculate offset to center the slide
-            const slideOffset = (containerWidth - cardWidth) / 2;
-            
-            // Calculate position with centered alignment
-            const position = -(currentSlide + 1) * (cardWidth + gapSize) + slideOffset;
-            
-            currentTranslate = position;
-            prevTranslate = position;
+            const cardWidth = allCards[0].offsetWidth + 30;
+            const translateX = -(currentSlide + 1) * cardWidth;
             
             carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            carouselTrack.style.transform = `translateX(${position}px)`;
+            carouselTrack.style.transform = `translateX(${translateX}px)`;
             
             // Update dots
             document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
@@ -4140,45 +4222,14 @@ section[id] {
             carouselNext.classList.remove('disabled');
         }
 
-        // Center the current slide
-        function centerCurrentSlide() {
+        // Go to specific slide
+        function goToSlide(slideIndex) {
             if (isAnimating) return;
             
             isAnimating = true;
-            updateCarouselTransform();
-            updateCarouselBackground();
-            
-            setTimeout(() => {
-                isAnimating = false;
-                checkForCircularJump();
-            }, 500);
-        }
-
-        // Create dots for circular carousel
-        function createCircularDots() {
-            carouselDots.innerHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('carousel-dot');
-                if (i === currentSlide) {
-                    dot.classList.add('active');
-                }
-                dot.addEventListener('click', () => {
-                    if (!isAnimating && !isDragging) {
-                        goToSlide(i);
-                    }
-                });
-                carouselDots.appendChild(dot);
-            }
-        }
-
-        // Go to specific slide
-        function goToSlide(slideIndex) {
-            if (isAnimating || isDragging) return;
-            
-            isAnimating = true;
             currentSlide = slideIndex;
-            centerCurrentSlide();
+            updateCircularCarousel();
+            updateCarouselBackground();
             
             setTimeout(() => {
                 isAnimating = false;
@@ -4187,63 +4238,60 @@ section[id] {
 
         // Next slide with circular logic
         function nextSlide() {
-            if (isAnimating || isDragging) return;
+            if (isAnimating) return;
             
             isAnimating = true;
             currentSlide = (currentSlide + 1) % totalSlides;
             
-            centerCurrentSlide();
+            updateCircularCarousel();
+            updateCarouselBackground();
             
+            // Check if we need to jump to beginning (circular logic)
             setTimeout(() => {
+                if (currentSlide === 0) {
+                    // Jump to first original card without animation
+                    const allCards = document.querySelectorAll('.metal-carousel-card');
+                    const cardWidth = allCards[0].offsetWidth + 30;
+                    carouselTrack.style.transition = 'none';
+                    carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
+                    
+                    // Force reflow
+                    carouselTrack.offsetHeight;
+                    
+                    // Restore transition
+                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                }
                 isAnimating = false;
-                checkForCircularJump();
             }, 500);
         }
 
         // Previous slide with circular logic
         function prevSlide() {
-            if (isAnimating || isDragging) return;
+            if (isAnimating) return;
             
             isAnimating = true;
             currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
             
-            centerCurrentSlide();
+            updateCircularCarousel();
+            updateCarouselBackground();
             
+            // Check if we need to jump to end (circular logic)
             setTimeout(() => {
+                if (currentSlide === totalSlides - 1) {
+                    // Jump to last original card without animation
+                    const allCards = document.querySelectorAll('.metal-carousel-card');
+                    const cardWidth = allCards[0].offsetWidth + 30;
+                    carouselTrack.style.transition = 'none';
+                    carouselTrack.style.transform = `translateX(-${(totalSlides) * cardWidth}px)`;
+                    
+                    // Force reflow
+                    carouselTrack.offsetHeight;
+                    
+                    // Restore transition
+                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                }
                 isAnimating = false;
-                checkForCircularJump();
             }, 500);
-        }
-
-        // Check if we need to jump to beginning/end (circular logic)
-        function checkForCircularJump() {
-            const allCards = document.querySelectorAll('.metal-carousel-card');
-            const containerWidth = document.querySelector('.metal-carousel-wrapper').offsetWidth;
-            const slideOffset = (containerWidth - cardWidth) / 2;
-            
-            if (currentSlide === 0) {
-                // Jump to first original card without animation
-                carouselTrack.style.transition = 'none';
-                const position = -1 * (cardWidth + gapSize) + slideOffset;
-                carouselTrack.style.transform = `translateX(${position}px)`;
-                
-                // Force reflow
-                carouselTrack.offsetHeight;
-                
-                // Restore transition
-                carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            } else if (currentSlide === totalSlides - 1) {
-                // Jump to last original card without animation
-                carouselTrack.style.transition = 'none';
-                const position = -(totalSlides) * (cardWidth + gapSize) + slideOffset;
-                carouselTrack.style.transform = `translateX(${position}px)`;
-                
-                // Force reflow
-                carouselTrack.offsetHeight;
-                
-                // Restore transition
-                carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            }
         }
 
         // Update carousel background based on current slide
@@ -4271,46 +4319,104 @@ section[id] {
         }
 
         // Add hover event listeners to carousel cards
-        document.addEventListener('DOMContentLoaded', function() {
-            // Wait for carousel to be set up
-            setTimeout(() => {
-                const allCards = document.querySelectorAll('.metal-carousel-card:not(.clone)');
+        function addCarouselHoverListeners() {
+            const allCards = document.querySelectorAll('.metal-carousel-card:not(.clone)');
+            
+            allCards.forEach(card => {
+                const metalType = card.dataset.metal;
                 
-                allCards.forEach(card => {
-                    const metalType = card.dataset.metal;
-                    
-                    card.addEventListener('mouseenter', () => {
-                        updateCarouselBackgroundOnHover(metalType);
-                    });
-                    
-                    card.addEventListener('mouseleave', () => {
-                        resetCarouselBackgroundToCurrent();
-                    });
+                card.addEventListener('mouseenter', () => {
+                    updateCarouselBackgroundOnHover(metalType);
                 });
-            }, 100);
-        });
+                
+                card.addEventListener('mouseleave', () => {
+                    resetCarouselBackgroundToCurrent();
+                });
+            });
+        }
+
+        // SWIPE SUPPORT FOR MOBILE CAROUSEL
+        function addSwipeSupport() {
+            let startX = 0;
+            let currentX = 0;
+            let isSwiping = false;
+            
+            function getX(e) {
+                return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            }
+            
+            function onStart(e) {
+                if (isAnimating) return;
+                isSwiping = true;
+                startX = getX(e);
+                currentX = startX;
+                carouselTrack.classList.add('dragging');
+            }
+            
+            function onMove(e) {
+                if (!isSwiping) return;
+                e.preventDefault();
+                currentX = getX(e);
+                const diff = currentX - startX;
+                
+                // Move track while dragging
+                const allCards = document.querySelectorAll('.metal-carousel-card');
+                if (allCards.length === 0) return;
+                const cardWidth = allCards[0].offsetWidth + 30;
+                const basePosition = -(currentSlide + 1) * cardWidth;
+                const dragOffset = diff;
+                carouselTrack.style.transform = `translateX(${basePosition + dragOffset}px)`;
+                carouselTrack.style.transition = 'none';
+            }
+            
+            function onEnd() {
+                if (!isSwiping) return;
+                isSwiping = false;
+                carouselTrack.classList.remove('dragging');
+                carouselTrack.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                
+                const diff = currentX - startX;
+                
+                // Determine if swipe was significant enough
+                if (Math.abs(diff) > dragThreshold) {
+                    if (diff > 0) {
+                        prevSlide();
+                    } else {
+                        nextSlide();
+                    }
+                } else {
+                    // Return to original position
+                    updateCircularCarousel();
+                }
+            }
+            
+            // Add event listeners for both touch and mouse
+            carouselTrack.addEventListener('touchstart', onStart, { passive: false });
+            carouselTrack.addEventListener('touchmove', onMove, { passive: false });
+            carouselTrack.addEventListener('touchend', onEnd, { passive: false });
+            
+            carouselTrack.addEventListener('mousedown', onStart);
+            carouselTrack.addEventListener('mousemove', onMove);
+            carouselTrack.addEventListener('mouseup', onEnd);
+            carouselTrack.addEventListener('mouseleave', onEnd);
+            
+            // Prevent image drag
+            carouselTrack.addEventListener('dragstart', (e) => e.preventDefault());
+        }
 
         // Event listeners for carousel navigation
         carouselPrev.addEventListener('click', prevSlide);
         carouselNext.addEventListener('click', nextSlide);
 
-        // Update carousel on window resize
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                updateCardsPerView();
-                updateCarouselPosition();
-                centerCurrentSlide();
-            }, 250);
-        });
-
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal Page loaded with CENTERED CAROUSEL:');
-            console.log('1. Centered circular carousel with touch/swipe support ✓');
-            console.log('2. Active slide always centered ✓');
-            console.log('3. Mobile-first responsive design ✓');
+            console.log('Metal Page loaded with enhanced features:');
+            console.log('1. CIRCULAR CAROUSEL with swipe support ✓');
+            console.log('2. MOBILE-FIRST "See It With Your Logo" section ✓');
+            console.log('3. Colors directly below preview on mobile ✓');
+            console.log('4. Performance optimizations applied ✓');
+            console.log('5. WhatsApp links to +447754888841 ✓');
+            console.log('6. All prices set to £95 ✓');
             
             initCircularCarousel();
             updateCart();
@@ -4347,32 +4453,21 @@ section[id] {
                 .metal-carousel-card.clone {
                     visibility: visible;
                 }
-                
-                /* Improve touch feedback */
-                @media (max-width: 768px) {
-                    .metal-carousel-track {
-                        cursor: grab;
-                    }
-                    
-                    .metal-carousel-track:active {
-                        cursor: grabbing;
-                    }
-                }
-                
-                /* Center carousel items */
-                .metal-carousel-wrapper {
-                    overflow: hidden;
-                    position: relative;
-                }
-                
-                .metal-carousel-track {
-                    display: flex;
-                    will-change: transform;
-                }
             `;
             document.head.appendChild(style);
+            
+            // Add carousel hover listeners after a short delay
+            setTimeout(addCarouselHoverListeners, 100);
         });
-    </script>
+
+        // Update carousel on window resize
+        window.addEventListener('resize', () => {
+            updateCardsPerView();
+            // Re-initialize carousel on resize to handle responsive changes
+            setTimeout(() => {
+                initCircularCarousel();
+            }, 100);
+        });
     </script>
 </body>
 </html>
