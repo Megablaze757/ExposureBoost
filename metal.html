@@ -1016,16 +1016,16 @@ section[id] {
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     gap: 30px;
     padding: 10px 0;
-    cursor: grab;
     user-select: none;
-}
-
-.metal-carousel-track:active {
-    cursor: grabbing;
 }
 
 .metal-carousel-track.dragging {
     transition: none;
+    cursor: grabbing;
+}
+
+.metal-carousel-track.grabbing {
+    cursor: grabbing;
 }
 
 /* Carousel cards matching bestseller style */
@@ -1040,10 +1040,11 @@ section[id] {
     height: 500px;
     display: flex;
     flex-direction: column;
-    cursor: pointer;
+    cursor: grab;
     min-width: 300px;
     -webkit-user-select: none;
     user-select: none;
+    touch-action: pan-y;
 }
 
 @media (max-width: 1024px) {
@@ -2867,21 +2868,6 @@ section[id] {
         animation: none !important;
     }
 }
-
-/* Mobile swipe support for carousel */
-.metal-carousel-track {
-    touch-action: pan-y;
-    cursor: grab;
-    user-select: none;
-}
-
-.metal-carousel-track:active {
-    cursor: grabbing;
-}
-
-.metal-carousel-track.dragging {
-    transition: none;
-}
 </style>
 </head>
 
@@ -4123,38 +4109,45 @@ section[id] {
             });
         });
 
-        // CIRCULAR CAROUSEL FUNCTIONALITY WITH SWIPE SUPPORT - FIXED
+        // CIRCULAR CAROUSEL FUNCTIONALITY WITH FIXED SWIPE SUPPORT
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
         const carouselNext = document.getElementById('carouselNext');
         const carouselDots = document.getElementById('carouselDots');
-        const carouselCards = document.querySelectorAll('.metal-carousel-card:not(.clone)');
+        
+        // Get all carousel cards (excluding clones)
+        let carouselCards = [];
+        const allCards = document.querySelectorAll('.metal-carousel-card');
+        allCards.forEach(card => {
+            if (!card.classList.contains('clone')) {
+                carouselCards.push(card);
+            }
+        });
 
         let currentSlide = 0;
         let cardsPerView = 3;
         let totalSlides = carouselCards.length;
         let isAnimating = false;
         
-        // Swipe variables
+        // Swipe variables - SIMPLIFIED
         let isDragging = false;
-        let startPosition = 0;
+        let startPos = 0;
         let currentTranslate = 0;
-        let previousTranslate = 0;
-        let animationID = null;
+        let prevTranslate = 0;
+        let animationId = null;
+        let dragThreshold = 50;
 
         // Initialize circular carousel
         function initCircularCarousel() {
             updateCardsPerView();
             createCircularDots();
+            setupCircularCards();
             updateCircularCarousel();
             updateCarouselBackground();
             
-            // Clone first and last cards for circular effect
-            setupCircularCards();
-            
-            // Add swipe support for mobile
-            addSwipeSupport();
+            // Initialize swipe support
+            setupSwipeSupport();
         }
 
         // Setup circular cards by cloning first and last cards
@@ -4178,11 +4171,7 @@ section[id] {
             carouselTrack.appendChild(firstCardClone);
             
             // Set initial position to show first original card
-            const allCards = document.querySelectorAll('.metal-carousel-card');
-            if (allCards.length > 0) {
-                const cardWidth = allCards[0].offsetWidth + 30;
-                carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
-            }
+            updateCarouselPosition();
         }
 
         // Update cards per view based on screen size
@@ -4214,25 +4203,26 @@ section[id] {
             }
         }
 
-        // Update circular carousel position
-        function updateCircularCarousel() {
-            const allCards = document.querySelectorAll('.metal-carousel-card');
-            if (allCards.length === 0) return;
+        // Update carousel position
+        function updateCarouselPosition() {
+            const trackCards = document.querySelectorAll('.metal-carousel-card');
+            if (trackCards.length === 0) return;
             
-            const cardWidth = allCards[0].offsetWidth + 30;
+            const cardWidth = trackCards[0].offsetWidth + 30;
             const translateX = -(currentSlide + 1) * cardWidth;
             
             carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
             carouselTrack.style.transform = `translateX(${translateX}px)`;
+        }
+
+        // Update circular carousel
+        function updateCircularCarousel() {
+            updateCarouselPosition();
             
             // Update dots
             document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
             });
-            
-            // Update navigation buttons
-            carouselPrev.classList.remove('disabled');
-            carouselNext.classList.remove('disabled');
             
             // Update carousel background
             updateCarouselBackground();
@@ -4248,63 +4238,55 @@ section[id] {
             
             setTimeout(() => {
                 isAnimating = false;
+                
+                // Check for circular wrap
+                const trackCards = document.querySelectorAll('.metal-carousel-card');
+                const cardWidth = trackCards[0].offsetWidth + 30;
+                
+                if (currentSlide === totalSlides - 1) {
+                    // If at last slide, jump to first without animation
+                    setTimeout(() => {
+                        currentSlide = 0;
+                        carouselTrack.style.transition = 'none';
+                        carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
+                        
+                        // Force reflow
+                        carouselTrack.offsetHeight;
+                        
+                        // Restore transition
+                        carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                        updateCircularCarousel();
+                    }, 500);
+                } else if (currentSlide === 0) {
+                    // If at first slide and going backward, jump to last
+                    setTimeout(() => {
+                        currentSlide = totalSlides - 1;
+                        carouselTrack.style.transition = 'none';
+                        carouselTrack.style.transform = `translateX(-${(totalSlides) * cardWidth}px)`;
+                        
+                        // Force reflow
+                        carouselTrack.offsetHeight;
+                        
+                        // Restore transition
+                        carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                        updateCircularCarousel();
+                    }, 500);
+                }
             }, 500);
         }
 
-        // Next slide with circular logic
+        // Next slide
         function nextSlide() {
             if (isAnimating) return;
-            
-            isAnimating = true;
-            currentSlide = (currentSlide + 1) % totalSlides;
-            
-            updateCircularCarousel();
-            
-            // Check if we need to jump to beginning (circular logic)
-            setTimeout(() => {
-                if (currentSlide === 0) {
-                    // Jump to first original card without animation
-                    const allCards = document.querySelectorAll('.metal-carousel-card');
-                    const cardWidth = allCards[0].offsetWidth + 30;
-                    carouselTrack.style.transition = 'none';
-                    carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
-                    
-                    // Force reflow
-                    carouselTrack.offsetHeight;
-                    
-                    // Restore transition
-                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                }
-                isAnimating = false;
-            }, 500);
+            const nextIndex = (currentSlide + 1) % totalSlides;
+            goToSlide(nextIndex);
         }
 
-        // Previous slide with circular logic
+        // Previous slide
         function prevSlide() {
             if (isAnimating) return;
-            
-            isAnimating = true;
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            
-            updateCircularCarousel();
-            
-            // Check if we need to jump to end (circular logic)
-            setTimeout(() => {
-                if (currentSlide === totalSlides - 1) {
-                    // Jump to last original card without animation
-                    const allCards = document.querySelectorAll('.metal-carousel-card');
-                    const cardWidth = allCards[0].offsetWidth + 30;
-                    carouselTrack.style.transition = 'none';
-                    carouselTrack.style.transform = `translateX(-${(totalSlides) * cardWidth}px)`;
-                    
-                    // Force reflow
-                    carouselTrack.offsetHeight;
-                    
-                    // Restore transition
-                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                }
-                isAnimating = false;
-            }, 500);
+            const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+            goToSlide(prevIndex);
         }
 
         // Update carousel background based on current slide
@@ -4319,84 +4301,66 @@ section[id] {
             }
         }
 
-        // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
-        function updateCarouselBackgroundOnHover(metalType) {
-            const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
-            if (newBackground !== currentCarouselBackground) {
-                carouselSection.style.background = newBackground;
-            }
-        }
-
-        function resetCarouselBackgroundToCurrent() {
-            updateCarouselBackground();
-        }
-
-        // Add hover event listeners to carousel cards
-        function addCarouselHoverListeners() {
-            const allCards = document.querySelectorAll('.metal-carousel-card:not(.clone)');
-            
-            allCards.forEach(card => {
-                const metalType = card.dataset.metal;
-                
-                card.addEventListener('mouseenter', () => {
-                    updateCarouselBackgroundOnHover(metalType);
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    resetCarouselBackgroundToCurrent();
-                });
-            });
-        }
-
-        // SWIPE SUPPORT FOR MOBILE CAROUSEL - FIXED AND SIMPLIFIED
-        function addSwipeSupport() {
+        // FIXED SWIPE SUPPORT FOR MOBILE CAROUSEL
+        function setupSwipeSupport() {
             let startX = 0;
             let currentX = 0;
             let isSwiping = false;
-            let dragThreshold = 50;
+            let dragStartTime = 0;
             
-            // Get X coordinate from event
-            function getX(e) {
-                return e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-            }
+            // Touch events
+            carouselTrack.addEventListener('touchstart', handleTouchStart, { passive: false });
+            carouselTrack.addEventListener('touchmove', handleTouchMove, { passive: false });
+            carouselTrack.addEventListener('touchend', handleTouchEnd);
             
-            // Start dragging
-            function startDrag(e) {
+            // Mouse events for desktop testing
+            carouselTrack.addEventListener('mousedown', handleMouseStart);
+            carouselTrack.addEventListener('mousemove', handleMouseMove);
+            carouselTrack.addEventListener('mouseup', handleMouseEnd);
+            carouselTrack.addEventListener('mouseleave', handleMouseEnd);
+            
+            // Prevent image drag
+            carouselTrack.querySelectorAll('img').forEach(img => {
+                img.addEventListener('dragstart', (e) => e.preventDefault());
+            });
+            
+            function handleTouchStart(e) {
                 if (isAnimating) return;
-                isSwiping = true;
-                startX = getX(e);
+                startX = e.touches[0].clientX;
                 currentX = startX;
-                carouselTrack.classList.add('dragging');
+                isSwiping = true;
+                dragStartTime = Date.now();
                 carouselTrack.style.transition = 'none';
+                carouselTrack.classList.add('grabbing');
             }
             
-            // While dragging
-            function whileDrag(e) {
-                if (!isSwiping) return;
+            function handleTouchMove(e) {
+                if (!isSwiping || isAnimating) return;
                 e.preventDefault();
-                currentX = getX(e);
+                currentX = e.touches[0].clientX;
                 const diff = currentX - startX;
                 
-                // Move track while dragging
-                const allCards = document.querySelectorAll('.metal-carousel-card');
-                if (allCards.length === 0) return;
-                const cardWidth = allCards[0].offsetWidth + 30;
+                // Update track position while dragging
+                const trackCards = document.querySelectorAll('.metal-carousel-card');
+                if (trackCards.length === 0) return;
+                const cardWidth = trackCards[0].offsetWidth + 30;
                 const basePosition = -(currentSlide + 1) * cardWidth;
                 const dragOffset = diff;
                 carouselTrack.style.transform = `translateX(${basePosition + dragOffset}px)`;
             }
             
-            // End dragging
-            function endDrag() {
-                if (!isSwiping) return;
+            function handleTouchEnd() {
+                if (!isSwiping || isAnimating) return;
                 isSwiping = false;
-                carouselTrack.classList.remove('dragging');
                 carouselTrack.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                carouselTrack.classList.remove('grabbing');
                 
                 const diff = currentX - startX;
+                const dragDuration = Date.now() - dragStartTime;
+                const velocity = Math.abs(diff) / dragDuration;
                 
                 // Determine if swipe was significant enough
-                if (Math.abs(diff) > dragThreshold) {
+                if (Math.abs(diff) > dragThreshold || velocity > 0.3) {
                     if (diff > 0) {
                         prevSlide();
                     } else {
@@ -4408,22 +4372,54 @@ section[id] {
                 }
             }
             
-            // Touch events
-            carouselTrack.addEventListener('touchstart', startDrag, { passive: false });
-            carouselTrack.addEventListener('touchmove', whileDrag, { passive: false });
-            carouselTrack.addEventListener('touchend', endDrag, { passive: false });
+            // Mouse handlers (for desktop testing)
+            function handleMouseStart(e) {
+                if (isAnimating) return;
+                startX = e.clientX;
+                currentX = startX;
+                isSwiping = true;
+                dragStartTime = Date.now();
+                carouselTrack.style.transition = 'none';
+                carouselTrack.classList.add('grabbing');
+                e.preventDefault();
+            }
             
-            // Mouse events
-            carouselTrack.addEventListener('mousedown', startDrag);
-            carouselTrack.addEventListener('mousemove', whileDrag);
-            carouselTrack.addEventListener('mouseup', endDrag);
-            carouselTrack.addEventListener('mouseleave', endDrag);
+            function handleMouseMove(e) {
+                if (!isSwiping || isAnimating) return;
+                currentX = e.clientX;
+                const diff = currentX - startX;
+                
+                // Update track position while dragging
+                const trackCards = document.querySelectorAll('.metal-carousel-card');
+                if (trackCards.length === 0) return;
+                const cardWidth = trackCards[0].offsetWidth + 30;
+                const basePosition = -(currentSlide + 1) * cardWidth;
+                const dragOffset = diff;
+                carouselTrack.style.transform = `translateX(${basePosition + dragOffset}px)`;
+            }
             
-            // Prevent default drag behavior
-            carouselTrack.addEventListener('dragstart', (e) => e.preventDefault());
-            
-            // Prevent context menu on touch devices
-            carouselTrack.addEventListener('contextmenu', (e) => e.preventDefault());
+            function handleMouseEnd() {
+                if (!isSwiping || isAnimating) return;
+                isSwiping = false;
+                carouselTrack.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                carouselTrack.classList.remove('grabbing');
+                
+                const diff = currentX - startX;
+                const dragDuration = Date.now() - dragStartTime;
+                const velocity = Math.abs(diff) / dragDuration;
+                
+                // Determine if swipe was significant enough
+                if (Math.abs(diff) > dragThreshold || velocity > 0.3) {
+                    if (diff > 0) {
+                        prevSlide();
+                    } else {
+                        nextSlide();
+                    }
+                } else {
+                    // Return to original position
+                    updateCircularCarousel();
+                }
+            }
         }
 
         // Event listeners for carousel navigation
@@ -4433,7 +4429,7 @@ section[id] {
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Metal Page loaded with enhanced features:');
-            console.log('1. CIRCULAR CAROUSEL with swipe support ✓');
+            console.log('1. CIRCULAR CAROUSEL with FIXED swipe support ✓');
             console.log('2. MOBILE-FIRST "See It With Your Logo" section ✓');
             console.log('3. Colors directly below preview on mobile ✓');
             console.log('4. Performance optimizations applied ✓');
@@ -4477,9 +4473,6 @@ section[id] {
                 }
             `;
             document.head.appendChild(style);
-            
-            // Add carousel hover listeners after a short delay
-            setTimeout(addCarouselHoverListeners, 100);
         });
 
         // Update carousel on window resize
