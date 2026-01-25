@@ -26,14 +26,7 @@
     --metal-nav-scrolled: linear-gradient(135deg, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.9));
     --metal-menu-bg: linear-gradient(135deg, rgba(183, 110, 121, 0.98), rgba(224, 191, 184, 0.98));
     
-    --charcoal: #0F0F14;
-    --charcoal2: #141422;
-    --black: #1A0F0F;
-    --white: #FFF5F3;
-    --silver: #E8D4D1;
-    --wa: #25D366;
-    
-    /* Metal color backgrounds for carousel */
+    /* Metal color backgrounds */
     --black-bg: linear-gradient(135deg, #000000, #333333);
     --blue-bg: linear-gradient(135deg, #0066CC, #004488);
     --green-bg: linear-gradient(135deg, #00AA55, #008844);
@@ -55,6 +48,11 @@
     --carousel-gold-bg: linear-gradient(135deg, #1A0F0F 0%, #D4AF37 100%);
     --carousel-silver-bg: linear-gradient(135deg, #1A0F0F 0%, #A9A9A9 100%);
     --carousel-rosegold-bg: linear-gradient(135deg, #1A0F0F 0%, #B76E79 100%);
+    
+    /* Additional variables */
+    --white: #FFF5F3;
+    --black: #1A0F0F;
+    --wa: #25D366;
 }
 
 * {
@@ -80,7 +78,7 @@ body {
 }
 
 html {
-    background: linear-gradient(135deg, #2B0F3A 0%, #13214A 20%, #0F3A4A 40%, #0F4A2B 60%, #4A3A0F 80%, #4A0F1A 100%);
+    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
 }
 
 a {
@@ -656,8 +654,8 @@ section[id] {
     align-items: center;
     padding: 0;
     position: relative;
+    cursor: pointer;
     transition: transform 0.3s ease;
-    cursor: default; /* Changed from pointer to default */
 }
 
 .hero-card:hover {
@@ -733,7 +731,7 @@ section[id] {
     margin-top: 40px;
 }
 
-/* BESTSELLERS SECTION - WITH METAL COLOR BACKGROUNDS */
+/* BESTSELLERS SECTION - METAL THEME */
 .bestsellers-section {
     padding: 100px 20px;
     background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
@@ -794,15 +792,15 @@ section[id] {
     backdrop-filter: blur(10px);
 }
 
-/* FIX: Match background color to metal color */
+/* Metal type backgrounds */
 .bestseller-card.silver {
     background: radial-gradient(circle at top, rgba(192, 192, 192, 0.9), rgba(169, 169, 169, 0.95));
     color: #1a1209;
 }
 
-.bestseller-card.rose-gold {
+.bestseller-card.rosegold {
     background: radial-gradient(circle at top, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.95));
-    color: #1a1209;
+    color: #FFFFFF;
 }
 
 .bestseller-card.gold {
@@ -834,7 +832,7 @@ section[id] {
     backdrop-filter: blur(10px);
 }
 
-/* FIXED: WEBP IMAGE CONTAINER - PERFECT FIT */
+/* WEBP IMAGE CONTAINER - PERFECT FIT */
 .bestseller-image {
     width: 100%;
     height: 200px;
@@ -850,7 +848,7 @@ section[id] {
     padding: 0;
 }
 
-/* FIXED: WebP container - FULL WIDTH */
+/* WebP container - FULL WIDTH */
 .bestseller-image .webp-container {
     width: 95%;
     height: 95%;
@@ -860,7 +858,7 @@ section[id] {
     position: relative;
 }
 
-/* FIXED: WebP images - PERFECT FIT */
+/* WebP images - PERFECT FIT */
 .bestseller-image img.webp-image {
     width: 95%;
     height: 95%;
@@ -885,9 +883,12 @@ section[id] {
 
 /* Text colors for different backgrounds */
 .bestseller-card.silver .bestseller-title,
-.bestseller-card.rose-gold .bestseller-title,
 .bestseller-card.gold .bestseller-title {
     color: #1a1209;
+}
+
+.bestseller-card.rosegold .bestseller-title {
+    color: #FFFFFF;
 }
 
 .bestseller-description {
@@ -897,9 +898,12 @@ section[id] {
 }
 
 .bestseller-card.silver .bestseller-description,
-.bestseller-card.rose-gold .bestseller-description,
 .bestseller-card.gold .bestseller-description {
     color: rgba(26, 18, 9, 0.9);
+}
+
+.bestseller-card.rosegold .bestseller-description {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .bestseller-price {
@@ -909,9 +913,12 @@ section[id] {
 }
 
 .bestseller-card.silver .bestseller-price,
-.bestseller-card.rose-gold .bestseller-price,
 .bestseller-card.gold .bestseller-price {
     color: #1a1209;
+}
+
+.bestseller-card.rosegold .bestseller-price {
+    color: #FFFFFF;
 }
 
 .bestseller-price span {
@@ -921,9 +928,12 @@ section[id] {
 }
 
 .bestseller-card.silver .bestseller-price span,
-.bestseller-card.rose-gold .bestseller-price span,
 .bestseller-card.gold .bestseller-price span {
     color: rgba(26, 18, 9, 0.7);
+}
+
+.bestseller-card.rosegold .bestseller-price span {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .bestseller-actions {
@@ -935,24 +945,34 @@ section[id] {
     flex: 1;
 }
 
-/* Button colors for  */
+/* Button colors for metal cards */
 .bestseller-card.silver .btn-primary,
-.bestseller-card.rose-gold .btn-primary,
 .bestseller-card.gold .btn-primary {
     background: rgba(0, 0, 0, 0.7);
-    color: white;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.bestseller-card.rosegold .btn-primary {
+    background: rgba(0, 0, 0, 0.7);
+    color: #FFFFFF;
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .bestseller-card.silver .btn-secondary,
-.bestseller-card.rose-gold .btn-secondary,
 .bestseller-card.gold .btn-secondary {
     background: rgba(255, 255, 255, 0.2);
     color: #1a1209;
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-/* CAROUSEL SECTION - CIRCULAR CAROUSEL */
+.bestseller-card.rosegold .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* CAROUSEL SECTION - PROPER CAROUSEL LIKE WOOD PAGE */
 .carousel-section {
     padding: 100px 20px;
     background: var(--carousel-black-bg);
@@ -997,6 +1017,7 @@ section[id] {
     width: 100%;
     overflow: hidden;
     padding: 0 60px;
+    touch-action: pan-y pinch-zoom;
 }
 
 @media (max-width: 768px) {
@@ -1017,15 +1038,9 @@ section[id] {
     gap: 30px;
     padding: 10px 0;
     user-select: none;
-}
-
-.metal-carousel-track.dragging {
-    transition: none;
-    cursor: grabbing;
-}
-
-.metal-carousel-track.grabbing {
-    cursor: grabbing;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 /* Carousel cards matching bestseller style */
@@ -1040,11 +1055,12 @@ section[id] {
     height: 500px;
     display: flex;
     flex-direction: column;
-    cursor: grab;
+    cursor: pointer;
     min-width: 300px;
-    -webkit-user-select: none;
     user-select: none;
-    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 @media (max-width: 1024px) {
@@ -1060,7 +1076,7 @@ section[id] {
     }
 }
 
-/* Metal color backgrounds for carousel cards */
+/* Metal type backgrounds for carousel cards */
 .metal-carousel-card.black {
     background: radial-gradient(circle at top, rgba(0, 0, 0, 0.9), rgba(51, 51, 51, 0.95));
     color: #FFFFFF;
@@ -1114,6 +1130,7 @@ section[id] {
     border: 1px solid rgba(255, 255, 255, 0.18);
     backdrop-filter: blur(6px);
 }
+
 .metal-carousel-card.white {
     background: radial-gradient(circle at top, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.95));
     color: #1a1209;
@@ -1170,11 +1187,12 @@ section[id] {
     font-weight: 800;
     margin-bottom: 10px;
 }
-.metal-carousel-card.custom .metal-carousel-title,
+
 .metal-carousel-card.black .metal-carousel-title,
 .metal-carousel-card.blue .metal-carousel-title,
 .metal-carousel-card.green .metal-carousel-title,
 .metal-carousel-card.purple .metal-carousel-title,
+.metal-carousel-card.custom .metal-carousel-title,
 .metal-carousel-card.rosegold .metal-carousel-title {
     color: #FFFFFF;
 }
@@ -1191,11 +1209,12 @@ section[id] {
     font-size: 0.95rem;
     flex-grow: 1;
 }
-.metal-carousel-card.custom .metal-carousel-description,
+
 .metal-carousel-card.black .metal-carousel-description,
 .metal-carousel-card.blue .metal-carousel-description,
 .metal-carousel-card.green .metal-carousel-description,
 .metal-carousel-card.purple .metal-carousel-description,
+.metal-carousel-card.custom .metal-carousel-description,
 .metal-carousel-card.rosegold .metal-carousel-description {
     color: rgba(255, 255, 255, 0.9);
 }
@@ -1211,11 +1230,12 @@ section[id] {
     font-weight: 900;
     margin-bottom: 20px;
 }
-.metal-carousel-card.custom .metal-carousel-price,
+
 .metal-carousel-card.black .metal-carousel-price,
 .metal-carousel-card.blue .metal-carousel-price,
 .metal-carousel-card.green .metal-carousel-price,
 .metal-carousel-card.purple .metal-carousel-price,
+.metal-carousel-card.custom .metal-carousel-price,
 .metal-carousel-card.rosegold .metal-carousel-price {
     color: #FFFFFF;
 }
@@ -1454,7 +1474,7 @@ section[id] {
     font-size: 0.9rem;
 }
 
-/* CUSTOM LOGO SECTION - UPDATED */
+/* CUSTOM LOGO SECTION - OPTIMIZED FOR MOBILE LIKE WOOD PAGE */
 .custom-logo-section {
     padding: 80px 20px;
     background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
@@ -1480,31 +1500,22 @@ section[id] {
     z-index: 2;
 }
 
-/* Logo Builder Grid - MOBILE FIRST */
-.logo-builder-grid {
+/* MOBILE OPTIMIZED LAYOUT - SINGLE COLUMN */
+.logo-builder-container {
     display: flex;
     flex-direction: column;
     gap: 30px;
     margin: 40px 0;
 }
 
-@media (min-width: 992px) {
-    .logo-builder-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-    }
-}
-
-/* Preview Section */
+/* Preview Section - Now on top */
 .preview-container {
     background: rgba(224, 191, 184, 0.1);
     border-radius: 24px;
     padding: 25px;
     border: 1px solid rgba(224, 191, 184, 0.2);
     backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
+    width: 100%;
 }
 
 .preview-header {
@@ -1532,6 +1543,11 @@ section[id] {
 }
 
 .preview-card-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 25px;
 }
 
@@ -1569,7 +1585,6 @@ section[id] {
     object-fit: contain;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     display: none;
-    transition: transform 0.3s ease;
 }
 
 .preview-logo.visible {
@@ -1604,78 +1619,6 @@ section[id] {
     opacity: 0.8;
 }
 
-/* MOBILE-FRIENDLY COLOR SELECTION BELOW PREVIEW */
-.preview-color-selection {
-    margin: 25px 0;
-}
-
-.preview-color-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.preview-colors-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
-
-@media (max-width: 480px) {
-    .preview-colors-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-    }
-}
-
-.preview-color-option {
-    aspect-ratio: 1;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 3px solid transparent;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.preview-color-option:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.preview-color-option.selected {
-    border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 6px 12px rgba(0, 0, 0, 0.4);
-}
-
-.preview-color-label {
-    position: absolute;
-    bottom: 8px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 4px 6px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 6px;
-    margin: 0 8px;
-}
-
-/* For light colors, use dark text */
-.preview-color-option[data-color="white"] .preview-color-label,
-.preview-color-option[data-color="gold"] .preview-color-label,
-.preview-color-option[data-color="silver"] .preview-color-label {
-    color: #1a1209;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.7);
-}
-
 .preview-details {
     display: flex;
     justify-content: space-between;
@@ -1706,81 +1649,6 @@ section[id] {
     font-size: 1.3rem;
     font-weight: 900;
     color: var(--rose-gold-light);
-}
-
-/* Selection Options - Only desktop */
-.selection-options {
-    display: none;
-}
-
-@media (min-width: 992px) {
-    .selection-options {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
-    
-    .preview-color-selection {
-        display: none;
-    }
-}
-
-/* Metal Color Selection */
-.metal-colors-section {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-.metal-colors-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.metal-colors-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
-
-/* Add to Cart Button - Mobile version */
-.preview-add-to-cart {
-    width: 100%;
-    padding: 18px;
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    border: none;
-    border-radius: 14px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
-    margin-top: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.preview-add-to-cart:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
-}
-
-@media (min-width: 992px) {
-    .preview-add-to-cart {
-        display: none;
-    }
-    
-    .add-to-cart-btn {
-        display: block;
-    }
 }
 
 /* Clear Card Button */
@@ -1814,6 +1682,177 @@ section[id] {
     transform: none !important;
 }
 
+/* Selection Options - Now all below the card */
+.selection-options {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Metal Color Selection - NOW DIRECTLY BELOW THE CARD - EXTRA SMALL FOR MOBILE */
+.metal-colors-section {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 16px;
+    padding: 15px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+    order: 1; /* Make sure it appears first after the card */
+    margin-top: -10px; /* Pull it closer to the card */
+}
+
+.metal-colors-title {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+/* EXTRA SMALL METAL COLOR GRID FOR MOBILE */
+.metal-colors-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+}
+
+@media (max-width: 1024px) {
+    .metal-colors-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+    }
+}
+
+@media (max-width: 768px) {
+    .metal-colors-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .metal-colors-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4px;
+    }
+}
+
+/* EXTRA SMALL METAL COLOR BUTTONS */
+.metal-color-option {
+    aspect-ratio: 1;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    min-height: 30px; /* MUCH SMALLER */
+}
+
+.metal-color-option:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.metal-color-option.selected {
+    border-color: var(--white);
+    box-shadow: 0 0 0 2px var(--white), 0 2px 5px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+/* EXTRA SMALL COLOR LABELS */
+.color-label {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    font-size: 0.55rem; /* SMALLER FONT */
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 1px 2px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    margin: 0 2px;
+    line-height: 1;
+    display: none; /* Hide labels on small buttons */
+}
+
+/* Show labels only on selected or hover */
+.metal-color-option.selected .color-label,
+.metal-color-option:hover .color-label {
+    display: block;
+}
+
+@media (max-width: 480px) {
+    .color-label {
+        font-size: 0.5rem;
+        padding: 1px;
+    }
+}
+
+/* Engraving Selection */
+.engraving-section {
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+    order: 2;
+}
+
+.engraving-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.engraving-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.engraving-option {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.engraving-option:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.engraving-option.selected {
+    background: rgba(224, 191, 184, 0.2);
+    border-color: var(--rose-gold-light);
+}
+
+.engraving-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.engraving-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+}
+
+.engraving-price {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
 /* Logo Upload Section */
 .logo-upload-section {
     background: rgba(224, 191, 184, 0.1);
@@ -1821,6 +1860,7 @@ section[id] {
     padding: 25px;
     border: 1px solid rgba(224, 191, 184, 0.2);
     backdrop-filter: blur(10px);
+    order: 3;
 }
 
 .logo-upload-title {
@@ -1958,22 +1998,19 @@ section[id] {
 
 /* Logo Size Controls */
 .logo-size-section {
-    margin: 20px 0;
+    background: rgba(224, 191, 184, 0.1);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid rgba(224, 191, 184, 0.2);
+    backdrop-filter: blur(10px);
+    order: 4;
 }
 
 .logo-size-title {
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 800;
     color: var(--white);
-    margin-bottom: 12px;
-}
-
-.size-value {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--rose-gold-light);
-    text-align: center;
-    margin-top: 8px;
+    margin-bottom: 20px;
 }
 
 .logo-size-controls {
@@ -2018,6 +2055,14 @@ section[id] {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+.size-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--rose-gold-light);
+    text-align: center;
+    margin-top: 10px;
+}
+
 .size-presets {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2046,7 +2091,7 @@ section[id] {
     border-color: var(--rose-gold-light);
 }
 
-/* Add to Cart Button - Desktop version */
+/* Add to Cart Button */
 .add-to-cart-btn {
     width: 100%;
     padding: 18px;
@@ -2060,7 +2105,8 @@ section[id] {
     transition: all 0.3s ease;
     box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
     margin-top: 25px;
-    display: none;
+    order: 5;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -2079,6 +2125,55 @@ section[id] {
     border-radius: 20px;
     border: 1px solid rgba(37, 211, 102, 0.3);
     backdrop-filter: blur(10px);
+    order: 6;
+}
+
+/* DESKTOP LAYOUT - TWO COLUMNS */
+@media (min-width: 992px) {
+    .logo-builder-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin: 40px 0;
+    }
+    
+    /* Reset order for desktop */
+    .preview-container,
+    .metal-colors-section,
+    .engraving-section,
+    .logo-upload-section,
+    .logo-size-section,
+    .add-to-cart-btn,
+    .whatsapp-help {
+        order: 0;
+    }
+    
+    .selection-options {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    /* Make metal color buttons larger on desktop */
+    .metal-colors-section {
+        padding: 20px;
+        margin-top: 0;
+    }
+    
+    .metal-colors-grid {
+        gap: 8px;
+    }
+    
+    .metal-color-option {
+        min-height: 40px;
+        border-radius: 8px;
+    }
+    
+    .color-label {
+        font-size: 0.65rem;
+        padding: 2px 4px;
+        display: block; /* Always show labels on desktop */
+    }
 }
 
 /* RESPONSIVE DESIGN */
@@ -2106,15 +2201,17 @@ section[id] {
         height: 200px;
     }
 
-    .preview-colors-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .upload-area {
+        padding: 25px 15px;
+        min-height: 160px;
     }
-    
-    /* Simplify mobile menu animations */
-    .mobile-menu a {
-        animation: none;
-        opacity: 1;
-        transform: none;
+
+    .upload-text {
+        font-size: 1rem;
+    }
+
+    .upload-subtext {
+        font-size: 0.8rem;
     }
 }
 
@@ -2136,24 +2233,18 @@ section[id] {
         height: 180px;
     }
 
-    .preview-colors-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 8px;
+    .metal-colors-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3px;
     }
     
-    .preview-color-option {
-        border-width: 2px;
-    }
-    
-    .preview-color-label {
-        font-size: 0.65rem;
-        padding: 3px 4px;
+    .metal-color-option {
+        min-height: 28px;
+        border-radius: 5px;
     }
 }
 
-/* ============================================================================
-   IMPROVED ENGRAVING MODAL - WITH QUANTITY SELECTOR
-   ============================================================================ */
+/* ENGRAVING MODAL - METAL THEME */
 .engraving-modal {
     position: fixed;
     top: 0;
@@ -2251,119 +2342,6 @@ section[id] {
     line-height: 1.5;
     max-width: 400px;
     margin: 0 auto;
-}
-
-.engraving-options {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-@media (min-width: 768px) {
-    .engraving-options {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-.engraving-option {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 18px;
-    padding: 25px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    text-align: center;
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.engraving-option::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--rose-gold-gradient);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.engraving-option:hover {
-    background: rgba(224, 191, 184, 0.15);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(183, 110, 121, 0.2);
-}
-
-.engraving-option.selected {
-    background: rgba(224, 191, 184, 0.2);
-    border-color: var(--rose-gold-light);
-    box-shadow: 0 20px 40px rgba(183, 110, 121, 0.3);
-}
-
-.engraving-option.selected::before {
-    opacity: 1;
-}
-
-.engraving-image {
-    width: 100%;
-    height: 120px;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 20px;
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    background: rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.engraving-option[data-engraving="silver"] .engraving-image {
-    background: linear-gradient(135deg, #C0C0C0, #A9A9A9);
-}
-
-.engraving-option[data-engraving="gold"] .engraving-image {
-    background: linear-gradient(135deg, #FFD700, #D4AF37);
-}
-
-.engraving-image span {
-    font-size: 3rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.engraving-option[data-engraving="silver"] .engraving-image span {
-    color: #FFFFFF;
-}
-
-.engraving-option[data-engraving="gold"] .engraving-image span {
-    color: #1a1209;
-}
-
-.engraving-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 8px;
-}
-
-.engraving-price {
-    font-size: 0.95rem;
-    color: var(--rose-gold-light);
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.engraving-description {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.5;
-    text-align: left;
 }
 
 /* Quantity Controls - IMPROVED FOR MOBILE */
@@ -2485,168 +2463,6 @@ section[id] {
 .quantity-preset-btn.active {
     background: var(--rose-gold-gradient);
     border-color: var(--rose-gold-light);
-}
-
-.engraving-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-@media (min-width: 480px) {
-    .engraving-actions {
-        flex-direction: row;
-        justify-content: center;
-    }
-}
-
-.btn-cancel,
-.btn-confirm {
-    padding: 18px 28px;
-    border-radius: 14px;
-    font-weight: 800;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    flex: 1;
-    min-width: 0;
-    border: none;
-    letter-spacing: 0.5px;
-    text-align: center;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 56px;
-}
-
-@media (min-width: 480px) {
-    .btn-cancel,
-    .btn-confirm {
-        min-width: 140px;
-        flex: 0 1 auto;
-    }
-}
-
-.btn-cancel {
-    background: rgba(224, 191, 184, 0.15);
-    color: var(--white);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.btn-cancel:active {
-    background: rgba(224, 191, 184, 0.25);
-    transform: translateY(0);
-}
-
-.btn-cancel:hover {
-    background: rgba(224, 191, 184, 0.25);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(183, 110, 121, 0.2);
-}
-
-.btn-confirm {
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    box-shadow: 0 8px 25px rgba(183, 110, 121, 0.4);
-}
-
-.btn-confirm:active:not(:disabled) {
-    transform: translateY(0);
-}
-
-.btn-confirm:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(183, 110, 121, 0.5);
-    background: linear-gradient(135deg, #E8D4D1, #C98A96);
-}
-
-.btn-confirm:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none !important;
-    box-shadow: none !important;
-}
-
-/* MOBILE SPECIFIC STYLES FOR ENGRAVING MODAL */
-@media (max-width: 767px) {
-    .engraving-content {
-        padding: 25px 20px;
-        max-height: 90vh;
-    }
-
-    .engraving-header h3 {
-        font-size: 1.5rem;
-    }
-
-    .engraving-header p {
-        font-size: 0.95rem;
-    }
-
-    .engraving-option {
-        padding: 20px;
-    }
-
-    .engraving-image {
-        height: 100px;
-    }
-
-    .engraving-label {
-        font-size: 1rem;
-    }
-
-    .engraving-description {
-        font-size: 0.85rem;
-    }
-
-    .btn-cancel,
-    .btn-confirm {
-        padding: 16px 24px;
-        font-size: 15px;
-        min-height: 52px;
-    }
-
-    .close-engraving {
-        width: 36px;
-        height: 36px;
-        font-size: 20px;
-        top: 15px;
-        right: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .engraving-content {
-        padding: 20px 16px;
-    }
-
-    .engraving-header h3 {
-        font-size: 1.3rem;
-    }
-
-    .engraving-header p {
-        font-size: 0.9rem;
-    }
-
-    .engraving-option {
-        padding: 18px;
-    }
-
-    .engraving-image {
-        height: 90px;
-        margin-bottom: 15px;
-    }
-
-    .engraving-image span {
-        font-size: 2.5rem;
-    }
-
-    .engraving-label {
-        font-size: 0.95rem;
-    }
-
-    .engraving-description {
-        font-size: 0.8rem;
-    }
 }
 
 /* Cart Modal - METAL THEME */
@@ -2842,37 +2658,11 @@ section[id] {
     transform: translateY(0);
     opacity: 1;
 }
-
-/* PERFORMANCE OPTIMIZATIONS */
-/* Reduce animation complexity */
-.bestseller-card,
-.benefit-card,
-.testimonial-card,
-.metal-carousel-card {
-    will-change: transform;
-    backface-visibility: hidden;
-}
-
-/* Simplify hover effects for mobile */
-@media (max-width: 768px) {
-    .bestseller-card:hover,
-    .metal-carousel-card:hover,
-    .benefit-card:hover {
-        transform: translateY(-5px) !important;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
-    }
-    
-    /* Disable heavy animations on mobile */
-    .hero-bg-blob,
-    .hero-bg-blob.b2 {
-        animation: none !important;
-    }
-}
-</style>
+    </style>
 </head>
 
 <body>
-    <!-- IMPROVED ENGRAVING SELECTION MODAL WITH QUANTITY -->
+    <!-- ENGRAVING SELECTION MODAL -->
     <div class="engraving-modal" id="engravingModal">
         <div class="engraving-content">
             <button class="close-engraving" id="closeEngraving">×</button>
@@ -2927,7 +2717,7 @@ section[id] {
 
             <div class="engraving-actions">
                 <button class="btn-cancel" id="cancelEngraving">Cancel</button>
-                <button class="btn-confirm" id="confirmEngraving" disabled>Add to Cart - £<span id="engravingTotalPrice">95</span></button>
+                <button class="btn-confirm" id="confirmEngraving">Add to Cart - £<span id="engravingTotalPrice">95</span></button>
             </div>
         </div>
     </div>
@@ -2973,7 +2763,7 @@ section[id] {
 
         <div class="nav-center">
             <a href="index.html">Home</a>
-            <a href="metal.html" class="active"></a>
+            <a href="metal.html" class="active">Metal Cards</a>
             <a href="wood.html">Wood Cards</a>
             <a href="plastic.html">Plastic Cards</a>
             <a href="custom.html">Custom Cards</a>
@@ -3000,7 +2790,7 @@ section[id] {
             <span>🏠</span> Home
         </a>
         <a href="metal.html" class="mobile-menu-item active">
-            <span>⭐</span> 
+            <span>⭐</span> Metal Cards
         </a>
         <a href="wood.html" class="mobile-menu-item">
             <span>🌳</span> Wood Cards
@@ -3036,13 +2826,13 @@ section[id] {
                 
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
-                        <!-- Hero card image - NO UPLOAD FUNCTIONALITY -->
+                        <!-- Hero card image only - no upload overlay -->
                         <img src="newblack.webp" alt="Black Metal NFC Card">
                     </div>
                 </div>
 
                 <div class="hero-cta">
-                    <button class="btn btn-primary" id="browseCardsBtn">Browse </button>
+                    <button class="btn btn-primary" id="browseCardsBtn">Browse Metals</button>
                 </div>
             </div>
         </section>
@@ -3073,7 +2863,7 @@ section[id] {
                 </div>
 
                 <!-- Rose Gold Metal Card -->
-                 <div class="bestseller-card rose-gold">
+                 <div class="bestseller-card rosegold">
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
@@ -3108,19 +2898,19 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - CIRCULAR CAROUSEL -->
+        <!-- CAROUSEL SECTION - 9 METAL TYPES MATCHING BESTSELLER STYLE -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
-                    <h2 class="section-title">9 Premium Metal Colors</h2>
-                    <p class="section-subtitle">Choose from our premium metal colors. All prices at £95.</p>
+                    <h2 class="section-title">All Metal Types</h2>
+                    <p class="section-subtitle">Choose from 9 premium metal types</p>
                 </div>
 
                 <div class="metal-carousel-wrapper">
                     <button class="carousel-nav prev" id="carouselPrev">‹</button>
                     
                     <div class="metal-carousel-track" id="carouselTrack">
-                        <!-- Custom - REORDERED TO FIRST -->
+                        <!-- Custom -->
                         <div class="metal-carousel-card custom" data-metal="custom">
                             <div class="custom-badge">Any Colour / Any Finish</div>
                             <div class="metal-carousel-image">
@@ -3134,7 +2924,7 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Black - REORDERED TO SECOND -->
+                        <!-- Black -->
                         <div class="metal-carousel-card black" data-metal="black">
                             <div class="metal-carousel-image">
                                 <img src="newblack.webp" alt="Black Metal Card">
@@ -3144,19 +2934,6 @@ section[id] {
                             <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
                             <div class="metal-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Black Metal Card" data-price="95">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- White - REORDERED TO THIRD -->
-                        <div class="metal-carousel-card white" data-metal="white">
-                            <div class="metal-carousel-image">
-                                <img src="newwhite.webp" alt="White Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">White Metal Card</h3>
-                            <p class="metal-carousel-description">Clean white metal card. Perfect for minimalist brands, medical services, and modern design studios.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="White Metal Card" data-price="95">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3199,6 +2976,19 @@ section[id] {
                             </div>
                         </div>
 
+                        <!-- White -->
+                        <div class="metal-carousel-card white" data-metal="white">
+                            <div class="metal-carousel-image">
+                                <img src="newwhite.webp" alt="White Metal Card">
+                            </div>
+                            <h3 class="metal-carousel-title">White Metal Card</h3>
+                            <p class="metal-carousel-description">Clean white metal card. Perfect for minimalist brands, medical services, and modern design studios.</p>
+                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
+                            <div class="metal-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="White Metal Card" data-price="95">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
                         <!-- Gold -->
                         <div class="metal-carousel-card gold" data-metal="gold">
                             <div class="metal-carousel-image">
@@ -3221,7 +3011,7 @@ section[id] {
                             <p class="metal-carousel-description">Metallic silver metal card. Perfect for luxury brands, automotive, and premium technology products.</p>
                             <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
                             <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Silver Metal Card" data-price="95">🛒 Add to Car</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Silver Metal Card" data-price="95">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3248,7 +3038,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CUSTOM LOGO SECTION - UPDATED -->
+        <!-- CUSTOM LOGO SECTION - OPTIMIZED FOR MOBILE LIKE WOOD PAGE -->
         <section class="custom-logo-section" id="custom-logo">
             <div class="custom-logo-content">
                 <div class="section-header">
@@ -3256,8 +3046,9 @@ section[id] {
                     <p class="section-subtitle">Upload your logo and see how it looks on different metal cards</p>
                 </div>
 
-                <div class="logo-builder-grid">
-                    <!-- Left Column: Preview with colors directly below on mobile -->
+                <!-- MOBILE-OPTIMIZED SINGLE COLUMN LAYOUT -->
+                <div class="logo-builder-container">
+                    <!-- Preview Card - Now on Top with Metal Colors directly below -->
                     <div class="preview-container">
                         <div class="preview-header">
                             <div class="preview-title">Live Preview</div>
@@ -3269,84 +3060,17 @@ section[id] {
                                 <div class="preview-card-inner" id="previewCardInner">
                                     <div class="preview-placeholder" id="previewPlaceholder">
                                         <div class="placeholder-icon">📁</div>
-                                        <div class="placeholder-text">Upload your logo to preview</div>
+                                        <div class="placeholder-text">Click to upload your logo</div>
                                         <div class="placeholder-subtext">PNG, JPG up to 10MB</div>
                                     </div>
                                     <img class="preview-logo" id="previewLogo" alt="Your Logo">
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Color selection directly below preview on mobile -->
-                        <div class="preview-color-selection">
-                            <div class="preview-color-title">Choose Metal Color</div>
-                            <div class="preview-colors-grid">
-                                <div class="preview-color-option selected" data-color="black" style="background: var(--black-bg);">
-                                    <div class="preview-color-label">Black</div>
-                                </div>
-                                <div class="preview-color-option" data-color="blue" style="background: var(--blue-bg);">
-                                    <div class="preview-color-label">Blue</div>
-                                </div>
-                                <div class="preview-color-option" data-color="green" style="background: var(--green-bg);">
-                                    <div class="preview-color-label">Green</div>
-                                </div>
-                                <div class="preview-color-option" data-color="purple" style="background: var(--purple-bg);">
-                                    <div class="preview-color-label">Purple</div>
-                                </div>
-                                <div class="preview-color-option" data-color="white" style="background: var(--white-bg);">
-                                    <div class="preview-color-label">White</div>
-                                </div>
-                                <div class="preview-color-option" data-color="gold" style="background: var(--gold-bg);">
-                                    <div class="preview-color-label">Gold</div>
-                                </div>
-                                <div class="preview-color-option" data-color="silver" style="background: var(--silver-bg);">
-                                    <div class="preview-color-label">Silver</div>
-                                </div>
-                                <div class="preview-color-option" data-color="rosegold" style="background: var(--rosegold-bg);">
-                                    <div class="preview-color-label">Rose Gold</div>
-                                </div>
-                            </div>
-                        </div>
                         
-                        <div class="preview-details">
-                            <div class="selected-card-info">
-                                <div class="card-name" id="selectedCardName">Black Metal Card</div>
-                            </div>
-                            <div class="preview-price">£95</div>
-                        </div>
-                        
-                        <!-- Mobile Add to Cart Button -->
-                        <button class="preview-add-to-cart" id="previewAddToCartBtn">
-                            🛒 Add to Cart
-                        </button>
-                        
-                        <!-- Logo Upload Controls -->
-                        <div class="logo-upload-section">
-                            <div class="logo-upload-title">Upload Your Logo</div>
-                            <div class="upload-container">
-                                <input type="file" id="logoFileInput" accept="image/*">
-                                
-                                <div class="upload-actions">
-                                    <button class="upload-btn" id="uploadLogoBtn">
-                                        <span>📁</span> Upload Logo
-                                    </button>
-                                    <button class="clear-logo-btn" id="clearLogoBtn" disabled>
-                                        <span>🗑️</span> Clear Logo
-                                    </button>
-                                </div>
-                                
-                                <div class="logo-recommendation" style="margin-top: 15px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.75);">
-                                    Recommended: transparent PNG/SVG, <strong>1000×1000px+</strong>, centered with no extra padding.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Column: Desktop-only selection options -->
-                    <div class="selection-options">
-                        <!-- Metal Color Selection - Desktop version -->
+                        <!-- METAL COLOR SELECTION - NOW DIRECTLY BELOW THE CARD -->
                         <div class="metal-colors-section">
-                            <div class="metal-colors-title">Choose Metal Color</div>
+                            <div class="metal-colors-title">Choose Metal Type</div>
                             <div class="metal-colors-grid">
                                 <div class="metal-color-option selected" data-color="black" style="background: var(--black-bg);">
                                     <div class="color-label">Black</div>
@@ -3372,20 +3096,95 @@ section[id] {
                                 <div class="metal-color-option" data-color="rosegold" style="background: var(--rosegold-bg);">
                                     <div class="color-label">Rose Gold</div>
                                 </div>
+                                <div class="metal-color-option" data-color="custom" style="background: var(--red-bg);">
+                                    <div class="color-label">Custom</div>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Add to Cart Button - Desktop version -->
+                        
+                        <div class="preview-details">
+                            <div class="selected-card-info">
+                                <div class="card-name" id="selectedCardName">Black Metal Card</div>
+                                <div class="engraving-type" id="selectedEngravingType">Silver Engraving</div>
+                            </div>
+                            <div class="preview-price">£95</div>
+                        </div>
+                        
+                        <button class="clear-card-btn" id="clearCardBtn">
+                            <span>🗑️</span> Clear Card Preview
+                        </button>
+                        
                         <button class="add-to-cart-btn" id="addToCartBtn">
                             🛒 Add to Cart
                         </button>
+                    </div>
+
+                    <!-- Selection Options - Now in Single Column Below -->
+                    <div class="selection-options">
+                        <!-- Engraving Selection -->
+                        <div class="engraving-section">
+                            <div class="engraving-title">Choose Engraving</div>
+                            <div class="engraving-options">
+                                <div class="engraving-option selected" data-engraving="silver">
+                                    <div class="engraving-icon">⚪</div>
+                                    <div class="engraving-name">Silver Engraving</div>
+                                    <div class="engraving-price">No extra cost</div>
+                                </div>
+                                <div class="engraving-option" data-engraving="gold">
+                                    <div class="engraving-icon">⭐</div>
+                                    <div class="engraving-name">Gold Engraving</div>
+                                    <div class="engraving-price">No extra cost</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logo Upload -->
+                        <div class="logo-upload-section">
+                            <div class="logo-upload-title">Upload Your Logo</div>
+                            <div class="upload-container">
+                                <div class="upload-area" id="uploadArea">
+                                    <div class="upload-icon">📁</div>
+                                    <div class="upload-text">Click to upload your logo</div>
+                                    <div class="upload-subtext">Choose from camera roll or take a photo</div>
+                                    <div class="upload-subtext">PNG, JPG up to 10MB</div>
+                                    <div class="upload-hint">On mobile: Tap to choose from gallery or camera</div>
+                                </div>
+                                
+                                <input type="file" id="logoFileInput" accept="image/*">
+                                
+                                <div class="upload-actions">
+                                    <button class="upload-btn" id="uploadLogoBtn">
+                                        <span>📁</span> Upload Logo
+                                    </button>
+                                    <button class="clear-logo-btn" id="clearLogoBtn" disabled>
+                                        <span>🗑️</span> Clear Logo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logo Size Controls -->
+                        <div class="logo-size-section">
+                            <div class="logo-size-title">Adjust Logo Size</div>
+                            <div class="logo-size-controls">
+                                <div class="size-slider-container">
+                                    <input type="range" min="20" max="100" value="70" class="size-slider" id="logoSizeSlider">
+                                </div>
+                                <div class="size-value" id="logoSizeValue">70%</div>
+                                <div class="size-presets">
+                                    <button class="size-preset-btn" data-size="50">Small</button>
+                                    <button class="size-preset-btn active" data-size="70">Medium</button>
+                                    <button class="size-preset-btn" data-size="90">Large</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="whatsapp-help">
                     <h3 style="margin-bottom: 15px; font-size: 1.2rem;">Need help with your logo?</h3>
                     <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
-                        Send us your logo on WhatsApp and we'll create a custom mockup for you. Our design team can also help optimize your logo for the best results on metal cards.
+                        Send us your logo on WhatsApp and we'll create a custom mockup for you
                     </p>
                     <a href="https://wa.me/447754888841" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
                         <span>📞</span> Send Logo on WhatsApp
@@ -3469,23 +3268,17 @@ section[id] {
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
         let uploadedLogoGlobal = null;
-        let logoSize = 50; // Default logo size percentage
+        let logoSize = 70; // Default logo size percentage
         let currentEngravingData = null; // Store data for engraving modal
         let engravingQuantity = 1; // Default quantity for engraving modal
         let currentCarouselBackground = 'var(--carousel-black-bg)';
-
-        // Carousel background mapping
-        const carouselBackgroundMap = {
-            'black': 'var(--carousel-black-bg)',
-            'blue': 'var(--carousel-blue-bg)',
-            'green': 'var(--carousel-green-bg)',
-            'purple': 'var(--carousel-purple-bg)',
-            'custom': 'var(--carousel-red-bg)',
-            'white': 'var(--carousel-white-bg)',
-            'gold': 'var(--carousel-gold-bg)',
-            'silver': 'var(--carousel-silver-bg)',
-            'rosegold': 'var(--carousel-rosegold-bg)'
-        };
+        
+        // Carousel variables
+        let isCarouselCircular = false; // Standard carousel like wood page
+        let carouselStartX = 0;
+        let carouselCurrentX = 0;
+        let isDragging = false;
+        let dragThreshold = 50; // Minimum drag distance to trigger slide change
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3735,8 +3528,7 @@ section[id] {
                 button.addEventListener('click', (e) => {
                     const name = e.target.dataset.name;
                     const price = parseInt(e.target.dataset.price);
-                    // Open engraving modal instead of directly adding to cart
-                    openEngravingModal(name, price);
+                    addToCart(name, price);
                 });
             });
 
@@ -3760,12 +3552,12 @@ section[id] {
             updateCart();
         });
 
-        // IMPROVED ENGRAVING SELECTION MODAL WITH QUANTITY
-        const engravingOptionsModal = document.querySelectorAll('.engraving-option');
-        const confirmEngravingBtn = document.getElementById('confirmEngraving');
-        const cancelEngravingBtn = document.getElementById('cancelEngraving');
-        const closeEngravingBtn = document.getElementById('closeEngraving');
+        // ENGRAVING MODAL FUNCTIONALITY
+        const closeEngraving = document.getElementById('closeEngraving');
+        const cancelEngraving = document.getElementById('cancelEngraving');
+        const confirmEngraving = document.getElementById('confirmEngraving');
         const selectedMetalText = document.getElementById('selectedMetalText');
+        const engravingOptions = document.querySelectorAll('.engraving-option');
         const engravingTotalPrice = document.getElementById('engravingTotalPrice');
         const quantityDecrease = document.getElementById('quantityDecrease');
         const quantityIncrease = document.getElementById('quantityIncrease');
@@ -3785,15 +3577,12 @@ section[id] {
             updateEngravingPrice();
             
             // Reset engraving selection
-            engravingOptionsModal.forEach(option => option.classList.remove('selected'));
-            engravingOptionsModal[0].classList.add('selected');
+            engravingOptions.forEach(option => option.classList.remove('selected'));
+            engravingOptions[0].classList.add('selected');
             
             // Reset quantity presets
             quantityPresetBtns.forEach(btn => btn.classList.remove('active'));
             quantityPresetBtns[0].classList.add('active');
-            
-            // Enable confirm button
-            confirmEngravingBtn.disabled = false;
         }
 
         // Close engraving modal
@@ -3849,17 +3638,15 @@ section[id] {
         });
 
         // Engraving selection
-        engravingOptionsModal.forEach(option => {
+        engravingOptions.forEach(option => {
             option.addEventListener('click', () => {
-                engravingOptionsModal.forEach(opt => opt.classList.remove('selected'));
+                engravingOptions.forEach(opt => opt.classList.remove('selected'));
                 option.classList.add('selected');
-                selectedEngraving = option.dataset.engraving;
-                confirmEngravingBtn.disabled = false;
             });
         });
 
         // Confirm engraving selection
-        confirmEngravingBtn.addEventListener('click', () => {
+        confirmEngraving.addEventListener('click', () => {
             if (!currentEngravingData) return;
             
             const engravingType = document.querySelector('.engraving-option.selected').dataset.engraving;
@@ -3871,11 +3658,13 @@ section[id] {
         });
 
         // Close engraving modal
-        closeEngravingBtn.addEventListener('click', closeEngravingModal);
-        cancelEngravingBtn.addEventListener('click', closeEngravingModal);
+        closeEngraving.addEventListener('click', closeEngravingModal);
+        cancelEngraving.addEventListener('click', closeEngravingModal);
 
         // CUSTOM LOGO BUILDER
-        const metalColorOptions = document.querySelectorAll('.metal-color-option, .preview-color-option');
+        const metalColorOptions = document.querySelectorAll('.metal-color-option');
+        const customEngravingOptions = document.querySelectorAll('.engraving-option');
+        const uploadArea = document.getElementById('uploadArea');
         const logoFileInput = document.getElementById('logoFileInput');
         const uploadLogoBtn = document.getElementById('uploadLogoBtn');
         const clearLogoBtn = document.getElementById('clearLogoBtn');
@@ -3885,9 +3674,13 @@ section[id] {
         const previewCard = document.getElementById('previewCard');
         const cardCounter = document.getElementById('cardCounter');
         const selectedCardName = document.getElementById('selectedCardName');
+        const selectedEngravingType = document.getElementById('selectedEngravingType');
         const addToCartBtn = document.getElementById('addToCartBtn');
-        const previewAddToCartBtn = document.getElementById('previewAddToCartBtn');
+        const clearCardBtn = document.getElementById('clearCardBtn');
         const heroCard = document.getElementById('heroCard');
+        const logoSizeSlider = document.getElementById('logoSizeSlider');
+        const logoSizeValue = document.getElementById('logoSizeValue');
+        const sizePresetBtns = document.querySelectorAll('.size-preset-btn');
 
         // Metal type mapping
         const metalTypeMap = {
@@ -3895,11 +3688,17 @@ section[id] {
             'blue': 'Blue Metal Card',
             'green': 'Green Metal Card',
             'purple': 'Purple Metal Card',
-            'custom': 'Custom Metal Card',
             'white': 'White Metal Card',
             'gold': 'Gold Metal Card',
             'silver': 'Silver Metal Card',
-            'rosegold': 'Rose Gold Metal Card'
+            'rosegold': 'Rose Gold Metal Card',
+            'custom': 'Custom Metal Card'
+        };
+
+        // Engraving type mapping
+        const engravingTypeMap = {
+            'silver': 'Silver Engraving',
+            'gold': 'Gold Engraving'
         };
 
         // Background mapping
@@ -3908,14 +3707,28 @@ section[id] {
             'blue': 'var(--blue-bg)',
             'green': 'var(--green-bg)',
             'purple': 'var(--purple-bg)',
-            'custom': 'var(--red-bg)',
             'white': 'var(--white-bg)',
             'gold': 'var(--gold-bg)',
             'silver': 'var(--silver-bg)',
-            'rosegold': 'var(--rosegold-bg)'
+            'rosegold': 'var(--rosegold-bg)',
+            'custom': 'var(--red-bg)'
+        };
+
+        // Carousel background mapping
+        const carouselBackgroundMap = {
+            'black': 'var(--carousel-black-bg)',
+            'blue': 'var(--carousel-blue-bg)',
+            'green': 'var(--carousel-green-bg)',
+            'purple': 'var(--carousel-purple-bg)',
+            'white': 'var(--carousel-white-bg)',
+            'gold': 'var(--carousel-gold-bg)',
+            'silver': 'var(--carousel-silver-bg)',
+            'rosegold': 'var(--carousel-rosegold-bg)',
+            'custom': 'var(--carousel-red-bg)'
         };
 
         let selectedMetalColor = 'black';
+        let selectedEngravingTypeValue = 'silver';
 
         // Initialize custom logo builder
         function initCustomLogoBuilder() {
@@ -3929,18 +3742,22 @@ section[id] {
             
             // Update text
             selectedCardName.textContent = metalTypeMap[selectedMetalColor];
+            selectedEngravingType.textContent = engravingTypeMap[selectedEngravingTypeValue];
             
             // Update counter
             cardCounter.textContent = metalTypeMap[selectedMetalColor].split(' ')[0];
             
-            // Show/hide logo
+            // Show/hide logo and update size
             if (uploadedLogoGlobal) {
                 previewLogo.src = uploadedLogoGlobal;
                 previewLogo.classList.add('visible');
+                previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
+                clearCardBtn.disabled = false;
             } else {
                 previewLogo.classList.remove('visible');
                 previewPlaceholder.style.display = 'flex';
+                clearCardBtn.disabled = true;
             }
         }
 
@@ -3966,10 +3783,12 @@ section[id] {
                 
                 // Update preview display
                 previewLogo.classList.add('visible');
+                previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
                 
                 // Enable clear buttons
                 clearLogoBtn.disabled = false;
+                clearCardBtn.disabled = false;
                 
                 showNotification('Logo uploaded successfully!');
             };
@@ -3983,9 +3802,7 @@ section[id] {
         metalColorOptions.forEach(option => {
             option.addEventListener('click', () => {
                 // Remove selected class from all options
-                document.querySelectorAll('.metal-color-option.selected, .preview-color-option.selected').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
+                metalColorOptions.forEach(opt => opt.classList.remove('selected'));
                 
                 // Add selected class to clicked option
                 option.classList.add('selected');
@@ -4002,6 +3819,36 @@ section[id] {
                     option.style.transform = '';
                 }, 200);
             });
+        });
+
+        // Handle engraving selection
+        customEngravingOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options
+                customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
+                
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Update selected engraving
+                selectedEngravingTypeValue = option.dataset.engraving;
+                
+                // Update preview
+                updatePreview();
+                
+                // Visual feedback
+                option.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    option.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Click on upload area
+        uploadArea.addEventListener('click', () => {
+            if (!uploadedLogoGlobal) {
+                logoFileInput.click();
+            }
         });
 
         // Click on upload button
@@ -4024,23 +3871,94 @@ section[id] {
             previewPlaceholder.style.display = 'flex';
             logoFileInput.value = '';
             clearLogoBtn.disabled = true;
+            clearCardBtn.disabled = true;
             
             showNotification('Logo cleared');
         });
 
+        // Clear card button
+        clearCardBtn.addEventListener('click', () => {
+            // Reset to default black card
+            metalColorOptions.forEach(opt => opt.classList.remove('selected'));
+            document.querySelector('.metal-color-option[data-color="black"]').classList.add('selected');
+            selectedMetalColor = 'black';
+            
+            customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
+            document.querySelector('.engraving-option[data-engraving="silver"]').classList.add('selected');
+            selectedEngravingTypeValue = 'silver';
+            
+            // Clear logo if uploaded
+            if (uploadedLogoGlobal) {
+                previewLogo.src = '';
+                uploadedLogoGlobal = null;
+                previewLogo.classList.remove('visible');
+                previewPlaceholder.style.display = 'flex';
+                logoFileInput.value = '';
+                clearLogoBtn.disabled = true;
+                clearCardBtn.disabled = true;
+            }
+            
+            // Reset logo size
+            logoSize = 70;
+            logoSizeSlider.value = 70;
+            logoSizeValue.textContent = '70%';
+            sizePresetBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.size-preset-btn[data-size="70"]').classList.add('active');
+            
+            updatePreview();
+            showNotification('Card reset to default');
+        });
+
         // Add to cart from preview
-        function addToCartFromPreview() {
+        addToCartBtn.addEventListener('click', () => {
             const cardName = metalTypeMap[selectedMetalColor];
+            const engravingType = engravingTypeMap[selectedEngravingTypeValue];
+            const itemName = `${cardName} (${engravingType})`;
             
             // Open engraving modal with quantity selection
             openEngravingModal(cardName, 95);
-        }
+        });
 
-        // Desktop add to cart button
-        addToCartBtn.addEventListener('click', addToCartFromPreview);
-        
-        // Mobile add to cart button
-        previewAddToCartBtn.addEventListener('click', addToCartFromPreview);
+        // Logo size slider
+        logoSizeSlider.addEventListener('input', () => {
+            logoSize = parseInt(logoSizeSlider.value);
+            logoSizeValue.textContent = `${logoSize}%`;
+            
+            // Update size preset buttons
+            sizePresetBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Find closest preset
+            const presets = [50, 70, 90];
+            const closest = presets.reduce((prev, curr) => {
+                return Math.abs(curr - logoSize) < Math.abs(prev - logoSize) ? curr : prev;
+            });
+            
+            document.querySelector(`.size-preset-btn[data-size="${closest}"]`).classList.add('active');
+            
+            // Update logo size if uploaded
+            if (uploadedLogoGlobal) {
+                previewLogo.style.transform = `scale(${logoSize / 100})`;
+            }
+        });
+
+        // Size preset buttons
+        sizePresetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const size = parseInt(btn.dataset.size);
+                logoSize = size;
+                logoSizeSlider.value = size;
+                logoSizeValue.textContent = `${size}%`;
+                
+                // Update active state
+                sizePresetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update logo size if uploaded
+                if (uploadedLogoGlobal) {
+                    previewLogo.style.transform = `scale(${logoSize / 100})`;
+                }
+            });
+        });
 
         // Click on card to upload logo
         previewCard.addEventListener('click', () => {
@@ -4049,20 +3967,11 @@ section[id] {
             }
         });
 
-        // HERO CARD CLICK - REMOVED UPLOAD FUNCTIONALITY
-        heroCard.addEventListener('click', (e) => {
-            // No upload functionality for hero card
-            e.preventDefault();
-            // Scroll to custom logo section instead
-            const customLogoSection = document.getElementById('custom-logo');
-            if (customLogoSection) {
-                const navHeight = nav.offsetHeight;
-                const targetPosition = customLogoSection.offsetTop - navHeight;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
+        // HERO CARD CLICK TO UPLOAD - REMOVED
+        // Hero card now just shows the black metal card image
+        heroCard.addEventListener('click', () => {
+            // Removed upload functionality
+            // Card now only displays black metal card image
         });
 
         // Browse cards button
@@ -4109,69 +4018,28 @@ section[id] {
             });
         });
 
-        // CIRCULAR CAROUSEL FUNCTIONALITY WITH FIXED SWIPE SUPPORT
+        // CAROUSEL FUNCTIONALITY WITH SWIPE LIKE WOOD PAGE
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
         const carouselNext = document.getElementById('carouselNext');
         const carouselDots = document.getElementById('carouselDots');
-        
-        // Get all carousel cards (excluding clones)
-        let carouselCards = [];
-        const allCards = document.querySelectorAll('.metal-carousel-card');
-        allCards.forEach(card => {
-            if (!card.classList.contains('clone')) {
-                carouselCards.push(card);
-            }
-        });
+        const carouselCards = document.querySelectorAll('.metal-carousel-card');
+        const carouselWrapper = document.querySelector('.metal-carousel-wrapper');
 
         let currentSlide = 0;
         let cardsPerView = 3;
-        let totalSlides = carouselCards.length;
-        let isAnimating = false;
-        
-        // Swipe variables - SIMPLIFIED
-        let isDragging = false;
-        let startPos = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationId = null;
-        let dragThreshold = 50;
+        let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
 
-        // Initialize circular carousel
-        function initCircularCarousel() {
+        // Initialize carousel
+        function initCarousel() {
             updateCardsPerView();
-            createCircularDots();
-            setupCircularCards();
-            updateCircularCarousel();
+            createDots();
+            updateCarousel();
             updateCarouselBackground();
             
-            // Initialize swipe support
-            setupSwipeSupport();
-        }
-
-        // Setup circular cards by cloning first and last cards
-        function setupCircularCards() {
-            // Clear existing track
-            carouselTrack.innerHTML = '';
-            
-            // Clone last card and prepend
-            const lastCardClone = carouselCards[carouselCards.length - 1].cloneNode(true);
-            lastCardClone.classList.add('clone');
-            carouselTrack.appendChild(lastCardClone);
-            
-            // Add all original cards
-            carouselCards.forEach(card => {
-                carouselTrack.appendChild(card);
-            });
-            
-            // Clone first card and append
-            const firstCardClone = carouselCards[0].cloneNode(true);
-            firstCardClone.classList.add('clone');
-            carouselTrack.appendChild(firstCardClone);
-            
-            // Set initial position to show first original card
-            updateCarouselPosition();
+            // Add swipe functionality
+            addSwipeListeners();
         }
 
         // Update cards per view based on screen size
@@ -4183,10 +4051,14 @@ section[id] {
             } else {
                 cardsPerView = 3;
             }
+            totalSlides = Math.ceil(carouselCards.length / cardsPerView);
+            createDots();
+            updateCarousel();
+            updateCarouselBackground();
         }
 
-        // Create dots for circular carousel
-        function createCircularDots() {
+        // Create dots for carousel
+        function createDots() {
             carouselDots.innerHTML = '';
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('div');
@@ -4195,230 +4067,188 @@ section[id] {
                     dot.classList.add('active');
                 }
                 dot.addEventListener('click', () => {
-                    if (!isAnimating) {
-                        goToSlide(i);
-                    }
+                    currentSlide = i;
+                    updateCarousel();
+                    updateCarouselBackground();
                 });
                 carouselDots.appendChild(dot);
             }
         }
 
-        // Update carousel position
-        function updateCarouselPosition() {
-            const trackCards = document.querySelectorAll('.metal-carousel-card');
-            if (trackCards.length === 0) return;
-            
-            const cardWidth = trackCards[0].offsetWidth + 30;
-            const translateX = -(currentSlide + 1) * cardWidth;
-            
+        // Update carousel position with smooth animation
+        function updateCarousel() {
+            const cardWidth = carouselCards[0].offsetWidth + 30; // width + gap
+            const translateX = -currentSlide * cardsPerView * cardWidth;
             carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
             carouselTrack.style.transform = `translateX(${translateX}px)`;
-        }
-
-        // Update circular carousel
-        function updateCircularCarousel() {
-            updateCarouselPosition();
             
             // Update dots
             document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
             });
             
-            // Update carousel background
-            updateCarouselBackground();
-        }
-
-        // Go to specific slide
-        function goToSlide(slideIndex) {
-            if (isAnimating) return;
-            
-            isAnimating = true;
-            currentSlide = slideIndex;
-            updateCircularCarousel();
-            
-            setTimeout(() => {
-                isAnimating = false;
-                
-                // Check for circular wrap
-                const trackCards = document.querySelectorAll('.metal-carousel-card');
-                const cardWidth = trackCards[0].offsetWidth + 30;
-                
-                if (currentSlide === totalSlides - 1) {
-                    // If at last slide, jump to first without animation
-                    setTimeout(() => {
-                        currentSlide = 0;
-                        carouselTrack.style.transition = 'none';
-                        carouselTrack.style.transform = `translateX(-${cardWidth}px)`;
-                        
-                        // Force reflow
-                        carouselTrack.offsetHeight;
-                        
-                        // Restore transition
-                        carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                        updateCircularCarousel();
-                    }, 500);
-                } else if (currentSlide === 0) {
-                    // If at first slide and going backward, jump to last
-                    setTimeout(() => {
-                        currentSlide = totalSlides - 1;
-                        carouselTrack.style.transition = 'none';
-                        carouselTrack.style.transform = `translateX(-${(totalSlides) * cardWidth}px)`;
-                        
-                        // Force reflow
-                        carouselTrack.offsetHeight;
-                        
-                        // Restore transition
-                        carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                        updateCircularCarousel();
-                    }, 500);
-                }
-            }, 500);
-        }
-
-        // Next slide
-        function nextSlide() {
-            if (isAnimating) return;
-            const nextIndex = (currentSlide + 1) % totalSlides;
-            goToSlide(nextIndex);
-        }
-
-        // Previous slide
-        function prevSlide() {
-            if (isAnimating) return;
-            const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
-            goToSlide(prevIndex);
+            // Update navigation buttons
+            carouselPrev.classList.toggle('disabled', !isCarouselCircular && currentSlide === 0);
+            carouselNext.classList.toggle('disabled', !isCarouselCircular && currentSlide >= totalSlides - 1);
         }
 
         // Update carousel background based on current slide
         function updateCarouselBackground() {
-            // Get the current slide's metal type
-            const metalType = carouselCards[currentSlide].dataset.metal;
-            const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
-            
-            if (newBackground !== currentCarouselBackground) {
-                carouselSection.style.background = newBackground;
-                currentCarouselBackground = newBackground;
+            // Get the first card in the current slide
+            const firstCardIndex = currentSlide * cardsPerView;
+            if (carouselCards[firstCardIndex]) {
+                const metalType = carouselCards[firstCardIndex].dataset.metal;
+                const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
+                
+                if (newBackground !== currentCarouselBackground) {
+                    carouselSection.style.background = newBackground;
+                    currentCarouselBackground = newBackground;
+                }
             }
         }
 
-        // FIXED SWIPE SUPPORT FOR MOBILE CAROUSEL
-        function setupSwipeSupport() {
+        // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
+        // Function to update carousel background based on hovered card
+        function updateCarouselBackgroundOnHover(metalType) {
+            const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
+            if (newBackground !== currentCarouselBackground) {
+                carouselSection.style.background = newBackground;
+            }
+        }
+
+        // Function to reset carousel background to current slide
+        function resetCarouselBackgroundToCurrent() {
+            updateCarouselBackground();
+        }
+
+        // Add hover event listeners to carousel cards
+        carouselCards.forEach(card => {
+            const metalType = card.dataset.metal;
+            
+            card.addEventListener('mouseenter', () => {
+                updateCarouselBackgroundOnHover(metalType);
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                resetCarouselBackgroundToCurrent();
+            });
+            
+            // For touch devices
+            card.addEventListener('touchstart', () => {
+                updateCarouselBackgroundOnHover(metalType);
+            });
+            
+            card.addEventListener('touchend', () => {
+                setTimeout(resetCarouselBackgroundToCurrent, 1000);
+            });
+        });
+
+        // Next slide
+        function nextSlide() {
+            if (isCarouselCircular) {
+                currentSlide = (currentSlide + 1) % totalSlides;
+            } else if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+            }
+            updateCarousel();
+            updateCarouselBackground();
+        }
+
+        // Previous slide
+        function prevSlide() {
+            if (isCarouselCircular) {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            } else if (currentSlide > 0) {
+                currentSlide--;
+            }
+            updateCarousel();
+            updateCarouselBackground();
+        }
+
+        // SWIPE FUNCTIONALITY
+        function addSwipeListeners() {
             let startX = 0;
             let currentX = 0;
             let isSwiping = false;
-            let dragStartTime = 0;
             
-            // Touch events
-            carouselTrack.addEventListener('touchstart', handleTouchStart, { passive: false });
-            carouselTrack.addEventListener('touchmove', handleTouchMove, { passive: false });
-            carouselTrack.addEventListener('touchend', handleTouchEnd);
-            
-            // Mouse events for desktop testing
-            carouselTrack.addEventListener('mousedown', handleMouseStart);
-            carouselTrack.addEventListener('mousemove', handleMouseMove);
-            carouselTrack.addEventListener('mouseup', handleMouseEnd);
-            carouselTrack.addEventListener('mouseleave', handleMouseEnd);
-            
-            // Prevent image drag
-            carouselTrack.querySelectorAll('img').forEach(img => {
-                img.addEventListener('dragstart', (e) => e.preventDefault());
+            // Mouse events
+            carouselWrapper.addEventListener('mousedown', (e) => {
+                startSwipe(e.clientX);
             });
             
-            function handleTouchStart(e) {
-                if (isAnimating) return;
-                startX = e.touches[0].clientX;
-                currentX = startX;
+            carouselWrapper.addEventListener('mousemove', (e) => {
+                if (isSwiping) {
+                    handleSwipeMove(e.clientX);
+                }
+            });
+            
+            carouselWrapper.addEventListener('mouseup', () => {
+                endSwipe();
+            });
+            
+            carouselWrapper.addEventListener('mouseleave', () => {
+                if (isSwiping) {
+                    endSwipe();
+                }
+            });
+            
+            // Touch events
+            carouselWrapper.addEventListener('touchstart', (e) => {
+                startSwipe(e.touches[0].clientX);
+            }, { passive: true });
+            
+            carouselWrapper.addEventListener('touchmove', (e) => {
+                if (isSwiping) {
+                    handleSwipeMove(e.touches[0].clientX);
+                }
+            }, { passive: true });
+            
+            carouselWrapper.addEventListener('touchend', () => {
+                endSwipe();
+            });
+            
+            function startSwipe(x) {
+                startX = x;
+                currentX = x;
                 isSwiping = true;
-                dragStartTime = Date.now();
                 carouselTrack.style.transition = 'none';
-                carouselTrack.classList.add('grabbing');
             }
             
-            function handleTouchMove(e) {
-                if (!isSwiping || isAnimating) return;
-                e.preventDefault();
-                currentX = e.touches[0].clientX;
-                const diff = currentX - startX;
+            function handleSwipeMove(x) {
+                if (!isSwiping) return;
                 
-                // Update track position while dragging
-                const trackCards = document.querySelectorAll('.metal-carousel-card');
-                if (trackCards.length === 0) return;
-                const cardWidth = trackCards[0].offsetWidth + 30;
-                const basePosition = -(currentSlide + 1) * cardWidth;
-                const dragOffset = diff;
-                carouselTrack.style.transform = `translateX(${basePosition + dragOffset}px)`;
+                currentX = x;
+                const diff = startX - currentX;
+                
+                // Move track while dragging
+                const cardWidth = carouselCards[0].offsetWidth + 30;
+                const baseTranslate = -currentSlide * cardsPerView * cardWidth;
+                const dragTranslate = -diff;
+                carouselTrack.style.transform = `translateX(${baseTranslate + dragTranslate}px)`;
             }
             
-            function handleTouchEnd() {
-                if (!isSwiping || isAnimating) return;
-                isSwiping = false;
-                carouselTrack.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                carouselTrack.classList.remove('grabbing');
+            function endSwipe() {
+                if (!isSwiping) return;
                 
-                const diff = currentX - startX;
-                const dragDuration = Date.now() - dragStartTime;
-                const velocity = Math.abs(diff) / dragDuration;
+                const diff = startX - currentX;
+                const cardWidth = carouselCards[0].offsetWidth + 30;
+                const threshold = cardWidth * 0.2; // 20% of card width threshold
                 
-                // Determine if swipe was significant enough
-                if (Math.abs(diff) > dragThreshold || velocity > 0.3) {
+                // Determine if swipe is significant enough to change slide
+                if (Math.abs(diff) > threshold) {
                     if (diff > 0) {
-                        prevSlide();
-                    } else {
+                        // Swipe left - next slide
                         nextSlide();
+                    } else {
+                        // Swipe right - previous slide
+                        prevSlide();
                     }
                 } else {
-                    // Return to original position
-                    updateCircularCarousel();
+                    // Return to current slide
+                    updateCarousel();
                 }
-            }
-            
-            // Mouse handlers (for desktop testing)
-            function handleMouseStart(e) {
-                if (isAnimating) return;
-                startX = e.clientX;
-                currentX = startX;
-                isSwiping = true;
-                dragStartTime = Date.now();
-                carouselTrack.style.transition = 'none';
-                carouselTrack.classList.add('grabbing');
-                e.preventDefault();
-            }
-            
-            function handleMouseMove(e) {
-                if (!isSwiping || isAnimating) return;
-                currentX = e.clientX;
-                const diff = currentX - startX;
                 
-                // Update track position while dragging
-                const trackCards = document.querySelectorAll('.metal-carousel-card');
-                if (trackCards.length === 0) return;
-                const cardWidth = trackCards[0].offsetWidth + 30;
-                const basePosition = -(currentSlide + 1) * cardWidth;
-                const dragOffset = diff;
-                carouselTrack.style.transform = `translateX(${basePosition + dragOffset}px)`;
-            }
-            
-            function handleMouseEnd() {
-                if (!isSwiping || isAnimating) return;
                 isSwiping = false;
-                carouselTrack.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                carouselTrack.classList.remove('grabbing');
-                
-                const diff = currentX - startX;
-                const dragDuration = Date.now() - dragStartTime;
-                const velocity = Math.abs(diff) / dragDuration;
-                
-                // Determine if swipe was significant enough
-                if (Math.abs(diff) > dragThreshold || velocity > 0.3) {
-                    if (diff > 0) {
-                        prevSlide();
-                    } else {
-                        nextSlide();
-                    }
-                } else {
-                    // Return to original position
-                    updateCircularCarousel();
-                }
             }
         }
 
@@ -4428,15 +4258,15 @@ section[id] {
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal Page loaded with enhanced features:');
-            console.log('1. CIRCULAR CAROUSEL with FIXED swipe support ✓');
-            console.log('2. MOBILE-FIRST "See It With Your Logo" section ✓');
-            console.log('3. Colors directly below preview on mobile ✓');
-            console.log('4. Performance optimizations applied ✓');
-            console.log('5. WhatsApp links to +447754888841 ✓');
-            console.log('6. All prices set to £95 ✓');
+            console.log('Metal Page transformed to match Wood Page layout:');
+            console.log('1. "See It With Your Logo" section now mobile-optimized like wood page ✓');
+            console.log('2. Metal colors directly below card preview on mobile ✓');
+            console.log('3. Carousel changed to standard (not circular) like wood page ✓');
+            console.log('4. Engraving modal updated to match wood page style ✓');
+            console.log('5. All prices set to £95 ✓');
+            console.log('6. Hero card upload overlay removed ✓');
             
-            initCircularCarousel();
+            initCarousel();
             updateCart();
             
             // Add highlight style for selected metal text
@@ -4448,7 +4278,7 @@ section[id] {
                     text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
                 }
                 
-                /* Ensure images display properly */
+                /* Ensure WebP images display properly */
                 .webp-container {
                     display: flex;
                     align-items: center;
@@ -4466,11 +4296,6 @@ section[id] {
                     box-shadow: none;
                     background: transparent;
                 }
-                
-                /* Hide clone cards from screen readers */
-                .metal-carousel-card.clone {
-                    visibility: visible;
-                }
             `;
             document.head.appendChild(style);
         });
@@ -4478,10 +4303,6 @@ section[id] {
         // Update carousel on window resize
         window.addEventListener('resize', () => {
             updateCardsPerView();
-            // Re-initialize carousel on resize to handle responsive changes
-            setTimeout(() => {
-                initCircularCarousel();
-            }, 100);
         });
     </script>
 </body>
