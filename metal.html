@@ -3143,7 +3143,49 @@ section[id] {
 
                     <!-- Selection Options - Now in Single Column Below -->
                     <div class="selection-options">
-<div class="logo-size-controls">
+                        <!-- Engraving Selection Section -->
+                        <div class="engraving-section">
+                            <div class="engraving-title">Choose Engraving Color</div>
+                            <div class="engraving-options">
+                                <div class="engraving-option selected" data-engraving="silver">
+                                    <div class="engraving-icon">⚪</div>
+                                    <div class="engraving-name">Silver Engraving</div>
+                                    <div class="engraving-price">No extra cost</div>
+                                </div>
+                                <div class="engraving-option" data-engraving="gold">
+                                    <div class="engraving-icon">⭐</div>
+                                    <div class="engraving-name">Gold Engraving</div>
+                                    <div class="engraving-price">No extra cost</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logo Upload Section -->
+                        <div class="logo-upload-section">
+                            <div class="logo-upload-title">Upload Your Logo</div>
+                            <div class="upload-container">
+                                <div class="upload-area" id="uploadArea">
+                                    <div class="upload-icon">📁</div>
+                                    <div class="upload-text">Drag & drop your logo here</div>
+                                    <div class="upload-subtext">or click to browse files</div>
+                                    <div class="upload-hint">PNG, JPG up to 10MB</div>
+                                </div>
+                                <input type="file" id="logoFileInput" accept="image/*">
+                                <div class="upload-actions">
+                                    <button class="upload-btn" id="uploadLogoBtn">
+                                        <span>📁</span> Upload Logo
+                                    </button>
+                                    <button class="clear-logo-btn" id="clearLogoBtn" disabled>
+                                        <span>🗑️</span> Clear Logo
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Logo Size Controls -->
+                        <div class="logo-size-section">
+                            <div class="logo-size-title">Adjust Logo Size</div>
+                            <div class="logo-size-controls">
                                 <div class="size-slider-container">
                                     <input type="range" min="20" max="100" value="70" class="size-slider" id="logoSizeSlider">
                                 </div>
@@ -3657,6 +3699,9 @@ section[id] {
         const heroCard = document.getElementById('heroCard');
         const logoScaleSlider = document.getElementById('logoScaleSlider');
         const logoScaleValue = document.getElementById('logoScaleValue');
+        const logoSizeSlider = document.getElementById('logoSizeSlider');
+        const logoSizeValue = document.getElementById('logoSizeValue');
+        const sizePresetBtns = document.querySelectorAll('.size-preset-btn');
 
         // Metal type mapping
         const metalTypeMap = {
@@ -3732,10 +3777,12 @@ section[id] {
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
                 clearCardBtn.disabled = false;
+                clearLogoBtn.disabled = false;
             } else {
                 previewLogo.classList.remove('visible');
                 previewPlaceholder.style.display = 'flex';
                 clearCardBtn.disabled = true;
+                clearLogoBtn.disabled = true;
             }
         }
 
@@ -3889,7 +3936,7 @@ section[id] {
             logoSize = 100;
             if (logoScaleSlider) logoScaleSlider.value = 100;
             if (logoScaleValue) logoScaleValue.textContent = '100%';
-updatePreview();
+            updatePreview();
             showNotification('Card reset to default');
         });
 
@@ -3903,10 +3950,21 @@ updatePreview();
             openEngravingModal(cardName, 95);
         });
 
-        // Logo size slider
-        logoSizeSlider.addEventListener('input', () => {
+        // Logo scale slider (0-200)
+        logoScaleSlider.addEventListener('input', () => {
             logoSize = parseInt(logoScaleSlider.value);
             logoScaleValue.textContent = `${logoSize}%`;
+            
+            // Update logo size if uploaded
+            if (uploadedLogoGlobal) {
+                previewLogo.style.transform = `scale(${logoSize / 100})`;
+            }
+        });
+
+        // Logo size slider (20-100)
+        logoSizeSlider.addEventListener('input', () => {
+            logoSize = parseInt(logoSizeSlider.value);
+            logoSizeValue.textContent = `${logoSize}%`;
             
             // Update size preset buttons
             sizePresetBtns.forEach(btn => btn.classList.remove('active'));
@@ -3924,7 +3982,31 @@ updatePreview();
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
             }
         });
-});
+
+        // Size preset buttons
+        sizePresetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const size = parseInt(btn.dataset.size);
+                logoSize = size;
+                logoSizeSlider.value = size;
+                logoSizeValue.textContent = `${size}%`;
+                
+                // Update logo scale slider to match
+                if (logoScaleSlider) {
+                    logoScaleSlider.value = size;
+                    logoScaleValue.textContent = `${size}%`;
+                }
+                
+                // Update active state
+                sizePresetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update logo size if uploaded
+                if (uploadedLogoGlobal) {
+                    previewLogo.style.transform = `scale(${size / 100})`;
+                }
+            });
+        });
 
         // Click on card to upload logo
         previewCard.addEventListener('click', () => {
@@ -4327,6 +4409,7 @@ updatePreview();
             
             initCarousel();
             updateCart();
+            initCustomLogoBuilder();
             
             // Add highlight style for selected metal text
             const style = document.createElement('style');
