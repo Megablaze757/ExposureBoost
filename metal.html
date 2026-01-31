@@ -2009,101 +2009,6 @@ section[id] {
     width: 100%;
 }
 
-/* Logo Size Controls */
-.logo-size-section {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-    order: 4;
-}
-
-.logo-size-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.logo-size-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.size-slider-container {
-    width: 100%;
-}
-
-.size-slider {
-    width: 100%;
-    height: 8px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: rgba(224, 191, 184, 0.2);
-    border-radius: 4px;
-    outline: none;
-}
-
-.size-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--rose-gold-light);
-    cursor: pointer;
-    border: 3px solid var(--white);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.size-slider::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--rose-gold-light);
-    cursor: pointer;
-    border: 3px solid var(--white);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.size-value {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--rose-gold-light);
-    text-align: center;
-    margin-top: 10px;
-}
-
-.size-presets {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.size-preset-btn {
-    padding: 10px;
-    background: rgba(224, 191, 184, 0.1);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    border-radius: 8px;
-    color: var(--white);
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.size-preset-btn:hover {
-    background: rgba(224, 191, 184, 0.2);
-}
-
-.size-preset-btn.active {
-    background: var(--rose-gold-gradient);
-    border-color: var(--rose-gold-light);
-}
-
 /* Add to Cart Button */
 .add-to-cart-btn {
     width: 100%;
@@ -2155,7 +2060,6 @@ section[id] {
     .metal-colors-section,
     .engraving-section,
     .logo-upload-section,
-    .logo-size-section,
     .add-to-cart-btn,
     .whatsapp-help {
         order: 0;
@@ -3181,22 +3085,6 @@ section[id] {
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Logo Size Controls -->
-                        <div class="logo-size-section">
-                            <div class="logo-size-title">Adjust Logo Size</div>
-                            <div class="logo-size-controls">
-                                <div class="size-slider-container">
-                                    <input type="range" min="20" max="100" value="70" class="size-slider" id="logoSizeSlider">
-                                </div>
-                                <div class="size-value" id="logoSizeValue">70%</div>
-                                <div class="size-presets">
-                                    <button class="size-preset-btn" data-size="50">Small</button>
-                                    <button class="size-preset-btn active" data-size="70">Medium</button>
-                                    <button class="size-preset-btn" data-size="90">Large</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -3699,9 +3587,6 @@ section[id] {
         const heroCard = document.getElementById('heroCard');
         const logoScaleSlider = document.getElementById('logoScaleSlider');
         const logoScaleValue = document.getElementById('logoScaleValue');
-        const logoSizeSlider = document.getElementById('logoSizeSlider');
-        const logoSizeValue = document.getElementById('logoSizeValue');
-        const sizePresetBtns = document.querySelectorAll('.size-preset-btn');
 
         // Metal type mapping
         const metalTypeMap = {
@@ -3959,53 +3844,6 @@ section[id] {
             if (uploadedLogoGlobal) {
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
             }
-        });
-
-        // Logo size slider (20-100)
-        logoSizeSlider.addEventListener('input', () => {
-            logoSize = parseInt(logoSizeSlider.value);
-            logoSizeValue.textContent = `${logoSize}%`;
-            
-            // Update size preset buttons
-            sizePresetBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Find closest preset
-            const presets = [50, 70, 90];
-            const closest = presets.reduce((prev, curr) => {
-                return Math.abs(curr - logoSize) < Math.abs(prev - logoSize) ? curr : prev;
-            });
-            
-            document.querySelector(`.size-preset-btn[data-size="${closest}"]`).classList.add('active');
-            
-            // Update logo size if uploaded
-            if (uploadedLogoGlobal) {
-                previewLogo.style.transform = `scale(${logoSize / 100})`;
-            }
-        });
-
-        // Size preset buttons
-        sizePresetBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const size = parseInt(btn.dataset.size);
-                logoSize = size;
-                logoSizeSlider.value = size;
-                logoSizeValue.textContent = `${size}%`;
-                
-                // Update logo scale slider to match
-                if (logoScaleSlider) {
-                    logoScaleSlider.value = size;
-                    logoScaleValue.textContent = `${size}%`;
-                }
-                
-                // Update active state
-                sizePresetBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Update logo size if uploaded
-                if (uploadedLogoGlobal) {
-                    previewLogo.style.transform = `scale(${size / 100})`;
-                }
-            });
         });
 
         // Click on card to upload logo
