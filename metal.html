@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1847,6 +1846,54 @@ section[id] {
     color: rgba(255, 255, 255, 0.8);
 }
 
+/* Custom Color Picker */
+.color-picker-container {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(224, 191, 184, 0.3);
+}
+
+.color-picker-container.show {
+    display: block;
+}
+
+.color-picker-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.custom-color-picker {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid rgba(224, 191, 184, 0.5);
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    -webkit-appearance: none;
+}
+
+.custom-color-picker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.custom-color-picker::-webkit-color-swatch {
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.custom-color-picker::-moz-color-swatch {
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
 /* Logo Upload Section */
 .logo-upload-section {
     background: rgba(224, 191, 184, 0.1);
@@ -3027,6 +3074,11 @@ section[id] {
                                     <div class="color-label">Custom</div>
                                 </div>
                             </div>
+                            <!-- Custom Color Picker Container -->
+                            <div class="color-picker-container" id="colorPickerContainer">
+                                <div class="color-picker-title">Pick Any Color</div>
+                                <input type="color" class="custom-color-picker" id="customColorPicker" value="#ff0000">
+                            </div>
                         </div>
                         
                         <div class="preview-details">
@@ -3046,26 +3098,23 @@ section[id] {
                         </button>
                     </div>
 
-                   
-                        <!-- Logo Upload Section -->
-                        <div class="logo-upload-section">
-                            <div class="logo-upload-title">Upload Your Logo</div>
-                            <div class="upload-container">
-                                <div class="upload-area" id="uploadArea">
-                                    <div class="upload-icon">📁</div>
-                                    <div class="upload-text">Drag & drop your logo here</div>
-                                    <div class="upload-subtext">or click to browse files</div>
-                                    <div class="upload-hint">PNG, JPG up to 10MB</div>
-                                </div>
-                                <input type="file" id="logoFileInput" accept="image/*">
-                                <div class="upload-actions">
-                                    <button class="upload-btn" id="uploadLogoBtn">
-                                        <span>📁</span> Upload Logo
-                                    </button>
-                                    <button class="clear-logo-btn" id="clearLogoBtn" disabled>
-                                        <span>🗑️</span> Clear Logo
-                                    </button>
-                                </div>
+                    <!-- Logo Upload Section (REMOVED THE "UPLOAD YOUR LOGO" BOX) -->
+                    <!-- The upload functionality is now only available through clicking the preview card -->
+                    <!-- This maintains the upload button functionality within the card without the separate box -->
+
+                    <!-- Engraving Selection Section -->
+                    <div class="engraving-section">
+                        <div class="engraving-title">Select Engraving Color</div>
+                        <div class="engraving-options">
+                            <div class="engraving-option selected" data-engraving="silver">
+                                <div class="engraving-icon">⚪</div>
+                                <div class="engraving-name">Silver Engraving</div>
+                                <div class="engraving-price">No extra cost</div>
+                            </div>
+                            <div class="engraving-option" data-engraving="gold">
+                                <div class="engraving-icon">⭐</div>
+                                <div class="engraving-name">Gold Engraving</div>
+                                <div class="engraving-price">No extra cost</div>
                             </div>
                         </div>
                     </div>
@@ -3554,10 +3603,6 @@ section[id] {
         // CUSTOM LOGO BUILDER
         const metalColorOptions = document.querySelectorAll('.metal-color-option');
         const customEngravingOptions = document.querySelectorAll('.engraving-option');
-        const uploadArea = document.getElementById('uploadArea');
-        const logoFileInput = document.getElementById('logoFileInput');
-        const uploadLogoBtn = document.getElementById('uploadLogoBtn');
-        const clearLogoBtn = document.getElementById('clearLogoBtn');
         const previewLogo = document.getElementById('previewLogo');
         const previewPlaceholder = document.getElementById('previewPlaceholder');
         const previewCardInner = document.getElementById('previewCardInner');
@@ -3570,6 +3615,8 @@ section[id] {
         const heroCard = document.getElementById('heroCard');
         const logoScaleSlider = document.getElementById('logoScaleSlider');
         const logoScaleValue = document.getElementById('logoScaleValue');
+        const colorPickerContainer = document.getElementById('colorPickerContainer');
+        const customColorPicker = document.getElementById('customColorPicker');
 
         // Metal type mapping
         const metalTypeMap = {
@@ -3629,7 +3676,13 @@ section[id] {
         // Update preview
         function updatePreview() {
             // Update card background
-            previewCardInner.style.background = metalBackgroundMap[selectedMetalColor];
+            if (selectedMetalColor === 'custom') {
+                // For custom color, use the picked color
+                const customColor = customColorPicker.value;
+                previewCardInner.style.background = `linear-gradient(135deg, ${customColor}80, ${customColor})`;
+            } else {
+                previewCardInner.style.background = metalBackgroundMap[selectedMetalColor];
+            }
             
             // Update text
             selectedCardName.textContent = metalTypeMap[selectedMetalColor];
@@ -3645,12 +3698,10 @@ section[id] {
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
                 clearCardBtn.disabled = false;
-                clearLogoBtn.disabled = false;
             } else {
                 previewLogo.classList.remove('visible');
                 previewPlaceholder.style.display = 'flex';
                 clearCardBtn.disabled = true;
-                clearLogoBtn.disabled = true;
             }
         }
 
@@ -3679,8 +3730,7 @@ section[id] {
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
                 
-                // Enable clear buttons
-                clearLogoBtn.disabled = false;
+                // Enable clear button
                 clearCardBtn.disabled = false;
                 
                 // Update hero card if needed
@@ -3708,6 +3758,13 @@ section[id] {
                 // Update selected color
                 selectedMetalColor = option.dataset.color;
                 
+                // Show/hide color picker
+                if (selectedMetalColor === 'custom') {
+                    colorPickerContainer.classList.add('show');
+                } else {
+                    colorPickerContainer.classList.remove('show');
+                }
+                
                 // Update preview
                 updatePreview();
                 
@@ -3717,6 +3774,13 @@ section[id] {
                     option.style.transform = '';
                 }, 200);
             });
+        });
+
+        // Handle custom color picker change
+        customColorPicker.addEventListener('input', () => {
+            if (selectedMetalColor === 'custom') {
+                updatePreview();
+            }
         });
 
         // Handle engraving selection
@@ -3742,49 +3806,13 @@ section[id] {
             });
         });
 
-        // Click on upload area
-        uploadArea.addEventListener('click', () => {
-            if (!uploadedLogoGlobal) {
-                logoFileInput.click();
-            }
-        });
-
-        // Click on upload button
-        uploadLogoBtn.addEventListener('click', () => {
-            logoFileInput.click();
-        });
-
-        // File input change
-        logoFileInput.addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                handleLogoUpload(e.target.files[0]);
-            }
-        });
-
-        // Clear logo button
-        clearLogoBtn.addEventListener('click', () => {
-            previewLogo.src = '';
-            uploadedLogoGlobal = null;
-            previewLogo.classList.remove('visible');
-            previewPlaceholder.style.display = 'flex';
-            logoFileInput.value = '';
-            clearLogoBtn.disabled = true;
-            clearCardBtn.disabled = true;
-            
-            // Reset hero card image
-            if (heroCard) {
-                heroCard.querySelector('img').src = 'newblack.webp';
-            }
-            
-            showNotification('Logo cleared');
-        });
-
         // Clear card button
         clearCardBtn.addEventListener('click', () => {
             // Reset to default black card
             metalColorOptions.forEach(opt => opt.classList.remove('selected'));
             document.querySelector('.metal-color-option[data-color="black"]').classList.add('selected');
             selectedMetalColor = 'black';
+            colorPickerContainer.classList.remove('show');
             
             customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
             document.querySelector('.engraving-option[data-engraving="silver"]').classList.add('selected');
@@ -3796,8 +3824,6 @@ section[id] {
                 uploadedLogoGlobal = null;
                 previewLogo.classList.remove('visible');
                 previewPlaceholder.style.display = 'flex';
-                logoFileInput.value = '';
-                clearLogoBtn.disabled = true;
                 clearCardBtn.disabled = true;
             }
             // Reset logo scale
@@ -3832,7 +3858,22 @@ section[id] {
         // Click on card to upload logo
         previewCard.addEventListener('click', () => {
             if (!uploadedLogoGlobal) {
-                logoFileInput.click();
+                // Create a file input element
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*';
+                fileInput.style.display = 'none';
+                
+                fileInput.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        handleLogoUpload(e.target.files[0]);
+                    }
+                    // Clean up
+                    document.body.removeChild(fileInput);
+                });
+                
+                document.body.appendChild(fileInput);
+                fileInput.click();
             }
         });
 
@@ -3887,7 +3928,7 @@ section[id] {
             });
         });
 
-        // CAROUSEL FUNCTIONALITY WITH CIRCULAR SCROLLING
+        // CAROUSEL FUNCTIONALITY WITH CIRCULAR SCROLLING (NO AUTO-SCROLL)
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
@@ -4217,16 +4258,10 @@ section[id] {
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal Page loaded with enhanced features:');
-            console.log('1. CIRCULAR CAROUSEL with seamless infinite scrolling ✓');
-            console.log('2. MOBILE OPTIMIZED: EXTRA SMALL metal color buttons directly below card ✓');
-            console.log('3. Single column mobile layout for custom logo section ✓');
-            console.log('4. Carousel background changes on card hover ✓');
-            console.log('5. WhatsApp links updated to +447754888841 ✓');
-            console.log('6. All prices set to £95 ✓');
-            console.log('7. Hero card upload overlay removed - now just shows black metal card ✓');
-            console.log('8. Circular dots navigation ✓');
-            console.log('9. Smooth swipe functionality ✓');
+            console.log('Metal Page loaded with requested changes:');
+            console.log('1. REMOVED: "Upload your logo" box (upload still works via card click) ✓');
+            console.log('2. ADDED: Color picker for Custom color option ✓');
+            console.log('3. DISABLED: Auto-scroll for carousel (manual only) ✓');
             
             initCarousel();
             updateCart();
