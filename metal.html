@@ -654,7 +654,6 @@ section[id] {
     align-items: center;
     padding: 0;
     position: relative;
-    cursor: pointer;
     transition: transform 0.3s ease;
 }
 
@@ -667,50 +666,6 @@ section[id] {
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
-}
-
-/* Hero card upload overlay */
-.hero-card-upload-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 15, 15, 0.85);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 20px;
-    pointer-events: none;
-}
-
-.hero-card:hover .hero-card-upload-overlay {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.hero-upload-icon {
-    font-size: 2.5rem;
-    color: var(--rose-gold-light);
-    margin-bottom: 15px;
-}
-
-.hero-upload-text {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    text-align: center;
-    margin-bottom: 8px;
-}
-
-.hero-upload-subtext {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-    text-align: center;
 }
 
 .hero-text {
@@ -2686,13 +2641,8 @@ section[id] {
                 <h1 class="hero-title">Premium Metal NFC Cards</h1>
                 
                 <div class="hero-card-container">
-                    <div class="hero-card" id="heroCard">
-                        <img src="newblack.webp" alt="Black Metal NFC Card" id="heroCardImage">
-                        <div class="hero-card-upload-overlay" id="heroCardOverlay">
-                            <div class="hero-upload-icon">📁</div>
-                            <div class="hero-upload-text">Click to upload your logo</div>
-                            <div class="hero-upload-subtext">PNG, JPG up to 10MB</div>
-                        </div>
+                    <div class="hero-card">
+                        <img src="newblack.webp" alt="Black Metal NFC Card">
                     </div>
                 </div>
 
@@ -2986,7 +2936,6 @@ section[id] {
                         <div class="preview-details">
                             <div class="selected-card-info">
                                 <div class="card-name" id="selectedCardName">Black Metal Card</div>
-                                <!-- Removed engraving type display -->
                             </div>
                             <div class="preview-price">£95</div>
                         </div>
@@ -3490,9 +3439,6 @@ section[id] {
         const selectedCardName = document.getElementById('selectedCardName');
         const addToCartBtn = document.getElementById('addToCartBtn');
         const clearCardBtn = document.getElementById('clearCardBtn');
-        const heroCard = document.getElementById('heroCard');
-        const heroCardImage = document.getElementById('heroCardImage');
-        const heroCardOverlay = document.getElementById('heroCardOverlay');
         const logoScaleSlider = document.getElementById('logoScaleSlider');
         const logoScaleValue = document.getElementById('logoScaleValue');
         const colorPickerContainer = document.getElementById('colorPickerContainer');
@@ -3607,11 +3553,6 @@ section[id] {
                 // Enable clear button
                 clearCardBtn.disabled = false;
                 
-                // Update hero card image
-                if (heroCardImage) {
-                    heroCardImage.src = uploadedLogoGlobal;
-                }
-                
                 showNotification('Logo uploaded successfully!');
             };
             reader.onerror = function() {
@@ -3672,11 +3613,6 @@ section[id] {
                 previewLogo.classList.remove('visible');
                 previewPlaceholder.style.display = 'flex';
                 clearCardBtn.disabled = true;
-                
-                // Reset hero card to default image
-                if (heroCardImage) {
-                    heroCardImage.src = 'newblack.webp';
-                }
             }
             // Reset logo scale
             logoSize = 100;
@@ -3725,26 +3661,6 @@ section[id] {
                 document.body.appendChild(fileInput);
                 fileInput.click();
             }
-        });
-
-        // HERO CARD - Add upload functionality
-        heroCard.addEventListener('click', () => {
-            // Create a file input element
-            const fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            fileInput.accept = 'image/*';
-            fileInput.style.display = 'none';
-            
-            fileInput.addEventListener('change', (e) => {
-                if (e.target.files.length > 0) {
-                    handleLogoUpload(e.target.files[0]);
-                }
-                // Clean up
-                document.body.removeChild(fileInput);
-            });
-            
-            document.body.appendChild(fileInput);
-            fileInput.click();
         });
 
         // Browse cards button
@@ -4072,8 +3988,8 @@ section[id] {
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Metal Page loaded with IMPROVED features:');
             console.log('1. LESS BUGGY CAROUSEL: Improved swipe functionality with better physics ✓');
-            console.log('2. REMOVED: Engraving selection from "See It With Your Logo" section ✓');
-            console.log('3. ADDED: Upload logo to hero card (shows overlay on hover) ✓');
+            console.log('2. REMOVED: Upload logo from hero card ✓');
+            console.log('3. REMOVED: Engraving selection from "See It With Your Logo" section ✓');
             console.log('4. IMPROVED: Logo scale slider with better design ✓');
             console.log('5. RETAINED: Swipe functionality (less buggy) ✓');
             
