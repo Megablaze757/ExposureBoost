@@ -972,7 +972,7 @@ section[id] {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* CAROUSEL SECTION - CIRCULAR CAROUSEL */
+/* CAROUSEL SECTION - SIMPLIFIED & STABLE */
 .carousel-section {
     padding: 100px 20px;
     background: var(--carousel-black-bg);
@@ -1011,7 +1011,7 @@ section[id] {
     margin-bottom: 16px;
 }
 
-/* Carousel Styles */
+/* Carousel Styles - SIMPLIFIED */
 .metal-carousel-wrapper {
     position: relative;
     width: 100%;
@@ -1785,67 +1785,6 @@ section[id] {
     }
 }
 
-/* Engraving Selection */
-.engraving-section {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-    order: 2;
-}
-
-.engraving-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.engraving-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.engraving-option {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    border: 2px solid transparent;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.engraving-option:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
-}
-
-.engraving-option.selected {
-    background: rgba(224, 191, 184, 0.2);
-    border-color: var(--rose-gold-light);
-}
-
-.engraving-icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-.engraving-name {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 4px;
-}
-
-.engraving-price {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
 /* Custom Color Picker */
 .color-picker-container {
     display: none;
@@ -1894,149 +1833,7 @@ section[id] {
     border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Logo Upload Section */
-.logo-upload-section {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-    order: 3;
-}
-
-.logo-upload-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.upload-container {
-    width: 100%;
-}
-
-.upload-area {
-    border: 2px dashed rgba(224, 191, 184, 0.5);
-    border-radius: 16px;
-    padding: 30px 20px;
-    background: rgba(224, 191, 184, 0.05);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    margin-bottom: 20px;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.upload-area:hover {
-    border-color: var(--rose-gold-light);
-    background: rgba(224, 191, 184, 0.1);
-    transform: translateY(-2px);
-}
-
-.upload-area.drag-over {
-    border-color: var(--rose-gold-light);
-    background: rgba(224, 191, 184, 0.15);
-    border-style: solid;
-}
-
-.upload-icon {
-    font-size: 2.5rem;
-    color: rgba(224, 191, 184, 0.7);
-    margin-bottom: 15px;
-}
-
-.upload-text {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-
-.upload-subtext {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 5px;
-    line-height: 1.4;
-}
-
-.upload-hint {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 10px;
-    font-style: italic;
-}
-
-/* File input */
-#logoFileInput {
-    display: none;
-}
-
-/* Upload Actions */
-.upload-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-}
-
-@media (min-width: 480px) {
-    .upload-actions {
-        flex-direction: row;
-    }
-}
-
-.upload-btn, .clear-logo-btn {
-    padding: 16px 20px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex: 1;
-    min-height: 52px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.upload-btn {
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
-}
-
-.upload-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.4);
-}
-
-.clear-logo-btn {
-    background: rgba(224, 191, 184, 0.15);
-    color: var(--white);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.clear-logo-btn:hover {
-    background: rgba(224, 191, 184, 0.25);
-    transform: translateY(-2px);
-}
-
-.clear-logo-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
+/* REMOVED ENGRAVING SECTION - Now only color selection */
 
 /* Inline Logo Scale Slider (under preview card) */
 .logo-scale-inline {
@@ -2106,8 +1903,6 @@ section[id] {
     /* Reset order for desktop */
     .preview-container,
     .metal-colors-section,
-    .engraving-section,
-    .logo-upload-section,
     .add-to-cart-btn,
     .whatsapp-help {
         order: 0;
@@ -2164,19 +1959,6 @@ section[id] {
 
     .preview-card {
         height: 200px;
-    }
-
-    .upload-area {
-        padding: 25px 15px;
-        min-height: 160px;
-    }
-
-    .upload-text {
-        font-size: 1rem;
-    }
-
-    .upload-subtext {
-        font-size: 0.8rem;
     }
 }
 
@@ -2791,8 +2573,14 @@ section[id] {
                 
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
-                        <!-- Hero card image only - no upload overlay -->
-                        <img src="newblack.webp" alt="Black Metal NFC Card">
+                        <!-- Changed back to original hero card with upload overlay -->
+                        <div class="hero-card-inner">
+                            <img src="newblack.webp" alt="Black Metal NFC Card" id="heroCardImage">
+                            <div class="hero-upload-overlay" id="heroUploadOverlay">
+                                <div class="upload-text">Upload Your Logo</div>
+                                <div class="upload-subtext">Tap to customize</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -2863,7 +2651,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - CIRCULAR CAROUSEL -->
+        <!-- CAROUSEL SECTION - SIMPLIFIED & STABLE -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
@@ -3084,7 +2872,7 @@ section[id] {
                         <div class="preview-details">
                             <div class="selected-card-info">
                                 <div class="card-name" id="selectedCardName">Black Metal Card</div>
-                                <div class="engraving-type" id="selectedEngravingType">Silver Engraving</div>
+                                <!-- REMOVED ENGRAVING TYPE -->
                             </div>
                             <div class="preview-price">£95</div>
                         </div>
@@ -3096,27 +2884,6 @@ section[id] {
                         <button class="add-to-cart-btn" id="addToCartBtn">
                             🛒 Add to Cart
                         </button>
-                    </div>
-
-                    <!-- Logo Upload Section (REMOVED THE "UPLOAD YOUR LOGO" BOX) -->
-                    <!-- The upload functionality is now only available through clicking the preview card -->
-                    <!-- This maintains the upload button functionality within the card without the separate box -->
-
-                    <!-- Engraving Selection Section -->
-                    <div class="engraving-section">
-                        <div class="engraving-title">Select Engraving Color</div>
-                        <div class="engraving-options">
-                            <div class="engraving-option selected" data-engraving="silver">
-                                <div class="engraving-icon">⚪</div>
-                                <div class="engraving-name">Silver Engraving</div>
-                                <div class="engraving-price">No extra cost</div>
-                            </div>
-                            <div class="engraving-option" data-engraving="gold">
-                                <div class="engraving-icon">⭐</div>
-                                <div class="engraving-name">Gold Engraving</div>
-                                <div class="engraving-price">No extra cost</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -3212,12 +2979,11 @@ section[id] {
         let engravingQuantity = 1; // Default quantity for engraving modal
         let currentCarouselBackground = 'var(--carousel-black-bg)';
         
-        // Carousel variables
-        let isCarouselCircular = true; // Enable circular scrolling
-        let carouselStartX = 0;
-        let carouselCurrentX = 0;
-        let isDragging = false;
-        let dragThreshold = 50; // Minimum drag distance to trigger slide change
+        // Carousel variables - SIMPLIFIED
+        let carouselCurrentSlide = 0;
+        let carouselCardsPerView = 3;
+        let carouselIsAnimating = false;
+        let carouselAutoScrollInterval = null;
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3602,17 +3368,17 @@ section[id] {
 
         // CUSTOM LOGO BUILDER
         const metalColorOptions = document.querySelectorAll('.metal-color-option');
-        const customEngravingOptions = document.querySelectorAll('.engraving-option');
         const previewLogo = document.getElementById('previewLogo');
         const previewPlaceholder = document.getElementById('previewPlaceholder');
         const previewCardInner = document.getElementById('previewCardInner');
         const previewCard = document.getElementById('previewCard');
         const cardCounter = document.getElementById('cardCounter');
         const selectedCardName = document.getElementById('selectedCardName');
-        const selectedEngravingType = document.getElementById('selectedEngravingType');
         const addToCartBtn = document.getElementById('addToCartBtn');
         const clearCardBtn = document.getElementById('clearCardBtn');
         const heroCard = document.getElementById('heroCard');
+        const heroCardImage = document.getElementById('heroCardImage');
+        const heroUploadOverlay = document.getElementById('heroUploadOverlay');
         const logoScaleSlider = document.getElementById('logoScaleSlider');
         const logoScaleValue = document.getElementById('logoScaleValue');
         const colorPickerContainer = document.getElementById('colorPickerContainer');
@@ -3629,12 +3395,6 @@ section[id] {
             'silver': 'Silver Metal Card',
             'rosegold': 'Rose Gold Metal Card',
             'custom': 'Custom Metal Card'
-        };
-
-        // Engraving type mapping
-        const engravingTypeMap = {
-            'silver': 'Silver Engraving',
-            'gold': 'Gold Engraving'
         };
 
         // Background mapping
@@ -3664,7 +3424,6 @@ section[id] {
         };
 
         let selectedMetalColor = 'black';
-        let selectedEngravingTypeValue = 'silver';
 
         // Initialize custom logo builder
         function initCustomLogoBuilder() {
@@ -3686,7 +3445,6 @@ section[id] {
             
             // Update text
             selectedCardName.textContent = metalTypeMap[selectedMetalColor];
-            selectedEngravingType.textContent = engravingTypeMap[selectedEngravingTypeValue];
             
             // Update counter
             cardCounter.textContent = metalTypeMap[selectedMetalColor].split(' ')[0];
@@ -3698,10 +3456,22 @@ section[id] {
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
                 clearCardBtn.disabled = false;
+                
+                // Update hero card with logo
+                if (heroCardImage && heroUploadOverlay) {
+                    heroCardImage.src = uploadedLogoGlobal;
+                    heroUploadOverlay.style.display = 'none';
+                }
             } else {
                 previewLogo.classList.remove('visible');
                 previewPlaceholder.style.display = 'flex';
                 clearCardBtn.disabled = true;
+                
+                // Reset hero card
+                if (heroCardImage && heroUploadOverlay) {
+                    heroCardImage.src = 'newblack.webp';
+                    heroUploadOverlay.style.display = 'flex';
+                }
             }
         }
 
@@ -3733,9 +3503,10 @@ section[id] {
                 // Enable clear button
                 clearCardBtn.disabled = false;
                 
-                // Update hero card if needed
-                if (heroCard) {
-                    heroCard.querySelector('img').src = uploadedLogoGlobal;
+                // Update hero card with logo
+                if (heroCardImage && heroUploadOverlay) {
+                    heroCardImage.src = uploadedLogoGlobal;
+                    heroUploadOverlay.style.display = 'none';
                 }
                 
                 showNotification('Logo uploaded successfully!');
@@ -3783,29 +3554,6 @@ section[id] {
             }
         });
 
-        // Handle engraving selection
-        customEngravingOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                // Remove selected class from all options
-                customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
-                option.classList.add('selected');
-                
-                // Update selected engraving
-                selectedEngravingTypeValue = option.dataset.engraving;
-                
-                // Update preview
-                updatePreview();
-                
-                // Visual feedback
-                option.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    option.style.transform = '';
-                }, 200);
-            });
-        });
-
         // Clear card button
         clearCardBtn.addEventListener('click', () => {
             // Reset to default black card
@@ -3814,10 +3562,6 @@ section[id] {
             selectedMetalColor = 'black';
             colorPickerContainer.classList.remove('show');
             
-            customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
-            document.querySelector('.engraving-option[data-engraving="silver"]').classList.add('selected');
-            selectedEngravingTypeValue = 'silver';
-            
             // Clear logo if uploaded
             if (uploadedLogoGlobal) {
                 previewLogo.src = '';
@@ -3825,6 +3569,12 @@ section[id] {
                 previewLogo.classList.remove('visible');
                 previewPlaceholder.style.display = 'flex';
                 clearCardBtn.disabled = true;
+                
+                // Reset hero card
+                if (heroCardImage && heroUploadOverlay) {
+                    heroCardImage.src = 'newblack.webp';
+                    heroUploadOverlay.style.display = 'flex';
+                }
             }
             // Reset logo scale
             logoSize = 100;
@@ -3837,8 +3587,7 @@ section[id] {
         // Add to cart from preview
         addToCartBtn.addEventListener('click', () => {
             const cardName = metalTypeMap[selectedMetalColor];
-            const engravingType = engravingTypeMap[selectedEngravingTypeValue];
-            const itemName = `${cardName} (${engravingType})`;
+            const itemName = `${cardName}`;
             
             // Open engraving modal with quantity selection
             openEngravingModal(cardName, 95);
@@ -3877,11 +3626,26 @@ section[id] {
             }
         });
 
-        // HERO CARD CLICK - REMOVED UPLOAD FUNCTIONALITY
-        // Hero card now just shows the black metal card image
+        // HERO CARD CLICK - With upload overlay
         heroCard.addEventListener('click', () => {
-            // Removed upload functionality
-            // Card now only displays black metal card image
+            if (!uploadedLogoGlobal) {
+                // Create a file input element
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*';
+                fileInput.style.display = 'none';
+                
+                fileInput.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        handleLogoUpload(e.target.files[0]);
+                    }
+                    // Clean up
+                    document.body.removeChild(fileInput);
+                });
+                
+                document.body.appendChild(fileInput);
+                fileInput.click();
+            }
         });
 
         // Browse cards button
@@ -3928,7 +3692,7 @@ section[id] {
             });
         });
 
-        // CAROUSEL FUNCTIONALITY WITH CIRCULAR SCROLLING (NO AUTO-SCROLL)
+        // CAROUSEL FUNCTIONALITY - SIMPLIFIED & STABLE
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
@@ -3937,82 +3701,45 @@ section[id] {
         const carouselCards = document.querySelectorAll('.metal-carousel-card');
         const carouselWrapper = document.querySelector('.metal-carousel-wrapper');
 
-        let currentSlide = 0;
-        let cardsPerView = 3;
-        let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
-        let isAnimating = false;
-
-        // Initialize carousel with circular functionality
+        // Initialize carousel - SIMPLIFIED
         function initCarousel() {
             updateCardsPerView();
-            createCircularDots();
-            setupCircularCards();
-            updateCircularCarousel();
+            createDots();
+            updateCarousel();
             updateCarouselBackground();
             
             // Add swipe functionality
             addSwipeListeners();
         }
 
-        // Setup circular cards by cloning first and last cards
-        function setupCircularCards() {
-            // Clear existing track
-            carouselTrack.innerHTML = '';
-            
-            // Clone last few cards and prepend
-            const lastCards = Array.from(carouselCards).slice(-cardsPerView);
-            lastCards.forEach(card => {
-                const clone = card.cloneNode(true);
-                clone.classList.add('clone');
-                carouselTrack.appendChild(clone);
-            });
-            
-            // Add all original cards
-            carouselCards.forEach(card => {
-                carouselTrack.appendChild(card);
-            });
-            
-            // Clone first few cards and append
-            const firstCards = Array.from(carouselCards).slice(0, cardsPerView);
-            firstCards.forEach(card => {
-                const clone = card.cloneNode(true);
-                clone.classList.add('clone');
-                carouselTrack.appendChild(clone);
-            });
-            
-            // Set initial position to show first original cards
-            setTimeout(() => {
-                updateCarouselPosition();
-            }, 100);
-        }
-
         // Update cards per view based on screen size
         function updateCardsPerView() {
             if (window.innerWidth <= 768) {
-                cardsPerView = 1;
+                carouselCardsPerView = 1;
             } else if (window.innerWidth <= 1024) {
-                cardsPerView = 2;
+                carouselCardsPerView = 2;
             } else {
-                cardsPerView = 3;
+                carouselCardsPerView = 3;
             }
-            totalSlides = Math.ceil(carouselCards.length / cardsPerView);
-            setupCircularCards();
-            createCircularDots();
-            updateCircularCarousel();
+            
+            updateCarousel();
+            createDots();
             updateCarouselBackground();
         }
 
-        // Create dots for circular carousel
-        function createCircularDots() {
+        // Create dots
+        function createDots() {
             carouselDots.innerHTML = '';
+            const totalSlides = Math.ceil(carouselCards.length / carouselCardsPerView);
+            
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('div');
                 dot.classList.add('carousel-dot');
-                if (i === currentSlide) {
+                if (i === carouselCurrentSlide) {
                     dot.classList.add('active');
                 }
                 dot.addEventListener('click', () => {
-                    if (!isAnimating) {
+                    if (!carouselIsAnimating) {
                         goToSlide(i);
                     }
                 });
@@ -4020,87 +3747,67 @@ section[id] {
             }
         }
 
-        // Update carousel position for circular scrolling
-        function updateCarouselPosition() {
-            const trackCards = carouselTrack.querySelectorAll('.metal-carousel-card');
-            if (trackCards.length === 0) return;
-            
-            const cardWidth = trackCards[0].offsetWidth + 30;
-            const translateX = -(currentSlide + cardsPerView) * cardWidth;
+        // Update carousel
+        function updateCarousel() {
+            const cardWidth = carouselCards[0]?.offsetWidth + 30 || 330;
+            const translateX = -carouselCurrentSlide * carouselCardsPerView * cardWidth;
             
             carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
             carouselTrack.style.transform = `translateX(${translateX}px)`;
-        }
-
-        // Update circular carousel
-        function updateCircularCarousel() {
-            updateCarouselPosition();
             
             // Update dots
             document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
+                dot.classList.toggle('active', index === carouselCurrentSlide);
             });
+            
+            // Update navigation buttons
+            updateNavButtons();
             
             // Update carousel background
             updateCarouselBackground();
-            
-            // Update navigation buttons
-            carouselPrev.classList.remove('disabled');
-            carouselNext.classList.remove('disabled');
         }
 
-        // Go to specific slide with circular wrap
-        function goToSlide(slideIndex) {
-            if (isAnimating) return;
+        // Update navigation buttons
+        function updateNavButtons() {
+            const totalSlides = Math.ceil(carouselCards.length / carouselCardsPerView);
             
-            isAnimating = true;
-            currentSlide = slideIndex;
-            updateCircularCarousel();
+            carouselPrev.classList.toggle('disabled', carouselCurrentSlide === 0);
+            carouselNext.classList.toggle('disabled', carouselCurrentSlide === totalSlides - 1);
+        }
+
+        // Go to specific slide
+        function goToSlide(slideIndex) {
+            if (carouselIsAnimating) return;
+            
+            carouselIsAnimating = true;
+            carouselCurrentSlide = slideIndex;
+            updateCarousel();
             
             setTimeout(() => {
-                isAnimating = false;
-                
-                // Check for circular wrap
-                const trackCards = carouselTrack.querySelectorAll('.metal-carousel-card');
-                const cardWidth = trackCards[0].offsetWidth + 30;
-                const totalCards = trackCards.length;
-                
-                if (currentSlide === totalSlides - 1) {
-                    // If at last slide, jump to first without animation
-                    setTimeout(() => {
-                        currentSlide = 0;
-                        carouselTrack.style.transition = 'none';
-                        carouselTrack.style.transform = `translateX(-${cardsPerView * cardWidth}px)`;
-                        
-                        // Force reflow
-                        carouselTrack.offsetHeight;
-                        
-                        // Restore transition
-                        carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                        updateCircularCarousel();
-                    }, 500);
-                } else if (currentSlide === 0) {
-                    // If at first slide and going backward, jump to last
-                    setTimeout(() => {
-                        currentSlide = totalSlides - 1;
-                        carouselTrack.style.transition = 'none';
-                        carouselTrack.style.transform = `translateX(-${(totalSlides + cardsPerView - 1) * cardWidth}px)`;
-                        
-                        // Force reflow
-                        carouselTrack.offsetHeight;
-                        
-                        // Restore transition
-                        carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                        updateCircularCarousel();
-                    }, 500);
-                }
+                carouselIsAnimating = false;
             }, 500);
+        }
+
+        // Next slide
+        function nextSlide() {
+            if (carouselIsAnimating) return;
+            const totalSlides = Math.ceil(carouselCards.length / carouselCardsPerView);
+            const nextIndex = (carouselCurrentSlide + 1) % totalSlides;
+            goToSlide(nextIndex);
+        }
+
+        // Previous slide
+        function prevSlide() {
+            if (carouselIsAnimating) return;
+            const totalSlides = Math.ceil(carouselCards.length / carouselCardsPerView);
+            const prevIndex = (carouselCurrentSlide - 1 + totalSlides) % totalSlides;
+            goToSlide(prevIndex);
         }
 
         // Update carousel background based on current slide
         function updateCarouselBackground() {
             // Get the first card in the current slide
-            const firstCardIndex = currentSlide * cardsPerView;
+            const firstCardIndex = carouselCurrentSlide * carouselCardsPerView;
             if (carouselCards[firstCardIndex]) {
                 const metalType = carouselCards[firstCardIndex].dataset.metal;
                 const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
@@ -4113,7 +3820,6 @@ section[id] {
         }
 
         // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
-        // Function to update carousel background based on hovered card
         function updateCarouselBackgroundOnHover(metalType) {
             const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
             if (newBackground !== currentCarouselBackground) {
@@ -4121,7 +3827,6 @@ section[id] {
             }
         }
 
-        // Function to reset carousel background to current slide
         function resetCarouselBackgroundToCurrent() {
             updateCarouselBackground();
         }
@@ -4148,24 +3853,9 @@ section[id] {
             });
         });
 
-        // Next slide with circular scrolling
-        function nextSlide() {
-            if (isAnimating) return;
-            const nextIndex = (currentSlide + 1) % totalSlides;
-            goToSlide(nextIndex);
-        }
-
-        // Previous slide with circular scrolling
-        function prevSlide() {
-            if (isAnimating) return;
-            const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
-            goToSlide(prevIndex);
-        }
-
-        // SWIPE FUNCTIONALITY FOR CIRCULAR CAROUSEL
+        // SWIPE FUNCTIONALITY - SIMPLIFIED
         function addSwipeListeners() {
             let startX = 0;
-            let currentX = 0;
             let isSwiping = false;
             
             // Mouse events
@@ -4175,7 +3865,7 @@ section[id] {
             
             carouselWrapper.addEventListener('mousemove', (e) => {
                 if (isSwiping) {
-                    handleSwipeMove(e.clientX);
+                    e.preventDefault();
                 }
             });
             
@@ -4196,59 +3886,25 @@ section[id] {
             
             carouselWrapper.addEventListener('touchmove', (e) => {
                 if (isSwiping) {
-                    handleSwipeMove(e.touches[0].clientX);
+                    e.preventDefault();
                 }
-            }, { passive: true });
+            }, { passive: false });
             
             carouselWrapper.addEventListener('touchend', () => {
                 endSwipe();
             });
             
             function startSwipe(x) {
-                if (isAnimating) return;
+                if (carouselIsAnimating) return;
                 startX = x;
-                currentX = x;
                 isSwiping = true;
                 carouselTrack.style.transition = 'none';
             }
             
-            function handleSwipeMove(x) {
-                if (!isSwiping || isAnimating) return;
-                
-                currentX = x;
-                const diff = startX - currentX;
-                
-                // Move track while dragging
-                const trackCards = carouselTrack.querySelectorAll('.metal-carousel-card');
-                const cardWidth = trackCards[0].offsetWidth + 30;
-                const baseTranslate = -(currentSlide + cardsPerView) * cardWidth;
-                const dragTranslate = -diff;
-                carouselTrack.style.transform = `translateX(${baseTranslate + dragTranslate}px)`;
-            }
-            
             function endSwipe() {
-                if (!isSwiping || isAnimating) return;
-                
-                const diff = startX - currentX;
-                const trackCards = carouselTrack.querySelectorAll('.metal-carousel-card');
-                const cardWidth = trackCards[0].offsetWidth + 30;
-                const threshold = cardWidth * 0.2; // 20% of card width threshold
-                
-                // Determine if swipe is significant enough to change slide
-                if (Math.abs(diff) > threshold) {
-                    if (diff > 0) {
-                        // Swipe left - next slide
-                        nextSlide();
-                    } else {
-                        // Swipe right - previous slide
-                        prevSlide();
-                    }
-                } else {
-                    // Return to current slide
-                    updateCircularCarousel();
-                }
-                
+                if (!isSwiping || carouselIsAnimating) return;
                 isSwiping = false;
+                updateCarousel();
             }
         }
 
@@ -4258,18 +3914,58 @@ section[id] {
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal Page loaded with requested changes:');
-            console.log('1. REMOVED: "Upload your logo" box (upload still works via card click) ✓');
-            console.log('2. ADDED: Color picker for Custom color option ✓');
-            console.log('3. DISABLED: Auto-scroll for carousel (manual only) ✓');
+            console.log('Metal Page loaded with fixes:');
+            console.log('1. FIXED: Simplified carousel - less buggy ✓');
+            console.log('2. REMOVED: Engraving section from custom logo builder ✓');
+            console.log('3. RESTORED: Hero card with upload overlay ✓');
+            console.log('4. RETAINED: Custom color picker for Custom option ✓');
+            console.log('5. DISABLED: Auto-scroll for carousel ✓');
             
             initCarousel();
             updateCart();
             initCustomLogoBuilder();
             
-            // Add highlight style for selected metal text
-            const style = document.createElement('style');
-            style.textContent = `
+            // Add hero card overlay styles
+            const heroStyle = document.createElement('style');
+            heroStyle.textContent = `
+                .hero-card-inner {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                .hero-upload-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.7);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    border-radius: 20px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                
+                .hero-upload-overlay:hover {
+                    background: rgba(0, 0, 0, 0.8);
+                }
+                
+                .upload-text {
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+                
+                .upload-subtext {
+                    font-size: 12px;
+                    opacity: 0.9;
+                }
+                
                 .highlight-text {
                     color: var(--rose-gold-light);
                     font-weight: 700;
@@ -4293,11 +3989,6 @@ section[id] {
                     outline: none;
                     box-shadow: none;
                     background: transparent;
-                }
-                
-                /* Hide clone cards from screen readers */
-                .metal-carousel-card.clone {
-                    visibility: visible;
                 }
                 
                 /* Engraving modal styles */
@@ -4444,7 +4135,7 @@ section[id] {
                     box-shadow: none !important;
                 }
             `;
-            document.head.appendChild(style);
+            document.head.appendChild(heroStyle);
         });
 
         // Update carousel on window resize
