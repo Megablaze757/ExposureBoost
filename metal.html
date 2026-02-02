@@ -971,7 +971,7 @@ section[id] {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* CAROUSEL SECTION - CIRCULAR CAROUSEL */
+/* CAROUSEL SECTION - CIRCULAR CAROUSEL - FIXED */
 .carousel-section {
     padding: 100px 20px;
     background: var(--carousel-black-bg);
@@ -1010,7 +1010,7 @@ section[id] {
     margin-bottom: 16px;
 }
 
-/* Carousel Styles - IMPROVED */
+/* Carousel Styles - SIMPLIFIED AND FIXED */
 .metal-carousel-wrapper {
     position: relative;
     width: 100%;
@@ -1036,7 +1036,6 @@ section[id] {
     gap: 30px;
     padding: 10px 0;
     user-select: none;
-    will-change: transform;
 }
 
 /* Carousel cards matching bestseller style */
@@ -1054,8 +1053,6 @@ section[id] {
     cursor: pointer;
     min-width: 300px;
     user-select: none;
-    transform: translateZ(0);
-    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 @media (max-width: 1024px) {
@@ -2713,7 +2710,7 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - IMPROVED CIRCULAR CAROUSEL -->
+        <!-- CAROUSEL SECTION - IMPROVED CIRCULAR CAROUSEL - FIXED -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
@@ -3042,12 +3039,6 @@ section[id] {
         let engravingQuantity = 1; // Default quantity for engraving modal
         let currentCarouselBackground = 'var(--carousel-black-bg)';
         
-        // Carousel variables - IMPROVED
-        let carouselStartX = 0;
-        let carouselCurrentX = 0;
-        let isDragging = false;
-        let dragThreshold = 30; // Reduced threshold for better responsiveness
-
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileCloseBtn = document.getElementById('mobileCloseBtn');
@@ -3707,7 +3698,9 @@ section[id] {
             });
         });
 
-        // IMPROVED CAROUSEL FUNCTIONALITY
+        // =============================================
+        // FIXED CAROUSEL FUNCTIONALITY - SIMPLIFIED
+        // =============================================
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
@@ -3720,17 +3713,24 @@ section[id] {
         let cardsPerView = 3;
         let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
         let isAnimating = false;
-        let autoScrollInterval = null;
 
-        // Initialize carousel with SIMPLE circular functionality (no clones)
+        // Initialize carousel
         function initCarousel() {
             updateCardsPerView();
             createDots();
             updateCarousel();
             updateCarouselBackground();
             
-            // Add IMPROVED swipe functionality
-            addSwipeListeners();
+            // Add click event for carousel cards
+            carouselCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Only trigger if not clicking a button
+                    if (!e.target.closest('button')) {
+                        const metalType = card.dataset.metal;
+                        updateCarouselBackgroundOnClick(metalType);
+                    }
+                });
+            });
         }
 
         // Update cards per view based on screen size
@@ -3823,41 +3823,14 @@ section[id] {
             }
         }
 
-        // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
-        // Function to update carousel background based on hovered card
-        function updateCarouselBackgroundOnHover(metalType) {
+        // Update carousel background on card click
+        function updateCarouselBackgroundOnClick(metalType) {
             const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
             if (newBackground !== currentCarouselBackground) {
                 carouselSection.style.background = newBackground;
+                currentCarouselBackground = newBackground;
             }
         }
-
-        // Function to reset carousel background to current slide
-        function resetCarouselBackgroundToCurrent() {
-            updateCarouselBackground();
-        }
-
-        // Add hover event listeners to carousel cards
-        carouselCards.forEach(card => {
-            const metalType = card.dataset.metal;
-            
-            card.addEventListener('mouseenter', () => {
-                updateCarouselBackgroundOnHover(metalType);
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                resetCarouselBackgroundToCurrent();
-            });
-            
-            // For touch devices
-            card.addEventListener('touchstart', () => {
-                updateCarouselBackgroundOnHover(metalType);
-            });
-            
-            card.addEventListener('touchend', () => {
-                setTimeout(resetCarouselBackgroundToCurrent, 1000);
-            });
-        });
 
         // Next slide
         function nextSlide() {
@@ -3871,127 +3844,17 @@ section[id] {
             goToSlide(currentSlide - 1);
         }
 
-        // IMPROVED SWIPE FUNCTIONALITY - LESS BUGGY
-        function addSwipeListeners() {
-            let startX = 0;
-            let currentX = 0;
-            let isSwiping = false;
-            
-            // Mouse events
-            carouselWrapper.addEventListener('mousedown', (e) => {
-                if (isAnimating) return;
-                startSwipe(e.clientX);
-            });
-            
-            carouselWrapper.addEventListener('mousemove', (e) => {
-                if (isSwiping && !isAnimating) {
-                    handleSwipeMove(e.clientX);
-                }
-            });
-            
-            carouselWrapper.addEventListener('mouseup', () => {
-                if (isSwiping) {
-                    endSwipe();
-                }
-            });
-            
-            carouselWrapper.addEventListener('mouseleave', () => {
-                if (isSwiping) {
-                    endSwipe();
-                }
-            });
-            
-            // Touch events - IMPROVED with passive: false for better control
-            carouselWrapper.addEventListener('touchstart', (e) => {
-                if (isAnimating) return;
-                startSwipe(e.touches[0].clientX);
-                e.preventDefault();
-            }, { passive: false });
-            
-            carouselWrapper.addEventListener('touchmove', (e) => {
-                if (isSwiping && !isAnimating) {
-                    handleSwipeMove(e.touches[0].clientX);
-                    e.preventDefault();
-                }
-            }, { passive: false });
-            
-            carouselWrapper.addEventListener('touchend', () => {
-                if (isSwiping) {
-                    endSwipe();
-                }
-            });
-            
-            function startSwipe(x) {
-                startX = x;
-                currentX = x;
-                isSwiping = true;
-                carouselTrack.style.transition = 'none';
-                carouselTrack.style.cursor = 'grabbing';
-            }
-            
-            function handleSwipeMove(x) {
-                if (!isSwiping || isAnimating) return;
-                
-                currentX = x;
-                const diff = startX - currentX;
-                
-                // Move track while dragging
-                const trackCards = carouselTrack.querySelectorAll('.metal-carousel-card');
-                const cardWidth = trackCards[0].offsetWidth + 30;
-                const baseTranslate = -currentSlide * cardWidth * cardsPerView;
-                const dragTranslate = -diff;
-                
-                // Limit dragging to prevent over-scrolling
-                const maxDrag = cardWidth * cardsPerView * 0.5;
-                const limitedDiff = Math.max(-maxDrag, Math.min(maxDrag, diff));
-                
-                carouselTrack.style.transform = `translateX(${baseTranslate - limitedDiff}px)`;
-            }
-            
-            function endSwipe() {
-                if (!isSwiping || isAnimating) return;
-                
-                const diff = startX - currentX;
-                const trackCards = carouselTrack.querySelectorAll('.metal-carousel-card');
-                const cardWidth = trackCards[0].offsetWidth + 30;
-                const threshold = cardWidth * 0.25; // 25% of card width threshold
-                
-                // Determine if swipe is significant enough to change slide
-                if (Math.abs(diff) > threshold) {
-                    if (diff > 0) {
-                        // Swipe left - next slide
-                        if (currentSlide < totalSlides - 1) {
-                            nextSlide();
-                        }
-                    } else {
-                        // Swipe right - previous slide
-                        if (currentSlide > 0) {
-                            prevSlide();
-                        }
-                    }
-                } else {
-                    // Return to current slide
-                    updateCarousel();
-                }
-                
-                isSwiping = false;
-                carouselTrack.style.cursor = '';
-                carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            }
-        }
-
         // Event listeners for carousel navigation
         carouselPrev.addEventListener('click', prevSlide);
         carouselNext.addEventListener('click', nextSlide);
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal Page loaded with IMPROVED features:');
-            console.log('1. LESS BUGGY CAROUSEL: Improved swipe functionality with better physics ✓');
+            console.log('Metal Page loaded with FIXED features:');
+            console.log('1. FIXED CAROUSEL: No more buggy swipe, clean navigation ✓');
             console.log('2. REMOVED: Upload logo from hero card ✓');
             console.log('3. REMOVED: Engraving selection from "See It With Your Logo" section ✓');
             console.log('4. IMPROVED: Logo scale slider with better design ✓');
-            console.log('5. RETAINED: Swipe functionality (less buggy) ✓');
             
             initCarousel();
             updateCart();
