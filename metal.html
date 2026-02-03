@@ -1016,6 +1016,7 @@ section[id] {
     width: 100%;
     overflow: hidden;
     padding: 0 60px;
+    touch-action: pan-y pinch-zoom;
 }
 
 @media (max-width: 768px) {
@@ -1036,6 +1037,9 @@ section[id] {
     gap: 30px;
     padding: 10px 0;
     user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     will-change: transform;
 }
 
@@ -1054,6 +1058,9 @@ section[id] {
     cursor: pointer;
     min-width: 300px;
     user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     transform: translateZ(0);
     -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -3701,328 +3708,246 @@ section[id] {
             });
         });
 
-        // IMPROVED CAROUSEL FUNCTIONALITY - FIXED BUGGY BEHAVIOR
-        const carouselSection = document.querySelector('.carousel-section');
-        const carouselTrack = document.getElementById('carouselTrack');
-        const carouselPrev = document.getElementById('carouselPrev');
-        const carouselNext = document.getElementById('carouselNext');
-        const carouselDots = document.getElementById('carouselDots');
-        const carouselCards = document.querySelectorAll('.metal-carousel-card');
-        const carouselWrapper = document.querySelector('.metal-carousel-wrapper');
-
-        let currentSlide = 0;
-        let cardsPerView = 3;
-        let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
-        let isAnimating = false;
-        let autoScrollInterval = null;
-
-        // Initialize carousel with SIMPLE circular functionality (no clones)
-        function initCarousel() {
-            updateCardsPerView();
-            createDots();
-            updateCarousel();
-            updateCarouselBackground();
-            
-            // Add improved swipe functionality
-            addSwipeListeners();
-            
-            // Set up auto-scroll if more than one slide
-            if (totalSlides > 1) {
-                startAutoScroll();
-            }
-        }
-
-        // Update cards per view based on screen size
-        function updateCardsPerView() {
-            if (window.innerWidth <= 768) {
-                cardsPerView = 1;
-            } else if (window.innerWidth <= 1024) {
-                cardsPerView = 2;
-            } else {
-                cardsPerView = 3;
-            }
-            totalSlides = Math.ceil(carouselCards.length / cardsPerView);
-            createDots();
-            updateCarousel();
-            updateCarouselBackground();
-        }
-
-        // Create dots for carousel
-        function createDots() {
-            carouselDots.innerHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('carousel-dot');
-                if (i === currentSlide) {
-                    dot.classList.add('active');
-                }
-                dot.addEventListener('click', () => {
-                    if (!isAnimating) {
-                        goToSlide(i);
-                    }
-                });
-                carouselDots.appendChild(dot);
-            }
-        }
-
-        // Update carousel position
-        function updateCarouselPosition() {
-            const trackCards = carouselTrack.querySelectorAll('.metal-carousel-card');
-            if (trackCards.length === 0) return;
-            
-            // Calculate card width including gap
-            const cardStyle = window.getComputedStyle(trackCards[0]);
-            const cardWidth = trackCards[0].offsetWidth + parseFloat(cardStyle.marginRight || 0);
-            
-            const translateX = -currentSlide * cardWidth * cardsPerView;
-            
-            carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            carouselTrack.style.transform = `translateX(${translateX}px)`;
-        }
-
-        // Update carousel
-        function updateCarousel() {
-            updateCarouselPosition();
-            
-            // Update dots
-            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-            
-            // Update carousel background
-            updateCarouselBackground();
-            
-            // Update navigation buttons
-            carouselPrev.classList.toggle('disabled', currentSlide === 0);
-            carouselNext.classList.toggle('disabled', currentSlide === totalSlides - 1);
-        }
-
-        // Go to specific slide
-        function goToSlide(slideIndex) {
-            if (isAnimating || slideIndex < 0 || slideIndex >= totalSlides) return;
-            
-            isAnimating = true;
-            currentSlide = slideIndex;
-            updateCarousel();
-            
-            setTimeout(() => {
-                isAnimating = false;
-            }, 500);
-        }
-
-        // Update carousel background based on current slide
-        function updateCarouselBackground() {
-            // Get the first card in the current slide
-            const firstCardIndex = currentSlide * cardsPerView;
-            if (carouselCards[firstCardIndex]) {
-                const metalType = carouselCards[firstCardIndex].dataset.metal;
-                const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
-                
-                if (newBackground !== currentCarouselBackground) {
-                    carouselSection.style.background = newBackground;
-                    currentCarouselBackground = newBackground;
-                }
-            }
-        }
-
-        // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
-        // Function to update carousel background based on hovered card
-        function updateCarouselBackgroundOnHover(metalType) {
-            const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
-            if (newBackground !== currentCarouselBackground) {
-                carouselSection.style.background = newBackground;
-            }
-        }
-
-        // Function to reset carousel background to current slide
-        function resetCarouselBackgroundToCurrent() {
-            updateCarouselBackground();
-        }
-
-        // Add hover event listeners to carousel cards
-        carouselCards.forEach(card => {
-            const metalType = card.dataset.metal;
-            
-            card.addEventListener('mouseenter', () => {
-                updateCarouselBackgroundOnHover(metalType);
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                resetCarouselBackgroundToCurrent();
-            });
-        });
-
-        // Next slide
-        function nextSlide() {
-            if (isAnimating) return;
-            
-            if (currentSlide === totalSlides - 1) {
-                // If at last slide, go back to first (circular)
-                goToSlide(0);
-            } else {
-                goToSlide(currentSlide + 1);
-            }
-        }
-
-        // Previous slide
-        function prevSlide() {
-            if (isAnimating) return;
-            
-            if (currentSlide === 0) {
-                // If at first slide, go to last (circular)
-                goToSlide(totalSlides - 1);
-            } else {
-                goToSlide(currentSlide - 1);
-            }
-        }
-
-        // Auto-scroll functionality
-        function startAutoScroll() {
-            if (autoScrollInterval) clearInterval(autoScrollInterval);
-            
-            autoScrollInterval = setInterval(() => {
-                if (!isAnimating && totalSlides > 1) {
-                    nextSlide();
-                }
-            }, 5000); // Change slide every 5 seconds
-        }
-
-        function stopAutoScroll() {
-            if (autoScrollInterval) {
-                clearInterval(autoScrollInterval);
-                autoScrollInterval = null;
-            }
-        }
-
-        // IMPROVED SWIPE FUNCTIONALITY - FIXED
-        function addSwipeListeners() {
-            let startX = 0;
-            let isSwiping = false;
-            
-            // Mouse events
-            carouselWrapper.addEventListener('mousedown', (e) => {
-                if (isAnimating) return;
-                startSwipe(e.clientX);
-            });
-            
-            carouselWrapper.addEventListener('mousemove', (e) => {
-                if (isSwiping && !isAnimating) {
-                    handleSwipeMove(e.clientX);
-                }
-            });
-            
-            carouselWrapper.addEventListener('mouseup', () => {
-                if (isSwiping) {
-                    endSwipe();
-                }
-            });
-            
-            carouselWrapper.addEventListener('mouseleave', () => {
-                if (isSwiping) {
-                    endSwipe();
-                }
-            });
-            
-            // Touch events - IMPROVED with better touch handling
-            carouselWrapper.addEventListener('touchstart', (e) => {
-                if (isAnimating) return;
-                startSwipe(e.touches[0].clientX);
-                e.preventDefault();
-            }, { passive: false });
-            
-            carouselWrapper.addEventListener('touchmove', (e) => {
-                if (isSwiping && !isAnimating) {
-                    handleSwipeMove(e.touches[0].clientX);
-                    e.preventDefault();
-                }
-            }, { passive: false });
-            
-            carouselWrapper.addEventListener('touchend', () => {
-                if (isSwiping) {
-                    endSwipe();
-                }
-            });
-            
-            function startSwipe(x) {
-                startX = x;
-                isSwiping = true;
-                carouselTrack.style.transition = 'none';
-                carouselTrack.style.cursor = 'grabbing';
-                stopAutoScroll(); // Stop auto-scroll when user interacts
-            }
-            
-            function handleSwipeMove(x) {
-                if (!isSwiping || isAnimating) return;
-                
-                const diff = startX - x;
-                const trackCards = carouselTrack.querySelectorAll('.metal-carousel-card');
-                
-                if (trackCards.length === 0) return;
-                
-                // Calculate card width including gap
-                const cardStyle = window.getComputedStyle(trackCards[0]);
-                const cardWidth = trackCards[0].offsetWidth + parseFloat(cardStyle.marginRight || 0);
-                const baseTranslate = -currentSlide * cardWidth * cardsPerView;
-                
-                // Apply drag translation
-                carouselTrack.style.transform = `translateX(${baseTranslate - diff}px)`;
-            }
-            
-            function endSwipe() {
-                if (!isSwiping || isAnimating) return;
-                
-                const trackCards = carouselTrack.querySelectorAll('.metal-carousel-card');
-                if (trackCards.length === 0) {
-                    isSwiping = false;
-                    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                    carouselTrack.style.cursor = '';
-                    startAutoScroll(); // Restart auto-scroll
-                    return;
-                }
-                
-                // Calculate card width including gap
-                const cardStyle = window.getComputedStyle(trackCards[0]);
-                const cardWidth = trackCards[0].offsetWidth + parseFloat(cardStyle.marginRight || 0);
-                const diff = startX - carouselWrapper.getBoundingClientRect().left;
-                
-                // Calculate swipe percentage
-                const swipePercentage = Math.abs(diff) / cardWidth;
-                
-                // Determine if swipe is significant enough to change slide
-                if (swipePercentage > 0.15) { // 15% threshold
-                    if (diff > 0) {
-                        // Swipe left - next slide
-                        nextSlide();
-                    } else {
-                        // Swipe right - previous slide
-                        prevSlide();
-                    }
-                } else {
-                    // Return to current slide
-                    updateCarousel();
-                }
-                
-                isSwiping = false;
-                carouselTrack.style.cursor = '';
-                carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                startAutoScroll(); // Restart auto-scroll
-            }
-        }
-
-        // Event listeners for carousel navigation
-        carouselPrev.addEventListener('click', () => {
-            stopAutoScroll();
-            prevSlide();
-            startAutoScroll();
-        });
         
-        carouselNext.addEventListener('click', () => {
-            stopAutoScroll();
-            nextSlide();
-            startAutoScroll();
-        });
+// CAROUSEL FUNCTIONALITY WITH SWIPE AND CIRCULAR SCROLLING (WOOD FRAMEWORK PORTED TO METAL)
+const carouselSection = document.querySelector('.carousel-section');
+const carouselTrack = document.getElementById('carouselTrack');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
+const carouselDots = document.getElementById('carouselDots');
+const carouselCards = document.querySelectorAll('.metal-carousel-card');
+const carouselWrapper = document.querySelector('.metal-carousel-wrapper');
 
-        // Initialize everything when DOM is loaded
+let currentSlide = 0;
+let cardsPerView = 3;
+let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
+
+// Enable circular scrolling (matches wood)
+const isCarouselCircular = true;
+
+// Initialize carousel
+function initCarousel() {
+    updateCardsPerView();
+    createDots();
+    updateCarousel();
+    updateCarouselBackground();
+
+    // Add swipe functionality
+    addSwipeListeners();
+}
+
+// Update cards per view based on screen size
+function updateCardsPerView() {
+    if (window.innerWidth <= 768) {
+        cardsPerView = 1;
+    } else if (window.innerWidth <= 1024) {
+        cardsPerView = 2;
+    } else {
+        cardsPerView = 3;
+    }
+    totalSlides = Math.ceil(carouselCards.length / cardsPerView);
+    createDots();
+    updateCarousel();
+    updateCarouselBackground();
+}
+
+// Create dots for carousel
+function createDots() {
+    carouselDots.innerHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('carousel-dot');
+        if (i === currentSlide) {
+            dot.classList.add('active');
+        }
+        dot.addEventListener('click', () => {
+            currentSlide = i;
+            updateCarousel();
+            updateCarouselBackground();
+        });
+        carouselDots.appendChild(dot);
+    }
+}
+
+// Update carousel position with smooth animation
+function updateCarousel() {
+    if (!carouselCards.length) return;
+
+    const cardWidth = carouselCards[0].offsetWidth + 30; // width + gap (matches CSS gap)
+    const translateX = -currentSlide * cardsPerView * cardWidth;
+    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    carouselTrack.style.transform = `translateX(${translateX}px)`;
+
+    // Update dots
+    document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+
+    // Update navigation buttons (disabled only when non-circular)
+    carouselPrev.classList.toggle('disabled', !isCarouselCircular && currentSlide === 0);
+    carouselNext.classList.toggle('disabled', !isCarouselCircular && currentSlide >= totalSlides - 1);
+}
+
+// Update carousel background based on current slide
+function updateCarouselBackground() {
+    const firstCardIndex = currentSlide * cardsPerView;
+    if (carouselCards[firstCardIndex]) {
+        const metalType = carouselCards[firstCardIndex].dataset.metal;
+        const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
+
+        if (newBackground !== currentCarouselBackground) {
+            carouselSection.style.background = newBackground;
+            currentCarouselBackground = newBackground;
+        }
+    }
+}
+
+// Background change on card hover (and touch)
+function updateCarouselBackgroundOnHover(metalType) {
+    const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
+    if (newBackground !== currentCarouselBackground) {
+        carouselSection.style.background = newBackground;
+    }
+}
+
+function resetCarouselBackgroundToCurrent() {
+    updateCarouselBackground();
+}
+
+carouselCards.forEach(card => {
+    const metalType = card.dataset.metal;
+
+    card.addEventListener('mouseenter', () => {
+        updateCarouselBackgroundOnHover(metalType);
+    });
+
+    card.addEventListener('mouseleave', () => {
+        resetCarouselBackgroundToCurrent();
+    });
+
+    // For touch devices
+    card.addEventListener('touchstart', () => {
+        updateCarouselBackgroundOnHover(metalType);
+    });
+
+    card.addEventListener('touchend', () => {
+        setTimeout(resetCarouselBackgroundToCurrent, 1000);
+    });
+});
+
+// Next slide with circular scrolling
+function nextSlide() {
+    if (isCarouselCircular) {
+        currentSlide = (currentSlide + 1) % totalSlides;
+    } else if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+    }
+    updateCarousel();
+    updateCarouselBackground();
+}
+
+// Previous slide with circular scrolling
+function prevSlide() {
+    if (isCarouselCircular) {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    } else if (currentSlide > 0) {
+        currentSlide--;
+    }
+    updateCarousel();
+    updateCarouselBackground();
+}
+
+// SWIPE FUNCTIONALITY (matches wood)
+function addSwipeListeners() {
+    let startX = 0;
+    let currentX = 0;
+    let isSwiping = false;
+
+    // Mouse events
+    carouselWrapper.addEventListener('mousedown', (e) => {
+        startSwipe(e.clientX);
+    });
+
+    carouselWrapper.addEventListener('mousemove', (e) => {
+        if (isSwiping) {
+            handleSwipeMove(e.clientX);
+        }
+    });
+
+    carouselWrapper.addEventListener('mouseup', () => {
+        endSwipe();
+    });
+
+    carouselWrapper.addEventListener('mouseleave', () => {
+        if (isSwiping) {
+            endSwipe();
+        }
+    });
+
+    // Touch events
+    carouselWrapper.addEventListener('touchstart', (e) => {
+        startSwipe(e.touches[0].clientX);
+    }, { passive: true });
+
+    carouselWrapper.addEventListener('touchmove', (e) => {
+        if (isSwiping) {
+            handleSwipeMove(e.touches[0].clientX);
+        }
+    }, { passive: true });
+
+    carouselWrapper.addEventListener('touchend', () => {
+        endSwipe();
+    });
+
+    function startSwipe(x) {
+        startX = x;
+        currentX = x;
+        isSwiping = true;
+        carouselTrack.style.transition = 'none';
+    }
+
+    function handleSwipeMove(x) {
+        if (!isSwiping || !carouselCards.length) return;
+
+        currentX = x;
+        const diff = startX - currentX;
+
+        // Move track while dragging
+        const cardWidth = carouselCards[0].offsetWidth + 30;
+        const baseTranslate = -currentSlide * cardsPerView * cardWidth;
+        const dragTranslate = -diff;
+        carouselTrack.style.transform = `translateX(${baseTranslate + dragTranslate}px)`;
+    }
+
+    function endSwipe() {
+        if (!isSwiping || !carouselCards.length) return;
+
+        const diff = startX - currentX;
+        const cardWidth = carouselCards[0].offsetWidth + 30;
+        const threshold = cardWidth * 0.2; // 20% of card width threshold
+
+        // Determine if swipe is significant enough to change slide
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                // Swipe left - next slide
+                nextSlide();
+            } else {
+                // Swipe right - previous slide
+                prevSlide();
+            }
+        } else {
+            // Return to current slide
+            updateCarousel();
+        }
+
+        isSwiping = false;
+    }
+}
+
+// Event listeners for carousel navigation
+carouselPrev.addEventListener('click', prevSlide);
+carouselNext.addEventListener('click', nextSlide);
+
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Metal Page loaded with IMPROVED features:');
             console.log('1. FIXED CAROUSEL: Smooth circular scrolling with proper swipe ✓');
@@ -4215,22 +4140,6 @@ section[id] {
         window.addEventListener('resize', () => {
             updateCardsPerView();
         });
-
-        // Pause auto-scroll when hovering over carousel
-        carouselWrapper.addEventListener('mouseenter', () => {
-            stopAutoScroll();
-        });
-
-        carouselWrapper.addEventListener('mouseleave', () => {
-            if (totalSlides > 1) {
-                startAutoScroll();
-            }
-        });
-
-        // Clean up on page unload
-        window.addEventListener('beforeunload', () => {
-            stopAutoScroll();
-        });
-    </script>
+</script>
 </body>
 </html>
