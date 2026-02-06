@@ -2504,7 +2504,18 @@ section[id] {
     transform: translateY(0);
     opacity: 1;
 }
-    </style>
+    
+
+/* Disable carousel zoom on mobile/tablet (keep it on desktop) */
+@media (hover: none) and (pointer: coarse) {
+    .metal-carousel-card:hover .metal-carousel-image img,
+    .metal-carousel-card:active .metal-carousel-image img,
+    .metal-carousel-card:focus .metal-carousel-image img,
+    .metal-carousel-card:focus-within .metal-carousel-image img {
+        transform: none !important;
+    }
+}
+</style>
 </head>
 
 <body>
