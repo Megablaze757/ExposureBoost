@@ -2825,7 +2825,7 @@ section[id] {
                 </div>
 
                 <div class="hero-cta">
-                    <a class="btn btn-primary" id="browseCardsBtn" href="#bestsellers">Browse Woods</a>
+                    <button class="btn btn-primary" id="browseCardsBtn">Browse Woods</button>
                 </div>
             </div>
         </section>
@@ -3976,28 +3976,20 @@ section[id] {
             // Card now only displays walnut wood card image
         });
 
-        // Browse cards button (scroll to Bestsellers)
-        document.addEventListener('DOMContentLoaded', () => {
-            const browseBtn = document.getElementById('browseCardsBtn');
+        // Browse cards button
+        document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            // Scroll to bestsellers section
             const bestsellersSection = document.getElementById('bestsellers');
-
-            if (!browseBtn || !bestsellersSection) return;
-
-            browseBtn.addEventListener('click', (e) => {
-                // If it's an anchor link, prevent default jump and do smooth scroll with nav offset
-                e.preventDefault();
-
-                const navEl = document.getElementById('mainNav');
-                const navHeight = navEl ? navEl.offsetHeight : 0;
+            if (bestsellersSection) {
+                const navHeight = nav.offsetHeight;
                 const targetPosition = bestsellersSection.offsetTop - navHeight;
 
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-            });
-        });
-}
+            }
         });
 
         // Initialize custom logo builder
