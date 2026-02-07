@@ -11,38 +11,33 @@
 
     <style>
         :root {
-            /* STAND THEME COLORS - Modern tech & professional */
-            --stand-primary: #3A86FF;
-            --stand-secondary: #8338EC;
-            --stand-accent: #FF006E;
-            --stand-light: #8ECAE6;
-            --stand-dark: #023047;
-            --stand-gradient: linear-gradient(135deg, #3A86FF, #8338EC);
-            --stand-dark-gradient: linear-gradient(135deg, #023047, #219EBC);
-            --stand-shadow: 0 30px 90px rgba(58, 134, 255, .25);
-            --stand-glass: rgba(58, 134, 255, .15);
+            /* ACRYLIC/GLASS THEME COLORS - Clear, transparent, modern */
+            --acrylic-light: rgba(255, 255, 255, 0.95);
+            --acrylic-medium: rgba(255, 255, 255, 0.85);
+            --acrylic-dark: rgba(255, 255, 255, 0.75);
+            --acrylic-blue: rgba(135, 206, 250, 0.9);
+            --acrylic-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(135, 206, 250, 0.8));
+            --acrylic-dark-gradient: linear-gradient(135deg, rgba(135, 206, 250, 0.8), rgba(70, 130, 180, 0.8));
+            --acrylic-shadow: 0 30px 90px rgba(135, 206, 250, .15);
+            --acrylic-glass: rgba(255, 255, 255, 0.15);
+            --frosted-glass: rgba(255, 255, 255, 0.2);
             
-            /* KEYRING THEME COLORS - Metallic & durable */
-            --keyring-metal: linear-gradient(135deg, #8A817C, #BCB8B1);
-            --keyring-accent: #FFD166;
-            --keyring-dark: #4A4E69;
+            /* ACRYLIC BACKGROUNDS - Light, airy, modern */
+            --acrylic-bg-light: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+            --acrylic-bg-dark: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            --acrylic-nav-bg: rgba(255, 255, 255, 0.95);
+            --acrylic-nav-scrolled: rgba(255, 255, 255, 0.98);
+            --acrylic-menu-bg: rgba(255, 255, 255, 0.98);
             
-            /* BACKGROUND COLORS - Modern & clean */
-            --bg-dark: #0A0F1E;
-            --bg-darker: #0C1429;
-            --nav-bg: linear-gradient(135deg, rgba(58, 134, 255, 0.95), rgba(131, 56, 236, 0.95));
-            --nav-scrolled: linear-gradient(135deg, rgba(58, 134, 255, 0.9), rgba(131, 56, 236, 0.9));
-            --menu-bg: linear-gradient(135deg, rgba(58, 134, 255, 0.98), rgba(131, 56, 236, 0.98));
-            
-            /* STAND TYPE BACKGROUNDS */
-            --acrylic-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.95));
-            --metal-bg: linear-gradient(135deg, #8A817C, #BCB8B1);
-            --wood-bg: linear-gradient(135deg, #BC6C25, #DDA15E);
-            --marble-bg: linear-gradient(135deg, #E5E5E5, #C9C9C9);
+            /* STAND COLORS - Clear acrylic/glass theme */
+            --stand-acrylic: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(200, 200, 200, 0.8));
+            --stand-keyring: linear-gradient(135deg, rgba(192, 192, 192, 0.95), rgba(169, 169, 169, 0.8));
             
             /* Additional variables */
-            --white: #F8F9FA;
-            --black: #0A0F1E;
+            --text-dark: #1E293B;
+            --text-light: #F8FAFC;
+            --accent-blue: #3B82F6;
+            --accent-cyan: #06B6D4;
             --wa: #25D366;
         }
 
@@ -60,8 +55,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background: linear-gradient(135deg, #0A0F1E 0%, #0C1429 100%);
-            color: var(--white);
+            background: var(--acrylic-bg-light);
+            color: var(--text-dark);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             touch-action: manipulation;
@@ -69,7 +64,7 @@
         }
 
         html {
-            background: linear-gradient(135deg, #0A0F1E 0%, #0C1429 100%);
+            background: var(--acrylic-bg-light);
         }
 
         a {
@@ -77,29 +72,30 @@
             text-decoration: none;
         }
 
-        /* STICKY NAV - STAND THEME */
+        /* STICKY NAV - ACRYLIC THEME */
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 16px 20px;
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
+            background: var(--acrylic-nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(135, 206, 250, 0.2);
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             min-height: 70px;
-            box-shadow: 0 4px 20px rgba(58, 134, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         .nav.scrolled {
             padding: 12px 20px;
-            background: var(--nav-scrolled);
-            box-shadow: 0 4px 30px rgba(58, 134, 255, 0.3);
+            background: var(--acrylic-nav-scrolled);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
@@ -116,10 +112,13 @@
         }
 
         .logo-text {
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: var(--text-dark);
             display: none;
         }
 
-        /* HAMBURGER MENU */
+        /* HAMBURGER MENU - ACRYLIC STYLE */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -136,11 +135,10 @@
         .hamburger span {
             width: 100%;
             height: 2px;
-            background: var(--white);
+            background: var(--text-dark);
             border-radius: 2px;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform-origin: left center;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .hamburger.active span:nth-child(1) {
@@ -163,18 +161,17 @@
 
         .nav-center a {
             text-decoration: none;
-            color: var(--white);
-            font-weight: 900;
+            color: var(--text-dark);
+            font-weight: 700;
             font-size: .9rem;
             transition: all 0.3s ease;
             white-space: nowrap;
             padding: 5px 0;
             position: relative;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .nav-center a:hover {
-            color: var(--stand-light);
+            color: var(--accent-blue);
             transform: translateY(-2px);
         }
 
@@ -185,7 +182,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--stand-light);
+            background: var(--accent-blue);
             transition: width 0.3s ease;
         }
 
@@ -194,7 +191,8 @@
         }
 
         .nav-center a.active {
-            color: var(--stand-light);
+            color: var(--accent-blue);
+            font-weight: 900;
         }
 
         .nav-center a.active::after {
@@ -210,8 +208,8 @@
         .icon-btn {
             width: 38px;
             height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.1);
             backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
@@ -219,24 +217,24 @@
             font-size: 15px;
             cursor: pointer;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             flex-shrink: 0;
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--accent-blue);
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         .icon-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(59, 130, 246, 0.2);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(58, 134, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
         }
 
         .cart-count {
             position: absolute;
             top: -5px;
             right: -5px;
-            background: var(--stand-accent);
-            color: var(--white);
+            background: var(--accent-cyan);
+            color: white;
             font-size: 10px;
             min-width: 16px;
             height: 16px;
@@ -245,17 +243,17 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            border: 2px solid white;
         }
 
         .whatsapp {
             background: linear-gradient(135deg, #25d366, #128c7e);
-            color: var(--white);
+            color: white;
             padding: 8px 14px;
-            border-radius: 999px;
+            border-radius: 12px;
             font-weight: 600;
             font-size: 13px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             white-space: nowrap;
             border: none;
             cursor: pointer;
@@ -276,15 +274,15 @@
             display: none;
             width: 38px;
             height: 38px;
-            border-radius: 50%;
+            border-radius: 12px;
             background: linear-gradient(135deg, #25d366, #128c7e);
-            color: var(--white);
+            color: white;
             align-items: center;
             justify-content: center;
             font-size: 18px;
             text-decoration: none;
             box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .whatsapp-icon:hover {
@@ -292,14 +290,15 @@
             box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
         }
 
-        /* SIMPLE MOBILE MENU */
+        /* SIMPLE MOBILE MENU - ACRYLIC THEME */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(10, 15, 30, 0.95);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 999;
             opacity: 0;
             visibility: hidden;
@@ -317,8 +316,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: var(--menu-bg);
+            background: var(--acrylic-menu-bg);
             backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             padding: 30px 20px 100px;
             display: flex;
             flex-direction: column;
@@ -327,7 +327,8 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             transform: translateX(-100%);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-right: 1px solid rgba(135, 206, 250, 0.1);
         }
 
         .mobile-menu.active {
@@ -336,30 +337,36 @@
 
         .mobile-menu a {
             text-decoration: none;
-            color: var(--white);
+            color: var(--text-dark);
             font-weight: 700;
             font-size: 18px;
             padding: 18px 24px;
             border-radius: 16px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: rgba(59, 130, 246, 0.05);
             text-align: left;
             min-height: 60px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.1);
             margin-bottom: 4px;
-            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
         }
 
         .mobile-menu a:active {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(59, 130, 246, 0.1);
         }
 
         .mobile-menu a:hover {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateX(10px);
+        }
+
+        .mobile-menu a.active {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
         }
 
         .mobile-menu .whatsapp {
@@ -371,7 +378,7 @@
             min-height: 64px;
             justify-content: center;
             background: linear-gradient(135deg, #25d366, #128c7e);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(37, 211, 102, 0.3);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
             font-weight: 700;
             display: flex;
@@ -381,6 +388,8 @@
 
         .mobile-menu .whatsapp:hover {
             background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
         }
 
         .mobile-close-btn {
@@ -389,17 +398,17 @@
             right: 20px;
             width: 44px;
             height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
             display: none;
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            color: var(--white);
+            color: var(--text-dark);
             cursor: pointer;
             z-index: 1002;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .mobile-close-btn.show {
@@ -407,13 +416,13 @@
         }
 
         .mobile-close-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(59, 130, 246, 0.2);
             transform: rotate(90deg);
         }
 
         .menu-divider {
             height: 1px;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(59, 130, 246, 0.1);
             margin: 20px 0;
             width: 100%;
         }
@@ -422,9 +431,9 @@
             margin-top: auto;
             padding-top: 20px;
             text-align: center;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(30, 41, 59, 0.7);
             font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
         }
 
         /* Show hamburger and hide desktop nav on mobile */
@@ -453,6 +462,10 @@
 
             .whatsapp-icon {
                 display: flex;
+            }
+
+            .logo-text {
+                display: block;
             }
 
             .main-container {
@@ -484,6 +497,7 @@
                 width: 44px;
                 height: 44px;
                 font-size: 18px;
+                border-radius: 12px;
             }
 
             .cart-count {
@@ -493,6 +507,12 @@
                 height: 20px;
                 font-size: 11px;
                 font-weight: 700;
+            }
+
+            .whatsapp-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
             }
         }
 
@@ -516,7 +536,7 @@
             }
         }
 
-        /* HERO SECTION - STAND THEME */
+        /* HERO SECTION - ACRYLIC THEME */
         .hero-section {
             min-height: 90vh;
             display: flex;
@@ -527,24 +547,70 @@
             position: relative;
             isolation: isolate;
             overflow: hidden;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(58, 134, 255, 0.4) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(131, 56, 236, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 70%, rgba(255, 0, 110, 0.2) 0%, transparent 50%),
-                linear-gradient(135deg, #0C1429 0%, #0A0F1E 100%);
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
         }
 
-        .hero-bg-pattern {
+        .hero-section::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(135, 206, 250, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        /* Acrylic blobs with blur effect */
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
             z-index: 0;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .hero-blob-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(135, 206, 250, 0.4), transparent 70%);
+            top: -150px;
+            left: -150px;
+            animation-delay: 0s;
+        }
+
+        .hero-blob-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .hero-blob-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.25), transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
         }
 
         .hero-content {
@@ -555,29 +621,17 @@
             z-index: 2;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 20px;
-            background: rgba(58, 134, 255, 0.2);
-            color: var(--white);
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 30px;
-            border: 1px solid rgba(58, 134, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
         .hero-title {
             font-size: 3.5rem;
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 20px;
-            color: var(--white);
-            letter-spacing: -0.02em;
-            text-shadow: 0 4px 20px rgba(58, 134, 255, 0.3);
+            margin-bottom: 30px;
+            color: var(--text-dark);
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--text-dark), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         @media (max-width: 768px) {
@@ -594,61 +648,93 @@
 
         .hero-subtitle {
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: #64748B;
             line-height: 1.6;
             max-width: 700px;
             margin: 0 auto 40px;
-            font-weight: 400;
+            font-weight: 500;
         }
 
-        .hero-features {
+        .hero-image-container {
+            width: 100%;
             display: flex;
             justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 30px auto;
-            max-width: 600px;
+            align-items: center;
+            margin: 40px auto;
+            position: relative;
         }
 
-        .hero-feature {
-            padding: 10px 18px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--white);
-            backdrop-filter: blur(5px);
+        .hero-image {
+            width: 600px;
+            height: 400px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .hero-cta {
-            margin-top: 50px;
-            display: flex;
-            gap: 15px;
             justify-content: center;
-            flex-wrap: wrap;
+            background: var(--acrylic-gradient);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
         }
 
-        /* BUTTONS - STAND THEME */
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+            border-radius: 24px;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            border-radius: 24px;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsive hero image */
+        @media (max-width: 767px) {
+            .hero-image {
+                width: min(92vw, 500px);
+                height: auto;
+                aspect-ratio: 3 / 2;
+            }
+        }
+
+        /* BUTTONS - ACRYLIC THEME */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 16px 28px;
-            border-radius: 14px;
-            font-weight: 900;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: 700;
             text-decoration: none;
             border: none;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px;
             white-space: nowrap;
-            min-width: 160px;
-            height: 52px;
+            min-width: 140px;
+            height: 48px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
         }
@@ -656,49 +742,104 @@
         .btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+            border-radius: inherit;
+            z-index: 1;
         }
 
-        .btn:hover::before {
-            left: 100%;
+        .btn span {
+            position: relative;
+            z-index: 2;
         }
 
         .btn-primary {
-            background: var(--stand-gradient);
-            color: var(--white);
-            box-shadow: 0 8px 25px rgba(58, 134, 255, 0.4);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 35px rgba(58, 134, 255, 0.6);
-            background: linear-gradient(135deg, #4A92FF, #9048F0);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--accent-blue);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-4px);
-            border-color: var(--stand-light);
-            box-shadow: 0 8px 25px rgba(58, 134, 255, 0.3);
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+            border-color: var(--accent-blue);
         }
 
-        /* STANDS SECTION - MODERN DESIGN */
+        .hero-cta {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* SECTION HEADERS - ACRYLIC STYLE */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--text-dark), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.08rem;
+            color: #64748B;
+            line-height: 1.65;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        /* SECTION DIVIDER - GLASS EFFECT */
+        .section-divider {
+            height: 1px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+        }
+
+        /* STANDS SECTION - ACRYLIC CARDS */
         .stands-section {
-            padding: 120px 20px;
-            background: linear-gradient(135deg, #0C1429 0%, #0A0F1E 100%);
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
             position: relative;
             overflow: hidden;
         }
@@ -709,241 +850,191 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--stand-primary), transparent);
+            bottom: 0;
+            background: radial-gradient(circle at 10% 20%, rgba(135, 206, 250, 0.1) 0%, transparent 40%);
             z-index: 1;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            background: rgba(58, 134, 255, 0.15);
-            color: var(--stand-light);
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            border: 1px solid rgba(58, 134, 255, 0.3);
-            backdrop-filter: blur(5px);
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            color: var(--white);
-            text-shadow: 0 2px 10px rgba(58, 134, 255, 0.2);
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            font-weight: 400;
         }
 
         .stands-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            max-width: 1300px;
-            margin: 0 auto;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
             position: relative;
             z-index: 2;
         }
 
-        .stand-card {
-            border-radius: 24px;
-            padding: 35px;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        /* ACRYLIC CARD DESIGN */
+        .acrylic-card {
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.08);
-            display: flex;
-            flex-direction: column;
+            -webkit-backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
-        .stand-card::before {
+        .acrylic-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--stand-gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .stand-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            border-color: rgba(58, 134, 255, 0.4);
-            box-shadow: 0 25px 60px rgba(58, 134, 255, 0.25);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .stand-card:hover::before {
-            opacity: 1;
-        }
-
-        .stand-badge {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            padding: 8px 16px;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
             border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            background: rgba(255, 0, 110, 0.2);
-            color: var(--white);
-            border: 1px solid rgba(255, 0, 110, 0.3);
-            backdrop-filter: blur(10px);
+            z-index: 1;
         }
 
-        .stand-image-container {
+        .acrylic-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .acrylic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 30px 60px rgba(59, 130, 246, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .acrylic-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+            z-index: 3;
+        }
+
+        .acrylic-image {
             width: 100%;
             height: 250px;
             border-radius: 16px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             overflow: hidden;
-            position: relative;
-            background: var(--acrylic-bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.5);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        .stand-image {
+        .acrylic-image img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .stand-card:hover .stand-image {
-            transform: scale(1.08);
+        .acrylic-card:hover .acrylic-image img {
+            transform: scale(1.05);
         }
 
-        .stand-title {
-            font-size: 1.6rem;
+        .acrylic-title {
+            font-size: 1.5rem;
             font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--white);
-            position: relative;
-            display: inline-block;
+            margin-bottom: 10px;
+            color: var(--text-dark);
         }
 
-        .stand-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--stand-gradient);
-            border-radius: 2px;
+        .acrylic-description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: #64748B;
         }
 
-        .stand-description {
-            line-height: 1.7;
-            margin-bottom: 25px;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            flex-grow: 1;
-        }
-
-        .stand-sizes {
+        /* SIZE OPTIONS - ACRYLIC STYLE */
+        .acrylic-sizes {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin: 20px 0 30px;
+            margin: 20px 0;
         }
 
-        .stand-size {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 14px;
-            padding: 18px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+        .acrylic-size {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: all 0.3s ease;
         }
 
-        .stand-size:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(58, 134, 255, 0.3);
-            transform: translateX(5px);
+        .acrylic-size:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
         }
 
-        .stand-size-label {
-            font-size: 1.1rem;
+        .acrylic-size-label {
+            font-size: 1rem;
             font-weight: 600;
-            color: var(--white);
+            color: var(--text-dark);
+        }
+
+        .acrylic-size-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .acrylic-size-price span {
+            font-size: 0.85rem;
+            color: #94A3B8;
+            margin-left: 5px;
+        }
+
+        .acrylic-price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--text-dark);
             display: flex;
-            align-items: center;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .acrylic-price span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #94A3B8;
+        }
+
+        .acrylic-actions {
+            display: flex;
             gap: 10px;
         }
 
-        .stand-size-badge {
-            padding: 4px 10px;
-            border-radius: 12px;
-            background: rgba(58, 134, 255, 0.2);
-            color: var(--stand-light);
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .stand-size-price {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--stand-light);
-            text-shadow: 0 2px 4px rgba(58, 134, 255, 0.3);
-        }
-
-        .stand-size-price span {
-            font-size: 0.9rem;
-            font-weight: 400;
-            margin-left: 5px;
-            opacity: 0.7;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .stand-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .stand-actions .btn {
+        .acrylic-actions .btn {
             flex: 1;
-            min-height: 52px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
-        /* KEYRINGS SECTION - METALLIC THEME */
+        /* KEYRINGS SECTION */
         .keyrings-section {
-            padding: 120px 20px;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(138, 129, 124, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(188, 184, 177, 0.1) 0%, transparent 40%),
-                linear-gradient(135deg, #0A0F1E 0%, #0C1429 100%);
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
             position: relative;
             overflow: hidden;
         }
@@ -954,177 +1045,25 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--keyring-accent), transparent);
+            bottom: 0;
+            background: radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);
             z-index: 1;
         }
 
         .keyrings-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            max-width: 1300px;
+            gap: 30px;
+            max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
 
-        .keyring-card {
-            border-radius: 24px;
-            padding: 35px;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.08);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .keyring-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--keyring-metal);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .keyring-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            border-color: rgba(255, 209, 102, 0.4);
-            box-shadow: 0 25px 60px rgba(138, 129, 124, 0.25);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .keyring-card:hover::before {
-            opacity: 1;
-        }
-
-        .keyring-badge {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            background: rgba(255, 209, 102, 0.2);
-            color: var(--white);
-            border: 1px solid rgba(255, 209, 102, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .keyring-image-container {
-            width: 100%;
-            height: 250px;
-            border-radius: 16px;
-            margin-bottom: 25px;
-            overflow: hidden;
-            position: relative;
-            background: var(--keyring-metal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .keyring-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
-        }
-
-        .keyring-card:hover .keyring-image {
-            transform: scale(1.08) rotate(5deg);
-        }
-
-        .keyring-title {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--white);
-            position: relative;
-            display: inline-block;
-        }
-
-        .keyring-title::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--keyring-metal);
-            border-radius: 2px;
-        }
-
-        .keyring-description {
-            line-height: 1.7;
-            margin-bottom: 25px;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            flex-grow: 1;
-        }
-
-        .keyring-features {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .keyring-feature {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
-        }
-
-        .keyring-feature i {
-            color: var(--keyring-accent);
-            font-size: 1.1rem;
-        }
-
-        .keyring-price {
-            font-size: 2rem;
-            font-weight: 900;
-            margin: 20px 0 25px;
-            color: var(--keyring-accent);
-            text-shadow: 0 2px 4px rgba(255, 209, 102, 0.3);
-        }
-
-        .keyring-price span {
-            font-size: 1rem;
-            font-weight: 400;
-            margin-left: 5px;
-            opacity: 0.7;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .keyring-actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .keyring-actions .btn {
-            flex: 1;
-            min-height: 52px;
-        }
-
-        /* BENEFITS SECTION - MODERN DESIGN */
+        /* BENEFITS SECTION - ACRYLIC CARDS */
         .benefits-section {
-            padding: 120px 20px;
-            background: linear-gradient(135deg, #0C1429 0%, #0A0F1E 100%);
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
             position: relative;
             overflow: hidden;
         }
@@ -1135,8 +1074,8 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--stand-secondary), transparent);
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);
             z-index: 1;
         }
 
@@ -1151,80 +1090,62 @@
         }
 
         .benefit-card {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 35px 30px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             backdrop-filter: blur(20px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(131, 56, 236, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         .benefit-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(58, 134, 255, 0.3);
-            box-shadow: 0 20px 50px rgba(58, 134, 255, 0.2);
-        }
-
-        .benefit-card:hover::before {
-            opacity: 1;
+            transform: translateY(-5px);
+            box-shadow: 
+                0 30px 60px rgba(59, 130, 246, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border-color: rgba(59, 130, 246, 0.2);
         }
 
         .benefit-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
-            background: var(--stand-gradient);
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            margin-bottom: 25px;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(58, 134, 255, 0.3);
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
         }
 
         .benefit-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
             margin-bottom: 15px;
-            color: var(--white);
+            color: var(--text-dark);
         }
 
         .benefit-description {
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.7;
-            font-size: 1rem;
+            color: #64748B;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         .highlight-text {
-            color: var(--stand-light);
+            color: var(--accent-blue);
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(58, 134, 255, 0.3);
         }
 
-        /* CTA SECTION */
+        /* CTA SECTION - GLASS EFFECT */
         .cta-section {
-            padding: 120px 20px;
-            background: 
-                radial-gradient(circle at 30% 40%, rgba(58, 134, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 70% 60%, rgba(131, 56, 236, 0.15) 0%, transparent 40%),
-                linear-gradient(135deg, #0A0F1E 0%, #0C1429 100%);
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
             position: relative;
             overflow: hidden;
         }
@@ -1235,65 +1156,70 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--stand-light), transparent);
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
             z-index: 1;
         }
 
         .cta-box {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 32px;
-            padding: 60px 40px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+            border-radius: 24px;
+            padding: 50px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             text-align: center;
             backdrop-filter: blur(30px);
-            max-width: 900px;
+            -webkit-backdrop-filter: blur(30px);
+            max-width: 800px;
             margin: 0 auto;
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(58, 134, 255, 0.2);
+            z-index: 2;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         .cta-box::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--stand-gradient);
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+            border-radius: 24px;
+            z-index: -1;
         }
 
         .cta-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
             margin-bottom: 20px;
-            color: var(--white);
-            text-shadow: 0 2px 10px rgba(58, 134, 255, 0.3);
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--text-dark), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .cta-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            color: #64748B;
             line-height: 1.6;
-            margin-bottom: 40px;
-            max-width: 700px;
+            margin-bottom: 30px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 400;
+            font-weight: 500;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        /* FAQ SECTION */
+        /* FAQ SECTION - ACRYLIC ACCORDION */
         .faq-section {
-            padding: 120px 20px;
-            background: linear-gradient(135deg, #0C1429 0%, #0A0F1E 100%);
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
             position: relative;
             overflow: hidden;
         }
@@ -1304,13 +1230,13 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--stand-primary), transparent);
+            bottom: 0;
+            background: radial-gradient(circle at 10% 90%, rgba(6, 182, 212, 0.08) 0%, transparent 40%);
             z-index: 1;
         }
 
         .faq-container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
@@ -1320,32 +1246,38 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
         .faq-item {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+            border-radius: 16px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
             overflow: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(59, 130, 246, 0.2);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.1);
         }
 
         .faq-item.active {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(58, 134, 255, 0.3);
-            box-shadow: 0 15px 40px rgba(58, 134, 255, 0.15);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7));
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         .faq-question {
             width: 100%;
-            padding: 28px 35px;
+            padding: 24px 30px;
             background: none;
             border: none;
-            color: var(--white);
-            font-size: 1.1rem;
-            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 18px;
+            font-weight: 600;
             text-align: left;
             display: flex;
             justify-content: space-between;
@@ -1355,14 +1287,14 @@
         }
 
         .faq-question:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(59, 130, 246, 0.05);
         }
 
         .faq-icon {
             font-size: 24px;
             font-weight: 300;
-            transition: transform 0.3s ease;
-            color: var(--stand-light);
+            color: var(--accent-blue);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .faq-item.active .faq-icon {
@@ -1370,28 +1302,36 @@
         }
 
         .faq-answer {
-            padding: 0 35px;
+            padding: 0 30px;
             max-height: 0;
             overflow: hidden;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.7;
-            transition: all 0.3s ease;
-            font-size: 1rem;
+            color: #64748B;
+            line-height: 1.6;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .faq-item.active .faq-answer {
-            padding: 0 35px 28px;
+            padding: 0 30px 24px;
             max-height: 500px;
         }
 
-        /* FOOTER */
+        /* FOOTER - ACRYLIC THEME */
         .footer-section {
-            background: linear-gradient(135deg, rgba(10, 15, 30, 0.98), rgba(12, 20, 41, 0.98));
-            color: var(--white);
-            padding: 80px 20px 40px;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: var(--text-light);
+            padding: 60px 20px 30px;
             position: relative;
             overflow: hidden;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
         }
 
         .footer-container {
@@ -1404,14 +1344,14 @@
         .footer-grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 50px;
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         @media (max-width: 768px) {
             .footer-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 30px;
                 text-align: center;
             }
         }
@@ -1429,7 +1369,7 @@
             text-decoration: none;
             font-size: 24px;
             font-weight: 900;
-            color: var(--white);
+            color: white;
             margin-bottom: 10px;
         }
 
@@ -1437,12 +1377,13 @@
             height: 32px;
             width: auto;
             object-fit: contain;
+            filter: brightness(0) invert(1);
         }
 
         .footer-tagline {
             color: rgba(255, 255, 255, 0.7);
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.5;
             margin-bottom: 20px;
             max-width: 280px;
         }
@@ -1454,10 +1395,10 @@
         }
 
         .social-icon {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1466,43 +1407,31 @@
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .social-icon:hover {
-            background: var(--stand-gradient);
-            color: var(--white);
+            background: rgba(59, 130, 246, 0.3);
+            color: white;
             transform: translateY(-3px);
-            border-color: transparent;
-            box-shadow: 0 8px 20px rgba(58, 134, 255, 0.3);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
 
         .footer-column h3 {
             font-size: 16px;
             font-weight: 700;
-            margin-bottom: 25px;
-            color: var(--white);
+            margin-bottom: 20px;
+            color: white;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             opacity: 0.9;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background: var(--stand-gradient);
-            border-radius: 1px;
         }
 
         .footer-links {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .footer-links a {
@@ -1510,11 +1439,11 @@
             text-decoration: none;
             font-size: 14px;
             transition: all 0.3s ease;
-            padding: 6px 0;
+            padding: 4px 0;
         }
 
         .footer-links a:hover {
-            color: var(--stand-light);
+            color: white;
             transform: translateX(5px);
             opacity: 1;
         }
@@ -1522,13 +1451,13 @@
         .footer-contact {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             color: rgba(255, 255, 255, 0.7);
             font-size: 14px;
         }
@@ -1537,26 +1466,25 @@
             font-size: 16px;
             opacity: 0.8;
             width: 20px;
-            color: var(--stand-light);
         }
 
         .footer-newsletter {
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
         .newsletter-input {
             display: flex;
             gap: 10px;
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
         .newsletter-input input {
             flex: 1;
-            padding: 14px 18px;
-            border-radius: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(255, 255, 255, 0.05);
-            color: var(--white);
+            color: white;
             font-size: 14px;
             font-family: 'Inter', sans-serif;
             backdrop-filter: blur(5px);
@@ -1565,9 +1493,9 @@
 
         .newsletter-input input:focus {
             outline: none;
-            border-color: var(--stand-light);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+            border-color: var(--accent-blue);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
         }
 
         .newsletter-input input::placeholder {
@@ -1575,11 +1503,11 @@
         }
 
         .newsletter-input button {
-            padding: 14px 22px;
-            border-radius: 12px;
+            padding: 12px 20px;
+            border-radius: 10px;
             border: none;
-            background: var(--stand-gradient);
-            color: var(--white);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: white;
             font-weight: 600;
             font-size: 14px;
             cursor: pointer;
@@ -1590,15 +1518,15 @@
 
         .newsletter-input button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(58, 134, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
         }
 
         .footer-bottom {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             flex-wrap: wrap;
             gap: 20px;
         }
@@ -1610,7 +1538,7 @@
 
         .footer-legal {
             display: flex;
-            gap: 25px;
+            gap: 20px;
         }
 
         .footer-legal a {
@@ -1621,21 +1549,222 @@
         }
 
         .footer-legal a:hover {
-            color: var(--stand-light);
+            color: white;
         }
 
-        /* RESPONSIVE DESIGN */
-        @media (max-width: 1024px) {
-            .stands-grid,
-            .keyrings-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
+        /* CART MODAL - ACRYLIC THEME */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-left: 1px solid rgba(59, 130, 246, 0.1);
+            z-index: 2000;
+            transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.1);
         }
 
         @media (max-width: 768px) {
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .cart-header h3 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .close-cart {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: var(--accent-blue);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .close-cart:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: #94A3B8;
+        }
+
+        .empty-cart p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            border-color: rgba(59, 130, 246, 0.2);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.1);
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .cart-item-price {
+            color: #64748B;
+            font-size: 0.85rem;
+        }
+
+        .remove-item {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #EF4444;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #EF4444;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .checkout-btn {
+            margin: 0 25px 25px;
+            padding: 18px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        /* NOTIFICATION - ACRYLIC STYLE */
+        .notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: white;
+            padding: 18px 25px;
+            border-radius: 14px;
+            font-weight: 600;
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 3000;
+            max-width: 300px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .notification {
+                right: 20px;
+                left: 20px;
+                max-width: none;
+            }
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
 
             .hero-title {
@@ -1646,24 +1775,27 @@
             .keyrings-grid,
             .benefits-grid {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 20px;
             }
 
-            .stand-card,
-            .keyring-card {
-                padding: 25px;
+            .acrylic-sizes {
+                flex-direction: column;
+            }
+
+            .acrylic-size {
+                width: 100%;
             }
 
             .cta-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
-            .cta-buttons {
+            .cta-buttons,
+            .acrylic-actions {
                 flex-direction: column;
-                align-items: stretch;
             }
 
-            .cta-buttons .btn {
+            .acrylic-actions .btn {
                 width: 100%;
             }
         }
@@ -1684,220 +1816,38 @@
             .section-title {
                 font-size: 1.8rem;
             }
+        }
 
-            .stand-actions,
-            .keyring-actions {
-                flex-direction: column;
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-
-            .stand-actions .btn,
-            .keyring-actions .btn {
-                width: 100%;
-            }
-
-            .hero-features {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-feature {
-                width: 100%;
-                justify-content: center;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* CART MODAL - STAND THEME */
-        .cart-modal {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 400px;
-            height: 100%;
-            background: linear-gradient(135deg, #0A0F1E, #0C1429);
-            border-left: 1px solid rgba(255, 255, 255, 0.15);
-            z-index: 2000;
-            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            box-shadow: -20px 0 60px rgba(58, 134, 255, 0.3);
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
         }
 
-        @media (max-width: 768px) {
-            .cart-modal {
-                width: 100%;
-                right: -100%;
-            }
+        .delay-1 {
+            animation-delay: 0.1s;
         }
 
-        .cart-modal.active {
-            right: 0;
+        .delay-2 {
+            animation-delay: 0.2s;
         }
 
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        .delay-3 {
+            animation-delay: 0.3s;
         }
 
-        .cart-header h3 {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--white);
-            margin: 0;
-        }
-
-        .close-cart {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--white);
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .close-cart:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg);
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 25px;
-        }
-
-        .empty-cart {
-            text-align: center;
-            padding: 60px 20px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .empty-cart p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            margin-bottom: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        .cart-item img {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            object-fit: cover;
-        }
-
-        .cart-item-details {
-            flex: 1;
-        }
-
-        .cart-item-name {
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 5px;
-            font-size: 0.95rem;
-        }
-
-        .cart-item-price {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
-        }
-
-        .remove-item {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--white);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .remove-item:hover {
-            background: rgba(255, 0, 110, 0.2);
-            border-color: var(--stand-accent);
-            color: var(--stand-accent);
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: var(--white);
-        }
-
-        .checkout-btn {
-            margin: 0 25px 25px;
-            padding: 18px;
-            border-radius: 14px;
-            background: var(--stand-gradient);
-            color: var(--white);
-            font-weight: 700;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .checkout-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(58, 134, 255, 0.4);
-        }
-
-        /* NOTIFICATION - STAND THEME */
-        .notification {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--stand-gradient);
-            color: var(--white);
-            padding: 18px 25px;
-            border-radius: 14px;
-            font-weight: 600;
-            box-shadow: 0 15px 40px rgba(58, 134, 255, 0.3);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 3000;
-            max-width: 300px;
-        }
-
-        @media (max-width: 768px) {
-            .notification {
-                right: 20px;
-                left: 20px;
-                max-width: none;
-            }
-        }
-
-        .notification.show {
-            transform: translateY(0);
-            opacity: 1;
+        .delay-4 {
+            animation-delay: 0.4s;
         }
     </style>
 </head>
@@ -1930,10 +1880,11 @@
     <!-- MOBILE CLOSE BUTTON -->
     <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
 
-    <!-- STICKY NAV - STAND THEME -->
+    <!-- STICKY NAV - ACRYLIC THEME -->
     <nav class="nav" id="mainNav">
         <a href="index.html" class="logo">
             <img src="logo.png" alt="ExposureBoost Logo" class="logo-img">
+            <span class="logo-text">ExposureBoost</span>
         </a>
 
         <button class="hamburger" id="hamburgerBtn">
@@ -1965,7 +1916,7 @@
         </div>
     </nav>
 
-    <!-- MOBILE MENU - STAND THEME -->
+    <!-- MOBILE MENU - ACRYLIC THEME -->
     <div class="mobile-menu" id="mobileMenu">
         <a href="index.html" class="mobile-menu-item">
             <span>🏠</span> Home
@@ -1993,40 +1944,31 @@
         </a>
 
         <div class="menu-footer">
-            Premium NFC Stands & Digital Profiles
+            Premium NFC Cards & Digital Profiles
         </div>
     </div>
 
     <div class="main-container">
-        <!-- HERO SECTION - STAND THEME -->
+        <!-- HERO SECTION - ACRYLIC THEME -->
         <section class="hero-section" id="hero">
-            <div class="hero-bg-pattern"></div>
+            <div class="hero-blob hero-blob-1"></div>
+            <div class="hero-blob hero-blob-2"></div>
+            <div class="hero-blob hero-blob-3"></div>
+            
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span>📐</span> Premium Stands & Keyrings
-                </div>
-                <h1 class="hero-title">Display & Carry Your Digital Presence</h1>
-                <p class="hero-subtitle">
-                    Elevate your NFC cards with premium acrylic stands for professional displays and durable keyrings for portable access. 
-                    Create touchpoints everywhere you do business.
+                <h1 class="hero-title fade-in">Premium NFC Stands & Keyrings</h1>
+                <p class="hero-subtitle fade-in delay-1">
+                    Elevate your digital presence with our premium acrylic stands and durable keyrings. 
+                    Professional displays meet portable access for the complete NFC ecosystem.
                 </p>
                 
-                <div class="hero-features">
-                    <div class="hero-feature">
-                        <span>🎯</span> Professional Displays
-                    </div>
-                    <div class="hero-feature">
-                        <span>🔑</span> Portable Access
-                    </div>
-                    <div class="hero-feature">
-                        <span>⚡</span> Instant Connection
-                    </div>
-                    <div class="hero-feature">
-                        <span>🔄</span> Complete Ecosystem
+                <div class="hero-image-container fade-in delay-2">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Premium NFC Stands & Keyrings">
                     </div>
                 </div>
 
-                <div class="hero-cta">
+                <div class="hero-cta fade-in delay-3">
                     <button class="btn btn-primary" id="browseStandsBtn">Browse Stands</button>
                     <button class="btn btn-secondary" id="browseKeyringsBtn">Browse Keyrings</button>
                 </div>
@@ -2035,99 +1977,58 @@
 
         <!-- STANDS SECTION -->
         <section class="stands-section" id="stands">
-            <div class="section-header">
-                <div class="section-badge">📱 Professional Displays</div>
+            <div class="section-header fade-in">
                 <h2 class="section-title">Premium Acrylic Display Stands</h2>
-                <p class="section-subtitle">Showcase your NFC cards in style with our premium display stands. Perfect for offices, receptions, and professional environments.</p>
+                <p class="section-subtitle">Showcase your NFC cards in style with our premium acrylic display stands. Professional displays for every business environment.</p>
+                <div class="section-divider"></div>
             </div>
 
             <div class="stands-grid">
                 <!-- Acrylic Display Stand -->
-                <div class="stand-card">
-                    <div class="stand-badge">Bestseller 🏆</div>
-                    <div class="stand-image-container">
-                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Acrylic Display Stand" class="stand-image">
+                <div class="acrylic-card fade-in">
+                    <div class="acrylic-badge">Most Popular 🏆</div>
+                    <div class="acrylic-image">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Acrylic Display Stand">
                     </div>
-                    <h3 class="stand-title">Acrylic Display Stand</h3>
-                    <p class="stand-description">
-                        Crystal clear acrylic stand for a modern, professional look. Shows off your card design while keeping it accessible. 
+                    <h3 class="acrylic-title">Acrylic Display Stand</h3>
+                    <p class="acrylic-description">
+                        Clear acrylic stand for a modern, professional look. Shows off your card design while keeping it accessible. 
                         Perfect for reception desks, office displays, or countertops.
                     </p>
                     
-                    <div class="stand-sizes">
-                        <div class="stand-size">
-                            <div class="stand-size-label">
-                                <span>Large Display</span>
-                                <div class="stand-size-badge">20cm Height</div>
-                            </div>
-                            <div class="stand-size-price">£95 <span>each</span></div>
+                    <div class="acrylic-sizes">
+                        <div class="acrylic-size">
+                            <div class="acrylic-size-label">Large (20cm)</div>
+                            <div class="acrylic-size-price">£95 <span>each</span></div>
                         </div>
-                        <div class="stand-size">
-                            <div class="stand-size-label">
-                                <span>Compact Size</span>
-                                <div class="stand-size-badge">12cm Height</div>
-                            </div>
-                            <div class="stand-size-price">£40 <span>each</span></div>
+                        <div class="acrylic-size">
+                            <div class="acrylic-size-label">Small (12cm)</div>
+                            <div class="acrylic-size-price">£40 <span>each</span></div>
                         </div>
                     </div>
 
-                    <div class="stand-actions">
+                    <div class="acrylic-actions">
                         <button class="btn btn-primary add-to-cart" data-name="Acrylic Display Stand (Large)" data-price="95">🛒 Add Large</button>
                         <button class="btn btn-secondary add-to-cart" data-name="Acrylic Display Stand (Small)" data-price="40">🛒 Add Small</button>
                     </div>
                 </div>
 
                 <!-- Premium Metal Stand -->
-                <div class="stand-card">
-                    <div class="stand-badge">Premium ⭐</div>
-                    <div class="stand-image-container" style="background: var(--metal-bg);">
-                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Metal Stand" class="stand-image">
+                <div class="acrylic-card fade-in delay-1">
+                    <div class="acrylic-badge">Premium Choice ✨</div>
+                    <div class="acrylic-image">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Premium Metal Stand">
                     </div>
-                    <h3 class="stand-title">Premium Metal Stand</h3>
-                    <p class="stand-description">
-                        Heavy-duty metal stand with weighted base for maximum stability. Premium brushed metal finish with non-slip rubber feet. 
+                    <h3 class="acrylic-title">Premium Metal Stand</h3>
+                    <p class="acrylic-description">
+                        Heavy-duty metal stand with weighted base. Provides maximum stability and premium feel. 
                         Ideal for high-traffic areas and executive offices.
                     </p>
                     
-                    <div class="stand-sizes">
-                        <div class="stand-size">
-                            <div class="stand-size-label">
-                                <span>Executive Edition</span>
-                                <div class="stand-size-badge">Weighted Base</div>
-                            </div>
-                            <div class="stand-size-price">£120 <span>each</span></div>
-                        </div>
-                    </div>
+                    <div class="acrylic-price">£120 <span>one-time · stand only</span></div>
 
-                    <div class="stand-actions">
+                    <div class="acrylic-actions">
                         <button class="btn btn-primary add-to-cart" data-name="Premium Metal Stand" data-price="120">🛒 Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Wooden Display Stand -->
-                <div class="stand-card">
-                    <div class="stand-badge">Natural 🌳</div>
-                    <div class="stand-image-container" style="background: var(--wood-bg);">
-                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wooden Display Stand" class="stand-image">
-                    </div>
-                    <h3 class="stand-title">Wooden Display Stand</h3>
-                    <p class="stand-description">
-                        Handcrafted wooden stand with natural finish. Warm, organic aesthetic perfect for creative studios, eco-friendly brands, 
-                        and businesses wanting a natural touch.
-                    </p>
-                    
-                    <div class="stand-sizes">
-                        <div class="stand-size">
-                            <div class="stand-size-label">
-                                <span>Walnut Finish</span>
-                                <div class="stand-size-badge">Handcrafted</div>
-                            </div>
-                            <div class="stand-size-price">£85 <span>each</span></div>
-                        </div>
-                    </div>
-
-                    <div class="stand-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Wooden Display Stand" data-price="85">🛒 Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -2135,103 +2036,48 @@
 
         <!-- KEYRINGS SECTION -->
         <section class="keyrings-section" id="keyrings">
-            <div class="section-header">
-                <div class="section-badge">🔑 Portable Access</div>
+            <div class="section-header fade-in">
                 <h2 class="section-title">Premium NFC Keyrings</h2>
-                <p class="section-subtitle">Carry your digital profile everywhere. These keyrings work exactly like our NFC cards but are built for daily use.</p>
+                <p class="section-subtitle">Carry your digital profile everywhere. These keyrings work exactly like our NFC cards.</p>
+                <div class="section-divider"></div>
             </div>
 
             <div class="keyrings-grid">
                 <!-- Metal Keyring -->
-                <div class="keyring-card">
-                    <div class="keyring-badge">Durable ⚙️</div>
-                    <div class="keyring-image-container">
-                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Metal Keyring" class="keyring-image">
+                <div class="acrylic-card fade-in">
+                    <div class="acrylic-badge">Bestseller 🔥</div>
+                    <div class="acrylic-image">
+                        <img src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Metal Keyring">
                     </div>
-                    <h3 class="keyring-title">Metal Keyring</h3>
-                    <p class="keyring-description">
-                        Durable stainless steel construction with premium brushed finish. Water-resistant and built to last. 
-                        Includes same NFC functionality as our cards.
+                    <h3 class="acrylic-title">Metal Keyring</h3>
+                    <p class="acrylic-description">
+                        Durable metal construction with premium finish. Water-resistant and built to last. 
+                        Includes same NFC functionality as our cards. Perfect for keys, bags, or lanyards.
                     </p>
                     
-                    <div class="keyring-features">
-                        <div class="keyring-feature">
-                            <i>⚡</i> <span>Same NFC chip as cards</span>
-                        </div>
-                        <div class="keyring-feature">
-                            <i>💧</i> <span>Water-resistant design</span>
-                        </div>
-                        <div class="keyring-feature">
-                            <i>🛡️</i> <span>Scratch-resistant finish</span>
-                        </div>
-                    </div>
+                    <div class="acrylic-price">£25 <span>each · keyring only</span></div>
 
-                    <div class="keyring-price">£25 <span>each</span></div>
-
-                    <div class="keyring-actions">
+                    <div class="acrylic-actions">
                         <button class="btn btn-primary add-to-cart" data-name="Metal Keyring" data-price="25">🛒 Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Leather Keyring -->
-                <div class="keyring-card">
-                    <div class="keyring-badge">Premium 🎩</div>
-                    <div class="keyring-image-container" style="background: linear-gradient(135deg, #8B4513, #D2691E);">
-                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Leather Keyring" class="keyring-image">
+                <div class="acrylic-card fade-in delay-1">
+                    <div class="acrylic-badge">Luxury Option 💼</div>
+                    <div class="acrylic-image">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Leather Keyring">
                     </div>
-                    <h3 class="keyring-title">Leather Keyring</h3>
-                    <p class="keyring-description">
-                        Premium full-grain leather keyring with stainless steel NFC tag. Sophisticated and professional. 
-                        Ages beautifully and develops character over time.
+                    <h3 class="acrylic-title">Leather Keyring</h3>
+                    <p class="acrylic-description">
+                        Premium leather keyring with metal NFC tag. Sophisticated and professional. 
+                        Ideal for business professionals who value style and functionality.
                     </p>
                     
-                    <div class="keyring-features">
-                        <div class="keyring-feature">
-                            <i>👌</i> <span>Full-grain leather</span>
-                        </div>
-                        <div class="keyring-feature">
-                            <i>✨</i> <span>Premium metal hardware</span>
-                        </div>
-                        <div class="keyring-feature">
-                            <i>🔄</i> <span>Same NFC functionality</span>
-                        </div>
-                    </div>
+                    <div class="acrylic-price">£35 <span>each · keyring only</span></div>
 
-                    <div class="keyring-price">£35 <span>each</span></div>
-
-                    <div class="keyring-actions">
+                    <div class="acrylic-actions">
                         <button class="btn btn-primary add-to-cart" data-name="Leather Keyring" data-price="35">🛒 Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Marble Keyring -->
-                <div class="keyring-card">
-                    <div class="keyring-badge">Unique 🎨</div>
-                    <div class="keyring-image-container" style="background: var(--marble-bg);">
-                        <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Marble Keyring" class="keyring-image">
-                    </div>
-                    <h3 class="keyring-title">Marble Keyring</h3>
-                    <p class="keyring-description">
-                        Unique marble effect keyring with metal NFC insert. Each piece has a unique pattern. 
-                        Sophisticated and distinctive for creative professionals.
-                    </p>
-                    
-                    <div class="keyring-features">
-                        <div class="keyring-feature">
-                            <i>🎨</i> <span>Unique marble pattern</span>
-                        </div>
-                        <div class="keyring-feature">
-                            <i>⚡</i> <span>Metal NFC insert</span>
-                        </div>
-                        <div class="keyring-feature">
-                            <i>✨</i> <span>Premium resin finish</span>
-                        </div>
-                    </div>
-
-                    <div class="keyring-price">£30 <span>each</span></div>
-
-                    <div class="keyring-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Marble Keyring" data-price="30">🛒 Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -2239,46 +2085,46 @@
 
         <!-- BENEFITS SECTION -->
         <section class="benefits-section" id="benefits">
-            <div class="section-header">
-                <div class="section-badge">⚡ Why Choose Stands & Keyrings</div>
-                <h2 class="section-title">Multiply Your Engagement</h2>
+            <div class="section-header fade-in">
+                <h2 class="section-title">Why Stands & Keyrings Multiply Engagement</h2>
                 <p class="section-subtitle">Transform how people interact with your NFC cards. From professional displays to portable access points.</p>
+                <div class="section-divider"></div>
             </div>
 
             <div class="benefits-grid">
-                <div class="benefit-card">
+                <div class="benefit-card fade-in">
                     <div class="benefit-icon">👁️</div>
                     <h3 class="benefit-title">Professional Presence</h3>
                     <p class="benefit-description">
                         Acrylic stands elevate your card to eye level, creating a <span class="highlight-text">professional touchpoint</span> 
-                        in offices, receptions, and retail spaces that commands attention.
+                        in offices, receptions, and retail spaces.
                     </p>
                 </div>
 
-                <div class="benefit-card">
+                <div class="benefit-card fade-in delay-1">
                     <div class="benefit-icon">🎒</div>
                     <h3 class="benefit-title">Portable Access</h3>
                     <p class="benefit-description">
                         Keyrings keep your NFC profile accessible everywhere. Attach to keys, bags, or lanyards for 
-                        <span class="highlight-text">instant connections on the go</span> – perfect for networking events.
+                        <span class="highlight-text">instant connections on the go</span>.
                     </p>
                 </div>
 
-                <div class="benefit-card">
+                <div class="benefit-card fade-in delay-2">
                     <div class="benefit-icon">⚡</div>
                     <h3 class="benefit-title">Instant Interaction</h3>
                     <p class="benefit-description">
                         Both stands and keyrings make tapping effortless. People can <span class="highlight-text">connect instantly</span> 
-                        without fumbling – just tap and go for maximum convenience.
+                        without fumbling—just tap and go.
                     </p>
                 </div>
 
-                <div class="benefit-card">
+                <div class="benefit-card fade-in delay-3">
                     <div class="benefit-icon">🔄</div>
                     <h3 class="benefit-title">Complete Ecosystem</h3>
                     <p class="benefit-description">
                         Combine stands for fixed displays with keyrings for mobile access. Create <span class="highlight-text">touchpoints everywhere</span> 
-                        you do business for maximum exposure.
+                        you do business.
                     </p>
                 </div>
             </div>
@@ -2286,11 +2132,11 @@
 
         <!-- CTA SECTION -->
         <section class="cta-section" id="cta">
-            <div class="cta-box">
+            <div class="cta-box fade-in">
                 <h2 class="cta-title">Complete Your NFC Ecosystem</h2>
                 <p class="cta-subtitle">
                     Get both stands for professional displays and keyrings for portable access. 
-                    Create a complete NFC touchpoint system that works everywhere your business operates.
+                    Create a complete NFC ecosystem for your business.
                 </p>
                 <div class="cta-buttons">
                     <button class="btn btn-primary" onclick="scrollToSection('stands')">Browse Stands</button>
@@ -2301,80 +2147,66 @@
 
         <!-- FAQ SECTION -->
         <section class="faq-section" id="faq">
-            <div class="section-header">
-                <div class="section-badge">❓ Frequently Asked Questions</div>
-                <h2 class="section-title">Everything You Need to Know</h2>
-                <p class="section-subtitle">Clear answers about our stands and keyrings to help you make the right choice.</p>
+            <div class="section-header fade-in">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Clear answers about our stands and keyrings.</p>
+                <div class="section-divider"></div>
             </div>
 
             <div class="faq-container">
                 <div class="faq-list">
-                    <div class="faq-item">
+                    <div class="faq-item fade-in">
                         <button class="faq-question">
                             <span>Do stands work with all NFC cards?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
                             Yes! Our acrylic stands are designed to work with any standard NFC card size (85.6 × 54 mm). 
-                            They accommodate both our premium cards and most other NFC business cards on the market.
+                            They accommodate both our premium cards and most other NFC business cards.
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item fade-in delay-1">
                         <button class="faq-question">
                             <span>Are keyrings as durable as the cards?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
                             Absolutely. Our metal keyrings are built to withstand daily use. They're water-resistant, 
-                            scratch-resistant, and feature the same premium NFC chip as our cards. Leather keyrings use 
-                            full-grain leather that ages beautifully.
+                            scratch-resistant, and feature the same premium NFC chip as our cards.
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item fade-in delay-2">
                         <button class="faq-question">
                             <span>What's the difference between small and large stands?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            Small stands (12cm height) are perfect for personal desks, home offices, and compact spaces. 
-                            Large stands (20cm height) are ideal for reception areas, retail counters, conference tables, 
-                            and high-visibility locations.
+                            Small stands (12cm height) are perfect for desks and personal spaces. Large stands (20cm height) 
+                            are ideal for reception areas, retail counters, and high-visibility locations.
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item fade-in delay-3">
                         <button class="faq-question">
                             <span>Can I get stands and keyrings bundled?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
                             Yes! Contact us via WhatsApp for custom bundle pricing. We offer discounts when 
-                            purchasing stands and keyrings together, and can create custom packages for teams and businesses.
+                            purchasing stands and keyrings together.
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item fade-in delay-4">
                         <button class="faq-question">
                             <span>How do I clean my acrylic stand?</span>
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
                             Simply wipe with a soft, dry cloth. For tougher marks, use a damp cloth with mild soap, 
-                            then dry immediately. Avoid abrasive cleaners, chemicals, or paper towels which can scratch 
-                            the acrylic surface.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            <span>Do keyrings have the same functionality as cards?</span>
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            Yes, exactly the same. Keyrings use the same NFC chip technology and can be programmed with 
-                            the same digital profile. They're just in a different form factor for portable convenience.
+                            then dry immediately. Avoid abrasive cleaners or chemicals.
                         </div>
                     </div>
                 </div>
@@ -2393,7 +2225,7 @@
                         </a>
                         <p class="footer-tagline">
                             Premium NFC stands and keyrings that amplify your business reach.
-                            Professional displays meet portable access for the complete digital ecosystem.
+                            Professional displays meet portable access.
                         </p>
                         <div class="footer-social">
                             <a href="#" class="social-icon" aria-label="Instagram">📷</a>
@@ -2435,7 +2267,7 @@
                         <div class="footer-newsletter">
                             <h3>Stay Updated</h3>
                             <div class="newsletter-input">
-                                <input type="email" placeholder="Your email address">
+                                <input type="email" placeholder="Your email">
                                 <button>Subscribe</button>
                             </div>
                         </div>
@@ -2445,7 +2277,7 @@
                 <!-- Bottom Section -->
                 <div class="footer-bottom">
                     <div class="footer-copyright">
-                        © 2024 ExposureBoost. All rights reserved. Premium NFC stands & keyrings.
+                        © 2024 ExposureBoost. All rights reserved.
                     </div>
                     <div class="footer-legal">
                         <a href="#">Privacy Policy</a>
@@ -2524,7 +2356,7 @@
         // Render cart items in modal
         function renderCartItems() {
             if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
+                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
                 cartTotal.textContent = '£0';
                 return;
             }
@@ -2748,32 +2580,28 @@
                 });
             });
 
-            // Add subtle animations to cards on scroll
+            // Initialize cart
+            updateCart();
+            renderCartItems();
+
+            // Add animation classes to elements as they scroll into view
             const observerOptions = {
                 threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
+                rootMargin: '0px 0px -50px 0px'
             };
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('fade-in');
                     }
                 });
             }, observerOptions);
 
-            // Observe all cards for animation
-            document.querySelectorAll('.stand-card, .keyring-card, .benefit-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
             });
-
-            // Initialize cart
-            updateCart();
-            renderCartItems();
         });
 
         // Global functions for external use
