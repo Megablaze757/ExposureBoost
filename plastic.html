@@ -1151,6 +1151,7 @@ section[id] {
     color: #1a1a1a;
 }
 
+}
 
 .plastic-carousel-card.silver {
     /* Metallic silver with subtle iridescent colour (still reads as SILVER) */
@@ -3251,17 +3252,27 @@ section[id] {
                         </div>
 
                         <!-- Logo Upload -->
-                        
-                            
-                                    
-                                    
-                                    
-                                    
+                        <div class="logo-upload-section">
+                            <div class="logo-upload-title">Upload Your Logo</div>
+                            <div class="upload-container">
+                                <div class="upload-area" id="uploadArea">
+                                    <div class="upload-icon">📁</div>
+                                    <div class="upload-text">Click to upload your logo</div>
+                                    <div class="upload-subtext">Choose from camera roll or take a photo</div>
+                                    <div class="upload-subtext">PNG, JPG up to 10MB</div>
+                                    <div class="upload-hint">On mobile: Tap to choose from gallery or camera</div>
                                 </div>
                                 
+                                <input type="file" id="logoFileInput" accept="image/*">
                                 
-                                
-                                
+                                <div class="upload-actions">
+                                    <button class="upload-btn" id="uploadLogoBtn">
+                                        <span>📁</span> Upload Logo
+                                    </button>
+                                    <button class="clear-logo-btn" id="clearLogoBtn" disabled>
+                                        <span>🗑️</span> Clear Logo
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
