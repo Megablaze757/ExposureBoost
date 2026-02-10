@@ -642,7 +642,9 @@ section[id] {
 .hero-card-container {
     width: 100%;
     max-width: 500px;
-    height: 300px;
+    /* Keep the same 500x300 “card” proportions at every screen size */
+    aspect-ratio: 5 / 3;
+    height: auto;
     margin: 0 auto 40px;
     display: flex;
     justify-content: center;
@@ -653,7 +655,8 @@ section[id] {
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    overflow: hidden;
+    /* Allow the card shadow to render outside the bounds (like the wood page) */
+    overflow: visible;
     background: transparent;
     display: flex;
     justify-content: center;
@@ -665,7 +668,7 @@ section[id] {
     box-shadow: none !important;
 }
 
-.hero-card:hover {
+.hero-card:hover img {
     transform: scale(1.05);
 }
 
@@ -673,9 +676,12 @@ section[id] {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     border-radius: 20px;
     display: block;
-    filter: none;
+    transition: transform 0.3s ease;
+    /* Add depth so the rounded corners read clearly (matches wood hero treatment) */
+    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.35));
 }
 
 /* Remove upload overlay from hero card */
