@@ -641,8 +641,8 @@ section[id] {
 
 .hero-card-container {
     width: 100%;
-    max-width: 400px;
-    height: 250px;
+    max-width: 500px;
+    height: 300px;
     margin: 0 auto 40px;
     display: flex;
     justify-content: center;
@@ -654,17 +654,15 @@ section[id] {
     height: 100%;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 25px 50px rgba(33, 150, 243, 0.4),
-        0 10px 30px rgba(10, 26, 47, 0.5);
     background: transparent;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0;
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease;
+    box-shadow: none !important;
 }
 
 .hero-card:hover {
@@ -676,6 +674,8 @@ section[id] {
     height: 100%;
     object-fit: cover;
     border-radius: 20px;
+    display: block;
+    filter: none;
 }
 
 /* Remove upload overlay from hero card */
@@ -2729,7 +2729,15 @@ section[id] {
     transform: translateY(0);
     opacity: 1;
 }
-    </style>
+    
+/* Disable hero zoom on mobile for smoother performance */
+@media (max-width: 767px) {
+    .hero-card:hover {
+        transform: none !important;
+    }
+}
+
+</style>
 </head>
 
 <body>
@@ -2898,7 +2906,7 @@ section[id] {
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
                         <!-- Static hero card image - no upload functionality -->
-                        <img src="newplasticblue.webp" alt="Blue Plastic NFC Card">
+                        <img src="newplasticpink.webp" alt="Blue Plastic NFC Card">
                     </div>
                 </div>
 
@@ -3244,27 +3252,17 @@ section[id] {
                         </div>
 
                         <!-- Logo Upload -->
-                        <div class="logo-upload-section">
-                            <div class="logo-upload-title">Upload Your Logo</div>
-                            <div class="upload-container">
-                                <div class="upload-area" id="uploadArea">
-                                    <div class="upload-icon">📁</div>
-                                    <div class="upload-text">Click to upload your logo</div>
-                                    <div class="upload-subtext">Choose from camera roll or take a photo</div>
-                                    <div class="upload-subtext">PNG, JPG up to 10MB</div>
-                                    <div class="upload-hint">On mobile: Tap to choose from gallery or camera</div>
+                        
+                            
+                                    
+                                    
+                                    
+                                    
                                 </div>
                                 
-                                <input type="file" id="logoFileInput" accept="image/*">
                                 
-                                <div class="upload-actions">
-                                    <button class="upload-btn" id="uploadLogoBtn">
-                                        <span>📁</span> Upload Logo
-                                    </button>
-                                    <button class="clear-logo-btn" id="clearLogoBtn" disabled>
-                                        <span>🗑️</span> Clear Logo
-                                    </button>
-                                </div>
+                                
+                                
                             </div>
                         </div>
 
