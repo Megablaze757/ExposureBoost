@@ -77,7 +77,8 @@ body {
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: linear-gradient(135deg, #0A1A2F 0%, #1A2B4F 100%);
-    color: var(--white);
+        transition: background 0.4s ease;
+color: var(--white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     touch-action: manipulation;
@@ -86,6 +87,7 @@ body {
 
 html {
     background: linear-gradient(135deg, #0A1A2F 0%, #1A2B4F 100%);
+    transition: background 0.4s ease;
 }
 
 a {
@@ -1152,8 +1154,30 @@ section[id] {
 }
 
 .plastic-carousel-card.silver {
-    background: radial-gradient(circle at top, rgba(176, 190, 197, 0.9), rgba(120, 144, 156, 0.95));
-    color: #ECEFF1;
+    /* Metallic silver with subtle iridescent colour (still reads as SILVER) */
+    background: linear-gradient(135deg,
+        rgba(250, 252, 255, 0.98) 0%,
+        rgba(214, 225, 234, 0.96) 28%,
+        rgba(190, 205, 220, 0.94) 55%,
+        rgba(120, 144, 156, 0.96) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    box-shadow: 0 26px 80px rgba(176, 190, 197, 0.32);
+    color: #0A1A2F;
+}
+
+/* Iridescent highlight layer for Silver */
+.plastic-carousel-card.silver::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 15%,
+        rgba(33, 150, 243, 0.20) 0%,
+        rgba(156, 39, 176, 0.14) 22%,
+        rgba(233, 30, 99, 0.10) 40%,
+        rgba(255, 255, 255, 0.00) 70%);
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 0.9;
 }
 
 .plastic-carousel-card.gold {
@@ -2945,41 +2969,28 @@ section[id] {
             </div>
         </section>
 
-        <!-- CAROUSEL SECTION - 12 PLASTIC COLORS -->
+                <!-- CAROUSEL SECTION - 11 PLASTIC COLORS -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
                     <h2 class="section-title">All Plastic Colors</h2>
-                    <p class="section-subtitle">Choose from 12 vibrant plastic colors</p>
+                    <p class="section-subtitle">Choose from 11 vibrant plastic colors</p>
                 </div>
 
                 <div class="plastic-carousel-wrapper">
                     <button class="carousel-nav prev" id="carouselPrev">‹</button>
-                    
-                    <div class="plastic-carousel-track" id="carouselTrack">
-                        <!-- Black -->
-                        <div class="plastic-carousel-card black" data-plastic="black">
-                            <div class="plastic-carousel-image">
-                                <img src="newplasticblack.webp" alt="Black Plastic Card">
-                            </div>
-                            <h3 class="plastic-carousel-title">Black Plastic Card</h3>
-                            <p class="plastic-carousel-description">Classic and professional black plastic card. Perfect for any industry wanting an elegant, timeless look.</p>
-                            <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
-                            <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Black Plastic Card" data-price="65">🛒 Add to Cart</button>
-                            </div>
-                        </div>
 
-                        <!-- Blue -->
-                        <div class="plastic-carousel-card blue" data-plastic="blue">
+                    <div class="plastic-carousel-track" id="carouselTrack">
+                        <!-- Pink -->
+                        <div class="plastic-carousel-card pink" data-plastic="pink">
                             <div class="plastic-carousel-image">
-                                <img src="newplasticblue.webp" alt="Blue Plastic Card">
+                                <img src="newplasticpink.webp" alt="Pink Plastic Card">
                             </div>
-                            <h3 class="plastic-carousel-title">Blue Plastic Card</h3>
-                            <p class="plastic-carousel-description">Trustworthy blue plastic card. Ideal for professional services, tech companies, and corporate brands.</p>
+                            <h3 class="plastic-carousel-title">Pink Plastic Card</h3>
+                            <p class="plastic-carousel-description">Feminine pink plastic card. Ideal for beauty brands, fashion, and brands targeting female audiences.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Blue Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Pink Plastic Card" data-price="65">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -2996,6 +3007,19 @@ section[id] {
                             </div>
                         </div>
 
+                        <!-- Yellow -->
+                        <div class="plastic-carousel-card yellow" data-plastic="yellow">
+                            <div class="plastic-carousel-image">
+                                <img src="newplasticyellow.webp" alt="Yellow Plastic Card">
+                            </div>
+                            <h3 class="plastic-carousel-title">Yellow Plastic Card</h3>
+                            <p class="plastic-carousel-description">Bright yellow plastic card. Great for creative agencies, children's brands, and attention-grabbing marketing.</p>
+                            <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
+                            <div class="plastic-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Yellow Plastic Card" data-price="65">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
                         <!-- Red -->
                         <div class="plastic-carousel-card red" data-plastic="red">
                             <div class="plastic-carousel-image">
@@ -3006,6 +3030,19 @@ section[id] {
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
                                 <button class="btn btn-primary add-to-cart-carousel" data-name="Red Plastic Card" data-price="65">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Blue -->
+                        <div class="plastic-carousel-card blue" data-plastic="blue">
+                            <div class="plastic-carousel-image">
+                                <img src="newplasticblue.webp" alt="Blue Plastic Card">
+                            </div>
+                            <h3 class="plastic-carousel-title">Blue Plastic Card</h3>
+                            <p class="plastic-carousel-description">Trustworthy blue plastic card. Ideal for professional services, tech companies, and corporate brands.</p>
+                            <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
+                            <div class="plastic-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Blue Plastic Card" data-price="65">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3022,19 +3059,6 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Yellow -->
-                        <div class="plastic-carousel-card yellow" data-plastic="yellow">
-                            <div class="plastic-carousel-image">
-                                <img src="newplasticyellow.webp" alt="Yellow Plastic Card">
-                            </div>
-                            <h3 class="plastic-carousel-title">Yellow Plastic Card</h3>
-                            <p class="plastic-carousel-description">Bright yellow plastic card. Great for creative agencies, children's brands, and attention-grabbing marketing.</p>
-                            <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
-                            <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Yellow Plastic Card" data-price="65">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
                         <!-- Orange -->
                         <div class="plastic-carousel-card orange" data-plastic="orange">
                             <div class="plastic-carousel-image">
@@ -3048,16 +3072,29 @@ section[id] {
                             </div>
                         </div>
 
-                        <!-- Pink -->
-                        <div class="plastic-carousel-card pink" data-plastic="pink">
+                        <!-- Gold -->
+                        <div class="plastic-carousel-card gold" data-plastic="gold">
                             <div class="plastic-carousel-image">
-                                <img src="newplasticpink.webp" alt="Pink Plastic Card">
+                                <img src="newplasticgold.webp" alt="Gold Plastic Card">
                             </div>
-                            <h3 class="plastic-carousel-title">Pink Plastic Card</h3>
-                            <p class="plastic-carousel-description">Feminine pink plastic card. Ideal for beauty brands, fashion, and brands targeting female audiences.</p>
+                            <h3 class="plastic-carousel-title">Gold Plastic Card</h3>
+                            <p class="plastic-carousel-description">Luxurious gold plastic card. Ideal for premium brands, jewelry, and high-end services wanting a touch of elegance.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Pink Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Gold Plastic Card" data-price="65">🛒 Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Silver -->
+                        <div class="plastic-carousel-card silver" data-plastic="silver">
+                            <div class="plastic-carousel-image">
+                                <img src="newplasticsilver.webp" alt="Silver Plastic Card">
+                            </div>
+                            <h3 class="plastic-carousel-title">Silver Plastic Card</h3>
+                            <p class="plastic-carousel-description">Metallic silver plastic card. Perfect for luxury brands, automotive, and premium technology products.</p>
+                            <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
+                            <div class="plastic-carousel-actions">
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Silver Plastic Card" data-price="65">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3074,54 +3111,20 @@ section[id] {
                             </div>
                         </div>
 
-                       <!-- Gold -->
-<div class="plastic-carousel-card gold" data-plastic="gold">
-    <div class="plastic-carousel-image">
-        <img src="newnewplasticgold.webp" alt="Gold Plastic Card">
-    </div>
-    <h3 class="plastic-carousel-title">Gold Plastic Card</h3>
-    <p class="plastic-carousel-description">
-        Premium gold plastic card with a refined metallic finish. Ideal for luxury brands,
-        high-end professionals, and premium personal branding.
-    </p>
-    <div class="plastic-carousel-price">£85 <span>one-time · card + profile</span></div>
-    <div class="plastic-carousel-actions">
-        <button class="btn btn-primary add-to-cart-carousel"
-            data-name="Gold Plastic Card"
-            data-price="85">
-            🛒 Add to Cart
-        </button>
-    </div>
-</div>
-
-
-                        <!-- Silver -->
-                        <div class="plastic-carousel-card silver" data-plastic="silver">
+                        <!-- Black -->
+                        <div class="plastic-carousel-card black" data-plastic="black">
                             <div class="plastic-carousel-image">
-                                <img src="newplasticsilver.webp" alt="Silver Plastic Card">
+                                <img src="newplasticblack.webp" alt="Black Plastic Card">
                             </div>
-                            <h3 class="plastic-carousel-title">Silver Plastic Card</h3>
-                            <p class="plastic-carousel-description">Metallic silver plastic card. Perfect for luxury brands, automotive, and premium technology products.</p>
+                            <h3 class="plastic-carousel-title">Black Plastic Card</h3>
+                            <p class="plastic-carousel-description">Classic and professional black plastic card. Perfect for any industry wanting an elegant, timeless look.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Silver Plastic Card" data-price="65">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- Gold -->
-                        <div class="plastic-carousel-card gold" data-plastic="gold">
-                            <div class="plastic-carousel-image">
-                                <img src="newplasticgold.webp" alt="Gold Plastic Card">
-                            </div>
-                            <h3 class="plastic-carousel-title">Gold Plastic Card</h3>
-                            <p class="plastic-carousel-description">Luxurious gold plastic card. Ideal for premium brands, jewelry, and high-end services wanting a touch of elegance.</p>
-                            <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
-                            <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Gold Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Black Plastic Card" data-price="65">🛒 Add to Cart</button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <button class="carousel-nav next" id="carouselNext">›</button>
                 </div>
 
@@ -3373,7 +3376,15 @@ section[id] {
         let logoSize = 70; // Default logo size percentage
         let currentFinishData = null; // Store data for finish modal
         let finishQuantity = 1; // Default quantity for finish modal
-        let currentCarouselBackground = 'var(--carousel-blue-bg)';
+        let currentCarouselBackground = 'var(--carousel-pink-bg)';
+        
+        // Carousel variables
+        let isCarouselCircular = true; // Enable circular scrolling
+        let carouselStartX = 0;
+        let carouselCurrentX = 0;
+        let isDragging = false;
+        let dragThreshold = 50; // Minimum drag distance to trigger slide change
+
 
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
@@ -3779,18 +3790,17 @@ section[id] {
 
         // Plastic type mapping
         const plasticTypeMap = {
-            'black': 'Black Plastic Card',
-            'blue': 'Blue Plastic Card',
-            'purple': 'Purple Plastic Card',
-            'red': 'Red Plastic Card',
-            'green': 'Green Plastic Card',
-            'yellow': 'Yellow Plastic Card',
-            'orange': 'Orange Plastic Card',
             'pink': 'Pink Plastic Card',
-            'white': 'White Plastic Card',
-            'gold': 'gold Plastic Card',
+            'purple': 'Purple Plastic Card',
+            'yellow': 'Yellow Plastic Card',
+            'red': 'Red Plastic Card',
+            'blue': 'Blue Plastic Card',
+            'green': 'Green Plastic Card',
+            'orange': 'Orange Plastic Card',
+            'gold': 'Gold Plastic Card',
             'silver': 'Silver Plastic Card',
-            'gold': 'Gold Plastic Card'
+            'white': 'White Plastic Card',
+            'black': 'Black Plastic Card'
         };
 
         // Finish type mapping
@@ -3801,37 +3811,35 @@ section[id] {
 
         // Background mapping
         const plasticBackgroundMap = {
-            'black': 'var(--black-plastic-bg)',
-            'blue': 'var(--blue-plastic-bg)',
-            'purple': 'var(--purple-plastic-bg)',
-            'red': 'var(--red-plastic-bg)',
-            'green': 'var(--green-plastic-bg)',
-            'yellow': 'var(--yellow-plastic-bg)',
-            'orange': 'var(--orange-plastic-bg)',
             'pink': 'var(--pink-plastic-bg)',
-            'white': 'var(--white-plastic-bg)',
+            'purple': 'var(--purple-plastic-bg)',
+            'yellow': 'var(--yellow-plastic-bg)',
+            'red': 'var(--red-plastic-bg)',
+            'blue': 'var(--blue-plastic-bg)',
+            'green': 'var(--green-plastic-bg)',
+            'orange': 'var(--orange-plastic-bg)',
             'gold': 'var(--gold-plastic-bg)',
             'silver': 'var(--silver-plastic-bg)',
-            'gold': 'var(--gold-plastic-bg)'
+            'white': 'var(--white-plastic-bg)',
+            'black': 'var(--black-plastic-bg)'
         };
 
         // Carousel background mapping
         const carouselBackgroundMap = {
-            'black': 'var(--carousel-black-bg)',
-            'blue': 'var(--carousel-blue-bg)',
-            'purple': 'var(--carousel-purple-bg)',
-            'red': 'var(--carousel-red-bg)',
-            'green': 'var(--carousel-green-bg)',
-            'yellow': 'var(--carousel-yellow-bg)',
-            'orange': 'var(--carousel-orange-bg)',
             'pink': 'var(--carousel-pink-bg)',
-            'white': 'var(--carousel-white-bg)',
+            'purple': 'var(--carousel-purple-bg)',
+            'yellow': 'var(--carousel-yellow-bg)',
+            'red': 'var(--carousel-red-bg)',
+            'blue': 'var(--carousel-blue-bg)',
+            'green': 'var(--carousel-green-bg)',
+            'orange': 'var(--carousel-orange-bg)',
             'gold': 'var(--carousel-gold-bg)',
             'silver': 'var(--carousel-silver-bg)',
-            'gold': 'var(--carousel-gold-bg)'
+            'white': 'var(--carousel-white-bg)',
+            'black': 'var(--carousel-black-bg)'
         };
 
-        let selectedPlasticColor = 'blue';
+        let selectedPlasticColor = 'pink';
         let selectedFinishTypeValue = 'glossy';
 
         // Initialize custom logo builder
@@ -4115,7 +4123,7 @@ section[id] {
             });
         });
 
-        // CAROUSEL FUNCTIONALITY WITH SWIPE
+        // CAROUSEL FUNCTIONALITY WITH SWIPE AND CIRCULAR SCROLLING
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
@@ -4127,12 +4135,6 @@ section[id] {
         let currentSlide = 0;
         let cardsPerView = 3;
         let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
-        let isDragging = false;
-        let startPos = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let animationID = 0;
-        let autoSlideInterval;
 
         // Initialize carousel
         function initCarousel() {
@@ -4140,135 +4142,9 @@ section[id] {
             createDots();
             updateCarousel();
             updateCarouselBackground();
-            setupTouchEvents();
-            startAutoSlide();
-        }
-
-        // Setup touch events for swiping
-        function setupTouchEvents() {
-            carouselTrack.addEventListener('touchstart', touchStart);
-            carouselTrack.addEventListener('touchmove', touchMove);
-            carouselTrack.addEventListener('touchend', touchEnd);
             
-            carouselTrack.addEventListener('mousedown', mouseDown);
-            carouselTrack.addEventListener('mousemove', mouseMove);
-            carouselTrack.addEventListener('mouseup', mouseUp);
-            carouselTrack.addEventListener('mouseleave', mouseLeave);
-            
-            // Prevent image drag on carousel
-            carouselTrack.querySelectorAll('img').forEach(img => {
-                img.addEventListener('dragstart', (e) => e.preventDefault());
-            });
-        }
-
-        function getPositionX(event) {
-            return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-        }
-
-        function touchStart(event) {
-            startPos = getPositionX(event);
-            isDragging = true;
-            carouselTrack.classList.add('swiping');
-            cancelAnimationFrame(animationID);
-            stopAutoSlide();
-        }
-
-        function touchMove(event) {
-            if (!isDragging) return;
-            event.preventDefault();
-            const currentPosition = getPositionX(event);
-            currentTranslate = prevTranslate + currentPosition - startPos;
-            setSliderPosition();
-        }
-
-        function touchEnd() {
-            if (!isDragging) return;
-            isDragging = false;
-            carouselTrack.classList.remove('swiping');
-            const movedBy = currentTranslate - prevTranslate;
-            const cardWidth = carouselCards[0].offsetWidth + 30;
-            
-            // If moved enough, change slide
-            if (Math.abs(movedBy) > cardWidth * 0.2) {
-                if (movedBy < 0 && currentSlide < totalSlides - 1) {
-                    currentSlide++;
-                } else if (movedBy > 0 && currentSlide > 0) {
-                    currentSlide--;
-                }
-            }
-            
-            updateCarousel();
-            updateCarouselBackground();
-            startAutoSlide();
-        }
-
-        // Mouse events (for desktop)
-        function mouseDown(event) {
-            startPos = getPositionX(event);
-            isDragging = true;
-            carouselTrack.classList.add('swiping');
-            cancelAnimationFrame(animationID);
-            stopAutoSlide();
-        }
-
-        function mouseMove(event) {
-            if (!isDragging) return;
-            const currentPosition = getPositionX(event);
-            currentTranslate = prevTranslate + currentPosition - startPos;
-            setSliderPosition();
-        }
-
-        function mouseUp() {
-            if (!isDragging) return;
-            isDragging = false;
-            carouselTrack.classList.remove('swiping');
-            const movedBy = currentTranslate - prevTranslate;
-            const cardWidth = carouselCards[0].offsetWidth + 30;
-            
-            if (Math.abs(movedBy) > cardWidth * 0.2) {
-                if (movedBy < 0 && currentSlide < totalSlides - 1) {
-                    currentSlide++;
-                } else if (movedBy > 0 && currentSlide > 0) {
-                    currentSlide--;
-                }
-            }
-            
-            updateCarousel();
-            updateCarouselBackground();
-            startAutoSlide();
-        }
-
-        function mouseLeave() {
-            if (!isDragging) return;
-            isDragging = false;
-            carouselTrack.classList.remove('swiping');
-            updateCarousel();
-            updateCarouselBackground();
-            startAutoSlide();
-        }
-
-        function setSliderPosition() {
-            carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
-        }
-
-        // Auto slide functionality
-        function startAutoSlide() {
-            stopAutoSlide();
-            autoSlideInterval = setInterval(() => {
-                if (currentSlide < totalSlides - 1) {
-                    currentSlide++;
-                } else {
-                    currentSlide = 0;
-                }
-                updateCarousel();
-                updateCarouselBackground();
-            }, 5000); // Change slide every 5 seconds
-        }
-
-        function stopAutoSlide() {
-            if (autoSlideInterval) {
-                clearInterval(autoSlideInterval);
-            }
+            // Add swipe functionality
+            addSwipeListeners();
         }
 
         // Update cards per view based on screen size
@@ -4304,14 +4180,12 @@ section[id] {
             }
         }
 
-        // Update carousel position
+        // Update carousel position with smooth animation
         function updateCarousel() {
-            const cardWidth = carouselCards[0].offsetWidth + 30;
-            currentTranslate = -currentSlide * cardsPerView * cardWidth;
-            prevTranslate = currentTranslate;
-            
+            const cardWidth = carouselCards[0].offsetWidth + 30; // width + gap
+            const translateX = -currentSlide * cardsPerView * cardWidth;
             carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
+            carouselTrack.style.transform = `translateX(${translateX}px)`;
             
             // Update dots
             document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
@@ -4319,8 +4193,8 @@ section[id] {
             });
             
             // Update navigation buttons
-            carouselPrev.classList.toggle('disabled', currentSlide === 0);
-            carouselNext.classList.toggle('disabled', currentSlide >= totalSlides - 1);
+            carouselPrev.classList.toggle('disabled', !isCarouselCircular && currentSlide === 0);
+            carouselNext.classList.toggle('disabled', !isCarouselCircular && currentSlide >= totalSlides - 1);
         }
 
         // Update carousel background based on current slide
@@ -4338,55 +4212,24 @@ section[id] {
             }
         }
 
-        // Next slide
-        function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-                updateCarousel();
-                updateCarouselBackground();
-            }
-        }
-
-        // Previous slide
-        function prevSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-                updateCarousel();
-                updateCarouselBackground();
-            }
-        }
-
-        // Event listeners for carousel navigation
-        carouselPrev.addEventListener('click', (e) => {
-            e.stopPropagation();
-            prevSlide();
-        });
-
-        carouselNext.addEventListener('click', (e) => {
-            e.stopPropagation();
-            nextSlide();
-        });
-
-        // Prevent clicks on carousel cards from being interpreted as drags
-        carouselCards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                if (isDragging) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-            });
-        });
-
         // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
+        // Function to update carousel background based on hovered card
         function updateCarouselBackgroundOnHover(plasticType) {
             const newBackground = carouselBackgroundMap[plasticType] || 'var(--carousel-blue-bg)';
-            if (newBackground !== currentCarouselBackground) {
-                carouselSection.style.background = newBackground;
-            }
+            // Always apply on hover (even if it's the same as the current slide) so the effect is visible
+            carouselSection.style.background = newBackground;
+            document.body.style.background = newBackground;
+            document.documentElement.style.background = newBackground;
         }
 
+        // Function to reset carousel background to current slide
         function resetCarouselBackgroundToCurrent() {
+            // Restore the carousel section to whatever slide is active
             updateCarouselBackground();
+            // Restore the rest of the page to the default plastic page gradient
+            const defaultPageBg = 'linear-gradient(135deg, #0A1A2F 0%, #1A2B4F 100%)';
+            document.body.style.background = defaultPageBg;
+            document.documentElement.style.background = defaultPageBg;
         }
 
         // Add hover event listeners to carousel cards
@@ -4410,6 +4253,119 @@ section[id] {
                 setTimeout(resetCarouselBackgroundToCurrent, 1000);
             });
         });
+
+        // Next slide with circular scrolling
+        function nextSlide() {
+            if (isCarouselCircular) {
+                currentSlide = (currentSlide + 1) % totalSlides;
+            } else if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+            }
+            updateCarousel();
+            updateCarouselBackground();
+        }
+
+        // Previous slide with circular scrolling
+        function prevSlide() {
+            if (isCarouselCircular) {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            } else if (currentSlide > 0) {
+                currentSlide--;
+            }
+            updateCarousel();
+            updateCarouselBackground();
+        }
+
+        // SWIPE FUNCTIONALITY
+        function addSwipeListeners() {
+            let startX = 0;
+            let currentX = 0;
+            let isSwiping = false;
+            
+            // Mouse events
+            carouselWrapper.addEventListener('mousedown', (e) => {
+                startSwipe(e.clientX);
+            });
+            
+            carouselWrapper.addEventListener('mousemove', (e) => {
+                if (isSwiping) {
+                    handleSwipeMove(e.clientX);
+                }
+            });
+            
+            carouselWrapper.addEventListener('mouseup', () => {
+                endSwipe();
+            });
+            
+            carouselWrapper.addEventListener('mouseleave', () => {
+                if (isSwiping) {
+                    endSwipe();
+                }
+            });
+            
+            // Touch events
+            carouselWrapper.addEventListener('touchstart', (e) => {
+                startSwipe(e.touches[0].clientX);
+            }, { passive: true });
+            
+            carouselWrapper.addEventListener('touchmove', (e) => {
+                if (isSwiping) {
+                    handleSwipeMove(e.touches[0].clientX);
+                }
+            }, { passive: true });
+            
+            carouselWrapper.addEventListener('touchend', () => {
+                endSwipe();
+            });
+            
+            function startSwipe(x) {
+                startX = x;
+                currentX = x;
+                isSwiping = true;
+                carouselTrack.style.transition = 'none';
+            }
+            
+            function handleSwipeMove(x) {
+                if (!isSwiping) return;
+                
+                currentX = x;
+                const diff = startX - currentX;
+                
+                // Move track while dragging
+                const cardWidth = carouselCards[0].offsetWidth + 30;
+                const baseTranslate = -currentSlide * cardsPerView * cardWidth;
+                const dragTranslate = -diff;
+                carouselTrack.style.transform = `translateX(${baseTranslate + dragTranslate}px)`;
+            }
+            
+            function endSwipe() {
+                if (!isSwiping) return;
+                
+                const diff = startX - currentX;
+                const cardWidth = carouselCards[0].offsetWidth + 30;
+                const threshold = cardWidth * 0.2; // 20% of card width threshold
+                
+                // Determine if swipe is significant enough to change slide
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0) {
+                        // Swipe left - next slide
+                        nextSlide();
+                    } else {
+                        // Swipe right - previous slide
+                        prevSlide();
+                    }
+                } else {
+                    // Return to current slide
+                    updateCarousel();
+                }
+                
+                isSwiping = false;
+            }
+        }
+
+        // Event listeners for carousel navigation
+        carouselPrev.addEventListener('click', prevSlide);
+        carouselNext.addEventListener('click', nextSlide);
 
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
@@ -4606,10 +4562,59 @@ section[id] {
         // Update carousel on window resize
         window.addEventListener('resize', () => {
             updateCardsPerView();
-            updateCarousel(); // Update position after resize
         });
-    </script>
+</script>
+
+<script>
+/* Page background colour follows hovered PLASTIC carousel card (all cards, including clones) */
+(() => {
+  const track = document.querySelector('.plastic-carousel-track');
+  if (!track) return;
+
+  const root = document.documentElement;
+  const body = document.body;
+
+  const allowed = new Set(['pink','purple','yellow','red','blue','green','orange','gold','silver','white','black']);
+
+  function getColor(card) {
+    const fromData = (card.dataset.plastic || card.dataset.color || '').trim().toLowerCase();
+    if (allowed.has(fromData)) return fromData;
+
+    for (const cls of card.classList) {
+      const c = cls.toLowerCase();
+      if (allowed.has(c)) return c;
+    }
+
+    return null;
+  }
+
+  function apply(color) {
+    const value = getComputedStyle(root).getPropertyValue(`--carousel-${color}-bg`).trim();
+    if (value) body.style.background = value;
+  }
+
+  track.addEventListener('mouseover', (e) => {
+    const card = e.target.closest('.plastic-carousel-card');
+    if (!card || !track.contains(card)) return;
+
+    const color = getColor(card);
+    if (!color) return;
+
+    apply(color);
+  });
+
+  track.addEventListener('mouseout', (e) => {
+    // Only reset when leaving the track or moving to a non-card element
+    const to = e.relatedTarget;
+    const stillInsideCard = to && track.contains(to) && to.closest('.plastic-carousel-card');
+    if (stillInsideCard) return;
+
+    body.style.background = '';
+  });
+})();
+</script>
 </body>
 </html>
+
 
 
