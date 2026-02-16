@@ -1,2664 +1,1080 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Metal Cards – Premium NFC Cards</title>
-    <link rel="icon" href="logo.png" type="image/png">
+    <title>ExposureBoost – Premium NFC Cards</title>
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-:root {
-    /* METAL THEME COLORS - Rose gold/metal tones */
-    --rose-gold-light: #E0BFB8;
-    --rose-gold-medium: #D8A89D;
-    --rose-gold-dark: #B76E79;
-    --rose-gold-darker: #A05662;
-    --rose-gold-gradient: linear-gradient(135deg, #E0BFB8, #B76E79);
-    --rose-gold-dark-gradient: linear-gradient(135deg, #B76E79, #A05662);
-    --rose-gold-shadow: 0 30px 90px rgba(183, 110, 121, .25);
-    --rose-gold-glass: rgba(183, 110, 121, .15);
-    
-    /* METAL BACKGROUNDS - Dark metal-themed */
-    --metal-bg-dark: #1A0F0F;
-    --metal-bg-darker: #2D1A1A;
-    --metal-nav-bg: linear-gradient(135deg, rgba(183, 110, 121, 0.95), rgba(224, 191, 184, 0.95));
-    --metal-nav-scrolled: linear-gradient(135deg, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.9));
-    --metal-menu-bg: linear-gradient(135deg, rgba(183, 110, 121, 0.98), rgba(224, 191, 184, 0.98));
-    
-    /* METAL TYPE BACKGROUNDS */
-    --black-bg: linear-gradient(135deg, #000000, #333333);
-    --blue-bg: linear-gradient(135deg, #0066CC, #004488);
-    --green-bg: linear-gradient(135deg, #00AA55, #008844);
-    --purple-bg: linear-gradient(135deg, #8A2BE2, #6A1BC2);
-    --white-bg: linear-gradient(135deg, #FFFFFF, #F0F0F0);
-    --gold-bg: linear-gradient(135deg, #FFD700, #D4AF37);
-    --silver-bg: linear-gradient(135deg, #C0C0C0, #A9A9A9);
-    --rosegold-bg: linear-gradient(135deg, #B76E79, #E0BFB8);
-    --custom-bg: linear-gradient(135deg, #1A0F0F 0%, #3B1A5A 20%, #1A2F5A 40%, #1A5A3B 60%, #5A4A1A 80%, #5A1A2F 100%);
-    
-    /* CAROUSEL SECTION BACKGROUNDS - Darker versions */
-    --carousel-black-bg: linear-gradient(135deg, #2D1A1A 0%, #000000 100%);
-    --carousel-blue-bg: linear-gradient(135deg, #2D1A1A 0%, #004488 100%);
-    --carousel-green-bg: linear-gradient(135deg, #2D1A1A 0%, #008844 100%);
-    --carousel-purple-bg: linear-gradient(135deg, #2D1A1A 0%, #6A1BC2 100%);
-    --carousel-white-bg: linear-gradient(135deg, #2D1A1A 0%, #F0F0F0 100%);
-    --carousel-gold-bg: linear-gradient(135deg, #2D1A1A 0%, #D4AF37 100%);
-    --carousel-silver-bg: linear-gradient(135deg, #2D1A1A 0%, #A9A9A9 100%);
-    --carousel-rosegold-bg: linear-gradient(135deg, #2D1A1A 0%, #B76E79 100%);
-    --carousel-custom-bg: linear-gradient(135deg, #2D1A1A 0%, #5A1A2F 100%);
-    
-    /* Additional variables */
-    --white: #FFF5F3;
-    --black: #1A0F0F;
-    --wa: #25D366;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html,
-body {
-    height: 100%;
-    overflow-x: hidden;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-    color: var(--white);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    touch-action: manipulation;
-    background-attachment: fixed;
-}
-
-html {
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* STICKY NAV - METAL THEME */
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    background: var(--metal-nav-bg);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(224, 191, 184, 0.3);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    min-height: 70px;
-    box-shadow: 0 4px 20px rgba(183, 110, 121, 0.2);
-}
-
-.nav.scrolled {
-    padding: 12px 20px;
-    background: var(--metal-nav-scrolled);
-    box-shadow: 0 4px 30px rgba(183, 110, 121, 0.3);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.logo-img {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-}
-
-.logo-text {
-    display: none;
-}
-
-/* HAMBURGER MENU */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
-}
-
-.hamburger span {
-    width: 100%;
-    height: 2px;
-    background: var(--white);
-    border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    transform-origin: left center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-10px);
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg);
-}
-
-.nav-center {
-    display: flex;
-    gap: 15px;
-}
-
-.nav-center a {
-    text-decoration: none;
-    color: var(--white);
-    font-weight: 900;
-    font-size: .9rem;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    padding: 5px 0;
-    position: relative;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.nav-center a:hover {
-    color: var(--rose-gold-light);
-    transform: translateY(-2px);
-}
-
-.nav-center a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--rose-gold-light);
-    transition: width 0.3s ease;
-}
-
-.nav-center a:hover::after {
-    width: 100%;
-}
-
-.nav-right {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-.icon-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    color: var(--white);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.icon-btn:hover {
-    background: rgba(224, 191, 184, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(183, 110, 121, 0.2);
-}
-
-.cart-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: var(--rose-gold-light);
-    color: var(--black);
-    font-size: 10px;
-    min-width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    border: 2px solid rgba(224, 191, 184, 0.5);
-}
-
-.whatsapp {
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    color: var(--white);
-    padding: 8px 14px;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 13px;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-}
-
-.whatsapp:hover {
-    background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-}
-
-.whatsapp-icon {
-    display: none;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    color: var(--white);
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    transition: all 0.3s ease;
-}
-
-.whatsapp-icon:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
-}
-
-/* SIMPLE MOBILE MENU OVERLAY */
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 15, 15, 0.95);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-}
-
-.mobile-menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* SIMPLE MOBILE MENU */
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--metal-menu-bg);
-    backdrop-filter: blur(30px);
-    padding: 30px 20px 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    z-index: 1000;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-}
-
-.mobile-menu.active {
-    transform: translateX(0);
-}
-
-.mobile-menu a {
-    text-decoration: none;
-    color: var(--white);
-    font-weight: 700;
-    font-size: 18px;
-    padding: 18px 24px;
-    border-radius: 16px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.15);
-    text-align: left;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    margin-bottom: 4px;
-    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.mobile-menu a:active {
-    background: rgba(224, 191, 184, 0.25);
-}
-
-.mobile-menu a:hover {
-    background: rgba(224, 191, 184, 0.25);
-}
-
-.mobile-menu .whatsapp {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 17px;
-    padding: 20px 24px;
-    min-height: 64px;
-    justify-content: center;
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.mobile-menu .whatsapp:hover {
-    background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
-}
-
-.mobile-close-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.2);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: var(--white);
-    cursor: pointer;
-    z-index: 1002;
-    transition: all 0.3s ease;
-}
-
-.mobile-close-btn.show {
-    display: flex;
-}
-
-.mobile-close-btn:hover {
-    background: rgba(224, 191, 184, 0.3);
-    transform: rotate(90deg);
-}
-
-.menu-divider {
-    height: 1px;
-    background: rgba(224, 191, 184, 0.25);
-    margin: 20px 0;
-    width: 100%;
-}
-
-.menu-footer {
-    margin-top: auto;
-    padding-top: 20px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 13px;
-    border-top: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-/* Show hamburger and hide desktop nav on mobile */
-@media (max-width: 1024px) {
-    .nav-center,
-    .nav-right .whatsapp {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-right {
-        gap: 8px;
-    }
-
-    .nav {
-        padding: 14px 16px;
-        min-height: 64px;
-    }
-
-    .nav.scrolled {
-        padding: 10px 16px;
-    }
-
-    .whatsapp-icon {
-        display: flex;
-    }
-
-    .main-container {
-        padding-top: 64px;
-    }
-
-    section[id] {
-        scroll-margin-top: 75px;
-    }
-}
-
-@media (max-width: 767px) {
-    .mobile-menu a {
-        padding: 20px 24px;
-        min-height: 64px;
-        font-size: 17px;
-    }
-
-    .mobile-menu {
-        padding: 25px 16px 100px;
-    }
-
-    .hamburger {
-        width: 32px;
-        height: 24px;
-    }
-
-    .icon-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 18px;
-    }
-
-    .cart-count {
-        top: -3px;
-        right: -3px;
-        min-width: 20px;
-        height: 20px;
-        font-size: 11px;
-        font-weight: 700;
-    }
-}
-
-body.menu-open {
-    overflow: hidden;
-}
-
-.mobile-menu a {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.mobile-menu a:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.mobile-menu a:nth-child(2) {
-    animation-delay: 0.15s;
-}
-
-.mobile-menu a:nth-child(3) {
-    animation-delay: 0.2s;
-}
-
-.mobile-menu a:nth-child(4) {
-    animation-delay: 0.25s;
-}
-
-.mobile-menu a:nth-child(5) {
-    animation-delay: 0.3s;
-}
-
-.mobile-menu a:nth-child(6) {
-    animation-delay: 0.35s;
-}
-
-.mobile-menu .whatsapp {
-    animation-delay: 0.4s;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.main-container {
-    padding-top: 70px;
-    position: relative;
-    z-index: 1;
-}
-
-section[id] {
-    scroll-margin-top: 90px;
-}
-
-@media (max-width: 768px) {
-    section[id] {
-        scroll-margin-top: 80px;
-    }
-}
-
-/* HERO SECTION - METAL THEME */
-.hero-section {
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 20px 80px;
-    text-align: center;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background: radial-gradient(1200px 700px at 20% 30%, rgba(224, 191, 184, .45), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(183, 110, 121, .35), transparent 60%),
-        linear-gradient(135deg, #2D1A1A 0%, #1A0F0F 100%);
-}
-
-.hero-bg-blob {
-    position: absolute;
-    inset: auto auto 10% -18%;
-    width: 560px;
-    height: 560px;
-    border-radius: 999px;
-    filter: blur(90px);
-    opacity: .45;
-    z-index: 0;
-    transform: translateZ(0);
-    background: linear-gradient(135deg, rgba(224, 191, 184, .85), rgba(183, 110, 121, .78));
-}
-
-.hero-bg-blob.b2 {
-    inset: -18% -22% auto auto;
-    width: 520px;
-    height: 520px;
-    border-radius: 999px;
-    filter: blur(90px);
-    opacity: .35;
-    z-index: 0;
-    transform: translateZ(0);
-    background: linear-gradient(135deg, rgba(183, 110, 121, .75), rgba(224, 191, 184, .65));
-}
-
-.hero-content {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 30px;
-    color: var(--white);
-    letter-spacing: -0.03em;
-    text-shadow: 0 2px 10px rgba(183, 110, 121, 0.3);
-}
-
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-}
-
-
-
-.hero-card-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto;
-}
-
-.hero-card {
-    width: 500px;
-    height: 300px;
-    border-radius: 20px;
-    overflow: visible;
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.hero-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    border-radius: 20px;
-    transition: transform 0.3s ease;
-    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
-}
-
-.hero-card:hover img {
-    transform: scale(1.05);
-}
-
-/* Responsive hero card sizing (matches index.html) */
-@media (max-width: 767px) {
-    .hero-card {
-        width: min(92vw, 420px);
-        height: auto;
-        aspect-ratio: 5 / 3;
-    }
-}
-
-@media (hover: none) and (pointer: coarse) {
-    .hero-card img {
-        transition: none !important;
-        -webkit-filter: none !important;
-        filter: none !important;
-    }
-
-    .hero-card:hover img {
-        transform: none !important;
-    }
-}
-
-.hero-text {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--white);
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.hero-subtext {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* BUTTONS - METAL THEME */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 24px;
-    border-radius: 14px;
-    font-weight: 900;
-    text-decoration: none;
-    border: none;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    cursor: pointer;
-    font-size: 15px;
-    white-space: nowrap;
-    min-width: 140px;
-    height: 48px;
-}
-
-.btn-primary {
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.4);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.6);
-    background: linear-gradient(135deg, #E8D4D1, #C98A96);
-}
-
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--white);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-    border-color: var(--rose-gold-light);
-}
-
-.hero-cta {
-    margin-top: 40px;
-}
-
-/* BESTSELLERS SECTION - METAL THEME */
-.bestsellers-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.bestsellers-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-    position: relative;
-    z-index: 2;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 16px;
-    color: var(--white);
-    text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
-}
-
-.section-subtitle {
-    font-size: 1.08rem;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.65;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.bestsellers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.bestseller-card {
-    border-radius: 20px;
-    padding: 30px;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-}
-
-/* Metal type backgrounds */
-.bestseller-card.silver {
-    background: radial-gradient(circle at top, rgba(192, 192, 192, 0.9), rgba(169, 169, 169, 0.95));
-    color: #1a1209;
-}
-
-.bestseller-card.rose-gold {
-    background: radial-gradient(circle at top, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.95));
-    color: #FFFFFF;
-}
-
-.bestseller-card.gold {
-    background: radial-gradient(circle at top, rgba(255, 215, 0, 0.9), rgba(212, 175, 55, 0.95));
-    color: #1a1209;
-}
-
-.bestseller-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.bestseller-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    color: var(--white);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-/* WEBP IMAGE CONTAINER - PERFECT FIT */
-.bestseller-image {
-    width: 100%;
-    height: 200px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    border: none;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    position: relative;
-    padding: 0;
-}
-
-/* WebP container - FULL WIDTH */
-.bestseller-image .webp-container {
-    width: 95%;
-    height: 95%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-/* WebP images - PERFECT FIT */
-.bestseller-image img.webp-image {
-    width: 95%;
-    height: 95%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background: transparent;
-    border-radius: 12px;
-}
-
-.bestseller-card:hover .bestseller-image img.webp-image {
-    transform: scale(1.05);
-}
-
-.bestseller-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-/* Text colors for different backgrounds */
-.bestseller-card.silver .bestseller-title,
-.bestseller-card.gold .bestseller-title {
-    color: #1a1209;
-}
-
-.bestseller-card.rose-gold .bestseller-title {
-    color: #FFFFFF;
-}
-
-.bestseller-description {
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-}
-
-.bestseller-card.silver .bestseller-description,
-.bestseller-card.gold .bestseller-description {
-    color: rgba(26, 18, 9, 0.9);
-}
-
-.bestseller-card.rose-gold .bestseller-description {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.bestseller-price {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-}
-
-.bestseller-card.silver .bestseller-price,
-.bestseller-card.gold .bestseller-price {
-    color: #1a1209;
-}
-
-.bestseller-card.rose-gold .bestseller-price {
-    color: #FFFFFF;
-}
-
-.bestseller-price span {
-    font-size: 0.9rem;
-    font-weight: 400;
-    margin-left: 5px;
-}
-
-.bestseller-card.silver .bestseller-price span,
-.bestseller-card.gold .bestseller-price span {
-    color: rgba(26, 18, 9, 0.7);
-}
-
-.bestseller-card.rose-gold .bestseller-price span {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.bestseller-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.bestseller-actions .btn {
-    flex: 1;
-}
-
-/* Button colors for metal cards */
-.bestseller-card.silver .btn-primary,
-.bestseller-card.gold .btn-primary {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.bestseller-card.rose-gold .btn-primary {
-    background: rgba(0, 0, 0, 0.7);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.bestseller-card.silver .btn-secondary,
-.bestseller-card.gold .btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    color: #1a1209;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.bestseller-card.rose-gold .btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* CAROUSEL SECTION - CIRCULAR CAROUSEL */
-.carousel-section {
-    padding: 100px 20px;
-    background: var(--carousel-black-bg);
-    position: relative;
-    overflow: hidden;
-    transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.carousel-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
-    z-index: 2;
-}
-
-.carousel-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.carousel-section .section-header {
-    margin-bottom: 60px;
-    position: relative;
-    z-index: 10;
-    text-align: center;
-}
-
-.carousel-section .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-/* Carousel Styles - IMPROVED */
-.metal-carousel-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 0 60px;
-    touch-action: pan-y pinch-zoom;
-}
-
-@media (max-width: 768px) {
-    .metal-carousel-wrapper {
-        padding: 0 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    .metal-carousel-wrapper {
-        padding: 0 20px;
-    }
-}
-
-.metal-carousel-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    gap: 30px;
-    padding: 10px 0;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    will-change: transform;
-}
-
-/* Carousel cards matching bestseller style */
-.metal-carousel-card {
-    flex: 0 0 calc(33.333% - 20px);
-    border-radius: 20px;
-    padding: 30px;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    min-width: 300px;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    transform: translateZ(0);
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-@media (max-width: 1024px) {
-    .metal-carousel-card {
-        flex: 0 0 calc(50% - 15px);
-    }
-}
-
-@media (max-width: 768px) {
-    .metal-carousel-card {
-        flex: 0 0 calc(100% - 0px);
-        min-width: 280px;
-    }
-}
-
-/* Metal type backgrounds for carousel cards */
-.metal-carousel-card.black {
-    background: radial-gradient(circle at top, rgba(0, 0, 0, 0.9), rgba(51, 51, 51, 0.95));
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.blue {
-    background: radial-gradient(circle at top, rgba(0, 102, 204, 0.9), rgba(0, 68, 136, 0.95));
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.green {
-    background: radial-gradient(circle at top, rgba(0, 170, 85, 0.9), rgba(0, 136, 68, 0.95));
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.purple {
-    background: radial-gradient(circle at top, rgba(138, 43, 226, 0.9), rgba(106, 27, 194, 0.95));
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.custom {
-    position: relative;
-    overflow: hidden;
-    background: var(--custom-bg);
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.custom::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.38);
-    z-index: 0;
-}
-
-.metal-carousel-card.custom * {
-    position: relative;
-    z-index: 1;
-}
-
-.metal-carousel-card.custom .custom-badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(6px);
-}
-
-.metal-carousel-card.white {
-    background: radial-gradient(circle at top, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.95));
-    color: #1a1209;
-}
-
-.metal-carousel-card.gold {
-    background: radial-gradient(circle at top, rgba(255, 215, 0, 0.9), rgba(212, 175, 55, 0.95));
-    color: #1a1209;
-}
-
-.metal-carousel-card.silver {
-    background: radial-gradient(circle at top, rgba(192, 192, 192, 0.9), rgba(169, 169, 169, 0.95));
-    color: #1a1209;
-}
-
-.metal-carousel-card.rosegold {
-    background: radial-gradient(circle at top, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.95));
-    color: #FFFFFF;
-}
-
-.metal-carousel-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-/* Carousel card image */
-.metal-carousel-image {
-    width: 100%;
-    height: 200px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    position: relative;
-}
-
-.metal-carousel-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.5s ease;
-}
-
-.metal-carousel-card:hover .metal-carousel-image img {
-    transform: scale(1.05);
-}
-
-.metal-carousel-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-.metal-carousel-card.custom .metal-carousel-title,
-.metal-carousel-card.black .metal-carousel-title,
-.metal-carousel-card.blue .metal-carousel-title,
-.metal-carousel-card.green .metal-carousel-title,
-.metal-carousel-card.purple .metal-carousel-title,
-.metal-carousel-card.rosegold .metal-carousel-title {
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.white .metal-carousel-title,
-.metal-carousel-card.gold .metal-carousel-title,
-.metal-carousel-card.silver .metal-carousel-title {
-    color: #1a1209;
-}
-
-.metal-carousel-description {
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-    flex-grow: 1;
-}
-
-.metal-carousel-card.custom .metal-carousel-description,
-.metal-carousel-card.black .metal-carousel-description,
-.metal-carousel-card.blue .metal-carousel-description,
-.metal-carousel-card.green .metal-carousel-description,
-.metal-carousel-card.purple .metal-carousel-description,
-.metal-carousel-card.rosegold .metal-carousel-description {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.metal-carousel-card.white .metal-carousel-description,
-.metal-carousel-card.gold .metal-carousel-description,
-.metal-carousel-card.silver .metal-carousel-description {
-    color: rgba(26, 18, 9, 0.9);
-}
-
-.metal-carousel-price {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-}
-
-.metal-carousel-card.custom .metal-carousel-price,
-.metal-carousel-card.black .metal-carousel-price,
-.metal-carousel-card.blue .metal-carousel-price,
-.metal-carousel-card.green .metal-carousel-price,
-.metal-carousel-card.purple .metal-carousel-price,
-.metal-carousel-card.rosegold .metal-carousel-price {
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.white .metal-carousel-price,
-.metal-carousel-card.gold .metal-carousel-price,
-.metal-carousel-card.silver .metal-carousel-price {
-    color: #1a1209;
-}
-
-.metal-carousel-price span {
-    font-size: 0.9rem;
-    font-weight: 400;
-    margin-left: 5px;
-}
-
-.metal-carousel-actions {
-    margin-top: auto;
-    display: flex;
-    gap: 10px;
-}
-
-.metal-carousel-actions .btn {
-    flex: 1;
-}
-
-/* Carousel Navigation Arrows */
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background: rgba(224, 191, 184, 0.3);
-    border: 1px solid rgba(224, 191, 184, 0.5);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    color: var(--white);
-    font-size: 24px;
-    font-weight: bold;
-    backdrop-filter: blur(10px);
-}
-
-.carousel-nav:hover {
-    background: rgba(224, 191, 184, 0.5);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.4);
-}
-
-.carousel-nav.prev {
-    left: 0;
-}
-
-.carousel-nav.next {
-    right: 0;
-}
-
-.carousel-nav.disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: translateY(-50%) scale(1);
-}
-
-.carousel-nav.disabled:hover {
-    background: rgba(224, 191, 184, 0.3);
-    transform: translateY(-50%) scale(1);
-    box-shadow: none;
-}
-
-@media (max-width: 768px) {
-    .carousel-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-}
-
-/* Carousel Dots */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 30px;
-}
-
-.carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.3);
-    border: 1px solid rgba(224, 191, 184, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    background: var(--rose-gold-light);
-    border-color: var(--rose-gold-light);
-    transform: scale(1.2);
-}
-
-.carousel-dot:hover {
-    background: rgba(224, 191, 184, 0.5);
-    transform: scale(1.1);
-}
-
-/* WHY CHOOSE SECTION - METAL THEME */
-.why-choose-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.why-choose-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
-}
-
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.benefit-card {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    backdrop-filter: blur(10px);
-}
-
-.benefit-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--rose-gold-light);
-    box-shadow: 0 15px 30px rgba(183, 110, 121, 0.2);
-    background: rgba(224, 191, 184, 0.15);
-}
-
-.benefit-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
-    background: rgba(224, 191, 184, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: var(--white);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.benefit-title {
-    font-size: 1.4rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    color: var(--white);
-}
-
-.benefit-description {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-/* TESTIMONIALS SECTION - METAL THEME */
-.testimonials-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #2D1A1A 0%, #1A0F0F 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.testimonials-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rose-gold-medium), transparent);
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.testimonial-card {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    position: relative;
-    backdrop-filter: blur(10px);
-}
-
-.testimonial-quote {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.95);
-    margin-bottom: 20px;
-    font-style: italic;
-}
-
-.testimonial-author {
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 5px;
-}
-
-.testimonial-role {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
-}
-
-/* CUSTOM LOGO SECTION - MOBILE OPTIMIZED */
-.custom-logo-section {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.custom-logo-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
-}
-
-.custom-logo-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-/* MOBILE OPTIMIZED LAYOUT - SINGLE COLUMN */
-.logo-builder-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin: 40px 0;
-}
-
-/* Preview Section - Now on top */
-.preview-container {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 24px;
-    padding: 25px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-    width: 100%;
-}
-
-.preview-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.preview-title {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--white);
-}
-
-.card-counter {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--rose-gold-light);
-    background: rgba(224, 191, 184, 0.2);
-    padding: 6px 12px;
-    border-radius: 20px;
-}
-
-.preview-card-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
-.preview-card {
-    width: 100%;
-    max-width: 350px;
-    height: 220px;
-    margin: 0 auto;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    position: relative;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.preview-card:hover {
-    transform: scale(1.02);
-}
-
-.preview-card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.preview-logo {
-    max-width: 70%;
-    max-height: 70%;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    display: none;
-    transition: transform 0.3s ease;
-}
-
-.preview-logo.visible {
-    display: block;
-}
-
-.preview-placeholder {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.placeholder-icon {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    opacity: 0.6;
-}
-
-.placeholder-text {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.placeholder-subtext {
-    font-size: 0.9rem;
-    margin-top: 5px;
-    opacity: 0.8;
-}
-
-.preview-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-}
-
-.selected-card-info {
-    text-align: left;
-}
-
-.card-name {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 5px;
-}
-
-/* Removed engraving type from preview */
-/* .engraving-type {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-} */
-
-.preview-price {
-    font-size: 1.3rem;
-    font-weight: 900;
-    color: var(--rose-gold-light);
-}
-
-/* Clear Card Button */
-.clear-card-btn {
-    width: 100%;
-    padding: 16px;
-    background: rgba(224, 191, 184, 0.15);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    border-radius: 14px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
-}
-
-.clear-card-btn:hover {
-    background: rgba(224, 191, 184, 0.25);
-    transform: translateY(-2px);
-}
-
-.clear-card-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
-/* Selection Options - Now all below the card */
-.selection-options {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-/* Metal Color Selection - NOW DIRECTLY BELOW THE CARD - EXTRA SMALL FOR MOBILE */
-.metal-colors-section {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 16px;
-    padding: 15px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-    order: 1; /* Make sure it appears first after the card */
-    margin-top: -10px; /* Pull it closer to the card */
-}
-
-.metal-colors-title {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 12px;
-    text-align: center;
-}
-
-/* EXTRA SMALL METAL COLOR GRID FOR MOBILE */
-.metal-colors-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-}
-
-@media (max-width: 1024px) {
-    .metal-colors-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 6px;
-    }
-}
-
-@media (max-width: 768px) {
-    .metal-colors-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 5px;
-    }
-}
-
-@media (max-width: 480px) {
-    .metal-colors-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 4px;
-    }
-}
-
-/* EXTRA SMALL METAL COLOR BUTTONS */
-.metal-color-option {
-    aspect-ratio: 1;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid transparent;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    min-height: 30px; /* MUCH SMALLER */
-}
-
-.metal-color-option:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.metal-color-option.selected {
-    border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 2px 5px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-}
-
-/* EXTRA SMALL COLOR LABELS */
-.color-label {
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 0.55rem; /* SMALLER FONT */
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 1px 2px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    margin: 0 2px;
-    line-height: 1;
-    display: none; /* Hide labels on small buttons */
-}
-
-/* Show labels only on selected or hover */
-.metal-color-option.selected .color-label,
-.metal-color-option:hover .color-label {
-    display: block;
-}
-
-@media (max-width: 480px) {
-    .color-label {
-        font-size: 0.5rem;
-        padding: 1px;
-    }
-}
-
-/* IMPROVED LOGO SCALE SLIDER - BETTER DESIGN */
-.logo-scale-inline {
-    margin-top: 18px;
-    padding: 16px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 14px;
-    border: 1px solid rgba(224, 191, 184, 0.18);
-}
-
-.logo-scale-title {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 12px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo-scale-controls {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* Improved slider styling */
-.size-slider {
-    flex: 1;
-    height: 8px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: rgba(224, 191, 184, 0.2);
-    border-radius: 10px;
-    outline: none;
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    cursor: pointer;
-}
-
-.size-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--rose-gold-gradient);
-    border: 2px solid var(--white);
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(183, 110, 121, 0.4);
-    transition: all 0.2s ease;
-}
-
-.size-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(183, 110, 121, 0.6);
-}
-
-.size-slider::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--rose-gold-gradient);
-    border: 2px solid var(--white);
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(183, 110, 121, 0.4);
-    transition: all 0.2s ease;
-}
-
-.size-slider::-moz-range-thumb:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(183, 110, 121, 0.6);
-}
-
-.size-value {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--rose-gold-light);
-    min-width: 50px;
-    text-align: center;
-    background: rgba(224, 191, 184, 0.1);
-    padding: 6px 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-/* Custom Color Picker */
-.color-picker-container {
-    display: none;
-    margin-top: 15px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    border: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.color-picker-container.show {
-    display: block;
-}
-
-.color-picker-title {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.custom-color-picker {
-    width: 100%;
-    height: 40px;
-    border-radius: 8px;
-    border: 2px solid rgba(224, 191, 184, 0.5);
-    background: transparent;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-    -webkit-appearance: none;
-}
-
-.custom-color-picker::-webkit-color-swatch-wrapper {
-    padding: 0;
-}
-
-.custom-color-picker::-webkit-color-swatch {
-    border-radius: 6px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.custom-color-picker::-moz-color-swatch {
-    border-radius: 6px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Add to Cart Button */
-.add-to-cart-btn {
-    width: 100%;
-    padding: 18px;
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    border: none;
-    border-radius: 14px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
-    margin-top: 25px;
-    order: 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.add-to-cart-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
-}
-
-.whatsapp-help {
-    margin-top: 40px;
-    padding: 25px;
-    background: rgba(37, 211, 102, 0.1);
-    border-radius: 20px;
-    border: 1px solid rgba(37, 211, 102, 0.3);
-    backdrop-filter: blur(10px);
-    order: 6;
-}
-
-/* DESKTOP LAYOUT - TWO COLUMNS */
-@media (min-width: 992px) {
-    .logo-builder-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        margin: 40px 0;
-    }
-    
-    /* Reset order for desktop */
-    .preview-container,
-    .metal-colors-section,
-    .add-to-cart-btn,
-    .whatsapp-help {
-        order: 0;
-    }
-    
-    .selection-options {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
-    
-    /* Make metal color buttons larger on desktop */
-    .metal-colors-section {
-        padding: 20px;
-        margin-top: 0;
-    }
-    
-    .metal-colors-grid {
-        gap: 8px;
-    }
-    
-    .metal-color-option {
-        min-height: 40px;
-        border-radius: 8px;
-    }
-    
-    .color-label {
-        font-size: 0.65rem;
-        padding: 2px 4px;
-        display: block; /* Always show labels on desktop */
-    }
-}
-
-/* RESPONSIVE DESIGN */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .bestsellers-grid,
-    .benefits-grid,
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .custom-logo-section {
-        padding: 60px 20px;
-    }
-
-    .preview-card {
-        height: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .bestseller-actions,
-    .metal-carousel-actions {
-        flex-direction: column;
-    }
-
-    .preview-card {
-        height: 180px;
-    }
-
-    .metal-colors-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 3px;
-    }
-    
-    .metal-color-option {
-        min-height: 28px;
-        border-radius: 5px;
-    }
-}
-
-/* ENGRAVING MODAL - METAL THEME */
-.engraving-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 15, 15, 0.98);
-    backdrop-filter: blur(20px);
-    z-index: 2000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.engraving-modal.active {
-    display: flex;
-    opacity: 1;
-}
-
-.engraving-content {
-    background: linear-gradient(135deg, rgba(26, 15, 15, 0.95), rgba(45, 26, 26, 0.98));
-    border-radius: 24px;
-    padding: 30px;
-    max-width: 500px;
-    width: 95%;
-    max-height: 85vh;
-    overflow-y: auto;
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    box-shadow: 0 40px 80px rgba(183, 110, 121, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    position: relative;
-    animation: modalAppear 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    backdrop-filter: blur(10px);
-}
-
-@keyframes modalAppear {
-    from {
-        opacity: 0;
-        transform: scale(0.95) translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.close-engraving {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.15);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    font-size: 22px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 10;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.close-engraving:hover {
-    background: rgba(224, 191, 184, 0.3);
-    transform: rotate(90deg);
-}
-
-.engraving-header {
-    margin-bottom: 30px;
-    text-align: center;
-    padding: 0 10px;
-}
-
-.engraving-header h3 {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 12px;
-    color: var(--white);
-    line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
-}
-
-.engraving-header p {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1rem;
-    line-height: 1.5;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-/* Quantity Controls - IMPROVED FOR MOBILE */
-.quantity-controls {
-    margin: 25px 0;
-    padding: 20px;
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 16px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-.quantity-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.quantity-selector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.quantity-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.2);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    font-size: 22px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
-}
-
-.quantity-btn:hover:not(:disabled) {
-    background: rgba(224, 191, 184, 0.3);
-    transform: scale(1.1);
-}
-
-.quantity-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-/* Improved quantity input for mobile */
-.quantity-input {
-    width: 80px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(224, 191, 184, 0.1);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-align: center;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Remove spinner buttons on mobile */
-.quantity-input::-webkit-outer-spin-button,
-.quantity-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.quantity-input:focus {
-    border-color: var(--rose-gold-light);
-    box-shadow: 0 0 0 2px rgba(183, 110, 121, 0.3);
-}
-
-/* Improved quantity presets for mobile */
-.quantity-presets {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 15px;
-}
-
-@media (min-width: 480px) {
-    .quantity-presets {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-.quantity-preset-btn {
-    padding: 12px 8px;
-    background: rgba(224, 191, 184, 0.1);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    border-radius: 10px;
-    color: var(--white);
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.quantity-preset-btn:hover {
-    background: rgba(224, 191, 184, 0.2);
-}
-
-.quantity-preset-btn.active {
-    background: var(--rose-gold-gradient);
-    border-color: var(--rose-gold-light);
-}
-
-/* Cart Modal - METAL THEME */
-.cart-modal {
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 400px;
-    height: 100%;
-    background: linear-gradient(135deg, #1A0F0F, #2D1A1A);
-    border-left: 1px solid rgba(224, 191, 184, 0.2);
-    z-index: 2000;
-    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
-    flex-direction: column;
-    box-shadow: -20px 0 60px rgba(183, 110, 121, 0.3);
-}
-
-@media (max-width: 768px) {
-    .cart-modal {
-        width: 100%;
-        right: -100%;
-    }
-}
-
-.cart-modal.active {
-    right: 0;
-}
-
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px;
-    border-bottom: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-.cart-header h3 {
-    font-size: 1.4rem;
-    font-weight: 900;
-    color: var(--white);
-    margin: 0;
-}
-
-.close-cart {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.2);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.close-cart:hover {
-    background: rgba(224, 191, 184, 0.3);
-    transform: rotate(90deg);
-}
-
-.cart-items {
-    flex: 1;
-    overflow-y: auto;
-    padding: 25px;
-}
-
-.empty-cart {
-    text-align: center;
-    padding: 60px 20px;
-    color: rgba(224, 191, 184, 0.7);
-}
-
-.empty-cart p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 18px;
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 14px;
-    margin-bottom: 12px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-.cart-item-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    object-fit: cover;
-    background: linear-gradient(135deg, var(--rose-gold-dark), var(--rose-gold-light));
-}
-
-.cart-item-details {
-    flex: 1;
-}
-
-.cart-item-name {
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 5px;
-    font-size: 0.95rem;
-}
-
-.cart-item-price {
-    color: rgba(224, 191, 184, 0.8);
-    font-size: 0.85rem;
-}
-
-.remove-item {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.2);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.remove-item:hover {
-    background: rgba(224, 191, 184, 0.3);
-    border-color: var(--rose-gold-light);
-    color: var(--rose-gold-light);
-}
-
-.cart-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px;
-    border-top: 1px solid rgba(224, 191, 184, 0.2);
-    font-size: 1.2rem;
-    font-weight: 900;
-    color: var(--white);
-}
-
-.checkout-btn {
-    margin: 0 25px 25px;
-    padding: 18px;
-    border-radius: 14px;
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    font-weight: 700;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.checkout-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(183, 110, 121, 0.4);
-}
-
-/* Notification - METAL THEME */
-.notification {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    padding: 18px 25px;
-    border-radius: 14px;
-    font-weight: 600;
-    box-shadow: 0 15px 40px rgba(183, 110, 121, 0.3);
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 3000;
-    max-width: 300px;
-}
-
-@media (max-width: 768px) {
-    .notification {
-        right: 20px;
-        left: 20px;
-        max-width: none;
-    }
-}
-
-.notification.show {
-    transform: translateY(0);
-    opacity: 1;
-}
-    
-
-/* Disable carousel zoom on mobile/tablet (keep it on desktop) */
-@media (hover: none) and (pointer: coarse) {
-    .metal-carousel-card:hover .metal-carousel-image img,
-    .metal-carousel-card:active .metal-carousel-image img,
-    .metal-carousel-card:focus .metal-carousel-image img,
-    .metal-carousel-card:focus-within .metal-carousel-image img {
-        transform: none !important;
-    }
-}
-</style>
+        :root {
+            --charcoal: #0F0F14;
+            --charcoal2: #141422;
+            --purple: #6E4DFF;
+            --pink: #FF4FD8;
+            --silver: #E6E6EB;
+            --muted: #B5B5C3;
+            --border: rgba(255, 255, 255, .14);
+            --glass: rgba(15, 15, 20, .38);
+            --shadow: 0 30px 90px rgba(0, 0, 0, .55);
+            --wa: #25D366;
+            --rose-gold: #B76E79;
+            --rose-gold-light: #E6B8C1;
+            --jet-black: #000000;
+            --black-card: #121212;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: var(--charcoal);
+            color: #fff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            touch-action: manipulation;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* STICKY NAV */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.95), rgba(255, 79, 216, 0.95));
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            min-height: 70px;
+            box-shadow: 0 4px 20px rgba(110, 77, 255, 0.2);
+        }
+
+        .nav.scrolled {
+            padding: 12px 20px;
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.9), rgba(255, 79, 216, 0.9));
+            box-shadow: 0 4px 30px rgba(110, 77, 255, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            height: 40px;
+            min-width: 200px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            display: block;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            background: transparent;
+        }
+
+        .logo-text {
+            color: white;
+            font-weight: 900;
+            font-size: 1.5rem;
+            white-space: nowrap;
+            letter-spacing: -0.5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 20px;
+            flex: 1;
+            justify-content: center;
+            margin: 0 20px;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            padding: 8px 16px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-center a:hover {
+            color: var(--pink);
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(110, 77, 255, 0.3);
+        }
+
+        .nav-center a.active {
+            color: var(--pink);
+            font-weight: 900;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--pink);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            min-width: 180px;
+            justify-content: flex-end;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-origin: left center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(110, 77, 255, 0.2);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--pink);
+            color: white;
+            font-size: 10px;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+        }
+
+        .whatsapp:hover {
+            background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-icon {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(110, 77, 255, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(110, 77, 255, 0.98), rgba(255, 79, 216, 0.98));
+            backdrop-filter: blur(30px);
+            padding: 30px 20px 100px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            transform: translateY(-20px);
+            transition: transform 0.4s cubic-bezier(0.1, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 40px rgba(110, 77, 255, 0.3);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            transform: translateY(0);
+            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 20px 24px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.12);
+            text-align: left;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 4px;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu a:active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0.98);
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .mobile-menu a.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--pink);
+            color: var(--pink);
+        }
+
+        .mobile-menu .whatsapp {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 17px;
+            padding: 20px 24px;
+            min-height: 64px;
+            justify-content: center;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mobile-menu .whatsapp:hover {
+            background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+        }
+
+        .mobile-close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 1002;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-close-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 1024px) {
+            .nav-center,
+            .nav-right .whatsapp {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-right {
+                gap: 8px;
+                min-width: auto;
+            }
+            .nav {
+                padding: 14px 16px;
+                min-height: 64px;
+            }
+            .nav.scrolled {
+                padding: 10px 16px;
+            }
+            .whatsapp-icon {
+                display: flex;
+            }
+            .logo {
+                min-width: auto;
+            }
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            .main-container {
+                padding-top: 64px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .mobile-menu a {
+                padding: 20px 24px;
+                min-height: 64px;
+                font-size: 17px;
+            }
+            .mobile-menu {
+                top: 64px;
+                padding: 25px 16px 100px;
+            }
+            .hamburger {
+                width: 32px;
+                height: 24px;
+            }
+            .hamburger span {
+                height: 2.5px;
+            }
+            .icon-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+            .cart-count {
+                top: -3px;
+                right: -3px;
+                min-width: 20px;
+                height: 20px;
+                font-size: 11px;
+                font-weight: 700;
+            }
+        }
+
+        .main-container {
+            padding-top: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .first-impressions-bg {
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .45), transparent 70%),
+                        radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .38), transparent 70%),
+                        linear-gradient(135deg, #0F0F14 0%, #1a1a2e 100%);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.1;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px auto 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            min-width: 180px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FF4FD8, #6E4DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .hero-bg {
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .45), transparent 70%),
+                        radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .38), transparent 70%),
+                        linear-gradient(135deg, #0F0F14 0%, #1a1a2e 100%);
+        }
+
+        .metal-bg {
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(183, 110, 121, .5), transparent 70%),
+                        radial-gradient(900px 500px at 80% 20%, rgba(230, 184, 193, .4), transparent 70%),
+                        linear-gradient(135deg, #8A4B53 0%, #B76E79 50%, #E6B8C1 100%);
+        }
+
+        .wood-bg {
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(139, 69, 19, .5), transparent 70%),
+                        radial-gradient(900px 500px at 80% 20%, rgba(160, 82, 45, .4), transparent 70%),
+                        linear-gradient(135deg, #5D2905 0%, #8B4513 50%, #A0522D 100%);
+        }
+
+       .plastic-bg {
+            background:
+                radial-gradient(1200px 700px at 20% 30%, rgba(33, 150, 243, 0.4), transparent 65%),
+                radial-gradient(900px 500px at 80% 20%, rgba(156, 39, 176, 0.3), transparent 65%),
+                linear-gradient(135deg, #1A2B4F 0%, #0A1A2F 100%);
+        }
+
+        .testimonials-bg {
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .3), transparent 70%),
+                        radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .25), transparent 70%),
+                        linear-gradient(135deg, #0F0F14 0%, #141422 100%);
+        }
+
+        .faq-bg {
+            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .25), transparent 70%),
+                        radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .2), transparent 70%),
+                        linear-gradient(135deg, #0F0F14 0%, #141422 100%);
+        }
+
+        .card-image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px auto;
+        }
+
+        .card-image {
+            width: 500px;
+            height: 300px;
+            border-radius: 20px;
+            overflow: visible;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
+        }
+
+        .card-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .section-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            font-size: 16px;
+            white-space: nowrap;
+            min-width: 200px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            box-shadow: 0 4px 20px rgba(110, 77, 255, 0.3);
+        }
+
+        .section-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(110, 77, 255, 0.4);
+            background: linear-gradient(135deg, #5a3de0, #ff39d0);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px auto;
+            max-width: 1200px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple);
+            box-shadow: 0 15px 30px rgba(110, 77, 255, 0.15);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-role {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 800px;
+            margin: 60px auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active {
+            background: rgba(110, 77, 255, 0.1);
+            border-color: rgba(110, 77, 255, 0.3);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 24px 30px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-icon {
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            color: rgba(255, 255, 255, 0.78);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 24px;
+            max-height: 500px;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: var(--charcoal2);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 2000;
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -20px 0 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-header h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            margin: 0;
+        }
+
+        .close-cart {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-cart:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cart-item-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .cart-item-price {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+        }
+
+        .remove-item {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .remove-item:hover {
+            background: rgba(255, 79, 216, 0.2);
+            border-color: var(--pink);
+            color: var(--pink);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: white;
+        }
+
+        .checkout-btn {
+            margin: 0 20px 20px;
+            padding: 16px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            border: none;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(110, 77, 255, 0.3);
+        }
+
+        .notification {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 5000;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 40px 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .stat-item {
+                min-width: 160px;
+                padding: 16px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .content-section {
+                padding: 60px 16px;
+                min-height: 90vh;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .stats-container {
+                gap: 20px;
+                margin: 30px auto 40px;
+            }
+
+            .stat-item {
+                min-width: 140px;
+                padding: 15px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .card-image-container {
+                margin: 30px auto;
+            }
+
+            .card-image {
+                width: min(92vw, 420px);
+                height: auto;
+                aspect-ratio: 5 / 3;
+            }
+
+            .section-button {
+                min-width: 180px;
+                padding: 14px 28px;
+                font-size: 15px;
+            }
+
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .card-image img {
+                transition: none !important;
+                -webkit-filter: none !important;
+                filter: none !important;
+            }
+
+            .card-image:hover img {
+                transform: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- ENGRAVING SELECTION MODAL -->
-    <div class="engraving-modal" id="engravingModal">
-        <div class="engraving-content">
-            <button class="close-engraving" id="closeEngraving">×</button>
-            <div class="engraving-header">
-                <h3>Select Engraving Color</h3>
-                <p>Choose between silver or gold engraving for your <span id="selectedMetalText" class="highlight-text">Black</span> metal card</p>
-            </div>
-
-            <div class="engraving-options">
-                <div class="engraving-option" data-engraving="silver">
-                    <div class="engraving-image">
-                        <span>⚪</span>
-                    </div>
-                    <div class="engraving-label">
-                        <span>⚪</span> Silver Engraving
-                    </div>
-                    <div class="engraving-price">No extra cost</div>
-                    <div class="engraving-description">
-                        Premium silver-toned engraving creates elegant contrast. Perfect for a sophisticated, modern look that stands out beautifully.
-                    </div>
-                </div>
-
-                <div class="engraving-option" data-engraving="gold">
-                    <div class="engraving-image">
-                        <span>⭐</span>
-                    </div>
-                    <div class="engraving-label">
-                        <span>⭐</span> Gold Engraving
-                    </div>
-                    <div class="engraving-price">No extra cost</div>
-                    <div class="engraving-description">
-                        Luxurious gold-toned engraving adds warmth and prestige. Ideal for luxury brands and premium presentation that demands attention.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quantity Controls - IMPROVED FOR MOBILE -->
-            <div class="quantity-controls">
-                <div class="quantity-title">Select Quantity</div>
-                <div class="quantity-selector">
-                    <button class="quantity-btn" id="quantityDecrease">-</button>
-                    <input type="number" class="quantity-input" id="quantityInput" value="1" min="1" max="100">
-                    <button class="quantity-btn" id="quantityIncrease">+</button>
-                </div>
-                <div class="quantity-presets">
-                    <button class="quantity-preset-btn" data-quantity="1">1 Card</button>
-                    <button class="quantity-preset-btn active" data-quantity="5">5 Cards</button>
-                    <button class="quantity-preset-btn" data-quantity="10">10 Cards</button>
-                    <button class="quantity-preset-btn" data-quantity="20">20 Cards</button>
-                </div>
-            </div>
-
-            <div class="engraving-actions">
-                <button class="btn-cancel" id="cancelEngraving">Cancel</button>
-                <button class="btn-confirm" id="confirmEngraving">Add to Cart - £<span id="engravingTotalPrice">95</span></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Cart Modal -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-header">
-            <h3>Your Cart</h3>
-            <button class="close-cart" id="closeCart">×</button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <!-- Cart items will be added here dynamically -->
-        </div>
-        <div class="cart-total">
-            <span>Total:</span>
-            <span id="cartTotal">£0</span>
-        </div>
-        <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
-    </div>
-
-    <!-- Notification -->
-    <div class="notification" id="notification">
-        Item added to cart!
-    </div>
-
-    <!-- MOBILE MENU OVERLAY -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-
-    <!-- MOBILE CLOSE BUTTON -->
-    <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
-
-    <!-- STICKY NAV - METAL THEME -->
+    <!-- NAVIGATION -->
     <nav class="nav" id="mainNav">
         <a href="/" class="logo">
-            <img src="logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="logo.png" alt="ExposureBoost Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <span class="logo-text" style="display: none;">ExposureBoost</span>
         </a>
 
-        <button class="hamburger" id="hamburgerBtn">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
         <div class="nav-center">
-            <a href="/">Home</a>
-            <a href="/metal" class="active">Metal Cards</a>
-            <a href="/wood">Wood Cards</a>
-            <a href="/plastic">Plastic Cards</a>
-            <a href="/custom">Custom Cards</a>
+            <a href="/" class="active">Home</a>
+            <a href="/metal">Metal</a>
+            <a href="/wood">Wood</a>
+            <a href="/plastic">Plastic</a>
             <a href="/stands">Stands</a>
         </div>
 
         <div class="nav-right">
-            <a href="https://wa.me/447754888841" class="whatsapp-icon" target="_blank" aria-label="WhatsApp">
-                💬
+            <a href="https://wa.me/447123456789" class="whatsapp" target="_blank">
+                <span>💬</span> WhatsApp
             </a>
+            
             <div class="icon-btn" id="cartIcon">
                 🛒
                 <span class="cart-count" id="cartCount">0</span>
             </div>
-            <a href="https://wa.me/447754888841" class="whatsapp" target="_blank">
-                <span>💬</span> WhatsApp
-            </a>
+            
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
-    <!-- MOBILE MENU - METAL THEME -->
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="/" class="mobile-menu-item">
+        <a href="/" class="mobile-menu-item active">
             <span>🏠</span> Home
         </a>
-        <a href="/metal" class="mobile-menu-item active">
-            <span>⭐</span> Metal Cards
+        <a href="/metal" class="mobile-menu-item">
+            <span>⚙️</span> Metal
         </a>
         <a href="/wood" class="mobile-menu-item">
-            <span>🌳</span> Wood Cards
+            <span>🌳</span> Wood
         </a>
         <a href="/plastic" class="mobile-menu-item">
-            <span>🔵</span> Plastic Cards
-        </a>
-        <a href="/custom" class="mobile-menu-item">
-            <span>✨</span> Custom Cards
+            <span>🔵</span> Plastic
         </a>
         <a href="/stands" class="mobile-menu-item">
             <span>📱</span> Stands
@@ -2669,545 +1085,283 @@ section[id] {
         <a href="/gallery" class="mobile-menu-item">
             <span>🖼️</span> Gallery
         </a>
+        <a href="/custom" class="mobile-menu-item">
+            <span>🎨</span> Custom
+        </a>
 
         <div class="menu-divider"></div>
 
-        <a href="https://wa.me/447754888841" class="whatsapp mobile-menu-item" target="_blank">
-            <span>💬</span> WhatsApp Support
+        <a href="https://wa.me/447123456789" class="whatsapp mobile-menu-item" target="_blank">
+            <span>💬</span> WhatsApp
         </a>
-
-        <div class="menu-footer">
-            Premium NFC Cards & Digital Profiles
-        </div>
     </div>
 
+    <!-- CART MODAL -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" id="closeCart">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">£0</span>
+        </div>
+        <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="notification" id="notification">
+        Item added to cart!
+    </div>
+
+    <!-- MAIN CONTENT -->
     <div class="main-container">
-        <!-- HERO SECTION - METAL THEME -->
-        <section class="hero-section" id="hero">
-            <div class="hero-bg-blob"></div>
-            <div class="hero-bg-blob b2"></div>
-            <div class="hero-content">
-                <h1 class="hero-title">Premium Metal NFC Cards</h1>
+        <!-- ORIGINAL HERO SECTION -->
+        <section class="content-section hero-bg" id="hero">
+            <div class="content-container">
+                <h1 class="section-title">
+                    The business card<br>people don't forget.
+                </h1>
+
+                <p class="section-subtitle">
+                    One Tap, All Your Details. Share your entire digital presence instantly. No apps needed—just tap and connect.
+                </p>
+
+                <div class="card-image-container">
+                    <div class="card-image">
+                        <img src="newgold.webp" 
+                             alt="Premium NFC Card">
+                    </div>
+                </div>
+
+                <button onclick="addToCart('Premium Metal Card', 49.99, 'newgold.webp')" class="section-button">
+                    Add to Cart - £49.99
+                </button>
+            </div>
+        </section>
+
+        <!-- METAL CARD SECTION -->
+        <section class="content-section metal-bg" id="metal">
+            <div class="content-container">
+                <h2 class="section-title">Metal Cards</h2>
+
+                <p class="section-subtitle">Weight, texture, presence. Feel the premium difference that commands attention and communicates success instantly.</p>
+
+                <div class="card-image-container">
+                    <div class="card-image">
+                        <img src="newrosegold.webp" 
+                             alt="Metal NFC Card">
+                    </div>
+                </div>
+
+                <button onclick="addToCart('Rose Gold Metal Card', 59.99, 'newrosegold.webp')" class="section-button">
+                    Add to Cart - £59.99
+                </button>
+            </div>
+        </section>
+
+        <!-- WOOD CARD SECTION -->
+        <section class="content-section wood-bg" id="wood">
+            <div class="content-container">
+                <h2 class="section-title">Wood Cards</h2>
+
+                <p class="section-subtitle">Warm, authentic, memorable. Each card tells a story of craftsmanship and connection with the natural world.</p>
+
+                <div class="card-image-container">
+                    <div class="card-image">
+                        <img src="newbamboo.webp" 
+                             alt="Wood NFC Card">
+                    </div>
+                </div>
+
+                <button onclick="addToCart('Bamboo Wood Card', 44.99, 'newbamboo.webp')" class="section-button">
+                    Add to Cart - £44.99
+                </button>
+            </div>
+        </section>
+
+        <!-- PLASTIC CARD SECTION -->
+        <section class="content-section plastic-bg" id="plastic">
+            <div class="content-container">
+                <h2 class="section-title">Plastic Cards</h2>
+
+                <p class="section-subtitle">Sleek, modern, versatile. The ultimate combination of elegance and functionality with endless customization possibilities.</p>
+
+                <div class="card-image-container">
+                    <div class="card-image">
+                        <img src="newplasticpink.webp" 
+                             alt="Plastic NFC Card">
+                    </div>
+                </div>
+
+                <button onclick="addToCart('Pink Plastic Card', 29.99, 'newplasticpink.webp')" class="section-button">
+                    Add to Cart - £29.99
+                </button>
+            </div>
+        </section>
+
+        <!-- FIRST IMPRESSIONS SECTION -->
+        <section class="content-section first-impressions-bg" id="first-impressions">
+            <div class="content-container">
+                <h1 class="section-title">
+                    First impressions happen<br>in 3 seconds
+                </h1>
                 
-                <div class="hero-card-container">
-                    <div class="hero-card">
-                        <img src="newblack.webp" alt="Black Metal NFC Card">
+                <p class="section-subtitle">
+                    Make yours unforgettable. Elevate every interaction with premium NFC cards that speak volumes before you even say a word. In the time it takes to blink, your card creates a lasting impression that traditional business cards never could.
+                </p>
+                
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">93%</div>
+                        <div class="stat-label">Higher Retention</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3x</div>
+                        <div class="stat-label">More Follow-ups</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">67%</div>
+                        <div class="stat-label">Faster Connection</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10/10</div>
+                        <div class="stat-label">Professional Impact</div>
                     </div>
                 </div>
-
-                <div class="hero-cta">
-                    <button class="btn btn-primary" id="browseCardsBtn">Browse Metals</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- BESTSELLERS SECTION -->
-        <section class="bestsellers-section" id="bestsellers">
-            <div class="section-header">
-                <h2 class="section-title">Our Metal Bestsellers</h2>
-                <p class="section-subtitle">Premium metal NFC cards that make lasting impressions</p>
-            </div>
-
-            <div class="bestsellers-grid">
-                <!-- Silver Metal Card -->
-                <div class="bestseller-card silver">
-                    <div class="bestseller-badge">Bestseller 🏆</div>
-                    <div class="bestseller-image">
-                        <div class="webp-container">
-                            <img src="newsilver.webp" alt="Silver Metal Card" class="webp-image">
-                        </div>
-                    </div>
-                    <h3 class="bestseller-title">Silver Metal Card</h3>
-                    <p class="bestseller-description">Sleek, modern, and sophisticated. Perfect for tech companies and modern brands.</p>
-                    <div class="bestseller-price">£95 <span>one-time · card + profile</span></div>
-                    <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Silver Metal Card" data-price="95" data-image="newsilver.webp">🛒 Add to Cart</button>
-                        <button class="btn btn-secondary view-example">↗ Example</button>
-                    </div>
-                </div>
-
-                <!-- Rose Gold Metal Card -->
-                 <div class="bestseller-card rose-gold">
-                    <div class="bestseller-badge">Bestseller 🏆</div>
-                    <div class="bestseller-image">
-                        <div class="webp-container">
-                            <img src="newrosegold.webp" alt="Rose Gold Metal Card" class="webp-image">
-                        </div>
-                    </div>
-                    <h3 class="bestseller-title">Rose Gold Metal Card</h3>
-                    <p class="bestseller-description">Contemporary, warm, and distinctive. Ideal for creative industries and fashion brands.</p>
-                    <div class="bestseller-price">£95 <span>one-time · card + profile</span></div>
-                    <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Rose Gold Metal Card" data-price="95" data-image="newrosegold.webp">🛒 Add to Cart</button>
-                        <button class="btn btn-secondary view-example">↗ Example</button>
-                    </div>
-                </div>
-
-                <!-- Gold Metal Card -->
-                <div class="bestseller-card gold">
-                    <div class="bestseller-badge">Bestseller 🏆</div>
-                    <div class="bestseller-image">
-                        <div class="webp-container">
-                            <img src="newgold.webp" alt="Gold Metal Card" class="webp-image">
-                        </div>
-                    </div>
-                    <h3 class="bestseller-title">Gold Metal Card</h3>
-                    <p class="bestseller-description">The ultimate symbol of success and achievement. Perfect for executives and luxury brands.</p>
-                    <div class="bestseller-price">£95 <span>one-time · card + profile</span></div>
-                    <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Gold Metal Card" data-price="95" data-image="newgold.webp">🛒 Add to Cart</button>
-                        <button class="btn btn-secondary view-example">↗ Example</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CAROUSEL SECTION - IMPROVED CIRCULAR CAROUSEL -->
-        <section class="carousel-section" id="carousel">
-            <div class="carousel-container">
-                <div class="section-header">
-                    <h2 class="section-title">All Metal Colors</h2>
-                    <p class="section-subtitle">Choose from 9 premium metal colors</p>
-                </div>
-
-                <div class="metal-carousel-wrapper">
-                    <button class="carousel-nav prev" id="carouselPrev">‹</button>
-                    
-                    <div class="metal-carousel-track" id="carouselTrack">
-                        <!-- Black -->
-                        <div class="metal-carousel-card black" data-metal="black">
-                            <div class="metal-carousel-image">
-                                <img src="newblack.webp" alt="Black Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">Black Metal Card</h3>
-                            <p class="metal-carousel-description">Classic and sophisticated black metal card. Perfect for any industry wanting an elegant.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Black Metal Card" data-price="95" data-image="newblack.webp">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- Blue -->
-                        <div class="metal-carousel-card blue" data-metal="blue">
-                            <div class="metal-carousel-image">
-                                <img src="newblue.webp" alt="Blue Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">Blue Metal Card</h3>
-                            <p class="metal-carousel-description">Trustworthy blue metal card. Ideal for professional services, tech companies, and corporate brands.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Blue Metal Card" data-price="95" data-image="newblue.webp">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- Green -->
-                        <div class="metal-carousel-card green" data-metal="green">
-                            <div class="metal-carousel-image">
-                                <img src="newgreen.webp" alt="Green Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">Green Metal Card</h3>
-                            <p class="metal-carousel-description">Natural green metal card. Perfect for eco-friendly brands, health services, and organic products.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Green Metal Card" data-price="95" data-image="newgreen.webp">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- Purple -->
-                        <div class="metal-carousel-card purple" data-metal="purple">
-                            <div class="metal-carousel-image">
-                                <img src="newpurple.webp" alt="Purple Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">Purple Metal Card</h3>
-                            <p class="metal-carousel-description">Creative purple metal card. Perfect for design studios, beauty brands, and innovative startups.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Purple Metal Card" data-price="95" data-image="newpurple.webp">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- White -->
-                        <div class="metal-carousel-card white" data-metal="white">
-                            <div class="metal-carousel-image">
-                                <img src="newwhite.webp" alt="White Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">White Metal Card</h3>
-                            <p class="metal-carousel-description">Clean white metal card. Perfect for minimalist brands, medical services,studios.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="White Metal Card" data-price="95" data-image="newwhite.webp">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- Gold -->
-                        <div class="metal-carousel-card gold" data-metal="gold">
-                            <div class="metal-carousel-image">
-                                <img src="newgold.webp" alt="Gold Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">Gold Metal Card</h3>
-                            <p class="metal-carousel-description">Classic and sophisticated gold metal card. Perfect for any industry wanting an elegant...</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Gold Metal Card" data-price="95" data-image="newgold.webp">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- Silver -->
-                        <div class="metal-carousel-card silver" data-metal="silver">
-                            <div class="metal-carousel-image">
-                                <img src="newsilver.webp" alt="Silver Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">Silver Metal Card</h3>
-                            <p class="metal-carousel-description">Metallic silver metal card. Perfect for luxury brands, automotive, and premium technology products.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Silver Metal Card" data-price="95" data-image="newsilver.webp">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- Rose Gold -->
-                        <div class="metal-carousel-card rosegold" data-metal="rosegold">
-                            <div class="metal-carousel-image">
-                                <img src="newrosegold.webp" alt="Rose Gold Metal">
-                            </div>
-                            <h3 class="metal-carousel-title">Rose Gold Metal </h3>
-                            <p class="metal-carousel-description">Contemporary rose gold metal card. Ideal for creative industries, fashion brands,.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Rose Gold Metal Card" data-price="95" data-image="newrosegold.webp">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <!-- Custom -->
-                        <div class="metal-carousel-card custom" data-metal="custom">
-                            <div class="custom-badge">Any Colour / Any Finish</div>
-                            <div class="metal-carousel-image">
-                                <img src="newcustom.webp" alt="Custom Metal Card">
-                            </div>
-                            <h3 class="metal-carousel-title">Custom Metal Card</h3>
-                            <p class="metal-carousel-description">Fully custom metal card. Choose any colour, finish, and branding for a one-of-a-kind premium look.</p>
-                            <div class="metal-carousel-price">£95 <span>one-time · card + profile</span></div>
-                            <div class="metal-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Custom Metal Card" data-price="95" data-image="newcustom.webp">🛒 Add to Cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button class="carousel-nav next" id="carouselNext">›</button>
-                </div>
-
-                <div class="carousel-dots" id="carouselDots">
-                    <!-- Dots will be added dynamically -->
-                </div>
-            </div>
-        </section>
-
-        <!-- CUSTOM LOGO SECTION - IMPROVED -->
-        <section class="custom-logo-section" id="custom-logo">
-            <div class="custom-logo-content">
-                <div class="section-header">
-                    <h2 class="section-title">See It With Your Logo</h2>
-                    <p class="section-subtitle">Upload your logo and see how it looks on different metal cards</p>
-                </div>
-
-                <!-- MOBILE-OPTIMIZED SINGLE COLUMN LAYOUT -->
-                <div class="logo-builder-container">
-                    <!-- Preview Card - Now on Top with Metal Colors directly below -->
-                    <div class="preview-container">
-                        <div class="preview-header">
-                            <div class="preview-title">Live Preview</div>
-                            <div class="card-counter" id="cardCounter">Black</div>
-                        </div>
-                        
-                        <div class="preview-card-wrapper">
-                            <div class="preview-card" id="previewCard">
-                                <div class="preview-card-inner" id="previewCardInner">
-                                    <div class="preview-placeholder" id="previewPlaceholder">
-                                        <div class="placeholder-icon">📁</div>
-                                        <div class="placeholder-text">Click to upload your logo</div>
-                                        <div class="placeholder-subtext">PNG, JPG up to 10MB</div>
-                                    </div>
-                                    <img class="preview-logo" id="previewLogo" alt="Your Logo">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- IMPROVED LOGO SCALE SLIDER - Better Design -->
-                        <div class="logo-scale-inline">
-                            <div class="logo-scale-title">
-                                <span>Logo Scale</span>
-                                <span id="logoScaleValue">100%</span>
-                            </div>
-                            <div class="logo-scale-controls">
-                                <input type="range" min="0" max="200" value="100" class="size-slider" id="logoScaleSlider">
-                            </div>
-                        </div>
-
-                        <!-- METAL COLOR SELECTION - NOW DIRECTLY BELOW THE CARD -->
-                        <div class="metal-colors-section">
-                            <div class="metal-colors-title">Choose Metal Color</div>
-                            <div class="metal-colors-grid">
-                                <div class="metal-color-option selected" data-color="black" style="background: var(--black-bg);">
-                                    <div class="color-label">Black</div>
-                                </div>
-                                <div class="metal-color-option" data-color="blue" style="background: var(--blue-bg);">
-                                    <div class="color-label">Blue</div>
-                                </div>
-                                <div class="metal-color-option" data-color="green" style="background: var(--green-bg);">
-                                    <div class="color-label">Green</div>
-                                </div>
-                                <div class="metal-color-option" data-color="purple" style="background: var(--purple-bg);">
-                                    <div class="color-label">Purple</div>
-                                </div>
-                                <div class="metal-color-option" data-color="white" style="background: var(--white-bg);">
-                                    <div class="color-label">White</div>
-                                </div>
-                                <div class="metal-color-option" data-color="gold" style="background: var(--gold-bg);">
-                                    <div class="color-label">Gold</div>
-                                </div>
-                                <div class="metal-color-option" data-color="silver" style="background: var(--silver-bg);">
-                                    <div class="color-label">Silver</div>
-                                </div>
-                                <div class="metal-color-option" data-color="rosegold" style="background: var(--rosegold-bg);">
-                                    <div class="color-label">Rose Gold</div>
-                                </div>
-                                <div class="metal-color-option" data-color="custom" style="background: var(--custom-bg);">
-                                    <div class="color-label">Custom</div>
-                                </div>
-                            </div>
-                            <!-- Custom Color Picker Container -->
-                            <div class="color-picker-container" id="colorPickerContainer">
-                                <div class="color-picker-title">Pick Any Color</div>
-                                <input type="color" class="custom-color-picker" id="customColorPicker" value="#ff0000">
-                            </div>
-                        </div>
-                        
-                        <div class="preview-details">
-                            <div class="selected-card-info">
-                                <div class="card-name" id="selectedCardName">Black Metal Card</div>
-                            </div>
-                            <div class="preview-price">£95</div>
-                        </div>
-                        
-                        <button class="clear-card-btn" id="clearCardBtn">
-                            <span>🗑️</span> Clear Card Preview
-                        </button>
-                        
-                        <button class="add-to-cart-btn" id="addToCartBtn">
-                            🛒 Add to Cart
-                        </button>
-                    </div>
-                </div>
-
-                <div class="whatsapp-help">
-                    <h3 style="margin-bottom: 15px; font-size: 1.2rem;">Need help with your logo?</h3>
-                    <p style="margin-bottom: 20px; color: rgba(255, 255, 255, 0.9); font-size: 0.95rem;">
-                        Send us your logo on WhatsApp and we'll create a custom mockup for you
-                    </p>
-                    <a href="https://wa.me/447754888841" class="btn whatsapp" target="_blank" style="background: linear-gradient(135deg, #25d366, #128c7e); padding: 14px 24px; font-size: 0.95rem;">
-                        <span>📞</span> Send Logo on WhatsApp
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- WHY CHOOSE METAL SECTION -->
-        <section class="why-choose-section" id="why-choose">
-            <div class="section-header">
-                <h2 class="section-title">Why Choose Metal?</h2>
-                <p class="section-subtitle">Experience the difference with premium metal NFC cards</p>
-            </div>
-
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">💎</div>
-                    <h3 class="benefit-title">Luxury Perception</h3>
-                    <p class="benefit-description">
-                        Metal cards immediately communicate premium quality, making clients perceive your brand as established, successful, and worth investing in.
-                    </p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚡</div>
-                    <h3 class="benefit-title">Exceptional Durability</h3>
-                    <p class="benefit-description">
-                        CNC-machined from solid metal, these cards are built to last a lifetime, surviving daily use while maintaining their flawless appearance.
-                    </p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">✨</div>
-                    <h3 class="benefit-title">Unforgettable Impact</h3>
-                    <p class="benefit-description">
-                        The substantial weight and cool touch of metal create a memorable sensory experience that plastic cards simply cannot replicate.
-                    </p>
-                </div>
+                
+                <a href="#testimonials" class="section-button">
+                    See The Proof
+                </a>
             </div>
         </section>
 
         <!-- TESTIMONIALS SECTION -->
-        <section class="testimonials-section" id="testimonials">
-            <div class="section-header">
-                <h2 class="section-title">What Our Clients Say</h2>
-                <p class="section-subtitle">Don't just take our word for it. Here's what our customers have to say.</p>
+        <section class="content-section testimonials-bg" id="testimonials">
+            <div class="content-container">
+                <h2 class="section-title">What Our Customers Say</h2>
+
+                <p class="section-subtitle">
+                    Don't just take our word for it. Here's what our customers have to say about their ExposureBoost experience.
+                </p>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">"These cards are absolutely stunning! My clients are always impressed when I hand them my ExposureBoost card. It's become a real conversation starter."
+                        </div>
+                        <div class="testimonial-author">Sarah Johnson</div>
+                        <div class="testimonial-role">Creative Director, London</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">"Best investment I've made for my business. The quality is unmatched and the digital profile is so professional. My conversion rate has increased by 30%!"</div>
+                        <div class="testimonial-author">Michael Chen</div>
+                        <div class="testimonial-role">Business Consultant, Manchester</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">"I was skeptical at first, but these cards have transformed how people perceive my brand. The wood finish is particularly beautiful and gets compliments everywhere."</div>
+                        <div class="testimonial-author">Emma Roberts</div>
+                        <div class="testimonial-role">Fashion Entrepreneur, Bristol</div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">
-                        "The gold metal card is absolutely stunning! My high-net-worth clients immediately recognize it as a symbol of success. It's opened doors that plastic cards never could."
-                    </div>
-                    <div class="testimonial-author">James Harrington</div>
-                    <div class="testimonial-role">Private Wealth Manager, Mayfair</div>
-                </div>
+        <!-- FAQ SECTION -->
+        <section class="content-section faq-bg" id="faq">
+            <div class="content-container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">
-                        "As a tech startup founder, the silver metal card perfectly represents our brand—sleek, modern, and built to last. It's become a conversation starter at every investor meeting."
-                    </div>
-                    <div class="testimonial-author">Sophia Chen</div>
-                    <div class="testimonial-role">Tech Founder, Silicon Roundabout</div>
-                </div>
+                <p class="section-subtitle">
+                    Clear answers. No confusion. Premium experience from start to finish.
+                </p>
 
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">
-                        "The rose gold card feels incredible in hand. It has a unique warmth that sets it apart. My fashion clients love how it complements our brand aesthetic."
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Does this work on all phones?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Yes. Our NFC cards work on all modern iPhones and Android devices — no app required. Just tap and connect instantly.
+                        </div>
                     </div>
-                    <div class="testimonial-author">Isabella Rossi</div>
-                    <div class="testimonial-role">Fashion Brand Director, Milan</div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>What happens after someone taps my card?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Your premium digital profile opens instantly with WhatsApp, contact saving, socials, website, and reviews — all in one tap.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Is there a monthly fee?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            No subscriptions. One-time payment only. Your card and profile are yours forever.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>How long does delivery take?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Standard delivery takes 5-7 business days. Express shipping is available for 2-3 day delivery.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Can I update my digital profile?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Yes! You can update your digital profile anytime through our dashboard. Changes sync instantly to your NFC card.
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 
     <script>
-        // Variables for engraving selection
-        let selectedMetal = 'Black';
-        let selectedEngraving = null;
-        let engravingModal = document.getElementById('engravingModal');
-        let uploadedLogoGlobal = null;
-        let logoSize = 100; // Default logo size percentage
-        let currentEngravingData = null; // Store data for engraving modal
-        let engravingQuantity = 1; // Default quantity for engraving modal
-        let currentCarouselBackground = 'var(--carousel-black-bg)';
-        
-        // SIMPLE MOBILE MENU - FIXED
+        // NAVIGATION FUNCTIONALITY
         const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mobileCloseBtn = document.getElementById('mobileCloseBtn');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const mobileMenu = document.getElementById('mobileMenu');
         const nav = document.getElementById('mainNav');
+
         let isMenuOpen = false;
-
-        // Toggle mobile menu - SIMPLE VERSION
-        function toggleMobileMenu() {
-            isMenuOpen = !isMenuOpen;
-
-            if (isMenuOpen) {
-                // Open menu
-                hamburgerBtn.classList.add('active');
-                mobileMenu.classList.add('active');
-                mobileMenuOverlay.classList.add('active');
-                mobileCloseBtn.classList.add('show');
-                document.body.classList.add('menu-open');
-                document.body.style.overflow = 'hidden';
-            } else {
-                // Close menu
-                hamburgerBtn.classList.remove('active');
-                mobileMenuOverlay.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                mobileCloseBtn.classList.remove('show');
-                document.body.classList.remove('menu-open');
-                document.body.style.overflow = '';
-            }
-        }
-
-        // Close mobile menu
-        function closeMobileMenu() {
-            if (!isMenuOpen) return;
-            
-            hamburgerBtn.classList.remove('active');
-            mobileMenuOverlay.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            mobileCloseBtn.classList.remove('show');
-            document.body.classList.remove('menu-open');
-            document.body.style.overflow = '';
-            isMenuOpen = false;
-        }
-
-        // Event listeners
-        hamburgerBtn.addEventListener('click', toggleMobileMenu);
-        mobileCloseBtn.addEventListener('click', closeMobileMenu);
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-
-        // Close menu when clicking menu links
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                // If it's an external link (like WhatsApp), don't prevent default
-                if (link.getAttribute('target') === '_blank' || link.getAttribute('href').includes('wa.me')) {
-                    return;
-                }
-                
-                // For all other links, close the menu
-                closeMobileMenu();
-                
-                // Check if it's a hash link on same page
-                if (link.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href');
-                    setTimeout(() => {
-                        const target = document.querySelector(targetId);
-                        if (target) {
-                            const navHeight = nav.offsetHeight;
-                            const targetPosition = target.offsetTop - navHeight;
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }, 300);
-                }
-            });
-        });
-
-        // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && isMenuOpen) {
-                closeMobileMenu();
-            }
-        });
-
-        // Close menu on window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 1024 && isMenuOpen) {
-                closeMobileMenu();
-            }
-        });
-
-        // Sticky Navigation
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-
-        // Cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartIcon = document.getElementById('cartIcon');
-        const cartCount = document.getElementById('cartCount');
-        const cartModal = document.getElementById('cartModal');
-        const closeCart = document.getElementById('closeCart');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const notification = document.getElementById('notification');
+
+        // Check logo fallback
+        function checkLogo() {
+            const logoImg = document.querySelector('.logo-img');
+            const logoText = document.querySelector('.logo-text');
+            
+            if (logoImg) {
+                logoImg.onerror = function() {
+                    logoImg.style.display = 'none';
+                    if (logoText) logoText.style.display = 'block';
+                };
+            }
+        }
 
         // Update cart count
         function updateCartCount() {
             const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-            cartCount.textContent = count;
+            document.getElementById('cartCount').textContent = count;
         }
 
         // Save cart to localStorage
@@ -3217,23 +1371,23 @@ section[id] {
         }
 
         // Add to cart function
-        window.addToCart = function(name, price, image, quantity = 1) {
+        window.addToCart = function(name, price, image) {
             const existingItem = cart.find(item => item.name === name);
             
             if (existingItem) {
-                existingItem.quantity = (existingItem.quantity || 1) + quantity;
+                existingItem.quantity = (existingItem.quantity || 1) + 1;
             } else {
                 cart.push({
                     name: name,
                     price: price,
                     image: image,
-                    quantity: quantity
+                    quantity: 1
                 });
             }
             
             saveCart();
             renderCartItems();
-            showNotification(`${name} (${quantity}×) added to cart!`);
+            showNotification(`${name} added to cart!`);
         };
 
         // Remove from cart
@@ -3246,8 +1400,11 @@ section[id] {
 
         // Render cart items
         function renderCartItems() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
             if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn btn-primary" onclick="closeCartModal()" style="padding: 12px 24px; background: var(--rose-gold-gradient); border: none; border-radius: 10px; color: white; cursor: pointer;">Continue Shopping</button></div>';
+                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><p style="font-size: 14px; margin-top: 10px;">Add some products to get started!</p></div>';
                 cartTotal.textContent = '£0';
                 return;
             }
@@ -3261,7 +1418,7 @@ section[id] {
                 
                 itemsHTML += `
                     <div class="cart-item">
-                        <img src="${item.image || 'newblack.webp'}" alt="${item.name}" class="cart-item-image" onerror="this.src='logo.png'">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image" onerror="this.src='logo.png'">
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-price">£${item.price} × ${item.quantity || 1}</div>
@@ -3272,32 +1429,54 @@ section[id] {
             });
 
             cartItems.innerHTML = itemsHTML;
-            cartTotal.textContent = `£${total}`;
+            cartTotal.textContent = `£${total.toFixed(2)}`;
         }
 
         // Show notification
         function showNotification(message) {
+            const notification = document.getElementById('notification');
             notification.textContent = message;
             notification.classList.add('show');
             setTimeout(() => {
                 notification.classList.remove('show');
-            }, 3000);
+            }, 2000);
         }
 
-        // Open cart modal
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            if (isMenuOpen) closeMobileMenu();
+            else openMobileMenu();
+        }
+
+        function openMobileMenu() {
+            isMenuOpen = true;
+            hamburgerBtn.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            isMenuOpen = false;
+            hamburgerBtn.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cart modal functions
         function openCartModal() {
-            cartModal.classList.add('active');
+            document.getElementById('cartModal').classList.add('active');
             document.body.style.overflow = 'hidden';
             closeMobileMenu();
         }
 
-        // Close cart modal
         function closeCartModal() {
-            cartModal.classList.remove('active');
-            document.body.style.overflow = '';
+            document.getElementById('cartModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
-        // Checkout functionality - WhatsApp integration
+        // Checkout function
         function checkout() {
             if (cart.length === 0) {
                 showNotification('Your cart is empty!');
@@ -3305,466 +1484,77 @@ section[id] {
             }
 
             const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+            const message = `Hi! I'd like to purchase:\n${cart.map(item => `- ${item.name} x${item.quantity || 1} (${item.quantity > 1 ? '£' + (item.price * item.quantity) : '£' + item.price})`).join('\n')}\n\nTotal: £${total.toFixed(2)}`;
             
-            // Format WhatsApp message
-            let message = "Hello! I'd like to place an order for the following items:\n\n";
-            
-            cart.forEach(item => {
-                message += `• ${item.name} × ${item.quantity || 1} - £${item.price * (item.quantity || 1)}\n`;
-            });
-            
-            message += `\nTotal: £${total}\n\n`;
-            message += "Please let me know the next steps to complete my order.";
-            
-            // Encode message for URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Create WhatsApp URL with your number
-            const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
-            
-            // Open WhatsApp
-            window.open(whatsappUrl, '_blank');
-            
-            // Clear cart after sending to WhatsApp
-            cart = [];
-            saveCart();
-            renderCartItems();
-            closeCartModal();
+            // Open WhatsApp with order details
+            window.open(`https://wa.me/447123456789?text=${encodeURIComponent(message)}`, '_blank');
         }
 
-        // Event listeners for cart
-        cartIcon.addEventListener('click', openCartModal);
-        closeCart.addEventListener('click', closeCartModal);
-        checkoutBtn.addEventListener('click', checkout);
+        // Set active navigation based on current page
+        function setActiveNav() {
+            const path = window.location.pathname;
+            const cleanPath = path.replace(/\.html$/, ''); // Remove .html if present
+            const pageName = cleanPath.split('/').pop() || '/';
+            
+            document.querySelectorAll('.nav-center a, .mobile-menu a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === pageName || (pageName === '/' && href === '/')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
 
-        // Close modal when clicking outside
-        cartModal.addEventListener('click', (e) => {
-            if (e.target === cartModal) {
+        // Event listeners
+        hamburgerBtn.addEventListener('click', toggleMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+        document.getElementById('cartIcon').addEventListener('click', openCartModal);
+        document.getElementById('closeCart').addEventListener('click', closeCartModal);
+        document.getElementById('checkoutBtn').addEventListener('click', checkout);
+
+        // Close cart when clicking outside
+        document.getElementById('cartModal').addEventListener('click', (e) => {
+            if (e.target.id === 'cartModal') {
                 closeCartModal();
             }
         });
 
-        // Add to cart buttons for bestseller cards
-        document.addEventListener('DOMContentLoaded', () => {
-            // Bestseller cards
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseInt(e.target.dataset.price);
-                    const image = e.target.dataset.image;
-                    // Open engraving modal
-                    openEngravingModal(name, price, image);
-                });
-            });
-
-            // Carousel cards
-            document.querySelectorAll('.add-to-cart-carousel').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseInt(e.target.dataset.price);
-                    const image = e.target.dataset.image;
-                    // Open engraving modal
-                    openEngravingModal(name, price, image);
-                });
-            });
-
-            // View example buttons
-            document.querySelectorAll('.view-example').forEach(button => {
-                button.addEventListener('click', () => {
-                    alert('Example functionality - in a real site this would show an example of the product.');
-                });
-            });
-
-            updateCartCount();
-            renderCartItems();
-        });
-
-        // ENGRAVING MODAL FUNCTIONALITY
-        const closeEngraving = document.getElementById('closeEngraving');
-        const cancelEngraving = document.getElementById('cancelEngraving');
-        const confirmEngraving = document.getElementById('confirmEngraving');
-        const selectedMetalText = document.getElementById('selectedMetalText');
-        const engravingOptions = document.querySelectorAll('.engraving-option');
-        const engravingTotalPrice = document.getElementById('engravingTotalPrice');
-        const quantityDecrease = document.getElementById('quantityDecrease');
-        const quantityIncrease = document.getElementById('quantityIncrease');
-        const quantityInput = document.getElementById('quantityInput');
-        const quantityPresetBtns = document.querySelectorAll('.quantity-preset-btn');
-
-        // Open engraving modal
-        function openEngravingModal(name, price, image) {
-            currentEngravingData = { name, price, image };
-            selectedMetalText.textContent = name.split(' ')[0]; // Get metal type from name
-            engravingModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            // Reset to defaults
-            engravingQuantity = 1;
-            quantityInput.value = 1;
-            updateEngravingPrice();
-            
-            // Reset engraving selection
-            engravingOptions.forEach(option => option.classList.remove('selected'));
-            engravingOptions[0].classList.add('selected');
-            
-            // Reset quantity presets
-            quantityPresetBtns.forEach(btn => btn.classList.remove('active'));
-            quantityPresetBtns[0].classList.add('active');
-        }
-
-        // Close engraving modal
-        function closeEngravingModal() {
-            engravingModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Update engraving price based on quantity
-        function updateEngravingPrice() {
-            if (!currentEngravingData) return;
-            const total = currentEngravingData.price * engravingQuantity;
-            engravingTotalPrice.textContent = total;
-        }
-
-        // Quantity controls
-        quantityDecrease.addEventListener('click', () => {
-            if (engravingQuantity > 1) {
-                engravingQuantity--;
-                quantityInput.value = engravingQuantity;
-                updateEngravingPrice();
-            }
-        });
-
-        quantityIncrease.addEventListener('click', () => {
-            if (engravingQuantity < 100) {
-                engravingQuantity++;
-                quantityInput.value = engravingQuantity;
-                updateEngravingPrice();
-            }
-        });
-
-        quantityInput.addEventListener('change', () => {
-            let value = parseInt(quantityInput.value);
-            if (isNaN(value) || value < 1) value = 1;
-            if (value > 100) value = 100;
-            engravingQuantity = value;
-            quantityInput.value = value;
-            updateEngravingPrice();
-        });
-
-        // Quantity preset buttons
-        quantityPresetBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const quantity = parseInt(btn.dataset.quantity);
-                engravingQuantity = quantity;
-                quantityInput.value = quantity;
-                updateEngravingPrice();
-                
-                quantityPresetBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.getAttribute('target') === '_blank') return;
+                closeMobileMenu();
             });
         });
 
-        // Engraving selection
-        engravingOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                engravingOptions.forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-            });
+        // Sticky navigation
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         });
 
-        // Confirm engraving selection
-        confirmEngraving.addEventListener('click', () => {
-            if (!currentEngravingData) return;
-            
-            const engravingType = document.querySelector('.engraving-option.selected').dataset.engraving;
-            const engravingName = engravingType === 'silver' ? 'Silver Engraving' : 'Gold Engraving';
-            const itemName = `${currentEngravingData.name} (${engravingName})`;
-            
-            addToCart(itemName, currentEngravingData.price, currentEngravingData.image, engravingQuantity);
-            closeEngravingModal();
-        });
-
-        // Close engraving modal
-        closeEngraving.addEventListener('click', closeEngravingModal);
-        cancelEngraving.addEventListener('click', closeEngravingModal);
-
-        // CUSTOM LOGO BUILDER - IMPROVED
-        const metalColorOptions = document.querySelectorAll('.metal-color-option');
-        const previewLogo = document.getElementById('previewLogo');
-        const previewPlaceholder = document.getElementById('previewPlaceholder');
-        const previewCardInner = document.getElementById('previewCardInner');
-        const previewCard = document.getElementById('previewCard');
-        const cardCounter = document.getElementById('cardCounter');
-        const selectedCardName = document.getElementById('selectedCardName');
-        const addToCartBtn = document.getElementById('addToCartBtn');
-        const clearCardBtn = document.getElementById('clearCardBtn');
-        const logoScaleSlider = document.getElementById('logoScaleSlider');
-        const logoScaleValue = document.getElementById('logoScaleValue');
-        const colorPickerContainer = document.getElementById('colorPickerContainer');
-        const customColorPicker = document.getElementById('customColorPicker');
-
-        // Metal type mapping
-        const metalTypeMap = {
-            'black': 'Black Metal Card',
-            'blue': 'Blue Metal Card',
-            'green': 'Green Metal Card',
-            'purple': 'Purple Metal Card',
-            'white': 'White Metal Card',
-            'gold': 'Gold Metal Card',
-            'silver': 'Silver Metal Card',
-            'rosegold': 'Rose Gold Metal Card',
-            'custom': 'Custom Metal Card'
-        };
-
-        // Background mapping
-        const metalBackgroundMap = {
-            'black': 'var(--black-bg)',
-            'blue': 'var(--blue-bg)',
-            'green': 'var(--green-bg)',
-            'purple': 'var(--purple-bg)',
-            'white': 'var(--white-bg)',
-            'gold': 'var(--gold-bg)',
-            'silver': 'var(--silver-bg)',
-            'rosegold': 'var(--rosegold-bg)',
-            'custom': 'var(--custom-bg)'
-        };
-
-        // Carousel background mapping
-        const carouselBackgroundMap = {
-            'black': 'var(--carousel-black-bg)',
-            'blue': 'var(--carousel-blue-bg)',
-            'green': 'var(--carousel-green-bg)',
-            'purple': 'var(--carousel-purple-bg)',
-            'white': 'var(--carousel-white-bg)',
-            'gold': 'var(--carousel-gold-bg)',
-            'silver': 'var(--carousel-silver-bg)',
-            'rosegold': 'var(--carousel-rosegold-bg)',
-            'custom': 'var(--carousel-custom-bg)'
-        };
-
-        let selectedMetalColor = 'black';
-
-        // Initialize custom logo builder
-        function initCustomLogoBuilder() {
-            if (logoScaleSlider) {
-                logoScaleSlider.value = logoSize;
-                logoScaleValue.textContent = `${logoSize}%`;
-            }
-            updatePreview();
-        }
-
-        // Update preview
-        function updatePreview() {
-            // Update card background
-            if (selectedMetalColor === 'custom') {
-                // For custom color, use the picked color
-                const customColor = customColorPicker.value;
-                previewCardInner.style.background = `linear-gradient(135deg, ${customColor}80, ${customColor})`;
-            } else {
-                previewCardInner.style.background = metalBackgroundMap[selectedMetalColor];
-            }
-            
-            // Update text
-            selectedCardName.textContent = metalTypeMap[selectedMetalColor];
-            
-            // Update counter
-            cardCounter.textContent = metalTypeMap[selectedMetalColor].split(' ')[0];
-            
-            // Show/hide logo and update size
-            if (uploadedLogoGlobal) {
-                previewLogo.src = uploadedLogoGlobal;
-                previewLogo.classList.add('visible');
-                previewLogo.style.transform = `scale(${logoSize / 100})`;
-                previewPlaceholder.style.display = 'none';
-                clearCardBtn.disabled = false;
-            } else {
-                previewLogo.classList.remove('visible');
-                previewPlaceholder.style.display = 'flex';
-                clearCardBtn.disabled = true;
-            }
-        }
-
-        // Handle logo upload
-        function handleLogoUpload(file) {
-            // Validate file type
-            if (!file.type.match('image.*')) {
-                showNotification('Please select an image file (JPG, PNG, GIF, etc.)');
-                return;
-            }
-
-            // Validate file size (max 10MB)
-            if (file.size > 10 * 1024 * 1024) {
-                showNotification('File is too large. Maximum size is 10MB.');
-                return;
-            }
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                // Update preview
-                uploadedLogoGlobal = e.target.result;
-                previewLogo.src = uploadedLogoGlobal;
-                
-                // Update preview display
-                previewLogo.classList.add('visible');
-                previewLogo.style.transform = `scale(${logoSize / 100})`;
-                previewPlaceholder.style.display = 'none';
-                
-                // Enable clear button
-                clearCardBtn.disabled = false;
-                
-                showNotification('Logo uploaded successfully!');
-            };
-            reader.onerror = function() {
-                showNotification('Error reading file. Please try again.');
-            };
-            reader.readAsDataURL(file);
-        }
-
-        // Handle metal color selection
-        metalColorOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                // Remove selected class from all options
-                metalColorOptions.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
-                option.classList.add('selected');
-                
-                // Update selected color
-                selectedMetalColor = option.dataset.color;
-                
-                // Show/hide color picker
-                if (selectedMetalColor === 'custom') {
-                    colorPickerContainer.classList.add('show');
-                } else {
-                    colorPickerContainer.classList.remove('show');
-                }
-                
-                // Update preview
-                updatePreview();
-                
-                // Visual feedback
-                option.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    option.style.transform = '';
-                }, 200);
-            });
-        });
-
-        // Handle custom color picker change
-        customColorPicker.addEventListener('input', () => {
-            if (selectedMetalColor === 'custom') {
-                updatePreview();
+        // Keyboard events
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (isMenuOpen) closeMobileMenu();
+                if (document.getElementById('cartModal').classList.contains('active')) closeCartModal();
             }
         });
 
-        // Clear card button
-        clearCardBtn.addEventListener('click', () => {
-            // Reset to default black card
-            metalColorOptions.forEach(opt => opt.classList.remove('selected'));
-            document.querySelector('.metal-color-option[data-color="black"]').classList.add('selected');
-            selectedMetalColor = 'black';
-            colorPickerContainer.classList.remove('show');
-            
-            // Clear logo if uploaded
-            if (uploadedLogoGlobal) {
-                previewLogo.src = '';
-                uploadedLogoGlobal = null;
-                previewLogo.classList.remove('visible');
-                previewPlaceholder.style.display = 'flex';
-                clearCardBtn.disabled = true;
-            }
-            // Reset logo scale
-            logoSize = 100;
-            if (logoScaleSlider) logoScaleSlider.value = 100;
-            if (logoScaleValue) logoScaleValue.textContent = '100%';
-            updatePreview();
-            showNotification('Card reset to default');
+        // Handle responsive
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && isMenuOpen) closeMobileMenu();
         });
 
-        // Add to cart from preview
-        addToCartBtn.addEventListener('click', () => {
-            const cardName = metalTypeMap[selectedMetalColor];
-            const imageMap = {
-                'black': 'newblack.webp',
-                'blue': 'newblue.webp',
-                'green': 'newgreen.webp',
-                'purple': 'newpurple.webp',
-                'white': 'newwhite.webp',
-                'gold': 'newgold.webp',
-                'silver': 'newsilver.webp',
-                'rosegold': 'newrosegold.webp',
-                'custom': 'newcustom.webp'
-            };
-            const image = imageMap[selectedMetalColor] || 'newblack.webp';
-            
-            // Open engraving modal
-            openEngravingModal(cardName, 95, image);
-        });
-
-        // Logo scale slider (0-200) - IMPROVED
-        logoScaleSlider.addEventListener('input', () => {
-            logoSize = parseInt(logoScaleSlider.value);
-            logoScaleValue.textContent = `${logoSize}%`;
-            
-            // Update logo size if uploaded
-            if (uploadedLogoGlobal) {
-                previewLogo.style.transform = `scale(${logoSize / 100})`;
-            }
-        });
-
-        // Click on preview card to upload logo
-        previewCard.addEventListener('click', () => {
-            if (!uploadedLogoGlobal) {
-                // Create a file input element
-                const fileInput = document.createElement('input');
-                fileInput.type = 'file';
-                fileInput.accept = 'image/*';
-                fileInput.style.display = 'none';
-                
-                fileInput.addEventListener('change', (e) => {
-                    if (e.target.files.length > 0) {
-                        handleLogoUpload(e.target.files[0]);
-                    }
-                    // Clean up
-                    document.body.removeChild(fileInput);
-                });
-                
-                document.body.appendChild(fileInput);
-                fileInput.click();
-            }
-        });
-
-        // Browse cards button
-        document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
-            e.preventDefault();
-            // Scroll to bestsellers section
-            const bestsellersSection = document.getElementById('bestsellers');
-            if (bestsellersSection) {
-                const navHeight = nav.offsetHeight;
-                const targetPosition = bestsellersSection.offsetTop - navHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-
-        // Initialize custom logo builder
-        initCustomLogoBuilder();
-
-        // Smooth scrolling for desktop nav
-        document.querySelectorAll('.nav-center a').forEach(anchor => {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                // If it's an external link or different page, allow normal navigation
-                if (this.getAttribute('target') === '_blank' || 
-                    !this.getAttribute('href').startsWith('#') ||
-                    this.getAttribute('href').includes('.html')) {
-                    return;
-                }
-                
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
                 const target = document.querySelector(targetId);
                 if (target) {
                     const navHeight = nav.offsetHeight;
@@ -3774,455 +1564,39 @@ section[id] {
                         top: targetPosition,
                         behavior: 'smooth'
                     });
+
+                    if (isMenuOpen) closeMobileMenu();
                 }
             });
         });
 
-        
-// CAROUSEL FUNCTIONALITY WITH SWIPE AND CIRCULAR SCROLLING (WOOD FRAMEWORK PORTED TO METAL)
-const carouselSection = document.querySelector('.carousel-section');
-const carouselTrack = document.getElementById('carouselTrack');
-const carouselPrev = document.getElementById('carouselPrev');
-const carouselNext = document.getElementById('carouselNext');
-const carouselDots = document.getElementById('carouselDots');
-const carouselCards = document.querySelectorAll('.metal-carousel-card');
-const carouselWrapper = document.querySelector('.metal-carousel-wrapper');
-
-let currentSlide = 0;
-let cardsPerView = 3;
-let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
-
-// Enable circular scrolling (matches wood)
-const isCarouselCircular = true;
-
-// Initialize carousel
-function initCarousel() {
-    updateCardsPerView();
-    createDots();
-    updateCarousel();
-    updateCarouselBackground();
-
-    // Add swipe functionality
-    addSwipeListeners();
-}
-
-// Update cards per view based on screen size
-function updateCardsPerView() {
-    if (window.innerWidth <= 768) {
-        cardsPerView = 1;
-    } else if (window.innerWidth <= 1024) {
-        cardsPerView = 2;
-    } else {
-        cardsPerView = 3;
-    }
-    totalSlides = Math.ceil(carouselCards.length / cardsPerView);
-    createDots();
-    updateCarousel();
-    updateCarouselBackground();
-}
-
-// Create dots for carousel
-function createDots() {
-    carouselDots.innerHTML = '';
-    for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('carousel-dot');
-        if (i === currentSlide) {
-            dot.classList.add('active');
-        }
-        dot.addEventListener('click', () => {
-            currentSlide = i;
-            updateCarousel();
-            updateCarouselBackground();
-        });
-        carouselDots.appendChild(dot);
-    }
-}
-
-// Update carousel position with smooth animation
-function updateCarousel() {
-    if (!carouselCards.length) return;
-
-    const cardWidth = carouselCards[0].offsetWidth + 30; // width + gap (matches CSS gap)
-    const translateX = -currentSlide * cardsPerView * cardWidth;
-    carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-    carouselTrack.style.transform = `translateX(${translateX}px)`;
-
-    // Update dots
-    document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
-    });
-
-    // Update navigation buttons (disabled only when non-circular)
-    carouselPrev.classList.toggle('disabled', !isCarouselCircular && currentSlide === 0);
-    carouselNext.classList.toggle('disabled', !isCarouselCircular && currentSlide >= totalSlides - 1);
-}
-
-// Update carousel background based on current slide
-function updateCarouselBackground() {
-    const firstCardIndex = currentSlide * cardsPerView;
-    if (carouselCards[firstCardIndex]) {
-        const metalType = carouselCards[firstCardIndex].dataset.metal;
-        const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
-
-        if (newBackground !== currentCarouselBackground) {
-            carouselSection.style.background = newBackground;
-            currentCarouselBackground = newBackground;
-        }
-    }
-}
-
-// Background change on card hover (and touch)
-function updateCarouselBackgroundOnHover(metalType) {
-    const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
-    if (newBackground !== currentCarouselBackground) {
-        carouselSection.style.background = newBackground;
-    }
-}
-
-function resetCarouselBackgroundToCurrent() {
-    updateCarouselBackground();
-}
-
-carouselCards.forEach(card => {
-    const metalType = card.dataset.metal;
-
-    card.addEventListener('mouseenter', () => {
-        updateCarouselBackgroundOnHover(metalType);
-    });
-
-    card.addEventListener('mouseleave', () => {
-        resetCarouselBackgroundToCurrent();
-    });
-
-    // For touch devices
-    card.addEventListener('touchstart', () => {
-        updateCarouselBackgroundOnHover(metalType);
-    });
-
-    card.addEventListener('touchend', () => {
-        setTimeout(resetCarouselBackgroundToCurrent, 1000);
-    });
-});
-
-// Next slide with circular scrolling
-function nextSlide() {
-    if (isCarouselCircular) {
-        currentSlide = (currentSlide + 1) % totalSlides;
-    } else if (currentSlide < totalSlides - 1) {
-        currentSlide++;
-    }
-    updateCarousel();
-    updateCarouselBackground();
-}
-
-// Previous slide with circular scrolling
-function prevSlide() {
-    if (isCarouselCircular) {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    } else if (currentSlide > 0) {
-        currentSlide--;
-    }
-    updateCarousel();
-    updateCarouselBackground();
-}
-
-// SWIPE FUNCTIONALITY (matches wood)
-function addSwipeListeners() {
-    let startX = 0;
-    let currentX = 0;
-    let isSwiping = false;
-
-    // Mouse events
-    carouselWrapper.addEventListener('mousedown', (e) => {
-        startSwipe(e.clientX);
-    });
-
-    carouselWrapper.addEventListener('mousemove', (e) => {
-        if (isSwiping) {
-            handleSwipeMove(e.clientX);
-        }
-    });
-
-    carouselWrapper.addEventListener('mouseup', () => {
-        endSwipe();
-    });
-
-    carouselWrapper.addEventListener('mouseleave', () => {
-        if (isSwiping) {
-            endSwipe();
-        }
-    });
-
-    // Touch events
-    carouselWrapper.addEventListener('touchstart', (e) => {
-        startSwipe(e.touches[0].clientX);
-    }, { passive: true });
-
-    carouselWrapper.addEventListener('touchmove', (e) => {
-        if (isSwiping) {
-            handleSwipeMove(e.touches[0].clientX);
-        }
-    }, { passive: true });
-
-    carouselWrapper.addEventListener('touchend', () => {
-        endSwipe();
-    });
-
-    function startSwipe(x) {
-        startX = x;
-        currentX = x;
-        isSwiping = true;
-        carouselTrack.style.transition = 'none';
-    }
-
-    function handleSwipeMove(x) {
-        if (!isSwiping || !carouselCards.length) return;
-
-        currentX = x;
-        const diff = startX - currentX;
-
-        // Move track while dragging
-        const cardWidth = carouselCards[0].offsetWidth + 30;
-        const baseTranslate = -currentSlide * cardsPerView * cardWidth;
-        const dragTranslate = -diff;
-        carouselTrack.style.transform = `translateX(${baseTranslate + dragTranslate}px)`;
-    }
-
-    function endSwipe() {
-        if (!isSwiping || !carouselCards.length) return;
-
-        const diff = startX - currentX;
-        const cardWidth = carouselCards[0].offsetWidth + 30;
-        const threshold = cardWidth * 0.2; // 20% of card width threshold
-
-        // Determine if swipe is significant enough to change slide
-        if (Math.abs(diff) > threshold) {
-            if (diff > 0) {
-                // Swipe left - next slide
-                nextSlide();
-            } else {
-                // Swipe right - previous slide
-                prevSlide();
-            }
-        } else {
-            // Return to current slide
-            updateCarousel();
-        }
-
-        isSwiping = false;
-    }
-}
-
-// Event listeners for carousel navigation
-carouselPrev.addEventListener('click', prevSlide);
-carouselNext.addEventListener('click', nextSlide);
-
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal Page loaded with IMPROVED features:');
-            console.log('1. FIXED CAROUSEL: Smooth circular scrolling with proper swipe ✓');
-            console.log('2. ADDED: Cart functionality with product images ✓');
-            console.log('3. IMPROVED: Logo scale slider with better design ✓');
-            console.log('4. ADDED: Quantity selection in engraving modal ✓');
-            console.log('5. FIXED: Swipe functionality with proper circular navigation ✓');
-            
-            initCarousel();
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            checkLogo();
             updateCartCount();
             renderCartItems();
-            initCustomLogoBuilder();
+            setActiveNav();
 
-            // Set active nav based on current page
-            const path = window.location.pathname;
-            const cleanPath = path.replace(/\.html$/, '');
-            const pageName = cleanPath.split('/').pop() || '/';
-            
-            document.querySelectorAll('.nav-center a, .mobile-menu a').forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === pageName || (pageName === '/' && href === '/') || 
-                    (pageName === 'metal' && href === '/metal')) {
-                    link.classList.add('active');
-                }
+            // FAQ accordion
+            document.querySelectorAll('.faq-question').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const item = btn.parentElement;
+                    const wasActive = item.classList.contains('active');
+
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+                    if (!wasActive) {
+                        item.classList.add('active');
+                    }
+                });
             });
-            
-            // Add highlight style for selected metal text
-            const style = document.createElement('style');
-            style.textContent = `
-                .highlight-text {
-                    color: var(--rose-gold-light);
-                    font-weight: 700;
-                    text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
-                }
-                
-                /* Ensure WebP images display properly */
-                .webp-container {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 100%;
-                    height: 100%;
-                }
-                
-                .webp-container img.webp-image {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border: none;
-                    outline: none;
-                    box-shadow: none;
-                    background: transparent;
-                }
-                
-                /* Engraving modal styles */
-                .engraving-options {
-                    display: grid;
-                    grid-template-columns: 1fr;
-                    gap: 20px;
-                    margin-bottom: 20px;
-                }
-                
-                @media (min-width: 768px) {
-                    .engraving-options {
-                        grid-template-columns: 1fr 1fr;
-                    }
-                }
-                
-                .engraving-option {
-                    background: rgba(224, 191, 184, 0.1);
-                    border-radius: 18px;
-                    padding: 25px;
-                    cursor: pointer;
-                    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-                    text-align: center;
-                    border: 2px solid transparent;
-                    position: relative;
-                    overflow: hidden;
-                }
-                
-                .engraving-option:hover {
-                    background: rgba(224, 191, 184, 0.15);
-                    transform: translateY(-5px);
-                    box-shadow: 0 15px 30px rgba(183, 110, 121, 0.2);
-                }
-                
-                .engraving-option.selected {
-                    background: rgba(224, 191, 184, 0.2);
-                    border-color: var(--rose-gold-light);
-                    box-shadow: 0 20px 40px rgba(183, 110, 121, 0.3);
-                }
-                
-                .engraving-image {
-                    width: 100%;
-                    height: 120px;
-                    border-radius: 12px;
-                    overflow: hidden;
-                    margin-bottom: 20px;
-                    border: 1px solid rgba(224, 191, 184, 0.3);
-                    background: rgba(0, 0, 0, 0.2);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-                
-                .engraving-label {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    font-size: 1.1rem;
-                    font-weight: 800;
-                    color: var(--white);
-                    margin-bottom: 8px;
-                }
-                
-                .engraving-price {
-                    font-size: 0.95rem;
-                    color: var(--rose-gold-light);
-                    font-weight: 600;
-                    margin-bottom: 15px;
-                }
-                
-                .engraving-description {
-                    font-size: 0.9rem;
-                    color: rgba(255, 255, 255, 0.8);
-                    line-height: 1.5;
-                    text-align: left;
-                }
-                
-                .engraving-actions {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-                    padding-top: 20px;
-                }
-                
-                @media (min-width: 480px) {
-                    .engraving-actions {
-                        flex-direction: row;
-                        justify-content: center;
-                    }
-                }
-                
-                .btn-cancel,
-                .btn-confirm {
-                    padding: 18px 28px;
-                    border-radius: 14px;
-                    font-weight: 800;
-                    font-size: 16px;
-                    cursor: pointer;
-                    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-                    flex: 1;
-                    min-width: 0;
-                    border: none;
-                    letter-spacing: 0.5px;
-                    text-align: center;
-                    min-height: 56px;
-                }
-                
-                @media (min-width: 480px) {
-                    .btn-cancel,
-                    .btn-confirm {
-                        min-width: 140px;
-                        flex: 0 1 auto;
-                    }
-                }
-                
-                .btn-cancel {
-                    background: rgba(224, 191, 184, 0.15);
-                    color: var(--white);
-                    border: 1px solid rgba(224, 191, 184, 0.3);
-                }
-                
-                .btn-cancel:hover {
-                    background: rgba(224, 191, 184, 0.25);
-                    transform: translateY(-3px);
-                    box-shadow: 0 10px 25px rgba(183, 110, 121, 0.2);
-                }
-                
-                .btn-confirm {
-                    background: var(--rose-gold-gradient);
-                    color: var(--white);
-                    box-shadow: 0 8px 25px rgba(183, 110, 121, 0.4);
-                }
-                
-                .btn-confirm:hover:not(:disabled) {
-                    transform: translateY(-3px);
-                    box-shadow: 0 15px 35px rgba(183, 110, 121, 0.5);
-                }
-                
-                .btn-confirm:disabled {
-                    opacity: 0.5;
-                    cursor: not-allowed;
-                    transform: none !important;
-                    box-shadow: none !important;
-                }
-            `;
-            document.head.appendChild(style);
-        });
 
-        // Update carousel on window resize
-        window.addEventListener('resize', () => {
-            updateCardsPerView();
+            // Handle .html to clean URL redirect (for GitHub Pages)
+            if (window.location.pathname.endsWith('.html') && window.location.pathname !== '/index.html') {
+                const cleanUrl = window.location.pathname.replace('.html', '');
+                window.history.replaceState(null, '', cleanUrl);
+            }
         });
-</script>
+    </script>
 </body>
 </html>
