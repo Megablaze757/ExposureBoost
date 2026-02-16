@@ -2608,7 +2608,7 @@ section[id] {
 
     <!-- STICKY NAV - METAL THEME -->
     <nav class="nav" id="mainNav">
-        <a href="index.html" class="logo">
+        <a href="/" class="logo">
             <img src="logo.png" alt=" Logo" class="logo-img">
         </a>
 
@@ -2619,12 +2619,12 @@ section[id] {
         </button>
 
         <div class="nav-center">
-            <a href="index.html">Home</a>
-            <a href="metal.html" class="active">Metal Cards</a>
-            <a href="wood.html">Wood Cards</a>
-            <a href="plastic.html">Plastic Cards</a>
-            <a href="custom.html">Custom Cards</a>
-            <a href="stands.html">Stands</a>
+            <a href="/">Home</a>
+            <a href="/metal" class="active">Metal Cards</a>
+            <a href="/wood">Wood Cards</a>
+            <a href="/plastic">Plastic Cards</a>
+            <a href="/custom">Custom Cards</a>
+            <a href="/stands">Stands</a>
         </div>
 
         <div class="nav-right">
@@ -2641,25 +2641,28 @@ section[id] {
         </div>
     </nav>
 
-    <!-- MOBILE MENU - METAL THEME -->
+    <!-- MOBILE MENU - METAL THEME (GALLERY PAGE REMOVED) -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="mobile-menu-item">
+        <a href="/" class="mobile-menu-item">
             <span>🏠</span> Home
         </a>
-        <a href="metal.html" class="mobile-menu-item active">
+        <a href="/metal" class="mobile-menu-item active">
             <span>⭐</span> Metal Cards
         </a>
-        <a href="wood.html" class="mobile-menu-item">
+        <a href="/wood" class="mobile-menu-item">
             <span>🌳</span> Wood Cards
         </a>
-        <a href="plastic.html" class="mobile-menu-item">
+        <a href="/plastic" class="mobile-menu-item">
             <span>🔵</span> Plastic Cards
         </a>
-        <a href="custom.html" class="mobile-menu-item">
+        <a href="/custom" class="mobile-menu-item">
             <span>✨</span> Custom Cards
         </a>
-        <a href="stands.html" class="mobile-menu-item">
+        <a href="/stands" class="mobile-menu-item">
             <span>📱</span> Stands
+        </a>
+        <a href="/reviews" class="mobile-menu-item">
+            <span>⭐</span> Reviews
         </a>
 
         <div class="menu-divider"></div>
@@ -3990,6 +3993,7 @@ carouselNext.addEventListener('click', nextSlide);
             console.log('4. IMPROVED: Logo scale slider with better design ✓');
             console.log('5. ADDED: Auto-scroll functionality (5 seconds) ✓');
             console.log('6. FIXED: Swipe functionality with proper circular navigation ✓');
+            console.log('7. REMOVED: Gallery page link from mobile menu ✓');
             
             initCarousel();
             updateCart();
