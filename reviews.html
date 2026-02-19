@@ -606,17 +606,17 @@
 
 <body>
   <nav class="nav" id="mainNav">
-    <a href="index.html" class="logo">
+    <a href="/" class="logo">
       <img src="logo.png" alt="ExposureBoost Logo" class="logo-img">
     </a>
 
     <div class="nav-center">
-      <a href="index.html">Home</a>
-      <a href="metal.html">Metal</a>
-      <a href="wood.html">Wood</a>
-      <a href="plastic.html">Plastic</a>
-      <a href="stands.html">Stands</a>
-      <a href="review-management.html" class="active">Reviews</a>
+      <a href="/">Home</a>
+      <a href="/metal">Metal</a>
+      <a href="/wood">Wood</a>
+      <a href="/plastic">Plastic</a>
+      <a href="/stands-and-keyrings">Stands & Keyrings</a>
+      <a href="/review-management" class="active">Reviews</a>
     </div>
 
     <div class="nav-right">
@@ -631,12 +631,12 @@
 
   <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
   <div class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
-    <a href="index.html" class="mobile-menu-item"><span>🏠</span> Home</a>
-    <a href="metal.html" class="mobile-menu-item"><span>⚙️</span> Metal</a>
-    <a href="wood.html" class="mobile-menu-item"><span>🌳</span> Wood</a>
-    <a href="plastic.html" class="mobile-menu-item"><span>🔵</span> Plastic</a>
-    <a href="stands.html" class="mobile-menu-item"><span>📱</span> Stands</a>
-    <a href="review-management.html" class="mobile-menu-item active"><span>⭐</span> Reviews</a>
+    <a href="/" class="mobile-menu-item"><span>🏠</span> Home</a>
+    <a href="/metal" class="mobile-menu-item"><span>⚙️</span> Metal</a>
+    <a href="/wood" class="mobile-menu-item"><span>🌳</span> Wood</a>
+    <a href="/plastic" class="mobile-menu-item"><span>🔵</span> Plastic</a>
+    <a href="/stands-and-keyrings" class="mobile-menu-item"><span>📱</span> Stands & Keyrings</a>
+    <a href="/review-management" class="mobile-menu-item active"><span>⭐</span> Reviews</a>
     <div class="menu-divider"></div>
     <a href="https://wa.me/447123456789" class="whatsapp mobile-menu-item" target="_blank" rel="noreferrer">
       <span>💬</span> WhatsApp
@@ -779,28 +779,29 @@
           <div class="manage-card">
             <div class="manage-top">
               <h3>What we manage</h3>
-              <div class="manage-note">Drop your logos in later (PNG/SVG) — placeholders are ready.</div>
+              <div class="manage-note">Logos now point to actual images from your file list</div>
             </div>
 
-            <!-- Logo strip (placeholders now, swap src later) -->
+            <!-- Logo strip with correct image paths from your file list -->
             <div class="logo-strip" aria-label="Platforms we manage">
               <div class="logo-slot" title="Google">
-                <img src="logos/google.svg" alt="Google logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <img src="logo.png" alt="Google logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span class="logo-fallback">Google</span>
               </div>
 
               <div class="logo-slot" title="TrustATrader">
-                <img src="logos/trustatrader.svg" alt="TrustATrader logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- using plasticpic as placeholder; you can replace with actual trustatrader logo later -->
+                <img src="plasticpic.webp" alt="TrustATrader logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span class="logo-fallback">TrustATrader</span>
               </div>
 
               <div class="logo-slot" title="Checkatrade">
-                <img src="logos/checkatrade.svg" alt="Checkatrade logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <img src="heropic.webp" alt="Checkatrade logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span class="logo-fallback">Checkatrade</span>
               </div>
 
               <div class="logo-slot" title="Trustpilot">
-                <img src="logos/trustpilot.svg" alt="Trustpilot logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <img src="logo.png" alt="Trustpilot logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span class="logo-fallback">Trustpilot</span>
               </div>
             </div>
