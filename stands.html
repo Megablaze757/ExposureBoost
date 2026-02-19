@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -1548,6 +1547,9 @@
     </div>
 
     <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- NAVIGATION -->
     <nav class="nav" id="mainNav">
         <a href="/" class="logo">
             <img src="logo.png" alt="Logo" class="logo-img">
@@ -1616,6 +1618,7 @@
         <div class="menu-footer">
             Premium NFC Cards & Digital Profiles
         </div>
+    </div>
 
     <div class="main-container">
         <!-- HERO SECTION -->
@@ -2108,32 +2111,39 @@
 
         // ========== EVENT LISTENERS ==========
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu
-            hamburgerBtn.addEventListener('click', toggleMobileMenu);
-            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            // Check if elements exist before adding listeners
+            if (hamburgerBtn) {
+                hamburgerBtn.addEventListener('click', toggleMobileMenu);
+            }
             
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    if (link.getAttribute('target') === '_blank') return;
-                    
-                    if (link.getAttribute('href').startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = link.getAttribute('href');
-                        setTimeout(() => {
-                            const target = document.querySelector(targetId);
-                            if (target) {
-                                const navHeight = nav.offsetHeight;
-                                const targetPosition = target.offsetTop - navHeight;
-                                window.scrollTo({
-                                    top: targetPosition,
-                                    behavior: 'smooth'
-                                });
-                            }
-                        }, 300);
-                    }
-                    closeMobileMenu();
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileMenu) {
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        if (link.getAttribute('target') === '_blank') return;
+                        
+                        if (link.getAttribute('href').startsWith('#')) {
+                            e.preventDefault();
+                            const targetId = link.getAttribute('href');
+                            setTimeout(() => {
+                                const target = document.querySelector(targetId);
+                                if (target) {
+                                    const navHeight = nav.offsetHeight;
+                                    const targetPosition = target.offsetTop - navHeight;
+                                    window.scrollTo({
+                                        top: targetPosition,
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            }, 300);
+                        }
+                        closeMobileMenu();
+                    });
                 });
-            });
+            }
 
             // Sticky nav
             window.addEventListener('scroll', () => {
@@ -2145,16 +2155,31 @@
             });
 
             // Cart
-            document.getElementById('cartIcon').addEventListener('click', openCartModal);
-            document.getElementById('closeCart').addEventListener('click', closeCartModal);
-            document.getElementById('checkoutBtn').addEventListener('click', checkout);
+            const cartIcon = document.getElementById('cartIcon');
+            const closeCart = document.getElementById('closeCart');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            
+            if (cartIcon) {
+                cartIcon.addEventListener('click', openCartModal);
+            }
+            
+            if (closeCart) {
+                closeCart.addEventListener('click', closeCartModal);
+            }
+            
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', checkout);
+            }
 
             // Close cart when clicking outside
-            document.getElementById('cartModal').addEventListener('click', (e) => {
-                if (e.target.id === 'cartModal') {
-                    closeCartModal();
-                }
-            });
+            const cartModal = document.getElementById('cartModal');
+            if (cartModal) {
+                cartModal.addEventListener('click', (e) => {
+                    if (e.target.id === 'cartModal') {
+                        closeCartModal();
+                    }
+                });
+            }
 
             // Add to cart buttons
             document.querySelectorAll('.add-to-cart').forEach(button => {
@@ -2167,13 +2192,20 @@
             });
 
             // Hero CTA buttons
-            document.getElementById('browseStandsBtn').addEventListener('click', () => {
-                scrollToSection('stands');
-            });
-
-            document.getElementById('browseKeyringsBtn').addEventListener('click', () => {
-                scrollToSection('keyrings');
-            });
+            const browseStandsBtn = document.getElementById('browseStandsBtn');
+            const browseKeyringsBtn = document.getElementById('browseKeyringsBtn');
+            
+            if (browseStandsBtn) {
+                browseStandsBtn.addEventListener('click', () => {
+                    scrollToSection('stands');
+                });
+            }
+            
+            if (browseKeyringsBtn) {
+                browseKeyringsBtn.addEventListener('click', () => {
+                    scrollToSection('keyrings');
+                });
+            }
 
             // FAQ accordion
             document.querySelectorAll('.faq-question').forEach(btn => {
@@ -2193,7 +2225,7 @@
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     if (isMenuOpen) closeMobileMenu();
-                    if (document.getElementById('cartModal').classList.contains('active')) closeCartModal();
+                    if (cartModal && cartModal.classList.contains('active')) closeCartModal();
                 }
             });
 
@@ -2203,5 +2235,3 @@
     </script>
 </body>
 </html>
-
-
