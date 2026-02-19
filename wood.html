@@ -3330,23 +3330,107 @@ section[id] {
             }
         });
 
-        // Cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartIcon = document.getElementById('cartIcon');
-        const cartCount = document.getElementById('cartCount');
-        const cartModal = document.getElementById('cartModal');
-        const closeCart = document.getElementById('closeCart');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const notification = document.getElementById('notification');
+     
+// Cart functionality
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+const cartIcon = document.getElementById('cartIcon');
+const cartCount = document.getElementById('cartCount');
+const cartModal = document.getElementById('cartModal');
+const closeCart = document.getElementById('closeCart');
+const cartItems = document.getElementById('cartItems');
+const cartTotal = document.getElementById('cartTotal');
+const checkoutBtn = document.getElementById('checkoutBtn');
+const notification = document.getElementById('notification');
 
-        // Update cart display
-        function updateCart() {
-            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCartItems();
-        }
+// COMPREHENSIVE IMAGE MAPPING FOR ALL CARD TYPES
+const cardImageMap = {
+    // WOOD CARDS
+    'Walnut Wood Card': 'newwalnut.webp',
+    'Oak Wood Card': 'newoak.webp',
+    'Sapele Wood Card': 'newsapele.webp',
+    'Black Bamboo Card': 'newblackbamboo.webp',
+    'Bamboo Wood Card': 'newbamboo.webp',
+    'Maple Wood Card': 'newmaple.webp',
+    'Cherry Wood Card': 'newcherry.webp',
+    
+    // METAL CARDS (based on your file list)
+    'Gold Metal Card': 'goldmetal.webp',
+    'Silver Metal Card': 'silver.webp',
+    'Rose Gold Metal Card': 'rosegold.webp',
+    
+    // PLASTIC CARDS - All colors
+    'Black Plastic Card': 'newplasticblack.webp',
+    'Blue Plastic Card': 'newplasticblue.webp',
+    'Gold Plastic Card': 'newplasticgold.webp',
+    'Green Plastic Card': 'newplasticgreen.webp',
+    'Orange Plastic Card': 'newplasticorange.webp',
+    'Pink Plastic Card': 'newplasticpink.webp',
+    'Purple Plastic Card': 'newplasticpurple.webp',
+    'Red Plastic Card': 'newplasticred.webp',
+    'Silver Plastic Card': 'newplasticsilver.webp',
+    'White Plastic Card': 'newplasticwhite.webp',
+    'Yellow Plastic Card': 'newplasticyellow.webp',
+    
+    // CUSTOM CARDS
+    'Custom Card': 'newcustom.webp',
+    
+    // STANDS
+    'Card Stand': 'heropic.webp',
+    'Display Stand': 'heropic.webp',
+    'Wooden Stand': 'heropic.webp',
+    'Acrylic Stand': 'heropic.webp'
+};
+
+// Fallback function to find image by partial name match
+function findImageByPartialName(name) {
+    name = name.toLowerCase();
+    
+    // WOOD CARDS
+    if (name.includes('walnut')) return 'newwalnut.webp';
+    if (name.includes('oak')) return 'newoak.webp';
+    if (name.includes('sapele')) return 'newsapele.webp';
+    if (name.includes('black bamboo')) return 'newblackbamboo.webp';
+    if (name.includes('bamboo') && !name.includes('black')) return 'newbamboo.webp';
+    if (name.includes('maple')) return 'newmaple.webp';
+    if (name.includes('cherry')) return 'newcherry.webp';
+    
+    // METAL CARDS
+    if (name.includes('rose gold')) return 'rosegold.webp';
+    if (name.includes('gold')) return 'goldmetal.webp';
+    if (name.includes('silver')) return 'silver.webp';
+    
+    // PLASTIC CARDS
+    if (name.includes('plastic')) {
+        if (name.includes('black')) return 'newplasticblack.webp';
+        if (name.includes('blue')) return 'newplasticblue.webp';
+        if (name.includes('gold')) return 'newplasticgold.webp';
+        if (name.includes('green')) return 'newplasticgreen.webp';
+        if (name.includes('orange')) return 'newplasticorange.webp';
+        if (name.includes('pink')) return 'newplasticpink.webp';
+        if (name.includes('purple')) return 'newplasticpurple.webp';
+        if (name.includes('red')) return 'newplasticred.webp';
+        if (name.includes('silver')) return 'newplasticsilver.webp';
+        if (name.includes('white')) return 'newplasticwhite.webp';
+        if (name.includes('yellow')) return 'newplasticyellow.webp';
+        return 'plasticpic.webp'; // Default plastic
+    }
+    
+    // CUSTOM CARDS
+    if (name.includes('custom')) return 'newcustom.webp';
+    
+    // STANDS
+    if (name.includes('stand')) return 'heropic.webp';
+    
+    // Default fallback
+    return 'logo.png';
+}
+
+// Update cart display
+function updateCart() {
+    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCartItems();
+}
 
 // Render cart items in modal with correct images for ALL card types
 function renderCartItems() {
@@ -3362,77 +3446,29 @@ function renderCartItems() {
     cart.forEach((item, index) => {
         total += item.price * item.quantity;
         
-        // Determine which image to use based on item name for ALL card types
-        let imgSrc = 'logo.png'; // Default fallback
+        // Get image - first try stored img, then exact match, then partial match
+        let imgSrc = item.img;
         
-        // WOOD CARDS
-        if (item.name.includes('Walnut')) {
-            imgSrc = 'newwalnut.webp';
-        } else if (item.name.includes('Oak')) {
-            imgSrc = 'newoak.webp';
-        } else if (item.name.includes('Sapele')) {
-            imgSrc = 'newsapele.webp';
-        } else if (item.name.includes('Black Bamboo')) {
-            imgSrc = 'newblackbamboo.webp';
-        } else if (item.name.includes('Bamboo') && !item.name.includes('Black')) {
-            imgSrc = 'newbamboo.webp';
-        } else if (item.name.includes('Maple')) {
-            imgSrc = 'newmaple.webp';
-        } else if (item.name.includes('Cherry')) {
-            imgSrc = 'newcherry.webp';
-        } 
-        // METAL CARDS - based on your metal.html file
-        else if (item.name.includes('Gold') || item.name.includes('gold')) {
-            imgSrc = 'goldmetal.webp';
-        } else if (item.name.includes('Silver') || item.name.includes('silver')) {
-            imgSrc = 'silver.webp';
-        } else if (item.name.includes('Rose Gold') || item.name.includes('rose gold')) {
-            imgSrc = 'rosegold.webp';
-        }
-        // PLASTIC CARDS
-        else if (item.name.includes('Plastic') || item.name.includes('plastic')) {
-            if (item.name.includes('Black')) {
-                imgSrc = 'newplasticblack.webp';
-            } else if (item.name.includes('Blue')) {
-                imgSrc = 'newplasticblue.webp';
-            } else if (item.name.includes('Gold')) {
-                imgSrc = 'newplasticgold.webp';
-            } else if (item.name.includes('Green')) {
-                imgSrc = 'newplasticgreen.webp';
-            } else if (item.name.includes('Orange')) {
-                imgSrc = 'newplasticorange.webp';
-            } else if (item.name.includes('Pink')) {
-                imgSrc = 'newplasticpink.webp';
-            } else if (item.name.includes('Purple')) {
-                imgSrc = 'newplasticpurple.webp';
-            } else if (item.name.includes('Red')) {
-                imgSrc = 'newplasticred.webp';
-            } else if (item.name.includes('Silver')) {
-                imgSrc = 'newplasticsilver.webp';
-            } else if (item.name.includes('White')) {
-                imgSrc = 'newplasticwhite.webp';
-            } else if (item.name.includes('Yellow')) {
-                imgSrc = 'newplasticyellow.webp';
-            } else {
-                imgSrc = 'plasticpic.webp'; // Default plastic card image
+        if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null') {
+            // Try exact match first
+            imgSrc = cardImageMap[item.name];
+            
+            // If no exact match, try partial match
+            if (!imgSrc) {
+                imgSrc = findImageByPartialName(item.name);
             }
         }
-        // CUSTOM CARDS
-        else if (item.name.includes('Custom')) {
-            imgSrc = 'newcustom.webp';
-        }
-        // STANDS
-        else if (item.name.includes('Stand') || item.name.includes('stand')) {
-            imgSrc = 'heropic.webp'; // Using heropic.webp for stands as per your files
-        }
-        else {
-            // Use the custom image from item if available, otherwise fallback
-            imgSrc = item.img || 'logo.png';
+        
+        // Final fallback
+        if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null') {
+            imgSrc = 'logo.png';
         }
         
         itemsHTML += `
             <div class="cart-item">
-                <img src="${imgSrc}" alt="${item.name}" onerror="this.src='logo.png'">
+                <img src="${imgSrc}" alt="${item.name}" 
+                     onerror="this.onerror=null; this.src='logo.png';"
+                     style="background: linear-gradient(135deg, #B76E3D, #8B4513);">
                 <div class="cart-item-details">
                     <div class="cart-item-name">${item.name}</div>
                     <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
@@ -3444,79 +3480,34 @@ function renderCartItems() {
 
     cartItems.innerHTML = itemsHTML;
     cartTotal.textContent = `£${total}`;
-}// Add to cart function - updated to better detect images
-function addToCart(name, price, quantity = 1, img = null) {
-    const existingItem = cart.find(item => item.name === name);
+}
 
-    // Determine image if not provided
-    if (!img) {
-        // WOOD CARDS
-        if (name.includes('Walnut')) {
-            img = 'newwalnut.webp';
-        } else if (name.includes('Oak')) {
-            img = 'newoak.webp';
-        } else if (name.includes('Sapele')) {
-            img = 'newsapele.webp';
-        } else if (name.includes('Black Bamboo')) {
-            img = 'newblackbamboo.webp';
-        } else if (name.includes('Bamboo') && !name.includes('Black')) {
-            img = 'newbamboo.webp';
-        } else if (name.includes('Maple')) {
-            img = 'newmaple.webp';
-        } else if (name.includes('Cherry')) {
-            img = 'newcherry.webp';
-        } 
-        // METAL CARDS
-        else if (name.includes('Gold') || (name.includes('gold') && !name.includes('Rose'))) {
-            img = 'goldmetal.webp';
-        } else if (name.includes('Silver')) {
-            img = 'silver.webp';
-        } else if (name.includes('Rose Gold') || name.includes('rose gold')) {
-            img = 'rosegold.webp';
-        }
-        // PLASTIC CARDS
-        else if (name.includes('Plastic') || name.includes('plastic')) {
-            if (name.includes('Black')) {
-                img = 'newplasticblack.webp';
-            } else if (name.includes('Blue')) {
-                img = 'newplasticblue.webp';
-            } else if (name.includes('Gold')) {
-                img = 'newplasticgold.webp';
-            } else if (name.includes('Green')) {
-                img = 'newplasticgreen.webp';
-            } else if (name.includes('Orange')) {
-                img = 'newplasticorange.webp';
-            } else if (name.includes('Pink')) {
-                img = 'newplasticpink.webp';
-            } else if (name.includes('Purple')) {
-                img = 'newplasticpurple.webp';
-            } else if (name.includes('Red')) {
-                img = 'newplasticred.webp';
-            } else if (name.includes('Silver')) {
-                img = 'newplasticsilver.webp';
-            } else if (name.includes('White')) {
-                img = 'newplasticwhite.webp';
-            } else if (name.includes('Yellow')) {
-                img = 'newplasticyellow.webp';
-            } else {
-                img = 'plasticpic.webp';
-            }
-        }
-        // CUSTOM CARDS
-        else if (name.includes('Custom')) {
-            img = 'newcustom.webp';
-        }
-        // STANDS
-        else if (name.includes('Stand') || name.includes('stand')) {
-            img = 'heropic.webp';
-        }
-        else {
-            img = 'logo.png';
+// Add to cart function - enhanced for ALL card types
+function addToCart(name, price, quantity = 1, img = null) {
+    // Determine image if not provided or invalid
+    if (!img || img === 'undefined' || img === 'null') {
+        // Try exact match from map
+        img = cardImageMap[name];
+        
+        // If no exact match, try partial match
+        if (!img) {
+            img = findImageByPartialName(name);
         }
     }
+    
+    // Final fallback
+    if (!img || img === 'undefined' || img === 'null') {
+        img = 'logo.png';
+    }
+
+    const existingItem = cart.find(item => item.name === name);
 
     if (existingItem) {
         existingItem.quantity += quantity;
+        // Update image if it was missing
+        if (!existingItem.img || existingItem.img === 'undefined' || existingItem.img === 'null') {
+            existingItem.img = img;
+        }
     } else {
         cart.push({
             name: name,
@@ -3530,112 +3521,112 @@ function addToCart(name, price, quantity = 1, img = null) {
     showNotification(`${name} (${quantity}×) added to cart!`);
 }
 
-        // Remove from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
+// Remove from cart
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
 
-        // Show notification
-        function showNotification(message) {
-            notification.textContent = message;
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
+// Show notification
+function showNotification(message) {
+    notification.textContent = message;
+    notification.classList.add('show');
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 3000);
+}
 
-        // Open cart modal
-        function openCartModal() {
-            cartModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            closeMobileMenu();
-        }
+// Open cart modal
+function openCartModal() {
+    cartModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    closeMobileMenu();
+}
 
-        // Close cart modal
-        function closeCartModal() {
-            cartModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+// Close cart modal
+function closeCartModal() {
+    cartModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-        // Checkout functionality - WhatsApp integration
-        function checkout() {
-            if (cart.length === 0) {
-                showNotification('Your cart is empty!');
-                return;
-            }
+// Checkout functionality - WhatsApp integration
+function checkout() {
+    if (cart.length === 0) {
+        showNotification('Your cart is empty!');
+        return;
+    }
 
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            // Format WhatsApp message
-            let message = "Hello! I'd like to place an order for the following items:\n\n";
-            
-            cart.forEach(item => {
-                message += `• ${item.name} × ${item.quantity} - £${item.price * item.quantity}\n`;
-            });
-            
-            message += `\nTotal: £${total}\n\n`;
-            message += "Please let me know the next steps to complete my order.";
-            
-            // Encode message for URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Create WhatsApp URL with your number
-            const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
-            
-            // Open WhatsApp
-            window.open(whatsappUrl, '_blank');
-            
-            // Clear cart after sending to WhatsApp
-            cart = [];
-            updateCart();
-            closeCartModal();
-        }
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    // Format WhatsApp message
+    let message = "Hello! I'd like to place an order for the following items:\n\n";
+    
+    cart.forEach(item => {
+        message += `• ${item.name} × ${item.quantity} - £${item.price * item.quantity}\n`;
+    });
+    
+    message += `\nTotal: £${total}\n\n`;
+    message += "Please let me know the next steps to complete my order.";
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL with your number
+    const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    // Clear cart after sending to WhatsApp
+    cart = [];
+    updateCart();
+    closeCartModal();
+}
 
-        // Event listeners for cart
-        cartIcon.addEventListener('click', openCartModal);
-        closeCart.addEventListener('click', closeCartModal);
-        checkoutBtn.addEventListener('click', checkout);
+// Event listeners for cart
+cartIcon.addEventListener('click', openCartModal);
+closeCart.addEventListener('click', closeCartModal);
+checkoutBtn.addEventListener('click', checkout);
 
-        // Close modal when clicking outside
-        cartModal.addEventListener('click', (e) => {
-            if (e.target === cartModal) {
-                closeCartModal();
-            }
+// Close modal when clicking outside
+cartModal.addEventListener('click', (e) => {
+    if (e.target === cartModal) {
+        closeCartModal();
+    }
+});
+
+// Add to cart buttons for bestseller cards
+document.addEventListener('DOMContentLoaded', () => {
+    // Bestseller cards
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const name = e.target.dataset.name;
+            const price = parseInt(e.target.dataset.price);
+            const img = e.target.dataset.img;
+            addToCart(name, price, 1, img);
         });
+    });
 
-        // Add to cart buttons for bestseller cards
-        document.addEventListener('DOMContentLoaded', () => {
-            // Bestseller cards
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseInt(e.target.dataset.price);
-                    const img = e.target.dataset.img;
-                    addToCart(name, price, 1, img);
-                });
-            });
-
-            // Carousel cards
-            document.querySelectorAll('.add-to-cart-carousel').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseInt(e.target.dataset.price);
-                    const img = e.target.dataset.img;
-                    // Open engraving modal instead of directly adding to cart
-                    openEngravingModal(name, price, img);
-                });
-            });
-
-            // View example buttons
-            document.querySelectorAll('.view-example').forEach(button => {
-                button.addEventListener('click', () => {
-                    alert('Example functionality - in a real site this would show an example of the product.');
-                });
-            });
-
-            updateCart();
+    // Carousel cards
+    document.querySelectorAll('.add-to-cart-carousel').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const name = e.target.dataset.name;
+            const price = parseInt(e.target.dataset.price);
+            const img = e.target.dataset.img;
+            // Open engraving modal instead of directly adding to cart
+            openEngravingModal(name, price, img);
         });
+    });
+
+    // View example buttons
+    document.querySelectorAll('.view-example').forEach(button => {
+        button.addEventListener('click', () => {
+            alert('Example functionality - in a real site this would show an example of the product.');
+        });
+    });
+
+    updateCart();
+});
 
         // ENGRAVING MODAL FUNCTIONALITY
         const closeEngraving = document.getElementById('closeEngraving');
