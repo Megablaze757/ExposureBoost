@@ -2186,7 +2186,7 @@ section[id] {
 }
 
 .engraving-content {
-    background: linear-gradient(135deg, rgba(26, 15, 10, 0.95), rgba(45, 26, 15, 0.98));
+    background: linear-gradient(135deg, #1A0F0A, #2D1A0F);
     border-radius: 24px;
     padding: 30px;
     max-width: 500px;
@@ -2194,8 +2194,7 @@ section[id] {
     max-height: 85vh;
     overflow-y: auto;
     border: 1px solid rgba(232, 212, 193, 0.3);
-    box-shadow: 0 40px 80px rgba(183, 110, 61, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 40px 80px rgba(183, 110, 61, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     position: relative;
     animation: modalAppear 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     backdrop-filter: blur(10px);
@@ -2260,6 +2259,70 @@ section[id] {
     margin: 0 auto;
 }
 
+/* Engraving Options inside Modal */
+.engraving-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+@media (min-width: 768px) {
+    .engraving-options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.engraving-option {
+    background: rgba(232, 212, 193, 0.1);
+    border-radius: 18px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.engraving-option:hover {
+    background: rgba(232, 212, 193, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(183, 110, 61, 0.2);
+}
+
+.engraving-option.selected {
+    border-color: var(--wood-light);
+    background: rgba(232, 212, 193, 0.15);
+}
+
+.engraving-image {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 3rem;
+}
+
+.engraving-label {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.engraving-price {
+    color: var(--wood-light);
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.engraving-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
 /* Quantity Controls - IMPROVED FOR MOBILE */
 .quantity-controls {
     margin: 25px 0;
@@ -2311,7 +2374,6 @@ section[id] {
     cursor: not-allowed;
 }
 
-/* Improved quantity input for mobile */
 .quantity-input {
     width: 80px;
     height: 48px;
@@ -2325,10 +2387,8 @@ section[id] {
     outline: none;
     -webkit-appearance: none;
     -moz-appearance: textfield;
-    -webkit-tap-highlight-color: transparent;
 }
 
-/* Remove spinner buttons on mobile */
 .quantity-input::-webkit-outer-spin-button,
 .quantity-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -2340,7 +2400,6 @@ section[id] {
     box-shadow: 0 0 0 2px rgba(183, 110, 61, 0.3);
 }
 
-/* Improved quantity presets for mobile */
 .quantity-presets {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -2364,7 +2423,6 @@ section[id] {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    -webkit-tap-highlight-color: rgba(232, 212, 193, 0.1);
     min-height: 44px;
     display: flex;
     align-items: center;
@@ -2379,6 +2437,67 @@ section[id] {
 .quantity-preset-btn.active {
     background: var(--wood-gradient);
     border-color: var(--wood-light);
+}
+
+.engraving-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 10px;
+}
+
+@media (min-width: 480px) {
+    .engraving-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.btn-cancel,
+.btn-confirm {
+    padding: 18px 28px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    flex: 1;
+    min-width: 0;
+    border: none;
+    letter-spacing: 0.5px;
+    text-align: center;
+    min-height: 56px;
+}
+
+@media (min-width: 480px) {
+    .btn-cancel,
+    .btn-confirm {
+        min-width: 140px;
+        flex: 0 1 auto;
+    }
+}
+
+.btn-cancel {
+    background: rgba(232, 212, 193, 0.15);
+    color: var(--white);
+    border: 1px solid rgba(232, 212, 193, 0.3);
+}
+
+.btn-cancel:hover {
+    background: rgba(232, 212, 193, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(183, 110, 61, 0.2);
+}
+
+.btn-confirm {
+    background: var(--wood-gradient);
+    color: var(--white);
+    box-shadow: 0 8px 25px rgba(183, 110, 61, 0.4);
+}
+
+.btn-confirm:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(183, 110, 61, 0.5);
 }
 
 /* Cart Modal - WOOD THEME */
@@ -2574,7 +2693,6 @@ section[id] {
     transform: translateY(0);
     opacity: 1;
 }
-    
 
 .hero-card-container {
     width: 100%;
@@ -2635,11 +2753,36 @@ section[id] {
         transform: none !important;
     }
 }
-</style>
+
+/* Additional Styles */
+.highlight-text {
+    color: var(--wood-light);
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(183, 110, 61, 0.3);
+}
+
+.webp-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.webp-container img.webp-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+}
+    </style>
 </head>
 
 <body>
-    <!-- ENGRAVING SELECTION MODAL -->
+    <!-- ENGRAVING SELECTION MODAL - FIXED VERSION -->
     <div class="engraving-modal" id="engravingModal">
         <div class="engraving-content">
             <button class="close-engraving" id="closeEngraving">×</button>
@@ -2649,13 +2792,11 @@ section[id] {
             </div>
 
             <div class="engraving-options">
-                <div class="engraving-option" data-engraving="natural">
+                <div class="engraving-option selected" data-engraving="natural">
                     <div class="engraving-image">
                         <span>🌳</span>
                     </div>
-                    <div class="engraving-label">
-                        <span>🌳</span> Natural Grain
-                    </div>
+                    <div class="engraving-label">Natural Grain</div>
                     <div class="engraving-price">No extra cost</div>
                     <div class="engraving-description">
                         Showcases the natural beauty of wood grain. Perfect for organic brands and those wanting an authentic, earthy appearance.
@@ -2666,9 +2807,7 @@ section[id] {
                     <div class="engraving-image">
                         <span>🔥</span>
                     </div>
-                    <div class="engraving-label">
-                        <span>🔥</span> Laser Burned
-                    </div>
+                    <div class="engraving-label">Laser Burned</div>
                     <div class="engraving-price">No extra cost</div>
                     <div class="engraving-description">
                         Precise laser burning creates crisp, permanent engravings. Ideal for intricate logos and detailed designs that stand the test of time.
@@ -2680,13 +2819,13 @@ section[id] {
             <div class="quantity-controls">
                 <div class="quantity-title">Select Quantity</div>
                 <div class="quantity-selector">
-                    <button class="quantity-btn" id="quantityDecrease">-</button>
-                    <input type="number" class="quantity-input" id="quantityInput" value="1" min="1" max="100">
+                    <button class="quantity-btn" id="quantityDecrease">−</button>
+                    <input type="number" class="quantity-input" id="quantityInput" value="1" min="1" max="100" readonly>
                     <button class="quantity-btn" id="quantityIncrease">+</button>
                 </div>
                 <div class="quantity-presets">
-                    <button class="quantity-preset-btn" data-quantity="1">1 Card</button>
-                    <button class="quantity-preset-btn active" data-quantity="5">5 Cards</button>
+                    <button class="quantity-preset-btn active" data-quantity="1">1 Card</button>
+                    <button class="quantity-preset-btn" data-quantity="5">5 Cards</button>
                     <button class="quantity-preset-btn" data-quantity="10">10 Cards</button>
                     <button class="quantity-preset-btn" data-quantity="20">20 Cards</button>
                 </div>
@@ -2694,7 +2833,7 @@ section[id] {
 
             <div class="engraving-actions">
                 <button class="btn-cancel" id="cancelEngraving">Cancel</button>
-                <button class="btn-confirm" id="confirmEngraving">Add to Cart - £<span id="engravingTotalPrice">85</span></button>
+                <button class="btn-confirm" id="confirmEngraving">Add to Cart · £<span id="engravingTotalPrice">85</span></button>
             </div>
         </div>
     </div>
@@ -2740,12 +2879,13 @@ section[id] {
 
         <div class="nav-center">
             <a href="/">Home</a>
+            <a href="/reviews">Reviews</a>
             <a href="/metal">Metal Cards</a>
             <a href="/wood" class="active">Wood Cards</a>
             <a href="/plastic">Plastic Cards</a>
             <a href="/custom">Custom Cards</a>
-            <a href="/stands">Stands</a>
-            <a href="/reviews">Reviews</a>
+            <a href="/stands">Stands & Keyrings</a>
+
         </div>
 
         <div class="nav-right">
@@ -2767,24 +2907,24 @@ section[id] {
         <a href="/" class="mobile-menu-item">
             <span>🏠</span> Home
         </a>
-        <a href="/metal" class="mobile-menu-item">
-            <span>⭐</span> Metal Cards
+        <a href="/reviews" class="mobile-menu-item">
+            <span>⭐</span> Reviews
         </a>
+
         <a href="/wood" class="mobile-menu-item active">
             <span>🌳</span> Wood Cards
+        </a>
+        <a href="/metal" class="mobile-menu-item">
+            <span>⭐</span> Metal Cards
         </a>
         <a href="/plastic" class="mobile-menu-item">
             <span>🔵</span> Plastic Cards
         </a>
-        <a href="/custom" class="mobile-menu-item">
-            <span>✨</span> Custom Cards
-        </a>
+
         <a href="/stands" class="mobile-menu-item">
-            <span>📱</span> Stands
+            <span>📱</span> Stands & Keyrings
         </a>
-        <a href="/reviews" class="mobile-menu-item">
-            <span>⭐</span> Reviews
-        </a>
+
 
         <div class="menu-divider"></div>
 
@@ -3320,379 +3460,377 @@ section[id] {
                 closeMobileMenu();
             }
         });
-        // cart.js - Complete cart functionality for exposureboost.com
 
-// cart.js - Complete cart functionality for exposureboost.com
-
-// COMPREHENSIVE IMAGE MAPPING FOR ALL CARD TYPES
-const cardImageMap = {
-    // ========== WOOD CARDS ==========
-    'Walnut Wood Card': 'newwalnut.webp',
-    'Walnut': 'newwalnut.webp',
-    'Oak Wood Card': 'newoak.webp',
-    'Oak': 'newoak.webp',
-    'Sapele Wood Card': 'newsapele.webp',
-    'Sapele': 'newsapele.webp',
-    'Black Bamboo Card': 'newblackbamboo.webp',
-    'Black Bamboo': 'newblackbamboo.webp',
-    'Bamboo Wood Card': 'newbamboo.webp',
-    'Bamboo': 'newbamboo.webp',
-    'Maple Wood Card': 'newmaple.webp',
-    'Maple': 'newmaple.webp',
-    'Cherry Wood Card': 'newcherry.webp',
-    'Cherry': 'newcherry.webp',
-    
-    // ========== METAL CARDS - USING CORRECT FILENAMES ==========
-    'Gold Metal Card': 'goldmetal.webp',
-    'Gold': 'goldmetal.webp',
-    'Silver Metal Card': 'silver.webp',
-    'Silver': 'silver.webp',
-    'Rose Gold Metal Card': 'rosegold.webp',
-    'Rose Gold': 'rosegold.webp',
-    'Black Metal Card': 'newblack.webp',     // This is correct - black is "newblack.webp"
-    'Black Metal': 'newblack.webp',
-    'Blue Metal Card': 'newblue.webp',       // Blue is "newblue.webp"
-    'Blue Metal': 'newblue.webp',
-    'Green Metal Card': 'newgreen.webp',     // Green is "newgreen.webp"
-    'Green Metal': 'newgreen.webp',
-    'Purple Metal Card': 'newpurple.webp',   // Purple is "newpurple.webp"
-    'Purple Metal': 'newpurple.webp',
-    'White Metal Card': 'newwhite.webp',     // White is "newwhite.webp"
-    'White Metal': 'newwhite.webp',
-    
-    // ========== PLASTIC CARDS - ALL COLORS ==========
-    'Black Plastic Card': 'newplasticblack.webp',
-    'Black Plastic': 'newplasticblack.webp',
-    'Blue Plastic Card': 'newplasticblue.webp',
-    'Blue Plastic': 'newplasticblue.webp',
-    'Gold Plastic Card': 'newplasticgold.webp',
-    'Gold Plastic': 'newplasticgold.webp',
-    'Green Plastic Card': 'newplasticgreen.webp',
-    'Green Plastic': 'newplasticgreen.webp',
-    'Orange Plastic Card': 'newplasticorange.webp',
-    'Orange Plastic': 'newplasticorange.webp',
-    'Pink Plastic Card': 'newplasticpink.webp',
-    'Pink Plastic': 'newplasticpink.webp',
-    'Purple Plastic Card': 'newplasticpurple.webp',
-    'Purple Plastic': 'newplasticpurple.webp',
-    'Red Plastic Card': 'newplasticred.webp',
-    'Red Plastic': 'newplasticred.webp',
-    'Silver Plastic Card': 'newplasticsilver.webp',
-    'Silver Plastic': 'newplasticsilver.webp',
-    'White Plastic Card': 'newplasticwhite.webp',
-    'White Plastic': 'newplasticwhite.webp',
-    'Yellow Plastic Card': 'newplasticyellow.webp',
-    'Yellow Plastic': 'newplasticyellow.webp',
-    
-    // ========== CUSTOM CARDS ==========
-    'Custom Card': 'newcustom.webp',
-    'Custom': 'newcustom.webp',
-    
-    // ========== STANDS ==========
-    'Card Stand': 'heropic.webp',
-    'Display Stand': 'heropic.webp',
-    'Wooden Stand': 'heropic.webp',
-    'Acrylic Stand': 'heropic.webp',
-    'Stand': 'heropic.webp'
-};
-
-// Fallback function to find image by ANY partial name match
-function findImageByPartialName(name) {
-    name = name.toLowerCase().trim();
-    
-    // WOOD CARDS
-    if (name.includes('walnut')) return 'newwalnut.webp';
-    if (name.includes('oak')) return 'newoak.webp';
-    if (name.includes('sapele')) return 'newsapele.webp';
-    if (name.includes('black bamboo')) return 'newblackbamboo.webp';
-    if (name.includes('bamboo') && !name.includes('black')) return 'newbamboo.webp';
-    if (name.includes('maple')) return 'newmaple.webp';
-    if (name.includes('cherry')) return 'newcherry.webp';
-    
-    // METAL CARDS - USING CORRECT FILENAMES
-    if (name.includes('rose gold')) return 'rosegold.webp';
-    if (name.includes('gold') && !name.includes('rose')) return 'goldmetal.webp';
-    if (name.includes('silver')) return 'silver.webp';
-    if (name.includes('black metal') || (name.includes('black') && name.includes('metal'))) return 'newblack.webp';
-    if (name.includes('blue metal') || (name.includes('blue') && name.includes('metal'))) return 'newblue.webp';
-    if (name.includes('green metal') || (name.includes('green') && name.includes('metal'))) return 'newgreen.webp';
-    if (name.includes('purple metal') || (name.includes('purple') && name.includes('metal'))) return 'newpurple.webp';
-    if (name.includes('white metal') || (name.includes('white') && name.includes('metal'))) return 'newwhite.webp';
-    
-    // PLASTIC CARDS - ALL COLORS
-    if (name.includes('plastic')) {
-        if (name.includes('black')) return 'newplasticblack.webp';
-        if (name.includes('blue')) return 'newplasticblue.webp';
-        if (name.includes('gold')) return 'newplasticgold.webp';
-        if (name.includes('green')) return 'newplasticgreen.webp';
-        if (name.includes('orange')) return 'newplasticorange.webp';
-        if (name.includes('pink')) return 'newplasticpink.webp';
-        if (name.includes('purple')) return 'newplasticpurple.webp';
-        if (name.includes('red')) return 'newplasticred.webp';
-        if (name.includes('silver')) return 'newplasticsilver.webp';
-        if (name.includes('white')) return 'newplasticwhite.webp';
-        if (name.includes('yellow')) return 'newplasticyellow.webp';
-        return 'plasticpic.webp';
-    }
-    
-    // CUSTOM CARDS
-    if (name.includes('custom')) return 'newcustom.webp';
-    
-    // STANDS
-    if (name.includes('stand')) return 'heropic.webp';
-    
-    // Check for single color matches (for metal cards)
-    if (name === 'gold' || name.includes('gold card')) return 'goldmetal.webp';
-    if (name === 'silver' || name.includes('silver card')) return 'silver.webp';
-    if (name === 'rose gold' || name.includes('rose gold card')) return 'rosegold.webp';
-    if (name === 'black' || name.includes('black card')) return 'newblack.webp';
-    if (name === 'blue' || name.includes('blue card')) return 'newblue.webp';
-    if (name === 'green' || name.includes('green card')) return 'newgreen.webp';
-    if (name === 'purple' || name.includes('purple card')) return 'newpurple.webp';
-    if (name === 'white' || name.includes('white card')) return 'newwhite.webp';
-    
-    console.log('No image found for:', name);
-    return 'logo.png';
-}
-
-// Cart functionality
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Update cart display
-function updateCart() {
-    const cartCount = document.getElementById('cartCount');
-    if (cartCount) {
-        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-    }
-    localStorage.setItem('cart', JSON.stringify(cart));
-    renderCartItems();
-}
-
-// Render cart items in modal with correct images for ALL card types
-function renderCartItems() {
-    const cartItems = document.getElementById('cartItems');
-    const cartTotal = document.getElementById('cartTotal');
-    
-    if (!cartItems || !cartTotal) return;
-    
-    if (cart.length === 0) {
-        cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
-        cartTotal.textContent = '£0';
-        return;
-    }
-
-    let itemsHTML = '';
-    let total = 0;
-
-    cart.forEach((item, index) => {
-        total += item.price * item.quantity;
-        
-        // Get image - first try stored img, then exact match, then partial match
-        let imgSrc = item.img;
-        
-        if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null' || imgSrc === '') {
-            // Try exact match first
-            imgSrc = cardImageMap[item.name];
+        // COMPREHENSIVE IMAGE MAPPING FOR ALL CARD TYPES
+        const cardImageMap = {
+            // ========== WOOD CARDS ==========
+            'Walnut Wood Card': 'newwalnut.webp',
+            'Walnut': 'newwalnut.webp',
+            'Oak Wood Card': 'newoak.webp',
+            'Oak': 'newoak.webp',
+            'Sapele Wood Card': 'newsapele.webp',
+            'Sapele': 'newsapele.webp',
+            'Black Bamboo Card': 'newblackbamboo.webp',
+            'Black Bamboo': 'newblackbamboo.webp',
+            'Bamboo Wood Card': 'newbamboo.webp',
+            'Bamboo': 'newbamboo.webp',
+            'Maple Wood Card': 'newmaple.webp',
+            'Maple': 'newmaple.webp',
+            'Cherry Wood Card': 'newcherry.webp',
+            'Cherry': 'newcherry.webp',
             
-            // If no exact match, try partial match
-            if (!imgSrc) {
-                imgSrc = findImageByPartialName(item.name);
+            // ========== METAL CARDS - USING CORRECT FILENAMES ==========
+            'Gold Metal Card': 'goldmetal.webp',
+            'Gold': 'goldmetal.webp',
+            'Silver Metal Card': 'silver.webp',
+            'Silver': 'silver.webp',
+            'Rose Gold Metal Card': 'rosegold.webp',
+            'Rose Gold': 'rosegold.webp',
+            'Black Metal Card': 'newblack.webp',
+            'Black Metal': 'newblack.webp',
+            'Blue Metal Card': 'newblue.webp',
+            'Blue Metal': 'newblue.webp',
+            'Green Metal Card': 'newgreen.webp',
+            'Green Metal': 'newgreen.webp',
+            'Purple Metal Card': 'newpurple.webp',
+            'Purple Metal': 'newpurple.webp',
+            'White Metal Card': 'newwhite.webp',
+            'White Metal': 'newwhite.webp',
+            
+            // ========== PLASTIC CARDS - ALL COLORS ==========
+            'Black Plastic Card': 'newplasticblack.webp',
+            'Black Plastic': 'newplasticblack.webp',
+            'Blue Plastic Card': 'newplasticblue.webp',
+            'Blue Plastic': 'newplasticblue.webp',
+            'Gold Plastic Card': 'newplasticgold.webp',
+            'Gold Plastic': 'newplasticgold.webp',
+            'Green Plastic Card': 'newplasticgreen.webp',
+            'Green Plastic': 'newplasticgreen.webp',
+            'Orange Plastic Card': 'newplasticorange.webp',
+            'Orange Plastic': 'newplasticorange.webp',
+            'Pink Plastic Card': 'newplasticpink.webp',
+            'Pink Plastic': 'newplasticpink.webp',
+            'Purple Plastic Card': 'newplasticpurple.webp',
+            'Purple Plastic': 'newplasticpurple.webp',
+            'Red Plastic Card': 'newplasticred.webp',
+            'Red Plastic': 'newplasticred.webp',
+            'Silver Plastic Card': 'newplasticsilver.webp',
+            'Silver Plastic': 'newplasticsilver.webp',
+            'White Plastic Card': 'newplasticwhite.webp',
+            'White Plastic': 'newplasticwhite.webp',
+            'Yellow Plastic Card': 'newplasticyellow.webp',
+            'Yellow Plastic': 'newplasticyellow.webp',
+            
+            // ========== CUSTOM CARDS ==========
+            'Custom Card': 'newcustom.webp',
+            'Custom': 'newcustom.webp',
+            
+            // ========== STANDS ==========
+            'Card Stand': 'heropic.webp',
+            'Display Stand': 'heropic.webp',
+            'Wooden Stand': 'heropic.webp',
+            'Acrylic Stand': 'heropic.webp',
+            'Stand': 'heropic.webp'
+        };
+
+        // Fallback function to find image by ANY partial name match
+        function findImageByPartialName(name) {
+            name = name.toLowerCase().trim();
+            
+            // WOOD CARDS
+            if (name.includes('walnut')) return 'newwalnut.webp';
+            if (name.includes('oak')) return 'newoak.webp';
+            if (name.includes('sapele')) return 'newsapele.webp';
+            if (name.includes('black bamboo')) return 'newblackbamboo.webp';
+            if (name.includes('bamboo') && !name.includes('black')) return 'newbamboo.webp';
+            if (name.includes('maple')) return 'newmaple.webp';
+            if (name.includes('cherry')) return 'newcherry.webp';
+            
+            // METAL CARDS - USING CORRECT FILENAMES
+            if (name.includes('rose gold')) return 'rosegold.webp';
+            if (name.includes('gold') && !name.includes('rose')) return 'goldmetal.webp';
+            if (name.includes('silver')) return 'silver.webp';
+            if (name.includes('black metal') || (name.includes('black') && name.includes('metal'))) return 'newblack.webp';
+            if (name.includes('blue metal') || (name.includes('blue') && name.includes('metal'))) return 'newblue.webp';
+            if (name.includes('green metal') || (name.includes('green') && name.includes('metal'))) return 'newgreen.webp';
+            if (name.includes('purple metal') || (name.includes('purple') && name.includes('metal'))) return 'newpurple.webp';
+            if (name.includes('white metal') || (name.includes('white') && name.includes('metal'))) return 'newwhite.webp';
+            
+            // PLASTIC CARDS - ALL COLORS
+            if (name.includes('plastic')) {
+                if (name.includes('black')) return 'newplasticblack.webp';
+                if (name.includes('blue')) return 'newplasticblue.webp';
+                if (name.includes('gold')) return 'newplasticgold.webp';
+                if (name.includes('green')) return 'newplasticgreen.webp';
+                if (name.includes('orange')) return 'newplasticorange.webp';
+                if (name.includes('pink')) return 'newplasticpink.webp';
+                if (name.includes('purple')) return 'newplasticpurple.webp';
+                if (name.includes('red')) return 'newplasticred.webp';
+                if (name.includes('silver')) return 'newplasticsilver.webp';
+                if (name.includes('white')) return 'newplasticwhite.webp';
+                if (name.includes('yellow')) return 'newplasticyellow.webp';
+                return 'plasticpic.webp';
+            }
+            
+            // CUSTOM CARDS
+            if (name.includes('custom')) return 'newcustom.webp';
+            
+            // STANDS
+            if (name.includes('stand')) return 'heropic.webp';
+            
+            // Check for single color matches (for metal cards)
+            if (name === 'gold' || name.includes('gold card')) return 'goldmetal.webp';
+            if (name === 'silver' || name.includes('silver card')) return 'silver.webp';
+            if (name === 'rose gold' || name.includes('rose gold card')) return 'rosegold.webp';
+            if (name === 'black' || name.includes('black card')) return 'newblack.webp';
+            if (name === 'blue' || name.includes('blue card')) return 'newblue.webp';
+            if (name === 'green' || name.includes('green card')) return 'newgreen.webp';
+            if (name === 'purple' || name.includes('purple card')) return 'newpurple.webp';
+            if (name === 'white' || name.includes('white card')) return 'newwhite.webp';
+            
+            console.log('No image found for:', name);
+            return 'logo.png';
+        }
+
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Update cart display
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            if (cartCount) {
+                cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCartItems();
+        }
+
+        // Render cart items in modal with correct images for ALL card types
+        function renderCartItems() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (!cartItems || !cartTotal) return;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
+                cartTotal.textContent = '£0';
+                return;
+            }
+
+            let itemsHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                
+                // Get image - first try stored img, then exact match, then partial match
+                let imgSrc = item.img;
+                
+                if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null' || imgSrc === '') {
+                    // Try exact match first
+                    imgSrc = cardImageMap[item.name];
+                    
+                    // If no exact match, try partial match
+                    if (!imgSrc) {
+                        imgSrc = findImageByPartialName(item.name);
+                    }
+                }
+                
+                // Final fallback
+                if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null' || imgSrc === '') {
+                    imgSrc = 'logo.png';
+                }
+                
+                itemsHTML += `
+                    <div class="cart-item">
+                        <img src="${imgSrc}" alt="${item.name}" 
+                             onerror="this.onerror=null; this.src='logo.png';"
+                             style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover; background: linear-gradient(135deg, #B76E3D, #8B4513);">
+                        <div class="cart-item-details">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
+                        </div>
+                        <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+                    </div>
+                `;
+            });
+
+            cartItems.innerHTML = itemsHTML;
+            cartTotal.textContent = `£${total}`;
+        }
+
+        // Add to cart function - enhanced for ALL card types
+        function addToCart(name, price, quantity = 1, img = null) {
+            console.log('Adding to cart:', { name, price, quantity, img }); // Debug log
+            
+            // Determine image if not provided or invalid
+            if (!img || img === 'undefined' || img === 'null' || img === '') {
+                // Try exact match from map
+                img = cardImageMap[name];
+                
+                // If no exact match, try partial match
+                if (!img) {
+                    img = findImageByPartialName(name);
+                }
+            }
+            
+            // Final fallback
+            if (!img || img === 'undefined' || img === 'null' || img === '') {
+                img = 'logo.png';
+            }
+            
+            console.log('Using image:', img); // Debug log
+
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+                // Update image if it was missing
+                if (!existingItem.img || existingItem.img === 'undefined' || existingItem.img === 'null' || existingItem.img === '') {
+                    existingItem.img = img;
+                }
+            } else {
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: quantity,
+                    img: img
+                });
+            }
+
+            updateCart();
+            showNotification(`${name} (${quantity}×) added to cart!`);
+        }
+
+        // Remove from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            if (!notification) return;
+            
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        // Open cart modal
+        function openCartModal() {
+            const cartModal = document.getElementById('cartModal');
+            if (!cartModal) return;
+            
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                if (typeof closeMobileMenu === 'function') {
+                    closeMobileMenu();
+                }
             }
         }
-        
-        // Final fallback
-        if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null' || imgSrc === '') {
-            imgSrc = 'logo.png';
+
+        // Close cart modal
+        function closeCartModal() {
+            const cartModal = document.getElementById('cartModal');
+            if (!cartModal) return;
+            
+            cartModal.classList.remove('active');
+            document.body.style.overflow = '';
         }
-        
-        itemsHTML += `
-            <div class="cart-item">
-                <img src="${imgSrc}" alt="${item.name}" 
-                     onerror="this.onerror=null; this.src='logo.png';"
-                     style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover; background: linear-gradient(135deg, #B76E3D, #8B4513);">
-                <div class="cart-item-details">
-                    <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
-                </div>
-                <button class="remove-item" onclick="removeFromCart(${index})">×</button>
-            </div>
-        `;
-    });
 
-    cartItems.innerHTML = itemsHTML;
-    cartTotal.textContent = `£${total}`;
-}
-
-// Add to cart function - enhanced for ALL card types
-function addToCart(name, price, quantity = 1, img = null) {
-    console.log('Adding to cart:', { name, price, quantity, img }); // Debug log
-    
-    // Determine image if not provided or invalid
-    if (!img || img === 'undefined' || img === 'null' || img === '') {
-        // Try exact match from map
-        img = cardImageMap[name];
-        
-        // If no exact match, try partial match
-        if (!img) {
-            img = findImageByPartialName(name);
-        }
-    }
-    
-    // Final fallback
-    if (!img || img === 'undefined' || img === 'null' || img === '') {
-        img = 'logo.png';
-    }
-    
-    console.log('Using image:', img); // Debug log
-
-    const existingItem = cart.find(item => item.name === name);
-
-    if (existingItem) {
-        existingItem.quantity += quantity;
-        // Update image if it was missing
-        if (!existingItem.img || existingItem.img === 'undefined' || existingItem.img === 'null' || existingItem.img === '') {
-            existingItem.img = img;
-        }
-    } else {
-        cart.push({
-            name: name,
-            price: price,
-            quantity: quantity,
-            img: img
-        });
-    }
-
-    updateCart();
-    showNotification(`${name} (${quantity}×) added to cart!`);
-}
-
-// Remove from cart
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
-
-// Show notification
-function showNotification(message) {
-    const notification = document.getElementById('notification');
-    if (!notification) return;
-    
-    notification.textContent = message;
-    notification.classList.add('show');
-    setTimeout(() => {
-        notification.classList.remove('show');
-    }, 3000);
-}
-
-// Open cart modal
-function openCartModal() {
-    const cartModal = document.getElementById('cartModal');
-    if (!cartModal) return;
-    
-    cartModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    // Close mobile menu if open
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileMenu && mobileMenu.classList.contains('active')) {
-        if (typeof closeMobileMenu === 'function') {
-            closeMobileMenu();
-        }
-    }
-}
-
-// Close cart modal
-function closeCartModal() {
-    const cartModal = document.getElementById('cartModal');
-    if (!cartModal) return;
-    
-    cartModal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// Checkout functionality - WhatsApp integration
-function checkout() {
-    if (cart.length === 0) {
-        showNotification('Your cart is empty!');
-        return;
-    }
-
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
-    // Format WhatsApp message
-    let message = "Hello! I'd like to place an order for the following items:\n\n";
-    
-    cart.forEach(item => {
-        message += `• ${item.name} × ${item.quantity} - £${item.price * item.quantity}\n`;
-    });
-    
-    message += `\nTotal: £${total}\n\n`;
-    message += "Please let me know the next steps to complete my order.";
-    
-    // Encode message for URL
-    const encodedMessage = encodeURIComponent(message);
-    
-    // Create WhatsApp URL with your number
-    const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
-    
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
-}
-
-// Initialize cart on all pages
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Cart.js initialized'); // Debug log
-    
-    // Update cart count on page load
-    updateCart();
-    
-    // Setup cart icon click
-    const cartIcon = document.getElementById('cartIcon');
-    if (cartIcon) {
-        cartIcon.addEventListener('click', openCartModal);
-    }
-    
-    // Setup close cart button
-    const closeCart = document.getElementById('closeCart');
-    if (closeCart) {
-        closeCart.addEventListener('click', closeCartModal);
-    }
-    
-    // Setup checkout button
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', checkout);
-    }
-    
-    // Close modal when clicking outside
-    const cartModal = document.getElementById('cartModal');
-    if (cartModal) {
-        cartModal.addEventListener('click', (e) => {
-            if (e.target === cartModal) {
-                closeCartModal();
+        // Checkout functionality - WhatsApp integration
+        function checkout() {
+            if (cart.length === 0) {
+                showNotification('Your cart is empty!');
+                return;
             }
-        });
-    }
-    
-    // Add to cart buttons
-    document.querySelectorAll('.add-to-cart, .add-to-cart-carousel, [data-name][data-price]').forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const btn = e.currentTarget;
-            const name = btn.dataset.name;
-            const price = parseInt(btn.dataset.price);
-            const img = btn.dataset.img;
-            addToCart(name, price, 1, img);
-        });
-    });
-});
 
-// Make functions globally available
-window.addToCart = addToCart;
-window.removeFromCart = removeFromCart;
-window.closeCartModal = closeCartModal;
-window.openCartModal = openCartModal;
-window.checkout = checkout;
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Format WhatsApp message
+            let message = "Hello! I'd like to place an order for the following items:\n\n";
+            
+            cart.forEach(item => {
+                message += `• ${item.name} × ${item.quantity} - £${item.price * item.quantity}\n`;
+            });
+            
+            message += `\nTotal: £${total}\n\n`;
+            message += "Please let me know the next steps to complete my order.";
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Create WhatsApp URL with your number
+            const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Initialize cart on all pages
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Cart.js initialized'); // Debug log
+            
+            // Update cart count on page load
+            updateCart();
+            
+            // Setup cart icon click
+            const cartIcon = document.getElementById('cartIcon');
+            if (cartIcon) {
+                cartIcon.addEventListener('click', openCartModal);
+            }
+            
+            // Setup close cart button
+            const closeCart = document.getElementById('closeCart');
+            if (closeCart) {
+                closeCart.addEventListener('click', closeCartModal);
+            }
+            
+            // Setup checkout button
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', checkout);
+            }
+            
+            // Close modal when clicking outside
+            const cartModal = document.getElementById('cartModal');
+            if (cartModal) {
+                cartModal.addEventListener('click', (e) => {
+                    if (e.target === cartModal) {
+                        closeCartModal();
+                    }
+                });
+            }
+            
+            // Add to cart buttons
+            document.querySelectorAll('.add-to-cart, .add-to-cart-carousel, [data-name][data-price]').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const btn = e.currentTarget;
+                    const name = btn.dataset.name;
+                    const price = parseInt(btn.dataset.price);
+                    const img = btn.dataset.img;
+                    addToCart(name, price, 1, img);
+                });
+            });
+        });
+
+        // Make functions globally available
+        window.addToCart = addToCart;
+        window.removeFromCart = removeFromCart;
+        window.closeCartModal = closeCartModal;
+        window.openCartModal = openCartModal;
+        window.checkout = checkout;
+
         // ENGRAVING MODAL FUNCTIONALITY
         const closeEngraving = document.getElementById('closeEngraving');
         const cancelEngraving = document.getElementById('cancelEngraving');
@@ -4433,185 +4571,6 @@ window.checkout = checkout;
             
             initCarousel();
             updateCart();
-            
-            // Add highlight style for selected wood text
-            const style = document.createElement('style');
-            style.textContent = `
-                .highlight-text {
-                    color: var(--wood-light);
-                    font-weight: 700;
-                    text-shadow: 0 2px 4px rgba(183, 110, 61, 0.3);
-                }
-                
-                /* Ensure WebP images display properly */
-                .webp-container {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 100%;
-                    height: 100%;
-                }
-                
-                .webp-container img.webp-image {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border: none;
-                    outline: none;
-                    box-shadow: none;
-                    background: transparent;
-                }
-                
-                /* Engraving modal styles */
-                .engraving-options {
-                    display: grid;
-                    grid-template-columns: 1fr;
-                    gap: 20px;
-                    margin-bottom: 20px;
-                }
-                
-                @media (min-width: 768px) {
-                    .engraving-options {
-                        grid-template-columns: 1fr 1fr;
-                    }
-                }
-                
-                .engraving-option {
-                    background: rgba(232, 212, 193, 0.1);
-                    border-radius: 18px;
-                    padding: 25px;
-                    cursor: pointer;
-                    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-                    text-align: center;
-                    border: 2px solid transparent;
-                    position: relative;
-                    overflow: hidden;
-                }
-                
-                .engraving-option:hover {
-                    background: rgba(232, 212, 193, 0.15);
-                    transform: translateY(-5px);
-                    box-shadow: 0 15px 30px rgba(183, 110, 61, 0.2);
-                }
-                
-                .engraving-option.selected {
-                    background: rgba(232, 212, 193, 0.2);
-                    border-color: var(--wood-light);
-                    box-shadow: 0 20px 40px rgba(183, 110, 61, 0.3);
-                }
-                
-                .engraving-image {
-                    width: 100%;
-                    height: 120px;
-                    border-radius: 12px;
-                    overflow: hidden;
-                    margin-bottom: 20px;
-                    border: 1px solid rgba(232, 212, 193, 0.3);
-                    background: rgba(0, 0, 0, 0.2);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-                
-                .engraving-label {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    font-size: 1.1rem;
-                    font-weight: 800;
-                    color: var(--white);
-                    margin-bottom: 8px;
-                }
-                
-                .engraving-price {
-                    font-size: 0.95rem;
-                    color: var(--wood-light);
-                    font-weight: 600;
-                    margin-bottom: 15px;
-                }
-                
-                .engraving-description {
-                    font-size: 0.9rem;
-                    color: rgba(255, 255, 255, 0.8);
-                    line-height: 1.5;
-                    text-align: left;
-                }
-                
-                .engraving-actions {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 15px;
-                    padding-top: 20px;
-                }
-                
-                @media (min-width: 480px) {
-                    .engraving-actions {
-                        flex-direction: row;
-                        justify-content: center;
-                    }
-                }
-                
-                .btn-cancel,
-                .btn-confirm {
-                    padding: 18px 28px;
-                    border-radius: 14px;
-                    font-weight: 800;
-                    font-size: 16px;
-                    cursor: pointer;
-                    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-                    flex: 1;
-                    min-width: 0;
-                    border: none;
-                    letter-spacing: 0.5px;
-                    text-align: center;
-                    min-height: 56px;
-                }
-                
-                @media (min-width: 480px) {
-                    .btn-cancel,
-                    .btn-confirm {
-                        min-width: 140px;
-                        flex: 0 1 auto;
-                    }
-                }
-                
-                .btn-cancel {
-                    background: rgba(232, 212, 193, 0.15);
-                    color: var(--white);
-                    border: 1px solid rgba(232, 212, 193, 0.3);
-                }
-                
-                .btn-cancel:hover {
-                    background: rgba(232, 212, 193, 0.25);
-                    transform: translateY(-3px);
-                    box-shadow: 0 10px 25px rgba(183, 110, 61, 0.2);
-                }
-                
-                .btn-confirm {
-                    background: var(--wood-gradient);
-                    color: var(--white);
-                    box-shadow: 0 8px 25px rgba(183, 110, 61, 0.4);
-                }
-                
-                .btn-confirm:hover:not(:disabled) {
-                    transform: translateY(-3px);
-                    box-shadow: 0 15px 35px rgba(183, 110, 61, 0.5);
-                }
-                
-                .btn-confirm:disabled {
-                    opacity: 0.5;
-                    cursor: not-allowed;
-                    transform: none !important;
-                    box-shadow: none !important;
-                }
-            `;
-            document.head.appendChild(style);
-        });
-
-        // Update carousel on window resize
-        window.addEventListener('resize', () => {
-            updateCardsPerView();
         });
     </script>
 </body>
