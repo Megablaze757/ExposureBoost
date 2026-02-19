@@ -1040,7 +1040,7 @@
             <a href="/metal">Metal</a>
             <a href="/wood">Wood</a>
             <a href="/plastic">Plastic</a>
-            <a href="/stands">Stands</a>
+            <a href="/stands">Stand & Keyrings</a>  <!-- Changed from "Stands" -->
         </div>
 
         <div class="nav-right">
@@ -1077,7 +1077,7 @@
             <span>🔵</span> Plastic
         </a>
         <a href="/stands" class="mobile-menu-item">
-            <span>📱</span> Stands
+            <span>📱</span> Stand & Keyrings  <!-- Changed from "Stands" -->
         </a>
         <a href="/reviews" class="mobile-menu-item">
             <span>⭐</span> Reviews
@@ -1085,9 +1085,7 @@
         <a href="/gallery" class="mobile-menu-item">
             <span>🖼️</span> Gallery
         </a>
-        <a href="/custom" class="mobile-menu-item">
-            <span>🎨</span> Custom
-        </a>
+        <!-- Removed Custom link -->
 
         <div class="menu-divider"></div>
 
@@ -1137,9 +1135,8 @@
                     </div>
                 </div>
 
-                <button onclick="addToCart('Premium Metal Card', 49.99, 'newgold.webp')" class="section-button">
-                    Add to Cart - £49.99
-                </button>
+                <!-- Replaced Add to Cart button with link to Metal page -->
+                <a href="/metal" class="section-button">View Metal Cards</a>
             </div>
         </section>
 
@@ -1157,9 +1154,8 @@
                     </div>
                 </div>
 
-                <button onclick="addToCart('Rose Gold Metal Card', 59.99, 'newrosegold.webp')" class="section-button">
-                    Add to Cart - £59.99
-                </button>
+                <!-- Replaced Add to Cart button with link to Metal page -->
+                <a href="/metal" class="section-button">View Metal Cards</a>
             </div>
         </section>
 
@@ -1177,9 +1173,8 @@
                     </div>
                 </div>
 
-                <button onclick="addToCart('Bamboo Wood Card', 44.99, 'newbamboo.webp')" class="section-button">
-                    Add to Cart - £44.99
-                </button>
+                <!-- Replaced Add to Cart button with link to Wood page -->
+                <a href="/wood" class="section-button">View Wood Cards</a>
             </div>
         </section>
 
@@ -1197,9 +1192,8 @@
                     </div>
                 </div>
 
-                <button onclick="addToCart('Pink Plastic Card', 29.99, 'newplasticpink.webp')" class="section-button">
-                    Add to Cart - £29.99
-                </button>
+                <!-- Replaced Add to Cart button with link to Plastic page -->
+                <a href="/plastic" class="section-button">View Plastic Cards</a>
             </div>
         </section>
 
@@ -1370,7 +1364,7 @@
             updateCartCount();
         }
 
-        // Add to cart function
+        // Add to cart function (kept for future use, but no longer called from buttons)
         window.addToCart = function(name, price, image) {
             const existingItem = cart.find(item => item.name === name);
             
