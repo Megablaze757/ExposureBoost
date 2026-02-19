@@ -936,7 +936,7 @@ section[id] {
 /* CAROUSEL SECTION - PROPER CAROUSEL */
 .carousel-section {
     padding: 100px 20px;
-    background: var(--carousel-walnut-bg);
+    background: var(--carousel-black-bamboo-bg);
     position: relative;
     overflow: hidden;
     transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -2726,10 +2726,10 @@ section[id] {
     <!-- MOBILE CLOSE BUTTON -->
     <button class="mobile-close-btn" id="mobileCloseBtn">×</button>
 
-    <!-- STICKY NAV - WOOD THEME -->
+    <!-- STICKY NAV - WOOD THEME - UPDATED WITH SLUG FORMAT -->
     <nav class="nav" id="mainNav">
-        <a href="index.html" class="logo">
-            <img src="logo.png" alt=" Logo" class="logo-img">
+        <a href="/" class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
         </a>
 
         <button class="hamburger" id="hamburgerBtn">
@@ -2739,12 +2739,13 @@ section[id] {
         </button>
 
         <div class="nav-center">
-            <a href="index.html">Home</a>
-            <a href="metal.html">Metal Cards</a>
-            <a href="wood.html" class="active">Wood Cards</a>
-            <a href="plastic.html">Plastic Cards</a>
-            <a href="custom.html">Custom Cards</a>
-            <a href="stands.html">Stands</a>
+            <a href="/">Home</a>
+            <a href="/metal">Metal Cards</a>
+            <a href="/wood" class="active">Wood Cards</a>
+            <a href="/plastic">Plastic Cards</a>
+            <a href="/custom">Custom Cards</a>
+            <a href="/stands">Stands</a>
+            <a href="/reviews">Reviews</a>
         </div>
 
         <div class="nav-right">
@@ -2761,25 +2762,28 @@ section[id] {
         </div>
     </nav>
 
-    <!-- MOBILE MENU - WOOD THEME -->
+    <!-- MOBILE MENU - WOOD THEME - UPDATED WITH SLUG FORMAT -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="mobile-menu-item">
+        <a href="/" class="mobile-menu-item">
             <span>🏠</span> Home
         </a>
-        <a href="metal.html" class="mobile-menu-item">
+        <a href="/metal" class="mobile-menu-item">
             <span>⭐</span> Metal Cards
         </a>
-        <a href="wood.html" class="mobile-menu-item active">
+        <a href="/wood" class="mobile-menu-item active">
             <span>🌳</span> Wood Cards
         </a>
-        <a href="plastic.html" class="mobile-menu-item">
+        <a href="/plastic" class="mobile-menu-item">
             <span>🔵</span> Plastic Cards
         </a>
-        <a href="custom.html" class="mobile-menu-item">
+        <a href="/custom" class="mobile-menu-item">
             <span>✨</span> Custom Cards
         </a>
-        <a href="stands.html" class="mobile-menu-item">
+        <a href="/stands" class="mobile-menu-item">
             <span>📱</span> Stands
+        </a>
+        <a href="/reviews" class="mobile-menu-item">
+            <span>⭐</span> Reviews
         </a>
 
         <div class="menu-divider"></div>
@@ -2827,14 +2831,14 @@ section[id] {
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="newwalnut.webp" alt="Walnut Wood Card" class="webp-image">
+                            <img src="newwalnut.webp" alt="Walnut Wood Card" class="webp-image" data-card-img="walnut">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Walnut Wood Card</h3>
                     <p class="bestseller-description">Rich, dark wood with beautiful grain patterns. Perfect for that professional look.</p>
                     <div class="bestseller-price">£85 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Walnut Wood Card" data-price="85">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Walnut Wood Card" data-price="85" data-img="newwalnut.webp">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
@@ -2844,14 +2848,14 @@ section[id] {
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="newoak.webp" alt="Oak Wood Card" class="webp-image">
+                            <img src="newoak.webp" alt="Oak Wood Card" class="webp-image" data-card-img="oak">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Oak Wood Card</h3>
                     <p class="bestseller-description">Classic, light-colored wood with distinctive grain.</p>
                     <div class="bestseller-price">£85 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Oak Wood Card" data-price="85">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Oak Wood Card" data-price="85" data-img="newoak.webp">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
@@ -2861,14 +2865,14 @@ section[id] {
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="newsapele.webp" alt="Sapele Wood Card" class="webp-image">
+                            <img src="newsapele.webp" alt="Sapele Wood Card" class="webp-image" data-card-img="sapele">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Sapele Wood Card</h3>
                     <p class="bestseller-description">Beautiful African hardwood with interlocking grain. Perfect for distinctive, high-quality brands.</p>
                     <div class="bestseller-price">£85 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Sapele Wood Card" data-price="85">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Sapele Wood Card" data-price="85" data-img="newsapele.webp">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
@@ -2890,91 +2894,91 @@ section[id] {
                         <!-- Black Bamboo -->
                         <div class="wood-carousel-card black-bamboo" data-wood="black-bamboo">
                             <div class="wood-carousel-image">
-                                <img src="newblackbamboo.webp" alt="Black Bamboo Card">
+                                <img src="newblackbamboo.webp" alt="Black Bamboo Card" data-card-img="black-bamboo">
                             </div>
                             <h3 class="wood-carousel-title">Black Bamboo Card</h3>
                             <p class="wood-carousel-description">Dark, sophisticated bamboo with unique texture.   eco-conscious brands wanting a dramatic look.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Black Bamboo Card" data-price="85">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Black Bamboo Card" data-price="85" data-img="newblackbamboo.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
                         <!-- Bamboo -->
                         <div class="wood-carousel-card bamboo" data-wood="bamboo">
                             <div class="wood-carousel-image">
-                                <img src="newbamboo.webp" alt="Bamboo Wood Card">
+                                <img src="newbamboo.webp" alt="Bamboo Wood Card" data-card-img="bamboo">
                             </div>
                             <h3 class="wood-carousel-title">Bamboo Wood Card</h3>
                             <p class="wood-carousel-description">Sustainable, fast-growing wood with unique texture. Perfect for eco-friendly.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Bamboo Wood Card" data-price="85">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Bamboo Wood Card" data-price="85" data-img="newbamboo.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
                         <!-- Maple -->
                         <div class="wood-carousel-card maple" data-wood="maple">
                             <div class="wood-carousel-image">
-                                <img src="newmaple.webp" alt="Maple Wood Card">
+                                <img src="newmaple.webp" alt="Maple Wood Card" data-card-img="maple">
                             </div>
                             <h3 class="wood-carousel-title">Maple Wood Card</h3>
                             <p class="wood-carousel-description">Light-colored wood with subtle grain. Perfect for clean, modern brands and minimalist designs.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Maple Wood Card" data-price="85">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Maple Wood Card" data-price="85" data-img="newmaple.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
                         <!-- Cherry -->
                         <div class="wood-carousel-card cherry" data-wood="cherry">
                             <div class="wood-carousel-image">
-                                <img src="newcherry.webp" alt="Cherry Wood Card">
+                                <img src="newcherry.webp" alt="Cherry Wood Card" data-card-img="cherry">
                             </div>
                             <h3 class="wood-carousel-title">Cherry Wood Card</h3>
                             <p class="wood-carousel-description">Warm, rich reddish-brown wood. Perfect for brands wanting a touch of elegance and warmth.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Cherry Wood Card" data-price="85">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Cherry Wood Card" data-price="85" data-img="newcherry.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
                         <!-- Oak -->
                         <div class="wood-carousel-card oak" data-wood="oak">
                             <div class="wood-carousel-image">
-                                <img src="newoak.webp" alt="Oak Wood Card">
+                                <img src="newoak.webp" alt="Oak Wood Card" data-card-img="oak">
                             </div>
                             <h3 class="wood-carousel-title">Oak Wood Card</h3>
                             <p class="wood-carousel-description">Classic, light-colored wood with distinctive grain.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Oak Wood Card" data-price="85">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Oak Wood Card" data-price="85" data-img="newoak.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
                         <!-- Walnut -->
                         <div class="wood-carousel-card walnut" data-wood="walnut">
                             <div class="wood-carousel-image">
-                                <img src="newwalnut.webp" alt="Walnut Wood Card">
+                                <img src="newwalnut.webp" alt="Walnut Wood Card" data-card-img="walnut">
                             </div>
                             <h3 class="wood-carousel-title">Walnut Wood Card</h3>
                             <p class="wood-carousel-description">Rich, dark wood with beautiful grain patterns. Perfect for luxury brands and sophisticated professionals.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Walnut Wood Card" data-price="85">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Walnut Wood Card" data-price="85" data-img="newwalnut.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
                         <!-- Sapele -->
                         <div class="wood-carousel-card sapele" data-wood="sapele">
                             <div class="wood-carousel-image">
-                                <img src="newsapele.webp" alt="Sapele Wood Card">
+                                <img src="newsapele.webp" alt="Sapele Wood Card" data-card-img="sapele">
                             </div>
                             <h3 class="wood-carousel-title">Sapele Wood Card</h3>
                             <p class="wood-carousel-description">Beautiful African hardwood with interlocking grain. Perfect for distinctive, high-quality brands.</p>
                             <div class="wood-carousel-price">£85 <span>one-time · card + profile</span></div>
                             <div class="wood-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Sapele Wood Card" data-price="85">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Sapele Wood Card" data-price="85" data-img="newsapele.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -3344,7 +3348,7 @@ section[id] {
             renderCartItems();
         }
 
-        // Render cart items in modal
+        // Render cart items in modal with correct images
         function renderCartItems() {
             if (cart.length === 0) {
                 cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
@@ -3357,9 +3361,32 @@ section[id] {
 
             cart.forEach((item, index) => {
                 total += item.price * item.quantity;
+                
+                // Determine which image to use based on item name
+                let imgSrc = 'newwalnut.webp'; // Default
+                
+                if (item.name.includes('Walnut')) {
+                    imgSrc = 'newwalnut.webp';
+                } else if (item.name.includes('Oak')) {
+                    imgSrc = 'newoak.webp';
+                } else if (item.name.includes('Sapele')) {
+                    imgSrc = 'newsapele.webp';
+                } else if (item.name.includes('Black Bamboo')) {
+                    imgSrc = 'newblackbamboo.webp';
+                } else if (item.name.includes('Bamboo') && !item.name.includes('Black')) {
+                    imgSrc = 'newbamboo.webp';
+                } else if (item.name.includes('Maple')) {
+                    imgSrc = 'newmaple.webp';
+                } else if (item.name.includes('Cherry')) {
+                    imgSrc = 'newcherry.webp';
+                } else {
+                    // Use the custom image from item if available
+                    imgSrc = item.img || 'newwalnut.webp';
+                }
+                
                 itemsHTML += `
                     <div class="cart-item">
-                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
+                        <img src="${imgSrc}" alt="${item.name}">
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
@@ -3374,8 +3401,29 @@ section[id] {
         }
 
         // Add to cart function
-        function addToCart(name, price, quantity = 1) {
+        function addToCart(name, price, quantity = 1, img = null) {
             const existingItem = cart.find(item => item.name === name);
+
+            // Determine image if not provided
+            if (!img) {
+                if (name.includes('Walnut')) {
+                    img = 'newwalnut.webp';
+                } else if (name.includes('Oak')) {
+                    img = 'newoak.webp';
+                } else if (name.includes('Sapele')) {
+                    img = 'newsapele.webp';
+                } else if (name.includes('Black Bamboo')) {
+                    img = 'newblackbamboo.webp';
+                } else if (name.includes('Bamboo') && !name.includes('Black')) {
+                    img = 'newbamboo.webp';
+                } else if (name.includes('Maple')) {
+                    img = 'newmaple.webp';
+                } else if (name.includes('Cherry')) {
+                    img = 'newcherry.webp';
+                } else {
+                    img = 'newwalnut.webp';
+                }
+            }
 
             if (existingItem) {
                 existingItem.quantity += quantity;
@@ -3383,7 +3431,8 @@ section[id] {
                 cart.push({
                     name: name,
                     price: price,
-                    quantity: quantity
+                    quantity: quantity,
+                    img: img
                 });
             }
 
@@ -3472,7 +3521,8 @@ section[id] {
                 button.addEventListener('click', (e) => {
                     const name = e.target.dataset.name;
                     const price = parseInt(e.target.dataset.price);
-                    addToCart(name, price);
+                    const img = e.target.dataset.img;
+                    addToCart(name, price, 1, img);
                 });
             });
 
@@ -3481,8 +3531,9 @@ section[id] {
                 button.addEventListener('click', (e) => {
                     const name = e.target.dataset.name;
                     const price = parseInt(e.target.dataset.price);
+                    const img = e.target.dataset.img;
                     // Open engraving modal instead of directly adding to cart
-                    openEngravingModal(name, price);
+                    openEngravingModal(name, price, img);
                 });
             });
 
@@ -3509,8 +3560,8 @@ section[id] {
         const quantityPresetBtns = document.querySelectorAll('.quantity-preset-btn');
 
         // Open engraving modal
-        function openEngravingModal(name, price) {
-            currentEngravingData = { name, price };
+        function openEngravingModal(name, price, img = null) {
+            currentEngravingData = { name, price, img };
             selectedWoodText.textContent = name.split(' ')[0]; // Get wood type from name
             engravingModal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -3597,7 +3648,7 @@ section[id] {
             const engravingName = engravingType === 'natural' ? 'Natural Grain' : 'Laser Burned';
             const itemName = `${currentEngravingData.name} (${engravingName})`;
             
-            addToCart(itemName, currentEngravingData.price, engravingQuantity);
+            addToCart(itemName, currentEngravingData.price, engravingQuantity, currentEngravingData.img);
             closeEngravingModal();
         });
 
@@ -3652,6 +3703,17 @@ section[id] {
             'oak': 'var(--oak-bg)',
             'walnut': 'var(--walnut-bg)',
             'sapele': 'var(--sapele-bg)'
+        };
+
+        // Image mapping
+        const woodImageMap = {
+            'black-bamboo': 'newblackbamboo.webp',
+            'bamboo': 'newbamboo.webp',
+            'maple': 'newmaple.webp',
+            'cherry': 'newcherry.webp',
+            'oak': 'newoak.webp',
+            'walnut': 'newwalnut.webp',
+            'sapele': 'newsapele.webp'
         };
 
         // Carousel background mapping
@@ -3862,9 +3924,10 @@ section[id] {
             const cardName = woodTypeMap[selectedWoodColor];
             const engravingType = engravingTypeMap[selectedEngravingTypeValue];
             const itemName = `${cardName} (${engravingType})`;
+            const img = woodImageMap[selectedWoodColor];
             
             // Open engraving modal with quantity selection
-            openEngravingModal(cardName, 85);
+            openEngravingModal(cardName, 85, img);
         });
 
         // Logo size slider
@@ -3947,7 +4010,7 @@ section[id] {
                 // If it's an external link or different page, allow normal navigation
                 if (this.getAttribute('target') === '_blank' || 
                     !this.getAttribute('href').startsWith('#') ||
-                    this.getAttribute('href').includes('.html')) {
+                    this.getAttribute('href').includes('/')) {
                     return;
                 }
                 
@@ -4218,6 +4281,9 @@ section[id] {
             console.log('9. WhatsApp links updated to +447754888841 ✓');
             console.log('10. All prices set to £85 ✓');
             console.log('11. Hero card upload overlay removed - now just shows walnut wood card ✓');
+            console.log('12. Menu links updated to /xxx format ✓');
+            console.log('13. Reviews added to menu as /reviews ✓');
+            console.log('14. Cart now shows correct images for all items ✓');
             
             initCarousel();
             updateCart();
