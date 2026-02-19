@@ -2718,7 +2718,7 @@ section[id] {
 
         <div class="nav-center">
             <a href="/">Home</a>
-            <a href="/reviews">Reviews</a>
+            <a href="/reviews">Review Management</a>
             <a href="/metal">Metal Cards</a>
             <a href="/wood">Wood Cards</a>
             <a href="/plastic" class="active">Plastic Cards</a>
@@ -2747,7 +2747,7 @@ section[id] {
             <span>🏠</span> Home
         </a>
         <a href="/reviews" class="mobile-menu-item">
-            <span>⭐</span> Reviews
+            <span>⭐</span> Review Management
         </a>
 
         <a href="/wood" class="mobile-menu-item">
@@ -3059,7 +3059,7 @@ section[id] {
                                 <div class="plastic-color-option" data-color="black" style="background: var(--black-plastic-bg);">
                                     <div class="color-label">Black</div>
                                 </div>
-                                <div class="plastic-color-option selected" data-color="blue" style="background: var(--blue-plastic-bg);">
+                                <div class="plastic-color-option" data-color="blue" style="background: var(--blue-plastic-bg);">
                                     <div class="color-label">Blue</div>
                                 </div>
                                 <div class="plastic-color-option" data-color="purple" style="background: var(--purple-plastic-bg);">
@@ -3077,7 +3077,7 @@ section[id] {
                                 <div class="plastic-color-option" data-color="orange" style="background: var(--orange-plastic-bg);">
                                     <div class="color-label">Orange</div>
                                 </div>
-                                <div class="plastic-color-option" data-color="pink" style="background: var(--pink-plastic-bg);">
+                                <div class="plastic-color-option selected" data-color="pink" style="background: var(--pink-plastic-bg);">
                                     <div class="color-label">Pink</div>
                                 </div>
                                 <div class="plastic-color-option" data-color="white" style="background: var(--white-plastic-bg);">
@@ -3830,7 +3830,7 @@ window.checkout = checkout;
             'black': 'var(--carousel-black-bg)'
         };
 
-        let selectedPlasticColor = 'blue';
+        let selectedPlasticColor = 'pink';
         let selectedFinishTypeValue = 'matte';
 
         // Initialize custom logo builder
@@ -3992,8 +3992,8 @@ window.checkout = checkout;
         clearCardBtn.addEventListener('click', () => {
             // Reset to default blue card
             plasticColorOptions.forEach(opt => opt.classList.remove('selected'));
-            document.querySelector('.plastic-color-option[data-color="blue"]').classList.add('selected');
-            selectedPlasticColor = 'blue';
+            document.querySelector('.plastic-color-option[data-color="pink"]').classList.add('selected');
+            selectedPlasticColor = 'pink';
             
             customFinishOptions.forEach(opt => opt.classList.remove('selected'));
             document.querySelector('.finish-option[data-finish="matte"]').classList.add('selected');

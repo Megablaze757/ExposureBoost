@@ -56,24 +56,29 @@
       display:flex; gap:20px; flex:1; justify-content:center; margin:0 20px;
     }
     .nav-center a{
-      color:white; font-weight:700; font-size:1rem; white-space:nowrap;
-      padding:8px 16px;
-      background: rgba(255,255,255,0.1);
-      border-radius:8px;
-      border: 1px solid rgba(255,255,255,0.2);
+      color:white; font-weight:900; font-size:.9rem; white-space:nowrap;
+      padding:5px 0;
+      position:relative;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
+    }
+    .nav-center a::after{
+      content:'';
+      position:absolute;
+      bottom:0; left:0;
+      width:0; height:2px;
+      background: var(--pink);
+      transition: width 0.3s ease;
     }
     .nav-center a:hover{
       color: var(--pink);
       transform: translateY(-2px);
-      background: rgba(255,255,255,0.2);
-      box-shadow: 0 4px 12px rgba(110, 77, 255, 0.3);
     }
+    .nav-center a:hover::after,
+    .nav-center a.active::after{ width:100%; }
     .nav-center a.active{
       color: var(--pink);
       font-weight:900;
-      background: rgba(255,255,255,0.15);
-      border-color: var(--pink);
     }
 
     .nav-right{
@@ -531,11 +536,11 @@
 
     <div class="nav-center">
       <a href="/">Home</a>
-      <a href="/metal">Metal</a>
-      <a href="/wood">Wood</a>
-      <a href="/plastic">Plastic</a>
+      <a href="/reviews" class="active">Review Management</a>
+      <a href="/metal">Metal Cards</a>
+      <a href="/wood">Wood Cards</a>
+      <a href="/plastic">Plastic Cards</a>
       <a href="/stands">Stands & Keyrings</a>
-      <a href="/reviews" class="active">Reviews</a>
     </div>
 
     <div class="nav-right">
@@ -551,15 +556,14 @@
   <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
   <div class="mobile-menu" id="mobileMenu" aria-label="Mobile menu">
     <a href="/" class="mobile-menu-item"><span>🏠</span> Home</a>
-    <a href="/metal" class="mobile-menu-item"><span>⚙️</span> Metal</a>
-    <a href="/wood" class="mobile-menu-item"><span>🌳</span> Wood</a>
-    <a href="/plastic" class="mobile-menu-item"><span>🔵</span> Plastic</a>
+    <a href="/reviews" class="mobile-menu-item active"><span>⭐</span> Review Management</a>
+    <a href="/metal" class="mobile-menu-item"><span>⭐</span> Metal Cards</a>
+    <a href="/wood" class="mobile-menu-item"><span>🌳</span> Wood Cards</a>
+    <a href="/plastic" class="mobile-menu-item"><span>🔵</span> Plastic Cards</a>
     <a href="/stands" class="mobile-menu-item"><span>📱</span> Stands & Keyrings</a>
-    <a href="/reviews" class="mobile-menu-item active"><span>⭐</span> Review management
-    </a>
     <div class="menu-divider"></div>
     <a href="https://api.whatsapp.com/send/?phone=447754888841&text=Hi%20ExposureBoost!%20I'd%20like%20to%20learn%20more%20about%20your%20Review%20Management%20service.&type=phone_number&app_absent=0" class="whatsapp mobile-menu-item" target="_blank" rel="noreferrer">
-      <span>💬</span> WhatsApp
+      <span>💬</span> WhatsApp Support
     </a>
   </div>
 
