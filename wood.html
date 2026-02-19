@@ -3348,97 +3348,187 @@ section[id] {
             renderCartItems();
         }
 
-        // Render cart items in modal with correct images
-        function renderCartItems() {
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
-                cartTotal.textContent = '£0';
-                return;
-            }
+// Render cart items in modal with correct images for ALL card types
+function renderCartItems() {
+    if (cart.length === 0) {
+        cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
+        cartTotal.textContent = '£0';
+        return;
+    }
 
-            let itemsHTML = '';
-            let total = 0;
+    let itemsHTML = '';
+    let total = 0;
 
-            cart.forEach((item, index) => {
-                total += item.price * item.quantity;
-                
-                // Determine which image to use based on item name
-                let imgSrc = 'newwalnut.webp'; // Default
-                
-                if (item.name.includes('Walnut')) {
-                    imgSrc = 'newwalnut.webp';
-                } else if (item.name.includes('Oak')) {
-                    imgSrc = 'newoak.webp';
-                } else if (item.name.includes('Sapele')) {
-                    imgSrc = 'newsapele.webp';
-                } else if (item.name.includes('Black Bamboo')) {
-                    imgSrc = 'newblackbamboo.webp';
-                } else if (item.name.includes('Bamboo') && !item.name.includes('Black')) {
-                    imgSrc = 'newbamboo.webp';
-                } else if (item.name.includes('Maple')) {
-                    imgSrc = 'newmaple.webp';
-                } else if (item.name.includes('Cherry')) {
-                    imgSrc = 'newcherry.webp';
-                } else {
-                    // Use the custom image from item if available
-                    imgSrc = item.img || 'newwalnut.webp';
-                }
-                
-                itemsHTML += `
-                    <div class="cart-item">
-                        <img src="${imgSrc}" alt="${item.name}">
-                        <div class="cart-item-details">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
-                        </div>
-                        <button class="remove-item" onclick="removeFromCart(${index})">×</button>
-                    </div>
-                `;
-            });
-
-            cartItems.innerHTML = itemsHTML;
-            cartTotal.textContent = `£${total}`;
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        
+        // Determine which image to use based on item name for ALL card types
+        let imgSrc = 'logo.png'; // Default fallback
+        
+        // WOOD CARDS
+        if (item.name.includes('Walnut')) {
+            imgSrc = 'newwalnut.webp';
+        } else if (item.name.includes('Oak')) {
+            imgSrc = 'newoak.webp';
+        } else if (item.name.includes('Sapele')) {
+            imgSrc = 'newsapele.webp';
+        } else if (item.name.includes('Black Bamboo')) {
+            imgSrc = 'newblackbamboo.webp';
+        } else if (item.name.includes('Bamboo') && !item.name.includes('Black')) {
+            imgSrc = 'newbamboo.webp';
+        } else if (item.name.includes('Maple')) {
+            imgSrc = 'newmaple.webp';
+        } else if (item.name.includes('Cherry')) {
+            imgSrc = 'newcherry.webp';
+        } 
+        // METAL CARDS - based on your metal.html file
+        else if (item.name.includes('Gold') || item.name.includes('gold')) {
+            imgSrc = 'goldmetal.webp';
+        } else if (item.name.includes('Silver') || item.name.includes('silver')) {
+            imgSrc = 'silver.webp';
+        } else if (item.name.includes('Rose Gold') || item.name.includes('rose gold')) {
+            imgSrc = 'rosegold.webp';
         }
-
-        // Add to cart function
-        function addToCart(name, price, quantity = 1, img = null) {
-            const existingItem = cart.find(item => item.name === name);
-
-            // Determine image if not provided
-            if (!img) {
-                if (name.includes('Walnut')) {
-                    img = 'newwalnut.webp';
-                } else if (name.includes('Oak')) {
-                    img = 'newoak.webp';
-                } else if (name.includes('Sapele')) {
-                    img = 'newsapele.webp';
-                } else if (name.includes('Black Bamboo')) {
-                    img = 'newblackbamboo.webp';
-                } else if (name.includes('Bamboo') && !name.includes('Black')) {
-                    img = 'newbamboo.webp';
-                } else if (name.includes('Maple')) {
-                    img = 'newmaple.webp';
-                } else if (name.includes('Cherry')) {
-                    img = 'newcherry.webp';
-                } else {
-                    img = 'newwalnut.webp';
-                }
-            }
-
-            if (existingItem) {
-                existingItem.quantity += quantity;
+        // PLASTIC CARDS
+        else if (item.name.includes('Plastic') || item.name.includes('plastic')) {
+            if (item.name.includes('Black')) {
+                imgSrc = 'newplasticblack.webp';
+            } else if (item.name.includes('Blue')) {
+                imgSrc = 'newplasticblue.webp';
+            } else if (item.name.includes('Gold')) {
+                imgSrc = 'newplasticgold.webp';
+            } else if (item.name.includes('Green')) {
+                imgSrc = 'newplasticgreen.webp';
+            } else if (item.name.includes('Orange')) {
+                imgSrc = 'newplasticorange.webp';
+            } else if (item.name.includes('Pink')) {
+                imgSrc = 'newplasticpink.webp';
+            } else if (item.name.includes('Purple')) {
+                imgSrc = 'newplasticpurple.webp';
+            } else if (item.name.includes('Red')) {
+                imgSrc = 'newplasticred.webp';
+            } else if (item.name.includes('Silver')) {
+                imgSrc = 'newplasticsilver.webp';
+            } else if (item.name.includes('White')) {
+                imgSrc = 'newplasticwhite.webp';
+            } else if (item.name.includes('Yellow')) {
+                imgSrc = 'newplasticyellow.webp';
             } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: quantity,
-                    img: img
-                });
+                imgSrc = 'plasticpic.webp'; // Default plastic card image
             }
-
-            updateCart();
-            showNotification(`${name} (${quantity}×) added to cart!`);
         }
+        // CUSTOM CARDS
+        else if (item.name.includes('Custom')) {
+            imgSrc = 'newcustom.webp';
+        }
+        // STANDS
+        else if (item.name.includes('Stand') || item.name.includes('stand')) {
+            imgSrc = 'heropic.webp'; // Using heropic.webp for stands as per your files
+        }
+        else {
+            // Use the custom image from item if available, otherwise fallback
+            imgSrc = item.img || 'logo.png';
+        }
+        
+        itemsHTML += `
+            <div class="cart-item">
+                <img src="${imgSrc}" alt="${item.name}" onerror="this.src='logo.png'">
+                <div class="cart-item-details">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
+                </div>
+                <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+            </div>
+        `;
+    });
+
+    cartItems.innerHTML = itemsHTML;
+    cartTotal.textContent = `£${total}`;
+}// Add to cart function - updated to better detect images
+function addToCart(name, price, quantity = 1, img = null) {
+    const existingItem = cart.find(item => item.name === name);
+
+    // Determine image if not provided
+    if (!img) {
+        // WOOD CARDS
+        if (name.includes('Walnut')) {
+            img = 'newwalnut.webp';
+        } else if (name.includes('Oak')) {
+            img = 'newoak.webp';
+        } else if (name.includes('Sapele')) {
+            img = 'newsapele.webp';
+        } else if (name.includes('Black Bamboo')) {
+            img = 'newblackbamboo.webp';
+        } else if (name.includes('Bamboo') && !name.includes('Black')) {
+            img = 'newbamboo.webp';
+        } else if (name.includes('Maple')) {
+            img = 'newmaple.webp';
+        } else if (name.includes('Cherry')) {
+            img = 'newcherry.webp';
+        } 
+        // METAL CARDS
+        else if (name.includes('Gold') || (name.includes('gold') && !name.includes('Rose'))) {
+            img = 'goldmetal.webp';
+        } else if (name.includes('Silver')) {
+            img = 'silver.webp';
+        } else if (name.includes('Rose Gold') || name.includes('rose gold')) {
+            img = 'rosegold.webp';
+        }
+        // PLASTIC CARDS
+        else if (name.includes('Plastic') || name.includes('plastic')) {
+            if (name.includes('Black')) {
+                img = 'newplasticblack.webp';
+            } else if (name.includes('Blue')) {
+                img = 'newplasticblue.webp';
+            } else if (name.includes('Gold')) {
+                img = 'newplasticgold.webp';
+            } else if (name.includes('Green')) {
+                img = 'newplasticgreen.webp';
+            } else if (name.includes('Orange')) {
+                img = 'newplasticorange.webp';
+            } else if (name.includes('Pink')) {
+                img = 'newplasticpink.webp';
+            } else if (name.includes('Purple')) {
+                img = 'newplasticpurple.webp';
+            } else if (name.includes('Red')) {
+                img = 'newplasticred.webp';
+            } else if (name.includes('Silver')) {
+                img = 'newplasticsilver.webp';
+            } else if (name.includes('White')) {
+                img = 'newplasticwhite.webp';
+            } else if (name.includes('Yellow')) {
+                img = 'newplasticyellow.webp';
+            } else {
+                img = 'plasticpic.webp';
+            }
+        }
+        // CUSTOM CARDS
+        else if (name.includes('Custom')) {
+            img = 'newcustom.webp';
+        }
+        // STANDS
+        else if (name.includes('Stand') || name.includes('stand')) {
+            img = 'heropic.webp';
+        }
+        else {
+            img = 'logo.png';
+        }
+    }
+
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: quantity,
+            img: img
+        });
+    }
+
+    updateCart();
+    showNotification(`${name} (${quantity}×) added to cart!`);
+}
 
         // Remove from cart
         function removeFromCart(index) {
