@@ -3199,6 +3199,27 @@ section[id] {
         const checkoutBtn = document.getElementById('checkoutBtn');
         const notification = document.getElementById('notification');
 
+        // Map product names to their image paths
+        const productImageMap = {
+            'Silver Metal Card': 'newsilver.webp',
+            'Rose Gold Metal Card': 'newrosegold.webp',
+            'Gold Metal Card': 'newgold.webp',
+            'Black Metal Card': 'newblack.webp',
+            'Blue Metal Card': 'newblue.webp',
+            'Green Metal Card': 'newgreen.webp',
+            'Purple Metal Card': 'newpurple.webp',
+            'White Metal Card': 'newwhite.webp',
+            'Custom Metal Card': 'newcustom.webp',
+            // Engraving variants - fallback to base image
+        };
+
+        // Get image path for product
+        function getProductImage(productName) {
+            // Extract base name (remove engraving suffix if present)
+            const baseName = productName.split(' (')[0];
+            return productImageMap[baseName] || 'newblack.webp'; // fallback to black
+        }
+
         // Update cart display
         function updateCart() {
             cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -3219,9 +3240,10 @@ section[id] {
 
             cart.forEach((item, index) => {
                 total += item.price * item.quantity;
+                const imageSrc = getProductImage(item.name);
                 itemsHTML += `
                     <div class="cart-item">
-                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
+                        <img src="${imageSrc}" alt="${item.name}">
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
@@ -3994,6 +4016,7 @@ carouselNext.addEventListener('click', nextSlide);
             console.log('5. ADDED: Auto-scroll functionality (5 seconds) ✓');
             console.log('6. FIXED: Swipe functionality with proper circular navigation ✓');
             console.log('7. REMOVED: Gallery page link from mobile menu ✓');
+            console.log('8. FIXED: Cart now displays correct product images for each metal card ✓');
             
             initCarousel();
             updateCart();
