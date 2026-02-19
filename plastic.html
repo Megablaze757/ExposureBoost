@@ -38,7 +38,6 @@
     --orange-plastic-bg: linear-gradient(135deg, #FF9800, #EF6C00);
     --pink-plastic-bg: linear-gradient(135deg, #E91E63, #AD1457);
     --white-plastic-bg: linear-gradient(135deg, #FFFFFF, #E0E0E0);
-    --gold-plastic-bg: linear-gradient(135deg, #00BCD4, #00838F);
     --silver-plastic-bg: linear-gradient(135deg, #B0BEC5, #78909C);
     --gold-plastic-bg: linear-gradient(135deg, #FFD700, #FFAB00);
     
@@ -52,7 +51,6 @@
     --carousel-orange-bg: linear-gradient(135deg, #0A1A2F 0%, #EF6C00 100%);
     --carousel-pink-bg: linear-gradient(135deg, #0A1A2F 0%, #AD1457 100%);
     --carousel-white-bg: linear-gradient(135deg, #0A1A2F 0%, #E0E0E0 100%);
-    --carousel-gold-bg: linear-gradient(135deg, #0A1A2F 0%, #00838F 100%);
     --carousel-silver-bg: linear-gradient(135deg, #0A1A2F 0%, #78909C 100%);
     --carousel-gold-bg: linear-gradient(135deg, #0A1A2F 0%, #FFAB00 100%);
     
@@ -77,8 +75,8 @@ body {
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: linear-gradient(135deg, #0A1A2F 0%, #1A2B4F 100%);
-        transition: background 0.4s ease;
-color: var(--white);
+    transition: background 0.4s ease;
+    color: var(--white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     touch-action: manipulation;
@@ -131,10 +129,6 @@ a {
     height: 40px;
     width: auto;
     object-fit: contain;
-}
-
-.logo-text {
-    display: none;
 }
 
 /* HAMBURGER MENU */
@@ -642,7 +636,6 @@ section[id] {
 .hero-card-container {
     width: 100%;
     max-width: 500px;
-    /* Keep the same 500x300 “card” proportions at every screen size */
     aspect-ratio: 5 / 3;
     height: auto;
     margin: 0 auto 40px;
@@ -655,7 +648,6 @@ section[id] {
     width: 100%;
     height: 100%;
     border-radius: 20px;
-    /* Allow the card shadow to render outside the bounds (like the wood page) */
     overflow: visible;
     background: transparent;
     display: flex;
@@ -680,13 +672,7 @@ section[id] {
     border-radius: 20px;
     display: block;
     transition: transform 0.3s ease;
-    /* Add depth so the rounded corners read clearly (matches wood hero treatment) */
     filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.35));
-}
-
-/* Remove upload overlay from hero card */
-.hero-card-upload-overlay {
-    display: none !important;
 }
 
 .hero-text {
@@ -1041,7 +1027,6 @@ section[id] {
     width: 100%;
     overflow: hidden;
     padding: 0 60px;
-    /* Prevent text selection during swipe */
     user-select: none;
     -webkit-user-select: none;
 }
@@ -1063,17 +1048,14 @@ section[id] {
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     gap: 30px;
     padding: 10px 0;
-    /* Enable touch scrolling */
     touch-action: pan-y;
     user-select: none;
 }
 
-/* For touch devices - smoother scrolling */
 .plastic-carousel-track.swiping {
     transition: none;
 }
 
-/* Carousel cards matching bestseller style */
 .plastic-carousel-card {
     flex: 0 0 calc(33.333% - 20px);
     border-radius: 20px;
@@ -1157,10 +1139,7 @@ section[id] {
     color: #1a1a1a;
 }
 
-
-
 .plastic-carousel-card.silver {
-    /* Metallic silver with subtle iridescent colour (still reads as SILVER) */
     background: linear-gradient(135deg,
         rgba(250, 252, 255, 0.98) 0%,
         rgba(214, 225, 234, 0.96) 28%,
@@ -1171,7 +1150,6 @@ section[id] {
     color: #0A1A2F;
 }
 
-/* Iridescent highlight layer for Silver */
 .plastic-carousel-card.silver::after {
     content: '';
     position: absolute;
@@ -1186,17 +1164,11 @@ section[id] {
     opacity: 0.9;
 }
 
-.plastic-carousel-card.gold {
-    background: radial-gradient(circle at top, rgba(255, 215, 0, 0.9), rgba(255, 171, 0, 0.95));
-    color: #1A1A1A;
-}
-
 .plastic-carousel-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Carousel card image */
 .plastic-carousel-image {
     width: 100%;
     height: 200px;
@@ -1228,30 +1200,6 @@ section[id] {
     margin-bottom: 10px;
 }
 
-.plastic-carousel-card.blue .plastic-carousel-title,
-.plastic-carousel-card.purple .plastic-carousel-title,
-.plastic-carousel-card.red .plastic-carousel-title,
-.plastic-carousel-card.green .plastic-carousel-title,
-.plastic-carousel-card.orange .plastic-carousel-title,
-.plastic-carousel-card.pink .plastic-carousel-title,
-.plastic-carousel-card.gold .plastic-carousel-title {
-    color: #FFFFFF;
-}
-
-.plastic-carousel-card.black .plastic-carousel-title {
-    color: #E0E0E0;
-}
-
-.plastic-carousel-card.yellow .plastic-carousel-title,
-.plastic-carousel-card.white .plastic-carousel-title,
-.plastic-carousel-card.gold .plastic-carousel-title {
-    color: #1A1A1A;
-}
-
-.plastic-carousel-card.silver .plastic-carousel-title {
-    color: #ECEFF1;
-}
-
 .plastic-carousel-description {
     line-height: 1.6;
     margin-bottom: 20px;
@@ -1259,58 +1207,10 @@ section[id] {
     flex-grow: 1;
 }
 
-.plastic-carousel-card.blue .plastic-carousel-description,
-.plastic-carousel-card.purple .plastic-carousel-description,
-.plastic-carousel-card.red .plastic-carousel-description,
-.plastic-carousel-card.green .plastic-carousel-description,
-.plastic-carousel-card.orange .plastic-carousel-description,
-.plastic-carousel-card.pink .plastic-carousel-description,
-.plastic-carousel-card.gold .plastic-carousel-description {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.plastic-carousel-card.black .plastic-carousel-description {
-    color: rgba(224, 224, 224, 0.9);
-}
-
-.plastic-carousel-card.yellow .plastic-carousel-description,
-.plastic-carousel-card.white .plastic-carousel-description,
-.plastic-carousel-card.gold .plastic-carousel-description {
-    color: rgba(26, 26, 26, 0.9);
-}
-
-.plastic-carousel-card.silver .plastic-carousel-description {
-    color: rgba(236, 239, 241, 0.9);
-}
-
 .plastic-carousel-price {
     font-size: 1.8rem;
     font-weight: 900;
     margin-bottom: 20px;
-}
-
-.plastic-carousel-card.blue .plastic-carousel-price,
-.plastic-carousel-card.purple .plastic-carousel-price,
-.plastic-carousel-card.red .plastic-carousel-price,
-.plastic-carousel-card.green .plastic-carousel-price,
-.plastic-carousel-card.orange .plastic-carousel-price,
-.plastic-carousel-card.pink .plastic-carousel-price,
-.plastic-carousel-card.gold .plastic-carousel-price {
-    color: #FFFFFF;
-}
-
-.plastic-carousel-card.black .plastic-carousel-price {
-    color: #E0E0E0;
-}
-
-.plastic-carousel-card.yellow .plastic-carousel-price,
-.plastic-carousel-card.white .plastic-carousel-price,
-.plastic-carousel-card.gold .plastic-carousel-price {
-    color: #1A1A1A;
-}
-
-.plastic-carousel-card.silver .plastic-carousel-price {
-    color: #ECEFF1;
 }
 
 .plastic-carousel-price span {
@@ -1369,12 +1269,6 @@ section[id] {
     opacity: 0.3;
     cursor: not-allowed;
     transform: translateY(-50%) scale(1);
-}
-
-.carousel-nav.disabled:hover {
-    background: rgba(227, 242, 253, 0.3);
-    transform: translateY(-50%) scale(1);
-    box-shadow: none;
 }
 
 @media (max-width: 768px) {
@@ -1567,7 +1461,6 @@ section[id] {
     z-index: 2;
 }
 
-/* MOBILE OPTIMIZED LAYOUT - SINGLE COLUMN */
 .logo-builder-container {
     display: flex;
     flex-direction: column;
@@ -1575,7 +1468,6 @@ section[id] {
     margin: 40px 0;
 }
 
-/* Preview Section - Now on top */
 .preview-container {
     background: rgba(33, 150, 243, 0.1);
     border-radius: 24px;
@@ -1718,7 +1610,6 @@ section[id] {
     color: var(--plastic-light);
 }
 
-/* Clear Card Button */
 .clear-card-btn {
     width: 100%;
     padding: 16px;
@@ -1749,22 +1640,20 @@ section[id] {
     transform: none !important;
 }
 
-/* Selection Options - Now all below the card */
 .selection-options {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-/* Plastic Color Selection - NOW DIRECTLY BELOW THE CARD - EXTRA SMALL FOR MOBILE */
 .plastic-colors-section {
     background: rgba(33, 150, 243, 0.1);
     border-radius: 16px;
     padding: 15px;
     border: 1px solid rgba(227, 242, 253, 0.2);
     backdrop-filter: blur(10px);
-    order: 1; /* Make sure it appears first after the card */
-    margin-top: -10px; /* Pull it closer to the card */
+    order: 1;
+    margin-top: -10px;
 }
 
 .plastic-colors-title {
@@ -1775,7 +1664,6 @@ section[id] {
     text-align: center;
 }
 
-/* EXTRA SMALL PLASTIC COLOR GRID FOR MOBILE */
 .plastic-colors-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1803,7 +1691,6 @@ section[id] {
     }
 }
 
-/* EXTRA SMALL PLASTIC COLOR BUTTONS */
 .plastic-color-option {
     aspect-ratio: 1;
     border-radius: 6px;
@@ -1813,7 +1700,7 @@ section[id] {
     overflow: hidden;
     border: 2px solid transparent;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    min-height: 30px; /* MUCH SMALLER */
+    min-height: 30px;
 }
 
 .plastic-color-option:hover {
@@ -1827,7 +1714,6 @@ section[id] {
     transform: scale(1.05);
 }
 
-/* EXTRA SMALL COLOR LABELS */
 .color-label {
     position: absolute;
     bottom: 2px;
@@ -1835,7 +1721,7 @@ section[id] {
     right: 0;
     text-align: center;
     color: white;
-    font-size: 0.55rem; /* SMALLER FONT */
+    font-size: 0.55rem;
     font-weight: 700;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
     padding: 1px 2px;
@@ -1843,10 +1729,9 @@ section[id] {
     border-radius: 3px;
     margin: 0 2px;
     line-height: 1;
-    display: none; /* Hide labels on small buttons */
+    display: none;
 }
 
-/* For light colors, use dark text */
 .plastic-color-option[data-color="yellow"] .color-label,
 .plastic-color-option[data-color="white"] .color-label,
 .plastic-color-option[data-color="gold"] .color-label {
@@ -1855,7 +1740,6 @@ section[id] {
     background: rgba(255, 255, 255, 0.7);
 }
 
-/* Show labels only on selected or hover */
 .plastic-color-option.selected .color-label,
 .plastic-color-option:hover .color-label {
     display: block;
@@ -1868,7 +1752,6 @@ section[id] {
     }
 }
 
-/* Finish Selection */
 .finish-section {
     background: rgba(33, 150, 243, 0.1);
     border-radius: 20px;
@@ -1929,7 +1812,6 @@ section[id] {
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* Logo Upload Section */
 .logo-upload-section {
     background: rgba(33, 150, 243, 0.1);
     border-radius: 20px;
@@ -2008,12 +1890,10 @@ section[id] {
     font-style: italic;
 }
 
-/* File input */
 #logoFileInput {
     display: none;
 }
 
-/* Upload Actions */
 .upload-actions {
     display: flex;
     flex-direction: column;
@@ -2072,7 +1952,6 @@ section[id] {
     transform: none !important;
 }
 
-/* Logo Size Controls */
 .logo-size-section {
     background: rgba(33, 150, 243, 0.1);
     border-radius: 20px;
@@ -2167,7 +2046,6 @@ section[id] {
     border-color: var(--plastic-light);
 }
 
-/* Add to Cart Button */
 .add-to-cart-btn {
     width: 100%;
     padding: 18px;
@@ -2204,7 +2082,6 @@ section[id] {
     order: 6;
 }
 
-/* DESKTOP LAYOUT - TWO COLUMNS */
 @media (min-width: 992px) {
     .logo-builder-container {
         display: grid;
@@ -2213,7 +2090,6 @@ section[id] {
         margin: 40px 0;
     }
     
-    /* Reset order for desktop */
     .preview-container,
     .plastic-colors-section,
     .finish-section,
@@ -2230,7 +2106,6 @@ section[id] {
         gap: 25px;
     }
     
-    /* Make plastic color buttons larger on desktop */
     .plastic-colors-section {
         padding: 20px;
         margin-top: 0;
@@ -2249,11 +2124,10 @@ section[id] {
     .color-label {
         font-size: 0.65rem;
         padding: 2px 4px;
-        display: block; /* Always show labels on desktop */
+        display: block;
     }
 }
 
-/* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
     .section-title {
         font-size: 2rem;
@@ -2472,7 +2346,6 @@ section[id] {
     cursor: not-allowed;
 }
 
-/* Improved quantity input for mobile */
 .quantity-input {
     width: 80px;
     height: 48px;
@@ -2489,7 +2362,6 @@ section[id] {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Remove spinner buttons on mobile */
 .quantity-input::-webkit-outer-spin-button,
 .quantity-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -2501,7 +2373,6 @@ section[id] {
     box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.3);
 }
 
-/* Improved quantity presets for mobile */
 .quantity-presets {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -2736,7 +2607,6 @@ section[id] {
     opacity: 1;
 }
     
-/* Disable hero zoom on mobile for smoother performance */
 @media (max-width: 767px) {
     .hero-card:hover {
         transform: none !important;
@@ -2836,8 +2706,8 @@ section[id] {
 
     <!-- STICKY NAV - PLASTIC THEME -->
     <nav class="nav" id="mainNav">
-        <a href="index.html" class="logo">
-            <img src="logo.png" alt=" Logo" class="logo-img">
+        <a href="/" class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
         </a>
 
         <button class="hamburger" id="hamburgerBtn">
@@ -2847,12 +2717,13 @@ section[id] {
         </button>
 
         <div class="nav-center">
-            <a href="index.html">Home</a>
-            <a href="metal.html">Metal Cards</a>
-            <a href="wood.html">Wood Cards</a>
-            <a href="plastic.html" class="active">Plastic Cards</a>
-            <a href="custom.html">Custom Cards</a>
-            <a href="stands.html">Stands</a>
+            <a href="/">Home</a>
+            <a href="/metal">Metal Cards</a>
+            <a href="/wood">Wood Cards</a>
+            <a href="/plastic" class="active">Plastic Cards</a>
+            <a href="/custom">Custom Cards</a>
+            <a href="/stands">Stands</a>
+            <a href="/reviews">Reviews</a>
         </div>
 
         <div class="nav-right">
@@ -2871,23 +2742,26 @@ section[id] {
 
     <!-- MOBILE MENU - PLASTIC THEME -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html" class="mobile-menu-item">
+        <a href="/" class="mobile-menu-item">
             <span>🏠</span> Home
         </a>
-        <a href="metal.html" class="mobile-menu-item">
+        <a href="/metal" class="mobile-menu-item">
             <span>⭐</span> Metal Cards
         </a>
-        <a href="wood.html" class="mobile-menu-item">
+        <a href="/wood" class="mobile-menu-item">
             <span>🌳</span> Wood Cards
         </a>
-        <a href="plastic.html" class="mobile-menu-item active">
+        <a href="/plastic" class="mobile-menu-item active">
             <span>🔵</span> Plastic Cards
         </a>
-        <a href="custom.html" class="mobile-menu-item">
+        <a href="/custom" class="mobile-menu-item">
             <span>✨</span> Custom Cards
         </a>
-        <a href="stands.html" class="mobile-menu-item">
+        <a href="/stands" class="mobile-menu-item">
             <span>📱</span> Stands
+        </a>
+        <a href="/reviews" class="mobile-menu-item">
+            <span>⭐</span> Reviews
         </a>
 
         <div class="menu-divider"></div>
@@ -2911,8 +2785,7 @@ section[id] {
                 
                 <div class="hero-card-container">
                     <div class="hero-card" id="heroCard">
-                        <!-- Static hero card image - no upload functionality -->
-                        <img src="newplasticpink.webp" alt="Blue Plastic NFC Card">
+                        <img src="newplasticpink.webp" alt="Pink Plastic NFC Card">
                     </div>
                 </div>
 
@@ -2942,7 +2815,7 @@ section[id] {
                     <p class="bestseller-description">Professional custom-designed plastic card. Trustworthy and modern, perfect for any business looking to stand out.</p>
                     <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Blue Plastic Card" data-price="65">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Blue Plastic Card" data-price="65" data-image="newplasticblue.webp">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
@@ -2959,7 +2832,7 @@ section[id] {
                     <p class="bestseller-description">Creative purple plastic card. Perfect for creative agencies, design studios, and innovative brands.</p>
                     <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Purple Plastic Card" data-price="65">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Purple Plastic Card" data-price="65" data-image="newplasticpurple.webp">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
@@ -2976,14 +2849,14 @@ section[id] {
                     <p class="bestseller-description">Classic black plastic card. Elegant and professional, ideal for any industry or personal branding.</p>
                     <div class="bestseller-price">£65 <span>one-time · card + profile</span></div>
                     <div class="bestseller-actions">
-                        <button class="btn btn-primary add-to-cart" data-name="Black Plastic Card" data-price="65">🛒 Add to Cart</button>
+                        <button class="btn btn-primary add-to-cart" data-name="Black Plastic Card" data-price="65" data-image="newplasticblack.webp">🛒 Add to Cart</button>
                         <button class="btn btn-secondary view-example">↗ Example</button>
                     </div>
                 </div>
             </div>
         </section>
 
-                <!-- CAROUSEL SECTION - 11 PLASTIC COLORS -->
+        <!-- CAROUSEL SECTION - 11 PLASTIC COLORS -->
         <section class="carousel-section" id="carousel">
             <div class="carousel-container">
                 <div class="section-header">
@@ -3004,7 +2877,7 @@ section[id] {
                             <p class="plastic-carousel-description">Feminine pink plastic card. Ideal for beauty brands, fashion, and brands targeting female audiences.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Pink Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Pink Plastic Card" data-price="65" data-image="newplasticpink.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3017,7 +2890,7 @@ section[id] {
                             <p class="plastic-carousel-description">Creative purple plastic card. Perfect for design studios, beauty brands, and innovative startups.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Purple Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Purple Plastic Card" data-price="65" data-image="newplasticpurple.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3030,7 +2903,7 @@ section[id] {
                             <p class="plastic-carousel-description">Bright yellow plastic card. Great for creative agencies, children's brands, and attention-grabbing marketing.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Yellow Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Yellow Plastic Card" data-price="65" data-image="newplasticyellow.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3043,7 +2916,7 @@ section[id] {
                             <p class="plastic-carousel-description">Bold red plastic card. Great for entertainment, food & beverage, and brands wanting to make a statement.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Red Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Red Plastic Card" data-price="65" data-image="newplasticred.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3056,7 +2929,7 @@ section[id] {
                             <p class="plastic-carousel-description">Trustworthy blue plastic card. Ideal for professional services, tech companies, and corporate brands.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Blue Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Blue Plastic Card" data-price="65" data-image="newplasticblue.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3069,7 +2942,7 @@ section[id] {
                             <p class="plastic-carousel-description">Natural green plastic card. Perfect for eco-friendly brands, health services, and organic products.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Green Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Green Plastic Card" data-price="65" data-image="newplasticgreen.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3082,7 +2955,7 @@ section[id] {
                             <p class="plastic-carousel-description">Energetic orange plastic card. Perfect for fitness brands, startups, and companies wanting to show creativity.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Orange Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Orange Plastic Card" data-price="65" data-image="newplasticorange.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3095,7 +2968,7 @@ section[id] {
                             <p class="plastic-carousel-description">Luxurious gold plastic card. Ideal for premium brands, jewelry, and high-end services.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Gold Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Gold Plastic Card" data-price="65" data-image="newplasticgold.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3108,7 +2981,7 @@ section[id] {
                             <p class="plastic-carousel-description">Metallic silver plastic card. Perfect for luxury brands, automotive, and premium technology products.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Silver Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Silver Plastic Card" data-price="65" data-image="newplasticsilver.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3121,7 +2994,7 @@ section[id] {
                             <p class="plastic-carousel-description">Clean white plastic card. Perfect for minimalist brands, medical services, and modern design studios.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="White Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="White Plastic Card" data-price="65" data-image="newplasticwhite.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
 
@@ -3134,7 +3007,7 @@ section[id] {
                             <p class="plastic-carousel-description">Classic and professional black plastic card. Perfect for any industry wanting an elegant, timeless look.</p>
                             <div class="plastic-carousel-price">£65 <span>one-time · card + profile</span></div>
                             <div class="plastic-carousel-actions">
-                                <button class="btn btn-primary add-to-cart-carousel" data-name="Black Plastic Card" data-price="65">🛒 Add to Cart</button>
+                                <button class="btn btn-primary add-to-cart-carousel" data-name="Black Plastic Card" data-price="65" data-image="newplasticblack.webp">🛒 Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -3208,9 +3081,6 @@ section[id] {
                                 </div>
                                 <div class="plastic-color-option" data-color="white" style="background: var(--white-plastic-bg);">
                                     <div class="color-label">White</div>
-                                </div>
-                                <div class="plastic-color-option" data-color="gold" style="background: var(--gold-plastic-bg);">
-                                    <div class="color-label">gold</div>
                                 </div>
                                 <div class="plastic-color-option" data-color="silver" style="background: var(--silver-plastic-bg);">
                                     <div class="color-label">Silver</div>
@@ -3399,7 +3269,6 @@ section[id] {
         let isDragging = false;
         let dragThreshold = 50; // Minimum drag distance to trigger slide change
 
-
         // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileCloseBtn = document.getElementById('mobileCloseBtn');
@@ -3535,7 +3404,7 @@ section[id] {
                 total += item.price * item.quantity;
                 itemsHTML += `
                     <div class="cart-item">
-                        <img src="https://images.unsplash.com/photo-1588514912908-8f5891714f8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="${item.name}">
+                        <img src="${item.image || 'logo.png'}" alt="${item.name}">
                         <div class="cart-item-details">
                             <div class="cart-item-name">${item.name}</div>
                             <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
@@ -3550,7 +3419,7 @@ section[id] {
         }
 
         // Add to cart function
-        function addToCart(name, price, quantity = 1) {
+        function addToCart(name, price, image, quantity = 1) {
             const existingItem = cart.find(item => item.name === name);
 
             if (existingItem) {
@@ -3559,6 +3428,7 @@ section[id] {
                 cart.push({
                     name: name,
                     price: price,
+                    image: image,
                     quantity: quantity
                 });
             }
@@ -3648,7 +3518,8 @@ section[id] {
                 button.addEventListener('click', (e) => {
                     const name = e.target.dataset.name;
                     const price = parseInt(e.target.dataset.price);
-                    addToCart(name, price);
+                    const image = e.target.dataset.image;
+                    openFinishModal(name, price, image);
                 });
             });
 
@@ -3657,8 +3528,8 @@ section[id] {
                 button.addEventListener('click', (e) => {
                     const name = e.target.dataset.name;
                     const price = parseInt(e.target.dataset.price);
-                    // Open finish modal instead of directly adding to cart
-                    openFinishModal(name, price);
+                    const image = e.target.dataset.image;
+                    openFinishModal(name, price, image);
                 });
             });
 
@@ -3685,8 +3556,8 @@ section[id] {
         const quantityPresetBtns = document.querySelectorAll('.quantity-preset-btn');
 
         // Open finish modal
-        function openFinishModal(name, price) {
-            currentFinishData = { name, price };
+        function openFinishModal(name, price, image) {
+            currentFinishData = { name, price, image };
             selectedPlasticText.textContent = name.split(' ')[0]; // Get plastic type from name
             finishModal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -3773,7 +3644,7 @@ section[id] {
             const finishName = finishType === 'glossy' ? 'Glossy Finish' : 'Matte Finish';
             const itemName = `${currentFinishData.name} (${finishName})`;
             
-            addToCart(itemName, currentFinishData.price, finishQuantity);
+            addToCart(itemName, currentFinishData.price, currentFinishData.image, finishQuantity);
             closeFinishModal();
         });
 
@@ -3817,6 +3688,21 @@ section[id] {
             'black': 'Black Plastic Card'
         };
 
+        // Image mapping
+        const plasticImageMap = {
+            'pink': 'newplasticpink.webp',
+            'purple': 'newplasticpurple.webp',
+            'yellow': 'newplasticyellow.webp',
+            'red': 'newplasticred.webp',
+            'blue': 'newplasticblue.webp',
+            'green': 'newplasticgreen.webp',
+            'orange': 'newplasticorange.webp',
+            'gold': 'newplasticgold.webp',
+            'silver': 'newplasticsilver.webp',
+            'white': 'newplasticwhite.webp',
+            'black': 'newplasticblack.webp'
+        };
+
         // Finish type mapping
         const finishTypeMap = {
             'glossy': 'Glossy Finish',
@@ -3853,7 +3739,7 @@ section[id] {
             'black': 'var(--carousel-black-bg)'
         };
 
-        let selectedPlasticColor = 'pink';
+        let selectedPlasticColor = 'blue';
         let selectedFinishTypeValue = 'glossy';
 
         // Initialize custom logo builder
@@ -3872,6 +3758,15 @@ section[id] {
             
             // Update counter
             cardCounter.textContent = plasticTypeMap[selectedPlasticColor].split(' ')[0];
+            
+            // Update hero card image
+            if (heroCard) {
+                const heroImg = heroCard.querySelector('img');
+                if (heroImg) {
+                    heroImg.src = plasticImageMap[selectedPlasticColor] || 'newplasticpink.webp';
+                    heroImg.alt = plasticTypeMap[selectedPlasticColor] + ' - Click to upload logo';
+                }
+            }
             
             // Show/hide logo and update size
             if (uploadedLogoGlobal) {
@@ -4040,9 +3935,9 @@ section[id] {
             const cardName = plasticTypeMap[selectedPlasticColor];
             const finishType = finishTypeMap[selectedFinishTypeValue];
             const itemName = `${cardName} (${finishType})`;
+            const image = plasticImageMap[selectedPlasticColor];
             
-            // Open finish modal with quantity selection
-            openFinishModal(cardName, 65);
+            openFinishModal(cardName, 65, image);
         });
 
         // Logo size slider
@@ -4117,8 +4012,7 @@ section[id] {
             anchor.addEventListener('click', function (e) {
                 // If it's an external link or different page, allow normal navigation
                 if (this.getAttribute('target') === '_blank' || 
-                    !this.getAttribute('href').startsWith('#') ||
-                    this.getAttribute('href').includes('.html')) {
+                    !this.getAttribute('href').startsWith('#')) {
                     return;
                 }
                 
@@ -4629,6 +4523,3 @@ section[id] {
 </script>
 </body>
 </html>
-
-
-
