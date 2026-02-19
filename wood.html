@@ -2788,29 +2788,29 @@ section[id] {
             <button class="close-engraving" id="closeEngraving">×</button>
             <div class="engraving-header">
                 <h3>Select Engraving Type</h3>
-                <p>Choose between natural wood grain or laser-burned engraving for your <span id="selectedWoodText" class="highlight-text">Walnut</span> wood card</p>
+                <p>Choose how you'd like your <span id="selectedWoodText" class="highlight-text">Walnut</span> wood card personalised</p>
             </div>
 
             <div class="engraving-options">
-                <div class="engraving-option selected" data-engraving="natural">
+                <div class="engraving-option selected" data-engraving="printed">
                     <div class="engraving-image">
-                        <span>🌳</span>
+                        <span>🖨️</span>
                     </div>
-                    <div class="engraving-label">Natural Grain</div>
+                    <div class="engraving-label">Printed</div>
                     <div class="engraving-price">No extra cost</div>
                     <div class="engraving-description">
-                        Showcases the natural beauty of wood grain. Perfect for organic brands and those wanting an authentic, earthy appearance.
+                        Full-colour printing directly onto the wood surface. Perfect for vibrant logos and detailed designs with maximum colour accuracy.
                     </div>
                 </div>
 
-                <div class="engraving-option" data-engraving="burned">
+                <div class="engraving-option" data-engraving="engraved">
                     <div class="engraving-image">
                         <span>🔥</span>
                     </div>
-                    <div class="engraving-label">Laser Burned</div>
+                    <div class="engraving-label">Engraved</div>
                     <div class="engraving-price">No extra cost</div>
                     <div class="engraving-description">
-                        Precise laser burning creates crisp, permanent engravings. Ideal for intricate logos and detailed designs that stand the test of time.
+                        Precise laser engraving burns your design permanently into the wood. Creates a tactile, premium finish that lasts forever.
                     </div>
                 </div>
             </div>
@@ -3193,7 +3193,7 @@ section[id] {
                         <div class="preview-details">
                             <div class="selected-card-info">
                                 <div class="card-name" id="selectedCardName">Black Bamboo Card</div>
-                                <div class="engraving-type" id="selectedEngravingType">Natural Grain</div>
+                                <div class="engraving-type" id="selectedEngravingType">Printed</div>
                             </div>
                             <div class="preview-price">£85</div>
                         </div>
@@ -3211,16 +3211,16 @@ section[id] {
                     <div class="selection-options">
                         <!-- Engraving Selection -->
                         <div class="engraving-section">
-                            <div class="engraving-title">Choose Engraving</div>
+                            <div class="engraving-title">Choose Finish</div>
                             <div class="engraving-options">
-                                <div class="engraving-option selected" data-engraving="natural">
-                                    <div class="engraving-icon">🌳</div>
-                                    <div class="engraving-name">Natural Grain</div>
+                                <div class="engraving-option selected" data-engraving="printed">
+                                    <div class="engraving-icon">🖨️</div>
+                                    <div class="engraving-name">Printed</div>
                                     <div class="engraving-price">No extra cost</div>
                                 </div>
-                                <div class="engraving-option" data-engraving="burned">
+                                <div class="engraving-option" data-engraving="engraved">
                                     <div class="engraving-icon">🔥</div>
-                                    <div class="engraving-name">Laser Burned</div>
+                                    <div class="engraving-name">Engraved</div>
                                     <div class="engraving-price">No extra cost</div>
                                 </div>
                             </div>
@@ -3929,7 +3929,7 @@ section[id] {
             if (!currentEngravingData) return;
             
             const engravingType = document.querySelector('.engraving-option.selected').dataset.engraving;
-            const engravingName = engravingType === 'natural' ? 'Natural Grain' : 'Laser Burned';
+            const engravingName = engravingType === 'printed' ? 'Printed' : 'Engraved';
             const itemName = `${currentEngravingData.name} (${engravingName})`;
             
             addToCart(itemName, currentEngravingData.price, engravingQuantity, currentEngravingData.img);
@@ -3974,8 +3974,8 @@ section[id] {
 
         // Engraving type mapping
         const engravingTypeMap = {
-            'natural': 'Natural Grain',
-            'burned': 'Laser Burned'
+            'printed': 'Printed',
+            'engraved': 'Engraved'
         };
 
         // Background mapping
@@ -4012,7 +4012,7 @@ section[id] {
         };
 
         let selectedWoodColor = 'black-bamboo';
-        let selectedEngravingTypeValue = 'natural';
+        let selectedEngravingTypeValue = 'printed';
 
         // Initialize custom logo builder
         function initCustomLogoBuilder() {
@@ -4178,8 +4178,8 @@ section[id] {
             selectedWoodColor = 'black-bamboo';
             
             customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
-            document.querySelector('.engraving-option[data-engraving="natural"]').classList.add('selected');
-            selectedEngravingTypeValue = 'natural';
+            document.querySelector('.engraving-option[data-engraving="printed"]').classList.add('selected');
+            selectedEngravingTypeValue = 'printed';
             
             // Clear logo if uploaded
             if (uploadedLogoGlobal) {

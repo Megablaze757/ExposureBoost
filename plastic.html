@@ -2623,33 +2623,33 @@ section[id] {
             <button class="close-finish" id="closeFinish">×</button>
             <div class="finish-header">
                 <h3>Select Finish Type</h3>
-                <p>Choose between glossy or matte finish for your <span id="selectedPlasticText" class="highlight-text">Blue</span> plastic card</p>
+                <p>Choose your finish for your <span id="selectedPlasticText" class="highlight-text">Blue</span> plastic card</p>
             </div>
 
             <div class="finish-options">
-                <div class="finish-option" data-finish="glossy">
-                    <div class="finish-image">
-                        <span>✨</span>
-                    </div>
-                    <div class="finish-label">
-                        <span>✨</span> Glossy Finish
-                    </div>
-                    <div class="finish-price">No extra cost</div>
-                    <div class="finish-description">
-                        High-shine finish that makes colors pop. Perfect for  brands and cards that need to stand out with a premium look.
-                    </div>
-                </div>
-
                 <div class="finish-option" data-finish="matte">
                     <div class="finish-image">
                         <span>🔳</span>
                     </div>
                     <div class="finish-label">
-                        <span>🔳</span> Matte Finish
+                        <span>🔳</span> Matte
                     </div>
                     <div class="finish-price">No extra cost</div>
                     <div class="finish-description">
-                        Subtle, non-reflective finish for a sophisticated look. Ideal for professional settings and brands wanting an elegant, understated appearance.
+                        Smooth, non-reflective finish for a sophisticated, understated look. Perfect for professional settings.
+                    </div>
+                </div>
+
+                <div class="finish-option" data-finish="spot-gloss">
+                    <div class="finish-image">
+                        <span>✨</span>
+                    </div>
+                    <div class="finish-label">
+                        <span>✨</span> Spot Gloss
+                    </div>
+                    <div class="finish-price">No extra cost</div>
+                    <div class="finish-description">
+                        Selective high-shine coating that makes your logo and key design elements pop with a premium, eye-catching effect.
                     </div>
                 </div>
             </div>
@@ -2722,7 +2722,7 @@ section[id] {
             <a href="/metal">Metal Cards</a>
             <a href="/wood">Wood Cards</a>
             <a href="/plastic" class="active">Plastic Cards</a>
->
+
             <a href="/stands">Stands & Keyrings</a>
             
         </div>
@@ -3095,7 +3095,7 @@ section[id] {
                         <div class="preview-details">
                             <div class="selected-card-info">
                                 <div class="card-name" id="selectedCardName">Blue Plastic Card</div>
-                                <div class="finish-type" id="selectedFinishType">Glossy Finish</div>
+                                <div class="finish-type" id="selectedFinishType">Matte</div>
                             </div>
                             <div class="preview-price">£65</div>
                         </div>
@@ -3115,14 +3115,14 @@ section[id] {
                         <div class="finish-section">
                             <div class="finish-title">Choose Finish</div>
                             <div class="finish-options">
-                                <div class="finish-option selected" data-finish="glossy">
-                                    <div class="finish-icon">✨</div>
-                                    <div class="finish-name">Glossy</div>
-                                    <div class="finish-price">No extra cost</div>
-                                </div>
-                                <div class="finish-option" data-finish="matte">
+                                <div class="finish-option selected" data-finish="matte">
                                     <div class="finish-icon">🔳</div>
                                     <div class="finish-name">Matte</div>
+                                    <div class="finish-price">No extra cost</div>
+                                </div>
+                                <div class="finish-option" data-finish="spot-gloss">
+                                    <div class="finish-icon">✨</div>
+                                    <div class="finish-name">Spot Gloss</div>
                                     <div class="finish-price">No extra cost</div>
                                 </div>
                             </div>
@@ -3796,8 +3796,8 @@ window.checkout = checkout;
 
         // Finish type mapping
         const finishTypeMap = {
-            'glossy': 'Glossy Finish',
-            'matte': 'Matte Finish'
+            'matte': 'Matte',
+            'spot-gloss': 'Spot Gloss'
         };
 
         // Background mapping
@@ -3831,7 +3831,7 @@ window.checkout = checkout;
         };
 
         let selectedPlasticColor = 'blue';
-        let selectedFinishTypeValue = 'glossy';
+        let selectedFinishTypeValue = 'matte';
 
         // Initialize custom logo builder
         function initCustomLogoBuilder() {
@@ -3996,8 +3996,8 @@ window.checkout = checkout;
             selectedPlasticColor = 'blue';
             
             customFinishOptions.forEach(opt => opt.classList.remove('selected'));
-            document.querySelector('.finish-option[data-finish="glossy"]').classList.add('selected');
-            selectedFinishTypeValue = 'glossy';
+            document.querySelector('.finish-option[data-finish="matte"]').classList.add('selected');
+            selectedFinishTypeValue = 'matte';
             
             // Clear logo if uploaded
             if (uploadedLogoGlobal) {
