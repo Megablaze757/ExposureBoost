@@ -3371,177 +3371,302 @@ section[id] {
             }
         });
 
-        // Cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const cartIcon = document.getElementById('cartIcon');
-        const cartCount = document.getElementById('cartCount');
-        const cartModal = document.getElementById('cartModal');
-        const closeCart = document.getElementById('closeCart');
-        const cartItems = document.getElementById('cartItems');
-        const cartTotal = document.getElementById('cartTotal');
-        const checkoutBtn = document.getElementById('checkoutBtn');
-        const notification = document.getElementById('notification');
+// Cart functionality
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+const cartIcon = document.getElementById('cartIcon');
+const cartCount = document.getElementById('cartCount');
+const cartModal = document.getElementById('cartModal');
+const closeCart = document.getElementById('closeCart');
+const cartItems = document.getElementById('cartItems');
+const cartTotal = document.getElementById('cartTotal');
+const checkoutBtn = document.getElementById('checkoutBtn');
+const notification = document.getElementById('notification');
 
-        // Update cart display
-        function updateCart() {
-            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCartItems();
-        }
+// COMPREHENSIVE IMAGE MAPPING FOR ALL CARD TYPES
+const cardImageMap = {
+    // WOOD CARDS
+    'Walnut Wood Card': 'newwalnut.webp',
+    'Oak Wood Card': 'newoak.webp',
+    'Sapele Wood Card': 'newsapele.webp',
+    'Black Bamboo Card': 'newblackbamboo.webp',
+    'Bamboo Wood Card': 'newbamboo.webp',
+    'Maple Wood Card': 'newmaple.webp',
+    'Cherry Wood Card': 'newcherry.webp',
+    
+    // METAL CARDS (based on your file list)
+    'Gold Metal Card': 'goldmetal.webp',
+    'Silver Metal Card': 'silver.webp',
+    'Rose Gold Metal Card': 'rosegold.webp',
+    
+    // PLASTIC CARDS - All colors
+    'Black Plastic Card': 'newplasticblack.webp',
+    'Blue Plastic Card': 'newplasticblue.webp',
+    'Gold Plastic Card': 'newplasticgold.webp',
+    'Green Plastic Card': 'newplasticgreen.webp',
+    'Orange Plastic Card': 'newplasticorange.webp',
+    'Pink Plastic Card': 'newplasticpink.webp',
+    'Purple Plastic Card': 'newplasticpurple.webp',
+    'Red Plastic Card': 'newplasticred.webp',
+    'Silver Plastic Card': 'newplasticsilver.webp',
+    'White Plastic Card': 'newplasticwhite.webp',
+    'Yellow Plastic Card': 'newplasticyellow.webp',
+    
+    // CUSTOM CARDS
+    'Custom Card': 'newcustom.webp',
+    
+    // STANDS
+    'Card Stand': 'heropic.webp',
+    'Display Stand': 'heropic.webp',
+    'Wooden Stand': 'heropic.webp',
+    'Acrylic Stand': 'heropic.webp'
+};
 
-        // Render cart items in modal
-        function renderCartItems() {
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
-                cartTotal.textContent = '£0';
-                return;
+// Fallback function to find image by partial name match
+function findImageByPartialName(name) {
+    name = name.toLowerCase();
+    
+    // WOOD CARDS
+    if (name.includes('walnut')) return 'newwalnut.webp';
+    if (name.includes('oak')) return 'newoak.webp';
+    if (name.includes('sapele')) return 'newsapele.webp';
+    if (name.includes('black bamboo')) return 'newblackbamboo.webp';
+    if (name.includes('bamboo') && !name.includes('black')) return 'newbamboo.webp';
+    if (name.includes('maple')) return 'newmaple.webp';
+    if (name.includes('cherry')) return 'newcherry.webp';
+    
+    // METAL CARDS
+    if (name.includes('rose gold')) return 'rosegold.webp';
+    if (name.includes('gold')) return 'goldmetal.webp';
+    if (name.includes('silver')) return 'silver.webp';
+    
+    // PLASTIC CARDS
+    if (name.includes('plastic')) {
+        if (name.includes('black')) return 'newplasticblack.webp';
+        if (name.includes('blue')) return 'newplasticblue.webp';
+        if (name.includes('gold')) return 'newplasticgold.webp';
+        if (name.includes('green')) return 'newplasticgreen.webp';
+        if (name.includes('orange')) return 'newplasticorange.webp';
+        if (name.includes('pink')) return 'newplasticpink.webp';
+        if (name.includes('purple')) return 'newplasticpurple.webp';
+        if (name.includes('red')) return 'newplasticred.webp';
+        if (name.includes('silver')) return 'newplasticsilver.webp';
+        if (name.includes('white')) return 'newplasticwhite.webp';
+        if (name.includes('yellow')) return 'newplasticyellow.webp';
+        return 'plasticpic.webp'; // Default plastic
+    }
+    
+    // CUSTOM CARDS
+    if (name.includes('custom')) return 'newcustom.webp';
+    
+    // STANDS
+    if (name.includes('stand')) return 'heropic.webp';
+    
+    // Default fallback
+    return 'logo.png';
+}
+
+// Update cart display
+function updateCart() {
+    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCartItems();
+}
+
+// Render cart items in modal with correct images for ALL card types
+function renderCartItems() {
+    if (cart.length === 0) {
+        cartItems.innerHTML = '<div class="empty-cart"><p>Your cart is empty</p><button class="btn-primary" onclick="closeCartModal()">Continue Shopping</button></div>';
+        cartTotal.textContent = '£0';
+        return;
+    }
+
+    let itemsHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        
+        // Get image - first try stored img, then exact match, then partial match
+        let imgSrc = item.img;
+        
+        if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null') {
+            // Try exact match first
+            imgSrc = cardImageMap[item.name];
+            
+            // If no exact match, try partial match
+            if (!imgSrc) {
+                imgSrc = findImageByPartialName(item.name);
             }
-
-            let itemsHTML = '';
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                total += item.price * item.quantity;
-                itemsHTML += `
-                    <div class="cart-item">
-                        <img src="${item.image || 'logo.png'}" alt="${item.name}">
-                        <div class="cart-item-details">
-                            <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
-                        </div>
-                        <button class="remove-item" onclick="removeFromCart(${index})">×</button>
-                    </div>
-                `;
-            });
-
-            cartItems.innerHTML = itemsHTML;
-            cartTotal.textContent = `£${total}`;
         }
-
-        // Add to cart function
-        function addToCart(name, price, image, quantity = 1) {
-            const existingItem = cart.find(item => item.name === name);
-
-            if (existingItem) {
-                existingItem.quantity += quantity;
-            } else {
-                cart.push({
-                    name: name,
-                    price: price,
-                    image: image,
-                    quantity: quantity
-                });
-            }
-
-            updateCart();
-            showNotification(`${name} (${quantity}×) added to cart!`);
+        
+        // Final fallback
+        if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null') {
+            imgSrc = 'logo.png';
         }
+        
+        itemsHTML += `
+            <div class="cart-item">
+                <img src="${imgSrc}" alt="${item.name}" 
+                     onerror="this.onerror=null; this.src='logo.png';"
+                     style="background: linear-gradient(135deg, #B76E3D, #8B4513);">
+                <div class="cart-item-details">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">£${item.price} × ${item.quantity}</div>
+                </div>
+                <button class="remove-item" onclick="removeFromCart(${index})">×</button>
+            </div>
+        `;
+    });
 
-        // Remove from cart
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
+    cartItems.innerHTML = itemsHTML;
+    cartTotal.textContent = `£${total}`;
+}
+
+// Add to cart function - enhanced for ALL card types
+function addToCart(name, price, quantity = 1, img = null) {
+    // Determine image if not provided or invalid
+    if (!img || img === 'undefined' || img === 'null') {
+        // Try exact match from map
+        img = cardImageMap[name];
+        
+        // If no exact match, try partial match
+        if (!img) {
+            img = findImageByPartialName(name);
         }
+    }
+    
+    // Final fallback
+    if (!img || img === 'undefined' || img === 'null') {
+        img = 'logo.png';
+    }
 
-        // Show notification
-        function showNotification(message) {
-            notification.textContent = message;
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
+    const existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+        existingItem.quantity += quantity;
+        // Update image if it was missing
+        if (!existingItem.img || existingItem.img === 'undefined' || existingItem.img === 'null') {
+            existingItem.img = img;
         }
-
-        // Open cart modal
-        function openCartModal() {
-            cartModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            closeMobileMenu();
-        }
-
-        // Close cart modal
-        function closeCartModal() {
-            cartModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Checkout functionality - WhatsApp integration
-        function checkout() {
-            if (cart.length === 0) {
-                showNotification('Your cart is empty!');
-                return;
-            }
-
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            // Format WhatsApp message
-            let message = "Hello! I'd like to place an order for the following items:\n\n";
-            
-            cart.forEach(item => {
-                message += `• ${item.name} × ${item.quantity} - £${item.price * item.quantity}\n`;
-            });
-            
-            message += `\nTotal: £${total}\n\n`;
-            message += "Please let me know the next steps to complete my order.";
-            
-            // Encode message for URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Create WhatsApp URL with your number
-            const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
-            
-            // Open WhatsApp
-            window.open(whatsappUrl, '_blank');
-            
-            // Clear cart after sending to WhatsApp
-            cart = [];
-            updateCart();
-            closeCartModal();
-        }
-
-        // Event listeners for cart
-        cartIcon.addEventListener('click', openCartModal);
-        closeCart.addEventListener('click', closeCartModal);
-        checkoutBtn.addEventListener('click', checkout);
-
-        // Close modal when clicking outside
-        cartModal.addEventListener('click', (e) => {
-            if (e.target === cartModal) {
-                closeCartModal();
-            }
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            quantity: quantity,
+            img: img
         });
+    }
 
-        // Add to cart buttons for bestseller cards
-        document.addEventListener('DOMContentLoaded', () => {
-            // Bestseller cards
-            document.querySelectorAll('.add-to-cart').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseInt(e.target.dataset.price);
-                    const image = e.target.dataset.image;
-                    openFinishModal(name, price, image);
-                });
-            });
+    updateCart();
+    showNotification(`${name} (${quantity}×) added to cart!`);
+}
 
-            // Carousel cards
-            document.querySelectorAll('.add-to-cart-carousel').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const name = e.target.dataset.name;
-                    const price = parseInt(e.target.dataset.price);
-                    const image = e.target.dataset.image;
-                    openFinishModal(name, price, image);
-                });
-            });
+// Remove from cart
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
 
-            // View example buttons
-            document.querySelectorAll('.view-example').forEach(button => {
-                button.addEventListener('click', () => {
-                    alert('Example functionality - in a real site this would show an example of the product.');
-                });
-            });
+// Show notification
+function showNotification(message) {
+    notification.textContent = message;
+    notification.classList.add('show');
+    setTimeout(() => {
+        notification.classList.remove('show');
+    }, 3000);
+}
 
-            updateCart();
+// Open cart modal
+function openCartModal() {
+    cartModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    closeMobileMenu();
+}
+
+// Close cart modal
+function closeCartModal() {
+    cartModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Checkout functionality - WhatsApp integration
+function checkout() {
+    if (cart.length === 0) {
+        showNotification('Your cart is empty!');
+        return;
+    }
+
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    // Format WhatsApp message
+    let message = "Hello! I'd like to place an order for the following items:\n\n";
+    
+    cart.forEach(item => {
+        message += `• ${item.name} × ${item.quantity} - £${item.price * item.quantity}\n`;
+    });
+    
+    message += `\nTotal: £${total}\n\n`;
+    message += "Please let me know the next steps to complete my order.";
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL with your number
+    const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
+    
+    // Clear cart after sending to WhatsApp
+    cart = [];
+    updateCart();
+    closeCartModal();
+}
+
+// Event listeners for cart
+cartIcon.addEventListener('click', openCartModal);
+closeCart.addEventListener('click', closeCartModal);
+checkoutBtn.addEventListener('click', checkout);
+
+// Close modal when clicking outside
+cartModal.addEventListener('click', (e) => {
+    if (e.target === cartModal) {
+        closeCartModal();
+    }
+});
+
+// Add to cart buttons for bestseller cards
+document.addEventListener('DOMContentLoaded', () => {
+    // Bestseller cards
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const name = e.target.dataset.name;
+            const price = parseInt(e.target.dataset.price);
+            const img = e.target.dataset.img;
+            addToCart(name, price, 1, img);
         });
+    });
+
+    // Carousel cards
+    document.querySelectorAll('.add-to-cart-carousel').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const name = e.target.dataset.name;
+            const price = parseInt(e.target.dataset.price);
+            const img = e.target.dataset.img;
+            // Open engraving modal instead of directly adding to cart
+            openEngravingModal(name, price, img);
+        });
+    });
+
+    // View example buttons
+    document.querySelectorAll('.view-example').forEach(button => {
+        button.addEventListener('click', () => {
+            alert('Example functionality - in a real site this would show an example of the product.');
+        });
+    });
+
+    updateCart();
+});
 
         // FINISH MODAL FUNCTIONALITY
         const closeFinish = document.getElementById('closeFinish');
