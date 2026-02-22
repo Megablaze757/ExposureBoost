@@ -6,2520 +6,12 @@
     <title>Metal Cards – Premium NFC Cards</title>
     <link rel="icon" href="logo.png" type="image/png">
     <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-:root {
-    /* METAL THEME COLORS - Rose gold/metal tones */
-    --rose-gold-light: #E0BFB8;
-    --rose-gold-medium: #D8A89D;
-    --rose-gold-dark: #B76E79;
-    --rose-gold-darker: #A05662;
-    --rose-gold-gradient: linear-gradient(135deg, #E0BFB8, #B76E79);
-    --rose-gold-dark-gradient: linear-gradient(135deg, #B76E79, #A05662);
-    --rose-gold-shadow: 0 30px 90px rgba(183, 110, 121, .25);
-    --rose-gold-glass: rgba(183, 110, 121, .15);
-    
-    /* METAL BACKGROUNDS - Dark metal-themed */
-    --metal-bg-dark: #1A0F0F;
-    --metal-bg-darker: #2D1A1A;
-    --metal-nav-bg: linear-gradient(135deg, rgba(183, 110, 121, 0.95), rgba(224, 191, 184, 0.95));
-    --metal-nav-scrolled: linear-gradient(135deg, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.9));
-    --metal-menu-bg: linear-gradient(135deg, rgba(183, 110, 121, 0.98), rgba(224, 191, 184, 0.98));
-    
-    /* METAL TYPE BACKGROUNDS */
-    --black-bg: linear-gradient(135deg, #000000, #333333);
-    --blue-bg: linear-gradient(135deg, #0066CC, #004488);
-    --green-bg: linear-gradient(135deg, #00AA55, #008844);
-    --purple-bg: linear-gradient(135deg, #8A2BE2, #6A1BC2);
-    --white-bg: linear-gradient(135deg, #FFFFFF, #F0F0F0);
-    --gold-bg: linear-gradient(135deg, #FFD700, #D4AF37);
-    --silver-bg: linear-gradient(135deg, #C0C0C0, #A9A9A9);
-    --rosegold-bg: linear-gradient(135deg, #B76E79, #E0BFB8);
-    --custom-bg: linear-gradient(135deg, #1A0F0F 0%, #3B1A5A 20%, #1A2F5A 40%, #1A5A3B 60%, #5A4A1A 80%, #5A1A2F 100%);
-    
-    /* CAROUSEL SECTION BACKGROUNDS - Darker versions */
-    --carousel-black-bg: linear-gradient(135deg, #2D1A1A 0%, #000000 100%);
-    --carousel-blue-bg: linear-gradient(135deg, #2D1A1A 0%, #004488 100%);
-    --carousel-green-bg: linear-gradient(135deg, #2D1A1A 0%, #008844 100%);
-    --carousel-purple-bg: linear-gradient(135deg, #2D1A1A 0%, #6A1BC2 100%);
-    --carousel-white-bg: linear-gradient(135deg, #2D1A1A 0%, #F0F0F0 100%);
-    --carousel-gold-bg: linear-gradient(135deg, #2D1A1A 0%, #D4AF37 100%);
-    --carousel-silver-bg: linear-gradient(135deg, #2D1A1A 0%, #A9A9A9 100%);
-    --carousel-rosegold-bg: linear-gradient(135deg, #2D1A1A 0%, #B76E79 100%);
-    --carousel-custom-bg: linear-gradient(135deg, #2D1A1A 0%, #5A1A2F 100%);
-    
-    /* Additional variables */
-    --white: #FFF5F3;
-    --black: #1A0F0F;
-    --wa: #25D366;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html,
-body {
-    height: 100%;
-    overflow-x: hidden;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-    color: var(--white);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    touch-action: manipulation;
-    background-attachment: fixed;
-}
-
-html {
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* STICKY NAV - METAL THEME */
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    background: var(--metal-nav-bg);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(224, 191, 184, 0.3);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    min-height: 70px;
-    box-shadow: 0 4px 20px rgba(183, 110, 121, 0.2);
-}
-
-.nav.scrolled {
-    padding: 12px 20px;
-    background: var(--metal-nav-scrolled);
-    box-shadow: 0 4px 30px rgba(183, 110, 121, 0.3);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.logo-img {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-}
-
-.logo-text {
-    display: none;
-}
-
-/* HAMBURGER MENU */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
-}
-
-.hamburger span {
-    width: 100%;
-    height: 2px;
-    background: var(--white);
-    border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    transform-origin: left center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-10px);
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg);
-}
-
-.nav-center {
-    display: flex;
-    gap: 15px;
-}
-
-.nav-center a {
-    text-decoration: none;
-    color: var(--white);
-    font-weight: 900;
-    font-size: .9rem;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    padding: 5px 0;
-    position: relative;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.nav-center a:hover {
-    color: var(--rose-gold-light);
-    transform: translateY(-2px);
-}
-
-.nav-center a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--rose-gold-light);
-    transition: width 0.3s ease;
-}
-
-.nav-center a:hover::after {
-    width: 100%;
-}
-
-.nav-right {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-.icon-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    color: var(--white);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.icon-btn:hover {
-    background: rgba(224, 191, 184, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(183, 110, 121, 0.2);
-}
-
-.cart-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: var(--rose-gold-light);
-    color: var(--black);
-    font-size: 10px;
-    min-width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    border: 2px solid rgba(224, 191, 184, 0.5);
-}
-
-.whatsapp {
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    color: var(--white);
-    padding: 8px 14px;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 13px;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-}
-
-.whatsapp:hover {
-    background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-}
-
-.whatsapp-icon {
-    display: none;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    color: var(--white);
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    transition: all 0.3s ease;
-}
-
-.whatsapp-icon:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
-}
-
-/* SIMPLE MOBILE MENU OVERLAY */
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 15, 15, 0.95);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-}
-
-.mobile-menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* SIMPLE MOBILE MENU */
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--metal-menu-bg);
-    backdrop-filter: blur(30px);
-    padding: 30px 20px 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    z-index: 1000;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-}
-
-.mobile-menu.active {
-    transform: translateX(0);
-}
-
-.mobile-menu a {
-    text-decoration: none;
-    color: var(--white);
-    font-weight: 700;
-    font-size: 18px;
-    padding: 18px 24px;
-    border-radius: 16px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.15);
-    text-align: left;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    margin-bottom: 4px;
-    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.mobile-menu a:active {
-    background: rgba(224, 191, 184, 0.25);
-}
-
-.mobile-menu a:hover {
-    background: rgba(224, 191, 184, 0.25);
-}
-
-.mobile-menu .whatsapp {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 17px;
-    padding: 20px 24px;
-    min-height: 64px;
-    justify-content: center;
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.mobile-menu .whatsapp:hover {
-    background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
-}
-
-.mobile-close-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.2);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: var(--white);
-    cursor: pointer;
-    z-index: 1002;
-    transition: all 0.3s ease;
-}
-
-.mobile-close-btn.show {
-    display: flex;
-}
-
-.mobile-close-btn:hover {
-    background: rgba(224, 191, 184, 0.3);
-    transform: rotate(90deg);
-}
-
-.menu-divider {
-    height: 1px;
-    background: rgba(224, 191, 184, 0.25);
-    margin: 20px 0;
-    width: 100%;
-}
-
-.menu-footer {
-    margin-top: auto;
-    padding-top: 20px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 13px;
-    border-top: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-/* Show hamburger and hide desktop nav on mobile */
-@media (max-width: 1024px) {
-    .nav-center,
-    .nav-right .whatsapp {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-right {
-        gap: 8px;
-    }
-
-    .nav {
-        padding: 14px 16px;
-        min-height: 64px;
-    }
-
-    .nav.scrolled {
-        padding: 10px 16px;
-    }
-
-    .whatsapp-icon {
-        display: flex;
-    }
-
-    .main-container {
-        padding-top: 64px;
-    }
-
-    section[id] {
-        scroll-margin-top: 75px;
-    }
-}
-
-@media (max-width: 767px) {
-    .mobile-menu a {
-        padding: 20px 24px;
-        min-height: 64px;
-        font-size: 17px;
-    }
-
-    .mobile-menu {
-        padding: 25px 16px 100px;
-    }
-
-    .hamburger {
-        width: 32px;
-        height: 24px;
-    }
-
-    .icon-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 18px;
-    }
-
-    .cart-count {
-        top: -3px;
-        right: -3px;
-        min-width: 20px;
-        height: 20px;
-        font-size: 11px;
-        font-weight: 700;
-    }
-}
-
-body.menu-open {
-    overflow: hidden;
-}
-
-.mobile-menu a {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.mobile-menu a:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.mobile-menu a:nth-child(2) {
-    animation-delay: 0.15s;
-}
-
-.mobile-menu a:nth-child(3) {
-    animation-delay: 0.2s;
-}
-
-.mobile-menu a:nth-child(4) {
-    animation-delay: 0.25s;
-}
-
-.mobile-menu a:nth-child(5) {
-    animation-delay: 0.3s;
-}
-
-.mobile-menu a:nth-child(6) {
-    animation-delay: 0.35s;
-}
-
-.mobile-menu a:nth-child(7) {
-    animation-delay: 0.4s;
-}
-
-.mobile-menu .whatsapp {
-    animation-delay: 0.45s;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.main-container {
-    padding-top: 70px;
-    position: relative;
-    z-index: 1;
-}
-
-section[id] {
-    scroll-margin-top: 90px;
-}
-
-@media (max-width: 768px) {
-    section[id] {
-        scroll-margin-top: 80px;
-    }
-}
-
-/* HERO SECTION - METAL THEME */
-.hero-section {
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 20px 80px;
-    text-align: center;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background: radial-gradient(1200px 700px at 20% 30%, rgba(224, 191, 184, .45), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(183, 110, 121, .35), transparent 60%),
-        linear-gradient(135deg, #2D1A1A 0%, #1A0F0F 100%);
-}
-
-.hero-bg-blob {
-    position: absolute;
-    inset: auto auto 10% -18%;
-    width: 560px;
-    height: 560px;
-    border-radius: 999px;
-    filter: blur(90px);
-    opacity: .45;
-    z-index: 0;
-    transform: translateZ(0);
-    background: linear-gradient(135deg, rgba(224, 191, 184, .85), rgba(183, 110, 121, .78));
-}
-
-.hero-bg-blob.b2 {
-    inset: -18% -22% auto auto;
-    width: 520px;
-    height: 520px;
-    border-radius: 999px;
-    filter: blur(90px);
-    opacity: .35;
-    z-index: 0;
-    transform: translateZ(0);
-    background: linear-gradient(135deg, rgba(183, 110, 121, .75), rgba(224, 191, 184, .65));
-}
-
-.hero-content {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 30px;
-    color: var(--white);
-    letter-spacing: -0.03em;
-    text-shadow: 0 2px 10px rgba(183, 110, 121, 0.3);
-}
-
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-}
-
-
-
-.hero-card-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto;
-}
-
-.hero-card {
-    width: 500px;
-    height: 300px;
-    border-radius: 20px;
-    overflow: visible;
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.hero-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    border-radius: 20px;
-    transition: transform 0.3s ease;
-    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
-}
-
-.hero-card:hover img {
-    transform: scale(1.05);
-}
-
-/* Responsive hero card sizing (matches index.html) */
-@media (max-width: 767px) {
-    .hero-card {
-        width: min(92vw, 420px);
-        height: auto;
-        aspect-ratio: 5 / 3;
-    }
-}
-
-@media (hover: none) and (pointer: coarse) {
-    .hero-card img {
-        transition: none !important;
-        -webkit-filter: none !important;
-        filter: none !important;
-    }
-
-    .hero-card:hover img {
-        transform: none !important;
-    }
-}
-
-.hero-text {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--white);
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.hero-subtext {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* BUTTONS - METAL THEME */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 24px;
-    border-radius: 14px;
-    font-weight: 900;
-    text-decoration: none;
-    border: none;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    cursor: pointer;
-    font-size: 15px;
-    white-space: nowrap;
-    min-width: 140px;
-    height: 48px;
-}
-
-.btn-primary {
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.4);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.6);
-    background: linear-gradient(135deg, #E8D4D1, #C98A96);
-}
-
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--white);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-    border-color: var(--rose-gold-light);
-}
-
-.hero-cta {
-    margin-top: 40px;
-}
-
-/* BESTSELLERS SECTION - METAL THEME */
-.bestsellers-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.bestsellers-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-    position: relative;
-    z-index: 2;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 16px;
-    color: var(--white);
-    text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
-}
-
-.section-subtitle {
-    font-size: 1.08rem;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.65;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.bestsellers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.bestseller-card {
-    border-radius: 20px;
-    padding: 30px;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-}
-
-/* Metal type backgrounds */
-.bestseller-card.silver {
-    background: radial-gradient(circle at top, rgba(192, 192, 192, 0.9), rgba(169, 169, 169, 0.95));
-    color: #1a1209;
-}
-
-.bestseller-card.rose-gold {
-    background: radial-gradient(circle at top, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.95));
-    color: #FFFFFF;
-}
-
-.bestseller-card.gold {
-    background: radial-gradient(circle at top, rgba(255, 215, 0, 0.9), rgba(212, 175, 55, 0.95));
-    color: #1a1209;
-}
-
-.bestseller-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.bestseller-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    color: var(--white);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-/* WEBP IMAGE CONTAINER - PERFECT FIT */
-.bestseller-image {
-    width: 100%;
-    height: 200px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    border: none;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    position: relative;
-    padding: 0;
-}
-
-/* WebP container - FULL WIDTH */
-.bestseller-image .webp-container {
-    width: 95%;
-    height: 95%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-/* WebP images - PERFECT FIT */
-.bestseller-image img.webp-image {
-    width: 95%;
-    height: 95%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background: transparent;
-    border-radius: 12px;
-}
-
-.bestseller-card:hover .bestseller-image img.webp-image {
-    transform: scale(1.05);
-}
-
-.bestseller-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-/* Text colors for different backgrounds */
-.bestseller-card.silver .bestseller-title,
-.bestseller-card.gold .bestseller-title {
-    color: #1a1209;
-}
-
-.bestseller-card.rose-gold .bestseller-title {
-    color: #FFFFFF;
-}
-
-.bestseller-description {
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-}
-
-.bestseller-card.silver .bestseller-description,
-.bestseller-card.gold .bestseller-description {
-    color: rgba(26, 18, 9, 0.9);
-}
-
-.bestseller-card.rose-gold .bestseller-description {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.bestseller-price {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-}
-
-.bestseller-card.silver .bestseller-price,
-.bestseller-card.gold .bestseller-price {
-    color: #1a1209;
-}
-
-.bestseller-card.rose-gold .bestseller-price {
-    color: #FFFFFF;
-}
-
-.bestseller-price span {
-    font-size: 0.9rem;
-    font-weight: 400;
-    margin-left: 5px;
-}
-
-.bestseller-card.silver .bestseller-price span,
-.bestseller-card.gold .bestseller-price span {
-    color: rgba(26, 18, 9, 0.7);
-}
-
-.bestseller-card.rose-gold .bestseller-price span {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-.bestseller-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.bestseller-actions .btn {
-    flex: 1;
-}
-
-/* Button colors for metal cards */
-.bestseller-card.silver .btn-primary,
-.bestseller-card.gold .btn-primary {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.bestseller-card.rose-gold .btn-primary {
-    background: rgba(0, 0, 0, 0.7);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.bestseller-card.silver .btn-secondary,
-.bestseller-card.gold .btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    color: #1a1209;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.bestseller-card.rose-gold .btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* CAROUSEL SECTION - CIRCULAR CAROUSEL */
-.carousel-section {
-    padding: 100px 20px;
-    background: var(--carousel-black-bg);
-    position: relative;
-    overflow: hidden;
-    transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.carousel-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
-    z-index: 2;
-}
-
-.carousel-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.carousel-section .section-header {
-    margin-bottom: 60px;
-    position: relative;
-    z-index: 10;
-    text-align: center;
-}
-
-.carousel-section .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-/* Carousel Styles - IMPROVED */
-.metal-carousel-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 0 60px;
-    touch-action: pan-y pinch-zoom;
-}
-
-@media (max-width: 768px) {
-    .metal-carousel-wrapper {
-        padding: 0 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    .metal-carousel-wrapper {
-        padding: 0 20px;
-    }
-}
-
-.metal-carousel-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    gap: 30px;
-    padding: 10px 0;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    will-change: transform;
-}
-
-/* Carousel cards matching bestseller style */
-.metal-carousel-card {
-    flex: 0 0 calc(33.333% - 20px);
-    border-radius: 20px;
-    padding: 30px;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    min-width: 300px;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    transform: translateZ(0);
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-@media (max-width: 1024px) {
-    .metal-carousel-card {
-        flex: 0 0 calc(50% - 15px);
-    }
-}
-
-@media (max-width: 768px) {
-    .metal-carousel-card {
-        flex: 0 0 calc(100% - 0px);
-        min-width: 280px;
-    }
-}
-
-/* Metal type backgrounds for carousel cards */
-.metal-carousel-card.black {
-    background: radial-gradient(circle at top, rgba(0, 0, 0, 0.9), rgba(51, 51, 51, 0.95));
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.blue {
-    background: radial-gradient(circle at top, rgba(0, 102, 204, 0.9), rgba(0, 68, 136, 0.95));
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.green {
-    background: radial-gradient(circle at top, rgba(0, 170, 85, 0.9), rgba(0, 136, 68, 0.95));
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.purple {
-    background: radial-gradient(circle at top, rgba(138, 43, 226, 0.9), rgba(106, 27, 194, 0.95));
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.custom {
-    position: relative;
-    overflow: hidden;
-    background: var(--custom-bg);
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.custom::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.38);
-    z-index: 0;
-}
-
-.metal-carousel-card.custom * {
-    position: relative;
-    z-index: 1;
-}
-
-.metal-carousel-card.custom .custom-badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-    background: rgba(0, 0, 0, 0.45);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(6px);
-}
-
-.metal-carousel-card.white {
-    background: radial-gradient(circle at top, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.95));
-    color: #1a1209;
-}
-
-.metal-carousel-card.gold {
-    background: radial-gradient(circle at top, rgba(255, 215, 0, 0.9), rgba(212, 175, 55, 0.95));
-    color: #1a1209;
-}
-
-.metal-carousel-card.silver {
-    background: radial-gradient(circle at top, rgba(192, 192, 192, 0.9), rgba(169, 169, 169, 0.95));
-    color: #1a1209;
-}
-
-.metal-carousel-card.rosegold {
-    background: radial-gradient(circle at top, rgba(183, 110, 121, 0.9), rgba(224, 191, 184, 0.95));
-    color: #FFFFFF;
-}
-
-.metal-carousel-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-/* Carousel card image */
-.metal-carousel-image {
-    width: 100%;
-    height: 200px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    position: relative;
-}
-
-.metal-carousel-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.5s ease;
-}
-
-.metal-carousel-card:hover .metal-carousel-image img {
-    transform: scale(1.05);
-}
-
-.metal-carousel-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-.metal-carousel-card.custom .metal-carousel-title,
-.metal-carousel-card.black .metal-carousel-title,
-.metal-carousel-card.blue .metal-carousel-title,
-.metal-carousel-card.green .metal-carousel-title,
-.metal-carousel-card.purple .metal-carousel-title,
-.metal-carousel-card.rosegold .metal-carousel-title {
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.white .metal-carousel-title,
-.metal-carousel-card.gold .metal-carousel-title,
-.metal-carousel-card.silver .metal-carousel-title {
-    color: #1a1209;
-}
-
-.metal-carousel-description {
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-    flex-grow: 1;
-}
-
-.metal-carousel-card.custom .metal-carousel-description,
-.metal-carousel-card.black .metal-carousel-description,
-.metal-carousel-card.blue .metal-carousel-description,
-.metal-carousel-card.green .metal-carousel-description,
-.metal-carousel-card.purple .metal-carousel-description,
-.metal-carousel-card.rosegold .metal-carousel-description {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.metal-carousel-card.white .metal-carousel-description,
-.metal-carousel-card.gold .metal-carousel-description,
-.metal-carousel-card.silver .metal-carousel-description {
-    color: rgba(26, 18, 9, 0.9);
-}
-
-.metal-carousel-price {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-}
-
-.metal-carousel-card.custom .metal-carousel-price,
-.metal-carousel-card.black .metal-carousel-price,
-.metal-carousel-card.blue .metal-carousel-price,
-.metal-carousel-card.green .metal-carousel-price,
-.metal-carousel-card.purple .metal-carousel-price,
-.metal-carousel-card.rosegold .metal-carousel-price {
-    color: #FFFFFF;
-}
-
-.metal-carousel-card.white .metal-carousel-price,
-.metal-carousel-card.gold .metal-carousel-price,
-.metal-carousel-card.silver .metal-carousel-price {
-    color: #1a1209;
-}
-
-.metal-carousel-price span {
-    font-size: 0.9rem;
-    font-weight: 400;
-    margin-left: 5px;
-}
-
-.metal-carousel-actions {
-    margin-top: auto;
-    display: flex;
-    gap: 10px;
-}
-
-.metal-carousel-actions .btn {
-    flex: 1;
-}
-
-/* Carousel Navigation Arrows */
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background: rgba(224, 191, 184, 0.3);
-    border: 1px solid rgba(224, 191, 184, 0.5);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    color: var(--white);
-    font-size: 24px;
-    font-weight: bold;
-    backdrop-filter: blur(10px);
-}
-
-.carousel-nav:hover {
-    background: rgba(224, 191, 184, 0.5);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 4px 15px rgba(183, 110, 121, 0.4);
-}
-
-.carousel-nav.prev {
-    left: 0;
-}
-
-.carousel-nav.next {
-    right: 0;
-}
-
-.carousel-nav.disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: translateY(-50%) scale(1);
-}
-
-.carousel-nav.disabled:hover {
-    background: rgba(224, 191, 184, 0.3);
-    transform: translateY(-50%) scale(1);
-    box-shadow: none;
-}
-
-@media (max-width: 768px) {
-    .carousel-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-}
-
-/* Carousel Dots */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 30px;
-}
-
-.carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.3);
-    border: 1px solid rgba(224, 191, 184, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    background: var(--rose-gold-light);
-    border-color: var(--rose-gold-light);
-    transform: scale(1.2);
-}
-
-.carousel-dot:hover {
-    background: rgba(224, 191, 184, 0.5);
-    transform: scale(1.1);
-}
-
-/* WHY CHOOSE SECTION - METAL THEME */
-.why-choose-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.why-choose-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
-}
-
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.benefit-card {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    backdrop-filter: blur(10px);
-}
-
-.benefit-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--rose-gold-light);
-    box-shadow: 0 15px 30px rgba(183, 110, 121, 0.2);
-    background: rgba(224, 191, 184, 0.15);
-}
-
-.benefit-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
-    background: rgba(224, 191, 184, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: var(--white);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.benefit-title {
-    font-size: 1.4rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    color: var(--white);
-}
-
-.benefit-description {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-/* TESTIMONIALS SECTION - METAL THEME */
-.testimonials-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #2D1A1A 0%, #1A0F0F 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.testimonials-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rose-gold-medium), transparent);
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.testimonial-card {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    position: relative;
-    backdrop-filter: blur(10px);
-}
-
-.testimonial-quote {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.95);
-    margin-bottom: 20px;
-    font-style: italic;
-}
-
-.testimonial-author {
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 5px;
-}
-
-.testimonial-role {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
-}
-
-/* CUSTOM LOGO SECTION - MOBILE OPTIMIZED */
-.custom-logo-section {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #1A0F0F 0%, #2D1A1A 100%);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.custom-logo-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--rose-gold-dark), transparent);
-}
-
-.custom-logo-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-/* MOBILE OPTIMIZED LAYOUT - SINGLE COLUMN */
-.logo-builder-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin: 40px 0;
-}
-
-/* Preview Section - Now on top */
-.preview-container {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 24px;
-    padding: 25px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-    width: 100%;
-}
-
-.preview-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.preview-title {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--white);
-}
-
-.card-counter {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--rose-gold-light);
-    background: rgba(224, 191, 184, 0.2);
-    padding: 6px 12px;
-    border-radius: 20px;
-}
-
-.preview-card-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
-.preview-card {
-    width: 100%;
-    max-width: 350px;
-    height: 220px;
-    margin: 0 auto;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    position: relative;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.preview-card:hover {
-    transform: scale(1.02);
-}
-
-.preview-card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.preview-logo {
-    max-width: 70%;
-    max-height: 70%;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    display: none;
-    transition: transform 0.3s ease;
-}
-
-.preview-logo.visible {
-    display: block;
-}
-
-.preview-placeholder {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.placeholder-icon {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    opacity: 0.6;
-}
-
-.placeholder-text {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.placeholder-subtext {
-    font-size: 0.9rem;
-    margin-top: 5px;
-    opacity: 0.8;
-}
-
-.preview-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-}
-
-.selected-card-info {
-    text-align: left;
-}
-
-.card-name {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 5px;
-}
-
-/* Removed engraving type from preview */
-/* .engraving-type {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-} */
-
-.preview-price {
-    font-size: 1.3rem;
-    font-weight: 900;
-    color: var(--rose-gold-light);
-}
-
-/* Clear Card Button */
-.clear-card-btn {
-    width: 100%;
-    padding: 16px;
-    background: rgba(224, 191, 184, 0.15);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    border-radius: 14px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
-}
-
-.clear-card-btn:hover {
-    background: rgba(224, 191, 184, 0.25);
-    transform: translateY(-2px);
-}
-
-.clear-card-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
-/* Selection Options - Now all below the card */
-.selection-options {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-/* Metal Color Selection - NOW DIRECTLY BELOW THE CARD - EXTRA SMALL FOR MOBILE */
-.metal-colors-section {
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 16px;
-    padding: 15px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-    backdrop-filter: blur(10px);
-    order: 1; /* Make sure it appears first after the card */
-    margin-top: -10px; /* Pull it closer to the card */
-}
-
-.metal-colors-title {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 12px;
-    text-align: center;
-}
-
-/* EXTRA SMALL METAL COLOR GRID FOR MOBILE */
-.metal-colors-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-}
-
-@media (max-width: 1024px) {
-    .metal-colors-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 6px;
-    }
-}
-
-@media (max-width: 768px) {
-    .metal-colors-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 5px;
-    }
-}
-
-@media (max-width: 480px) {
-    .metal-colors-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 4px;
-    }
-}
-
-/* EXTRA SMALL METAL COLOR BUTTONS */
-.metal-color-option {
-    aspect-ratio: 1;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid transparent;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    min-height: 30px; /* MUCH SMALLER */
-}
-
-.metal-color-option:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.metal-color-option.selected {
-    border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 2px 5px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-}
-
-/* EXTRA SMALL COLOR LABELS */
-.color-label {
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 0.55rem; /* SMALLER FONT */
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 1px 2px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    margin: 0 2px;
-    line-height: 1;
-    display: none; /* Hide labels on small buttons */
-}
-
-/* Show labels only on selected or hover */
-.metal-color-option.selected .color-label,
-.metal-color-option:hover .color-label {
-    display: block;
-}
-
-@media (max-width: 480px) {
-    .color-label {
-        font-size: 0.5rem;
-        padding: 1px;
-    }
-}
-
-/* IMPROVED LOGO SCALE SLIDER - BETTER DESIGN */
-.logo-scale-inline {
-    margin-top: 18px;
-    padding: 16px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 14px;
-    border: 1px solid rgba(224, 191, 184, 0.18);
-}
-
-.logo-scale-title {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 12px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo-scale-controls {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* Improved slider styling */
-.size-slider {
-    flex: 1;
-    height: 8px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: rgba(224, 191, 184, 0.2);
-    border-radius: 10px;
-    outline: none;
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    cursor: pointer;
-}
-
-.size-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--rose-gold-gradient);
-    border: 2px solid var(--white);
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(183, 110, 121, 0.4);
-    transition: all 0.2s ease;
-}
-
-.size-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(183, 110, 121, 0.6);
-}
-
-.size-slider::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--rose-gold-gradient);
-    border: 2px solid var(--white);
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(183, 110, 121, 0.4);
-    transition: all 0.2s ease;
-}
-
-.size-slider::-moz-range-thumb:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(183, 110, 121, 0.6);
-}
-
-.size-value {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--rose-gold-light);
-    min-width: 50px;
-    text-align: center;
-    background: rgba(224, 191, 184, 0.1);
-    padding: 6px 12px;
-    border-radius: 8px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-/* Custom Color Picker */
-.color-picker-container {
-    display: none;
-    margin-top: 15px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    border: 1px solid rgba(224, 191, 184, 0.3);
-}
-
-.color-picker-container.show {
-    display: block;
-}
-
-.color-picker-title {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.custom-color-picker {
-    width: 100%;
-    height: 40px;
-    border-radius: 8px;
-    border: 2px solid rgba(224, 191, 184, 0.5);
-    background: transparent;
-    cursor: pointer;
-    outline: none;
-    padding: 0;
-    -webkit-appearance: none;
-}
-
-.custom-color-picker::-webkit-color-swatch-wrapper {
-    padding: 0;
-}
-
-.custom-color-picker::-webkit-color-swatch {
-    border-radius: 6px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.custom-color-picker::-moz-color-swatch {
-    border-radius: 6px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Add to Cart Button */
-.add-to-cart-btn {
-    width: 100%;
-    padding: 18px;
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    border: none;
-    border-radius: 14px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(183, 110, 121, 0.3);
-    margin-top: 25px;
-    order: 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.add-to-cart-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(183, 110, 121, 0.4);
-}
-
-.whatsapp-help {
-    margin-top: 40px;
-    padding: 25px;
-    background: rgba(37, 211, 102, 0.1);
-    border-radius: 20px;
-    border: 1px solid rgba(37, 211, 102, 0.3);
-    backdrop-filter: blur(10px);
-    order: 6;
-}
-
-/* DESKTOP LAYOUT - TWO COLUMNS */
-@media (min-width: 992px) {
-    .logo-builder-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        margin: 40px 0;
-    }
-    
-    /* Reset order for desktop */
-    .preview-container,
-    .metal-colors-section,
-    .add-to-cart-btn,
-    .whatsapp-help {
-        order: 0;
-    }
-    
-    .selection-options {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
-    
-    /* Make metal color buttons larger on desktop */
-    .metal-colors-section {
-        padding: 20px;
-        margin-top: 0;
-    }
-    
-    .metal-colors-grid {
-        gap: 8px;
-    }
-    
-    .metal-color-option {
-        min-height: 40px;
-        border-radius: 8px;
-    }
-    
-    .color-label {
-        font-size: 0.65rem;
-        padding: 2px 4px;
-        display: block; /* Always show labels on desktop */
-    }
-}
-
-/* RESPONSIVE DESIGN */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .bestsellers-grid,
-    .benefits-grid,
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .custom-logo-section {
-        padding: 60px 20px;
-    }
-
-    .preview-card {
-        height: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .bestseller-actions,
-    .metal-carousel-actions {
-        flex-direction: column;
-    }
-
-    .preview-card {
-        height: 180px;
-    }
-
-    .metal-colors-grid {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 3px;
-    }
-    
-    .metal-color-option {
-        min-height: 28px;
-        border-radius: 5px;
-    }
-}
-
-/* ENGRAVING MODAL - METAL THEME */
-.engraving-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 15, 15, 0.98);
-    backdrop-filter: blur(20px);
-    z-index: 2000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.engraving-modal.active {
-    display: flex;
-    opacity: 1;
-}
-
-.engraving-content {
-    background: linear-gradient(135deg, rgba(26, 15, 15, 0.95), rgba(45, 26, 26, 0.98));
-    border-radius: 24px;
-    padding: 30px;
-    max-width: 500px;
-    width: 95%;
-    max-height: 85vh;
-    overflow-y: auto;
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    box-shadow: 0 40px 80px rgba(183, 110, 121, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    position: relative;
-    animation: modalAppear 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    backdrop-filter: blur(10px);
-}
-
-@keyframes modalAppear {
-    from {
-        opacity: 0;
-        transform: scale(0.95) translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.close-engraving {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.15);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    font-size: 22px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 10;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.close-engraving:hover {
-    background: rgba(224, 191, 184, 0.3);
-    transform: rotate(90deg);
-}
-
-.engraving-header {
-    margin-bottom: 30px;
-    text-align: center;
-    padding: 0 10px;
-}
-
-.engraving-header h3 {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 12px;
-    color: var(--white);
-    line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
-}
-
-.engraving-header p {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1rem;
-    line-height: 1.5;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-/* Quantity Controls - IMPROVED FOR MOBILE */
-.quantity-controls {
-    margin: 25px 0;
-    padding: 20px;
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 16px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-.quantity-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.quantity-selector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.quantity-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.2);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    font-size: 22px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
-}
-
-.quantity-btn:hover:not(:disabled) {
-    background: rgba(224, 191, 184, 0.3);
-    transform: scale(1.1);
-}
-
-.quantity-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-/* Improved quantity input for mobile */
-.quantity-input {
-    width: 80px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(224, 191, 184, 0.1);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-align: center;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Remove spinner buttons on mobile */
-.quantity-input::-webkit-outer-spin-button,
-.quantity-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.quantity-input:focus {
-    border-color: var(--rose-gold-light);
-    box-shadow: 0 0 0 2px rgba(183, 110, 121, 0.3);
-}
-
-/* Improved quantity presets for mobile */
-.quantity-presets {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 15px;
-}
-
-@media (min-width: 480px) {
-    .quantity-presets {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-.quantity-preset-btn {
-    padding: 12px 8px;
-    background: rgba(224, 191, 184, 0.1);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    border-radius: 10px;
-    color: var(--white);
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    -webkit-tap-highlight-color: rgba(224, 191, 184, 0.1);
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.quantity-preset-btn:hover {
-    background: rgba(224, 191, 184, 0.2);
-}
-
-.quantity-preset-btn.active {
-    background: var(--rose-gold-gradient);
-    border-color: var(--rose-gold-light);
-}
-
-/* Cart Modal - METAL THEME */
-.cart-modal {
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 400px;
-    height: 100%;
-    background: linear-gradient(135deg, #1A0F0F, #2D1A1A);
-    border-left: 1px solid rgba(224, 191, 184, 0.2);
-    z-index: 2000;
-    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
-    flex-direction: column;
-    box-shadow: -20px 0 60px rgba(183, 110, 121, 0.3);
-}
-
-@media (max-width: 768px) {
-    .cart-modal {
-        width: 100%;
-        right: -100%;
-    }
-}
-
-.cart-modal.active {
-    right: 0;
-}
-
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px;
-    border-bottom: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-.cart-header h3 {
-    font-size: 1.4rem;
-    font-weight: 900;
-    color: var(--white);
-    margin: 0;
-}
-
-.close-cart {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.2);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.close-cart:hover {
-    background: rgba(224, 191, 184, 0.3);
-    transform: rotate(90deg);
-}
-
-.cart-items {
-    flex: 1;
-    overflow-y: auto;
-    padding: 25px;
-}
-
-.empty-cart {
-    text-align: center;
-    padding: 60px 20px;
-    color: rgba(224, 191, 184, 0.7);
-}
-
-.empty-cart p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 18px;
-    background: rgba(224, 191, 184, 0.1);
-    border-radius: 14px;
-    margin-bottom: 12px;
-    border: 1px solid rgba(224, 191, 184, 0.2);
-}
-
-.cart-item img {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-.cart-item-details {
-    flex: 1;
-}
-
-.cart-item-name {
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 5px;
-    font-size: 0.95rem;
-}
-
-.cart-item-price {
-    color: rgba(224, 191, 184, 0.8);
-    font-size: 0.85rem;
-}
-
-.remove-item {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(224, 191, 184, 0.2);
-    border: 1px solid rgba(224, 191, 184, 0.3);
-    color: var(--white);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.remove-item:hover {
-    background: rgba(224, 191, 184, 0.3);
-    border-color: var(--rose-gold-light);
-    color: var(--rose-gold-light);
-}
-
-.cart-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px;
-    border-top: 1px solid rgba(224, 191, 184, 0.2);
-    font-size: 1.2rem;
-    font-weight: 900;
-    color: var(--white);
-}
-
-.checkout-btn {
-    margin: 0 25px 25px;
-    padding: 18px;
-    border-radius: 14px;
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    font-weight: 700;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.checkout-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(183, 110, 121, 0.4);
-}
-
-/* Notification - METAL THEME */
-.notification {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--rose-gold-gradient);
-    color: var(--white);
-    padding: 18px 25px;
-    border-radius: 14px;
-    font-weight: 600;
-    box-shadow: 0 15px 40px rgba(183, 110, 121, 0.3);
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 3000;
-    max-width: 300px;
-}
-
-@media (max-width: 768px) {
-    .notification {
-        right: 20px;
-        left: 20px;
-        max-width: none;
-    }
-}
-
-.notification.show {
-    transform: translateY(0);
-    opacity: 1;
-}
-    
-
-/* Disable carousel zoom on mobile/tablet (keep it on desktop) */
-@media (hover: none) and (pointer: coarse) {
-    .metal-carousel-card:hover .metal-carousel-image img,
-    .metal-carousel-card:active .metal-carousel-image img,
-    .metal-carousel-card:focus .metal-carousel-image img,
-    .metal-carousel-card:focus-within .metal-carousel-image img {
-        transform: none !important;
-    }
-}
-</style>
+    <style>:root{--rose-gold-light:#E0BFB8;--rose-gold-medium:#D8A89D;--rose-gold-dark:#B76E79;--rose-gold-darker:#A05662;--rose-gold-gradient:linear-gradient(135deg,#E0BFB8,#B76E79);--rose-gold-dark-gradient:linear-gradient(135deg,#B76E79,#A05662);--rose-gold-shadow:0 30px 90px rgba(183,110,121,.25);--rose-gold-glass:rgba(183,110,121,.15);--metal-bg-dark:#1A0F0F;--metal-bg-darker:#2D1A1A;--metal-nav-bg:linear-gradient(135deg,rgba(183,110,121,0.95),rgba(224,191,184,0.95));--metal-nav-scrolled:linear-gradient(135deg,rgba(183,110,121,0.9),rgba(224,191,184,0.9));--metal-menu-bg:linear-gradient(135deg,rgba(183,110,121,0.98),rgba(224,191,184,0.98));--black-bg:linear-gradient(135deg,#000000,#333333);--blue-bg:linear-gradient(135deg,#0066CC,#004488);--green-bg:linear-gradient(135deg,#00AA55,#008844);--purple-bg:linear-gradient(135deg,#8A2BE2,#6A1BC2);--white-bg:linear-gradient(135deg,#FFFFFF,#F0F0F0);--gold-bg:linear-gradient(135deg,#FFD700,#D4AF37);--silver-bg:linear-gradient(135deg,#C0C0C0,#A9A9A9);--rosegold-bg:linear-gradient(135deg,#B76E79,#E0BFB8);--custom-bg:linear-gradient(135deg,#1A0F0F 0%,#3B1A5A 20%,#1A2F5A 40%,#1A5A3B 60%,#5A4A1A 80%,#5A1A2F 100%);--carousel-black-bg:linear-gradient(135deg,#2D1A1A 0%,#000000 100%);--carousel-blue-bg:linear-gradient(135deg,#2D1A1A 0%,#004488 100%);--carousel-green-bg:linear-gradient(135deg,#2D1A1A 0%,#008844 100%);--carousel-purple-bg:linear-gradient(135deg,#2D1A1A 0%,#6A1BC2 100%);--carousel-white-bg:linear-gradient(135deg,#2D1A1A 0%,#F0F0F0 100%);--carousel-gold-bg:linear-gradient(135deg,#2D1A1A 0%,#D4AF37 100%);--carousel-silver-bg:linear-gradient(135deg,#2D1A1A 0%,#A9A9A9 100%);--carousel-rosegold-bg:linear-gradient(135deg,#2D1A1A 0%,#B76E79 100%);--carousel-custom-bg:linear-gradient(135deg,#2D1A1A 0%,#5A1A2F 100%);--white:#FFF5F3;--black:#1A0F0F;--wa:#25D366}*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow-x:hidden}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#1A0F0F 0%,#2D1A1A 100%);color:var(--white);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;touch-action:manipulation;background-attachment:fixed}html{background:linear-gradient(135deg,#1A0F0F 0%,#2D1A1A 100%)}a{color:inherit;text-decoration:none}.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:var(--metal-nav-bg);backdrop-filter:blur(10px);position:fixed;top:0;left:0;right:0;z-index:1000;border-bottom:1px solid rgba(224,191,184,0.3);transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);min-height:70px;box-shadow:0 4px 20px rgba(183,110,121,0.2)}.nav.scrolled{padding:12px 20px;background:var(--metal-nav-scrolled);box-shadow:0 4px 30px rgba(183,110,121,0.3)}.logo{display:flex;align-items:center;gap:10px;text-decoration:none}.logo-img{height:40px;width:auto;object-fit:contain}.logo-text{display:none}.hamburger{display:none;flex-direction:column;justify-content:space-between;width:28px;height:20px;background:transparent;border:none;cursor:pointer;padding:0;z-index:1001}.hamburger span{width:100%;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);transform-origin:left center;box-shadow:0 1px 2px rgba(0,0,0,0.2)}.hamburger.active span:nth-child(1){transform:rotate(45deg)}.hamburger.active span:nth-child(2){opacity:0;transform:translateX(-10px)}.hamburger.active span:nth-child(3){transform:rotate(-45deg)}.nav-center{display:flex;gap:15px}.nav-center a{text-decoration:none;color:var(--white);font-weight:900;font-size:.9rem;transition:all 0.3s ease;white-space:nowrap;padding:5px 0;position:relative;text-shadow:0 1px 2px rgba(0,0,0,0.2)}.nav-center a:hover{color:var(--rose-gold-light);transform:translateY(-2px)}.nav-center a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--rose-gold-light);transition:width 0.3s ease}.nav-center a:hover::after{width:100%}.nav-right{display:flex;gap:12px;align-items:center}.icon-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.2);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;position:relative;transition:all 0.3s ease;flex-shrink:0;color:var(--white);border:1px solid rgba(224,191,184,0.3)}.icon-btn:hover{background:rgba(224,191,184,0.3);transform:translateY(-2px);box-shadow:0 4px 12px rgba(183,110,121,0.2)}.cart-count{position:absolute;top:-5px;right:-5px;background:var(--rose-gold-light);color:var(--black);font-size:10px;min-width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;border:2px solid rgba(224,191,184,0.5)}.whatsapp{background:linear-gradient(135deg,#25d366,#128c7e);color:var(--white);padding:8px 14px;border-radius:999px;font-weight:600;font-size:13px;transition:all 0.3s ease;white-space:nowrap;border:none;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(37,211,102,0.2)}.whatsapp:hover{background:linear-gradient(135deg,#1ebe5a,#0d7a6d);transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,0.3)}.whatsapp-icon{display:none;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);color:var(--white);align-items:center;justify-content:center;font-size:18px;text-decoration:none;box-shadow:0 4px 12px rgba(37,211,102,0.3);transition:all 0.3s ease}.whatsapp-icon:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,211,102,0.4)}.mobile-menu-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,15,15,0.95);z-index:999;opacity:0;visibility:hidden;transition:opacity 0.3s ease}.mobile-menu-overlay.active{opacity:1;visibility:visible}.mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--metal-menu-bg);backdrop-filter:blur(30px);padding:30px 20px 100px;display:flex;flex-direction:column;gap:8px;z-index:1000;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateX(-100%);transition:transform 0.3s ease}.mobile-menu.active{transform:translateX(0)}.mobile-menu a{text-decoration:none;color:var(--white);font-weight:700;font-size:18px;padding:18px 24px;border-radius:16px;transition:all 0.3s ease;background:rgba(255,255,255,0.15);text-align:left;min-height:60px;display:flex;align-items:center;justify-content:flex-start;border:1px solid rgba(224,191,184,0.3);margin-bottom:4px;-webkit-tap-highlight-color:rgba(224,191,184,0.1);text-shadow:0 1px 2px rgba(0,0,0,0.2)}.mobile-menu a:active{background:rgba(224,191,184,0.25)}.mobile-menu a:hover{background:rgba(224,191,184,0.25)}.mobile-menu .whatsapp{margin-top:20px;margin-bottom:30px;text-align:center;font-size:17px;padding:20px 24px;min-height:64px;justify-content:center;background:linear-gradient(135deg,#25d366,#128c7e);border:1px solid rgba(224,191,184,0.3);box-shadow:0 6px 20px rgba(37,211,102,0.25);font-weight:700;display:flex;align-items:center;gap:12px}.mobile-menu .whatsapp:hover{background:linear-gradient(135deg,#1ebe5a,#0d7a6d)}.mobile-close-btn{position:fixed;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(224,191,184,0.2);border:1px solid rgba(224,191,184,0.3);display:none;align-items:center;justify-content:center;font-size:24px;color:var(--white);cursor:pointer;z-index:1002;transition:all 0.3s ease}.mobile-close-btn.show{display:flex}.mobile-close-btn:hover{background:rgba(224,191,184,0.3);transform:rotate(90deg)}.menu-divider{height:1px;background:rgba(224,191,184,0.25);margin:20px 0;width:100%}.menu-footer{margin-top:auto;padding-top:20px;text-align:center;color:rgba(255,255,255,0.8);font-size:13px;border-top:1px solid rgba(224,191,184,0.2)}@media (max-width:1024px){.nav-center,.nav-right .whatsapp{display:none}.hamburger{display:flex}.nav-right{gap:8px}.nav{padding:14px 16px;min-height:64px}.nav.scrolled{padding:10px 16px}.whatsapp-icon{display:flex}.main-container{padding-top:64px}section[id]{scroll-margin-top:75px}}@media (max-width:767px){.mobile-menu a{padding:20px 24px;min-height:64px;font-size:17px}.mobile-menu{padding:25px 16px 100px}.hamburger{width:32px;height:24px}.icon-btn{width:44px;height:44px;font-size:18px}.cart-count{top:-3px;right:-3px;min-width:20px;height:20px;font-size:11px;font-weight:700}}body.menu-open{overflow:hidden}.mobile-menu a{animation:fadeInUp 0.5s ease forwards;opacity:0;transform:translateY(10px)}.mobile-menu a:nth-child(1){animation-delay:0.1s}.mobile-menu a:nth-child(2){animation-delay:0.15s}.mobile-menu a:nth-child(3){animation-delay:0.2s}.mobile-menu a:nth-child(4){animation-delay:0.25s}.mobile-menu a:nth-child(5){animation-delay:0.3s}.mobile-menu a:nth-child(6){animation-delay:0.35s}.mobile-menu a:nth-child(7){animation-delay:0.4s}.mobile-menu .whatsapp{animation-delay:0.45s}@keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}.main-container{padding-top:70px;position:relative;z-index:1}section[id]{scroll-margin-top:90px}@media (max-width:768px){section[id]{scroll-margin-top:80px}}.hero-section{min-height:90vh;display:flex;align-items:center;justify-content:center;padding:120px 20px 80px;text-align:center;position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(1200px 700px at 20% 30%,rgba(224,191,184,.45),transparent 60%),radial-gradient(900px 500px at 80% 20%,rgba(183,110,121,.35),transparent 60%),linear-gradient(135deg,#2D1A1A 0%,#1A0F0F 100%)}.hero-bg-blob{position:absolute;inset:auto auto 10% -18%;width:560px;height:560px;border-radius:999px;filter:blur(90px);opacity:.45;z-index:0;transform:translateZ(0);background:linear-gradient(135deg,rgba(224,191,184,.85),rgba(183,110,121,.78))}.hero-bg-blob.b2{inset:-18% -22% auto auto;width:520px;height:520px;border-radius:999px;filter:blur(90px);opacity:.35;z-index:0;transform:translateZ(0);background:linear-gradient(135deg,rgba(183,110,121,.75),rgba(224,191,184,.65))}.hero-content{max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:2}.hero-title{font-size:3.5rem;font-weight:900;line-height:1.1;margin-bottom:30px;color:var(--white);letter-spacing:-0.03em;text-shadow:0 2px 10px rgba(183,110,121,0.3)}@media (max-width:768px){.hero-title{font-size:2.5rem}}@media (max-width:480px){.hero-title{font-size:2rem}}.hero-card-container{width:100%;display:flex;justify-content:center;align-items:center;margin:40px auto}.hero-card{width:500px;height:300px;border-radius:20px;overflow:visible;box-shadow:none;display:flex;align-items:center;justify-content:center;background:transparent;border:none;position:relative;transition:transform 0.3s ease}.hero-card img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;border-radius:20px;transition:transform 0.3s ease;filter:drop-shadow(0 20px 60px rgba(0,0,0,0.4))}.hero-card:hover img{transform:scale(1.05)}@media (max-width:767px){.hero-card{width:min(92vw,420px);height:auto;aspect-ratio:5 / 3}}@media (hover:none) and (pointer:coarse){.hero-card img{transition:none !important;-webkit-filter:none !important;filter:none !important}.hero-card:hover img{transform:none !important}}.hero-text{font-size:18px;font-weight:600;color:var(--white);text-align:center;margin-bottom:10px}.hero-subtext{font-size:12px;color:rgba(255,255,255,0.8)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:14px;font-weight:900;text-decoration:none;border:none;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);cursor:pointer;font-size:15px;white-space:nowrap;min-width:140px;height:48px}.btn-primary{background:var(--rose-gold-gradient);color:var(--white);box-shadow:0 4px 15px rgba(183,110,121,0.4);text-shadow:0 1px 2px rgba(0,0,0,0.2)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(183,110,121,0.6);background:linear-gradient(135deg,#E8D4D1,#C98A96)}.btn-secondary{background:rgba(255,255,255,0.2);color:var(--white);border:1px solid rgba(255,255,255,0.4);backdrop-filter:blur(10px)}.btn-secondary:hover{background:rgba(255,255,255,0.3);transform:translateY(-2px);border-color:var(--rose-gold-light)}.hero-cta{margin-top:40px}.bestsellers-section{padding:100px 20px;background:linear-gradient(135deg,#1A0F0F 0%,#2D1A1A 100%);position:relative;overflow:hidden}.bestsellers-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose-gold-dark),transparent)}.section-header{text-align:center;margin-bottom:60px;position:relative;z-index:2}.section-title{font-size:2.5rem;font-weight:900;line-height:1.1;margin-bottom:16px;color:var(--white);text-shadow:0 2px 4px rgba(183,110,121,0.3)}.section-subtitle{font-size:1.08rem;color:rgba(255,255,255,0.85);line-height:1.65;max-width:800px;margin:0 auto}.bestsellers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:0 auto;position:relative;z-index:2}.bestseller-card{border-radius:20px;padding:30px;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden;backdrop-filter:blur(10px)}.bestseller-card.silver{background:radial-gradient(circle at top,rgba(192,192,192,0.9),rgba(169,169,169,0.95));color:#1a1209}.bestseller-card.rose-gold{background:radial-gradient(circle at top,rgba(183,110,121,0.9),rgba(224,191,184,0.95));color:#FFFFFF}.bestseller-card.gold{background:radial-gradient(circle at top,rgba(255,215,0,0.9),rgba(212,175,55,0.95));color:#1a1209}.bestseller-card:hover{transform:translateY(-10px);border-color:rgba(255,255,255,0.4);box-shadow:0 20px 40px rgba(0,0,0,0.3)}.bestseller-badge{position:absolute;top:20px;right:20px;background:rgba(0,0,0,0.3);color:var(--white);padding:6px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;display:flex;align-items:center;gap:5px;box-shadow:0 2px 8px rgba(0,0,0,0.3);text-shadow:0 1px 2px rgba(0,0,0,0.2);backdrop-filter:blur(10px)}.bestseller-image{width:100%;height:200px;border-radius:12px;margin-bottom:20px;border:none;overflow:hidden;display:flex;align-items:center;justify-content:center;background:transparent;position:relative;padding:0}.bestseller-image .webp-container{width:95%;height:95%;display:flex;align-items:center;justify-content:center;position:relative}.bestseller-image img.webp-image{width:95%;height:95%;object-fit:cover;transition:transform 0.5s ease;border:none;outline:none;box-shadow:none;background:transparent;border-radius:12px}.bestseller-card:hover .bestseller-image img.webp-image{transform:scale(1.05)}.bestseller-title{font-size:1.5rem;font-weight:800;margin-bottom:10px}.bestseller-card.silver .bestseller-title,.bestseller-card.gold .bestseller-title{color:#1a1209}.bestseller-card.rose-gold .bestseller-title{color:#FFFFFF}.bestseller-description{line-height:1.6;margin-bottom:20px;font-size:0.95rem}.bestseller-card.silver .bestseller-description,.bestseller-card.gold .bestseller-description{color:rgba(26,18,9,0.9)}.bestseller-card.rose-gold .bestseller-description{color:rgba(255,255,255,0.9)}.bestseller-price{font-size:1.8rem;font-weight:900;margin-bottom:20px}.bestseller-card.silver .bestseller-price,.bestseller-card.gold .bestseller-price{color:#1a1209}.bestseller-card.rose-gold .bestseller-price{color:#FFFFFF}.bestseller-price span{font-size:0.9rem;font-weight:400;margin-left:5px}.bestseller-card.silver .bestseller-price span,.bestseller-card.gold .bestseller-price span{color:rgba(26,18,9,0.7)}.bestseller-card.rose-gold .bestseller-price span{color:rgba(255,255,255,0.7)}.bestseller-actions{display:flex;gap:10px}.bestseller-actions .btn{flex:1}.bestseller-card.silver .btn-primary,.bestseller-card.gold .btn-primary{background:rgba(0,0,0,0.7);color:white;border:1px solid rgba(255,255,255,0.3)}.bestseller-card.rose-gold .btn-primary{background:rgba(0,0,0,0.7);color:#FFFFFF;border:1px solid rgba(255,255,255,0.3)}.bestseller-card.silver .btn-secondary,.bestseller-card.gold .btn-secondary{background:rgba(255,255,255,0.2);color:#1a1209;border:1px solid rgba(0,0,0,0.3)}.bestseller-card.rose-gold .btn-secondary{background:rgba(255,255,255,0.2);color:#FFFFFF;border:1px solid rgba(255,255,255,0.3)}.carousel-section{padding:100px 20px;background:var(--carousel-black-bg);position:relative;overflow:hidden;transition:background 0.8s cubic-bezier(0.34,1.56,0.64,1)}.carousel-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose-gold-dark),transparent);z-index:2}.carousel-container{max-width:1200px;margin:0 auto;position:relative;z-index:2}.carousel-section .section-header{margin-bottom:60px;position:relative;z-index:10;text-align:center}.carousel-section .section-title{font-size:2.5rem;margin-bottom:16px}.metal-carousel-wrapper{position:relative;width:100%;overflow:hidden;padding:0 60px;touch-action:pan-y pinch-zoom}@media (max-width:768px){.metal-carousel-wrapper{padding:0 40px}}@media (max-width:480px){.metal-carousel-wrapper{padding:0 20px}}.metal-carousel-track{display:flex;transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);gap:30px;padding:10px 0;user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;will-change:transform}.metal-carousel-card{flex:0 0 calc(33.333% - 20px);border-radius:20px;padding:30px;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden;backdrop-filter:blur(10px);height:500px;display:flex;flex-direction:column;cursor:pointer;min-width:300px;user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;transform:translateZ(0);-webkit-font-smoothing:subpixel-antialiased}@media (max-width:1024px){.metal-carousel-card{flex:0 0 calc(50% - 15px)}}@media (max-width:768px){.metal-carousel-card{flex:0 0 calc(100% - 0px);min-width:280px}}.metal-carousel-card.black{background:radial-gradient(circle at top,rgba(0,0,0,0.9),rgba(51,51,51,0.95));color:#FFFFFF}.metal-carousel-card.blue{background:radial-gradient(circle at top,rgba(0,102,204,0.9),rgba(0,68,136,0.95));color:#FFFFFF}.metal-carousel-card.green{background:radial-gradient(circle at top,rgba(0,170,85,0.9),rgba(0,136,68,0.95));color:#FFFFFF}.metal-carousel-card.purple{background:radial-gradient(circle at top,rgba(138,43,226,0.9),rgba(106,27,194,0.95));color:#FFFFFF}.metal-carousel-card.custom{position:relative;overflow:hidden;background:var(--custom-bg);color:#FFFFFF}.metal-carousel-card.custom::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.38);z-index:0}.metal-carousel-card.custom *{position:relative;z-index:1}.metal-carousel-card.custom .custom-badge{position:absolute;top:12px;left:12px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:0.2px;background:rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(6px)}.metal-carousel-card.white{background:radial-gradient(circle at top,rgba(255,255,255,0.9),rgba(240,240,240,0.95));color:#1a1209}.metal-carousel-card.gold{background:radial-gradient(circle at top,rgba(255,215,0,0.9),rgba(212,175,55,0.95));color:#1a1209}.metal-carousel-card.silver{background:radial-gradient(circle at top,rgba(192,192,192,0.9),rgba(169,169,169,0.95));color:#1a1209}.metal-carousel-card.rosegold{background:radial-gradient(circle at top,rgba(183,110,121,0.9),rgba(224,191,184,0.95));color:#FFFFFF}.metal-carousel-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}.metal-carousel-image{width:100%;height:200px;border-radius:12px;margin-bottom:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:transparent;position:relative}.metal-carousel-image img{width:100%;height:100%;object-fit:cover;border-radius:12px;transition:transform 0.5s ease}.metal-carousel-card:hover .metal-carousel-image img{transform:scale(1.05)}.metal-carousel-title{font-size:1.5rem;font-weight:800;margin-bottom:10px}.metal-carousel-card.custom .metal-carousel-title,.metal-carousel-card.black .metal-carousel-title,.metal-carousel-card.blue .metal-carousel-title,.metal-carousel-card.green .metal-carousel-title,.metal-carousel-card.purple .metal-carousel-title,.metal-carousel-card.rosegold .metal-carousel-title{color:#FFFFFF}.metal-carousel-card.white .metal-carousel-title,.metal-carousel-card.gold .metal-carousel-title,.metal-carousel-card.silver .metal-carousel-title{color:#1a1209}.metal-carousel-description{line-height:1.6;margin-bottom:20px;font-size:0.95rem;flex-grow:1}.metal-carousel-card.custom .metal-carousel-description,.metal-carousel-card.black .metal-carousel-description,.metal-carousel-card.blue .metal-carousel-description,.metal-carousel-card.green .metal-carousel-description,.metal-carousel-card.purple .metal-carousel-description,.metal-carousel-card.rosegold .metal-carousel-description{color:rgba(255,255,255,0.9)}.metal-carousel-card.white .metal-carousel-description,.metal-carousel-card.gold .metal-carousel-description,.metal-carousel-card.silver .metal-carousel-description{color:rgba(26,18,9,0.9)}.metal-carousel-price{font-size:1.8rem;font-weight:900;margin-bottom:20px}.metal-carousel-card.custom .metal-carousel-price,.metal-carousel-card.black .metal-carousel-price,.metal-carousel-card.blue .metal-carousel-price,.metal-carousel-card.green .metal-carousel-price,.metal-carousel-card.purple .metal-carousel-price,.metal-carousel-card.rosegold .metal-carousel-price{color:#FFFFFF}.metal-carousel-card.white .metal-carousel-price,.metal-carousel-card.gold .metal-carousel-price,.metal-carousel-card.silver .metal-carousel-price{color:#1a1209}.metal-carousel-price span{font-size:0.9rem;font-weight:400;margin-left:5px}.metal-carousel-actions{margin-top:auto;display:flex;gap:10px}.metal-carousel-actions .btn{flex:1}.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;background:rgba(224,191,184,0.3);border:1px solid rgba(224,191,184,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s ease;z-index:10;color:var(--white);font-size:24px;font-weight:bold;backdrop-filter:blur(10px)}.carousel-nav:hover{background:rgba(224,191,184,0.5);transform:translateY(-50%) scale(1.1);box-shadow:0 4px 15px rgba(183,110,121,0.4)}.carousel-nav.prev{left:0}.carousel-nav.next{right:0}.carousel-nav.disabled{opacity:0.3;cursor:not-allowed;transform:translateY(-50%) scale(1)}.carousel-nav.disabled:hover{background:rgba(224,191,184,0.3);transform:translateY(-50%) scale(1);box-shadow:none}@media (max-width:768px){.carousel-nav{width:40px;height:40px;font-size:20px}}.carousel-dots{display:flex;justify-content:center;gap:10px;margin-top:30px}.carousel-dot{width:12px;height:12px;border-radius:50%;background:rgba(224,191,184,0.3);border:1px solid rgba(224,191,184,0.5);cursor:pointer;transition:all 0.3s ease}.carousel-dot.active{background:var(--rose-gold-light);border-color:var(--rose-gold-light);transform:scale(1.2)}.carousel-dot:hover{background:rgba(224,191,184,0.5);transform:scale(1.1)}.why-choose-section{padding:100px 20px;background:linear-gradient(135deg,#1A0F0F 0%,#2D1A1A 100%);position:relative;overflow:hidden}.why-choose-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose-gold-dark),transparent)}.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:0 auto;position:relative;z-index:2}.benefit-card{background:rgba(224,191,184,0.1);border-radius:20px;padding:30px;border:1px solid rgba(224,191,184,0.2);transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);backdrop-filter:blur(10px)}.benefit-card:hover{transform:translateY(-5px);border-color:var(--rose-gold-light);box-shadow:0 15px 30px rgba(183,110,121,0.2);background:rgba(224,191,184,0.15)}.benefit-icon{width:60px;height:60px;border-radius:16px;background:rgba(224,191,184,0.2);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;color:var(--white);border:1px solid rgba(224,191,184,0.3)}.benefit-title{font-size:1.4rem;font-weight:800;margin-bottom:15px;color:var(--white)}.benefit-description{color:rgba(255,255,255,0.85);line-height:1.6;font-size:0.95rem}.testimonials-section{padding:100px 20px;background:linear-gradient(135deg,#2D1A1A 0%,#1A0F0F 100%);position:relative;overflow:hidden}.testimonials-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose-gold-medium),transparent)}.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:0 auto;position:relative;z-index:2}.testimonial-card{background:rgba(224,191,184,0.1);border-radius:20px;padding:30px;border:1px solid rgba(224,191,184,0.2);position:relative;backdrop-filter:blur(10px)}.testimonial-quote{font-size:1.1rem;line-height:1.6;color:rgba(255,255,255,0.95);margin-bottom:20px;font-style:italic}.testimonial-author{font-weight:700;color:var(--white);margin-bottom:5px}.testimonial-role{color:rgba(255,255,255,0.7);font-size:0.9rem}.custom-logo-section{padding:80px 20px;background:linear-gradient(135deg,#1A0F0F 0%,#2D1A1A 100%);text-align:center;position:relative;overflow:hidden}.custom-logo-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose-gold-dark),transparent)}.custom-logo-content{max-width:1200px;margin:0 auto;position:relative;z-index:2}.logo-builder-container{display:flex;flex-direction:column;gap:30px;margin:40px 0}.preview-container{background:rgba(224,191,184,0.1);border-radius:24px;padding:25px;border:1px solid rgba(224,191,184,0.2);backdrop-filter:blur(10px);width:100%}.preview-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:15px;border-bottom:1px solid rgba(224,191,184,0.3)}.preview-title{font-size:1.3rem;font-weight:800;color:var(--white)}.card-counter{font-size:1rem;font-weight:700;color:var(--rose-gold-light);background:rgba(224,191,184,0.2);padding:6px 12px;border-radius:20px}.preview-card-wrapper{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:25px}.preview-card{width:100%;max-width:350px;height:220px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,0.4);position:relative;border:2px solid rgba(255,255,255,0.3);cursor:pointer;transition:transform 0.3s ease}.preview-card:hover{transform:scale(1.02)}.preview-card-inner{width:100%;height:100%;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.preview-logo{max-width:70%;max-height:70%;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));display:none;transition:transform 0.3s ease}.preview-logo.visible{display:block}.preview-placeholder{text-align:center;color:rgba(255,255,255,0.7);padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}.placeholder-icon{font-size:2.5rem;margin-bottom:10px;opacity:0.6}.placeholder-text{font-size:1.1rem;font-weight:600}.placeholder-subtext{font-size:0.9rem;margin-top:5px;opacity:0.8}.preview-details{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding:15px;background:rgba(0,0,0,0.2);border-radius:12px}.selected-card-info{text-align:left}.card-name{font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:5px}.preview-price{font-size:1.3rem;font-weight:900;color:var(--rose-gold-light)}.clear-card-btn{width:100%;padding:16px;background:rgba(224,191,184,0.15);border:1px solid rgba(224,191,184,0.3);color:var(--white);border-radius:14px;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;-webkit-tap-highlight-color:rgba(224,191,184,0.1)}.clear-card-btn:hover{background:rgba(224,191,184,0.25);transform:translateY(-2px)}.clear-card-btn:disabled{opacity:0.3;cursor:not-allowed;transform:none !important}.selection-options{display:flex;flex-direction:column;gap:25px}.metal-colors-section{background:rgba(224,191,184,0.1);border-radius:16px;padding:15px;border:1px solid rgba(224,191,184,0.2);backdrop-filter:blur(10px);order:1;margin-top:-10px}.metal-colors-title{font-size:1rem;font-weight:800;color:var(--white);margin-bottom:12px;text-align:center}.metal-colors-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}@media (max-width:1024px){.metal-colors-grid{grid-template-columns:repeat(5,1fr);gap:6px}}@media (max-width:768px){.metal-colors-grid{grid-template-columns:repeat(5,1fr);gap:5px}}@media (max-width:480px){.metal-colors-grid{grid-template-columns:repeat(5,1fr);gap:4px}}.metal-color-option{aspect-ratio:1;border-radius:6px;cursor:pointer;transition:all 0.3s ease;position:relative;overflow:hidden;border:2px solid transparent;box-shadow:0 1px 3px rgba(0,0,0,0.2);min-height:30px}.metal-color-option:hover{transform:translateY(-1px);box-shadow:0 2px 5px rgba(0,0,0,0.3)}.metal-color-option.selected{border-color:var(--white);box-shadow:0 0 0 2px var(--white),0 2px 5px rgba(0,0,0,0.3);transform:scale(1.05)}.color-label{position:absolute;bottom:2px;left:0;right:0;text-align:center;color:white;font-size:0.55rem;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,0.5);padding:1px 2px;background:rgba(0,0,0,0.5);border-radius:3px;margin:0 2px;line-height:1;display:none}.metal-color-option.selected .color-label,.metal-color-option:hover .color-label{display:block}@media (max-width:480px){.color-label{font-size:0.5rem;padding:1px}}.logo-scale-inline{margin-top:18px;padding:16px;background:rgba(0,0,0,0.2);border-radius:14px;border:1px solid rgba(224,191,184,0.18)}.logo-scale-title{font-size:1rem;font-weight:800;color:var(--white);margin-bottom:12px;text-align:center;display:flex;justify-content:space-between;align-items:center}.logo-scale-controls{width:100%;display:flex;align-items:center;gap:15px}.size-slider{flex:1;height:8px;-webkit-appearance:none;appearance:none;background:rgba(224,191,184,0.2);border-radius:10px;outline:none;border:1px solid rgba(224,191,184,0.3);cursor:pointer}.size-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:var(--rose-gold-gradient);border:2px solid var(--white);cursor:pointer;box-shadow:0 2px 6px rgba(183,110,121,0.4);transition:all 0.2s ease}.size-slider::-webkit-slider-thumb:hover{transform:scale(1.1);box-shadow:0 4px 10px rgba(183,110,121,0.6)}.size-slider::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--rose-gold-gradient);border:2px solid var(--white);cursor:pointer;box-shadow:0 2px 6px rgba(183,110,121,0.4);transition:all 0.2s ease}.size-slider::-moz-range-thumb:hover{transform:scale(1.1);box-shadow:0 4px 10px rgba(183,110,121,0.6)}.size-value{font-size:0.95rem;font-weight:700;color:var(--rose-gold-light);min-width:50px;text-align:center;background:rgba(224,191,184,0.1);padding:6px 12px;border-radius:8px;border:1px solid rgba(224,191,184,0.2)}.color-picker-container{display:none;margin-top:15px;padding:15px;background:rgba(0,0,0,0.2);border-radius:12px;border:1px solid rgba(224,191,184,0.3)}.color-picker-container.show{display:block}.color-picker-title{font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:10px;text-align:center}.custom-color-picker{width:100%;height:40px;border-radius:8px;border:2px solid rgba(224,191,184,0.5);background:transparent;cursor:pointer;outline:none;padding:0;-webkit-appearance:none}.custom-color-picker::-webkit-color-swatch-wrapper{padding:0}.custom-color-picker::-webkit-color-swatch{border-radius:6px;border:2px solid rgba(255,255,255,0.3)}.custom-color-picker::-moz-color-swatch{border-radius:6px;border:2px solid rgba(255,255,255,0.3)}.add-to-cart-btn{width:100%;padding:18px;background:var(--rose-gold-gradient);color:var(--white);border:none;border-radius:14px;font-size:1.1rem;font-weight:800;cursor:pointer;transition:all 0.3s ease;box-shadow:0 6px 20px rgba(183,110,121,0.3);margin-top:25px;order:5;display:flex;align-items:center;justify-content:center;gap:10px;-webkit-tap-highlight-color:transparent}.add-to-cart-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(183,110,121,0.4)}.whatsapp-help{margin-top:40px;padding:25px;background:rgba(37,211,102,0.1);border-radius:20px;border:1px solid rgba(37,211,102,0.3);backdrop-filter:blur(10px);order:6}@media (min-width:992px){.logo-builder-container{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:40px 0}.preview-container,.metal-colors-section,.add-to-cart-btn,.whatsapp-help{order:0}.selection-options{display:flex;flex-direction:column;gap:25px}.metal-colors-section{padding:20px;margin-top:0}.metal-colors-grid{gap:8px}.metal-color-option{min-height:40px;border-radius:8px}.color-label{font-size:0.65rem;padding:2px 4px;display:block}}@media (max-width:768px){.section-title{font-size:2rem}.hero-title{font-size:2.5rem}.bestsellers-grid,.benefits-grid,.testimonials-grid{grid-template-columns:1fr;gap:20px}.custom-logo-section{padding:60px 20px}.preview-card{height:200px}}@media (max-width:480px){.hero-title{font-size:2rem}.section-title{font-size:1.8rem}.bestseller-actions,.metal-carousel-actions{flex-direction:column}.preview-card{height:180px}.metal-colors-grid{grid-template-columns:repeat(5,1fr);gap:3px}.metal-color-option{min-height:28px;border-radius:5px}}.engraving-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,15,15,0.98);backdrop-filter:blur(20px);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity 0.3s cubic-bezier(0.34,1.56,0.64,1);overflow-y:auto;-webkit-overflow-scrolling:touch}.engraving-modal.active{display:flex;opacity:1}.engraving-content{background:linear-gradient(135deg,rgba(26,15,15,0.95),rgba(45,26,26,0.98));border-radius:24px;padding:30px;max-width:500px;width:95%;max-height:85vh;overflow-y:auto;border:1px solid rgba(224,191,184,0.3);box-shadow:0 40px 80px rgba(183,110,121,0.25),inset 0 1px 0 rgba(255,255,255,0.1);position:relative;animation:modalAppear 0.4s cubic-bezier(0.34,1.56,0.64,1);backdrop-filter:blur(10px)}@keyframes modalAppear{from{opacity:0;transform:scale(0.95) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}.close-engraving{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(224,191,184,0.15);border:1px solid rgba(224,191,184,0.3);color:var(--white);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);z-index:10;-webkit-tap-highlight-color:transparent}.close-engraving:hover{background:rgba(224,191,184,0.3);transform:rotate(90deg)}.engraving-header{margin-bottom:30px;text-align:center;padding:0 10px}.engraving-header h3{font-size:1.8rem;font-weight:900;margin-bottom:12px;color:var(--white);line-height:1.2;text-shadow:0 2px 4px rgba(183,110,121,0.3)}.engraving-header p{color:rgba(255,255,255,0.85);font-size:1rem;line-height:1.5;max-width:400px;margin:0 auto}.quantity-controls{margin:25px 0;padding:20px;background:rgba(224,191,184,0.1);border-radius:16px;border:1px solid rgba(224,191,184,0.2)}.quantity-title{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:15px;text-align:center}.quantity-selector{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:15px}.quantity-btn{width:48px;height:48px;border-radius:50%;background:rgba(224,191,184,0.2);border:1px solid rgba(224,191,184,0.3);color:var(--white);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;-webkit-tap-highlight-color:rgba(224,191,184,0.1)}.quantity-btn:hover:not(:disabled){background:rgba(224,191,184,0.3);transform:scale(1.1)}.quantity-btn:disabled{opacity:0.3;cursor:not-allowed}.quantity-input{width:80px;height:48px;border-radius:12px;background:rgba(224,191,184,0.1);border:1px solid rgba(224,191,184,0.3);color:var(--white);font-size:1.3rem;font-weight:700;text-align:center;outline:none;-webkit-appearance:none;-moz-appearance:textfield;-webkit-tap-highlight-color:transparent}.quantity-input::-webkit-outer-spin-button,.quantity-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}.quantity-input:focus{border-color:var(--rose-gold-light);box-shadow:0 0 0 2px rgba(183,110,121,0.3)}.quantity-presets{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:15px}@media (min-width:480px){.quantity-presets{grid-template-columns:repeat(4,1fr)}}.quantity-preset-btn{padding:12px 8px;background:rgba(224,191,184,0.1);border:1px solid rgba(224,191,184,0.3);border-radius:10px;color:var(--white);font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;-webkit-tap-highlight-color:rgba(224,191,184,0.1);min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center}.quantity-preset-btn:hover{background:rgba(224,191,184,0.2)}.quantity-preset-btn.active{background:var(--rose-gold-gradient);border-color:var(--rose-gold-light)}.cart-modal{position:fixed;top:0;right:-400px;width:400px;height:100%;background:linear-gradient(135deg,#1A0F0F,#2D1A1A);border-left:1px solid rgba(224,191,184,0.2);z-index:2000;transition:right 0.4s cubic-bezier(0.175,0.885,0.32,1.275);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(183,110,121,0.3)}@media (max-width:768px){.cart-modal{width:100%;right:-100%}}.cart-modal.active{right:0}.cart-header{display:flex;justify-content:space-between;align-items:center;padding:25px;border-bottom:1px solid rgba(224,191,184,0.2)}.cart-header h3{font-size:1.4rem;font-weight:900;color:var(--white);margin:0}.close-cart{width:36px;height:36px;border-radius:50%;background:rgba(224,191,184,0.2);border:1px solid rgba(224,191,184,0.3);color:var(--white);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease}.close-cart:hover{background:rgba(224,191,184,0.3);transform:rotate(90deg)}.cart-items{flex:1;overflow-y:auto;padding:25px}.empty-cart{text-align:center;padding:60px 20px;color:rgba(224,191,184,0.7)}.empty-cart p{margin-bottom:20px;font-size:1.1rem}.cart-item{display:flex;align-items:center;gap:15px;padding:18px;background:rgba(224,191,184,0.1);border-radius:14px;margin-bottom:12px;border:1px solid rgba(224,191,184,0.2)}.cart-item img{width:50px;height:50px;border-radius:10px;object-fit:cover}.cart-item-details{flex:1}.cart-item-name{font-weight:600;color:var(--white);margin-bottom:5px;font-size:0.95rem}.cart-item-price{color:rgba(224,191,184,0.8);font-size:0.85rem}.remove-item{width:28px;height:28px;border-radius:50%;background:rgba(224,191,184,0.2);border:1px solid rgba(224,191,184,0.3);color:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.3s ease}.remove-item:hover{background:rgba(224,191,184,0.3);border-color:var(--rose-gold-light);color:var(--rose-gold-light)}.cart-total{display:flex;justify-content:space-between;align-items:center;padding:25px;border-top:1px solid rgba(224,191,184,0.2);font-size:1.2rem;font-weight:900;color:var(--white)}.checkout-btn{margin:0 25px 25px;padding:18px;border-radius:14px;background:var(--rose-gold-gradient);color:var(--white);font-weight:700;font-size:16px;border:none;cursor:pointer;transition:all 0.3s ease}.checkout-btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(183,110,121,0.4)}.notification{position:fixed;bottom:30px;right:30px;background:var(--rose-gold-gradient);color:var(--white);padding:18px 25px;border-radius:14px;font-weight:600;box-shadow:0 15px 40px rgba(183,110,121,0.3);transform:translateY(100px);opacity:0;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);z-index:3000;max-width:300px}@media (max-width:768px){.notification{right:20px;left:20px;max-width:none}}.notification.show{transform:translateY(0);opacity:1}@media (hover:none) and (pointer:coarse){.metal-carousel-card:hover .metal-carousel-image img,.metal-carousel-card:active .metal-carousel-image img,.metal-carousel-card:focus .metal-carousel-image img,.metal-carousel-card:focus-within .metal-carousel-image img{transform:none !important}}</style>
+    <link rel="preload" as="image" href="newblack.webp">
 </head>
 
 <body>
@@ -2713,7 +205,7 @@ section[id] {
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="newsilver.webp" alt="Silver Metal Card" class="webp-image">
+                            <img loading="lazy" src="newsilver.webp" alt="Silver Metal Card" class="webp-image">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Silver Metal Card</h3>
@@ -2730,7 +222,7 @@ section[id] {
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="newrosegold.webp" alt="Rose Gold Metal Card" class="webp-image">
+                            <img loading="lazy" src="newrosegold.webp" alt="Rose Gold Metal Card" class="webp-image">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Rose Gold Metal Card</h3>
@@ -2747,7 +239,7 @@ section[id] {
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="newgold.webp" alt="Gold Metal Card" class="webp-image">
+                            <img loading="lazy" src="newgold.webp" alt="Gold Metal Card" class="webp-image">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Gold Metal Card</h3>
@@ -2776,7 +268,7 @@ section[id] {
                         <!-- Black -->
                         <div class="metal-carousel-card black" data-metal="black">
                             <div class="metal-carousel-image">
-                                <img src="newblack.webp" alt="Black Metal Card">
+                                <img loading="lazy" src="newblack.webp" alt="Black Metal Card">
                             </div>
                             <h3 class="metal-carousel-title">Black Metal Card</h3>
                             <p class="metal-carousel-description">Classic and sophisticated black metal card. Perfect for any industry wanting an elegant.</p>
@@ -2789,7 +281,7 @@ section[id] {
                         <!-- Blue -->
                         <div class="metal-carousel-card blue" data-metal="blue">
                             <div class="metal-carousel-image">
-                                <img src="newblue.webp" alt="Blue Metal Card">
+                                <img loading="lazy" src="newblue.webp" alt="Blue Metal Card">
                             </div>
                             <h3 class="metal-carousel-title">Blue Metal Card</h3>
                             <p class="metal-carousel-description">Trustworthy blue metal card. Ideal for professional services, tech companies, and corporate brands.</p>
@@ -2802,7 +294,7 @@ section[id] {
                         <!-- Green -->
                         <div class="metal-carousel-card green" data-metal="green">
                             <div class="metal-carousel-image">
-                                <img src="newgreen.webp" alt="Green Metal Card">
+                                <img loading="lazy" src="newgreen.webp" alt="Green Metal Card">
                             </div>
                             <h3 class="metal-carousel-title">Green Metal Card</h3>
                             <p class="metal-carousel-description">Natural green metal card. Perfect for eco-friendly brands, health services, and organic products.</p>
@@ -2815,7 +307,7 @@ section[id] {
                         <!-- Purple -->
                         <div class="metal-carousel-card purple" data-metal="purple">
                             <div class="metal-carousel-image">
-                                <img src="newpurple.webp" alt="Purple Metal Card">
+                                <img loading="lazy" src="newpurple.webp" alt="Purple Metal Card">
                             </div>
                             <h3 class="metal-carousel-title">Purple Metal Card</h3>
                             <p class="metal-carousel-description">Creative purple metal card. Perfect for design studios, beauty brands, and innovative startups.</p>
@@ -2828,7 +320,7 @@ section[id] {
                         <!-- White -->
                         <div class="metal-carousel-card white" data-metal="white">
                             <div class="metal-carousel-image">
-                                <img src="newwhite.webp" alt="White Metal Card">
+                                <img loading="lazy" src="newwhite.webp" alt="White Metal Card">
                             </div>
                             <h3 class="metal-carousel-title">White Metal Card</h3>
                             <p class="metal-carousel-description">Clean white metal card. Perfect for minimalist brands, medical services,studios.</p>
@@ -2841,7 +333,7 @@ section[id] {
                         <!-- Gold -->
                         <div class="metal-carousel-card gold" data-metal="gold">
                             <div class="metal-carousel-image">
-                                <img src="newgold.webp" alt="Gold Metal Card">
+                                <img loading="lazy" src="newgold.webp" alt="Gold Metal Card">
                             </div>
                             <h3 class="metal-carousel-title">Gold Metal Card</h3>
                             <p class="metal-carousel-description">Classic and sophisticated gold metal card. Perfect for any industry wanting an elegant...</p>
@@ -2854,7 +346,7 @@ section[id] {
                         <!-- Silver -->
                         <div class="metal-carousel-card silver" data-metal="silver">
                             <div class="metal-carousel-image">
-                                <img src="newsilver.webp" alt="Silver Metal Card">
+                                <img loading="lazy" src="newsilver.webp" alt="Silver Metal Card">
                             </div>
                             <h3 class="metal-carousel-title">Silver Metal Card</h3>
                             <p class="metal-carousel-description">Metallic silver metal card. Perfect for luxury brands, automotive, and premium technology products.</p>
@@ -2867,7 +359,7 @@ section[id] {
                         <!-- Rose Gold -->
                         <div class="metal-carousel-card rosegold" data-metal="rosegold">
                             <div class="metal-carousel-image">
-                                <img src="newrosegold.webp" alt="Rose Gold Metal">
+                                <img loading="lazy" src="newrosegold.webp" alt="Rose Gold Metal">
                             </div>
                             <h3 class="metal-carousel-title">Rose Gold Metal </h3>
                             <p class="metal-carousel-description">Contemporary rose gold metal card. Ideal for creative industries, fashion brands,.</p>
@@ -2881,7 +373,7 @@ section[id] {
                         <div class="metal-carousel-card custom" data-metal="custom">
                             <div class="custom-badge">Any Colour / Any Finish</div>
                             <div class="metal-carousel-image">
-                                <img src="newcustom.webp" alt="Custom Metal Card">
+                                <img loading="lazy" src="newcustom.webp" alt="Custom Metal Card">
                             </div>
                             <h3 class="metal-carousel-title">Custom Metal Card</h3>
                             <p class="metal-carousel-description">Fully custom metal card. Choose any colour, finish, and branding for a one-of-a-kind premium look.</p>
@@ -2926,7 +418,7 @@ section[id] {
                                         <div class="placeholder-text">Click to upload your logo</div>
                                         <div class="placeholder-subtext">PNG, JPG up to 10MB</div>
                                     </div>
-                                    <img class="preview-logo" id="previewLogo" alt="Your Logo">
+                                    <img loading="lazy" class="preview-logo" id="previewLogo" alt="Your Logo">
                                 </div>
                             </div>
                         </div>
@@ -3080,17 +572,16 @@ section[id] {
     </div>
 
     <script>
-        // Variables for engraving selection
+        
         let selectedMetal = 'Black';
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
         let uploadedLogoGlobal = null;
-        let logoSize = 100; // Default logo size percentage
-        let currentEngravingData = null; // Store data for engraving modal
-        let engravingQuantity = 1; // Default quantity for engraving modal
+        let logoSize = 100; 
+        let currentEngravingData = null; 
+        let engravingQuantity = 1; 
         let currentCarouselBackground = 'var(--carousel-black-bg)';
-        
-        // SIMPLE MOBILE MENU - FIXED
+
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileCloseBtn = document.getElementById('mobileCloseBtn');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -3098,12 +589,11 @@ section[id] {
         const nav = document.getElementById('mainNav');
         let isMenuOpen = false;
 
-        // Toggle mobile menu - SIMPLE VERSION
         function toggleMobileMenu() {
             isMenuOpen = !isMenuOpen;
 
             if (isMenuOpen) {
-                // Open menu
+                
                 hamburgerBtn.classList.add('active');
                 mobileMenu.classList.add('active');
                 mobileMenuOverlay.classList.add('active');
@@ -3111,7 +601,7 @@ section[id] {
                 document.body.classList.add('menu-open');
                 document.body.style.overflow = 'hidden';
             } else {
-                // Close menu
+                
                 hamburgerBtn.classList.remove('active');
                 mobileMenuOverlay.classList.remove('active');
                 mobileMenu.classList.remove('active');
@@ -3121,7 +611,6 @@ section[id] {
             }
         }
 
-        // Close mobile menu
         function closeMobileMenu() {
             if (!isMenuOpen) return;
             
@@ -3134,23 +623,19 @@ section[id] {
             isMenuOpen = false;
         }
 
-        // Event listeners
         hamburgerBtn.addEventListener('click', toggleMobileMenu);
         mobileCloseBtn.addEventListener('click', closeMobileMenu);
         mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 
-        // Close menu when clicking menu links
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
-                // If it's an external link (like WhatsApp), don't prevent default
+                
                 if (link.getAttribute('target') === '_blank' || link.getAttribute('href').includes('wa.me')) {
                     return;
                 }
-                
-                // For all other links, close the menu
+
                 closeMobileMenu();
-                
-                // Check if it's a hash link on same page
+
                 if (link.getAttribute('href').startsWith('#')) {
                     e.preventDefault();
                     const targetId = link.getAttribute('href');
@@ -3169,21 +654,18 @@ section[id] {
             });
         });
 
-        // Close menu on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && isMenuOpen) {
                 closeMobileMenu();
             }
         });
 
-        // Close menu on window resize
         window.addEventListener('resize', () => {
             if (window.innerWidth > 1024 && isMenuOpen) {
                 closeMobileMenu();
             }
         });
 
-        // Sticky Navigation
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
@@ -3192,12 +674,8 @@ section[id] {
             }
         });
 
-
-        // cart.js - Complete cart functionality for exposureboost.com
-
-        // COMPREHENSIVE IMAGE MAPPING FOR ALL CARD TYPES
         const cardImageMap = {
-            // ========== WOOD CARDS ==========
+            
             'Walnut Wood Card': 'newwalnut.webp',
             'Walnut': 'newwalnut.webp',
             'Oak Wood Card': 'newoak.webp',
@@ -3212,26 +690,24 @@ section[id] {
             'Maple': 'newmaple.webp',
             'Cherry Wood Card': 'newcherry.webp',
             'Cherry': 'newcherry.webp',
-            
-            // ========== METAL CARDS - USING CORRECT FILENAMES ==========
+
             'Gold Metal Card': 'goldmetal.webp',
             'Gold': 'goldmetal.webp',
             'Silver Metal Card': 'silver.webp',
             'Silver': 'silver.webp',
             'Rose Gold Metal Card': 'rosegold.webp',
             'Rose Gold': 'rosegold.webp',
-            'Black Metal Card': 'newblack.webp',     // This is correct - black is "newblack.webp"
+            'Black Metal Card': 'newblack.webp',     
             'Black Metal': 'newblack.webp',
-            'Blue Metal Card': 'newblue.webp',       // Blue is "newblue.webp"
+            'Blue Metal Card': 'newblue.webp',       
             'Blue Metal': 'newblue.webp',
-            'Green Metal Card': 'newgreen.webp',     // Green is "newgreen.webp"
+            'Green Metal Card': 'newgreen.webp',     
             'Green Metal': 'newgreen.webp',
-            'Purple Metal Card': 'newpurple.webp',   // Purple is "newpurple.webp"
+            'Purple Metal Card': 'newpurple.webp',   
             'Purple Metal': 'newpurple.webp',
-            'White Metal Card': 'newwhite.webp',     // White is "newwhite.webp"
+            'White Metal Card': 'newwhite.webp',     
             'White Metal': 'newwhite.webp',
-            
-            // ========== PLASTIC CARDS - ALL COLORS ==========
+
             'Black Plastic Card': 'newplasticblack.webp',
             'Black Plastic': 'newplasticblack.webp',
             'Blue Plastic Card': 'newplasticblue.webp',
@@ -3254,12 +730,10 @@ section[id] {
             'White Plastic': 'newplasticwhite.webp',
             'Yellow Plastic Card': 'newplasticyellow.webp',
             'Yellow Plastic': 'newplasticyellow.webp',
-            
-            // ========== CUSTOM CARDS ==========
+
             'Custom Card': 'newcustom.webp',
             'Custom': 'newcustom.webp',
-            
-            // ========== STANDS ==========
+
             'Card Stand': 'heropic.webp',
             'Display Stand': 'heropic.webp',
             'Wooden Stand': 'heropic.webp',
@@ -3267,11 +741,9 @@ section[id] {
             'Stand': 'heropic.webp'
         };
 
-        // Fallback function to find image by ANY partial name match
         function findImageByPartialName(name) {
             name = name.toLowerCase().trim();
-            
-            // WOOD CARDS
+
             if (name.includes('walnut')) return 'newwalnut.webp';
             if (name.includes('oak')) return 'newoak.webp';
             if (name.includes('sapele')) return 'newsapele.webp';
@@ -3279,8 +751,7 @@ section[id] {
             if (name.includes('bamboo') && !name.includes('black')) return 'newbamboo.webp';
             if (name.includes('maple')) return 'newmaple.webp';
             if (name.includes('cherry')) return 'newcherry.webp';
-            
-            // METAL CARDS - USING CORRECT FILENAMES
+
             if (name.includes('rose gold')) return 'rosegold.webp';
             if (name.includes('gold') && !name.includes('rose')) return 'goldmetal.webp';
             if (name.includes('silver')) return 'silver.webp';
@@ -3289,8 +760,7 @@ section[id] {
             if (name.includes('green metal') || (name.includes('green') && name.includes('metal'))) return 'newgreen.webp';
             if (name.includes('purple metal') || (name.includes('purple') && name.includes('metal'))) return 'newpurple.webp';
             if (name.includes('white metal') || (name.includes('white') && name.includes('metal'))) return 'newwhite.webp';
-            
-            // PLASTIC CARDS - ALL COLORS
+
             if (name.includes('plastic')) {
                 if (name.includes('black')) return 'newplasticblack.webp';
                 if (name.includes('blue')) return 'newplasticblue.webp';
@@ -3305,14 +775,11 @@ section[id] {
                 if (name.includes('yellow')) return 'newplasticyellow.webp';
                 return 'plasticpic.webp';
             }
-            
-            // CUSTOM CARDS
+
             if (name.includes('custom')) return 'newcustom.webp';
-            
-            // STANDS
+
             if (name.includes('stand')) return 'heropic.webp';
-            
-            // Check for single color matches (for metal cards)
+
             if (name === 'gold' || name.includes('gold card')) return 'goldmetal.webp';
             if (name === 'silver' || name.includes('silver card')) return 'silver.webp';
             if (name === 'rose gold' || name.includes('rose gold card')) return 'rosegold.webp';
@@ -3326,10 +793,8 @@ section[id] {
             return 'logo.png';
         }
 
-        // Cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Update cart display
         function updateCart() {
             const cartCount = document.getElementById('cartCount');
             if (cartCount) {
@@ -3339,7 +804,6 @@ section[id] {
             renderCartItems();
         }
 
-        // Render cart items in modal with correct images for ALL card types
         function renderCartItems() {
             const cartItems = document.getElementById('cartItems');
             const cartTotal = document.getElementById('cartTotal');
@@ -3357,28 +821,25 @@ section[id] {
 
             cart.forEach((item, index) => {
                 total += item.price * item.quantity;
-                
-                // Get image - first try stored img, then exact match, then partial match
+
                 let imgSrc = item.img;
                 
                 if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null' || imgSrc === '') {
-                    // Try exact match first
-                    imgSrc = cardImageMap[item.name];
                     
-                    // If no exact match, try partial match
+                    imgSrc = cardImageMap[item.name];
+
                     if (!imgSrc) {
                         imgSrc = findImageByPartialName(item.name);
                     }
                 }
-                
-                // Final fallback
+
                 if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null' || imgSrc === '') {
                     imgSrc = 'logo.png';
                 }
                 
                 itemsHTML += `
                     <div class="cart-item">
-                        <img src="${imgSrc}" alt="${item.name}" 
+                        <img loading="lazy" src="${imgSrc}" alt="${item.name}" 
                              onerror="this.onerror=null; this.src='logo.png';"
                              style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover; background: linear-gradient(135deg, #B76E3D, #8B4513);">
                         <div class="cart-item-details">
@@ -3394,33 +855,29 @@ section[id] {
             cartTotal.textContent = `£${total}`;
         }
 
-        // Add to cart function - enhanced for ALL card types
         function addToCart(name, price, quantity = 1, img = null) {
-            console.log('Adding to cart:', { name, price, quantity, img }); // Debug log
-            
-            // Determine image if not provided or invalid
+            console.log('Adding to cart:', { name, price, quantity, img }); 
+
             if (!img || img === 'undefined' || img === 'null' || img === '') {
-                // Try exact match from map
-                img = cardImageMap[name];
                 
-                // If no exact match, try partial match
+                img = cardImageMap[name];
+
                 if (!img) {
                     img = findImageByPartialName(name);
                 }
             }
-            
-            // Final fallback
+
             if (!img || img === 'undefined' || img === 'null' || img === '') {
                 img = 'logo.png';
             }
             
-            console.log('Using image:', img); // Debug log
+            console.log('Using image:', img); 
 
             const existingItem = cart.find(item => item.name === name);
 
             if (existingItem) {
                 existingItem.quantity += quantity;
-                // Update image if it was missing
+                
                 if (!existingItem.img || existingItem.img === 'undefined' || existingItem.img === 'null' || existingItem.img === '') {
                     existingItem.img = img;
                 }
@@ -3437,13 +894,11 @@ section[id] {
             showNotification(`${name} (${quantity}×) added to cart!`);
         }
 
-        // Remove from cart
         function removeFromCart(index) {
             cart.splice(index, 1);
             updateCart();
         }
 
-        // Show notification
         function showNotification(message) {
             const notification = document.getElementById('notification');
             if (!notification) return;
@@ -3455,15 +910,13 @@ section[id] {
             }, 3000);
         }
 
-        // Open cart modal
         function openCartModal() {
             const cartModal = document.getElementById('cartModal');
             if (!cartModal) return;
             
             cartModal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
-            // Close mobile menu if open
+
             const mobileMenu = document.getElementById('mobileMenu');
             if (mobileMenu && mobileMenu.classList.contains('active')) {
                 if (typeof closeMobileMenu === 'function') {
@@ -3472,7 +925,6 @@ section[id] {
             }
         }
 
-        // Close cart modal
         function closeCartModal() {
             const cartModal = document.getElementById('cartModal');
             if (!cartModal) return;
@@ -3481,7 +933,6 @@ section[id] {
             document.body.style.overflow = '';
         }
 
-        // Checkout functionality - WhatsApp integration
         function checkout() {
             if (cart.length === 0) {
                 showNotification('Your cart is empty!');
@@ -3489,8 +940,7 @@ section[id] {
             }
 
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            // Format WhatsApp message
+
             let message = "Hello! I'd like to place an order for the following items:\n\n";
             
             cart.forEach(item => {
@@ -3499,43 +949,34 @@ section[id] {
             
             message += `\nTotal: £${total}\n\n`;
             message += "Please let me know the next steps to complete my order.";
-            
-            // Encode message for URL
+
             const encodedMessage = encodeURIComponent(message);
-            
-            // Create WhatsApp URL with your number
+
             const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
-            
-            // Open WhatsApp
+
             window.open(whatsappUrl, '_blank');
         }
 
-        // Initialize cart on all pages
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Cart.js initialized'); // Debug log
-            
-            // Update cart count on page load
+            console.log('Cart.js initialized'); 
+
             updateCart();
-            
-            // Setup cart icon click
+
             const cartIcon = document.getElementById('cartIcon');
             if (cartIcon) {
                 cartIcon.addEventListener('click', openCartModal);
             }
-            
-            // Setup close cart button
+
             const closeCart = document.getElementById('closeCart');
             if (closeCart) {
                 closeCart.addEventListener('click', closeCartModal);
             }
-            
-            // Setup checkout button
+
             const checkoutBtn = document.getElementById('checkoutBtn');
             if (checkoutBtn) {
                 checkoutBtn.addEventListener('click', checkout);
             }
-            
-            // Close modal when clicking outside
+
             const cartModal = document.getElementById('cartModal');
             if (cartModal) {
                 cartModal.addEventListener('click', (e) => {
@@ -3544,8 +985,7 @@ section[id] {
                     }
                 });
             }
-            
-            // Add to cart buttons
+
             document.querySelectorAll('.add-to-cart, .add-to-cart-carousel, [data-name][data-price]').forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -3553,21 +993,18 @@ section[id] {
                     const name = btn.dataset.name;
                     const price = parseInt(btn.dataset.price);
                     const img = btn.dataset.img;
-                    
-                    // Open engraving modal instead of directly adding to cart
+
                     openEngravingModal(name, price);
                 });
             });
         });
 
-        // Make functions globally available
         window.addToCart = addToCart;
         window.removeFromCart = removeFromCart;
         window.closeCartModal = closeCartModal;
         window.openCartModal = openCartModal;
         window.checkout = checkout;
-        
-        // ENGRAVING MODAL FUNCTIONALITY
+
         const closeEngraving = document.getElementById('closeEngraving');
         const cancelEngraving = document.getElementById('cancelEngraving');
         const confirmEngraving = document.getElementById('confirmEngraving');
@@ -3579,41 +1016,34 @@ section[id] {
         const quantityInput = document.getElementById('quantityInput');
         const quantityPresetBtns = document.querySelectorAll('.quantity-preset-btn');
 
-        // Open engraving modal
         function openEngravingModal(name, price) {
             currentEngravingData = { name, price };
-            selectedMetalText.textContent = name.split(' ')[0]; // Get metal type from name
+            selectedMetalText.textContent = name.split(' ')[0]; 
             engravingModal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
-            // Reset to defaults
+
             engravingQuantity = 1;
             quantityInput.value = 1;
             updateEngravingPrice();
-            
-            // Reset engraving selection
+
             engravingOptions.forEach(option => option.classList.remove('selected'));
             engravingOptions[0].classList.add('selected');
-            
-            // Reset quantity presets
+
             quantityPresetBtns.forEach(btn => btn.classList.remove('active'));
             quantityPresetBtns[0].classList.add('active');
         }
 
-        // Close engraving modal
         function closeEngravingModal() {
             engravingModal.classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // Update engraving price based on quantity
         function updateEngravingPrice() {
             if (!currentEngravingData) return;
             const total = currentEngravingData.price * engravingQuantity;
             engravingTotalPrice.textContent = total;
         }
 
-        // Quantity controls
         quantityDecrease.addEventListener('click', () => {
             if (engravingQuantity > 1) {
                 engravingQuantity--;
@@ -3639,7 +1069,6 @@ section[id] {
             updateEngravingPrice();
         });
 
-        // Quantity preset buttons
         quantityPresetBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const quantity = parseInt(btn.dataset.quantity);
@@ -3652,7 +1081,6 @@ section[id] {
             });
         });
 
-        // Engraving selection
         engravingOptions.forEach(option => {
             option.addEventListener('click', () => {
                 engravingOptions.forEach(opt => opt.classList.remove('selected'));
@@ -3660,7 +1088,6 @@ section[id] {
             });
         });
 
-        // Confirm engraving selection
         confirmEngraving.addEventListener('click', () => {
             if (!currentEngravingData) return;
             
@@ -3672,11 +1099,9 @@ section[id] {
             closeEngravingModal();
         });
 
-        // Close engraving modal
         closeEngraving.addEventListener('click', closeEngravingModal);
         cancelEngraving.addEventListener('click', closeEngravingModal);
 
-        // CUSTOM LOGO BUILDER - IMPROVED
         const metalColorOptions = document.querySelectorAll('.metal-color-option');
         const previewLogo = document.getElementById('previewLogo');
         const previewPlaceholder = document.getElementById('previewPlaceholder');
@@ -3691,7 +1116,6 @@ section[id] {
         const colorPickerContainer = document.getElementById('colorPickerContainer');
         const customColorPicker = document.getElementById('customColorPicker');
 
-        // Metal type mapping
         const metalTypeMap = {
             'black': 'Black Metal Card',
             'blue': 'Blue Metal Card',
@@ -3704,7 +1128,6 @@ section[id] {
             'custom': 'Custom Metal Card'
         };
 
-        // Background mapping
         const metalBackgroundMap = {
             'black': 'var(--black-bg)',
             'blue': 'var(--blue-bg)',
@@ -3717,7 +1140,6 @@ section[id] {
             'custom': 'var(--custom-bg)'
         };
 
-        // Carousel background mapping
         const carouselBackgroundMap = {
             'black': 'var(--carousel-black-bg)',
             'blue': 'var(--carousel-blue-bg)',
@@ -3732,7 +1154,6 @@ section[id] {
 
         let selectedMetalColor = 'black';
 
-        // Initialize custom logo builder
         function initCustomLogoBuilder() {
             if (logoScaleSlider) {
                 logoScaleSlider.value = logoSize;
@@ -3741,24 +1162,20 @@ section[id] {
             updatePreview();
         }
 
-        // Update preview
         function updatePreview() {
-            // Update card background
+            
             if (selectedMetalColor === 'custom') {
-                // For custom color, use the picked color
+                
                 const customColor = customColorPicker.value;
                 previewCardInner.style.background = `linear-gradient(135deg, ${customColor}80, ${customColor})`;
             } else {
                 previewCardInner.style.background = metalBackgroundMap[selectedMetalColor];
             }
-            
-            // Update text
+
             selectedCardName.textContent = metalTypeMap[selectedMetalColor];
-            
-            // Update counter
+
             cardCounter.textContent = metalTypeMap[selectedMetalColor].split(' ')[0];
-            
-            // Show/hide logo and update size
+
             if (uploadedLogoGlobal) {
                 previewLogo.src = uploadedLogoGlobal;
                 previewLogo.classList.add('visible');
@@ -3772,15 +1189,13 @@ section[id] {
             }
         }
 
-        // Handle logo upload
         function handleLogoUpload(file) {
-            // Validate file type
+            
             if (!file.type.match('image.*')) {
                 showNotification('Please select an image file (JPG, PNG, GIF, etc.)');
                 return;
             }
 
-            // Validate file size (max 10MB)
             if (file.size > 10 * 1024 * 1024) {
                 showNotification('File is too large. Maximum size is 10MB.');
                 return;
@@ -3788,16 +1203,14 @@ section[id] {
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                // Update preview
+                
                 uploadedLogoGlobal = e.target.result;
                 previewLogo.src = uploadedLogoGlobal;
-                
-                // Update preview display
+
                 previewLogo.classList.add('visible');
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
-                
-                // Enable clear button
+
                 clearCardBtn.disabled = false;
                 
                 showNotification('Logo uploaded successfully!');
@@ -3808,29 +1221,23 @@ section[id] {
             reader.readAsDataURL(file);
         }
 
-        // Handle metal color selection
         metalColorOptions.forEach(option => {
             option.addEventListener('click', () => {
-                // Remove selected class from all options
+                
                 metalColorOptions.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
+
                 option.classList.add('selected');
-                
-                // Update selected color
+
                 selectedMetalColor = option.dataset.color;
-                
-                // Show/hide color picker
+
                 if (selectedMetalColor === 'custom') {
                     colorPickerContainer.classList.add('show');
                 } else {
                     colorPickerContainer.classList.remove('show');
                 }
-                
-                // Update preview
+
                 updatePreview();
-                
-                // Visual feedback
+
                 option.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     option.style.transform = '';
@@ -3838,22 +1245,19 @@ section[id] {
             });
         });
 
-        // Handle custom color picker change
         customColorPicker.addEventListener('input', () => {
             if (selectedMetalColor === 'custom') {
                 updatePreview();
             }
         });
 
-        // Clear card button
         clearCardBtn.addEventListener('click', () => {
-            // Reset to default black card
+            
             metalColorOptions.forEach(opt => opt.classList.remove('selected'));
             document.querySelector('.metal-color-option[data-color="black"]').classList.add('selected');
             selectedMetalColor = 'black';
             colorPickerContainer.classList.remove('show');
-            
-            // Clear logo if uploaded
+
             if (uploadedLogoGlobal) {
                 previewLogo.src = '';
                 uploadedLogoGlobal = null;
@@ -3861,7 +1265,7 @@ section[id] {
                 previewPlaceholder.style.display = 'flex';
                 clearCardBtn.disabled = true;
             }
-            // Reset logo scale
+            
             logoSize = 100;
             if (logoScaleSlider) logoScaleSlider.value = 100;
             if (logoScaleValue) logoScaleValue.textContent = '100%';
@@ -3869,356 +1273,27 @@ section[id] {
             showNotification('Card reset to default');
         });
 
-        // Add to cart from preview
         addToCartBtn.addEventListener('click', () => {
             const cardName = metalTypeMap[selectedMetalColor];
-            
-            // Open engraving modal with quantity selection
+
             openEngravingModal(cardName, 95);
         });
 
-        // Logo scale slider (0-200) - IMPROVED
         logoScaleSlider.addEventListener('input', () => {
             logoSize = parseInt(logoScaleSlider.value);
             logoScaleValue.textContent = `${logoSize}%`;
-            
-            // Update logo size if uploaded
+
             if (uploadedLogoGlobal) {
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
             }
         });
 
-        // Click on preview card to upload logo
         previewCard.addEventListener('click', () => {
             if (!uploadedLogoGlobal) {
-                // Create a file input element
+                
                 const fileInput = document.createElement('input');
                 fileInput.type = 'file';
-                fileInput.accept = 'image/*';
-                fileInput.style.display = 'none';
-                
-                fileInput.addEventListener('change', (e) => {
-                    if (e.target.files.length > 0) {
-                        handleLogoUpload(e.target.files[0]);
-                    }
-                    // Clean up
-                    document.body.removeChild(fileInput);
-                });
-                
-                document.body.appendChild(fileInput);
-                fileInput.click();
-            }
-        });
-
-        // Browse cards button
-        document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
-            e.preventDefault();
-            // Scroll to bestsellers section
-            const bestsellersSection = document.getElementById('bestsellers');
-            if (bestsellersSection) {
-                const navHeight = nav.offsetHeight;
-                const targetPosition = bestsellersSection.offsetTop - navHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-
-        // Initialize custom logo builder
-        initCustomLogoBuilder();
-
-        // Smooth scrolling for desktop nav
-        document.querySelectorAll('.nav-center a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                // If it's an external link or different page, allow normal navigation
-                if (this.getAttribute('target') === '_blank' || 
-                    !this.getAttribute('href').startsWith('#') ||
-                    this.getAttribute('href').includes('.html')) {
-                    return;
-                }
-                
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-                if (target) {
-                    const navHeight = nav.offsetHeight;
-                    const targetPosition = target.offsetTop - navHeight;
-
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        
-        // CAROUSEL FUNCTIONALITY WITH SWIPE AND CIRCULAR SCROLLING (WOOD FRAMEWORK PORTED TO METAL)
-        const carouselSection = document.querySelector('.carousel-section');
-        const carouselTrack = document.getElementById('carouselTrack');
-        const carouselPrev = document.getElementById('carouselPrev');
-        const carouselNext = document.getElementById('carouselNext');
-        const carouselDots = document.getElementById('carouselDots');
-        const carouselCards = document.querySelectorAll('.metal-carousel-card');
-        const carouselWrapper = document.querySelector('.metal-carousel-wrapper');
-
-        let currentSlide = 0;
-        let cardsPerView = 3;
-        let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
-
-        // Enable circular scrolling (matches wood)
-        const isCarouselCircular = true;
-
-        // Initialize carousel
-        function initCarousel() {
-            updateCardsPerView();
-            createDots();
-            updateCarousel();
-            updateCarouselBackground();
-
-            // Add swipe functionality
-            addSwipeListeners();
-        }
-
-        // Update cards per view based on screen size
-        function updateCardsPerView() {
-            if (window.innerWidth <= 768) {
-                cardsPerView = 1;
-            } else if (window.innerWidth <= 1024) {
-                cardsPerView = 2;
-            } else {
-                cardsPerView = 3;
-            }
-            totalSlides = Math.ceil(carouselCards.length / cardsPerView);
-            createDots();
-            updateCarousel();
-            updateCarouselBackground();
-        }
-
-        // Create dots for carousel
-        function createDots() {
-            carouselDots.innerHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('carousel-dot');
-                if (i === currentSlide) {
-                    dot.classList.add('active');
-                }
-                dot.addEventListener('click', () => {
-                    currentSlide = i;
-                    updateCarousel();
-                    updateCarouselBackground();
-                });
-                carouselDots.appendChild(dot);
-            }
-        }
-
-        // Update carousel position with smooth animation
-        function updateCarousel() {
-            if (!carouselCards.length) return;
-
-            const cardWidth = carouselCards[0].offsetWidth + 30; // width + gap (matches CSS gap)
-            const translateX = -currentSlide * cardsPerView * cardWidth;
-            carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            carouselTrack.style.transform = `translateX(${translateX}px)`;
-
-            // Update dots
-            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-
-            // Update navigation buttons (disabled only when non-circular)
-            carouselPrev.classList.toggle('disabled', !isCarouselCircular && currentSlide === 0);
-            carouselNext.classList.toggle('disabled', !isCarouselCircular && currentSlide >= totalSlides - 1);
-        }
-
-        // Update carousel background based on current slide
-        function updateCarouselBackground() {
-            const firstCardIndex = currentSlide * cardsPerView;
-            if (carouselCards[firstCardIndex]) {
-                const metalType = carouselCards[firstCardIndex].dataset.metal;
-                const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
-
-                if (newBackground !== currentCarouselBackground) {
-                    carouselSection.style.background = newBackground;
-                    currentCarouselBackground = newBackground;
-                }
-            }
-        }
-
-        // Background change on card hover (and touch)
-        function updateCarouselBackgroundOnHover(metalType) {
-            const newBackground = carouselBackgroundMap[metalType] || 'var(--carousel-black-bg)';
-            if (newBackground !== currentCarouselBackground) {
-                carouselSection.style.background = newBackground;
-            }
-        }
-
-        function resetCarouselBackgroundToCurrent() {
-            updateCarouselBackground();
-        }
-
-        carouselCards.forEach(card => {
-            const metalType = card.dataset.metal;
-
-            card.addEventListener('mouseenter', () => {
-                updateCarouselBackgroundOnHover(metalType);
-            });
-
-            card.addEventListener('mouseleave', () => {
-                resetCarouselBackgroundToCurrent();
-            });
-
-            // For touch devices
-            card.addEventListener('touchstart', () => {
-                updateCarouselBackgroundOnHover(metalType);
-            });
-
-            card.addEventListener('touchend', () => {
-                setTimeout(resetCarouselBackgroundToCurrent, 1000);
-            });
-        });
-
-        // Next slide with circular scrolling
-        function nextSlide() {
-            if (isCarouselCircular) {
-                currentSlide = (currentSlide + 1) % totalSlides;
-            } else if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-            }
-            updateCarousel();
-            updateCarouselBackground();
-        }
-
-        // Previous slide with circular scrolling
-        function prevSlide() {
-            if (isCarouselCircular) {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            } else if (currentSlide > 0) {
-                currentSlide--;
-            }
-            updateCarousel();
-            updateCarouselBackground();
-        }
-
-        // SWIPE FUNCTIONALITY (matches wood)
-        function addSwipeListeners() {
-            let startX = 0;
-            let currentX = 0;
-            let isSwiping = false;
-
-            // Mouse events
-            carouselWrapper.addEventListener('mousedown', (e) => {
-                startSwipe(e.clientX);
-            });
-
-            carouselWrapper.addEventListener('mousemove', (e) => {
-                if (isSwiping) {
-                    handleSwipeMove(e.clientX);
-                }
-            });
-
-            carouselWrapper.addEventListener('mouseup', () => {
-                endSwipe();
-            });
-
-            carouselWrapper.addEventListener('mouseleave', () => {
-                if (isSwiping) {
-                    endSwipe();
-                }
-            });
-
-            // Touch events
-            carouselWrapper.addEventListener('touchstart', (e) => {
-                startSwipe(e.touches[0].clientX);
-            }, { passive: true });
-
-            carouselWrapper.addEventListener('touchmove', (e) => {
-                if (isSwiping) {
-                    handleSwipeMove(e.touches[0].clientX);
-                }
-            }, { passive: true });
-
-            carouselWrapper.addEventListener('touchend', () => {
-                endSwipe();
-            });
-
-            function startSwipe(x) {
-                startX = x;
-                currentX = x;
-                isSwiping = true;
-                carouselTrack.style.transition = 'none';
-            }
-
-            function handleSwipeMove(x) {
-                if (!isSwiping || !carouselCards.length) return;
-
-                currentX = x;
-                const diff = startX - currentX;
-
-                // Move track while dragging
-                const cardWidth = carouselCards[0].offsetWidth + 30;
-                const baseTranslate = -currentSlide * cardsPerView * cardWidth;
-                const dragTranslate = -diff;
-                carouselTrack.style.transform = `translateX(${baseTranslate + dragTranslate}px)`;
-            }
-
-            function endSwipe() {
-                if (!isSwiping || !carouselCards.length) return;
-
-                const diff = startX - currentX;
-                const cardWidth = carouselCards[0].offsetWidth + 30;
-                const threshold = cardWidth * 0.2; // 20% of card width threshold
-
-                // Determine if swipe is significant enough to change slide
-                if (Math.abs(diff) > threshold) {
-                    if (diff > 0) {
-                        // Swipe left - next slide
-                        nextSlide();
-                    } else {
-                        // Swipe right - previous slide
-                        prevSlide();
-                    }
-                } else {
-                    // Return to current slide
-                    updateCarousel();
-                }
-
-                isSwiping = false;
-            }
-        }
-
-        // Event listeners for carousel navigation
-        carouselPrev.addEventListener('click', prevSlide);
-        carouselNext.addEventListener('click', nextSlide);
-
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('Metal Page loaded with IMPROVED features:');
-            console.log('1. FIXED CAROUSEL: Smooth circular scrolling with proper swipe ✓');
-            console.log('2. REMOVED: Upload logo from hero card ✓');
-            console.log('3. REMOVED: Engraving selection from "See It With Your Logo" section ✓');
-            console.log('4. IMPROVED: Logo scale slider with better design ✓');
-            console.log('5. FIXED: Swipe functionality with proper circular navigation ✓');
-            console.log('6. REMOVED: Gallery page link from mobile menu ✓');
-            console.log('7. FIXED: Cart now displays correct product images for each metal card ✓');
-            console.log('8. ENGRAVING MODAL: Now pops up for all card "Add to Cart" buttons ✓');
-            
-            initCarousel();
-            updateCart();
-            initCustomLogoBuilder();
-            
-            // Add highlight style for selected metal text
-            const style = document.createElement('style');
-            style.textContent = `
-                .highlight-text {
-                    color: var(--rose-gold-light);
-                    font-weight: 700;
-                    text-shadow: 0 2px 4px rgba(183, 110, 121, 0.3);
-                }
-                
-                /* Ensure WebP images display properly */
+                fileInput.accept = 'image
                 .webp-container {
                     display: flex;
                     align-items: center;
@@ -4236,8 +1311,7 @@ section[id] {
                     box-shadow: none;
                     background: transparent;
                 }
-                
-                /* Engraving modal styles */
+
                 .engraving-options {
                     display: grid;
                     grid-template-columns: 1fr;
@@ -4384,7 +1458,6 @@ section[id] {
             document.head.appendChild(style);
         });
 
-        // Update carousel on window resize
         window.addEventListener('resize', () => {
             updateCardsPerView();
         });

@@ -6,2779 +6,12 @@
     <title>Wood Cards – Premium Wooden NFC Cards</title>
     <link rel="icon" href="logo.png" type="image/png">
     <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-:root {
-    /* WOOD THEME COLORS - Natural, earthy tones */
-    --wood-light: #E8D4C1;
-    --wood-medium: #D4B59E;
-    --wood-dark: #B76E3D;
-    --wood-darker: #8B4513;
-    --wood-gradient: linear-gradient(135deg, #E8D4C1, #B76E3D);
-    --wood-dark-gradient: linear-gradient(135deg, #B76E3D, #8B4513);
-    --wood-shadow: 0 30px 90px rgba(183, 110, 61, .25);
-    --wood-glass: rgba(183, 110, 61, .15);
-    
-    /* WOOD BACKGROUNDS - Dark wood-themed */
-    --wood-bg-dark: #1A0F0A;
-    --wood-bg-darker: #2D1A0F;
-    --wood-nav-bg: linear-gradient(135deg, rgba(183, 110, 61, 0.95), rgba(232, 212, 193, 0.95));
-    --wood-nav-scrolled: linear-gradient(135deg, rgba(183, 110, 61, 0.9), rgba(232, 212, 193, 0.9));
-    --wood-menu-bg: linear-gradient(135deg, rgba(183, 110, 61, 0.98), rgba(232, 212, 193, 0.98));
-    
-    /* WOOD TYPE BACKGROUNDS */
-    --walnut-bg: linear-gradient(135deg, #5C4033, #3D281E);
-    --oak-bg: linear-gradient(135deg, #C19A6B, #8B7355);
-    --cherry-bg: linear-gradient(135deg, #A52A2A, #800000);
-    --maple-bg: linear-gradient(135deg, #F5DEB3, #D2B48C);
-    --bamboo-bg: linear-gradient(135deg, #9ACD32, #6B8E23);
-    --black-bamboo-bg: linear-gradient(135deg, #2F4F4F, #3D5C5C);
-    --sapele-bg: linear-gradient(135deg, #8B4513, #A0522D);
-    
-    /* CAROUSEL SECTION BACKGROUNDS - Lighter versions for section */
-    --carousel-walnut-bg: linear-gradient(135deg, #2D1A0F 0%, #3D281E 100%);
-    --carousel-oak-bg: linear-gradient(135deg, #3D281E 0%, #8B7355 100%);
-    --carousel-cherry-bg: linear-gradient(135deg, #2D1A0F 0%, #800000 100%);
-    --carousel-maple-bg: linear-gradient(135deg, #3D281E 0%, #D2B48C 100%);
-    --carousel-bamboo-bg: linear-gradient(135deg, #2D1A0F 0%, #6B8E23 100%);
-    --carousel-black-bamboo-bg: linear-gradient(135deg, #1A0F0A 0%, #3D5C5C 100%);
-    --carousel-sapele-bg: linear-gradient(135deg, #2D1A0F 0%, #A0522D 100%);
-    
-    /* Additional variables */
-    --white: #FFF9F3;
-    --black: #1A0F0A;
-    --wa: #25D366;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html,
-body {
-    height: 100%;
-    overflow-x: hidden;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
-    color: var(--white);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    touch-action: manipulation;
-    background-attachment: fixed;
-}
-
-html {
-    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* STICKY NAV - WOOD THEME */
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 20px;
-    background: var(--wood-nav-bg);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(232, 212, 193, 0.3);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    min-height: 70px;
-    box-shadow: 0 4px 20px rgba(183, 110, 61, 0.2);
-}
-
-.nav.scrolled {
-    padding: 12px 20px;
-    background: var(--wood-nav-scrolled);
-    box-shadow: 0 4px 30px rgba(183, 110, 61, 0.3);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.logo-img {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-}
-
-.logo-text {
-    display: none;
-}
-
-/* HAMBURGER MENU */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 20px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
-}
-
-.hamburger span {
-    width: 100%;
-    height: 2px;
-    background: var(--white);
-    border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    transform-origin: left center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-10px);
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg);
-}
-
-.nav-center {
-    display: flex;
-    gap: 15px;
-}
-
-.nav-center a {
-    text-decoration: none;
-    color: var(--white);
-    font-weight: 900;
-    font-size: .9rem;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    padding: 5px 0;
-    position: relative;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.nav-center a:hover {
-    color: var(--wood-light);
-    transform: translateY(-2px);
-}
-
-.nav-center a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--wood-light);
-    transition: width 0.3s ease;
-}
-
-.nav-center a:hover::after {
-    width: 100%;
-}
-
-.nav-right {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-.icon-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    color: var(--white);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-}
-
-.icon-btn:hover {
-    background: rgba(232, 212, 193, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(183, 110, 61, 0.2);
-}
-
-.cart-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background: var(--wood-light);
-    color: var(--black);
-    font-size: 10px;
-    min-width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    border: 2px solid rgba(232, 212, 193, 0.5);
-}
-
-.whatsapp {
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    color: var(--white);
-    padding: 8px 14px;
-    border-radius: 999px;
-    font-weight: 600;
-    font-size: 13px;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
-}
-
-.whatsapp:hover {
-    background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-}
-
-.whatsapp-icon {
-    display: none;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    color: var(--white);
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    text-decoration: none;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    transition: all 0.3s ease;
-}
-
-.whatsapp-icon:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
-}
-
-/* SIMPLE MOBILE MENU OVERLAY */
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 15, 10, 0.95);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-}
-
-.mobile-menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* SIMPLE MOBILE MENU */
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--wood-menu-bg);
-    backdrop-filter: blur(30px);
-    padding: 30px 20px 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    z-index: 1000;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-}
-
-.mobile-menu.active {
-    transform: translateX(0);
-}
-
-.mobile-menu a {
-    text-decoration: none;
-    color: var(--white);
-    font-weight: 700;
-    font-size: 18px;
-    padding: 18px 24px;
-    border-radius: 16px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.15);
-    text-align: left;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    margin-bottom: 4px;
-    -webkit-tap-highlight-color: rgba(232, 212, 193, 0.1);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.mobile-menu a:active {
-    background: rgba(232, 212, 193, 0.25);
-}
-
-.mobile-menu a:hover {
-    background: rgba(232, 212, 193, 0.25);
-}
-
-.mobile-menu .whatsapp {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 17px;
-    padding: 20px 24px;
-    min-height: 64px;
-    justify-content: center;
-    background: linear-gradient(135deg, #25d366, #128c7e);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.mobile-menu .whatsapp:hover {
-    background: linear-gradient(135deg, #1ebe5a, #0d7a6d);
-}
-
-.mobile-close-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(232, 212, 193, 0.2);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: var(--white);
-    cursor: pointer;
-    z-index: 1002;
-    transition: all 0.3s ease;
-}
-
-.mobile-close-btn.show {
-    display: flex;
-}
-
-.mobile-close-btn:hover {
-    background: rgba(232, 212, 193, 0.3);
-    transform: rotate(90deg);
-}
-
-.menu-divider {
-    height: 1px;
-    background: rgba(232, 212, 193, 0.25);
-    margin: 20px 0;
-    width: 100%;
-}
-
-.menu-footer {
-    margin-top: auto;
-    padding-top: 20px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 13px;
-    border-top: 1px solid rgba(232, 212, 193, 0.2);
-}
-
-/* Show hamburger and hide desktop nav on mobile */
-@media (max-width: 1024px) {
-    .nav-center,
-    .nav-right .whatsapp {
-        display: none;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .nav-right {
-        gap: 8px;
-    }
-
-    .nav {
-        padding: 14px 16px;
-        min-height: 64px;
-    }
-
-    .nav.scrolled {
-        padding: 10px 16px;
-    }
-
-    .whatsapp-icon {
-        display: flex;
-    }
-
-    .main-container {
-        padding-top: 64px;
-    }
-
-    section[id] {
-        scroll-margin-top: 75px;
-    }
-}
-
-@media (max-width: 767px) {
-    .mobile-menu a {
-        padding: 20px 24px;
-        min-height: 64px;
-        font-size: 17px;
-    }
-
-    .mobile-menu {
-        padding: 25px 16px 100px;
-    }
-
-    .hamburger {
-        width: 32px;
-        height: 24px;
-    }
-
-    .icon-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 18px;
-    }
-
-    .cart-count {
-        top: -3px;
-        right: -3px;
-        min-width: 20px;
-        height: 20px;
-        font-size: 11px;
-        font-weight: 700;
-    }
-}
-
-body.menu-open {
-    overflow: hidden;
-}
-
-.mobile-menu a {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-    transform: translateY(10px);
-}
-
-.mobile-menu a:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.mobile-menu a:nth-child(2) {
-    animation-delay: 0.15s;
-}
-
-.mobile-menu a:nth-child(3) {
-    animation-delay: 0.2s;
-}
-
-.mobile-menu a:nth-child(4) {
-    animation-delay: 0.25s;
-}
-
-.mobile-menu a:nth-child(5) {
-    animation-delay: 0.3s;
-}
-
-.mobile-menu a:nth-child(6) {
-    animation-delay: 0.35s;
-}
-
-.mobile-menu .whatsapp {
-    animation-delay: 0.4s;
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.main-container {
-    padding-top: 70px;
-    position: relative;
-    z-index: 1;
-}
-
-section[id] {
-    scroll-margin-top: 90px;
-}
-
-@media (max-width: 768px) {
-    section[id] {
-        scroll-margin-top: 80px;
-    }
-}
-
-/* HERO SECTION - WOOD THEME */
-.hero-section {
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 20px 80px;
-    text-align: center;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background: radial-gradient(1200px 700px at 20% 30%, rgba(232, 212, 193, .45), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(183, 110, 61, .35), transparent 60%),
-        linear-gradient(135deg, #2D1A0F 0%, #1A0F0A 100%);
-}
-
-.hero-bg-blob {
-    position: absolute;
-    inset: auto auto 10% -18%;
-    width: 560px;
-    height: 560px;
-    border-radius: 999px;
-    filter: blur(90px);
-    opacity: .45;
-    z-index: 0;
-    transform: translateZ(0);
-    background: linear-gradient(135deg, rgba(232, 212, 193, .85), rgba(183, 110, 61, .78));
-}
-
-.hero-bg-blob.b2 {
-    inset: -18% -22% auto auto;
-    width: 520px;
-    height: 520px;
-    border-radius: 999px;
-    filter: blur(90px);
-    opacity: .35;
-    z-index: 0;
-    transform: translateZ(0);
-    background: linear-gradient(135deg, rgba(183, 110, 61, .75), rgba(232, 212, 193, .65));
-}
-
-.hero-content {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 30px;
-    color: var(--white);
-    letter-spacing: -0.03em;
-    text-shadow: 0 2px 10px rgba(183, 110, 61, 0.3);
-}
-
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-}
-
-.hero-card:hover {
-    transform: scale(1.05);
-}
-
-.hero-text {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--white);
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.hero-subtext {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* BUTTONS - WOOD THEME */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 24px;
-    border-radius: 14px;
-    font-weight: 900;
-    text-decoration: none;
-    border: none;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    cursor: pointer;
-    font-size: 15px;
-    white-space: nowrap;
-    min-width: 140px;
-    height: 48px;
-}
-
-.btn-primary {
-    background: var(--wood-gradient);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(183, 110, 61, 0.4);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.6);
-    background: linear-gradient(135deg, #F0E6DC, #D4A574);
-}
-
-.btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--white);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-    border-color: var(--wood-light);
-}
-
-.hero-cta {
-    margin-top: 40px;
-}
-
-/* BESTSELLERS SECTION - WOOD THEME */
-.bestsellers-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.bestsellers-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--wood-dark), transparent);
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-    position: relative;
-    z-index: 2;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 16px;
-    color: var(--white);
-    text-shadow: 0 2px 4px rgba(183, 110, 61, 0.3);
-}
-
-.section-subtitle {
-    font-size: 1.08rem;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.65;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.bestsellers-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.bestseller-card {
-    border-radius: 20px;
-    padding: 30px;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-}
-
-/* Wood type backgrounds */
-.bestseller-card.walnut {
-    background: radial-gradient(circle at top, rgba(92, 64, 51, 0.9), rgba(61, 40, 30, 0.95));
-    color: #F5E6D3;
-}
-
-.bestseller-card.oak {
-    background: radial-gradient(circle at top, rgba(193, 154, 107, 0.9), rgba(139, 115, 85, 0.95));
-    color: #3D281E;
-}
-
-.bestseller-card.sapele {
-    background: radial-gradient(circle at top, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.95));
-    color: #F5E6D3;
-}
-
-.bestseller-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.bestseller-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    color: var(--white);
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-/* WEBP IMAGE CONTAINER - PERFECT FIT */
-.bestseller-image {
-    width: 100%;
-    height: 200px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    border: none;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    position: relative;
-    padding: 0;
-}
-
-/* WebP container - FULL WIDTH */
-.bestseller-image .webp-container {
-    width: 95%;
-    height: 95%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-/* WebP images - PERFECT FIT */
-.bestseller-image img.webp-image {
-    width: 95%;
-    height: 95%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background: transparent;
-    border-radius: 12px;
-}
-
-.bestseller-card:hover .bestseller-image img.webp-image {
-    transform: scale(1.05);
-}
-
-.bestseller-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-/* Text colors for different backgrounds */
-.bestseller-card.walnut .bestseller-title,
-.bestseller-card.sapele .bestseller-title {
-    color: #F5E6D3;
-}
-
-.bestseller-card.oak .bestseller-title {
-    color: #3D281E;
-}
-
-.bestseller-description {
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-}
-
-.bestseller-card.walnut .bestseller-description,
-.bestseller-card.sapele .bestseller-description {
-    color: rgba(245, 230, 211, 0.9);
-}
-
-.bestseller-card.oak .bestseller-description {
-    color: rgba(61, 40, 30, 0.9);
-}
-
-.bestseller-price {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-}
-
-.bestseller-card.walnut .bestseller-price,
-.bestseller-card.sapele .bestseller-price {
-    color: #F5E6D3;
-}
-
-.bestseller-card.oak .bestseller-price {
-    color: #3D281E;
-}
-
-.bestseller-price span {
-    font-size: 0.9rem;
-    font-weight: 400;
-    margin-left: 5px;
-}
-
-.bestseller-card.walnut .bestseller-price span,
-.bestseller-card.sapele .bestseller-price span {
-    color: rgba(245, 230, 211, 0.7);
-}
-
-.bestseller-card.oak .bestseller-price span {
-    color: rgba(61, 40, 30, 0.7);
-}
-
-.bestseller-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.bestseller-actions .btn {
-    flex: 1;
-}
-
-/* Button colors for wood cards */
-.bestseller-card.walnut .btn-primary,
-.bestseller-card.sapele .btn-primary {
-    background: rgba(0, 0, 0, 0.7);
-    color: #F5E6D3;
-    border: 1px solid rgba(245, 230, 211, 0.3);
-}
-
-.bestseller-card.oak .btn-primary {
-    background: rgba(61, 40, 30, 0.7);
-    color: #F5E6D3;
-    border: 1px solid rgba(245, 230, 211, 0.3);
-}
-
-.bestseller-card.walnut .btn-secondary,
-.bestseller-card.sapele .btn-secondary {
-    background: rgba(245, 230, 211, 0.2);
-    color: #F5E6D3;
-    border: 1px solid rgba(245, 230, 211, 0.3);
-}
-
-.bestseller-card.oak .btn-secondary {
-    background: rgba(61, 40, 30, 0.2);
-    color: #3D281E;
-    border: 1px solid rgba(61, 40, 30, 0.3);
-}
-
-/* CAROUSEL SECTION - PROPER CAROUSEL */
-.carousel-section {
-    padding: 100px 20px;
-    background: var(--carousel-black-bamboo-bg);
-    position: relative;
-    overflow: hidden;
-    transition: background 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.carousel-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--wood-dark), transparent);
-    z-index: 2;
-}
-
-.carousel-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.carousel-section .section-header {
-    margin-bottom: 60px;
-    position: relative;
-    z-index: 10;
-    text-align: center;
-}
-
-.carousel-section .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-/* Carousel Styles */
-.wood-carousel-wrapper {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding: 0 60px;
-    touch-action: pan-y pinch-zoom;
-}
-
-@media (max-width: 768px) {
-    .wood-carousel-wrapper {
-        padding: 0 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    .wood-carousel-wrapper {
-        padding: 0 20px;
-    }
-}
-
-.wood-carousel-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    gap: 30px;
-    padding: 10px 0;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-/* Carousel cards matching bestseller style */
-.wood-carousel-card {
-    flex: 0 0 calc(33.333% - 20px);
-    border-radius: 20px;
-    padding: 30px;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    min-width: 300px;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-@media (max-width: 1024px) {
-    .wood-carousel-card {
-        flex: 0 0 calc(50% - 15px);
-    }
-}
-
-@media (max-width: 768px) {
-    .wood-carousel-card {
-        flex: 0 0 calc(100% - 0px);
-        min-width: 280px;
-    }
-}
-
-/* Wood type backgrounds for carousel cards */
-.wood-carousel-card.walnut {
-    background: radial-gradient(circle at top, rgba(92, 64, 51, 0.9), rgba(61, 40, 30, 0.95));
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.oak {
-    background: radial-gradient(circle at top, rgba(193, 154, 107, 0.9), rgba(139, 115, 85, 0.95));
-    color: #3D281E;
-}
-
-.wood-carousel-card.cherry {
-    background: radial-gradient(circle at top, rgba(165, 42, 42, 0.9), rgba(128, 0, 0, 0.95));
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.maple {
-    background: radial-gradient(circle at top, rgba(245, 222, 179, 0.9), rgba(210, 180, 140, 0.95));
-    color: #3D281E;
-}
-
-.wood-carousel-card.bamboo {
-    background: radial-gradient(circle at top, rgba(154, 205, 50, 0.9), rgba(107, 142, 35, 0.95));
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.black-bamboo {
-    background: radial-gradient(circle at top, rgba(47, 79, 79, 0.9), rgba(61, 92, 92, 0.95));
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.sapele {
-    background: radial-gradient(circle at top, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.95));
-    color: #F5E6D3;
-}
-
-.wood-carousel-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-/* Carousel card image */
-.wood-carousel-image {
-    width: 100%;
-    height: 200px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    position: relative;
-}
-
-.wood-carousel-image img {
-    width: 95%;
-    height: 95%;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.5s ease;
-}
-
-.wood-carousel-card:hover .wood-carousel-image img {
-    transform: scale(1.05);
-}
-
-.wood-carousel-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-.wood-carousel-card.walnut .wood-carousel-title,
-.wood-carousel-card.cherry .wood-carousel-title,
-.wood-carousel-card.bamboo .wood-carousel-title,
-.wood-carousel-card.black-bamboo .wood-carousel-title,
-.wood-carousel-card.sapele .wood-carousel-title {
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.oak .wood-carousel-title,
-.wood-carousel-card.maple .wood-carousel-title {
-    color: #3D281E;
-}
-
-.wood-carousel-description {
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-size: 0.95rem;
-    flex-grow: 1;
-}
-
-.wood-carousel-card.walnut .wood-carousel-description,
-.wood-carousel-card.cherry .wood-carousel-description,
-.wood-carousel-card.bamboo .wood-carousel-description,
-.wood-carousel-card.black-bamboo .wood-carousel-description,
-.wood-carousel-card.sapele .wood-carousel-description {
-    color: rgba(245, 230, 211, 0.9);
-}
-
-.wood-carousel-card.oak .wood-carousel-description,
-.wood-carousel-card.maple .wood-carousel-description {
-    color: rgba(61, 40, 30, 0.9);
-}
-
-.wood-carousel-price {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-}
-
-.wood-carousel-card.walnut .wood-carousel-price,
-.wood-carousel-card.cherry .wood-carousel-price,
-.wood-carousel-card.bamboo .wood-carousel-price,
-.wood-carousel-card.black-bamboo .wood-carousel-price,
-.wood-carousel-card.sapele .wood-carousel-price {
-    color: #F5E6D3;
-}
-
-.wood-carousel-card.oak .wood-carousel-price,
-.wood-carousel-card.maple .wood-carousel-price {
-    color: #3D281E;
-}
-
-.wood-carousel-price span {
-    font-size: 0.9rem;
-    font-weight: 400;
-    margin-left: 5px;
-}
-
-.wood-carousel-actions {
-    margin-top: auto;
-    display: flex;
-    gap: 10px;
-}
-
-.wood-carousel-actions .btn {
-    flex: 1;
-}
-
-/* Carousel Navigation Arrows */
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background: rgba(232, 212, 193, 0.3);
-    border: 1px solid rgba(232, 212, 193, 0.5);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    color: var(--white);
-    font-size: 24px;
-    font-weight: bold;
-    backdrop-filter: blur(10px);
-}
-
-.carousel-nav:hover {
-    background: rgba(232, 212, 193, 0.5);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 4px 15px rgba(183, 110, 61, 0.4);
-}
-
-.carousel-nav.prev {
-    left: 0;
-}
-
-.carousel-nav.next {
-    right: 0;
-}
-
-.carousel-nav.disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: translateY(-50%) scale(1);
-}
-
-.carousel-nav.disabled:hover {
-    background: rgba(232, 212, 193, 0.3);
-    transform: translateY(-50%) scale(1);
-    box-shadow: none;
-}
-
-@media (max-width: 768px) {
-    .carousel-nav {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-}
-
-/* Carousel Dots */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 30px;
-}
-
-.carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(232, 212, 193, 0.3);
-    border: 1px solid rgba(232, 212, 193, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    background: var(--wood-light);
-    border-color: var(--wood-light);
-    transform: scale(1.2);
-}
-
-.carousel-dot:hover {
-    background: rgba(232, 212, 193, 0.5);
-    transform: scale(1.1);
-}
-
-/* WHY CHOOSE SECTION - WOOD THEME */
-.why-choose-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.why-choose-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--wood-dark), transparent);
-}
-
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.benefit-card {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    backdrop-filter: blur(10px);
-}
-
-.benefit-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--wood-light);
-    box-shadow: 0 15px 30px rgba(183, 110, 61, 0.2);
-    background: rgba(232, 212, 193, 0.15);
-}
-
-.benefit-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
-    background: rgba(232, 212, 193, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: var(--white);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-}
-
-.benefit-title {
-    font-size: 1.4rem;
-    font-weight: 800;
-    margin-bottom: 15px;
-    color: var(--white);
-}
-
-.benefit-description {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-/* TESTIMONIALS SECTION - WOOD THEME */
-.testimonials-section {
-    padding: 100px 20px;
-    background: linear-gradient(135deg, #2D1A0F 0%, #1A0F0A 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.testimonials-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--wood-medium), transparent);
-}
-
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-.testimonial-card {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    position: relative;
-    backdrop-filter: blur(10px);
-}
-
-.testimonial-quote {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.95);
-    margin-bottom: 20px;
-    font-style: italic;
-}
-
-.testimonial-author {
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 5px;
-}
-
-.testimonial-role {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
-}
-
-/* CUSTOM LOGO SECTION - OPTIMIZED FOR MOBILE */
-.custom-logo-section {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #1A0F0A 0%, #2D1A0F 100%);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.custom-logo-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--wood-dark), transparent);
-}
-
-.custom-logo-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-}
-
-/* MOBILE OPTIMIZED LAYOUT - SINGLE COLUMN */
-.logo-builder-container {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin: 40px 0;
-}
-
-/* Preview Section - Now on top */
-.preview-container {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 24px;
-    padding: 25px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    backdrop-filter: blur(10px);
-    width: 100%;
-}
-
-.preview-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(232, 212, 193, 0.3);
-}
-
-.preview-title {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--white);
-}
-
-.card-counter {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--wood-light);
-    background: rgba(232, 212, 193, 0.2);
-    padding: 6px 12px;
-    border-radius: 20px;
-}
-
-.preview-card-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
-.preview-card {
-    width: 100%;
-    max-width: 350px;
-    height: 220px;
-    margin: 0 auto;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    position: relative;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.preview-card:hover {
-    transform: scale(1.02);
-}
-
-.preview-card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.preview-logo {
-    max-width: 70%;
-    max-height: 70%;
-    object-fit: contain;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    display: none;
-}
-
-.preview-logo.visible {
-    display: block;
-}
-
-.preview-placeholder {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.7);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.placeholder-icon {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    opacity: 0.6;
-}
-
-.placeholder-text {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.placeholder-subtext {
-    font-size: 0.9rem;
-    margin-top: 5px;
-    opacity: 0.8;
-}
-
-.preview-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-}
-
-.selected-card-info {
-    text-align: left;
-}
-
-.card-name {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 5px;
-}
-
-.engraving-type {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.preview-price {
-    font-size: 1.3rem;
-    font-weight: 900;
-    color: var(--wood-light);
-}
-
-/* Clear Card Button */
-.clear-card-btn {
-    width: 100%;
-    padding: 16px;
-    background: rgba(232, 212, 193, 0.15);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    color: var(--white);
-    border-radius: 14px;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    -webkit-tap-highlight-color: rgba(232, 212, 193, 0.1);
-}
-
-.clear-card-btn:hover {
-    background: rgba(232, 212, 193, 0.25);
-    transform: translateY(-2px);
-}
-
-.clear-card-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
-/* Selection Options - Now all below the card */
-.selection-options {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-/* Wood Color Selection - NOW DIRECTLY BELOW THE CARD - EXTRA SMALL FOR MOBILE */
-.wood-colors-section {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 16px;
-    padding: 15px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    backdrop-filter: blur(10px);
-    order: 1; /* Make sure it appears first after the card */
-    margin-top: -10px; /* Pull it closer to the card */
-}
-
-.wood-colors-title {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 12px;
-    text-align: center;
-}
-
-/* EXTRA SMALL WOOD COLOR GRID FOR MOBILE */
-.wood-colors-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-}
-
-@media (max-width: 1024px) {
-    .wood-colors-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 6px;
-    }
-}
-
-@media (max-width: 768px) {
-    .wood-colors-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 5px;
-    }
-}
-
-@media (max-width: 480px) {
-    .wood-colors-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 4px;
-    }
-}
-
-/* EXTRA SMALL WOOD COLOR BUTTONS */
-.wood-color-option {
-    aspect-ratio: 1;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 2px solid transparent;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    min-height: 30px; /* MUCH SMALLER */
-}
-
-.wood-color-option:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.wood-color-option.selected {
-    border-color: var(--white);
-    box-shadow: 0 0 0 2px var(--white), 0 2px 5px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-}
-
-/* EXTRA SMALL COLOR LABELS */
-.color-label {
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    color: white;
-    font-size: 0.55rem; /* SMALLER FONT */
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    padding: 1px 2px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    margin: 0 2px;
-    line-height: 1;
-    display: none; /* Hide labels on small buttons */
-}
-
-/* Show labels only on selected or hover */
-.wood-color-option.selected .color-label,
-.wood-color-option:hover .color-label {
-    display: block;
-}
-
-@media (max-width: 480px) {
-    .color-label {
-        font-size: 0.5rem;
-        padding: 1px;
-    }
-}
-
-/* Engraving Selection */
-.engraving-section {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    backdrop-filter: blur(10px);
-    order: 2;
-}
-
-.engraving-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.engraving-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.engraving-option {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    border: 2px solid transparent;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.engraving-option:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
-}
-
-.engraving-option.selected {
-    background: rgba(232, 212, 193, 0.2);
-    border-color: var(--wood-light);
-}
-
-.engraving-icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-.engraving-name {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 4px;
-}
-
-.engraving-price {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* Logo Upload Section */
-.logo-upload-section {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    backdrop-filter: blur(10px);
-    order: 3;
-}
-
-.logo-upload-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.upload-container {
-    width: 100%;
-}
-
-.upload-area {
-    border: 2px dashed rgba(232, 212, 193, 0.5);
-    border-radius: 16px;
-    padding: 30px 20px;
-    background: rgba(232, 212, 193, 0.05);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    margin-bottom: 20px;
-    -webkit-tap-highlight-color: transparent;
-    min-height: 180px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.upload-area:hover {
-    border-color: var(--wood-light);
-    background: rgba(232, 212, 193, 0.1);
-    transform: translateY(-2px);
-}
-
-.upload-area.drag-over {
-    border-color: var(--wood-light);
-    background: rgba(232, 212, 193, 0.15);
-    border-style: solid;
-}
-
-.upload-icon {
-    font-size: 2.5rem;
-    color: rgba(232, 212, 193, 0.7);
-    margin-bottom: 15px;
-}
-
-.upload-text {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-
-.upload-subtext {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 5px;
-    line-height: 1.4;
-}
-
-.upload-hint {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    margin-top: 10px;
-    font-style: italic;
-}
-
-/* File input */
-#logoFileInput {
-    display: none;
-}
-
-/* Upload Actions */
-.upload-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-}
-
-@media (min-width: 480px) {
-    .upload-actions {
-        flex-direction: row;
-    }
-}
-
-.upload-btn, .clear-logo-btn {
-    padding: 16px 20px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex: 1;
-    min-height: 52px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.upload-btn {
-    background: var(--wood-gradient);
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(183, 110, 61, 0.3);
-}
-
-.upload-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.4);
-}
-
-.clear-logo-btn {
-    background: rgba(232, 212, 193, 0.15);
-    color: var(--white);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-}
-
-.clear-logo-btn:hover {
-    background: rgba(232, 212, 193, 0.25);
-    transform: translateY(-2px);
-}
-
-.clear-logo-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none !important;
-}
-
-/* Logo Size Controls */
-.logo-size-section {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 20px;
-    padding: 25px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-    backdrop-filter: blur(10px);
-    order: 4;
-}
-
-.logo-size-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 20px;
-}
-
-.logo-size-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.size-slider-container {
-    width: 100%;
-}
-
-.size-slider {
-    width: 100%;
-    height: 8px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: rgba(232, 212, 193, 0.2);
-    border-radius: 4px;
-    outline: none;
-}
-
-.size-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--wood-light);
-    cursor: pointer;
-    border: 3px solid var(--white);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.size-slider::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--wood-light);
-    cursor: pointer;
-    border: 3px solid var(--white);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-}
-
-.size-value {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--wood-light);
-    text-align: center;
-    margin-top: 10px;
-}
-
-.size-presets {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.size-preset-btn {
-    padding: 10px;
-    background: rgba(232, 212, 193, 0.1);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    border-radius: 8px;
-    color: var(--white);
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.size-preset-btn:hover {
-    background: rgba(232, 212, 193, 0.2);
-}
-
-.size-preset-btn.active {
-    background: var(--wood-gradient);
-    border-color: var(--wood-light);
-}
-
-/* Add to Cart Button */
-.add-to-cart-btn {
-    width: 100%;
-    padding: 18px;
-    background: var(--wood-gradient);
-    color: var(--white);
-    border: none;
-    border-radius: 14px;
-    font-size: 1.1rem;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(183, 110, 61, 0.3);
-    margin-top: 25px;
-    order: 5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.add-to-cart-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(183, 110, 61, 0.4);
-}
-
-.whatsapp-help {
-    margin-top: 40px;
-    padding: 25px;
-    background: rgba(37, 211, 102, 0.1);
-    border-radius: 20px;
-    border: 1px solid rgba(37, 211, 102, 0.3);
-    backdrop-filter: blur(10px);
-    order: 6;
-}
-
-/* DESKTOP LAYOUT - TWO COLUMNS */
-@media (min-width: 992px) {
-    .logo-builder-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-        margin: 40px 0;
-    }
-    
-    /* Reset order for desktop */
-    .preview-container,
-    .wood-colors-section,
-    .engraving-section,
-    .logo-upload-section,
-    .logo-size-section,
-    .add-to-cart-btn,
-    .whatsapp-help {
-        order: 0;
-    }
-    
-    .selection-options {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
-    
-    /* Make wood color buttons larger on desktop */
-    .wood-colors-section {
-        padding: 20px;
-        margin-top: 0;
-    }
-    
-    .wood-colors-grid {
-        gap: 8px;
-    }
-    
-    .wood-color-option {
-        min-height: 40px;
-        border-radius: 8px;
-    }
-    
-    .color-label {
-        font-size: 0.65rem;
-        padding: 2px 4px;
-        display: block; /* Always show labels on desktop */
-    }
-}
-
-/* RESPONSIVE DESIGN */
-@media (max-width: 768px) {
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .bestsellers-grid,
-    .benefits-grid,
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .custom-logo-section {
-        padding: 60px 20px;
-    }
-
-    .preview-card {
-        height: 200px;
-    }
-
-    .upload-area {
-        padding: 25px 15px;
-        min-height: 160px;
-    }
-
-    .upload-text {
-        font-size: 1rem;
-    }
-
-    .upload-subtext {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .bestseller-actions,
-    .wood-carousel-actions {
-        flex-direction: column;
-    }
-
-    .preview-card {
-        height: 180px;
-    }
-
-    .wood-colors-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 3px;
-    }
-    
-    .wood-color-option {
-        min-height: 28px;
-        border-radius: 5px;
-    }
-}
-
-/* ENGRAVING MODAL - WOOD THEME */
-.engraving-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(26, 15, 10, 0.98);
-    backdrop-filter: blur(20px);
-    z-index: 2000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.engraving-modal.active {
-    display: flex;
-    opacity: 1;
-}
-
-.engraving-content {
-    background: linear-gradient(135deg, #1A0F0A, #2D1A0F);
-    border-radius: 24px;
-    padding: 30px;
-    max-width: 500px;
-    width: 95%;
-    max-height: 85vh;
-    overflow-y: auto;
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    box-shadow: 0 40px 80px rgba(183, 110, 61, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    position: relative;
-    animation: modalAppear 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    backdrop-filter: blur(10px);
-}
-
-@keyframes modalAppear {
-    from {
-        opacity: 0;
-        transform: scale(0.95) translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-.close-engraving {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(232, 212, 193, 0.15);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    color: var(--white);
-    font-size: 22px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    z-index: 10;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.close-engraving:hover {
-    background: rgba(232, 212, 193, 0.3);
-    transform: rotate(90deg);
-}
-
-.engraving-header {
-    margin-bottom: 30px;
-    text-align: center;
-    padding: 0 10px;
-}
-
-.engraving-header h3 {
-    font-size: 1.8rem;
-    font-weight: 900;
-    margin-bottom: 12px;
-    color: var(--white);
-    line-height: 1.2;
-    text-shadow: 0 2px 4px rgba(183, 110, 61, 0.3);
-}
-
-.engraving-header p {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1rem;
-    line-height: 1.5;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-/* Engraving Options inside Modal */
-.engraving-options {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin: 20px 0;
-}
-
-@media (min-width: 768px) {
-    .engraving-options {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-.engraving-option {
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 18px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-}
-
-.engraving-option:hover {
-    background: rgba(232, 212, 193, 0.15);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(183, 110, 61, 0.2);
-}
-
-.engraving-option.selected {
-    border-color: var(--wood-light);
-    background: rgba(232, 212, 193, 0.15);
-}
-
-.engraving-image {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 3rem;
-}
-
-.engraving-label {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
-    margin-bottom: 5px;
-    text-align: center;
-}
-
-.engraving-price {
-    color: var(--wood-light);
-    font-size: 0.95rem;
-    text-align: center;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.engraving-description {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-/* Quantity Controls - IMPROVED FOR MOBILE */
-.quantity-controls {
-    margin: 25px 0;
-    padding: 20px;
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 16px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-}
-
-.quantity-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.quantity-selector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.quantity-btn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: rgba(232, 212, 193, 0.2);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    color: var(--white);
-    font-size: 22px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    -webkit-tap-highlight-color: rgba(232, 212, 193, 0.1);
-}
-
-.quantity-btn:hover:not(:disabled) {
-    background: rgba(232, 212, 193, 0.3);
-    transform: scale(1.1);
-}
-
-.quantity-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-}
-
-.quantity-input {
-    width: 80px;
-    height: 48px;
-    border-radius: 12px;
-    background: rgba(232, 212, 193, 0.1);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    color: var(--white);
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-align: center;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
-}
-
-.quantity-input::-webkit-outer-spin-button,
-.quantity-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.quantity-input:focus {
-    border-color: var(--wood-light);
-    box-shadow: 0 0 0 2px rgba(183, 110, 61, 0.3);
-}
-
-.quantity-presets {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 15px;
-}
-
-@media (min-width: 480px) {
-    .quantity-presets {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-.quantity-preset-btn {
-    padding: 12px 8px;
-    background: rgba(232, 212, 193, 0.1);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    border-radius: 10px;
-    color: var(--white);
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.quantity-preset-btn:hover {
-    background: rgba(232, 212, 193, 0.2);
-}
-
-.quantity-preset-btn.active {
-    background: var(--wood-gradient);
-    border-color: var(--wood-light);
-}
-
-.engraving-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding-top: 10px;
-}
-
-@media (min-width: 480px) {
-    .engraving-actions {
-        flex-direction: row;
-        justify-content: center;
-    }
-}
-
-.btn-cancel,
-.btn-confirm {
-    padding: 18px 28px;
-    border-radius: 14px;
-    font-weight: 800;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    flex: 1;
-    min-width: 0;
-    border: none;
-    letter-spacing: 0.5px;
-    text-align: center;
-    min-height: 56px;
-}
-
-@media (min-width: 480px) {
-    .btn-cancel,
-    .btn-confirm {
-        min-width: 140px;
-        flex: 0 1 auto;
-    }
-}
-
-.btn-cancel {
-    background: rgba(232, 212, 193, 0.15);
-    color: var(--white);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-}
-
-.btn-cancel:hover {
-    background: rgba(232, 212, 193, 0.25);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(183, 110, 61, 0.2);
-}
-
-.btn-confirm {
-    background: var(--wood-gradient);
-    color: var(--white);
-    box-shadow: 0 8px 25px rgba(183, 110, 61, 0.4);
-}
-
-.btn-confirm:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(183, 110, 61, 0.5);
-}
-
-/* Cart Modal - WOOD THEME */
-.cart-modal {
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 400px;
-    height: 100%;
-    background: linear-gradient(135deg, #1A0F0A, #2D1A0F);
-    border-left: 1px solid rgba(232, 212, 193, 0.2);
-    z-index: 2000;
-    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
-    flex-direction: column;
-    box-shadow: -20px 0 60px rgba(183, 110, 61, 0.3);
-}
-
-@media (max-width: 768px) {
-    .cart-modal {
-        width: 100%;
-        right: -100%;
-    }
-}
-
-.cart-modal.active {
-    right: 0;
-}
-
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px;
-    border-bottom: 1px solid rgba(232, 212, 193, 0.2);
-}
-
-.cart-header h3 {
-    font-size: 1.4rem;
-    font-weight: 900;
-    color: var(--white);
-    margin: 0;
-}
-
-.close-cart {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(232, 212, 193, 0.2);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    color: var(--white);
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.close-cart:hover {
-    background: rgba(232, 212, 193, 0.3);
-    transform: rotate(90deg);
-}
-
-.cart-items {
-    flex: 1;
-    overflow-y: auto;
-    padding: 25px;
-}
-
-.empty-cart {
-    text-align: center;
-    padding: 60px 20px;
-    color: rgba(232, 212, 193, 0.7);
-}
-
-.empty-cart p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 18px;
-    background: rgba(232, 212, 193, 0.1);
-    border-radius: 14px;
-    margin-bottom: 12px;
-    border: 1px solid rgba(232, 212, 193, 0.2);
-}
-
-.cart-item img {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-.cart-item-details {
-    flex: 1;
-}
-
-.cart-item-name {
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 5px;
-    font-size: 0.95rem;
-}
-
-.cart-item-price {
-    color: rgba(232, 212, 193, 0.8);
-    font-size: 0.85rem;
-}
-
-.remove-item {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(232, 212, 193, 0.2);
-    border: 1px solid rgba(232, 212, 193, 0.3);
-    color: var(--white);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.remove-item:hover {
-    background: rgba(232, 212, 193, 0.3);
-    border-color: var(--wood-light);
-    color: var(--wood-light);
-}
-
-.cart-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px;
-    border-top: 1px solid rgba(232, 212, 193, 0.2);
-    font-size: 1.2rem;
-    font-weight: 900;
-    color: var(--white);
-}
-
-.checkout-btn {
-    margin: 0 25px 25px;
-    padding: 18px;
-    border-radius: 14px;
-    background: var(--wood-gradient);
-    color: var(--white);
-    font-weight: 700;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.checkout-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(183, 110, 61, 0.4);
-}
-
-/* Notification - WOOD THEME */
-.notification {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--wood-gradient);
-    color: var(--white);
-    padding: 18px 25px;
-    border-radius: 14px;
-    font-weight: 600;
-    box-shadow: 0 15px 40px rgba(183, 110, 61, 0.3);
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 3000;
-    max-width: 300px;
-}
-
-@media (max-width: 768px) {
-    .notification {
-        right: 20px;
-        left: 20px;
-        max-width: none;
-    }
-}
-
-.notification.show {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.hero-card-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto;
-}
-
-.hero-card {
-    width: 500px;
-    height: 300px;
-    border-radius: 20px;
-    overflow: visible;
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    position: relative;
-    transition: transform 0.3s ease;
-    padding: 0;
-}
-
-.hero-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 20px;
-    display: block;
-    transition: transform 0.3s ease;
-    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
-}
-
-.hero-card:hover img {
-    transform: scale(1.05);
-}
-
-/* Responsive hero card sizing (matches index.html) */
-@media (max-width: 767px) {
-    .hero-card {
-        width: min(92vw, 420px);
-        height: auto;
-        aspect-ratio: 5 / 3;
-    }
-}
-
-@media (hover: none) and (pointer: coarse) {
-    .hero-card img {
-        transition: none !important;
-        -webkit-filter: none !important;
-        filter: none !important;
-    }
-
-    .hero-card:hover img {
-        transform: none !important;
-    }
-}
-
-/* Additional Styles */
-.highlight-text {
-    color: var(--wood-light);
-    font-weight: 700;
-    text-shadow: 0 2px 4px rgba(183, 110, 61, 0.3);
-}
-
-.webp-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
-.webp-container img.webp-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    background: transparent;
-}
-    </style>
+    <style>:root{--wood-light:#E8D4C1;--wood-medium:#D4B59E;--wood-dark:#B76E3D;--wood-darker:#8B4513;--wood-gradient:linear-gradient(135deg,#E8D4C1,#B76E3D);--wood-dark-gradient:linear-gradient(135deg,#B76E3D,#8B4513);--wood-shadow:0 30px 90px rgba(183,110,61,.25);--wood-glass:rgba(183,110,61,.15);--wood-bg-dark:#1A0F0A;--wood-bg-darker:#2D1A0F;--wood-nav-bg:linear-gradient(135deg,rgba(183,110,61,0.95),rgba(232,212,193,0.95));--wood-nav-scrolled:linear-gradient(135deg,rgba(183,110,61,0.9),rgba(232,212,193,0.9));--wood-menu-bg:linear-gradient(135deg,rgba(183,110,61,0.98),rgba(232,212,193,0.98));--walnut-bg:linear-gradient(135deg,#5C4033,#3D281E);--oak-bg:linear-gradient(135deg,#C19A6B,#8B7355);--cherry-bg:linear-gradient(135deg,#A52A2A,#800000);--maple-bg:linear-gradient(135deg,#F5DEB3,#D2B48C);--bamboo-bg:linear-gradient(135deg,#9ACD32,#6B8E23);--black-bamboo-bg:linear-gradient(135deg,#2F4F4F,#3D5C5C);--sapele-bg:linear-gradient(135deg,#8B4513,#A0522D);--carousel-walnut-bg:linear-gradient(135deg,#2D1A0F 0%,#3D281E 100%);--carousel-oak-bg:linear-gradient(135deg,#3D281E 0%,#8B7355 100%);--carousel-cherry-bg:linear-gradient(135deg,#2D1A0F 0%,#800000 100%);--carousel-maple-bg:linear-gradient(135deg,#3D281E 0%,#D2B48C 100%);--carousel-bamboo-bg:linear-gradient(135deg,#2D1A0F 0%,#6B8E23 100%);--carousel-black-bamboo-bg:linear-gradient(135deg,#1A0F0A 0%,#3D5C5C 100%);--carousel-sapele-bg:linear-gradient(135deg,#2D1A0F 0%,#A0522D 100%);--white:#FFF9F3;--black:#1A0F0A;--wa:#25D366}*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%;overflow-x:hidden}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#1A0F0A 0%,#2D1A0F 100%);color:var(--white);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;touch-action:manipulation;background-attachment:fixed}html{background:linear-gradient(135deg,#1A0F0A 0%,#2D1A0F 100%)}a{color:inherit;text-decoration:none}.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:var(--wood-nav-bg);backdrop-filter:blur(10px);position:fixed;top:0;left:0;right:0;z-index:1000;border-bottom:1px solid rgba(232,212,193,0.3);transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);min-height:70px;box-shadow:0 4px 20px rgba(183,110,61,0.2)}.nav.scrolled{padding:12px 20px;background:var(--wood-nav-scrolled);box-shadow:0 4px 30px rgba(183,110,61,0.3)}.logo{display:flex;align-items:center;gap:10px;text-decoration:none}.logo-img{height:40px;width:auto;object-fit:contain}.logo-text{display:none}.hamburger{display:none;flex-direction:column;justify-content:space-between;width:28px;height:20px;background:transparent;border:none;cursor:pointer;padding:0;z-index:1001}.hamburger span{width:100%;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);transform-origin:left center;box-shadow:0 1px 2px rgba(0,0,0,0.2)}.hamburger.active span:nth-child(1){transform:rotate(45deg)}.hamburger.active span:nth-child(2){opacity:0;transform:translateX(-10px)}.hamburger.active span:nth-child(3){transform:rotate(-45deg)}.nav-center{display:flex;gap:15px}.nav-center a{text-decoration:none;color:var(--white);font-weight:900;font-size:.9rem;transition:all 0.3s ease;white-space:nowrap;padding:5px 0;position:relative;text-shadow:0 1px 2px rgba(0,0,0,0.2)}.nav-center a:hover{color:var(--wood-light);transform:translateY(-2px)}.nav-center a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--wood-light);transition:width 0.3s ease}.nav-center a:hover::after{width:100%}.nav-right{display:flex;gap:12px;align-items:center}.icon-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.2);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;position:relative;transition:all 0.3s ease;flex-shrink:0;color:var(--white);border:1px solid rgba(232,212,193,0.3)}.icon-btn:hover{background:rgba(232,212,193,0.3);transform:translateY(-2px);box-shadow:0 4px 12px rgba(183,110,61,0.2)}.cart-count{position:absolute;top:-5px;right:-5px;background:var(--wood-light);color:var(--black);font-size:10px;min-width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;border:2px solid rgba(232,212,193,0.5)}.whatsapp{background:linear-gradient(135deg,#25d366,#128c7e);color:var(--white);padding:8px 14px;border-radius:999px;font-weight:600;font-size:13px;transition:all 0.3s ease;white-space:nowrap;border:none;cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(37,211,102,0.2)}.whatsapp:hover{background:linear-gradient(135deg,#1ebe5a,#0d7a6d);transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,0.3)}.whatsapp-icon{display:none;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);color:var(--white);align-items:center;justify-content:center;font-size:18px;text-decoration:none;box-shadow:0 4px 12px rgba(37,211,102,0.3);transition:all 0.3s ease}.whatsapp-icon:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,211,102,0.4)}.mobile-menu-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,15,10,0.95);z-index:999;opacity:0;visibility:hidden;transition:opacity 0.3s ease}.mobile-menu-overlay.active{opacity:1;visibility:visible}.mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--wood-menu-bg);backdrop-filter:blur(30px);padding:30px 20px 100px;display:flex;flex-direction:column;gap:8px;z-index:1000;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateX(-100%);transition:transform 0.3s ease}.mobile-menu.active{transform:translateX(0)}.mobile-menu a{text-decoration:none;color:var(--white);font-weight:700;font-size:18px;padding:18px 24px;border-radius:16px;transition:all 0.3s ease;background:rgba(255,255,255,0.15);text-align:left;min-height:60px;display:flex;align-items:center;justify-content:flex-start;border:1px solid rgba(232,212,193,0.3);margin-bottom:4px;-webkit-tap-highlight-color:rgba(232,212,193,0.1);text-shadow:0 1px 2px rgba(0,0,0,0.2)}.mobile-menu a:active{background:rgba(232,212,193,0.25)}.mobile-menu a:hover{background:rgba(232,212,193,0.25)}.mobile-menu .whatsapp{margin-top:20px;margin-bottom:30px;text-align:center;font-size:17px;padding:20px 24px;min-height:64px;justify-content:center;background:linear-gradient(135deg,#25d366,#128c7e);border:1px solid rgba(232,212,193,0.3);box-shadow:0 6px 20px rgba(37,211,102,0.25);font-weight:700;display:flex;align-items:center;gap:12px}.mobile-menu .whatsapp:hover{background:linear-gradient(135deg,#1ebe5a,#0d7a6d)}.mobile-close-btn{position:fixed;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(232,212,193,0.2);border:1px solid rgba(232,212,193,0.3);display:none;align-items:center;justify-content:center;font-size:24px;color:var(--white);cursor:pointer;z-index:1002;transition:all 0.3s ease}.mobile-close-btn.show{display:flex}.mobile-close-btn:hover{background:rgba(232,212,193,0.3);transform:rotate(90deg)}.menu-divider{height:1px;background:rgba(232,212,193,0.25);margin:20px 0;width:100%}.menu-footer{margin-top:auto;padding-top:20px;text-align:center;color:rgba(255,255,255,0.8);font-size:13px;border-top:1px solid rgba(232,212,193,0.2)}@media (max-width:1024px){.nav-center,.nav-right .whatsapp{display:none}.hamburger{display:flex}.nav-right{gap:8px}.nav{padding:14px 16px;min-height:64px}.nav.scrolled{padding:10px 16px}.whatsapp-icon{display:flex}.main-container{padding-top:64px}section[id]{scroll-margin-top:75px}}@media (max-width:767px){.mobile-menu a{padding:20px 24px;min-height:64px;font-size:17px}.mobile-menu{padding:25px 16px 100px}.hamburger{width:32px;height:24px}.icon-btn{width:44px;height:44px;font-size:18px}.cart-count{top:-3px;right:-3px;min-width:20px;height:20px;font-size:11px;font-weight:700}}body.menu-open{overflow:hidden}.mobile-menu a{animation:fadeInUp 0.5s ease forwards;opacity:0;transform:translateY(10px)}.mobile-menu a:nth-child(1){animation-delay:0.1s}.mobile-menu a:nth-child(2){animation-delay:0.15s}.mobile-menu a:nth-child(3){animation-delay:0.2s}.mobile-menu a:nth-child(4){animation-delay:0.25s}.mobile-menu a:nth-child(5){animation-delay:0.3s}.mobile-menu a:nth-child(6){animation-delay:0.35s}.mobile-menu .whatsapp{animation-delay:0.4s}@keyframes fadeInUp{to{opacity:1;transform:translateY(0)}}.main-container{padding-top:70px;position:relative;z-index:1}section[id]{scroll-margin-top:90px}@media (max-width:768px){section[id]{scroll-margin-top:80px}}.hero-section{min-height:90vh;display:flex;align-items:center;justify-content:center;padding:120px 20px 80px;text-align:center;position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(1200px 700px at 20% 30%,rgba(232,212,193,.45),transparent 60%),radial-gradient(900px 500px at 80% 20%,rgba(183,110,61,.35),transparent 60%),linear-gradient(135deg,#2D1A0F 0%,#1A0F0A 100%)}.hero-bg-blob{position:absolute;inset:auto auto 10% -18%;width:560px;height:560px;border-radius:999px;filter:blur(90px);opacity:.45;z-index:0;transform:translateZ(0);background:linear-gradient(135deg,rgba(232,212,193,.85),rgba(183,110,61,.78))}.hero-bg-blob.b2{inset:-18% -22% auto auto;width:520px;height:520px;border-radius:999px;filter:blur(90px);opacity:.35;z-index:0;transform:translateZ(0);background:linear-gradient(135deg,rgba(183,110,61,.75),rgba(232,212,193,.65))}.hero-content{max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:2}.hero-title{font-size:3.5rem;font-weight:900;line-height:1.1;margin-bottom:30px;color:var(--white);letter-spacing:-0.03em;text-shadow:0 2px 10px rgba(183,110,61,0.3)}@media (max-width:768px){.hero-title{font-size:2.5rem}}@media (max-width:480px){.hero-title{font-size:2rem}}.hero-card:hover{transform:scale(1.05)}.hero-text{font-size:18px;font-weight:600;color:var(--white);text-align:center;margin-bottom:10px}.hero-subtext{font-size:12px;color:rgba(255,255,255,0.8)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:14px;font-weight:900;text-decoration:none;border:none;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);cursor:pointer;font-size:15px;white-space:nowrap;min-width:140px;height:48px}.btn-primary{background:var(--wood-gradient);color:var(--white);box-shadow:0 4px 15px rgba(183,110,61,0.4);text-shadow:0 1px 2px rgba(0,0,0,0.2)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(183,110,61,0.6);background:linear-gradient(135deg,#F0E6DC,#D4A574)}.btn-secondary{background:rgba(255,255,255,0.2);color:var(--white);border:1px solid rgba(255,255,255,0.4);backdrop-filter:blur(10px)}.btn-secondary:hover{background:rgba(255,255,255,0.3);transform:translateY(-2px);border-color:var(--wood-light)}.hero-cta{margin-top:40px}.bestsellers-section{padding:100px 20px;background:linear-gradient(135deg,#1A0F0A 0%,#2D1A0F 100%);position:relative;overflow:hidden}.bestsellers-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--wood-dark),transparent)}.section-header{text-align:center;margin-bottom:60px;position:relative;z-index:2}.section-title{font-size:2.5rem;font-weight:900;line-height:1.1;margin-bottom:16px;color:var(--white);text-shadow:0 2px 4px rgba(183,110,61,0.3)}.section-subtitle{font-size:1.08rem;color:rgba(255,255,255,0.85);line-height:1.65;max-width:800px;margin:0 auto}.bestsellers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:0 auto;position:relative;z-index:2}.bestseller-card{border-radius:20px;padding:30px;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden;backdrop-filter:blur(10px)}.bestseller-card.walnut{background:radial-gradient(circle at top,rgba(92,64,51,0.9),rgba(61,40,30,0.95));color:#F5E6D3}.bestseller-card.oak{background:radial-gradient(circle at top,rgba(193,154,107,0.9),rgba(139,115,85,0.95));color:#3D281E}.bestseller-card.sapele{background:radial-gradient(circle at top,rgba(139,69,19,0.9),rgba(160,82,45,0.95));color:#F5E6D3}.bestseller-card:hover{transform:translateY(-10px);border-color:rgba(255,255,255,0.4);box-shadow:0 20px 40px rgba(0,0,0,0.3)}.bestseller-badge{position:absolute;top:20px;right:20px;background:rgba(0,0,0,0.3);color:var(--white);padding:6px 12px;border-radius:20px;font-size:0.8rem;font-weight:700;display:flex;align-items:center;gap:5px;box-shadow:0 2px 8px rgba(0,0,0,0.3);text-shadow:0 1px 2px rgba(0,0,0,0.2);backdrop-filter:blur(10px)}.bestseller-image{width:100%;height:200px;border-radius:12px;margin-bottom:20px;border:none;overflow:hidden;display:flex;align-items:center;justify-content:center;background:transparent;position:relative;padding:0}.bestseller-image .webp-container{width:95%;height:95%;display:flex;align-items:center;justify-content:center;position:relative}.bestseller-image img.webp-image{width:95%;height:95%;object-fit:cover;transition:transform 0.5s ease;border:none;outline:none;box-shadow:none;background:transparent;border-radius:12px}.bestseller-card:hover .bestseller-image img.webp-image{transform:scale(1.05)}.bestseller-title{font-size:1.5rem;font-weight:800;margin-bottom:10px}.bestseller-card.walnut .bestseller-title,.bestseller-card.sapele .bestseller-title{color:#F5E6D3}.bestseller-card.oak .bestseller-title{color:#3D281E}.bestseller-description{line-height:1.6;margin-bottom:20px;font-size:0.95rem}.bestseller-card.walnut .bestseller-description,.bestseller-card.sapele .bestseller-description{color:rgba(245,230,211,0.9)}.bestseller-card.oak .bestseller-description{color:rgba(61,40,30,0.9)}.bestseller-price{font-size:1.8rem;font-weight:900;margin-bottom:20px}.bestseller-card.walnut .bestseller-price,.bestseller-card.sapele .bestseller-price{color:#F5E6D3}.bestseller-card.oak .bestseller-price{color:#3D281E}.bestseller-price span{font-size:0.9rem;font-weight:400;margin-left:5px}.bestseller-card.walnut .bestseller-price span,.bestseller-card.sapele .bestseller-price span{color:rgba(245,230,211,0.7)}.bestseller-card.oak .bestseller-price span{color:rgba(61,40,30,0.7)}.bestseller-actions{display:flex;gap:10px}.bestseller-actions .btn{flex:1}.bestseller-card.walnut .btn-primary,.bestseller-card.sapele .btn-primary{background:rgba(0,0,0,0.7);color:#F5E6D3;border:1px solid rgba(245,230,211,0.3)}.bestseller-card.oak .btn-primary{background:rgba(61,40,30,0.7);color:#F5E6D3;border:1px solid rgba(245,230,211,0.3)}.bestseller-card.walnut .btn-secondary,.bestseller-card.sapele .btn-secondary{background:rgba(245,230,211,0.2);color:#F5E6D3;border:1px solid rgba(245,230,211,0.3)}.bestseller-card.oak .btn-secondary{background:rgba(61,40,30,0.2);color:#3D281E;border:1px solid rgba(61,40,30,0.3)}.carousel-section{padding:100px 20px;background:var(--carousel-black-bamboo-bg);position:relative;overflow:hidden;transition:background 0.8s cubic-bezier(0.34,1.56,0.64,1)}.carousel-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--wood-dark),transparent);z-index:2}.carousel-container{max-width:1200px;margin:0 auto;position:relative;z-index:2}.carousel-section .section-header{margin-bottom:60px;position:relative;z-index:10;text-align:center}.carousel-section .section-title{font-size:2.5rem;margin-bottom:16px}.wood-carousel-wrapper{position:relative;width:100%;overflow:hidden;padding:0 60px;touch-action:pan-y pinch-zoom}@media (max-width:768px){.wood-carousel-wrapper{padding:0 40px}}@media (max-width:480px){.wood-carousel-wrapper{padding:0 20px}}.wood-carousel-track{display:flex;transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);gap:30px;padding:10px 0;user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}.wood-carousel-card{flex:0 0 calc(33.333% - 20px);border-radius:20px;padding:30px;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden;backdrop-filter:blur(10px);height:500px;display:flex;flex-direction:column;cursor:pointer;min-width:300px;user-select:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none}@media (max-width:1024px){.wood-carousel-card{flex:0 0 calc(50% - 15px)}}@media (max-width:768px){.wood-carousel-card{flex:0 0 calc(100% - 0px);min-width:280px}}.wood-carousel-card.walnut{background:radial-gradient(circle at top,rgba(92,64,51,0.9),rgba(61,40,30,0.95));color:#F5E6D3}.wood-carousel-card.oak{background:radial-gradient(circle at top,rgba(193,154,107,0.9),rgba(139,115,85,0.95));color:#3D281E}.wood-carousel-card.cherry{background:radial-gradient(circle at top,rgba(165,42,42,0.9),rgba(128,0,0,0.95));color:#F5E6D3}.wood-carousel-card.maple{background:radial-gradient(circle at top,rgba(245,222,179,0.9),rgba(210,180,140,0.95));color:#3D281E}.wood-carousel-card.bamboo{background:radial-gradient(circle at top,rgba(154,205,50,0.9),rgba(107,142,35,0.95));color:#F5E6D3}.wood-carousel-card.black-bamboo{background:radial-gradient(circle at top,rgba(47,79,79,0.9),rgba(61,92,92,0.95));color:#F5E6D3}.wood-carousel-card.sapele{background:radial-gradient(circle at top,rgba(139,69,19,0.9),rgba(160,82,45,0.95));color:#F5E6D3}.wood-carousel-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}.wood-carousel-image{width:100%;height:200px;border-radius:12px;margin-bottom:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:transparent;position:relative}.wood-carousel-image img{width:95%;height:95%;object-fit:cover;border-radius:12px;transition:transform 0.5s ease}.wood-carousel-card:hover .wood-carousel-image img{transform:scale(1.05)}.wood-carousel-title{font-size:1.5rem;font-weight:800;margin-bottom:10px}.wood-carousel-card.walnut .wood-carousel-title,.wood-carousel-card.cherry .wood-carousel-title,.wood-carousel-card.bamboo .wood-carousel-title,.wood-carousel-card.black-bamboo .wood-carousel-title,.wood-carousel-card.sapele .wood-carousel-title{color:#F5E6D3}.wood-carousel-card.oak .wood-carousel-title,.wood-carousel-card.maple .wood-carousel-title{color:#3D281E}.wood-carousel-description{line-height:1.6;margin-bottom:20px;font-size:0.95rem;flex-grow:1}.wood-carousel-card.walnut .wood-carousel-description,.wood-carousel-card.cherry .wood-carousel-description,.wood-carousel-card.bamboo .wood-carousel-description,.wood-carousel-card.black-bamboo .wood-carousel-description,.wood-carousel-card.sapele .wood-carousel-description{color:rgba(245,230,211,0.9)}.wood-carousel-card.oak .wood-carousel-description,.wood-carousel-card.maple .wood-carousel-description{color:rgba(61,40,30,0.9)}.wood-carousel-price{font-size:1.8rem;font-weight:900;margin-bottom:20px}.wood-carousel-card.walnut .wood-carousel-price,.wood-carousel-card.cherry .wood-carousel-price,.wood-carousel-card.bamboo .wood-carousel-price,.wood-carousel-card.black-bamboo .wood-carousel-price,.wood-carousel-card.sapele .wood-carousel-price{color:#F5E6D3}.wood-carousel-card.oak .wood-carousel-price,.wood-carousel-card.maple .wood-carousel-price{color:#3D281E}.wood-carousel-price span{font-size:0.9rem;font-weight:400;margin-left:5px}.wood-carousel-actions{margin-top:auto;display:flex;gap:10px}.wood-carousel-actions .btn{flex:1}.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;background:rgba(232,212,193,0.3);border:1px solid rgba(232,212,193,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s ease;z-index:10;color:var(--white);font-size:24px;font-weight:bold;backdrop-filter:blur(10px)}.carousel-nav:hover{background:rgba(232,212,193,0.5);transform:translateY(-50%) scale(1.1);box-shadow:0 4px 15px rgba(183,110,61,0.4)}.carousel-nav.prev{left:0}.carousel-nav.next{right:0}.carousel-nav.disabled{opacity:0.3;cursor:not-allowed;transform:translateY(-50%) scale(1)}.carousel-nav.disabled:hover{background:rgba(232,212,193,0.3);transform:translateY(-50%) scale(1);box-shadow:none}@media (max-width:768px){.carousel-nav{width:40px;height:40px;font-size:20px}}.carousel-dots{display:flex;justify-content:center;gap:10px;margin-top:30px}.carousel-dot{width:12px;height:12px;border-radius:50%;background:rgba(232,212,193,0.3);border:1px solid rgba(232,212,193,0.5);cursor:pointer;transition:all 0.3s ease}.carousel-dot.active{background:var(--wood-light);border-color:var(--wood-light);transform:scale(1.2)}.carousel-dot:hover{background:rgba(232,212,193,0.5);transform:scale(1.1)}.why-choose-section{padding:100px 20px;background:linear-gradient(135deg,#1A0F0A 0%,#2D1A0F 100%);position:relative;overflow:hidden}.why-choose-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--wood-dark),transparent)}.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:0 auto;position:relative;z-index:2}.benefit-card{background:rgba(232,212,193,0.1);border-radius:20px;padding:30px;border:1px solid rgba(232,212,193,0.2);transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);backdrop-filter:blur(10px)}.benefit-card:hover{transform:translateY(-5px);border-color:var(--wood-light);box-shadow:0 15px 30px rgba(183,110,61,0.2);background:rgba(232,212,193,0.15)}.benefit-icon{width:60px;height:60px;border-radius:16px;background:rgba(232,212,193,0.2);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;color:var(--white);border:1px solid rgba(232,212,193,0.3)}.benefit-title{font-size:1.4rem;font-weight:800;margin-bottom:15px;color:var(--white)}.benefit-description{color:rgba(255,255,255,0.85);line-height:1.6;font-size:0.95rem}.testimonials-section{padding:100px 20px;background:linear-gradient(135deg,#2D1A0F 0%,#1A0F0A 100%);position:relative;overflow:hidden}.testimonials-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--wood-medium),transparent)}.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:0 auto;position:relative;z-index:2}.testimonial-card{background:rgba(232,212,193,0.1);border-radius:20px;padding:30px;border:1px solid rgba(232,212,193,0.2);position:relative;backdrop-filter:blur(10px)}.testimonial-quote{font-size:1.1rem;line-height:1.6;color:rgba(255,255,255,0.95);margin-bottom:20px;font-style:italic}.testimonial-author{font-weight:700;color:var(--white);margin-bottom:5px}.testimonial-role{color:rgba(255,255,255,0.7);font-size:0.9rem}.custom-logo-section{padding:80px 20px;background:linear-gradient(135deg,#1A0F0A 0%,#2D1A0F 100%);text-align:center;position:relative;overflow:hidden}.custom-logo-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--wood-dark),transparent)}.custom-logo-content{max-width:1200px;margin:0 auto;position:relative;z-index:2}.logo-builder-container{display:flex;flex-direction:column;gap:30px;margin:40px 0}.preview-container{background:rgba(232,212,193,0.1);border-radius:24px;padding:25px;border:1px solid rgba(232,212,193,0.2);backdrop-filter:blur(10px);width:100%}.preview-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:15px;border-bottom:1px solid rgba(232,212,193,0.3)}.preview-title{font-size:1.3rem;font-weight:800;color:var(--white)}.card-counter{font-size:1rem;font-weight:700;color:var(--wood-light);background:rgba(232,212,193,0.2);padding:6px 12px;border-radius:20px}.preview-card-wrapper{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:25px}.preview-card{width:100%;max-width:350px;height:220px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,0.4);position:relative;border:2px solid rgba(255,255,255,0.3);cursor:pointer;transition:transform 0.3s ease}.preview-card:hover{transform:scale(1.02)}.preview-card-inner{width:100%;height:100%;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.preview-logo{max-width:70%;max-height:70%;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));display:none}.preview-logo.visible{display:block}.preview-placeholder{text-align:center;color:rgba(255,255,255,0.7);padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%}.placeholder-icon{font-size:2.5rem;margin-bottom:10px;opacity:0.6}.placeholder-text{font-size:1.1rem;font-weight:600}.placeholder-subtext{font-size:0.9rem;margin-top:5px;opacity:0.8}.preview-details{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding:15px;background:rgba(0,0,0,0.2);border-radius:12px}.selected-card-info{text-align:left}.card-name{font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:5px}.engraving-type{font-size:0.85rem;color:rgba(255,255,255,0.8)}.preview-price{font-size:1.3rem;font-weight:900;color:var(--wood-light)}.clear-card-btn{width:100%;padding:16px;background:rgba(232,212,193,0.15);border:1px solid rgba(232,212,193,0.3);color:var(--white);border-radius:14px;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:20px;-webkit-tap-highlight-color:rgba(232,212,193,0.1)}.clear-card-btn:hover{background:rgba(232,212,193,0.25);transform:translateY(-2px)}.clear-card-btn:disabled{opacity:0.3;cursor:not-allowed;transform:none !important}.selection-options{display:flex;flex-direction:column;gap:25px}.wood-colors-section{background:rgba(232,212,193,0.1);border-radius:16px;padding:15px;border:1px solid rgba(232,212,193,0.2);backdrop-filter:blur(10px);order:1;margin-top:-10px}.wood-colors-title{font-size:1rem;font-weight:800;color:var(--white);margin-bottom:12px;text-align:center}.wood-colors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}@media (max-width:1024px){.wood-colors-grid{grid-template-columns:repeat(4,1fr);gap:6px}}@media (max-width:768px){.wood-colors-grid{grid-template-columns:repeat(4,1fr);gap:5px}}@media (max-width:480px){.wood-colors-grid{grid-template-columns:repeat(4,1fr);gap:4px}}.wood-color-option{aspect-ratio:1;border-radius:6px;cursor:pointer;transition:all 0.3s ease;position:relative;overflow:hidden;border:2px solid transparent;box-shadow:0 1px 3px rgba(0,0,0,0.2);min-height:30px}.wood-color-option:hover{transform:translateY(-1px);box-shadow:0 2px 5px rgba(0,0,0,0.3)}.wood-color-option.selected{border-color:var(--white);box-shadow:0 0 0 2px var(--white),0 2px 5px rgba(0,0,0,0.3);transform:scale(1.05)}.color-label{position:absolute;bottom:2px;left:0;right:0;text-align:center;color:white;font-size:0.55rem;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,0.5);padding:1px 2px;background:rgba(0,0,0,0.5);border-radius:3px;margin:0 2px;line-height:1;display:none}.wood-color-option.selected .color-label,.wood-color-option:hover .color-label{display:block}@media (max-width:480px){.color-label{font-size:0.5rem;padding:1px}}.engraving-section{background:rgba(232,212,193,0.1);border-radius:20px;padding:25px;border:1px solid rgba(232,212,193,0.2);backdrop-filter:blur(10px);order:2}.engraving-title{font-size:1.2rem;font-weight:800;color:var(--white);margin-bottom:20px}.engraving-options{display:grid;grid-template-columns:1fr 1fr;gap:15px}.engraving-option{background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;cursor:pointer;transition:all 0.3s ease;text-align:center;border:2px solid transparent;-webkit-tap-highlight-color:transparent}.engraving-option:hover{background:rgba(255,255,255,0.15);transform:translateY(-3px)}.engraving-option.selected{background:rgba(232,212,193,0.2);border-color:var(--wood-light)}.engraving-icon{font-size:1.8rem;margin-bottom:8px}.engraving-name{font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:4px}.engraving-price{font-size:0.85rem;color:rgba(255,255,255,0.8)}.logo-upload-section{background:rgba(232,212,193,0.1);border-radius:20px;padding:25px;border:1px solid rgba(232,212,193,0.2);backdrop-filter:blur(10px);order:3}.logo-upload-title{font-size:1.2rem;font-weight:800;color:var(--white);margin-bottom:20px}.upload-container{width:100%}.upload-area{border:2px dashed rgba(232,212,193,0.5);border-radius:16px;padding:30px 20px;background:rgba(232,212,193,0.05);cursor:pointer;transition:all 0.3s ease;text-align:center;margin-bottom:20px;-webkit-tap-highlight-color:transparent;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}.upload-area:hover{border-color:var(--wood-light);background:rgba(232,212,193,0.1);transform:translateY(-2px)}.upload-area.drag-over{border-color:var(--wood-light);background:rgba(232,212,193,0.15);border-style:solid}.upload-icon{font-size:2.5rem;color:rgba(232,212,193,0.7);margin-bottom:15px}.upload-text{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px;line-height:1.3}.upload-subtext{font-size:0.85rem;color:rgba(255,255,255,0.7);margin-bottom:5px;line-height:1.4}.upload-hint{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:10px;font-style:italic}#logoFileInput{display:none}.upload-actions{display:flex;flex-direction:column;gap:12px;width:100%}@media (min-width:480px){.upload-actions{flex-direction:row}}.upload-btn,.clear-logo-btn{padding:16px 20px;border-radius:12px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.3s ease;border:none;display:flex;align-items:center;justify-content:center;gap:8px;flex:1;min-height:52px;-webkit-tap-highlight-color:transparent}.upload-btn{background:var(--wood-gradient);color:var(--white);box-shadow:0 4px 15px rgba(183,110,61,0.3)}.upload-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(183,110,61,0.4)}.clear-logo-btn{background:rgba(232,212,193,0.15);color:var(--white);border:1px solid rgba(232,212,193,0.3)}.clear-logo-btn:hover{background:rgba(232,212,193,0.25);transform:translateY(-2px)}.clear-logo-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none !important}.logo-size-section{background:rgba(232,212,193,0.1);border-radius:20px;padding:25px;border:1px solid rgba(232,212,193,0.2);backdrop-filter:blur(10px);order:4}.logo-size-title{font-size:1.2rem;font-weight:800;color:var(--white);margin-bottom:20px}.logo-size-controls{display:flex;flex-direction:column;gap:15px}.size-slider-container{width:100%}.size-slider{width:100%;height:8px;-webkit-appearance:none;appearance:none;background:rgba(232,212,193,0.2);border-radius:4px;outline:none}.size-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:var(--wood-light);cursor:pointer;border:3px solid var(--white);box-shadow:0 2px 6px rgba(0,0,0,0.3)}.size-slider::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--wood-light);cursor:pointer;border:3px solid var(--white);box-shadow:0 2px 6px rgba(0,0,0,0.3)}.size-value{font-size:1rem;font-weight:700;color:var(--wood-light);text-align:center;margin-top:10px}.size-presets{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}.size-preset-btn{padding:10px;background:rgba(232,212,193,0.1);border:1px solid rgba(232,212,193,0.3);border-radius:8px;color:var(--white);font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.3s ease}.size-preset-btn:hover{background:rgba(232,212,193,0.2)}.size-preset-btn.active{background:var(--wood-gradient);border-color:var(--wood-light)}.add-to-cart-btn{width:100%;padding:18px;background:var(--wood-gradient);color:var(--white);border:none;border-radius:14px;font-size:1.1rem;font-weight:800;cursor:pointer;transition:all 0.3s ease;box-shadow:0 6px 20px rgba(183,110,61,0.3);margin-top:25px;order:5;display:flex;align-items:center;justify-content:center;gap:10px;-webkit-tap-highlight-color:transparent}.add-to-cart-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(183,110,61,0.4)}.whatsapp-help{margin-top:40px;padding:25px;background:rgba(37,211,102,0.1);border-radius:20px;border:1px solid rgba(37,211,102,0.3);backdrop-filter:blur(10px);order:6}@media (min-width:992px){.logo-builder-container{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:40px 0}.preview-container,.wood-colors-section,.engraving-section,.logo-upload-section,.logo-size-section,.add-to-cart-btn,.whatsapp-help{order:0}.selection-options{display:flex;flex-direction:column;gap:25px}.wood-colors-section{padding:20px;margin-top:0}.wood-colors-grid{gap:8px}.wood-color-option{min-height:40px;border-radius:8px}.color-label{font-size:0.65rem;padding:2px 4px;display:block}}@media (max-width:768px){.section-title{font-size:2rem}.hero-title{font-size:2.5rem}.bestsellers-grid,.benefits-grid,.testimonials-grid{grid-template-columns:1fr;gap:20px}.custom-logo-section{padding:60px 20px}.preview-card{height:200px}.upload-area{padding:25px 15px;min-height:160px}.upload-text{font-size:1rem}.upload-subtext{font-size:0.8rem}}@media (max-width:480px){.hero-title{font-size:2rem}.section-title{font-size:1.8rem}.bestseller-actions,.wood-carousel-actions{flex-direction:column}.preview-card{height:180px}.wood-colors-grid{grid-template-columns:repeat(4,1fr);gap:3px}.wood-color-option{min-height:28px;border-radius:5px}}.engraving-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,15,10,0.98);backdrop-filter:blur(20px);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity 0.3s cubic-bezier(0.34,1.56,0.64,1);overflow-y:auto;-webkit-overflow-scrolling:touch}.engraving-modal.active{display:flex;opacity:1}.engraving-content{background:linear-gradient(135deg,#1A0F0A,#2D1A0F);border-radius:24px;padding:30px;max-width:500px;width:95%;max-height:85vh;overflow-y:auto;border:1px solid rgba(232,212,193,0.3);box-shadow:0 40px 80px rgba(183,110,61,0.25),inset 0 1px 0 rgba(255,255,255,0.1);position:relative;animation:modalAppear 0.4s cubic-bezier(0.34,1.56,0.64,1);backdrop-filter:blur(10px)}@keyframes modalAppear{from{opacity:0;transform:scale(0.95) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}.close-engraving{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(232,212,193,0.15);border:1px solid rgba(232,212,193,0.3);color:var(--white);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);z-index:10;-webkit-tap-highlight-color:transparent}.close-engraving:hover{background:rgba(232,212,193,0.3);transform:rotate(90deg)}.engraving-header{margin-bottom:30px;text-align:center;padding:0 10px}.engraving-header h3{font-size:1.8rem;font-weight:900;margin-bottom:12px;color:var(--white);line-height:1.2;text-shadow:0 2px 4px rgba(183,110,61,0.3)}.engraving-header p{color:rgba(255,255,255,0.85);font-size:1rem;line-height:1.5;max-width:400px;margin:0 auto}.engraving-options{display:grid;grid-template-columns:1fr;gap:20px;margin:20px 0}@media (min-width:768px){.engraving-options{grid-template-columns:1fr 1fr}}.engraving-option{background:rgba(232,212,193,0.1);border-radius:18px;padding:20px;cursor:pointer;transition:all 0.3s ease;border:2px solid transparent;position:relative;overflow:hidden}.engraving-option:hover{background:rgba(232,212,193,0.15);transform:translateY(-3px);box-shadow:0 10px 20px rgba(183,110,61,0.2)}.engraving-option.selected{border-color:var(--wood-light);background:rgba(232,212,193,0.15)}.engraving-image{text-align:center;margin-bottom:15px;font-size:3rem}.engraving-label{font-size:1.2rem;font-weight:800;color:var(--white);margin-bottom:5px;text-align:center}.engraving-price{color:var(--wood-light);font-size:0.95rem;text-align:center;margin-bottom:10px;font-weight:600}.engraving-description{color:rgba(255,255,255,0.8);font-size:0.9rem;line-height:1.5}.quantity-controls{margin:25px 0;padding:20px;background:rgba(232,212,193,0.1);border-radius:16px;border:1px solid rgba(232,212,193,0.2)}.quantity-title{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:15px;text-align:center}.quantity-selector{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:15px}.quantity-btn{width:48px;height:48px;border-radius:50%;background:rgba(232,212,193,0.2);border:1px solid rgba(232,212,193,0.3);color:var(--white);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;-webkit-tap-highlight-color:rgba(232,212,193,0.1)}.quantity-btn:hover:not(:disabled){background:rgba(232,212,193,0.3);transform:scale(1.1)}.quantity-btn:disabled{opacity:0.3;cursor:not-allowed}.quantity-input{width:80px;height:48px;border-radius:12px;background:rgba(232,212,193,0.1);border:1px solid rgba(232,212,193,0.3);color:var(--white);font-size:1.3rem;font-weight:700;text-align:center;outline:none;-webkit-appearance:none;-moz-appearance:textfield}.quantity-input::-webkit-outer-spin-button,.quantity-input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}.quantity-input:focus{border-color:var(--wood-light);box-shadow:0 0 0 2px rgba(183,110,61,0.3)}.quantity-presets{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:15px}@media (min-width:480px){.quantity-presets{grid-template-columns:repeat(4,1fr)}}.quantity-preset-btn{padding:12px 8px;background:rgba(232,212,193,0.1);border:1px solid rgba(232,212,193,0.3);border-radius:10px;color:var(--white);font-size:0.95rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center}.quantity-preset-btn:hover{background:rgba(232,212,193,0.2)}.quantity-preset-btn.active{background:var(--wood-gradient);border-color:var(--wood-light)}.engraving-actions{display:flex;flex-direction:column;gap:15px;padding-top:10px}@media (min-width:480px){.engraving-actions{flex-direction:row;justify-content:center}}.btn-cancel,.btn-confirm{padding:18px 28px;border-radius:14px;font-weight:800;font-size:16px;cursor:pointer;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);flex:1;min-width:0;border:none;letter-spacing:0.5px;text-align:center;min-height:56px}@media (min-width:480px){.btn-cancel,.btn-confirm{min-width:140px;flex:0 1 auto}}.btn-cancel{background:rgba(232,212,193,0.15);color:var(--white);border:1px solid rgba(232,212,193,0.3)}.btn-cancel:hover{background:rgba(232,212,193,0.25);transform:translateY(-3px);box-shadow:0 10px 25px rgba(183,110,61,0.2)}.btn-confirm{background:var(--wood-gradient);color:var(--white);box-shadow:0 8px 25px rgba(183,110,61,0.4)}.btn-confirm:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(183,110,61,0.5)}.cart-modal{position:fixed;top:0;right:-400px;width:400px;height:100%;background:linear-gradient(135deg,#1A0F0A,#2D1A0F);border-left:1px solid rgba(232,212,193,0.2);z-index:2000;transition:right 0.4s cubic-bezier(0.175,0.885,0.32,1.275);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(183,110,61,0.3)}@media (max-width:768px){.cart-modal{width:100%;right:-100%}}.cart-modal.active{right:0}.cart-header{display:flex;justify-content:space-between;align-items:center;padding:25px;border-bottom:1px solid rgba(232,212,193,0.2)}.cart-header h3{font-size:1.4rem;font-weight:900;color:var(--white);margin:0}.close-cart{width:36px;height:36px;border-radius:50%;background:rgba(232,212,193,0.2);border:1px solid rgba(232,212,193,0.3);color:var(--white);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease}.close-cart:hover{background:rgba(232,212,193,0.3);transform:rotate(90deg)}.cart-items{flex:1;overflow-y:auto;padding:25px}.empty-cart{text-align:center;padding:60px 20px;color:rgba(232,212,193,0.7)}.empty-cart p{margin-bottom:20px;font-size:1.1rem}.cart-item{display:flex;align-items:center;gap:15px;padding:18px;background:rgba(232,212,193,0.1);border-radius:14px;margin-bottom:12px;border:1px solid rgba(232,212,193,0.2)}.cart-item img{width:50px;height:50px;border-radius:10px;object-fit:cover}.cart-item-details{flex:1}.cart-item-name{font-weight:600;color:var(--white);margin-bottom:5px;font-size:0.95rem}.cart-item-price{color:rgba(232,212,193,0.8);font-size:0.85rem}.remove-item{width:28px;height:28px;border-radius:50%;background:rgba(232,212,193,0.2);border:1px solid rgba(232,212,193,0.3);color:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.3s ease}.remove-item:hover{background:rgba(232,212,193,0.3);border-color:var(--wood-light);color:var(--wood-light)}.cart-total{display:flex;justify-content:space-between;align-items:center;padding:25px;border-top:1px solid rgba(232,212,193,0.2);font-size:1.2rem;font-weight:900;color:var(--white)}.checkout-btn{margin:0 25px 25px;padding:18px;border-radius:14px;background:var(--wood-gradient);color:var(--white);font-weight:700;font-size:16px;border:none;cursor:pointer;transition:all 0.3s ease}.checkout-btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(183,110,61,0.4)}.notification{position:fixed;bottom:30px;right:30px;background:var(--wood-gradient);color:var(--white);padding:18px 25px;border-radius:14px;font-weight:600;box-shadow:0 15px 40px rgba(183,110,61,0.3);transform:translateY(100px);opacity:0;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);z-index:3000;max-width:300px}@media (max-width:768px){.notification{right:20px;left:20px;max-width:none}}.notification.show{transform:translateY(0);opacity:1}.hero-card-container{width:100%;display:flex;justify-content:center;align-items:center;margin:40px auto}.hero-card{width:500px;height:300px;border-radius:20px;overflow:visible;box-shadow:none;display:flex;align-items:center;justify-content:center;background:transparent;border:none;position:relative;transition:transform 0.3s ease;padding:0}.hero-card img{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:20px;display:block;transition:transform 0.3s ease;filter:drop-shadow(0 20px 60px rgba(0,0,0,0.4))}.hero-card:hover img{transform:scale(1.05)}@media (max-width:767px){.hero-card{width:min(92vw,420px);height:auto;aspect-ratio:5 / 3}}@media (hover:none) and (pointer:coarse){.hero-card img{transition:none !important;-webkit-filter:none !important;filter:none !important}.hero-card:hover img{transform:none !important}}.highlight-text{color:var(--wood-light);font-weight:700;text-shadow:0 2px 4px rgba(183,110,61,0.3)}.webp-container{display:flex;align-items:center;justify-content:center;width:100%;height:100%}.webp-container img.webp-image{width:100%;height:100%;object-fit:cover;border:none;outline:none;box-shadow:none;background:transparent}</style>
+    <link rel="preload" as="image" href="newwalnut.webp">
 </head>
 
 <body>
@@ -2970,7 +203,7 @@ section[id] {
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="newwalnut.webp" alt="Walnut Wood Card" class="webp-image" data-card-img="walnut">
+                            <img loading="lazy" src="newwalnut.webp" alt="Walnut Wood Card" class="webp-image" data-card-img="walnut">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Walnut Wood Card</h3>
@@ -2987,7 +220,7 @@ section[id] {
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="newoak.webp" alt="Oak Wood Card" class="webp-image" data-card-img="oak">
+                            <img loading="lazy" src="newoak.webp" alt="Oak Wood Card" class="webp-image" data-card-img="oak">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Oak Wood Card</h3>
@@ -3004,7 +237,7 @@ section[id] {
                     <div class="bestseller-badge">Bestseller 🏆</div>
                     <div class="bestseller-image">
                         <div class="webp-container">
-                            <img src="newsapele.webp" alt="Sapele Wood Card" class="webp-image" data-card-img="sapele">
+                            <img loading="lazy" src="newsapele.webp" alt="Sapele Wood Card" class="webp-image" data-card-img="sapele">
                         </div>
                     </div>
                     <h3 class="bestseller-title">Sapele Wood Card</h3>
@@ -3033,7 +266,7 @@ section[id] {
                         <!-- Black Bamboo -->
                         <div class="wood-carousel-card black-bamboo" data-wood="black-bamboo">
                             <div class="wood-carousel-image">
-                                <img src="newblackbamboo.webp" alt="Black Bamboo Card" data-card-img="black-bamboo">
+                                <img loading="lazy" src="newblackbamboo.webp" alt="Black Bamboo Card" data-card-img="black-bamboo">
                             </div>
                             <h3 class="wood-carousel-title">Black Bamboo Card</h3>
                             <p class="wood-carousel-description">Dark, sophisticated bamboo with unique texture.   eco-conscious brands wanting a dramatic look.</p>
@@ -3046,7 +279,7 @@ section[id] {
                         <!-- Bamboo -->
                         <div class="wood-carousel-card bamboo" data-wood="bamboo">
                             <div class="wood-carousel-image">
-                                <img src="newbamboo.webp" alt="Bamboo Wood Card" data-card-img="bamboo">
+                                <img loading="lazy" src="newbamboo.webp" alt="Bamboo Wood Card" data-card-img="bamboo">
                             </div>
                             <h3 class="wood-carousel-title">Bamboo Wood Card</h3>
                             <p class="wood-carousel-description">Sustainable, fast-growing wood with unique texture. Perfect for eco-friendly.</p>
@@ -3059,7 +292,7 @@ section[id] {
                         <!-- Maple -->
                         <div class="wood-carousel-card maple" data-wood="maple">
                             <div class="wood-carousel-image">
-                                <img src="newmaple.webp" alt="Maple Wood Card" data-card-img="maple">
+                                <img loading="lazy" src="newmaple.webp" alt="Maple Wood Card" data-card-img="maple">
                             </div>
                             <h3 class="wood-carousel-title">Maple Wood Card</h3>
                             <p class="wood-carousel-description">Light-colored wood with subtle grain. Perfect for clean, modern brands and minimalist designs.</p>
@@ -3072,7 +305,7 @@ section[id] {
                         <!-- Cherry -->
                         <div class="wood-carousel-card cherry" data-wood="cherry">
                             <div class="wood-carousel-image">
-                                <img src="newcherry.webp" alt="Cherry Wood Card" data-card-img="cherry">
+                                <img loading="lazy" src="newcherry.webp" alt="Cherry Wood Card" data-card-img="cherry">
                             </div>
                             <h3 class="wood-carousel-title">Cherry Wood Card</h3>
                             <p class="wood-carousel-description">Warm, rich reddish-brown wood. Perfect for brands wanting a touch of elegance and warmth.</p>
@@ -3085,7 +318,7 @@ section[id] {
                         <!-- Oak -->
                         <div class="wood-carousel-card oak" data-wood="oak">
                             <div class="wood-carousel-image">
-                                <img src="newoak.webp" alt="Oak Wood Card" data-card-img="oak">
+                                <img loading="lazy" src="newoak.webp" alt="Oak Wood Card" data-card-img="oak">
                             </div>
                             <h3 class="wood-carousel-title">Oak Wood Card</h3>
                             <p class="wood-carousel-description">Classic, light-colored wood with distinctive grain.</p>
@@ -3098,7 +331,7 @@ section[id] {
                         <!-- Walnut -->
                         <div class="wood-carousel-card walnut" data-wood="walnut">
                             <div class="wood-carousel-image">
-                                <img src="newwalnut.webp" alt="Walnut Wood Card" data-card-img="walnut">
+                                <img loading="lazy" src="newwalnut.webp" alt="Walnut Wood Card" data-card-img="walnut">
                             </div>
                             <h3 class="wood-carousel-title">Walnut Wood Card</h3>
                             <p class="wood-carousel-description">Rich, dark wood with beautiful grain patterns. Perfect for luxury brands and sophisticated professionals.</p>
@@ -3111,7 +344,7 @@ section[id] {
                         <!-- Sapele -->
                         <div class="wood-carousel-card sapele" data-wood="sapele">
                             <div class="wood-carousel-image">
-                                <img src="newsapele.webp" alt="Sapele Wood Card" data-card-img="sapele">
+                                <img loading="lazy" src="newsapele.webp" alt="Sapele Wood Card" data-card-img="sapele">
                             </div>
                             <h3 class="wood-carousel-title">Sapele Wood Card</h3>
                             <p class="wood-carousel-description">Beautiful African hardwood with interlocking grain. Perfect for distinctive, high-quality brands.</p>
@@ -3156,7 +389,7 @@ section[id] {
                                         <div class="placeholder-text">Click to upload your logo</div>
                                         <div class="placeholder-subtext">PNG, JPG up to 10MB</div>
                                     </div>
-                                    <img class="preview-logo" id="previewLogo" alt="Your Logo">
+                                    <img loading="lazy" class="preview-logo" id="previewLogo" alt="Your Logo">
                                 </div>
                             </div>
                         </div>
@@ -3350,24 +583,22 @@ section[id] {
     </div>
 
     <script>
-        // Variables for engraving selection
+        
         let selectedWood = 'Black Bamboo';
         let selectedEngraving = null;
         let engravingModal = document.getElementById('engravingModal');
         let uploadedLogoGlobal = null;
-        let logoSize = 70; // Default logo size percentage
-        let currentEngravingData = null; // Store data for engraving modal
-        let engravingQuantity = 1; // Default quantity for engraving modal
+        let logoSize = 70; 
+        let currentEngravingData = null; 
+        let engravingQuantity = 1; 
         let currentCarouselBackground = 'var(--carousel-black-bamboo-bg)';
-        
-        // Carousel variables
-        let isCarouselCircular = true; // Enable circular scrolling
+
+        let isCarouselCircular = true; 
         let carouselStartX = 0;
         let carouselCurrentX = 0;
         let isDragging = false;
-        let dragThreshold = 50; // Minimum drag distance to trigger slide change
+        let dragThreshold = 50; 
 
-        // SIMPLE MOBILE MENU - FIXED
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileCloseBtn = document.getElementById('mobileCloseBtn');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
@@ -3375,12 +606,11 @@ section[id] {
         const nav = document.getElementById('mainNav');
         let isMenuOpen = false;
 
-        // Toggle mobile menu - SIMPLE VERSION
         function toggleMobileMenu() {
             isMenuOpen = !isMenuOpen;
 
             if (isMenuOpen) {
-                // Open menu
+                
                 hamburgerBtn.classList.add('active');
                 mobileMenu.classList.add('active');
                 mobileMenuOverlay.classList.add('active');
@@ -3388,7 +618,7 @@ section[id] {
                 document.body.classList.add('menu-open');
                 document.body.style.overflow = 'hidden';
             } else {
-                // Close menu
+                
                 hamburgerBtn.classList.remove('active');
                 mobileMenuOverlay.classList.remove('active');
                 mobileMenu.classList.remove('active');
@@ -3398,7 +628,6 @@ section[id] {
             }
         }
 
-        // Close mobile menu
         function closeMobileMenu() {
             if (!isMenuOpen) return;
             
@@ -3411,23 +640,19 @@ section[id] {
             isMenuOpen = false;
         }
 
-        // Event listeners
         hamburgerBtn.addEventListener('click', toggleMobileMenu);
         mobileCloseBtn.addEventListener('click', closeMobileMenu);
         mobileMenuOverlay.addEventListener('click', closeMobileMenu);
 
-        // Close menu when clicking menu links
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', (e) => {
-                // If it's an external link (like WhatsApp), don't prevent default
+                
                 if (link.getAttribute('target') === '_blank' || link.getAttribute('href').includes('wa.me')) {
                     return;
                 }
-                
-                // For all other links, close the menu
+
                 closeMobileMenu();
-                
-                // Check if it's a hash link on same page
+
                 if (link.getAttribute('href').startsWith('#')) {
                     e.preventDefault();
                     const targetId = link.getAttribute('href');
@@ -3446,23 +671,20 @@ section[id] {
             });
         });
 
-        // Close menu on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && isMenuOpen) {
                 closeMobileMenu();
             }
         });
 
-        // Close menu on window resize
         window.addEventListener('resize', () => {
             if (window.innerWidth > 1024 && isMenuOpen) {
                 closeMobileMenu();
             }
         });
 
-        // COMPREHENSIVE IMAGE MAPPING FOR ALL CARD TYPES
         const cardImageMap = {
-            // ========== WOOD CARDS ==========
+            
             'Walnut Wood Card': 'newwalnut.webp',
             'Walnut': 'newwalnut.webp',
             'Oak Wood Card': 'newoak.webp',
@@ -3477,8 +699,7 @@ section[id] {
             'Maple': 'newmaple.webp',
             'Cherry Wood Card': 'newcherry.webp',
             'Cherry': 'newcherry.webp',
-            
-            // ========== METAL CARDS - USING CORRECT FILENAMES ==========
+
             'Gold Metal Card': 'goldmetal.webp',
             'Gold': 'goldmetal.webp',
             'Silver Metal Card': 'silver.webp',
@@ -3495,8 +716,7 @@ section[id] {
             'Purple Metal': 'newpurple.webp',
             'White Metal Card': 'newwhite.webp',
             'White Metal': 'newwhite.webp',
-            
-            // ========== PLASTIC CARDS - ALL COLORS ==========
+
             'Black Plastic Card': 'newplasticblack.webp',
             'Black Plastic': 'newplasticblack.webp',
             'Blue Plastic Card': 'newplasticblue.webp',
@@ -3519,12 +739,10 @@ section[id] {
             'White Plastic': 'newplasticwhite.webp',
             'Yellow Plastic Card': 'newplasticyellow.webp',
             'Yellow Plastic': 'newplasticyellow.webp',
-            
-            // ========== CUSTOM CARDS ==========
+
             'Custom Card': 'newcustom.webp',
             'Custom': 'newcustom.webp',
-            
-            // ========== STANDS ==========
+
             'Card Stand': 'heropic.webp',
             'Display Stand': 'heropic.webp',
             'Wooden Stand': 'heropic.webp',
@@ -3532,11 +750,9 @@ section[id] {
             'Stand': 'heropic.webp'
         };
 
-        // Fallback function to find image by ANY partial name match
         function findImageByPartialName(name) {
             name = name.toLowerCase().trim();
-            
-            // WOOD CARDS
+
             if (name.includes('walnut')) return 'newwalnut.webp';
             if (name.includes('oak')) return 'newoak.webp';
             if (name.includes('sapele')) return 'newsapele.webp';
@@ -3544,8 +760,7 @@ section[id] {
             if (name.includes('bamboo') && !name.includes('black')) return 'newbamboo.webp';
             if (name.includes('maple')) return 'newmaple.webp';
             if (name.includes('cherry')) return 'newcherry.webp';
-            
-            // METAL CARDS - USING CORRECT FILENAMES
+
             if (name.includes('rose gold')) return 'rosegold.webp';
             if (name.includes('gold') && !name.includes('rose')) return 'goldmetal.webp';
             if (name.includes('silver')) return 'silver.webp';
@@ -3554,8 +769,7 @@ section[id] {
             if (name.includes('green metal') || (name.includes('green') && name.includes('metal'))) return 'newgreen.webp';
             if (name.includes('purple metal') || (name.includes('purple') && name.includes('metal'))) return 'newpurple.webp';
             if (name.includes('white metal') || (name.includes('white') && name.includes('metal'))) return 'newwhite.webp';
-            
-            // PLASTIC CARDS - ALL COLORS
+
             if (name.includes('plastic')) {
                 if (name.includes('black')) return 'newplasticblack.webp';
                 if (name.includes('blue')) return 'newplasticblue.webp';
@@ -3570,14 +784,11 @@ section[id] {
                 if (name.includes('yellow')) return 'newplasticyellow.webp';
                 return 'plasticpic.webp';
             }
-            
-            // CUSTOM CARDS
+
             if (name.includes('custom')) return 'newcustom.webp';
-            
-            // STANDS
+
             if (name.includes('stand')) return 'heropic.webp';
-            
-            // Check for single color matches (for metal cards)
+
             if (name === 'gold' || name.includes('gold card')) return 'goldmetal.webp';
             if (name === 'silver' || name.includes('silver card')) return 'silver.webp';
             if (name === 'rose gold' || name.includes('rose gold card')) return 'rosegold.webp';
@@ -3591,10 +802,8 @@ section[id] {
             return 'logo.png';
         }
 
-        // Cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-        // Update cart display
         function updateCart() {
             const cartCount = document.getElementById('cartCount');
             if (cartCount) {
@@ -3604,7 +813,6 @@ section[id] {
             renderCartItems();
         }
 
-        // Render cart items in modal with correct images for ALL card types
         function renderCartItems() {
             const cartItems = document.getElementById('cartItems');
             const cartTotal = document.getElementById('cartTotal');
@@ -3622,28 +830,25 @@ section[id] {
 
             cart.forEach((item, index) => {
                 total += item.price * item.quantity;
-                
-                // Get image - first try stored img, then exact match, then partial match
+
                 let imgSrc = item.img;
                 
                 if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null' || imgSrc === '') {
-                    // Try exact match first
-                    imgSrc = cardImageMap[item.name];
                     
-                    // If no exact match, try partial match
+                    imgSrc = cardImageMap[item.name];
+
                     if (!imgSrc) {
                         imgSrc = findImageByPartialName(item.name);
                     }
                 }
-                
-                // Final fallback
+
                 if (!imgSrc || imgSrc === 'undefined' || imgSrc === 'null' || imgSrc === '') {
                     imgSrc = 'logo.png';
                 }
                 
                 itemsHTML += `
                     <div class="cart-item">
-                        <img src="${imgSrc}" alt="${item.name}" 
+                        <img loading="lazy" src="${imgSrc}" alt="${item.name}" 
                              onerror="this.onerror=null; this.src='logo.png';"
                              style="width: 50px; height: 50px; border-radius: 10px; object-fit: cover; background: linear-gradient(135deg, #B76E3D, #8B4513);">
                         <div class="cart-item-details">
@@ -3659,33 +864,29 @@ section[id] {
             cartTotal.textContent = `£${total}`;
         }
 
-        // Add to cart function - enhanced for ALL card types
         function addToCart(name, price, quantity = 1, img = null) {
-            console.log('Adding to cart:', { name, price, quantity, img }); // Debug log
-            
-            // Determine image if not provided or invalid
+            console.log('Adding to cart:', { name, price, quantity, img }); 
+
             if (!img || img === 'undefined' || img === 'null' || img === '') {
-                // Try exact match from map
-                img = cardImageMap[name];
                 
-                // If no exact match, try partial match
+                img = cardImageMap[name];
+
                 if (!img) {
                     img = findImageByPartialName(name);
                 }
             }
-            
-            // Final fallback
+
             if (!img || img === 'undefined' || img === 'null' || img === '') {
                 img = 'logo.png';
             }
             
-            console.log('Using image:', img); // Debug log
+            console.log('Using image:', img); 
 
             const existingItem = cart.find(item => item.name === name);
 
             if (existingItem) {
                 existingItem.quantity += quantity;
-                // Update image if it was missing
+                
                 if (!existingItem.img || existingItem.img === 'undefined' || existingItem.img === 'null' || existingItem.img === '') {
                     existingItem.img = img;
                 }
@@ -3702,13 +903,11 @@ section[id] {
             showNotification(`${name} (${quantity}×) added to cart!`);
         }
 
-        // Remove from cart
         function removeFromCart(index) {
             cart.splice(index, 1);
             updateCart();
         }
 
-        // Show notification
         function showNotification(message) {
             const notification = document.getElementById('notification');
             if (!notification) return;
@@ -3720,15 +919,13 @@ section[id] {
             }, 3000);
         }
 
-        // Open cart modal
         function openCartModal() {
             const cartModal = document.getElementById('cartModal');
             if (!cartModal) return;
             
             cartModal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
-            // Close mobile menu if open
+
             const mobileMenu = document.getElementById('mobileMenu');
             if (mobileMenu && mobileMenu.classList.contains('active')) {
                 if (typeof closeMobileMenu === 'function') {
@@ -3737,7 +934,6 @@ section[id] {
             }
         }
 
-        // Close cart modal
         function closeCartModal() {
             const cartModal = document.getElementById('cartModal');
             if (!cartModal) return;
@@ -3746,7 +942,6 @@ section[id] {
             document.body.style.overflow = '';
         }
 
-        // Checkout functionality - WhatsApp integration
         function checkout() {
             if (cart.length === 0) {
                 showNotification('Your cart is empty!');
@@ -3754,8 +949,7 @@ section[id] {
             }
 
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            // Format WhatsApp message
+
             let message = "Hello! I'd like to place an order for the following items:\n\n";
             
             cart.forEach(item => {
@@ -3764,43 +958,34 @@ section[id] {
             
             message += `\nTotal: £${total}\n\n`;
             message += "Please let me know the next steps to complete my order.";
-            
-            // Encode message for URL
+
             const encodedMessage = encodeURIComponent(message);
-            
-            // Create WhatsApp URL with your number
+
             const whatsappUrl = `https://wa.me/447754888841?text=${encodedMessage}`;
-            
-            // Open WhatsApp
+
             window.open(whatsappUrl, '_blank');
         }
 
-        // Initialize cart on all pages
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Cart.js initialized'); // Debug log
-            
-            // Update cart count on page load
+            console.log('Cart.js initialized'); 
+
             updateCart();
-            
-            // Setup cart icon click
+
             const cartIcon = document.getElementById('cartIcon');
             if (cartIcon) {
                 cartIcon.addEventListener('click', openCartModal);
             }
-            
-            // Setup close cart button
+
             const closeCart = document.getElementById('closeCart');
             if (closeCart) {
                 closeCart.addEventListener('click', closeCartModal);
             }
-            
-            // Setup checkout button
+
             const checkoutBtn = document.getElementById('checkoutBtn');
             if (checkoutBtn) {
                 checkoutBtn.addEventListener('click', checkout);
             }
-            
-            // Close modal when clicking outside
+
             const cartModal = document.getElementById('cartModal');
             if (cartModal) {
                 cartModal.addEventListener('click', (e) => {
@@ -3809,8 +994,7 @@ section[id] {
                     }
                 });
             }
-            
-            // Add to cart buttons
+
             document.querySelectorAll('.add-to-cart, .add-to-cart-carousel, [data-name][data-price]').forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -3823,14 +1007,12 @@ section[id] {
             });
         });
 
-        // Make functions globally available
         window.addToCart = addToCart;
         window.removeFromCart = removeFromCart;
         window.closeCartModal = closeCartModal;
         window.openCartModal = openCartModal;
         window.checkout = checkout;
 
-        // ENGRAVING MODAL FUNCTIONALITY
         const closeEngraving = document.getElementById('closeEngraving');
         const cancelEngraving = document.getElementById('cancelEngraving');
         const confirmEngraving = document.getElementById('confirmEngraving');
@@ -3842,41 +1024,34 @@ section[id] {
         const quantityInput = document.getElementById('quantityInput');
         const quantityPresetBtns = document.querySelectorAll('.quantity-preset-btn');
 
-        // Open engraving modal
         function openEngravingModal(name, price, img = null) {
             currentEngravingData = { name, price, img };
-            selectedWoodText.textContent = name.split(' ')[0]; // Get wood type from name
+            selectedWoodText.textContent = name.split(' ')[0]; 
             engravingModal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
-            // Reset to defaults
+
             engravingQuantity = 1;
             quantityInput.value = 1;
             updateEngravingPrice();
-            
-            // Reset engraving selection
+
             engravingOptions.forEach(option => option.classList.remove('selected'));
             engravingOptions[0].classList.add('selected');
-            
-            // Reset quantity presets
+
             quantityPresetBtns.forEach(btn => btn.classList.remove('active'));
             quantityPresetBtns[0].classList.add('active');
         }
 
-        // Close engraving modal
         function closeEngravingModal() {
             engravingModal.classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // Update engraving price based on quantity
         function updateEngravingPrice() {
             if (!currentEngravingData) return;
             const total = currentEngravingData.price * engravingQuantity;
             engravingTotalPrice.textContent = total;
         }
 
-        // Quantity controls
         quantityDecrease.addEventListener('click', () => {
             if (engravingQuantity > 1) {
                 engravingQuantity--;
@@ -3902,7 +1077,6 @@ section[id] {
             updateEngravingPrice();
         });
 
-        // Quantity preset buttons
         quantityPresetBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const quantity = parseInt(btn.dataset.quantity);
@@ -3915,7 +1089,6 @@ section[id] {
             });
         });
 
-        // Engraving selection
         engravingOptions.forEach(option => {
             option.addEventListener('click', () => {
                 engravingOptions.forEach(opt => opt.classList.remove('selected'));
@@ -3923,7 +1096,6 @@ section[id] {
             });
         });
 
-        // Confirm engraving selection
         confirmEngraving.addEventListener('click', () => {
             if (!currentEngravingData) return;
             
@@ -3935,11 +1107,9 @@ section[id] {
             closeEngravingModal();
         });
 
-        // Close engraving modal
         closeEngraving.addEventListener('click', closeEngravingModal);
         cancelEngraving.addEventListener('click', closeEngravingModal);
 
-        // CUSTOM LOGO BUILDER
         const woodColorOptions = document.querySelectorAll('.wood-color-option');
         const customEngravingOptions = document.querySelectorAll('.engraving-option');
         const uploadArea = document.getElementById('uploadArea');
@@ -3960,7 +1130,6 @@ section[id] {
         const logoSizeValue = document.getElementById('logoSizeValue');
         const sizePresetBtns = document.querySelectorAll('.size-preset-btn');
 
-        // Wood type mapping
         const woodTypeMap = {
             'black-bamboo': 'Black Bamboo Card',
             'bamboo': 'Bamboo Wood Card',
@@ -3971,13 +1140,11 @@ section[id] {
             'sapele': 'Sapele Wood Card'
         };
 
-        // Engraving type mapping
         const engravingTypeMap = {
             'printed': 'Printed',
             'engraved': 'Engraved'
         };
 
-        // Background mapping
         const woodBackgroundMap = {
             'black-bamboo': 'var(--black-bamboo-bg)',
             'bamboo': 'var(--bamboo-bg)',
@@ -3988,7 +1155,6 @@ section[id] {
             'sapele': 'var(--sapele-bg)'
         };
 
-        // Image mapping
         const woodImageMap = {
             'black-bamboo': 'newblackbamboo.webp',
             'bamboo': 'newbamboo.webp',
@@ -3999,7 +1165,6 @@ section[id] {
             'sapele': 'newsapele.webp'
         };
 
-        // Carousel background mapping
         const carouselBackgroundMap = {
             'black-bamboo': 'var(--carousel-black-bamboo-bg)',
             'bamboo': 'var(--carousel-bamboo-bg)',
@@ -4013,24 +1178,19 @@ section[id] {
         let selectedWoodColor = 'black-bamboo';
         let selectedEngravingTypeValue = 'printed';
 
-        // Initialize custom logo builder
         function initCustomLogoBuilder() {
             updatePreview();
         }
 
-        // Update preview
         function updatePreview() {
-            // Update card background
-            previewCardInner.style.background = woodBackgroundMap[selectedWoodColor];
             
-            // Update text
+            previewCardInner.style.background = woodBackgroundMap[selectedWoodColor];
+
             selectedCardName.textContent = woodTypeMap[selectedWoodColor];
             selectedEngravingType.textContent = engravingTypeMap[selectedEngravingTypeValue];
-            
-            // Update counter
+
             cardCounter.textContent = woodTypeMap[selectedWoodColor].split(' ')[0];
-            
-            // Show/hide logo and update size
+
             if (uploadedLogoGlobal) {
                 previewLogo.src = uploadedLogoGlobal;
                 previewLogo.classList.add('visible');
@@ -4044,15 +1204,13 @@ section[id] {
             }
         }
 
-        // Handle logo upload
         function handleLogoUpload(file) {
-            // Validate file type
+            
             if (!file.type.match('image.*')) {
                 showNotification('Please select an image file (JPG, PNG, GIF, etc.)');
                 return;
             }
 
-            // Validate file size (max 10MB)
             if (file.size > 10 * 1024 * 1024) {
                 showNotification('File is too large. Maximum size is 10MB.');
                 return;
@@ -4060,20 +1218,17 @@ section[id] {
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                // Update preview
+                
                 uploadedLogoGlobal = e.target.result;
                 previewLogo.src = uploadedLogoGlobal;
-                
-                // Update preview display
+
                 previewLogo.classList.add('visible');
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
                 previewPlaceholder.style.display = 'none';
-                
-                // Enable clear buttons
+
                 clearLogoBtn.disabled = false;
                 clearCardBtn.disabled = false;
-                
-                // Update hero card if needed
+
                 if (heroCard) {
                     heroCard.querySelector('img').src = uploadedLogoGlobal;
                 }
@@ -4086,22 +1241,17 @@ section[id] {
             reader.readAsDataURL(file);
         }
 
-        // Handle wood color selection
         woodColorOptions.forEach(option => {
             option.addEventListener('click', () => {
-                // Remove selected class from all options
+                
                 woodColorOptions.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
+
                 option.classList.add('selected');
-                
-                // Update selected color
+
                 selectedWoodColor = option.dataset.color;
-                
-                // Update preview
+
                 updatePreview();
-                
-                // Visual feedback
+
                 option.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     option.style.transform = '';
@@ -4109,22 +1259,17 @@ section[id] {
             });
         });
 
-        // Handle engraving selection
         customEngravingOptions.forEach(option => {
             option.addEventListener('click', () => {
-                // Remove selected class from all options
+                
                 customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
-                
-                // Add selected class to clicked option
+
                 option.classList.add('selected');
-                
-                // Update selected engraving
+
                 selectedEngravingTypeValue = option.dataset.engraving;
-                
-                // Update preview
+
                 updatePreview();
-                
-                // Visual feedback
+
                 option.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     option.style.transform = '';
@@ -4132,26 +1277,22 @@ section[id] {
             });
         });
 
-        // Click on upload area
         uploadArea.addEventListener('click', () => {
             if (!uploadedLogoGlobal) {
                 logoFileInput.click();
             }
         });
 
-        // Click on upload button
         uploadLogoBtn.addEventListener('click', () => {
             logoFileInput.click();
         });
 
-        // File input change
         logoFileInput.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
                 handleLogoUpload(e.target.files[0]);
             }
         });
 
-        // Clear logo button
         clearLogoBtn.addEventListener('click', () => {
             previewLogo.src = '';
             uploadedLogoGlobal = null;
@@ -4160,8 +1301,7 @@ section[id] {
             logoFileInput.value = '';
             clearLogoBtn.disabled = true;
             clearCardBtn.disabled = true;
-            
-            // Reset hero card image
+
             if (heroCard) {
                 heroCard.querySelector('img').src = 'newwalnut.webp';
             }
@@ -4169,9 +1309,8 @@ section[id] {
             showNotification('Logo cleared');
         });
 
-        // Clear card button
         clearCardBtn.addEventListener('click', () => {
-            // Reset to default black bamboo card
+            
             woodColorOptions.forEach(opt => opt.classList.remove('selected'));
             document.querySelector('.wood-color-option[data-color="black-bamboo"]').classList.add('selected');
             selectedWoodColor = 'black-bamboo';
@@ -4179,8 +1318,7 @@ section[id] {
             customEngravingOptions.forEach(opt => opt.classList.remove('selected'));
             document.querySelector('.engraving-option[data-engraving="printed"]').classList.add('selected');
             selectedEngravingTypeValue = 'printed';
-            
-            // Clear logo if uploaded
+
             if (uploadedLogoGlobal) {
                 previewLogo.src = '';
                 uploadedLogoGlobal = null;
@@ -4190,8 +1328,7 @@ section[id] {
                 clearLogoBtn.disabled = true;
                 clearCardBtn.disabled = true;
             }
-            
-            // Reset logo size
+
             logoSize = 70;
             logoSizeSlider.value = 70;
             logoSizeValue.textContent = '70%';
@@ -4202,76 +1339,62 @@ section[id] {
             showNotification('Card reset to default');
         });
 
-        // Add to cart from preview
         addToCartBtn.addEventListener('click', () => {
             const cardName = woodTypeMap[selectedWoodColor];
             const engravingType = engravingTypeMap[selectedEngravingTypeValue];
             const itemName = `${cardName} (${engravingType})`;
             const img = woodImageMap[selectedWoodColor];
-            
-            // Open engraving modal with quantity selection
+
             openEngravingModal(cardName, 85, img);
         });
 
-        // Logo size slider
         logoSizeSlider.addEventListener('input', () => {
             logoSize = parseInt(logoSizeSlider.value);
             logoSizeValue.textContent = `${logoSize}%`;
-            
-            // Update size preset buttons
+
             sizePresetBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Find closest preset
+
             const presets = [50, 70, 90];
             const closest = presets.reduce((prev, curr) => {
                 return Math.abs(curr - logoSize) < Math.abs(prev - logoSize) ? curr : prev;
             });
             
             document.querySelector(`.size-preset-btn[data-size="${closest}"]`).classList.add('active');
-            
-            // Update logo size if uploaded
+
             if (uploadedLogoGlobal) {
                 previewLogo.style.transform = `scale(${logoSize / 100})`;
             }
         });
 
-        // Size preset buttons
         sizePresetBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const size = parseInt(btn.dataset.size);
                 logoSize = size;
                 logoSizeSlider.value = size;
                 logoSizeValue.textContent = `${size}%`;
-                
-                // Update active state
+
                 sizePresetBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
-                // Update logo size if uploaded
+
                 if (uploadedLogoGlobal) {
                     previewLogo.style.transform = `scale(${logoSize / 100})`;
                 }
             });
         });
 
-        // Click on card to upload logo
         previewCard.addEventListener('click', () => {
             if (!uploadedLogoGlobal) {
                 logoFileInput.click();
             }
         });
 
-        // HERO CARD CLICK TO UPLOAD - REMOVED
-        // Hero card now just shows the walnut wood card image
         heroCard.addEventListener('click', () => {
-            // Removed upload functionality
-            // Card now only displays walnut wood card image
+
         });
 
-        // Browse cards button
         document.getElementById('browseCardsBtn').addEventListener('click', (e) => {
             e.preventDefault();
-            // Scroll to bestsellers section
+            
             const bestsellersSection = document.getElementById('bestsellers');
             if (bestsellersSection) {
                 const navHeight = nav.offsetHeight;
@@ -4284,13 +1407,11 @@ section[id] {
             }
         });
 
-        // Initialize custom logo builder
         initCustomLogoBuilder();
 
-        // Smooth scrolling for desktop nav
         document.querySelectorAll('.nav-center a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                // If it's an external link or different page, allow normal navigation
+                
                 if (this.getAttribute('target') === '_blank' || 
                     !this.getAttribute('href').startsWith('#') ||
                     this.getAttribute('href').includes('/')) {
@@ -4312,7 +1433,6 @@ section[id] {
             });
         });
 
-        // CAROUSEL FUNCTIONALITY WITH SWIPE AND CIRCULAR SCROLLING
         const carouselSection = document.querySelector('.carousel-section');
         const carouselTrack = document.getElementById('carouselTrack');
         const carouselPrev = document.getElementById('carouselPrev');
@@ -4325,18 +1445,15 @@ section[id] {
         let cardsPerView = 3;
         let totalSlides = Math.ceil(carouselCards.length / cardsPerView);
 
-        // Initialize carousel
         function initCarousel() {
             updateCardsPerView();
             createDots();
             updateCarousel();
             updateCarouselBackground();
-            
-            // Add swipe functionality
+
             addSwipeListeners();
         }
 
-        // Update cards per view based on screen size
         function updateCardsPerView() {
             if (window.innerWidth <= 768) {
                 cardsPerView = 1;
@@ -4351,7 +1468,6 @@ section[id] {
             updateCarouselBackground();
         }
 
-        // Create dots for carousel
         function createDots() {
             carouselDots.innerHTML = '';
             for (let i = 0; i < totalSlides; i++) {
@@ -4369,26 +1485,22 @@ section[id] {
             }
         }
 
-        // Update carousel position with smooth animation
         function updateCarousel() {
-            const cardWidth = carouselCards[0].offsetWidth + 30; // width + gap
+            const cardWidth = carouselCards[0].offsetWidth + 30; 
             const translateX = -currentSlide * cardsPerView * cardWidth;
             carouselTrack.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
             carouselTrack.style.transform = `translateX(${translateX}px)`;
-            
-            // Update dots
+
             document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
             });
-            
-            // Update navigation buttons
+
             carouselPrev.classList.toggle('disabled', !isCarouselCircular && currentSlide === 0);
             carouselNext.classList.toggle('disabled', !isCarouselCircular && currentSlide >= totalSlides - 1);
         }
 
-        // Update carousel background based on current slide
         function updateCarouselBackground() {
-            // Get the first card in the current slide
+            
             const firstCardIndex = currentSlide * cardsPerView;
             if (carouselCards[firstCardIndex]) {
                 const woodType = carouselCards[firstCardIndex].dataset.wood;
@@ -4401,8 +1513,6 @@ section[id] {
             }
         }
 
-        // CAROUSEL BACKGROUND COLOR CHANGER ON CARD HOVER
-        // Function to update carousel background based on hovered card
         function updateCarouselBackgroundOnHover(woodType) {
             const newBackground = carouselBackgroundMap[woodType] || 'var(--carousel-black-bamboo-bg)';
             if (newBackground !== currentCarouselBackground) {
@@ -4410,12 +1520,10 @@ section[id] {
             }
         }
 
-        // Function to reset carousel background to current slide
         function resetCarouselBackgroundToCurrent() {
             updateCarouselBackground();
         }
 
-        // Add hover event listeners to carousel cards
         carouselCards.forEach(card => {
             const woodType = card.dataset.wood;
             
@@ -4426,8 +1534,7 @@ section[id] {
             card.addEventListener('mouseleave', () => {
                 resetCarouselBackgroundToCurrent();
             });
-            
-            // For touch devices
+
             card.addEventListener('touchstart', () => {
                 updateCarouselBackgroundOnHover(woodType);
             });
@@ -4437,7 +1544,6 @@ section[id] {
             });
         });
 
-        // Next slide with circular scrolling
         function nextSlide() {
             if (isCarouselCircular) {
                 currentSlide = (currentSlide + 1) % totalSlides;
@@ -4448,7 +1554,6 @@ section[id] {
             updateCarouselBackground();
         }
 
-        // Previous slide with circular scrolling
         function prevSlide() {
             if (isCarouselCircular) {
                 currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
@@ -4459,13 +1564,11 @@ section[id] {
             updateCarouselBackground();
         }
 
-        // SWIPE FUNCTIONALITY
         function addSwipeListeners() {
             let startX = 0;
             let currentX = 0;
             let isSwiping = false;
-            
-            // Mouse events
+
             carouselWrapper.addEventListener('mousedown', (e) => {
                 startSwipe(e.clientX);
             });
@@ -4485,8 +1588,7 @@ section[id] {
                     endSwipe();
                 }
             });
-            
-            // Touch events
+
             carouselWrapper.addEventListener('touchstart', (e) => {
                 startSwipe(e.touches[0].clientX);
             }, { passive: true });
@@ -4513,8 +1615,7 @@ section[id] {
                 
                 currentX = x;
                 const diff = startX - currentX;
-                
-                // Move track while dragging
+
                 const cardWidth = carouselCards[0].offsetWidth + 30;
                 const baseTranslate = -currentSlide * cardsPerView * cardWidth;
                 const dragTranslate = -diff;
@@ -4526,19 +1627,18 @@ section[id] {
                 
                 const diff = startX - currentX;
                 const cardWidth = carouselCards[0].offsetWidth + 30;
-                const threshold = cardWidth * 0.2; // 20% of card width threshold
-                
-                // Determine if swipe is significant enough to change slide
+                const threshold = cardWidth * 0.2; 
+
                 if (Math.abs(diff) > threshold) {
                     if (diff > 0) {
-                        // Swipe left - next slide
+                        
                         nextSlide();
                     } else {
-                        // Swipe right - previous slide
+                        
                         prevSlide();
                     }
                 } else {
-                    // Return to current slide
+                    
                     updateCarousel();
                 }
                 
@@ -4546,11 +1646,9 @@ section[id] {
             }
         }
 
-        // Event listeners for carousel navigation
         carouselPrev.addEventListener('click', prevSlide);
         carouselNext.addEventListener('click', nextSlide);
 
-        // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('Wood Page loaded with enhanced features:');
             console.log('1. 7 wood types in specified order ✓');

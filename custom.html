@@ -7,1199 +7,11 @@
     <title>Customize Your Card | ExposureBoost</title>
 
     <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --charcoal: #0F0F14;
-            --charcoal2: #141422;
-            --purple: #6E4DFF;
-            --pink: #FF4FD8;
-            --silver: #E6E6EB;
-            --muted: #B5B5C3;
-            --border: rgba(255, 255, 255, .14);
-            --glass: rgba(15, 15, 20, .38);
-            --shadow: 0 30px 90px rgba(0, 0, 0, .55);
-            --wa: #25D366;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html,
-        body {
-            height: 100%;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background: var(--charcoal);
-            color: #fff;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            touch-action: manipulation;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* STICKY NAV - PURPLE/PINK GRADIENT THEME */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 20px;
-            background: linear-gradient(135deg, rgba(110, 77, 255, 0.95), rgba(255, 79, 216, 0.95));
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            min-height: 70px;
-            box-shadow: 0 4px 20px rgba(110, 77, 255, 0.2);
-        }
-
-        .nav.scrolled {
-            padding: 12px 20px;
-            background: linear-gradient(135deg, rgba(110, 77, 255, 0.9), rgba(255, 79, 216, 0.9));
-            box-shadow: 0 4px 30px rgba(110, 77, 255, 0.3);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: auto;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-        }
-
-        .logo-text {
-            display: block;
-            color: white;
-            font-weight: 900;
-            font-size: 1.2rem;
-        }
-
-        /* HAMBURGER MENU */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 28px;
-            height: 20px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 100%;
-            height: 2px;
-            background: white;
-            border-radius: 2px;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform-origin: left center;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-10px);
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg);
-        }
-
-        .nav-center {
-            display: flex;
-            gap: 15px;
-        }
-
-        .nav-center a {
-            text-decoration: none;
-            color: white;
-            font-weight: 900;
-            font-size: .9rem;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            padding: 5px 0;
-            position: relative;
-        }
-
-        .nav-center a:hover {
-            color: var(--pink);
-            transform: translateY(-2px);
-        }
-
-        .nav-center a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--pink);
-            transition: width 0.3s ease;
-        }
-
-        .nav-center a:hover::after {
-            width: 100%;
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .icon-btn {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .icon-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(110, 77, 255, 0.2);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--pink);
-            color: white;
-            font-size: 10px;
-            min-width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .whatsapp-icon {
-            display: flex;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-icon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
-        }
-
-        /* MOBILE MENU OVERLAY */
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(110, 77, 255, 0.98);
-            backdrop-filter: blur(20px);
-            z-index: 999;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* MOBILE MENU */
-        .mobile-menu {
-            position: fixed;
-            top: 64px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(110, 77, 255, 0.98), rgba(255, 79, 216, 0.98));
-            backdrop-filter: blur(30px);
-            padding: 30px 20px 100px;
-            display: none;
-            flex-direction: column;
-            gap: 8px;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            transform: translateY(-20px);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 40px rgba(110, 77, 255, 0.3);
-            overflow-y: auto;
-            z-index: 1000;
-        }
-
-        .mobile-menu.active {
-            display: flex;
-            transform: translateY(0);
-        }
-
-        .mobile-menu a {
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 18px;
-            padding: 18px 24px;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.12);
-            text-align: left;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            margin-bottom: 4px;
-        }
-
-        .mobile-menu a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateX(10px);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Mobile close button */
-        .mobile-close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-            z-index: 1002;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-close-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: rotate(90deg);
-        }
-
-        /* Menu divider */
-        .menu-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.15);
-            margin: 20px 0;
-            width: 100%;
-        }
-
-        /* Menu footer text */
-        .menu-footer {
-            margin-top: auto;
-            padding-top: 20px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 13px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Show hamburger on mobile */
-        @media (max-width: 1024px) {
-            .nav-center {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-right {
-                gap: 8px;
-            }
-
-            .nav {
-                padding: 14px 16px;
-                min-height: 64px;
-            }
-
-            .nav.scrolled {
-                padding: 10px 16px;
-            }
-
-            .main-container {
-                padding-top: 64px;
-            }
-        }
-
-        /* Prevent body scroll when menu is open */
-        body.menu-open {
-            overflow: hidden;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* MAIN CONTAINER PADDING FOR STICKY NAV */
-        .main-container {
-            padding-top: 70px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* CUSTOMIZATION PAGE STYLES */
-        .customize-section {
-            min-height: 100vh;
-            padding: 50px 20px;
-            background: radial-gradient(1200px 700px at 20% 30%, rgba(110, 77, 255, .35), transparent 60%),
-                radial-gradient(900px 500px at 80% 20%, rgba(255, 79, 216, .28), transparent 60%),
-                linear-gradient(180deg, #0F0F14 0%, #141422 100%);
-        }
-
-        .customize-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        @media (max-width: 1024px) {
-            .customize-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        /* Preview Panel */
-        .preview-panel {
-            position: sticky;
-            top: 100px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .preview-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: white;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        /* UPDATED CARD PREVIEW - LOGO FITS CARD SIZE */
-        .card-preview {
-            width: 100%;
-            max-width: 400px;
-            height: 250px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 0 0 1px rgba(110, 77, 255, 0.3),
-                0 25px 50px rgba(110, 77, 255, 0.3),
-                0 10px 30px rgba(0, 0, 0, 0.4);
-            position: relative;
-            transform-style: preserve-3d;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 2px solid rgba(110, 77, 255, 0.4);
-        }
-
-        .card-preview:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 0 0 1px rgba(110, 77, 255, 0.4),
-                0 35px 70px rgba(110, 77, 255, 0.4),
-                0 15px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .card-front,
-        .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .card-front {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            z-index: 2;
-        }
-
-        .card-back {
-            background: linear-gradient(135deg, var(--pink), var(--charcoal2));
-            transform: rotateY(180deg);
-        }
-
-        .card-front.active {
-            transform: rotateY(0deg);
-        }
-
-        .card-back.active {
-            transform: rotateY(0deg);
-        }
-
-        /* FIXED: LOGO FILLS CARD AREA */
-        .card-logo-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-logo {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        /* Alternative: Full-bleed logo */
-        .card-logo-full {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-
-        .card-logo-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            z-index: 2;
-            display: none;
-        }
-
-        /* Logo modes */
-        .logo-mode-container {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .logo-mode-btn {
-            padding: 8px 16px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            cursor: pointer;
-            font-size: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .logo-mode-btn.active {
-            background: var(--purple);
-            border-color: var(--purple);
-        }
-
-        .logo-mode-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Default logo placeholder */
-        .default-logo-placeholder {
-            font-size: 60px;
-            color: white;
-            opacity: 0.8;
-        }
-
-        /* Card text overlays for full-bleed mode */
-        .card-text-overlay {
-            position: absolute;
-            bottom: 30px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-            z-index: 3;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .card-text-overlay .company-name {
-            font-size: 28px;
-            font-weight: 900;
-            margin-bottom: 8px;
-        }
-
-        .card-text-overlay .tagline {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        /* Standard card layout (default) */
-        .standard-card-layout {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            padding: 20px;
-        }
-
-        .standard-logo {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .standard-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .standard-text {
-            text-align: center;
-            color: white;
-        }
-
-        .company-name-standard {
-            font-size: 24px;
-            font-weight: 900;
-            margin-bottom: 8px;
-        }
-
-        .tagline-standard {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .nfc-badge-standard {
-            position: absolute;
-            bottom: 15px;
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            width: 100%;
-        }
-
-        /* Flip card button */
-        .flip-btn {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .flip-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: rotate(180deg);
-        }
-
-        /* Options Panel */
-        .options-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.78);
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* Option Groups */
-        .option-group {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .option-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Card Type Selection */
-        .card-types {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .card-type {
-            background: rgba(255, 255, 255, 0.08);
-            border: 2px solid transparent;
-            border-radius: 16px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-type:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-3px);
-        }
-
-        .card-type.selected {
-            border-color: var(--purple);
-            background: linear-gradient(135deg,
-                    rgba(110, 77, 255, 0.15),
-                    rgba(255, 79, 216, 0.15));
-            box-shadow: 0 10px 30px rgba(110, 77, 255, 0.2);
-        }
-
-        .type-icon {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .type-name {
-            font-weight: 700;
-            font-size: 1rem;
-            color: white;
-        }
-
-        .type-price {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--purple);
-        }
-
-        /* Color Selection */
-        .color-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .color-option {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            cursor: pointer;
-            border: 3px solid transparent;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .color-option:hover {
-            transform: scale(1.1);
-        }
-
-        .color-option.selected {
-            border-color: white;
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
-        }
-
-        .color-option.selected::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Logo Upload */
-        .upload-area {
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
-            padding: 40px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .upload-area:hover {
-            border-color: var(--purple);
-            background: rgba(110, 77, 255, 0.05);
-        }
-
-        .upload-area.dragover {
-            border-color: var(--purple);
-            background: rgba(110, 77, 255, 0.1);
-            transform: scale(1.02);
-        }
-
-        .upload-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-            opacity: 0.7;
-        }
-
-        .upload-text {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 5px;
-        }
-
-        .upload-subtext {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        #logoUpload {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .logo-preview-small {
-            width: 120px;
-            height: 120px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin: 0 auto 20px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .logo-preview-small img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 10px;
-        }
-
-        /* Logo Positioning Options */
-        .logo-position-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .position-btn {
-            padding: 12px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .position-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .position-btn.active {
-            background: var(--purple);
-            border-color: var(--purple);
-        }
-
-        .position-icon {
-            font-size: 20px;
-        }
-
-        /* Logo Size Slider */
-        .logo-size-control {
-            margin-top: 20px;
-        }
-
-        .size-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
-        }
-
-        .size-slider {
-            width: 100%;
-            height: 6px;
-            -webkit-appearance: none;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            outline: none;
-        }
-
-        .size-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--purple);
-            cursor: pointer;
-            border: 3px solid white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Text Customization */
-        .text-inputs {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .input-label {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .text-input {
-            padding: 16px 20px;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .text-input:focus {
-            outline: none;
-            border-color: var(--purple);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 0 0 3px rgba(110, 77, 255, 0.2);
-        }
-
-        .text-input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 18px 30px;
-            border-radius: 14px;
-            font-weight: 800;
-            text-decoration: none;
-            border: none;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            font-size: 16px;
-            white-space: nowrap;
-            flex: 1;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            color: white;
-            box-shadow: 0 8px 25px rgba(110, 77, 255, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(110, 77, 255, 0.4);
-            background: linear-gradient(135deg, #5a3de0, #ff39d0);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px);
-            border-color: white;
-        }
-
-        /* Price Display */
-        .price-display {
-            background: linear-gradient(135deg, rgba(110, 77, 255, 0.15), rgba(255, 79, 216, 0.15));
-            border-radius: 16px;
-            padding: 25px 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .price-label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 8px;
-        }
-
-        .price-amount {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: white;
-            line-height: 1;
-        }
-
-        .price-note {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 8px;
-        }
-
-        /* Notification */
-        .notification {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            color: white;
-            padding: 20px 30px;
-            border-radius: 14px;
-            font-weight: 600;
-            box-shadow: 0 15px 40px rgba(110, 77, 255, 0.3);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 3000;
-        }
-
-        .notification.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* Saved Designs Section */
-        .saved-designs-section {
-            margin-top: 40px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .saved-designs-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .saved-design-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .saved-design-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--purple);
-        }
-
-        .saved-design-preview {
-            width: 100%;
-            height: 120px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .saved-design-name {
-            font-weight: 600;
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        .saved-design-date {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .customize-section {
-                padding: 30px 15px;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .card-types {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-
-            .preview-panel {
-                position: static;
-            }
-
-            .card-preview {
-                max-width: 100%;
-                height: 220px;
-            }
-
-            .logo-position-options {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .option-group {
-                padding: 20px;
-            }
-
-            .card-type {
-                padding: 15px;
-            }
-
-            .type-icon {
-                font-size: 24px;
-            }
-
-            .price-amount {
-                font-size: 2rem;
-            }
-
-            .logo-position-options {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Active state for navigation */
-        .nav-center a.active,
-        .mobile-menu a.active {
-            color: var(--pink) !important;
-            font-weight: 900 !important;
-        }
-
-        .nav-center a.active::after {
-            width: 100% !important;
-        }
-
-        .mobile-menu a.active {
-            background: rgba(255, 255, 255, 0.2) !important;
-            border-color: var(--pink) !important;
-        }
-    </style>
+    <style>:root{--charcoal:#0F0F14;--charcoal2:#141422;--purple:#6E4DFF;--pink:#FF4FD8;--silver:#E6E6EB;--muted:#B5B5C3;--border:rgba(255,255,255,.14);--glass:rgba(15,15,20,.38);--shadow:0 30px 90px rgba(0,0,0,.55);--wa:#25D366}*{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--charcoal);color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;touch-action:manipulation}a{color:inherit;text-decoration:none}.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:linear-gradient(135deg,rgba(110,77,255,0.95),rgba(255,79,216,0.95));backdrop-filter:blur(10px);position:fixed;top:0;left:0;right:0;z-index:1000;border-bottom:1px solid rgba(255,255,255,0.3);transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);min-height:70px;box-shadow:0 4px 20px rgba(110,77,255,0.2)}.nav.scrolled{padding:12px 20px;background:linear-gradient(135deg,rgba(110,77,255,0.9),rgba(255,79,216,0.9));box-shadow:0 4px 30px rgba(110,77,255,0.3)}.logo{display:flex;align-items:center;gap:10px;text-decoration:none}.logo-img{height:40px;width:auto;object-fit:contain;filter:brightness(0) invert(1)}.logo-text{display:block;color:white;font-weight:900;font-size:1.2rem}.hamburger{display:none;flex-direction:column;justify-content:space-between;width:28px;height:20px;background:transparent;border:none;cursor:pointer;padding:0;z-index:1001}.hamburger span{width:100%;height:2px;background:white;border-radius:2px;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);transform-origin:left center}.hamburger.active span:nth-child(1){transform:rotate(45deg)}.hamburger.active span:nth-child(2){opacity:0;transform:translateX(-10px)}.hamburger.active span:nth-child(3){transform:rotate(-45deg)}.nav-center{display:flex;gap:15px}.nav-center a{text-decoration:none;color:white;font-weight:900;font-size:.9rem;transition:all 0.3s ease;white-space:nowrap;padding:5px 0;position:relative}.nav-center a:hover{color:var(--pink);transform:translateY(-2px)}.nav-center a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--pink);transition:width 0.3s ease}.nav-center a:hover::after{width:100%}.nav-right{display:flex;gap:12px;align-items:center}.icon-btn{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.2);backdrop-filter:blur(5px);display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;position:relative;transition:all 0.3s ease;flex-shrink:0;color:white;border:1px solid rgba(255,255,255,0.2)}.icon-btn:hover{background:rgba(255,255,255,0.3);transform:translateY(-2px);box-shadow:0 4px 12px rgba(110,77,255,0.2)}.cart-count{position:absolute;top:-5px;right:-5px;background:var(--pink);color:white;font-size:10px;min-width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;border:2px solid rgba(255,255,255,0.3)}.whatsapp-icon{display:flex;width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);color:white;align-items:center;justify-content:center;font-size:18px;text-decoration:none;box-shadow:0 4px 12px rgba(37,211,102,0.3);transition:all 0.3s ease}.whatsapp-icon:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(37,211,102,0.4)}.mobile-menu-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(110,77,255,0.98);backdrop-filter:blur(20px);z-index:999;display:none;opacity:0;transition:opacity 0.3s ease}.mobile-menu-overlay.active{display:block;opacity:1}.mobile-menu{position:fixed;top:64px;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(110,77,255,0.98),rgba(255,79,216,0.98));backdrop-filter:blur(30px);padding:30px 20px 100px;display:none;flex-direction:column;gap:8px;border-top:1px solid rgba(255,255,255,0.3);transform:translateY(-20px);transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);box-shadow:0 10px 40px rgba(110,77,255,0.3);overflow-y:auto;z-index:1000}.mobile-menu.active{display:flex;transform:translateY(0)}.mobile-menu a{text-decoration:none;color:white;font-weight:700;font-size:18px;padding:18px 24px;border-radius:16px;transition:all 0.3s ease;background:rgba(255,255,255,0.12);text-align:left;min-height:60px;display:flex;align-items:center;justify-content:flex-start;border:1px solid rgba(255,255,255,0.15);margin-bottom:4px}.mobile-menu a:hover{background:rgba(255,255,255,0.2);transform:translateX(10px);border-color:rgba(255,255,255,0.3)}.mobile-close-btn{position:fixed;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);display:none;align-items:center;justify-content:center;font-size:24px;color:white;cursor:pointer;z-index:1002;transition:all 0.3s ease}.mobile-close-btn:hover{background:rgba(255,255,255,0.25);transform:rotate(90deg)}.menu-divider{height:1px;background:rgba(255,255,255,0.15);margin:20px 0;width:100%}.menu-footer{margin-top:auto;padding-top:20px;text-align:center;color:rgba(255,255,255,0.7);font-size:13px;border-top:1px solid rgba(255,255,255,0.1)}@media (max-width:1024px){.nav-center{display:none}.hamburger{display:flex}.nav-right{gap:8px}.nav{padding:14px 16px;min-height:64px}.nav.scrolled{padding:10px 16px}.main-container{padding-top:64px}}body.menu-open{overflow:hidden;position:fixed;width:100%;height:100%}.main-container{padding-top:70px;position:relative;z-index:1}.customize-section{min-height:100vh;padding:50px 20px;background:radial-gradient(1200px 700px at 20% 30%,rgba(110,77,255,.35),transparent 60%),radial-gradient(900px 500px at 80% 20%,rgba(255,79,216,.28),transparent 60%),linear-gradient(180deg,#0F0F14 0%,#141422 100%)}.customize-container{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}@media (max-width:1024px){.customize-container{grid-template-columns:1fr;gap:40px}}.preview-panel{position:sticky;top:100px;display:flex;flex-direction:column;align-items:center;gap:30px}.preview-title{font-size:1.5rem;font-weight:800;color:white;text-align:center;margin-bottom:10px}.card-preview{width:100%;max-width:400px;height:250px;border-radius:20px;overflow:hidden;box-shadow:0 0 0 1px rgba(110,77,255,0.3),0 25px 50px rgba(110,77,255,0.3),0 10px 30px rgba(0,0,0,0.4);position:relative;transform-style:preserve-3d;transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);border:2px solid rgba(110,77,255,0.4)}.card-preview:hover{transform:translateY(-10px) rotateX(5deg);box-shadow:0 0 0 1px rgba(110,77,255,0.4),0 35px 70px rgba(110,77,255,0.4),0 15px 40px rgba(0,0,0,0.5)}.card-front,.card-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px}.card-front{background:linear-gradient(135deg,var(--purple),var(--pink));z-index:2}.card-back{background:linear-gradient(135deg,var(--pink),var(--charcoal2));transform:rotateY(180deg)}.card-front.active{transform:rotateY(0deg)}.card-back.active{transform:rotateY(0deg)}.card-logo-container{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.card-logo{max-width:100%;max-height:100%;object-fit:contain;padding:20px;box-sizing:border-box}.card-logo-full{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;z-index:1}.card-logo-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:2;display:none}.logo-mode-container{display:flex;gap:10px;margin-top:15px}.logo-mode-btn{padding:8px 16px;border-radius:8px;background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-size:12px;transition:all 0.3s ease}.logo-mode-btn.active{background:var(--purple);border-color:var(--purple)}.logo-mode-btn:hover{background:rgba(255,255,255,0.2)}.default-logo-placeholder{font-size:60px;color:white;opacity:0.8}.card-text-overlay{position:absolute;bottom:30px;left:0;width:100%;text-align:center;color:white;z-index:3;text-shadow:0 2px 10px rgba(0,0,0,0.5)}.card-text-overlay .company-name{font-size:28px;font-weight:900;margin-bottom:8px}.card-text-overlay .tagline{font-size:16px;opacity:0.9}.standard-card-layout{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;padding:20px}.standard-logo{width:100px;height:100px;margin-bottom:20px;display:flex;align-items:center;justify-content:center}.standard-logo img{max-width:100%;max-height:100%;object-fit:contain}.standard-text{text-align:center;color:white}.company-name-standard{font-size:24px;font-weight:900;margin-bottom:8px}.tagline-standard{font-size:14px;opacity:0.9}.nfc-badge-standard{position:absolute;bottom:15px;font-size:12px;color:rgba(255,255,255,0.7);text-align:center;width:100%}.flip-btn{position:absolute;bottom:20px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;z-index:10}.flip-btn:hover{background:rgba(255,255,255,0.25);transform:rotate(180deg)}.options-panel{display:flex;flex-direction:column;gap:40px}.section-title{font-size:2.5rem;font-weight:900;line-height:1.1;margin-bottom:10px;color:white}.section-subtitle{font-size:1.1rem;color:rgba(255,255,255,0.78);line-height:1.6;margin-bottom:30px}.option-group{background:rgba(255,255,255,0.05);border-radius:20px;padding:30px;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(10px)}.option-title{font-size:1.3rem;font-weight:800;color:white;margin-bottom:25px;display:flex;align-items:center;gap:10px}.card-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;margin-bottom:30px}.card-type{background:rgba(255,255,255,0.08);border:2px solid transparent;border-radius:16px;padding:20px;cursor:pointer;transition:all 0.3s ease;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}.card-type:hover{background:rgba(255,255,255,0.12);transform:translateY(-3px)}.card-type.selected{border-color:var(--purple);background:linear-gradient(135deg,rgba(110,77,255,0.15),rgba(255,79,216,0.15));box-shadow:0 10px 30px rgba(110,77,255,0.2)}.type-icon{font-size:30px;margin-bottom:10px}.type-name{font-weight:700;font-size:1rem;color:white}.type-price{font-size:1.2rem;font-weight:800;color:var(--purple)}.color-options{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:30px}.color-option{width:50px;height:50px;border-radius:12px;cursor:pointer;border:3px solid transparent;transition:all 0.3s ease;position:relative}.color-option:hover{transform:scale(1.1)}.color-option.selected{border-color:white;box-shadow:0 0 0 3px rgba(255,255,255,0.3)}.color-option.selected::after{content:'✓';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:white;font-weight:bold;font-size:18px;text-shadow:0 2px 4px rgba(0,0,0,0.3)}.upload-area{border:2px dashed rgba(255,255,255,0.3);border-radius:16px;padding:40px 20px;text-align:center;cursor:pointer;transition:all 0.3s ease;margin-bottom:20px;background:rgba(255,255,255,0.05);position:relative;overflow:hidden}.upload-area:hover{border-color:var(--purple);background:rgba(110,77,255,0.05)}.upload-area.dragover{border-color:var(--purple);background:rgba(110,77,255,0.1);transform:scale(1.02)}.upload-icon{font-size:40px;margin-bottom:15px;opacity:0.7}.upload-text{font-size:1rem;color:rgba(255,255,255,0.8);margin-bottom:5px}.upload-subtext{font-size:0.9rem;color:rgba(255,255,255,0.5)}#logoUpload{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer}.logo-preview-small{width:120px;height:120px;border-radius:16px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;overflow:hidden;margin:0 auto 20px;border:2px solid rgba(255,255,255,0.2)}.logo-preview-small img{width:100%;height:100%;object-fit:contain;padding:10px}.logo-position-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}.position-btn{padding:12px;border-radius:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:white;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;transition:all 0.3s ease}.position-btn:hover{background:rgba(255,255,255,0.15)}.position-btn.active{background:var(--purple);border-color:var(--purple)}.position-icon{font-size:20px}.logo-size-control{margin-top:20px}.size-label{display:flex;justify-content:space-between;margin-bottom:10px;color:rgba(255,255,255,0.9);font-size:0.95rem}.size-slider{width:100%;height:6px;-webkit-appearance:none;background:rgba(255,255,255,0.1);border-radius:3px;outline:none}.size-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--purple);cursor:pointer;border:3px solid white;box-shadow:0 2px 10px rgba(0,0,0,0.3)}.text-inputs{display:flex;flex-direction:column;gap:20px}.input-group{display:flex;flex-direction:column;gap:8px}.input-label{font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.9)}.text-input{padding:16px 20px;border-radius:12px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:white;font-size:1rem;font-family:'Inter',sans-serif;transition:all 0.3s ease}.text-input:focus{outline:none;border-color:var(--purple);background:rgba(255,255,255,0.12);box-shadow:0 0 0 3px rgba(110,77,255,0.2)}.text-input::placeholder{color:rgba(255,255,255,0.5)}.action-buttons{display:flex;gap:15px;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:18px 30px;border-radius:14px;font-weight:800;text-decoration:none;border:none;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);cursor:pointer;font-size:16px;white-space:nowrap;flex:1}.btn-primary{background:linear-gradient(135deg,var(--purple),var(--pink));color:white;box-shadow:0 8px 25px rgba(110,77,255,0.3)}.btn-primary:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(110,77,255,0.4);background:linear-gradient(135deg,#5a3de0,#ff39d0)}.btn-secondary{background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.3);backdrop-filter:blur(10px)}.btn-secondary:hover{background:rgba(255,255,255,0.25);transform:translateY(-3px);border-color:white}.price-display{background:linear-gradient(135deg,rgba(110,77,255,0.15),rgba(255,79,216,0.15));border-radius:16px;padding:25px 30px;border:1px solid rgba(255,255,255,0.2);text-align:center;margin-top:30px}.price-label{font-size:1rem;color:rgba(255,255,255,0.8);margin-bottom:8px}.price-amount{font-size:2.5rem;font-weight:900;color:white;line-height:1}.price-note{font-size:0.95rem;color:rgba(255,255,255,0.6);margin-top:8px}.notification{position:fixed;bottom:30px;right:30px;background:linear-gradient(135deg,var(--purple),var(--pink));color:white;padding:20px 30px;border-radius:14px;font-weight:600;box-shadow:0 15px 40px rgba(110,77,255,0.3);transform:translateY(100px);opacity:0;transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);z-index:3000}.notification.show{transform:translateY(0);opacity:1}.saved-designs-section{margin-top:40px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)}.saved-designs-container{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;margin-top:20px}.saved-design-card{background:rgba(255,255,255,0.05);border-radius:16px;padding:20px;cursor:pointer;transition:all 0.3s ease;border:1px solid rgba(255,255,255,0.1)}.saved-design-card:hover{transform:translateY(-5px);background:rgba(255,255,255,0.1);border-color:var(--purple)}.saved-design-preview{width:100%;height:120px;border-radius:12px;margin-bottom:15px;background:linear-gradient(135deg,var(--purple),var(--pink));overflow:hidden;display:flex;align-items:center;justify-content:center}.saved-design-name{font-weight:600;color:white;margin-bottom:5px}.saved-design-date{font-size:0.85rem;color:rgba(255,255,255,0.6)}@media (max-width:768px){.customize-section{padding:30px 15px}.section-title{font-size:2rem}.card-types{grid-template-columns:repeat(2,1fr)}.action-buttons{flex-direction:column}.preview-panel{position:static}.card-preview{max-width:100%;height:220px}.logo-position-options{grid-template-columns:repeat(2,1fr)}}@media (max-width:480px){.section-title{font-size:1.8rem}.option-group{padding:20px}.card-type{padding:15px}.type-icon{font-size:24px}.price-amount{font-size:2rem}.logo-position-options{grid-template-columns:1fr}}.nav-center a.active,.mobile-menu a.active{color:var(--pink) !important;font-weight:900 !important}.nav-center a.active::after{width:100% !important}.mobile-menu a.active{background:rgba(255,255,255,0.2) !important;border-color:var(--pink) !important}</style>
 </head>
 
 <body>
@@ -1424,7 +236,7 @@
                         </div>
                         <div id="logoPreviewArea" style="display: none;">
                             <div class="logo-preview-small">
-                                <img id="uploadedLogo" alt="Your Logo">
+                                <img loading="lazy" id="uploadedLogo" alt="Your Logo">
                             </div>
                             <button class="btn btn-secondary" id="changeLogoBtn"
                                 style="width: 100%; max-width: 200px; margin: 0 auto;">Change Logo</button>
@@ -1523,7 +335,7 @@
     </div>
 
     <script>
-        // NAVIGATION FUNCTIONALITY
+        
         document.addEventListener('DOMContentLoaded', function () {
             const hamburgerBtn = document.getElementById('hamburgerBtn');
             const mobileCloseBtn = document.getElementById('mobileCloseBtn');
@@ -1536,14 +348,12 @@
             let isMenuOpen = false;
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-            // Update cart count
             function updateCart() {
                 const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
                 cartCount.textContent = count;
                 localStorage.setItem('cart', JSON.stringify(cart));
             }
 
-            // Mobile menu functions
             function toggleMobileMenu() {
                 if (isMenuOpen) closeMobileMenu();
                 else openMobileMenu();
@@ -1569,7 +379,6 @@
                 document.body.style.overflow = 'auto';
             }
 
-            // Event listeners
             hamburgerBtn.addEventListener('click', toggleMobileMenu);
             mobileCloseBtn.addEventListener('click', closeMobileMenu);
             mobileMenuOverlay.addEventListener('click', closeMobileMenu);
@@ -1580,7 +389,6 @@
                     e.preventDefault();
                     closeMobileMenu();
 
-                    // Check if it's an anchor link
                     const targetId = link.getAttribute('href');
                     if (targetId.startsWith('#')) {
                         const target = document.querySelector(targetId);
@@ -1594,7 +402,7 @@
                             });
                         }
                     } else {
-                        // Normal page navigation
+                        
                         window.location.href = targetId;
                     }
                 });
@@ -1608,13 +416,11 @@
                 if (window.innerWidth > 1024 && isMenuOpen) closeMobileMenu();
             });
 
-            // Sticky navigation
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) nav.classList.add('scrolled');
                 else nav.classList.remove('scrolled');
             });
 
-            // Highlight active page
             const currentPage = window.location.pathname.split('/').pop() || 'index.html';
             document.querySelectorAll('.nav-center a, .mobile-menu a').forEach(link => {
                 const linkPage = link.getAttribute('href');
@@ -1623,35 +429,29 @@
                 }
             });
 
-            // Initialize cart
             updateCart();
 
-            // Cart click handler
             cartIcon.addEventListener('click', function () {
                 showNotification('Cart functionality will be implemented soon!');
             });
         });
 
-        // Card Customization Logic
         const cardPreview = document.getElementById('cardPreview');
         const cardFront = document.getElementById('cardFront');
         const cardBack = document.getElementById('cardBack');
         const flipBtn = document.getElementById('flipBtn');
 
-        // Layout elements
         const standardLayout = document.getElementById('standardLayout');
         const fullBleedLayout = document.getElementById('fullBleedLayout');
         const standardLogo = document.getElementById('standardLogo');
         const fullBleedLogo = document.getElementById('fullBleedLogo');
         const logoOverlay = document.getElementById('logoOverlay');
 
-        // Text elements
         const companyNameStandard = document.getElementById('companyNameStandard');
         const taglineStandard = document.getElementById('taglineStandard');
         const companyNameFull = document.getElementById('companyNameFull');
         const taglineFull = document.getElementById('taglineFull');
 
-        // Controls
         const uploadArea = document.getElementById('uploadArea');
         const logoUpload = document.getElementById('logoUpload');
         const logoPreviewArea = document.getElementById('logoPreviewArea');
@@ -1668,13 +468,11 @@
         const notification = document.getElementById('notification');
         const savedDesignsContainer = document.getElementById('savedDesignsContainer');
 
-        // New controls
         const logoModeBtns = document.querySelectorAll('.logo-mode-btn');
         const logoSizeSlider = document.getElementById('logoSizeSlider');
         const logoSizeValue = document.getElementById('logoSizeValue');
         const positionBtns = document.querySelectorAll('.position-btn');
 
-        // Current customization state
         let currentDesign = {
             id: Date.now(),
             cardType: 'metal-gold',
@@ -1693,20 +491,17 @@
             })
         };
 
-        // Notification function
         function showNotification(message) {
             notification.textContent = message;
             notification.classList.add('show');
             setTimeout(() => notification.classList.remove('show'), 3000);
         }
 
-        // Flip card preview
         flipBtn.addEventListener('click', () => {
             cardFront.classList.toggle('active');
             cardBack.classList.toggle('active');
         });
 
-        // Card type selection
         cardTypes.forEach(type => {
             type.addEventListener('click', () => {
                 cardTypes.forEach(t => t.classList.remove('selected'));
@@ -1720,7 +515,6 @@
             });
         });
 
-        // Color selection
         colorOptions.forEach(color => {
             color.addEventListener('click', () => {
                 colorOptions.forEach(c => c.classList.remove('selected'));
@@ -1731,7 +525,6 @@
             });
         });
 
-        // Logo upload with drag and drop
         const uploadIcon = uploadArea.querySelector('.upload-icon');
         const uploadText = uploadArea.querySelector('.upload-text');
         const uploadSubtext = uploadArea.querySelector('.upload-subtext');
@@ -1744,7 +537,6 @@
 
         logoUpload.addEventListener('change', handleFileSelect);
 
-        // Drag and drop functionality
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             uploadArea.addEventListener(eventName, preventDefaults, false);
         });
@@ -1791,13 +583,12 @@
         function handleFileSelect(e) {
             const file = e.target.files[0];
             if (file) {
-                // Check file size (5MB max)
+                
                 if (file.size > 5 * 1024 * 1024) {
                     showNotification('File is too large. Maximum size is 5MB.');
                     return;
                 }
 
-                // Check file type
                 const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/svg+xml'];
                 if (!validTypes.includes(file.type)) {
                     showNotification('Please upload a valid image file (JPEG, PNG, or SVG).');
@@ -1806,17 +597,14 @@
 
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    // Update logo preview
+                    
                     uploadedLogo.src = e.target.result;
 
-                    // Update card logos
                     updateCardLogo(e.target.result);
 
-                    // Switch to preview mode
                     uploadArea.style.display = 'none';
                     logoPreviewArea.style.display = 'block';
 
-                    // Update current design
                     currentDesign.logo = e.target.result;
                 };
 
@@ -1828,34 +616,29 @@
             }
         }
 
-        // Update card logo in both layouts
         function updateCardLogo(logoData) {
-            // Update standard layout logo
+            
             if (logoData) {
-                standardLogo.innerHTML = `<img src="${logoData}" alt="Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                standardLogo.innerHTML = `<img loading="lazy" src="${logoData}" alt="Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
                 fullBleedLogo.src = logoData;
             } else {
                 standardLogo.innerHTML = '<div class="default-logo-placeholder">💎</div>';
                 fullBleedLogo.src = '';
             }
 
-            // Apply current logo size and position
             applyLogoSizeAndPosition();
         }
 
-        // Change logo button
         changeLogoBtn.addEventListener('click', () => {
             uploadArea.style.display = 'block';
             logoPreviewArea.style.display = 'none';
             currentDesign.logo = null;
 
-            // Reset logos to default
             standardLogo.innerHTML = '<div class="default-logo-placeholder">💎</div>';
             fullBleedLogo.src = '';
             logoUpload.value = '';
         });
 
-        // Logo mode selection
         logoModeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 logoModeBtns.forEach(b => b.classList.remove('active'));
@@ -1882,7 +665,7 @@
                     standardLayout.style.display = 'flex';
                     fullBleedLayout.style.display = 'none';
                     logoOverlay.style.display = 'none';
-                    // For centered mode, we'll adjust the logo container
+                    
                     if (currentDesign.logo) {
                         standardLogo.style.width = '150px';
                         standardLogo.style.height = '150px';
@@ -1892,14 +675,12 @@
             applyLogoSizeAndPosition();
         }
 
-        // Logo size slider
         logoSizeSlider.addEventListener('input', (e) => {
             currentDesign.logoSize = parseInt(e.target.value);
             logoSizeValue.textContent = `${currentDesign.logoSize}%`;
             applyLogoSizeAndPosition();
         });
 
-        // Logo position buttons
         positionBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 positionBtns.forEach(b => b.classList.remove('active'));
@@ -1910,24 +691,20 @@
             });
         });
 
-        // Apply logo size and position
         function applyLogoSizeAndPosition() {
             const logoImg = standardLogo.querySelector('img');
             const fullBleedImg = fullBleedLogo;
 
             if (!logoImg && !fullBleedImg.src) return;
 
-            // Apply to standard layout
             if (logoImg) {
-                // Size
+                
                 logoImg.style.width = `${currentDesign.logoSize}%`;
                 logoImg.style.height = `${currentDesign.logoSize}%`;
 
-                // Position
                 logoImg.style.objectPosition = getObjectPosition(currentDesign.logoPosition);
                 logoImg.style.objectFit = currentDesign.logoPosition === 'stretch' ? 'cover' : 'contain';
 
-                // Container styling for standard layout
                 if (currentDesign.logoPosition === 'stretch') {
                     standardLogo.style.width = '100%';
                     standardLogo.style.height = '100%';
@@ -1945,9 +722,8 @@
                 }
             }
 
-            // Apply to full-bleed layout
             if (fullBleedImg.src) {
-                // Size
+                
                 if (currentDesign.logoPosition === 'stretch') {
                     fullBleedImg.style.width = '100%';
                     fullBleedImg.style.height = '100%';
@@ -1958,10 +734,8 @@
                     fullBleedImg.style.objectFit = 'contain';
                 }
 
-                // Position
                 fullBleedImg.style.objectPosition = getObjectPosition(currentDesign.logoPosition);
 
-                // Adjust overlay opacity based on logo mode
                 if (currentDesign.logoMode === 'full-bleed') {
                     logoOverlay.style.opacity = '0.3';
                 }
@@ -1980,7 +754,6 @@
             }
         }
 
-        // Text input updates
         companyNameInput.addEventListener('input', (e) => {
             currentDesign.companyName = e.target.value || 'Your Company';
             companyNameStandard.textContent = currentDesign.companyName;
@@ -1993,9 +766,8 @@
             taglineFull.textContent = currentDesign.tagline;
         });
 
-        // Update card appearance based on current design
         function updateCardAppearance() {
-            // Set background based on color
+            
             const colorGradients = {
                 'purple-pink': 'linear-gradient(135deg, var(--purple), var(--pink))',
                 'gold': 'linear-gradient(135deg, #C9A227, #8A6A12)',
@@ -2011,7 +783,6 @@
             const gradient = colorGradients[currentDesign.color] || colorGradients['purple-pink'];
             cardFront.style.background = gradient;
 
-            // Set back card gradient
             const backGradients = {
                 'purple-pink': 'linear-gradient(135deg, var(--pink), var(--charcoal2))',
                 'gold': 'linear-gradient(135deg, #8A6A12, #141422)',
@@ -2025,16 +796,13 @@
             };
             cardBack.style.background = backGradients[currentDesign.color] || backGradients['purple-pink'];
 
-            // Adjust text color for light backgrounds
             const isLight = ['white', 'silver'].includes(currentDesign.color);
             const textColor = isLight ? '#000' : '#fff';
 
-            // Update text colors
             document.querySelectorAll('.company-name-standard, .tagline-standard, .nfc-badge-standard').forEach(el => {
                 el.style.color = textColor;
             });
 
-            // Update border and shadow
             if (currentDesign.cardType.includes('metal')) {
                 cardPreview.style.borderColor = isLight ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)';
                 cardPreview.style.boxShadow = isLight ?
@@ -2043,13 +811,11 @@
             }
         }
 
-        // Update price display
         function updatePriceDisplay() {
             totalPriceElement.textContent = `£${currentDesign.price}`;
             cartPriceElement.textContent = currentDesign.price;
         }
 
-        // Cart functionality
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
         function updateCart() {
@@ -2058,7 +824,6 @@
             localStorage.setItem('cart', JSON.stringify(cart));
         }
 
-        // Add to cart
         addToCartBtn.addEventListener('click', () => {
             const cardTypeName = currentDesign.cardType.split('-')[1].charAt(0).toUpperCase() +
                 currentDesign.cardType.split('-')[1].slice(1);
@@ -2067,10 +832,8 @@
 
             const itemName = `${cardTypeName} ${materialType} Card`;
 
-            // Create a unique ID for this customization
             const customizationId = `${currentDesign.cardType}-${currentDesign.color}-${Date.now()}`;
 
-            // Check if similar item already in cart
             const existingItem = cart.find(item =>
                 item.customization &&
                 item.customization.cardType === currentDesign.cardType &&
@@ -2094,9 +857,8 @@
             showNotification('Custom card added to cart!');
         });
 
-        // Save design functionality
         saveDesignBtn.addEventListener('click', () => {
-            // Generate unique ID for this design
+            
             currentDesign.id = Date.now();
             currentDesign.date = new Date().toLocaleDateString('en-GB', {
                 day: 'numeric',
@@ -2106,10 +868,8 @@
                 minute: '2-digit'
             });
 
-            // Get saved designs from localStorage
             const savedDesigns = JSON.parse(localStorage.getItem('savedDesigns')) || [];
 
-            // Check if this design already exists (based on content)
             const existingIndex = savedDesigns.findIndex(design =>
                 design.companyName === currentDesign.companyName &&
                 design.tagline === currentDesign.tagline &&
@@ -2120,23 +880,20 @@
             );
 
             if (existingIndex !== -1) {
-                // Update existing design
+                
                 savedDesigns[existingIndex] = { ...currentDesign };
             } else {
-                // Add new design
+                
                 savedDesigns.push({ ...currentDesign });
             }
 
-            // Save to localStorage
             localStorage.setItem('savedDesigns', JSON.stringify(savedDesigns));
 
-            // Update saved designs display
             loadSavedDesigns();
 
             showNotification('Design saved successfully!');
         });
 
-        // Load saved designs
         function loadSavedDesigns() {
             const savedDesigns = JSON.parse(localStorage.getItem('savedDesigns')) || [];
 
@@ -2154,7 +911,7 @@
             }
 
             savedDesignsContainer.innerHTML = savedDesigns.map(design => {
-                // Determine gradient for preview
+                
                 const colorGradients = {
                     'purple-pink': 'linear-gradient(135deg, #6E4DFF, #FF4FD8)',
                     'gold': 'linear-gradient(135deg, #C9A227, #8A6A12)',
@@ -2173,7 +930,7 @@
                     <div class="saved-design-card" data-id="${design.id}">
                         <div class="saved-design-preview" style="background: ${gradient}; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px;">
                             ${design.logo ?
-                        `<img src="${design.logo}" alt="${design.companyName}" style="max-width: 80%; max-height: 80%; object-fit: contain;">` :
+                        `<img loading="lazy" src="${design.logo}" alt="${design.companyName}" style="max-width: 80%; max-height: 80%; object-fit: contain;">` :
                         `<span style="font-size: 40px; margin-bottom: 10px;">💎</span>`
                     }
                             <div style="color: white; font-size: 12px; font-weight: bold; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%;">
@@ -2186,7 +943,6 @@
                 `;
             }).join('');
 
-            // Add click event to load designs
             document.querySelectorAll('.saved-design-card:not(.empty-state)').forEach(card => {
                 card.addEventListener('click', () => {
                     const designId = parseInt(card.dataset.id);
@@ -2197,7 +953,6 @@
                         loadDesign(design);
                         showNotification('Design loaded!');
 
-                        // Scroll to preview
                         const previewSection = document.getElementById('preview');
                         const nav = document.getElementById('mainNav');
                         const navHeight = nav.offsetHeight;
@@ -2212,22 +967,18 @@
             });
         }
 
-        // Load a saved design
         function loadDesign(design) {
-            // Update current design
+            
             currentDesign = { ...design };
 
-            // Update UI elements
             companyNameInput.value = design.companyName;
             taglineInput.value = design.tagline;
 
-            // Update text displays
             companyNameStandard.textContent = design.companyName;
             companyNameFull.textContent = design.companyName;
             taglineStandard.textContent = design.tagline;
             taglineFull.textContent = design.tagline;
 
-            // Update logo
             if (design.logo) {
                 uploadedLogo.src = design.logo;
                 updateCardLogo(design.logo);
@@ -2239,7 +990,6 @@
                 logoPreviewArea.style.display = 'none';
             }
 
-            // Update card type selection
             cardTypes.forEach(type => {
                 type.classList.remove('selected');
                 if (type.dataset.type === design.cardType) {
@@ -2247,7 +997,6 @@
                 }
             });
 
-            // Update color selection
             colorOptions.forEach(color => {
                 color.classList.remove('selected');
                 if (color.dataset.color === design.color) {
@@ -2255,7 +1004,6 @@
                 }
             });
 
-            // Update logo mode
             logoModeBtns.forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.mode === design.logoMode) {
@@ -2263,7 +1011,6 @@
                 }
             });
 
-            // Update logo position
             positionBtns.forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.position === design.logoPosition) {
@@ -2271,24 +1018,18 @@
                 }
             });
 
-            // Update logo size
             logoSizeSlider.value = design.logoSize || 100;
             logoSizeValue.textContent = `${design.logoSize || 100}%`;
 
-            // Update price
             updatePriceDisplay();
 
-            // Update logo mode display
             updateLogoMode();
 
-            // Apply logo size and position
             applyLogoSizeAndPosition();
 
-            // Update card appearance
             updateCardAppearance();
         }
 
-        // Initialize
         document.addEventListener('DOMContentLoaded', function () {
             updatePriceDisplay();
             updateCardAppearance();
