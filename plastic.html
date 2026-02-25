@@ -1071,14 +1071,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    document.querySelectorAll('.add-to-cart, .add-to-cart-carousel, [data-name][data-price]').forEach(button => {
+    document.querySelectorAll('.add-to-cart, .add-to-cart-carousel').forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             const btn = e.currentTarget;
             const name = btn.dataset.name;
             const price = parseInt(btn.dataset.price);
-            const img = btn.dataset.img;
-            addToCart(name, price, 1, img);
+            const img = btn.dataset.image || btn.dataset.img || null;
+            openFinishModal(name, price, img);
         });
     });
 });
@@ -1088,7 +1088,92 @@ window.removeFromCart = removeFromCart;
 window.closeCartModal = closeCartModal;
 window.openCartModal = openCartModal;
 window.checkout = checkout;
-        
+
+        // ---- FINISH MODAL LOGIC ----
+        const closeFinishBtn = document.getElementById('closeFinish');
+        const cancelFinishBtn = document.getElementById('cancelFinish');
+        const confirmFinishBtn = document.getElementById('confirmFinish');
+        const finishTotalPriceEl = document.getElementById('finishTotalPrice');
+        const finishQuantityInput = document.getElementById('quantityInput');
+        const finishQuantityDecrease = document.getElementById('quantityDecrease');
+        const finishQuantityIncrease = document.getElementById('quantityIncrease');
+        const finishQuantityPresetBtns = document.querySelectorAll('.quantity-preset-btn');
+        const finishOptionsEls = document.querySelectorAll('.finish-modal .finish-option');
+
+        function openFinishModal(name, price, img) {
+            currentFinishData = { name, price, img };
+            finishQuantity = 1;
+            if (finishQuantityInput) finishQuantityInput.value = 1;
+            updateFinishPrice();
+            finishModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            finishOptionsEls.forEach(opt => opt.classList.remove('selected'));
+            if (finishOptionsEls[0]) finishOptionsEls[0].classList.add('selected');
+            finishQuantityPresetBtns.forEach(btn => btn.classList.remove('active'));
+            if (finishQuantityPresetBtns[0]) finishQuantityPresetBtns[0].classList.add('active');
+        }
+
+        function closeFinishModal() {
+            finishModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateFinishPrice() {
+            if (!currentFinishData || !finishTotalPriceEl) return;
+            finishTotalPriceEl.textContent = currentFinishData.price * finishQuantity;
+        }
+
+        if (finishQuantityDecrease) {
+            finishQuantityDecrease.addEventListener('click', () => {
+                if (finishQuantity > 1) { finishQuantity--; if (finishQuantityInput) finishQuantityInput.value = finishQuantity; updateFinishPrice(); }
+            });
+        }
+        if (finishQuantityIncrease) {
+            finishQuantityIncrease.addEventListener('click', () => {
+                if (finishQuantity < 100) { finishQuantity++; if (finishQuantityInput) finishQuantityInput.value = finishQuantity; updateFinishPrice(); }
+            });
+        }
+        if (finishQuantityInput) {
+            finishQuantityInput.addEventListener('change', () => {
+                let v = parseInt(finishQuantityInput.value);
+                if (isNaN(v) || v < 1) v = 1;
+                if (v > 100) v = 100;
+                finishQuantity = v;
+                finishQuantityInput.value = v;
+                updateFinishPrice();
+            });
+        }
+        finishQuantityPresetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                finishQuantity = parseInt(btn.dataset.quantity);
+                if (finishQuantityInput) finishQuantityInput.value = finishQuantity;
+                updateFinishPrice();
+                finishQuantityPresetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+        finishOptionsEls.forEach(opt => {
+            opt.addEventListener('click', () => {
+                finishOptionsEls.forEach(o => o.classList.remove('selected'));
+                opt.classList.add('selected');
+            });
+        });
+        if (confirmFinishBtn) {
+            confirmFinishBtn.addEventListener('click', () => {
+                if (!currentFinishData) return;
+                const selectedOpt = document.querySelector('.finish-modal .finish-option.selected');
+                const finishType = selectedOpt ? (selectedOpt.querySelector('.finish-label')?.textContent?.trim().replace(/^[^\w]+/, '') || selectedOpt.dataset.finish || 'Standard') : 'Standard';
+                const itemName = `${currentFinishData.name} (${finishType})`;
+                addToCart(itemName, currentFinishData.price, finishQuantity, currentFinishData.img);
+                closeFinishModal();
+            });
+        }
+        if (closeFinishBtn) closeFinishBtn.addEventListener('click', closeFinishModal);
+        if (cancelFinishBtn) cancelFinishBtn.addEventListener('click', closeFinishModal);
+        if (finishModal) finishModal.addEventListener('click', (e) => { if (e.target === finishModal) closeFinishModal(); });
+        window.openFinishModal = openFinishModal;
+        // ---- END FINISH MODAL LOGIC ----
+
         const plasticColorOptions = document.querySelectorAll('.plastic-color-option');
         const customFinishOptions = document.querySelectorAll('.finish-option');
         const uploadArea = document.getElementById('uploadArea');

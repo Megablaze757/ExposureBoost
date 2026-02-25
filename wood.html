@@ -995,14 +995,14 @@
                 });
             }
 
-            document.querySelectorAll('.add-to-cart, .add-to-cart-carousel, [data-name][data-price]').forEach(button => {
+            document.querySelectorAll('.add-to-cart, .add-to-cart-carousel').forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
                     const btn = e.currentTarget;
                     const name = btn.dataset.name;
                     const price = parseInt(btn.dataset.price);
-                    const img = btn.dataset.img;
-                    addToCart(name, price, 1, img);
+                    const img = btn.dataset.img || null;
+                    openEngravingModal(name, price, img);
                 });
             });
         });
