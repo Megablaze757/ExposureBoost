@@ -1402,39 +1402,50 @@
                 card.addEventListener('mouseleave', () => updateCarouselBg());
             });
 
-            // Touch swipe
+            // Live drag swipe (mouse + touch) - mirrors wood page behaviour
             let swipeStartX = 0;
-            let swipeStartY = 0;
-            let swipeLocked = false;
-            carouselWrapper.addEventListener('touchstart', (e) => {
-                swipeStartX = e.touches[0].clientX;
-                swipeStartY = e.touches[0].clientY;
-                swipeLocked = false;
-            }, { passive: true });
-            carouselWrapper.addEventListener('touchmove', (e) => {
-                const dx = Math.abs(e.touches[0].clientX - swipeStartX);
-                const dy = Math.abs(e.touches[0].clientY - swipeStartY);
-                if (!swipeLocked && dx > dy && dx > 5) {
-                    swipeLocked = true;
-                }
-                if (swipeLocked) e.preventDefault();
-            }, { passive: false });
-            carouselWrapper.addEventListener('touchend', (e) => {
-                const diff = swipeStartX - e.changedTouches[0].clientX;
-                if (Math.abs(diff) > 40) diff > 0 ? nextSlide() : prevSlide();
-                swipeLocked = false;
-            });
+            let swipeCurrentX = 0;
+            let isSwiping = false;
 
-            // Mouse drag swipe
-            let mouseStartX = 0, isDragging = false;
-            carouselWrapper.addEventListener('mousedown', (e) => { mouseStartX = e.clientX; isDragging = true; });
-            carouselWrapper.addEventListener('mouseup', (e) => {
-                if (!isDragging) return;
-                isDragging = false;
-                const diff = mouseStartX - e.clientX;
-                if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
-            });
-            carouselWrapper.addEventListener('mouseleave', () => { isDragging = false; });
+            function startSwipe(x) {
+                swipeStartX = x;
+                swipeCurrentX = x;
+                isSwiping = true;
+                carouselTrack.style.transition = 'none';
+            }
+
+            function handleSwipeMove(x) {
+                if (!isSwiping) return;
+                swipeCurrentX = x;
+                const diff = swipeStartX - swipeCurrentX;
+                const cardWidth = carouselCards[0].offsetWidth + 30;
+                const baseTranslate = -carouselCurrentSlide * carouselCardsPerView * cardWidth;
+                carouselTrack.style.transform = `translateX(${baseTranslate - diff}px)`;
+            }
+
+            function endSwipe() {
+                if (!isSwiping) return;
+                const diff = swipeStartX - swipeCurrentX;
+                const cardWidth = carouselCards[0].offsetWidth + 30;
+                const threshold = cardWidth * 0.2;
+                if (Math.abs(diff) > threshold) {
+                    diff > 0 ? nextSlide() : prevSlide();
+                } else {
+                    updateCarousel();
+                }
+                isSwiping = false;
+            }
+
+            // Mouse
+            carouselWrapper.addEventListener('mousedown', (e) => startSwipe(e.clientX));
+            carouselWrapper.addEventListener('mousemove', (e) => { if (isSwiping) handleSwipeMove(e.clientX); });
+            carouselWrapper.addEventListener('mouseup', endSwipe);
+            carouselWrapper.addEventListener('mouseleave', () => { if (isSwiping) endSwipe(); });
+
+            // Touch
+            carouselWrapper.addEventListener('touchstart', (e) => startSwipe(e.touches[0].clientX), { passive: true });
+            carouselWrapper.addEventListener('touchmove', (e) => { if (isSwiping) handleSwipeMove(e.touches[0].clientX); }, { passive: true });
+            carouselWrapper.addEventListener('touchend', endSwipe);
 
             window.addEventListener('resize', rebuild);
             rebuild();
